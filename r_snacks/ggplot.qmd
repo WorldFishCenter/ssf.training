@@ -19,7 +19,7 @@ In this short guide, we'll explore how to use `ggplot2` to create visualizations
 
 ### Basic Scatter Plot
 
-Let's start with a simple scatter plot of speed versus stopping distance.
+Let's start with a simple scatter plot of speed versus stopping distance:
 
 ```{webr}
 #| autorun: false
