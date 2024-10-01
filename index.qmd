@@ -1,5 +1,5 @@
 ---
-title: "DaSL Data Snacks"
+title: "R for Small-Scale Fishery Data"
 listing:
   contents: 
     - "r_snacks/*.qmd"
@@ -12,6 +12,6 @@ page-layout: full
 title-block-banner: true
 ---
 
-This is a collection of cool data tricks with R and Python from the [Fred Hutch Data Science Lab](https://hutchdatascience.org/). We leverage a technology called `quarto-live` to give you runnable R and Python examples in your browser, no installation needed. So you can immediately start experimenting with the new tips and tricks.
+This collection is designed to help you work with small-scale fishery data using R. The examples are tailored to practical use cases, leveraging `ggplot2` and other tools to analyze and visualize fisheries data. All code can be run interactively in your browser using `quarto-live`, meaning no installation is necessary to start learning and applying these techniques.
 
-Think of these snacks like experiments - they may grow into something bigger, or they may just stay as little nuggets of data science.
+These data science "snacks" are meant to provide you with hands-on experience for working with real-world fishery datasets. They can serve as quick, practical insights or as stepping stones to more advanced analysis in fisheries research.
