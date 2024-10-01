@@ -6,9 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Snacky Snackerson">
+<meta name="author" content="Lore">
+<meta name="dcterms.date" content="2024-09-30">
 
-<title>Snack Template: R – SSF data training</title>
+<title>Visualizing Trends with ggplot2 – SSF data training</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -24,22 +25,22 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -69,17 +70,17 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../styles.css">
 </head>
 
-<body class="nav-fixed fullcontent">
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">SSF data training</span>
     </a>
   </div>
@@ -102,73 +103,139 @@ ul.task-list li input[type="checkbox"] {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Visualizing Trends with ggplot2</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">R</div>
+                <div class="quarto-category">Visualization</div>
+                <div class="quarto-category">Trends</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Lore </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">September 30, 2024</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction-to-trend-visualization" id="toc-introduction-to-trend-visualization" class="nav-link active" data-scroll-target="#introduction-to-trend-visualization">Introduction to Trend Visualization</a>
+  <ul class="collapse">
+  <li><a href="#basic-line-plot-for-trends" id="toc-basic-line-plot-for-trends" class="nav-link" data-scroll-target="#basic-line-plot-for-trends">Basic Line Plot for Trends</a></li>
+  <li><a href="#adding-a-smoothing-line" id="toc-adding-a-smoothing-line" class="nav-link" data-scroll-target="#adding-a-smoothing-line">Adding a Smoothing Line</a></li>
+  <li><a href="#customizing-trend-lines" id="toc-customizing-trend-lines" class="nav-link" data-scroll-target="#customizing-trend-lines">Customizing Trend Lines</a></li>
+  <li><a href="#comparing-different-trends" id="toc-comparing-different-trends" class="nav-link" data-scroll-target="#comparing-different-trends">Comparing Different Trends</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Snack Template: R</h1>
-  <div class="quarto-categories">
-    <div class="quarto-category">R</div>
-    <div class="quarto-category">Tables</div>
-  </div>
-  </div>
+<main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
 
-<div class="quarto-title-meta">
-
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Snacky Snackerson </p>
-          </div>
-  </div>
-    
-  
-    
-  </div>
-  
 
 
-</header>
+<section id="introduction-to-trend-visualization" class="level2">
+<h2 class="anchored" data-anchor-id="introduction-to-trend-visualization">Introduction to Trend Visualization</h2>
+<p>In this guide, we will learn how to visualize trends in data using <code>ggplot2</code>. We’ll use the <code>cars</code> dataset, which contains information on car speed and stopping distances.</p>
+<section id="basic-line-plot-for-trends" class="level3">
+<h3 class="anchored" data-anchor-id="basic-line-plot-for-trends">Basic Line Plot for Trends</h3>
+<p>A line plot is often used to visualize trends over time or any continuous variable. Although the <code>cars</code> dataset doesn’t have a time component, we can still visualize the trend of speed against stopping distance.</p>
+<div class="cell" data-autorun="false">
+<pre class="{webr}"><code>#| autorun: false
+library(ggplot2)
 
+# Load the cars dataset
+data(cars)
 
-<p>One sentence summary here why someone</p>
-<section id="show-your-data" class="level2">
-<h2 class="anchored" data-anchor-id="show-your-data">Show your data</h2>
-<p>Load and show your dataset here. In general, it’s easiest to used packaged datasets, but you can also use <code>download.file()</code> if your data is at a specific URL.</p>
-<div class="cell" data-edit="false">
-<pre class="webr cell-code"><code>library(gt)
-library(palmerpenguins)
-
-gt(head(penguins))</code></pre>
+# Line plot for trends in the cars dataset
+ggplot(cars, aes(x = speed, y = dist)) +
+  geom_line() +
+  labs(title = "Speed vs Stopping Distance: Trend Visualization",
+       x = "Speed (mph)",
+       y = "Stopping Distance (ft)")</code></pre>
 </div>
 </section>
-<section id="demonstrate-your-thing" class="level2">
-<h2 class="anchored" data-anchor-id="demonstrate-your-thing">Demonstrate Your Thing</h2>
-<div class="cell">
-<pre class="webr cell-code"><code>library(dplyr)
-
-penguins |&gt;
-  select(species, island, bill_length_mm)</code></pre>
+<section id="adding-a-smoothing-line" class="level3">
+<h3 class="anchored" data-anchor-id="adding-a-smoothing-line">Adding a Smoothing Line</h3>
+<p>We can enhance the visualization by adding a smoothing line to better capture the underlying trend.</p>
+<div class="cell" data-autorun="false">
+<pre class="{webr}"><code>#| autorun: false
+ggplot(cars, aes(x = speed, y = dist)) +
+  geom_point() +
+  geom_smooth(method = "loess", se = FALSE) +
+  labs(title = "Speed vs Stopping Distance with Trend Line",
+       x = "Speed (mph)",
+       y = "Stopping Distance (ft)")</code></pre>
 </div>
 </section>
-<section id="give-learners-a-chance-to-play" class="level2">
-<h2 class="anchored" data-anchor-id="give-learners-a-chance-to-play">Give Learners a Chance to Play</h2>
-<div class="cell">
-<pre class="webr cell-code"><code>penguins |&gt;
-  select(-----)</code></pre>
+<section id="customizing-trend-lines" class="level3">
+<h3 class="anchored" data-anchor-id="customizing-trend-lines">Customizing Trend Lines</h3>
+<p>You can further customize trend lines by changing colors, line types, and smoothing methods. Let’s use a linear model (method = “lm”) to display the trend.</p>
+<div class="cell" data-autorun="false">
+<pre class="{webr}"><code>#| autorun: false
+ggplot(cars, aes(x = speed, y = dist)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE, color = "red", linetype = "dashed") +
+  labs(title = "Linear Trend: Speed vs Stopping Distance",
+       x = "Speed (mph)",
+       y = "Stopping Distance (ft)")</code></pre>
+</div>
+</section>
+<section id="comparing-different-trends" class="level3">
+<h3 class="anchored" data-anchor-id="comparing-different-trends">Comparing Different Trends</h3>
+<p>Finally, let’s compare different trend lines by plotting both a linear model and a loess smoother together.</p>
+<div class="cell" data-autorun="false">
+<pre class="{webr}"><code>#| autorun: false
+ggplot(cars, aes(x = speed, y = dist))  +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE, color = "blue") +
+  geom_smooth(method = "loess", se = FALSE, color = "green") +
+  labs(title = "Comparing Linear and Loess Trends",
+       x = "Speed (mph)",
+       y = "Stopping Distance (ft)")</code></pre>
 </div>
 
 
 </section>
+</section>
 
-</main> <!-- /main -->
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{2024,
+  author = {, Lore},
+  title = {Visualizing {Trends} with Ggplot2},
+  date = {2024-09-30},
+  langid = {en}
+}
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-2024" class="csl-entry quarto-appendix-citeas" role="listitem">
+Lore. 2024. <span>“Visualizing Trends with Ggplot2.”</span> September
+30, 2024.
+</div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
