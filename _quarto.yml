@@ -18,7 +18,7 @@ website:
         href: https://github.com/WorldFishCenter/ssf.training/
 format:
   html:
-    theme: litera
+    theme: Flatly
     css: styles.css
 
 
