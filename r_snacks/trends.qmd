@@ -70,7 +70,7 @@ Finally, let’s compare different trend lines by plotting both a linear model a
 
 ```{webr}
 #| autorun: false
-ggplot(cars, aes(x = speed, y = dist)) +
+ggplot(cars, aes(x = speed, y = dist))  +
   geom_point() +
   geom_smooth(method = "lm", se = FALSE, color = "blue") +
   geom_smooth(method = "loess", se = FALSE, color = "green") +
