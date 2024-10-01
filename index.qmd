@@ -3,7 +3,6 @@ title: "DaSL Data Snacks"
 listing:
   contents: 
     - "r_snacks/*.qmd"
-    - "python_snacks/*.qmd"
   sort: "date desc"
   type: default
   categories: true
