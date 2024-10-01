@@ -7,6 +7,7 @@ engine: knitr
 categories: ["R", "Visualization", "ggplot2"]
 webr:
   autorun: false
+  render-df: gt-interactive
   packages:
     - ggplot2
 ---
