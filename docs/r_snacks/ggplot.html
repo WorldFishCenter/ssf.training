@@ -6,10 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Ted Laderas">
-<meta name="dcterms.date" content="2024-09-13">
+<meta name="author" content="Lore">
+<meta name="dcterms.date" content="2024-09-30">
 
-<title>Compose Plots with {patchwork} – DaSL Data Snacks</title>
+<title>Working with ggplot2: A Short Guide – DaSL Data Snacks</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -110,10 +110,11 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Compose Plots with {patchwork}</h1>
+      <h1 class="title">Working with ggplot2: A Short Guide</h1>
                                 <div class="quarto-categories">
                 <div class="quarto-category">R</div>
-                <div class="quarto-category">graphics</div>
+                <div class="quarto-category">Visualization</div>
+                <div class="quarto-category">ggplot2</div>
               </div>
                   </div>
   </div>
@@ -124,14 +125,14 @@ ul.task-list li input[type="checkbox"] {
       <div>
       <div class="quarto-title-meta-heading">Author</div>
       <div class="quarto-title-meta-contents">
-               <p>Ted Laderas </p>
+               <p>Lore </p>
             </div>
     </div>
       
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">September 13, 2024</p>
+        <p class="date">September 30, 2024</p>
       </div>
     </div>
     
@@ -147,16 +148,11 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link active" data-scroll-target="#learning-objectives">Learning Objectives</a></li>
-  <li><a href="#what-is-patchwork" id="toc-what-is-patchwork" class="nav-link" data-scroll-target="#what-is-patchwork">What is <code>{patchwork}</code>?</a></li>
-  <li><a href="#penguins-data" id="toc-penguins-data" class="nav-link" data-scroll-target="#penguins-data">Penguins Data</a></li>
-  <li><a href="#lets-start-with-two-plots" id="toc-lets-start-with-two-plots" class="nav-link" data-scroll-target="#lets-start-with-two-plots">Let’s start with two plots</a></li>
-  <li><a href="#composing-plots-together" id="toc-composing-plots-together" class="nav-link" data-scroll-target="#composing-plots-together">Composing Plots together</a>
+  <li><a href="#introduction-to-ggplot2" id="toc-introduction-to-ggplot2" class="nav-link active" data-scroll-target="#introduction-to-ggplot2">Introduction to ggplot2</a>
   <ul class="collapse">
-  <li><a href="#side-by-side-and-stacked" id="toc-side-by-side-and-stacked" class="nav-link" data-scroll-target="#side-by-side-and-stacked">Side by side and Stacked</a></li>
-  <li><a href="#plot-labeling" id="toc-plot-labeling" class="nav-link" data-scroll-target="#plot-labeling">Plot Labeling</a></li>
-  <li><a href="#try-it-out" id="toc-try-it-out" class="nav-link" data-scroll-target="#try-it-out">Try it out!</a></li>
-  <li><a href="#go-further" id="toc-go-further" class="nav-link" data-scroll-target="#go-further">Go Further</a></li>
+  <li><a href="#basic-scatter-plot" id="toc-basic-scatter-plot" class="nav-link" data-scroll-target="#basic-scatter-plot">Basic Scatter Plot</a></li>
+  <li><a href="#adding-a-smoothing-line" id="toc-adding-a-smoothing-line" class="nav-link" data-scroll-target="#adding-a-smoothing-line">Adding a Smoothing Line</a></li>
+  <li><a href="#customizing-the-plot" id="toc-customizing-the-plot" class="nav-link" data-scroll-target="#customizing-the-plot">Customizing the Plot</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -168,143 +164,67 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<p>Learn more about composing plots together with a package with straightforward syntax.</p>
-<section id="learning-objectives" class="level2">
-<h2 class="anchored" data-anchor-id="learning-objectives">Learning Objectives</h2>
-<p>After working with this Data Snack you should be able to:</p>
-<ul>
-<li><strong>Explain</strong> how the <code>{patchwork}</code> package lets you compose plots together</li>
-<li><strong>Utilize</strong> <code>{patchwork}</code> to compose multiple plots in various layouts</li>
-</ul>
-</section>
-<section id="what-is-patchwork" class="level2">
-<h2 class="anchored" data-anchor-id="what-is-patchwork">What is <code>{patchwork}</code>?</h2>
-<p>The <code>{patchwork}</code> package solves a problem that many of us have:</p>
-<blockquote class="blockquote">
-<p>how do we compose multiple plots together into a single figure?</p>
-</blockquote>
-</section>
-<section id="penguins-data" class="level2">
-<h2 class="anchored" data-anchor-id="penguins-data">Penguins Data</h2>
-<p>Just a quick reminder of the penguins data:</p>
-<div class="cell" data-edit="false">
-<pre class="{webr}"><code>#| edit: false
-data(penguins)
-library(gt)
-
-gt(head(penguins))</code></pre>
-</div>
-</section>
-<section id="lets-start-with-two-plots" class="level2">
-<h2 class="anchored" data-anchor-id="lets-start-with-two-plots">Let’s start with two plots</h2>
-<p>Let’s make two different views of the <code>palmerpenguins</code> data. The first is a bar plot of the penguin <code>species</code>:</p>
+<section id="introduction-to-ggplot2" class="level2">
+<h2 class="anchored" data-anchor-id="introduction-to-ggplot2">Introduction to ggplot2</h2>
+<p>In this short guide, we’ll explore how to use <code>ggplot2</code> to create visualizations using the <code>cars</code> dataset. This dataset contains the speed of cars and the distances taken to stop.</p>
+<section id="basic-scatter-plot" class="level3">
+<h3 class="anchored" data-anchor-id="basic-scatter-plot">Basic Scatter Plot</h3>
+<p>Let’s start with a simple scatter plot of speed versus stopping distance:</p>
 <div class="cell" data-autorun="false">
 <pre class="{webr}"><code>#| autorun: false
-#| warning: false
-library(palmerpenguins)
 library(ggplot2)
 
-penguin_species &lt;- ggplot(penguins, aes(y=species, fill=species)) +
-  geom_bar()
+# Load the cars dataset
+data(cars)
 
-penguin_species</code></pre>
-</div>
-<p>Let’s do a histogram of penguin <code>bill_length_mm</code>, colored by <code>species</code>:</p>
-<div class="cell" data-autorun="false">
-<pre class="{webr}"><code>#| autorun: false
-#| warning: false
-penguin_bill_length &lt;- ggplot(penguins, aes(y=bill_length_mm, fill=species)) +
-  geom_histogram(bins=20)
-
-penguin_bill_length</code></pre>
+# Basic scatter plot with ggplot2
+ggplot(cars, aes(x = speed, y = dist)) +
+  geom_point() +
+  labs(title = "Speed vs Stopping Distance",
+       x = "Speed (mph)",
+       y = "Stopping Distance (ft)")</code></pre>
 </div>
 </section>
-<section id="composing-plots-together" class="level1">
-<h1>Composing Plots together</h1>
-<p>Now that we have our two plots, let’s combine them into a single plot.</p>
-<p>The {patchwork} package has two basic operations. <code>+</code> composes the plots side by side, and <code>/</code> composes one plot on top of each other.</p>
-<p>Let’s try out a side by side composition:</p>
+<section id="adding-a-smoothing-line" class="level3">
+<h3 class="anchored" data-anchor-id="adding-a-smoothing-line">Adding a Smoothing Line</h3>
+<p>We can add a trend line to the scatter plot to visualize the relationship between speed and stopping distance.</p>
 <div class="cell" data-autorun="false">
 <pre class="{webr}"><code>#| autorun: false
-#| warning: false
-library(patchwork)
-penguin_species + penguin_bill_length</code></pre>
-</div>
-<p>Let’s try stacking the plots on top of each other:</p>
-<div class="cell" data-autorun="false">
-<pre class="{webr}"><code>#| autorun: false
-#| warning: false
-penguin_species / penguin_bill_length</code></pre>
-</div>
-<p>We can remove the legends from both:</p>
-<div class="cell" data-autorun="false">
-<pre class="{webr}"><code>#| autorun: false
-#| warning: false
-(penguin_species + theme(legend.position="none")) /
-  (penguin_bill_length + theme(legend.position="none"))</code></pre>
-</div>
-<section id="side-by-side-and-stacked" class="level2">
-<h2 class="anchored" data-anchor-id="side-by-side-and-stacked">Side by side and Stacked</h2>
-<p>How about three figures? We can compose them with a combination of <code>+</code> and <code>/</code>:</p>
-<div class="cell" data-autorun="false">
-<pre class="{webr}"><code>#| autorun: false
-#| warning: false
-penguin_island &lt;- ggplot(penguins, aes(y=island)) +
-  geom_bar()
-
-(penguin_species + penguin_island) / penguin_bill_length</code></pre>
-</div>
-<p>There is an equivalent syntax of using <code>|</code> (the pipe character), which does the same thing as <code>+</code>:</p>
-<div class="cell" data-autorun="false">
-<pre class="{webr}"><code>#| autorun: false
-#| warning: false
-(penguin_species | penguin_island) / penguin_bill_length</code></pre>
+ggplot(cars, aes(x = speed, y = dist)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE) +
+  labs(title = "Speed vs Stopping Distance with Trend Line",
+       x = "Speed (mph)",
+       y = "Stopping Distance (ft)")</code></pre>
 </div>
 </section>
-<section id="plot-labeling" class="level2">
-<h2 class="anchored" data-anchor-id="plot-labeling">Plot Labeling</h2>
-<p>You can automatically label plots in your figure using <code>plot_annotation()</code>:</p>
+<section id="customizing-the-plot" class="level3">
+<h3 class="anchored" data-anchor-id="customizing-the-plot">Customizing the Plot</h3>
+<p>Finally, let’s customize the colors and theme of the plot.</p>
 <div class="cell" data-autorun="false">
 <pre class="{webr}"><code>#| autorun: false
-#| warning: false
-(penguin_species + penguin_island) / penguin_bill_length + 
-    plot_annotation(tag_levels="A")</code></pre>
+ggplot(cars, aes(x = speed, y = dist)) +
+  geom_point(color = "blue") +
+  geom_smooth(method = "lm", se = FALSE, color = "red") +
+  labs(title = "Customized Speed vs Stopping Distance",
+       x = "Speed (mph)",
+       y = "Stopping Distance (ft)") +
+  theme_minimal()</code></pre>
 </div>
-<p>Finally, let’s add a title for our figure:</p>
-<div class="cell" data-autorun="false">
-<pre class="{webr}"><code>#| autorun: false
-#| warning: false
-(penguin_species + penguin_island) / penguin_bill_length + 
-  plot_annotation(tag_levels="A") +
-  plot_annotation(title="Penguins are Very Surprising")</code></pre>
-</div>
-</section>
-<section id="try-it-out" class="level2">
-<h2 class="anchored" data-anchor-id="try-it-out">Try it out!</h2>
-<p>Try out a different combination of plots, such as one plot on top and another on the bottom. Or make your own <code>penguins</code> plot and compose them.</p>
-<div class="cell" data-autorun="false">
-<pre class="{webr}"><code>#| autorun: false
-#| warning: false
-</code></pre>
-</div>
-</section>
-<section id="go-further" class="level2">
-<h2 class="anchored" data-anchor-id="go-further">Go Further</h2>
-<p>This is just the tip of the iceberg. You can learn way more about <code>{patchwork}</code> at Thomas Lin Pedersen’s website: <a href="https://patchwork.data-imaginist.com/index.html" class="uri">https://patchwork.data-imaginist.com/index.html</a></p>
 
 
 </section>
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{laderas2024,
-  author = {Laderas, Ted},
-  title = {Compose {Plots} with \{Patchwork\}},
-  date = {2024-09-13},
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{2024,
+  author = {, Lore},
+  title = {Working with Ggplot2: {A} {Short} {Guide}},
+  date = {2024-09-30},
   langid = {en}
 }
-</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-laderas2024" class="csl-entry quarto-appendix-citeas" role="listitem">
-Laderas, Ted. 2024. <span>“Compose Plots with {Patchwork}.”</span>
-September 13, 2024.
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-2024" class="csl-entry quarto-appendix-citeas" role="listitem">
+Lore. 2024. <span>“Working with Ggplot2: A Short Guide.”</span>
+September 30, 2024.
 </div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {

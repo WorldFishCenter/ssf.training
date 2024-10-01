@@ -25,35 +25,35 @@
     "href": "r_snacks/patchwork.html#penguins-data",
     "title": "Compose Plots with {patchwork}",
     "section": "Penguins Data",
-    "text": "Penguins Data\nJust a quick reminder of the penguins data:"
+    "text": "Penguins Data\nJust a quick reminder of the penguins data:\n\n#| edit: false\ndata(penguins)\nlibrary(gt)\n\ngt(head(penguins))"
   },
   {
     "objectID": "r_snacks/patchwork.html#lets-start-with-two-plots",
     "href": "r_snacks/patchwork.html#lets-start-with-two-plots",
     "title": "Compose Plots with {patchwork}",
     "section": "Let’s start with two plots",
-    "text": "Let’s start with two plots\nLet’s make two different views of the palmerpenguins data. The first is a bar plot of the penguin species:\n\n\n\n\n\n\n\n\nLet’s do a histogram of penguin bill_length_mm, colored by species:"
+    "text": "Let’s start with two plots\nLet’s make two different views of the palmerpenguins data. The first is a bar plot of the penguin species:\n\n#| autorun: false\n#| warning: false\nlibrary(palmerpenguins)\nlibrary(ggplot2)\n\npenguin_species &lt;- ggplot(penguins, aes(y=species, fill=species)) +\n  geom_bar()\n\npenguin_species\n\nLet’s do a histogram of penguin bill_length_mm, colored by species:\n\n#| autorun: false\n#| warning: false\npenguin_bill_length &lt;- ggplot(penguins, aes(y=bill_length_mm, fill=species)) +\n  geom_histogram(bins=20)\n\npenguin_bill_length"
   },
   {
     "objectID": "r_snacks/patchwork.html#side-by-side-and-stacked",
     "href": "r_snacks/patchwork.html#side-by-side-and-stacked",
     "title": "Compose Plots with {patchwork}",
     "section": "Side by side and Stacked",
-    "text": "Side by side and Stacked\nHow about three figures? We can compose them with a combination of + and /:\n\n\n\n\n\n\n\n\nThere is an equivalent syntax of using | (the pipe character), which does the same thing as +:"
+    "text": "Side by side and Stacked\nHow about three figures? We can compose them with a combination of + and /:\n\n#| autorun: false\n#| warning: false\npenguin_island &lt;- ggplot(penguins, aes(y=island)) +\n  geom_bar()\n\n(penguin_species + penguin_island) / penguin_bill_length\n\nThere is an equivalent syntax of using | (the pipe character), which does the same thing as +:\n\n#| autorun: false\n#| warning: false\n(penguin_species | penguin_island) / penguin_bill_length"
   },
   {
     "objectID": "r_snacks/patchwork.html#plot-labeling",
     "href": "r_snacks/patchwork.html#plot-labeling",
     "title": "Compose Plots with {patchwork}",
     "section": "Plot Labeling",
-    "text": "Plot Labeling\nYou can automatically label plots in your figure using plot_annotation():\n\n\n\n\n\n\n\n\nFinally, let’s add a title for our figure:"
+    "text": "Plot Labeling\nYou can automatically label plots in your figure using plot_annotation():\n\n#| autorun: false\n#| warning: false\n(penguin_species + penguin_island) / penguin_bill_length + \n    plot_annotation(tag_levels=\"A\")\n\nFinally, let’s add a title for our figure:\n\n#| autorun: false\n#| warning: false\n(penguin_species + penguin_island) / penguin_bill_length + \n  plot_annotation(tag_levels=\"A\") +\n  plot_annotation(title=\"Penguins are Very Surprising\")"
   },
   {
     "objectID": "r_snacks/patchwork.html#try-it-out",
     "href": "r_snacks/patchwork.html#try-it-out",
     "title": "Compose Plots with {patchwork}",
     "section": "Try it out!",
-    "text": "Try it out!\nTry out a different combination of plots, such as one plot on top and another on the bottom. Or make your own penguins plot and compose them."
+    "text": "Try it out!\nTry out a different combination of plots, such as one plot on top and another on the bottom. Or make your own penguins plot and compose them.\n\n#| autorun: false\n#| warning: false"
   },
   {
     "objectID": "r_snacks/patchwork.html#go-further",
@@ -74,7 +74,7 @@
     "href": "r_snacks/naniar.html#our-dataset",
     "title": "What’s Missing with {naniar}",
     "section": "Our Dataset",
-    "text": "Our Dataset"
+    "text": "Our Dataset\n\ndata(penguins)\nlibrary(gt)\n\ngt(head(penguins))"
   },
   {
     "objectID": "r_snacks/naniar.html#why-should-we-care",
@@ -88,14 +88,14 @@
     "href": "r_snacks/naniar.html#visualizing-missingness-vis_miss",
     "title": "What’s Missing with {naniar}",
     "section": "Visualizing Missingness: vis_miss()",
-    "text": "Visualizing Missingness: vis_miss()\nMy favorite way to look for these patterns is a package called {naniar} written by my friend Nick Tierney. naniar visualizes rows of data as lines in a rectangle. Columns are represented by line sections.\nLet’s take a look at the missing values in the penguins data.\n\n\n\n\n\n\n\n\nWhat I like about this visual representation is that it lets you see the association of missing values as holes in the visualization, as well as percent missing values in each variable. In this example, you can see that some penguins are missing information such as sex.\n\n\n\n\n\n\n\n\nIn this example, reading the combinations from left to right, we can see:\n\n9 penguins had missing values for sex\n2 penguins had missing values in bill_length, bill_depth, flipper_length, body_mass, and sex.\n\nVisualizing the combinations of missing values helps us discover patterns of association in missingness that we don’t expect."
+    "text": "Visualizing Missingness: vis_miss()\nMy favorite way to look for these patterns is a package called {naniar} written by my friend Nick Tierney. naniar visualizes rows of data as lines in a rectangle. Columns are represented by line sections.\nLet’s take a look at the missing values in the penguins data.\n\nlibrary(naniar)\nvis_miss(penguins)\n\nWhat I like about this visual representation is that it lets you see the association of missing values as holes in the visualization, as well as percent missing values in each variable. In this example, you can see that some penguins are missing information such as sex.\n\ngg_miss_upset(penguins)\n\nIn this example, reading the combinations from left to right, we can see:\n\n9 penguins had missing values for sex\n2 penguins had missing values in bill_length, bill_depth, flipper_length, body_mass, and sex.\n\nVisualizing the combinations of missing values helps us discover patterns of association in missingness that we don’t expect."
   },
   {
     "objectID": "r_snacks/naniar.html#continuous-values-and-missingness-geom_miss_point",
     "href": "r_snacks/naniar.html#continuous-values-and-missingness-geom_miss_point",
     "title": "What’s Missing with {naniar}",
     "section": "Continuous Values and Missingness: geom_miss_point()",
-    "text": "Continuous Values and Missingness: geom_miss_point()\nMost of these visualizations use a shadow matrix representation of missing values. This shadow matrix lets you do clever things such as visualize two continuous variables on a plot but include those missing values to assess whether those missing values are MNAR, MAR, or MCAR.\nWhen you are plotting two continuous values, you need to be curious about whether there are biases in the missingness. geom_miss_point() gives us a way to visualize the missing values when we plot.\n\n\n\n\n\n\n\n\nIn this plot, the missing values are represented by red points that are below the zero line for both axes (they are jittered so they don’t all occupy the same line). Specifically, the points on the left side have values for Solar.R but are missing values for Ozone. In this case, the points are distributed across the entire range of Solar.R. Note that this isn’t the case for missing values of Solar.R, which are represented in the lower right of the plot. These missing values are not distributed evenly across Ozone, showing a bias towards lower values of Ozone.\nful when you facet on a categorical variable, to look for conditioned randomness, MAR/MNAR.\n\n\n\n\n\n\n\n\nHere we can see a possible bias in missing values by the month (compare month=6 to month=9)."
+    "text": "Continuous Values and Missingness: geom_miss_point()\nMost of these visualizations use a shadow matrix representation of missing values. This shadow matrix lets you do clever things such as visualize two continuous variables on a plot but include those missing values to assess whether those missing values are MNAR, MAR, or MCAR.\nWhen you are plotting two continuous values, you need to be curious about whether there are biases in the missingness. geom_miss_point() gives us a way to visualize the missing values when we plot.\n\nggplot(airquality,\n       aes(x = Ozone,\n           y = Solar.R)) +\n geom_miss_point() +\n  \n  ##everything past this point is just \n  #to explain the visualization\n  theme_minimal() +\n  geom_vline(xintercept=0) +\n  geom_hline(yintercept = 0) +\n  annotate(\"text\",x=-5 ,y=150, label= \"missing ozone\", angle=90) +\n  annotate(\"text\", y=-15, x=75, label=\"missing Solar.R\") +\n  annotate(\"text\", y=-20, x=-20, label=\"missing\\nboth\") +\n  annotate(\"text\", y=150, x=75, label=\"no missing data\")\n\nIn this plot, the missing values are represented by red points that are below the zero line for both axes (they are jittered so they don’t all occupy the same line). Specifically, the points on the left side have values for Solar.R but are missing values for Ozone. In this case, the points are distributed across the entire range of Solar.R. Note that this isn’t the case for missing values of Solar.R, which are represented in the lower right of the plot. These missing values are not distributed evenly across Ozone, showing a bias towards lower values of Ozone.\nful when you facet on a categorical variable, to look for conditioned randomness, MAR/MNAR.\n\nggplot(airquality,\n       aes(x = Ozone,\n           y = Solar.R)) +\n geom_miss_point() + facet_wrap(~Month)\n\nHere we can see a possible bias in missing values by the month (compare month=6 to month=9)."
   },
   {
     "objectID": "r_snacks/naniar.html#in-conclusion-we-miss-you-missing-values",
@@ -137,7 +137,7 @@
     "href": "index.html",
     "title": "DaSL Data Snacks",
     "section": "",
-    "text": "This is a collection of cool data tricks with R and Python from the Fred Hutch Data Science Lab. We leverage a technology called quarto-live to give you runnable R and Python examples in your browser, no installation needed. So you can immediately start experimenting with the new tips and tricks.\nThink of these snacks like experiments - they may grow into something bigger, or they may just stay as little nuggets of data science.\n\n\n\n\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLarge Data Work: Intro to parquet files in R\n\n\n\n\n\n\nR\n\n\nTables\n\n\ndatabases\n\n\nbigdata\n\n\n\n\n\n\n\n\n\nSep 30, 2024\n\n\nTed Laderas\n\n\n\n\n\n\n\n\n\n\n\n\nWhat’s Missing with {naniar}\n\n\n\n\n\n\nR\n\n\ngraphics\n\n\n\n\n\n\n\n\n\nSep 22, 2024\n\n\nTed Laderas\n\n\n\n\n\n\n\n\n\n\n\n\nVisualize text frequency with {wordcloud}\n\n\n\n\n\n\nPython\n\n\nVisualization\n\n\n\n\n\n\n\n\n\nSep 19, 2024\n\n\nChris Lo\n\n\n\n\n\n\n\n\n\n\n\n\nCompose Plots with {patchwork}\n\n\n\n\n\n\nR\n\n\ngraphics\n\n\n\n\n\n\n\n\n\nSep 13, 2024\n\n\nTed Laderas\n\n\n\n\n\n\n\n\n\n\n\n\nMake your Table 1 with {gtsummary}\n\n\n\n\n\n\nR\n\n\nTables\n\n\n\n\n\n\n\n\n\nSep 4, 2024\n\n\nTed Laderas\n\n\n\n\n\n\nNo matching items"
+    "text": "This is a collection of cool data tricks with R and Python from the Fred Hutch Data Science Lab. We leverage a technology called quarto-live to give you runnable R and Python examples in your browser, no installation needed. So you can immediately start experimenting with the new tips and tricks.\nThink of these snacks like experiments - they may grow into something bigger, or they may just stay as little nuggets of data science.\n\n\n\n\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWorking with ggplot2: A Short Guide\n\n\n\n\n\n\nR\n\n\nVisualization\n\n\nggplot2\n\n\n\n\n\n\n\n\n\nSep 30, 2024\n\n\nLore\n\n\n\n\n\n\n\n\n\n\n\n\nWhat’s Missing with {naniar}\n\n\n\n\n\n\nR\n\n\ngraphics\n\n\n\n\n\n\n\n\n\nSep 22, 2024\n\n\nTed Laderas\n\n\n\n\n\n\n\n\n\n\n\n\nVisualize text frequency with {wordcloud}\n\n\n\n\n\n\nPython\n\n\nVisualization\n\n\n\n\n\n\n\n\n\nSep 19, 2024\n\n\nChris Lo\n\n\n\n\n\n\n\n\n\n\n\n\nCompose Plots with {patchwork}\n\n\n\n\n\n\nR\n\n\ngraphics\n\n\n\n\n\n\n\n\n\nSep 13, 2024\n\n\nTed Laderas\n\n\n\n\n\n\n\n\n\n\n\n\nMake your Table 1 with {gtsummary}\n\n\n\n\n\n\nR\n\n\nTables\n\n\n\n\n\n\n\n\n\nSep 4, 2024\n\n\nTed Laderas\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "contributing.html",
@@ -207,21 +207,21 @@
     "href": "python_snacks/wordcloud.html#show-your-data",
     "title": "Visualize text frequency with {wordcloud}",
     "section": "Show your data",
-    "text": "Show your data\nWe download US Presidential State of the Union speeches as a demo dataset - from Washington to Obama."
+    "text": "Show your data\nWe download US Presidential State of the Union speeches as a demo dataset - from Washington to Obama.\n\nfrom wordcloud import WordCloud\nimport matplotlib.pyplot as plt\n\nwith open('state_union_part1.txt', 'r') as file:\n    text1 = file.read()\n\nwith open('state_union_part2.txt', 'r') as file:\n    text2 = file.read()\n\ntext = text1 + text2\n\nprint(\"Here's an example section of the text:\", text[6030:6400])"
   },
   {
     "objectID": "python_snacks/wordcloud.html#demonstrate-wordcloud",
     "href": "python_snacks/wordcloud.html#demonstrate-wordcloud",
     "title": "Visualize text frequency with {wordcloud}",
     "section": "Demonstrate wordcloud",
-    "text": "Demonstrate wordcloud"
+    "text": "Demonstrate wordcloud\n\n# Generate a word cloud image\nwordcloud = WordCloud(max_font_size=40).generate(text)\n\n# Display the generated image:\nplt.imshow(wordcloud, interpolation='bilinear')\nplt.axis(\"off\")\nplt.show()"
   },
   {
     "objectID": "python_snacks/wordcloud.html#your-turn",
     "href": "python_snacks/wordcloud.html#your-turn",
     "title": "Visualize text frequency with {wordcloud}",
     "section": "Your turn!",
-    "text": "Your turn!\nWhat happens when you change the max_font_size?"
+    "text": "Your turn!\nWhat happens when you change the max_font_size?\n\nwordcloud2 = WordCloud(max_font_size=______).generate(text)\n\n# Display the generated image:\nplt.imshow(wordcloud2, interpolation='bilinear')\nplt.axis(\"off\")\nplt.show()"
   },
   {
     "objectID": "r_snacks/gtsummary.html",
@@ -249,28 +249,28 @@
     "href": "r_snacks/gtsummary.html#our-cohort-penguins",
     "title": "Make your Table 1 with {gtsummary}",
     "section": "Our Cohort: Penguins",
-    "text": "Our Cohort: Penguins\nWe’re going to use the palmerpenguins dataset as our example cohort. As a reminder, here’s the first few rows of this dataset."
+    "text": "Our Cohort: Penguins\nWe’re going to use the palmerpenguins dataset as our example cohort. As a reminder, here’s the first few rows of this dataset.\n\nlibrary(palmerpenguins)\nlibrary(gtsummary)\nlibrary(dplyr)\n\ngt(head(penguins))"
   },
   {
     "objectID": "r_snacks/gtsummary.html#summary-table-of-penguins",
     "href": "r_snacks/gtsummary.html#summary-table-of-penguins",
     "title": "Make your Table 1 with {gtsummary}",
     "section": "Summary Table of Penguins",
-    "text": "Summary Table of Penguins\n{gtsummary} lets you build up a summary demographics table with dplyr commands and special summarization commands.\nHere, we’re"
+    "text": "Summary Table of Penguins\n{gtsummary} lets you build up a summary demographics table with dplyr commands and special summarization commands.\nHere, we’re\n\npenguins |&gt;\n  select(species, island, bill_length_mm) |&gt;\n  tbl_summary()"
   },
   {
     "objectID": "r_snacks/gtsummary.html#comparing-groups",
     "href": "r_snacks/gtsummary.html#comparing-groups",
     "title": "Make your Table 1 with {gtsummary}",
     "section": "Comparing Groups",
-    "text": "Comparing Groups\n\n\n\n\n\n\n\n\nWe can also add N’s and P-values:\n\n\n\n\n\n\n\n\nHere you can see we did a chi-squared test to look at combinations of island and species, and we did a Kruskal-Wallis rank sum to compare bill_length_mm across species.\nThis is just the tip of the iceberg for {gtsummary}. You also can output to Microsoft Word for further tweaks.\n{gtsummary} link"
+    "text": "Comparing Groups\n\npenguins |&gt;\n  tbl_summary(include=c(island, bill_length_mm),\n              by=species,\n              missing=\"no\")\n\n\nWe can also add N’s and P-values:\n\npenguins |&gt;\n  tbl_summary(include=c(island, bill_length_mm),\n              by=species,\n              missing=\"no\") |&gt;\n  add_n() |&gt;\n  add_p()\n\n\nHere you can see we did a chi-squared test to look at combinations of island and species, and we did a Kruskal-Wallis rank sum to compare bill_length_mm across species.\nThis is just the tip of the iceberg for {gtsummary}. You also can output to Microsoft Word for further tweaks.\n{gtsummary} link"
   },
   {
     "objectID": "r_snacks/gtsummary.html#packages-used",
     "href": "r_snacks/gtsummary.html#packages-used",
     "title": "Make your Table 1 with {gtsummary}",
     "section": "Packages Used",
-    "text": "Packages Used"
+    "text": "Packages Used\n\nsessionInfo()"
   },
   {
     "objectID": "r_snacks/parquet.html",
@@ -327,5 +327,19 @@
     "title": "Large Data Work: Intro to parquet files in R",
     "section": "The Tip of the, er, Iceberg",
     "text": "The Tip of the, er, Iceberg\nThat’s just the beginning of working with DuckDB and parquet files. Hopefully you learned something useful and I’ll write more about parquet files in a future data snack.\nThanks to Francois Michonneau for the DuckDB Tutorial."
+  },
+  {
+    "objectID": "r_snacks/ggplot.html",
+    "href": "r_snacks/ggplot.html",
+    "title": "Working with ggplot2: A Short Guide",
+    "section": "",
+    "text": "In this short guide, we’ll explore how to use ggplot2 to create visualizations using the cars dataset. This dataset contains the speed of cars and the distances taken to stop.\n\n\nLet’s start with a simple scatter plot of speed versus stopping distance:\n\n#| autorun: false\nlibrary(ggplot2)\n\n# Load the cars dataset\ndata(cars)\n\n# Basic scatter plot with ggplot2\nggplot(cars, aes(x = speed, y = dist)) +\n  geom_point() +\n  labs(title = \"Speed vs Stopping Distance\",\n       x = \"Speed (mph)\",\n       y = \"Stopping Distance (ft)\")\n\n\n\n\nWe can add a trend line to the scatter plot to visualize the relationship between speed and stopping distance.\n\n#| autorun: false\nggplot(cars, aes(x = speed, y = dist)) +\n  geom_point() +\n  geom_smooth(method = \"lm\", se = FALSE) +\n  labs(title = \"Speed vs Stopping Distance with Trend Line\",\n       x = \"Speed (mph)\",\n       y = \"Stopping Distance (ft)\")\n\n\n\n\nFinally, let’s customize the colors and theme of the plot.\n\n#| autorun: false\nggplot(cars, aes(x = speed, y = dist)) +\n  geom_point(color = \"blue\") +\n  geom_smooth(method = \"lm\", se = FALSE, color = \"red\") +\n  labs(title = \"Customized Speed vs Stopping Distance\",\n       x = \"Speed (mph)\",\n       y = \"Stopping Distance (ft)\") +\n  theme_minimal()"
+  },
+  {
+    "objectID": "r_snacks/ggplot.html#introduction-to-ggplot2",
+    "href": "r_snacks/ggplot.html#introduction-to-ggplot2",
+    "title": "Working with ggplot2: A Short Guide",
+    "section": "",
+    "text": "In this short guide, we’ll explore how to use ggplot2 to create visualizations using the cars dataset. This dataset contains the speed of cars and the distances taken to stop.\n\n\nLet’s start with a simple scatter plot of speed versus stopping distance:\n\n#| autorun: false\nlibrary(ggplot2)\n\n# Load the cars dataset\ndata(cars)\n\n# Basic scatter plot with ggplot2\nggplot(cars, aes(x = speed, y = dist)) +\n  geom_point() +\n  labs(title = \"Speed vs Stopping Distance\",\n       x = \"Speed (mph)\",\n       y = \"Stopping Distance (ft)\")\n\n\n\n\nWe can add a trend line to the scatter plot to visualize the relationship between speed and stopping distance.\n\n#| autorun: false\nggplot(cars, aes(x = speed, y = dist)) +\n  geom_point() +\n  geom_smooth(method = \"lm\", se = FALSE) +\n  labs(title = \"Speed vs Stopping Distance with Trend Line\",\n       x = \"Speed (mph)\",\n       y = \"Stopping Distance (ft)\")\n\n\n\n\nFinally, let’s customize the colors and theme of the plot.\n\n#| autorun: false\nggplot(cars, aes(x = speed, y = dist)) +\n  geom_point(color = \"blue\") +\n  geom_smooth(method = \"lm\", se = FALSE, color = \"red\") +\n  labs(title = \"Customized Speed vs Stopping Distance\",\n       x = \"Speed (mph)\",\n       y = \"Stopping Distance (ft)\") +\n  theme_minimal()"
   }
 ]
