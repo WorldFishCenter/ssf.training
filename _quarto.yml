@@ -3,20 +3,17 @@ project:
   render: 
     - "*.qmd"
     - "r_snacks/*.qmd"
-    - "python_snacks/*.qmd"
     - "!r_snacks/index.qmd"
-    - "!python_snacks/index.qmd"
   output-dir: docs
 
 execute: 
   freeze: true
 
 website:
-  title: "DaSL Data Snacks"
-  description: "Need a data snack? Come learn with us!"
+  title: "SSF data training"
+  description: "Learn how to use R for small-scale fisheries data analysis"
   navbar:
     right:
-      - contributing.qmd
       - icon: github
         href: https://github.com/WorldFishCenter/ssf.training/
 format:

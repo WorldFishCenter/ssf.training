@@ -1,0 +1,65 @@
+---
+title: "Working with ggplot2: A Short Guide"
+author: "Lore"
+date: 2024-09-30
+format: live-html
+engine: knitr
+categories: ["R", "Visualization", "ggplot2"]
+webr:
+  autorun: false
+  packages:
+    - ggplot2
+---
+
+{{< include ../_extensions/r-wasm/live/_knitr.qmd >}}
+
+## Introduction to ggplot2
+
+In this short guide, we'll explore how to use `ggplot2` to create visualizations using the `cars` dataset. This dataset contains the speed of cars and the distances taken to stop.
+
+### Basic Scatter Plot
+
+Let's start with a simple scatter plot of speed versus stopping distance.
+
+```{webr}
+#| autorun: false
+library(ggplot2)
+
+# Load the cars dataset
+data(cars)
+
+# Basic scatter plot with ggplot2
+ggplot(cars, aes(x = speed, y = dist)) +
+  geom_point() +
+  labs(title = "Speed vs Stopping Distance",
+       x = "Speed (mph)",
+       y = "Stopping Distance (ft)")
+```
+
+### Adding a Smoothing Line
+
+We can add a trend line to the scatter plot to visualize the relationship between speed and stopping distance.
+
+```{webr}
+#| autorun: false
+ggplot(cars, aes(x = speed, y = dist)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE) +
+  labs(title = "Speed vs Stopping Distance with Trend Line",
+       x = "Speed (mph)",
+       y = "Stopping Distance (ft)")
+```
+
+### Customizing the Plot
+
+Finally, let's customize the colors and theme of the plot.
+```{webr}
+#| autorun: false
+ggplot(cars, aes(x = speed, y = dist)) +
+  geom_point(color = "blue") +
+  geom_smooth(method = "lm", se = FALSE, color = "red") +
+  labs(title = "Customized Speed vs Stopping Distance",
+       x = "Speed (mph)",
+       y = "Stopping Distance (ft)") +
+  theme_minimal()
+```

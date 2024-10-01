@@ -1,0 +1,80 @@
+---
+title: "Visualizing Trends with ggplot2"
+author: "Lore"
+date: 2024-09-30
+format: live-html
+engine: knitr
+categories: ["R", "Visualization", "Trends"]
+webr:
+  autorun: false
+  packages:
+    - ggplot2
+---
+
+{{< include ../_extensions/r-wasm/live/_knitr.qmd >}}
+
+## Introduction to Trend Visualization
+
+In this guide, we will learn how to visualize trends in data using `ggplot2`. We'll use the `cars` dataset, which contains information on car speed and stopping distances.
+
+### Basic Line Plot for Trends
+
+A line plot is often used to visualize trends over time or any continuous variable. Although the `cars` dataset doesn't have a time component, we can still visualize the trend of speed against stopping distance.
+
+```{webr}
+#| autorun: false
+library(ggplot2)
+
+# Load the cars dataset
+data(cars)
+
+# Line plot for trends in the cars dataset
+ggplot(cars, aes(x = speed, y = dist)) +
+  geom_line() +
+  labs(title = "Speed vs Stopping Distance: Trend Visualization",
+       x = "Speed (mph)",
+       y = "Stopping Distance (ft)")
+```
+
+### Adding a Smoothing Line
+
+We can enhance the visualization by adding a smoothing line to better capture the underlying trend.
+
+```{webr}
+#| autorun: false
+ggplot(cars, aes(x = speed, y = dist)) +
+  geom_point() +
+  geom_smooth(method = "loess", se = FALSE) +
+  labs(title = "Speed vs Stopping Distance with Trend Line",
+       x = "Speed (mph)",
+       y = "Stopping Distance (ft)")
+```
+
+### Customizing Trend Lines
+
+You can further customize trend lines by changing colors, line types, and smoothing methods. Let's use a linear model (method = "lm") to display the trend.
+
+```{webr}
+#| autorun: false
+ggplot(cars, aes(x = speed, y = dist)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE, color = "red", linetype = "dashed") +
+  labs(title = "Linear Trend: Speed vs Stopping Distance",
+       x = "Speed (mph)",
+       y = "Stopping Distance (ft)")
+```
+
+### Comparing Different Trends
+
+Finally, let’s compare different trend lines by plotting both a linear model and a loess smoother together.
+
+```{webr}
+#| autorun: false
+ggplot(cars, aes(x = speed, y = dist)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE, color = "blue") +
+  geom_smooth(method = "loess", se = FALSE, color = "green") +
+  labs(title = "Comparing Linear and Loess Trends",
+       x = "Speed (mph)",
+       y = "Stopping Distance (ft)")
+```
