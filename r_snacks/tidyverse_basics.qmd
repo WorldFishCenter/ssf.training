@@ -1,0 +1,107 @@
+---
+title: "Getting Started with R: Data Manipulation Basics"
+author: "Lore"
+date: 2024-09-30
+format: live-html
+engine: knitr
+categories: ["R", "Data Manipulation", "tidyverse"]
+webr:
+  autorun: false
+  render-df: gt-interactive
+  packages:
+    - tidyverse
+---
+{{< include ../_extensions/r-wasm/live/_knitr.qmd >}}
+
+## Introduction to tidyverse
+The tidyverse is a collection of R packages designed for data science. In this guide, we'll explore the basics of data manipulation using dplyr, a core package of the tidyverse.
+
+### Setting Up
+First, let's load the tidyverse package and create a simple dataset to work with:
+
+```{webr}
+#| autorun: false
+library(tidyverse)
+
+# Create a sample dataset
+students <- data.frame(
+  name = c("Alice", "Bob", "Charlie", "Diana"),
+  age = c(20, 22, 21, 23),
+  score = c(85, 92, 78, 88)
+)
+
+# View the dataset
+students
+```
+
+### Basic dplyr Operations
+Let's explore the fundamental dplyr verbs that you'll use frequently:
+
+#### Selecting Columns
+Use `select()` to choose specific columns:
+
+```{webr}
+#| autorun: false
+students %>%
+  select(name, score)
+```
+
+#### Filtering Rows
+Use `filter()` to subset rows based on conditions:
+
+```{webr}
+#| autorun: false
+# Show students with scores above 80
+students %>%
+  filter(score > 80)
+```
+
+#### Creating New Columns
+Use `mutate()` to add new columns:
+
+```{webr}
+#| autorun: false
+students %>%
+  mutate(
+    grade = case_when(
+      score >= 90 ~ "A",
+      score >= 80 ~ "B",
+      TRUE ~ "C"
+    )
+  )
+```
+
+### Combining Operations
+The power of dplyr comes from combining operations using the pipe operator (`%>%`):
+
+```{webr}
+#| autorun: false
+students %>%
+  # Filter for students over 21
+  filter(age > 21) %>%
+  # Add a grade column
+  mutate(
+    grade = case_when(
+      score >= 90 ~ "A",
+      score >= 80 ~ "B",
+      TRUE ~ "C"
+    )
+  ) %>%
+  # Select specific columns
+  select(name, grade, score) %>%
+  # Arrange by score
+  arrange(desc(score))
+```
+
+### Summary Statistics
+Use `summarise()` (or `summarize()`) with `group_by()` for aggregate statistics:
+
+```{webr}
+#| autorun: false
+students %>%
+  summarise(
+    avg_score = mean(score),
+    min_score = min(score),
+    max_score = max(score)
+  )
+```
