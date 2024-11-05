@@ -3,6 +3,7 @@
     "listing": "/index.html",
     "items": [
       "/r_snacks/ggplot.html",
+      "/r_snacks/tidyverse_basics.html",
       "/r_snacks/trends.html"
     ]
   }

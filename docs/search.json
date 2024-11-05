@@ -137,7 +137,7 @@
     "href": "index.html",
     "title": "R for Small-Scale Fishery Data",
     "section": "",
-    "text": "This collection is designed to help you work with small-scale fishery data using R. The examples are tailored to practical use cases, leveraging ggplot2 and other tools to analyze and visualize fisheries data. All code can be run interactively in your browser using quarto-live, meaning no installation is necessary to start learning and applying these techniques.\nThese data science “snacks” are meant to provide you with hands-on experience for working with real-world fishery datasets. They can serve as quick, practical insights or as stepping stones to more advanced analysis in fisheries research.\n\n\n\n\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWorking with ggplot2: A Short Guide\n\n\n\n\n\n\nR\n\n\nVisualization\n\n\nggplot2\n\n\n\n\n\n\n\n\n\nSep 30, 2024\n\n\nLore\n\n\n\n\n\n\n\n\n\n\n\n\nVisualizing Trends with ggplot2\n\n\n\n\n\n\nR\n\n\nVisualization\n\n\nTrends\n\n\n\n\n\n\n\n\n\nSep 30, 2024\n\n\nLore\n\n\n\n\n\n\nNo matching items"
+    "text": "This collection is designed to help you work with small-scale fishery data using R. The examples are tailored to practical use cases, leveraging ggplot2 and other tools to analyze and visualize fisheries data. All code can be run interactively in your browser using quarto-live, meaning no installation is necessary to start learning and applying these techniques.\nThese data science “snacks” are meant to provide you with hands-on experience for working with real-world fishery datasets. They can serve as quick, practical insights or as stepping stones to more advanced analysis in fisheries research.\n\n\n\n\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWorking with ggplot2: A Short Guide\n\n\n\n\n\n\nR\n\n\nVisualization\n\n\nggplot2\n\n\n\n\n\n\n\n\n\nSep 30, 2024\n\n\nLore\n\n\n\n\n\n\n\n\n\n\n\n\nGetting Started with R: Data Manipulation Basics\n\n\n\n\n\n\nR\n\n\nData Manipulation\n\n\ntidyverse\n\n\n\n\n\n\n\n\n\nSep 30, 2024\n\n\nLore\n\n\n\n\n\n\n\n\n\n\n\n\nVisualizing Trends with ggplot2\n\n\n\n\n\n\nR\n\n\nVisualization\n\n\nTrends\n\n\n\n\n\n\n\n\n\nSep 30, 2024\n\n\nLore\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "contributing.html",
@@ -355,5 +355,19 @@
     "title": "Visualizing Trends with ggplot2",
     "section": "",
     "text": "In this guide, we will learn how to visualize trends in data using ggplot2. We’ll use the cars dataset, which contains information on car speed and stopping distances.\n\n\nA line plot is often used to visualize trends over time or any continuous variable. Although the cars dataset doesn’t have a time component, we can still visualize the trend of speed against stopping distance.\n\n\n\n\n\n\n\n\n\n\n\nWe can enhance the visualization by adding a smoothing line to better capture the underlying trend.\n\n\n\n\n\n\n\n\n\n\n\nYou can further customize trend lines by changing colors, line types, and smoothing methods. Let’s use a linear model (method = “lm”) to display the trend.\n\n\n\n\n\n\n\n\n\n\n\nFinally, let’s compare different trend lines by plotting both a linear model and a loess smoother together."
+  },
+  {
+    "objectID": "r_snacks/tidyverse_basics.html",
+    "href": "r_snacks/tidyverse_basics.html",
+    "title": "Getting Started with R: Data Manipulation Basics",
+    "section": "",
+    "text": "The tidyverse is a collection of R packages designed for data science. In this guide, we’ll explore the basics of data manipulation using dplyr, a core package of the tidyverse.\n\n\nFirst, let’s load the tidyverse package and create a simple dataset to work with:\n\n\n\n\n\n\n\n\n\n\n\nLet’s explore the fundamental dplyr verbs that you’ll use frequently:\n\n\nUse select() to choose specific columns:\n\n\n\n\n\n\n\n\n\n\n\nUse filter() to subset rows based on conditions:\n\n\n\n\n\n\n\n\n\n\n\nUse mutate() to add new columns:\n\n\n\n\n\n\n\n\n\n\n\n\nThe power of dplyr comes from combining operations using the pipe operator (%&gt;%):\n\n\n\n\n\n\n\n\n\n\n\nUse summarise() (or summarize()) with group_by() for aggregate statistics:"
+  },
+  {
+    "objectID": "r_snacks/tidyverse_basics.html#introduction-to-tidyverse",
+    "href": "r_snacks/tidyverse_basics.html#introduction-to-tidyverse",
+    "title": "Getting Started with R: Data Manipulation Basics",
+    "section": "",
+    "text": "The tidyverse is a collection of R packages designed for data science. In this guide, we’ll explore the basics of data manipulation using dplyr, a core package of the tidyverse.\n\n\nFirst, let’s load the tidyverse package and create a simple dataset to work with:\n\n\n\n\n\n\n\n\n\n\n\nLet’s explore the fundamental dplyr verbs that you’ll use frequently:\n\n\nUse select() to choose specific columns:\n\n\n\n\n\n\n\n\n\n\n\nUse filter() to subset rows based on conditions:\n\n\n\n\n\n\n\n\n\n\n\nUse mutate() to add new columns:\n\n\n\n\n\n\n\n\n\n\n\n\nThe power of dplyr comes from combining operations using the pipe operator (%&gt;%):\n\n\n\n\n\n\n\n\n\n\n\nUse summarise() (or summarize()) with group_by() for aggregate statistics:"
   }
 ]
