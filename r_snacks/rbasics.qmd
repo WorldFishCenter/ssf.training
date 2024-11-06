@@ -1,0 +1,260 @@
+---
+title: "Getting Started with R: An Interactive Guide"
+author: "SSF Training Team"
+date: 2024-11-06
+format: live-html
+engine: knitr
+categories: ["R", "Basics", "Interactive"]
+webr:
+  autorun: false
+  render-df: gt-interactive
+  packages:
+    - tidyverse
+    - palmerpenguins
+---
+{{< include ../_extensions/r-wasm/live/_knitr.qmd >}}
+
+## Welcome to R Programming! 🚀
+
+This interactive guide will help you learn R from the ground up. You can run all code examples directly in your browser - just click the "Run Code" button in each code block!
+
+### Before We Start: Understanding the R Console
+
+The R console is where we interact with R. When you see a `>` symbol, that's your prompt to enter commands. In the interactive code blocks below, you'll be able to type and run R code directly.
+
+:::{.callout-tip}
+## Pro Tip
+Don't worry about making mistakes! Experimentation is a key part of learning. If you get an error, read the message carefully - R usually tells you what went wrong.
+:::
+
+## 1. Basic Calculations
+
+R can work as a powerful calculator. Let's try some basic operations:
+
+```{webr}
+#| autorun: false
+# Addition
+10 + 5
+
+# Subtraction
+10 - 5
+
+# Multiplication
+10 * 5
+
+# Division
+10 / 5
+
+# Exponents (powers)
+2 ^ 3
+
+# Integer division
+11 %/% 3
+
+# Remainder (modulo)
+11 %% 3
+```
+
+:::{.callout-note}
+## Understanding Operators
+- `+` addition
+- `-` subtraction
+- `*` multiplication
+- `/` division
+- `^` or `**` exponentiation
+- `%/%` integer division
+- `%%` modulo (remainder)
+:::
+
+## 2. Variables and Assignment
+
+Variables are like containers that store values. In R, we typically use the `<-` operator for assignment:
+
+```{webr}
+#| autorun: false
+# Assign a number
+fish_count <- 25
+fish_count
+
+# Assign text (a string)
+species <- "Tuna"
+species
+
+# Multiple assignments
+length_cm <- 45.5
+weight_kg <- 2.3
+
+# Calculate BMI (just as an example)
+bmi <- weight_kg / (length_cm/100)^2
+bmi
+```
+
+:::{.callout-important}
+## Naming Rules
+- Variable names can contain letters, numbers, dots (.) and underscores (_)
+- They must start with a letter or a dot
+- R is case-sensitive: `Fish` and `fish` are different variables
+- Use descriptive names: `total_catch` is better than `tc`
+:::
+
+## 3. Data Types in R
+
+R has several basic data types. Understanding these is crucial:
+
+```{webr}
+#| autorun: false
+# Numeric (numbers with decimals)
+length_cm <- 45.5
+class(length_cm)
+
+# Integer (whole numbers)
+fish_count <- 25L  # The L makes it explicitly integer
+class(fish_count)
+
+# Character (text)
+species <- "Tuna"
+class(species)
+
+# Logical (TRUE/FALSE)
+is_mature <- TRUE
+class(is_mature)
+
+# Check if something is a specific type
+is.numeric(length_cm)
+is.character(species)
+```
+
+## 4. Vectors: Collections of Values
+
+Vectors are one-dimensional arrays that can hold multiple values of the same type:
+
+```{webr}
+#| autorun: false
+# Create a numeric vector
+fish_lengths <- c(45, 50, 35, 40, 55)
+
+# Create a character vector
+species_names <- c("Tuna", "Mackerel", "Sardine")
+
+# Vector operations
+mean(fish_lengths)  # Average
+max(fish_lengths)   # Maximum value
+min(fish_lengths)   # Minimum value
+length(fish_lengths)  # Number of elements
+
+# Vector arithmetic
+fish_lengths * 2  # Multiply each element by 2
+
+# Accessing elements
+fish_lengths[1]  # First element
+fish_lengths[2:4]  # Elements 2 to 4
+```
+
+:::{.callout-tip}
+## Working with Vectors
+- Use `c()` to combine values into a vector
+- All elements in a vector must be of the same type
+- If you mix types, R will convert them to the most flexible type
+:::
+
+## 5. Basic Data Frames
+
+Data frames are the most common way to store data in R. Think of them as spreadsheets:
+
+```{webr}
+#| autorun: false
+# Create a simple fisheries dataset
+fish_data <- data.frame(
+  species = c("Tuna", "Mackerel", "Sardine", "Tuna", "Mackerel"),
+  length = c(45, 30, 15, 42, 28),
+  weight = c(3.5, 1.2, 0.3, 3.2, 1.0)
+)
+
+# View the entire data frame
+fish_data
+
+# Look at the structure
+str(fish_data)
+
+# Basic summary statistics
+summary(fish_data)
+
+# Access columns using $
+fish_data$length
+
+# Calculate mean length
+mean(fish_data$length)
+
+# Filter data
+tuna_data <- fish_data[fish_data$species == "Tuna", ]
+tuna_data
+```
+
+## 6. Basic Plotting
+
+Let's create some simple visualizations of our data:
+
+```{webr}
+#| autorun: false
+# Load ggplot2
+library(ggplot2)
+
+# Create a scatter plot
+ggplot(fish_data, aes(x = length, y = weight, color = species)) +
+  geom_point(size = 3) +
+  labs(title = "Fish Length vs Weight by Species",
+       x = "Length (cm)",
+       y = "Weight (kg)") +
+  theme_minimal()
+```
+
+## Practice Exercises 💪
+
+Try these exercises to test your understanding:
+
+1. Create a vector of fish weights: 1.2, 2.3, 3.4, 2.1, 1.9 kg
+2. Calculate the average weight
+3. Create a new data frame with columns for:
+   - date (today's date repeated 3 times)
+   - catch (three numbers of your choice)
+   - location (three different fishing locations)
+
+Here's the solution - but try it yourself first!
+
+```{webr}
+#| autorun: false
+# Exercise 1 & 2
+weights <- c(1.2, 2.3, 3.4, 2.1, 1.9)
+mean(weights)
+
+# Exercise 3
+fishing_data <- data.frame(
+  date = rep(Sys.Date(), 3),
+  catch = c(25, 30, 15),
+  location = c("Beach", "Reef", "Harbor")
+)
+fishing_data
+```
+
+## Next Steps 🎯
+
+Now that you've learned the basics, you might want to:
+1. Learn about data import/export
+2. Explore more advanced data manipulation with dplyr
+3. Create more sophisticated visualizations with ggplot2
+
+:::{.callout-note}
+## Additional Resources
+- [R for Data Science](https://r4ds.hadley.nz/)
+- [RStudio Cheat Sheets](https://www.rstudio.com/resources/cheatsheets/)
+- [R Cookbook](https://rc2e.com/)
+:::
+
+## Feedback and Questions
+
+If you have questions or need clarification:
+1. Use the comments section below
+2. Check our FAQ page
+3. Join our community forum
+
+Remember: Learning R is a journey, not a destination. Take your time to experiment with the code examples and make them your own!

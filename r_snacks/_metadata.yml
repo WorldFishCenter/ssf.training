@@ -9,3 +9,11 @@ title-block-banner: true
 toc: true
 page-layout: article
 citation: true
+
+# Inherit theme and CSS from main _quarto.yml
+format:
+  live-html:
+    theme:
+      light: cosmo  # Light theme
+      dark: darkly  # Dark theme
+    css: styles.css  # Optional: your custom CSS

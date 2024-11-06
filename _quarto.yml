@@ -1,25 +1,22 @@
 project:
   type: website
-  render: 
-    - "*.qmd"
-    - "r_snacks/*.qmd"
-    - "!r_snacks/index.qmd"
+  render:
+    - "*.qmd"         # Applies to all .qmd files in the root
+    - "r_snacks/*.qmd"  # Ensures all files within r_snacks are rendered
+    - "!r_snacks/index.qmd"  # Exclude this if not needed
   output-dir: docs
 
-execute: 
-  freeze: true
-
 website:
-  title: "SSF data training"
+  title: "SSF Data Training"
   description: "Learn how to use R for small-scale fisheries data analysis"
   navbar:
+    logo: https://upload.wikimedia.org/wikipedia/en/9/9e/WorldFish_logo.svg
     right:
       - icon: github
         href: https://github.com/WorldFishCenter/ssf.training/
 format:
   html:
-    theme: Flatly
-    css: styles.css
-
-
-
+    theme:
+      light: cosmo  # Light theme
+      dark: darkly  # Dark theme
+    css: styles.css  # Optional: your custom CSS
