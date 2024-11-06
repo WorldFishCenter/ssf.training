@@ -1,260 +1,238 @@
 ---
-title: "Getting Started with R: An Interactive Guide"
+title: "Getting Started with R: Installation and First Steps"
 author: "SSF Training Team"
 date: 2024-11-06
 format: live-html
 engine: knitr
-categories: ["R", "Basics", "Interactive"]
+categories: ["R", "Setup", "Basics"]
 webr:
   autorun: false
   render-df: gt-interactive
-  packages:
-    - tidyverse
-    - palmerpenguins
 ---
+
 {{< include ../_extensions/r-wasm/live/_knitr.qmd >}}
 
-## Welcome to R Programming! 🚀
 
-This interactive guide will help you learn R from the ground up. You can run all code examples directly in your browser - just click the "Run Code" button in each code block!
+## What is R? 🤔
 
-### Before We Start: Understanding the R Console
+R is much more than just a statistical software! It's a complete programming language and environment designed for:
 
-The R console is where we interact with R. When you see a `>` symbol, that's your prompt to enter commands. In the interactive code blocks below, you'll be able to type and run R code directly.
-
-:::{.callout-tip}
-## Pro Tip
-Don't worry about making mistakes! Experimentation is a key part of learning. If you get an error, read the message carefully - R usually tells you what went wrong.
-:::
-
-## 1. Basic Calculations
-
-R can work as a powerful calculator. Let's try some basic operations:
-
-```{webr}
-#| autorun: false
-# Addition
-10 + 5
-
-# Subtraction
-10 - 5
-
-# Multiplication
-10 * 5
-
-# Division
-10 / 5
-
-# Exponents (powers)
-2 ^ 3
-
-# Integer division
-11 %/% 3
-
-# Remainder (modulo)
-11 %% 3
-```
+- Data analysis and statistics
+- Data visualization
+- Machine learning
+- Report generation
+- Web applications
+- Geographic Information Systems (GIS)
+- And much more!
 
 :::{.callout-note}
-## Understanding Operators
-- `+` addition
-- `-` subtraction
-- `*` multiplication
-- `/` division
-- `^` or `**` exponentiation
-- `%/%` integer division
-- `%%` modulo (remainder)
+## Real-World Applications in Fisheries
+- Analyzing catch data
+- Creating automated reports
+- Making interactive dashboards
+- Mapping fishing grounds
+- Population modeling
+- Image analysis (e.g., fish identification)
+- Environmental data processing
 :::
 
-## 2. Variables and Assignment
+## Why Choose R? 🎯
 
-Variables are like containers that store values. In R, we typically use the `<-` operator for assignment:
+1. **Free and Open Source**
+   - No license costs
+   - Community-driven development
+   - Transparent methods and algorithms
 
-```{webr}
-#| autorun: false
-# Assign a number
-fish_count <- 25
-fish_count
+2. **Huge Community**
+   - Over 19,000 packages available
+   - Active support forums
+   - Regular updates and improvements
 
-# Assign text (a string)
-species <- "Tuna"
-species
+3. **Reproducible Research**
+   - Code documents every step
+   - Easy to share and verify methods
+   - Perfect for scientific publications
 
-# Multiple assignments
-length_cm <- 45.5
-weight_kg <- 2.3
+4. **Versatile**
+   - Works on all major operating systems
+   - Handles various data formats
+   - Integrates with other tools
 
-# Calculate BMI (just as an example)
-bmi <- weight_kg / (length_cm/100)^2
-bmi
-```
+## Installing R and RStudio 💻
+
+### Step 1: Install R
+
+First, you need to install R itself:
+
+1. Go to [CRAN (The Comprehensive R Archive Network)](https://cran.r-project.org/)
+2. Click on the link for your operating system:
+   - Windows: "Download R for Windows" → "base" → Download the .exe file
+   - Mac: "Download R for macOS" → Select the appropriate version
+   - Linux: Choose your distribution and follow the instructions
+
+:::{.callout-tip}
+## Installation Tips
+- Windows users: Install R in the default directory (usually C:\Program Files\R\)
+- Mac users: You might need administrator privileges
+- Linux users: Consider using your package manager (apt, yum, etc.)
+:::
+
+### Step 2: Install RStudio
+
+RStudio is an Integrated Development Environment (IDE) that makes working with R much easier:
+
+1. Visit [RStudio Downloads](https://posit.co/download/rstudio-desktop/)
+2. Scroll down to "RStudio Desktop"
+3. Download the free version for your operating system
+4. Install following the default options
 
 :::{.callout-important}
-## Naming Rules
-- Variable names can contain letters, numbers, dots (.) and underscores (_)
-- They must start with a letter or a dot
-- R is case-sensitive: `Fish` and `fish` are different variables
-- Use descriptive names: `total_catch` is better than `tc`
+Always install R first, then RStudio. RStudio needs R to work!
 :::
 
-## 3. Data Types in R
+## Understanding RStudio's Interface 🖥️
 
-R has several basic data types. Understanding these is crucial:
+RStudio has four main panels (clockwise from top-left):
 
-```{webr}
-#| autorun: false
-# Numeric (numbers with decimals)
-length_cm <- 45.5
-class(length_cm)
+1. **Source Editor**
+   - Where you write and edit your code
+   - Create and modify R scripts
+   - Write R Markdown documents
 
-# Integer (whole numbers)
-fish_count <- 25L  # The L makes it explicitly integer
-class(fish_count)
+2. **Environment/History**
+   - Lists your current objects and data
+   - Shows command history
+   - Manages connections
 
-# Character (text)
-species <- "Tuna"
-class(species)
+3. **Files/Plots/Packages/Help**
+   - Browse files and folders
+   - View plots
+   - Install and load packages
+   - Access documentation
 
-# Logical (TRUE/FALSE)
-is_mature <- TRUE
-class(is_mature)
+4. **Console**
+   - Run R commands directly
+   - See output and messages
+   - Test quick calculations
 
-# Check if something is a specific type
-is.numeric(length_cm)
-is.character(species)
+## Creating Your First R Project 📁
+
+Projects help organize your work and make it portable. Here's how to create one:
+
+1. In RStudio, click `File → New Project`
+2. Choose `New Directory`
+3. Select `New Project`
+4. Fill in:
+   - Directory name (e.g., "my_fisheries_analysis")
+   - Where to create the project
+   - Click "Create Project"
+
+### Understanding Project Structure
+
+A well-organized project should have these folders:
+
+```
+my_fisheries_analysis/
+├── data/          # Raw data files
+│   ├── raw/      # Original, unchanged data
+│   └── processed/ # Cleaned and processed data
+├── R/            # R scripts
+├── outputs/      # Results, figures, tables
+│   ├── figures/  # Plots and visualizations
+│   └── tables/   # Generated tables
+└── docs/         # Documentation and reports
 ```
 
-## 4. Vectors: Collections of Values
-
-Vectors are one-dimensional arrays that can hold multiple values of the same type:
+Create this structure with:
 
 ```{webr}
 #| autorun: false
-# Create a numeric vector
-fish_lengths <- c(45, 50, 35, 40, 55)
-
-# Create a character vector
-species_names <- c("Tuna", "Mackerel", "Sardine")
-
-# Vector operations
-mean(fish_lengths)  # Average
-max(fish_lengths)   # Maximum value
-min(fish_lengths)   # Minimum value
-length(fish_lengths)  # Number of elements
-
-# Vector arithmetic
-fish_lengths * 2  # Multiply each element by 2
-
-# Accessing elements
-fish_lengths[1]  # First element
-fish_lengths[2:4]  # Elements 2 to 4
+# Create standard project directories
+dir.create("data")
+dir.create("data/raw")
+dir.create("data/processed")
+dir.create("R")
+dir.create("outputs")
+dir.create("outputs/figures")
+dir.create("outputs/tables")
+dir.create("docs")
 ```
 
 :::{.callout-tip}
-## Working with Vectors
-- Use `c()` to combine values into a vector
-- All elements in a vector must be of the same type
-- If you mix types, R will convert them to the most flexible type
+## Best Practices for Project Organization
+- Keep raw data separate and unchanged
+- Use relative paths (project root as reference)
+- Name files and folders consistently
+- Include a README file explaining the project
 :::
 
-## 5. Basic Data Frames
+## Your First Task: Setting Up Your Environment 📋
 
-Data frames are the most common way to store data in R. Think of them as spreadsheets:
+1. **Install Required Software**
+   - Download and install R
+   - Download and install RStudio
+   - Test that both are working
 
-```{webr}
-#| autorun: false
-# Create a simple fisheries dataset
-fish_data <- data.frame(
-  species = c("Tuna", "Mackerel", "Sardine", "Tuna", "Mackerel"),
-  length = c(45, 30, 15, 42, 28),
-  weight = c(3.5, 1.2, 0.3, 3.2, 1.0)
-)
+2. **Create Your First Project**
+   - Open RStudio
+   - Create a new project called "ssf_analysis"
+   - Set up the folder structure as shown above
 
-# View the entire data frame
-fish_data
-
-# Look at the structure
-str(fish_data)
-
-# Basic summary statistics
-summary(fish_data)
-
-# Access columns using $
-fish_data$length
-
-# Calculate mean length
-mean(fish_data$length)
-
-# Filter data
-tuna_data <- fish_data[fish_data$species == "Tuna", ]
-tuna_data
-```
-
-## 6. Basic Plotting
-
-Let's create some simple visualizations of our data:
+3. **Verify Your Setup**
+   - Open RStudio and create a new R script
+   - Save it in your R folder
+   - Try this simple code:
 
 ```{webr}
 #| autorun: false
-# Load ggplot2
-library(ggplot2)
+# Print a welcome message
+print("Welcome to R!")
 
-# Create a scatter plot
-ggplot(fish_data, aes(x = length, y = weight, color = species)) +
-  geom_point(size = 3) +
-  labs(title = "Fish Length vs Weight by Species",
-       x = "Length (cm)",
-       y = "Weight (kg)") +
-  theme_minimal()
+# Get your R version
+R.version.string
+
+# List your project directories
+list.dirs(recursive = FALSE)
 ```
 
-## Practice Exercises 💪
+## Troubleshooting Common Issues 🔧
 
-Try these exercises to test your understanding:
+### Problem: R/RStudio Won't Install
+- Check system requirements
+- Run installer as administrator
+- Clear temporary files and try again
 
-1. Create a vector of fish weights: 1.2, 2.3, 3.4, 2.1, 1.9 kg
-2. Calculate the average weight
-3. Create a new data frame with columns for:
-   - date (today's date repeated 3 times)
-   - catch (three numbers of your choice)
-   - location (three different fishing locations)
+### Problem: Can't Create Project
+- Check write permissions in target directory
+- Close other RStudio instances
+- Restart RStudio
 
-Here's the solution - but try it yourself first!
+### Problem: RStudio Doesn't Find R
+- Reinstall R first, then RStudio
+- Check if R is in system PATH (Windows)
+- Verify R installation directory
 
-```{webr}
-#| autorun: false
-# Exercise 1 & 2
-weights <- c(1.2, 2.3, 3.4, 2.1, 1.9)
-mean(weights)
+## Next Steps 🚀
 
-# Exercise 3
-fishing_data <- data.frame(
-  date = rep(Sys.Date(), 3),
-  catch = c(25, 30, 15),
-  location = c("Beach", "Reef", "Harbor")
-)
-fishing_data
-```
-
-## Next Steps 🎯
-
-Now that you've learned the basics, you might want to:
-1. Learn about data import/export
-2. Explore more advanced data manipulation with dplyr
-3. Create more sophisticated visualizations with ggplot2
+After completing this setup:
+1. Explore RStudio's interface
+2. Try creating and saving some R scripts
+3. Practice navigating your project structure
+4. Get ready for data import and analysis!
 
 :::{.callout-note}
 ## Additional Resources
-- [R for Data Science](https://r4ds.hadley.nz/)
-- [RStudio Cheat Sheets](https://www.rstudio.com/resources/cheatsheets/)
-- [R Cookbook](https://rc2e.com/)
+- [RStudio IDE Cheat Sheet](https://raw.githubusercontent.com/rstudio/cheatsheets/main/rstudio-ide.pdf)
+- [Project Management with RStudio](https://support.posit.co/hc/en-us/articles/200526207-Using-RStudio-Projects)
+- [R Installation FAQs](https://cran.r-project.org/doc/FAQ/R-FAQ.html)
 :::
 
-## Feedback and Questions
+## Need Help? 🆘
 
-If you have questions or need clarification:
-1. Use the comments section below
-2. Check our FAQ page
+If you encounter any issues:
+1. Check our troubleshooting guide
+2. Post in the comments section
 3. Join our community forum
+4. Contact the course instructors
 
-Remember: Learning R is a journey, not a destination. Take your time to experiment with the code examples and make them your own!
+Remember: Taking time to set up your environment properly will save you hours of frustration later!

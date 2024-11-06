@@ -1,0 +1,107 @@
+/*-- scss:defaults --*/
+
+// Base document colors
+$body-bg: #1f2123;           // Slightly lighter than pure black
+$body-color: #e1e1e1;        // Slightly dimmer than pure white
+$link-color: #75AADB;        // Keeping your original link color
+
+// Headings
+$heading-color: #c8c8c8;     // Slightly dimmed headings
+
+// Code blocks
+$code-block-bg: #2a2d2f;     // Slightly lighter than body background
+$code-color: #e1e1e1;        // Matching body text
+$code-block-bg-alpha: -.8;
+
+// Navbar
+$navbar-bg: #262829;         // Slightly lighter than body
+$navbar-fg: #e1e1e1;         // Matching body text
+$navbar-hl: #75AADB;         // Matching links
+
+// Borders and separators
+$border-color: #363839;      // Subtle borders
+
+// Secondary text
+$text-muted: #9ea0a2;        // Muted text for less emphasis
+
+// Custom Bootstrap vars for better dark mode
+$primary: #5b8db8;           // Slightly muted blue
+$secondary: #6c757d;
+$success: #2f9e5b;          // Muted green
+$info: #419cc5;             // Muted blue
+$warning: #cc8b35;          // Muted orange
+$danger: #cd3f45;           // Muted red
+$light: #2d3032;            // Dark but not too dark
+$dark: #1a1b1c;             // Slightly darker than body
+
+/*-- scss:rules --*/
+
+// Additional custom rules
+.card {
+    background-color: #262829;
+    border-color: $border-color;
+}
+
+.table {
+    color: $body-color;
+    background-color: #262829;
+}
+
+pre {
+    background-color: #2a2d2f !important;
+    border-color: $border-color !important;
+}
+
+code {
+    color: #e685b5 !important;
+}
+
+// Improve contrast for active navigation
+.nav-link.active {
+    background-color: rgba(117, 170, 219, 0.15) !important;
+}
+
+// Better focus visibility
+:focus {
+    outline-color: rgba(117, 170, 219, 0.5);
+}
+
+// Improved mark/highlight contrast
+mark {
+    background-color: rgba(117, 170, 219, 0.2);
+    color: $body-color;
+}
+
+// Better table hover states
+.table-hover tbody tr:hover {
+    background-color: rgba(117, 170, 219, 0.1);
+}
+
+// Improved blockquote styling
+blockquote {
+    border-left: 3px solid $border-color;
+    padding-left: 1rem;
+    color: $text-muted;
+}
+
+// Better form control contrast
+.form-control {
+    background-color: #262829;
+    border-color: $border-color;
+    color: $body-color;
+    
+    &:focus {
+        background-color: #2a2d2f;
+        border-color: rgba(117, 170, 219, 0.5);
+    }
+}
+
+// Improved button contrast
+.btn {
+    &:not(.btn-primary):not(.btn-secondary):not(.btn-success):not(.btn-danger):not(.btn-warning):not(.btn-info) {
+        background-color: #262829;
+        border-color: $border-color;
+        color: $body-color;
+    }
+}
+

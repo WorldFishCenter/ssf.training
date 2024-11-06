@@ -7,7 +7,6 @@ project:
   output-dir: docs
 
 website:
-  title: "SSF Data Training"
   description: "Learn how to use R for small-scale fisheries data analysis"
   navbar:
     logo: https://upload.wikimedia.org/wikipedia/en/9/9e/WorldFish_logo.svg
@@ -17,6 +16,5 @@ website:
 format:
   html:
     theme:
-      light: cosmo  # Light theme
-      dark: darkly  # Dark theme
-    css: styles.css  # Optional: your custom CSS
+      light: [cosmo, custom.scss]  
+      dark: [cosmo, theme-dark.scss, custom.scss]

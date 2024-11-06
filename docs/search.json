@@ -1,80 +1,87 @@
 [
   {
-    "objectID": "r_snacks/rbasics.html",
-    "href": "r_snacks/rbasics.html",
-    "title": "Getting Started with R: An Interactive Guide",
+    "objectID": "r_snacks/rbasics2.html",
+    "href": "r_snacks/rbasics2.html",
+    "title": "Basic Operations in R: A Complete Guide",
     "section": "",
-    "text": "This interactive guide will help you learn R from the ground up. You can run all code examples directly in your browser - just click the “Run Code” button in each code block!\n\n\nThe R console is where we interact with R. When you see a &gt; symbol, that’s your prompt to enter commands. In the interactive code blocks below, you’ll be able to type and run R code directly.\n\n\n\n\n\n\nPro Tip\n\n\n\nDon’t worry about making mistakes! Experimentation is a key part of learning. If you get an error, read the message carefully - R usually tells you what went wrong."
+    "text": "Welcome to your guide to basic R operations! This tutorial will take you through the fundamental operations in R, building from simple calculations to more complex operations. We’ll learn by doing, with plenty of examples and explanations.\n\n\n\n\n\n\nLearning Objectives\n\n\n\nBy the end of this tutorial, you will be able to: - Perform basic calculations in R - Understand different data types - Create and manipulate variables - Work with vectors and basic data structures - Use basic R functions - Understand logical operations"
   },
   {
-    "objectID": "r_snacks/rbasics.html#welcome-to-r-programming",
-    "href": "r_snacks/rbasics.html#welcome-to-r-programming",
-    "title": "Getting Started with R: An Interactive Guide",
+    "objectID": "r_snacks/rbasics2.html#introduction",
+    "href": "r_snacks/rbasics2.html#introduction",
+    "title": "Basic Operations in R: A Complete Guide",
     "section": "",
-    "text": "This interactive guide will help you learn R from the ground up. You can run all code examples directly in your browser - just click the “Run Code” button in each code block!\n\n\nThe R console is where we interact with R. When you see a &gt; symbol, that’s your prompt to enter commands. In the interactive code blocks below, you’ll be able to type and run R code directly.\n\n\n\n\n\n\nPro Tip\n\n\n\nDon’t worry about making mistakes! Experimentation is a key part of learning. If you get an error, read the message carefully - R usually tells you what went wrong."
+    "text": "Welcome to your guide to basic R operations! This tutorial will take you through the fundamental operations in R, building from simple calculations to more complex operations. We’ll learn by doing, with plenty of examples and explanations.\n\n\n\n\n\n\nLearning Objectives\n\n\n\nBy the end of this tutorial, you will be able to: - Perform basic calculations in R - Understand different data types - Create and manipulate variables - Work with vectors and basic data structures - Use basic R functions - Understand logical operations"
   },
   {
-    "objectID": "r_snacks/rbasics.html#basic-calculations",
-    "href": "r_snacks/rbasics.html#basic-calculations",
-    "title": "Getting Started with R: An Interactive Guide",
-    "section": "1. Basic Calculations",
-    "text": "1. Basic Calculations\nR can work as a powerful calculator. Let’s try some basic operations:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nUnderstanding Operators\n\n\n\n\n+ addition\n- subtraction\n* multiplication\n/ division\n^ or ** exponentiation\n%/% integer division\n%% modulo (remainder)"
+    "objectID": "r_snacks/rbasics2.html#the-r-console-your-calculator",
+    "href": "r_snacks/rbasics2.html#the-r-console-your-calculator",
+    "title": "Basic Operations in R: A Complete Guide",
+    "section": "1. The R Console: Your Calculator 🔢",
+    "text": "1. The R Console: Your Calculator 🔢\nLet’s start by understanding how to use R as a calculator. The console is where we can type commands and see results immediately.\n\nBasic Arithmetic Operations\nTry these operations in the console:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMathematical Operators in R\n\n\n\n\n+ Addition\n- Subtraction\n* Multiplication\n/ Division\n^ or ** Exponentiation\n%/% Integer division\n%% Modulo (remainder)\n\n\n\n\n\nOrder of Operations\nR follows the standard mathematical order of operations (PEMDAS): 1. Parentheses 2. Exponents 3. Multiplication and Division (left to right) 4. Addition and Subtraction (left to right)\nLet’s see some examples:"
   },
   {
-    "objectID": "r_snacks/rbasics.html#variables-and-assignment",
-    "href": "r_snacks/rbasics.html#variables-and-assignment",
-    "title": "Getting Started with R: An Interactive Guide",
-    "section": "2. Variables and Assignment",
-    "text": "2. Variables and Assignment\nVariables are like containers that store values. In R, we typically use the &lt;- operator for assignment:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNaming Rules\n\n\n\n\nVariable names can contain letters, numbers, dots (.) and underscores (_)\nThey must start with a letter or a dot\nR is case-sensitive: Fish and fish are different variables\nUse descriptive names: total_catch is better than tc"
+    "objectID": "r_snacks/rbasics2.html#variables-storing-values",
+    "href": "r_snacks/rbasics2.html#variables-storing-values",
+    "title": "Basic Operations in R: A Complete Guide",
+    "section": "2. Variables: Storing Values 📦",
+    "text": "2. Variables: Storing Values 📦\nVariables are containers for storing values. In R, we create variables using the assignment operator &lt;- (or =, but &lt;- is more common in R).\n\nCreating Variables\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nVariable Naming Rules\n\n\n\n\nNames can contain letters, numbers, dots (.) and underscores (_)\nNames must start with a letter or a dot\nNames cannot start with a number\nNames are case-sensitive (Fish ≠ fish)\nAvoid using R’s reserved words (like if, for, function)\n\n\n\n\n\nGood Variable Naming Practices"
   },
   {
-    "objectID": "r_snacks/rbasics.html#data-types-in-r",
-    "href": "r_snacks/rbasics.html#data-types-in-r",
-    "title": "Getting Started with R: An Interactive Guide",
-    "section": "3. Data Types in R",
-    "text": "3. Data Types in R\nR has several basic data types. Understanding these is crucial:"
+    "objectID": "r_snacks/rbasics2.html#data-types-in-r",
+    "href": "r_snacks/rbasics2.html#data-types-in-r",
+    "title": "Basic Operations in R: A Complete Guide",
+    "section": "3. Data Types in R 📝",
+    "text": "3. Data Types in R 📝\nR has several basic data types you need to know:\n\nNumeric (numbers)\n\n\n\n\n\n\n\n\n\n\nCharacter (text)\n\n\n\n\n\n\n\n\n\n\nLogical (TRUE/FALSE)\n\n\n\n\n\n\n\n\n\n\nConverting Between Types (Coercion)"
   },
   {
-    "objectID": "r_snacks/rbasics.html#vectors-collections-of-values",
-    "href": "r_snacks/rbasics.html#vectors-collections-of-values",
-    "title": "Getting Started with R: An Interactive Guide",
-    "section": "4. Vectors: Collections of Values",
-    "text": "4. Vectors: Collections of Values\nVectors are one-dimensional arrays that can hold multiple values of the same type:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWorking with Vectors\n\n\n\n\nUse c() to combine values into a vector\nAll elements in a vector must be of the same type\nIf you mix types, R will convert them to the most flexible type"
+    "objectID": "r_snacks/rbasics2.html#vectors-collections-of-values",
+    "href": "r_snacks/rbasics2.html#vectors-collections-of-values",
+    "title": "Basic Operations in R: A Complete Guide",
+    "section": "4. Vectors: Collections of Values 📚",
+    "text": "4. Vectors: Collections of Values 📚\nVectors are one-dimensional arrays that can hold multiple values of the same type.\n\nCreating Vectors\n\n\n\n\n\n\n\n\n\n\nVector Operations\n\n\n\n\n\n\n\n\n\n\nAccessing Vector Elements"
   },
   {
-    "objectID": "r_snacks/rbasics.html#basic-data-frames",
-    "href": "r_snacks/rbasics.html#basic-data-frames",
-    "title": "Getting Started with R: An Interactive Guide",
-    "section": "5. Basic Data Frames",
-    "text": "5. Basic Data Frames\nData frames are the most common way to store data in R. Think of them as spreadsheets:"
+    "objectID": "r_snacks/rbasics2.html#basic-functions-in-r",
+    "href": "r_snacks/rbasics2.html#basic-functions-in-r",
+    "title": "Basic Operations in R: A Complete Guide",
+    "section": "5. Basic Functions in R 🛠️",
+    "text": "5. Basic Functions in R 🛠️\nR has many built-in functions. Let’s look at some common ones:\n\nMathematical Functions\n\n\n\n\n\n\n\n\n\n\nStatistical Functions"
   },
   {
-    "objectID": "r_snacks/rbasics.html#basic-plotting",
-    "href": "r_snacks/rbasics.html#basic-plotting",
-    "title": "Getting Started with R: An Interactive Guide",
-    "section": "6. Basic Plotting",
-    "text": "6. Basic Plotting\nLet’s create some simple visualizations of our data:"
+    "objectID": "r_snacks/rbasics2.html#logical-operations",
+    "href": "r_snacks/rbasics2.html#logical-operations",
+    "title": "Basic Operations in R: A Complete Guide",
+    "section": "6. Logical Operations 🤔",
+    "text": "6. Logical Operations 🤔\nLogical operations help us make comparisons and decisions:"
   },
   {
-    "objectID": "r_snacks/rbasics.html#practice-exercises",
-    "href": "r_snacks/rbasics.html#practice-exercises",
-    "title": "Getting Started with R: An Interactive Guide",
+    "objectID": "r_snacks/rbasics2.html#practice-exercises",
+    "href": "r_snacks/rbasics2.html#practice-exercises",
+    "title": "Basic Operations in R: A Complete Guide",
     "section": "Practice Exercises 💪",
-    "text": "Practice Exercises 💪\nTry these exercises to test your understanding:\n\nCreate a vector of fish weights: 1.2, 2.3, 3.4, 2.1, 1.9 kg\nCalculate the average weight\nCreate a new data frame with columns for:\n\ndate (today’s date repeated 3 times)\ncatch (three numbers of your choice)\nlocation (three different fishing locations)\n\n\nHere’s the solution - but try it yourself first!"
+    "text": "Practice Exercises 💪\nLet’s consolidate what we’ve learned with some exercises:\n\nExercise 1: Basic Calculations\nTry to calculate: 1. The area of a circle with radius 5 (use pi for π) 2. The volume of a sphere with the same radius 3. Round both results to 2 decimal places\n\n\n\n\n\n\n\n\n\n\nExercise 2: Working with Vectors\nCreate a vector of fish weights (in kg): 1.2, 2.3, 3.4, 2.1, 1.9 1. Calculate the total weight 2. Find the average weight 3. Identify weights above 2 kg 4. Count how many fish weigh more than 2 kg\n\n\n\n\n\n\n\n\n\n\nExercise 3: Combining Operations\nYou have caught fish of different species. Create vectors for: 1. Species names: “Tuna”, “Mackerel”, “Sardine”, “Tuna”, “Mackerel” 2. Weights: 2.5, 1.2, 0.5, 2.3, 1.1 3. Calculate the average weight per species"
   },
   {
-    "objectID": "r_snacks/rbasics.html#next-steps",
-    "href": "r_snacks/rbasics.html#next-steps",
-    "title": "Getting Started with R: An Interactive Guide",
-    "section": "Next Steps 🎯",
-    "text": "Next Steps 🎯\nNow that you’ve learned the basics, you might want to: 1. Learn about data import/export 2. Explore more advanced data manipulation with dplyr 3. Create more sophisticated visualizations with ggplot2\n\n\n\n\n\n\nAdditional Resources\n\n\n\n\nR for Data Science\nRStudio Cheat Sheets\nR Cookbook"
+    "objectID": "r_snacks/rbasics2.html#troubleshooting-common-issues",
+    "href": "r_snacks/rbasics2.html#troubleshooting-common-issues",
+    "title": "Basic Operations in R: A Complete Guide",
+    "section": "Troubleshooting Common Issues 🔧",
+    "text": "Troubleshooting Common Issues 🔧\nHere are some common issues you might encounter and how to fix them:\n\n1. Error in Variable Names\n\n\n\n\n\n\n\n\n\n\n2. Missing Quotes for Text\n\n\n\n\n\n\n\n\n\n\n3. Incorrect Vector Creation"
   },
   {
-    "objectID": "r_snacks/rbasics.html#feedback-and-questions",
-    "href": "r_snacks/rbasics.html#feedback-and-questions",
-    "title": "Getting Started with R: An Interactive Guide",
-    "section": "Feedback and Questions",
-    "text": "Feedback and Questions\nIf you have questions or need clarification: 1. Use the comments section below 2. Check our FAQ page 3. Join our community forum\nRemember: Learning R is a journey, not a destination. Take your time to experiment with the code examples and make them your own!"
+    "objectID": "r_snacks/rbasics2.html#next-steps",
+    "href": "r_snacks/rbasics2.html#next-steps",
+    "title": "Basic Operations in R: A Complete Guide",
+    "section": "Next Steps 🚀",
+    "text": "Next Steps 🚀\nNow that you understand basic R operations, you can: 1. Start working with real data 2. Learn about data frames 3. Explore data visualization 4. Begin basic statistical analysis\n\n\n\n\n\n\nAdditional Resources\n\n\n\n\nR Documentation\nQuick R\nR Cookbook"
+  },
+  {
+    "objectID": "r_snacks/rbasics2.html#practice-makes-perfect",
+    "href": "r_snacks/rbasics2.html#practice-makes-perfect",
+    "title": "Basic Operations in R: A Complete Guide",
+    "section": "Practice Makes Perfect! 🎯",
+    "text": "Practice Makes Perfect! 🎯\nThe best way to learn R is by practicing. Try to: 1. Modify the examples provided 2. Create your own variables and vectors 3. Experiment with different functions 4. Work through the exercises multiple times 5. Create your own exercises based on real data\nRemember: Don’t worry about making mistakes - they’re a natural part of learning!\n\n\n\n\n\n\nTips for Learning\n\n\n\n\nType out the code yourself instead of copying and pasting\nTry to predict what code will do before running it\nIf you get an error, read it carefully - R usually tells you what’s wrong\nKeep notes of new functions and operations you learn\n\n\n\nNeed help? Remember you can: 1. Check the R documentation with ?function_name 2. Ask questions in the comments 3. Join our community forum 4. Practice with the interactive exercises above"
   },
   {
     "objectID": "r_snacks/trends.html",
@@ -89,6 +96,83 @@
     "title": "Visualizing Trends with ggplot2",
     "section": "",
     "text": "In this guide, we will learn how to visualize trends in data using ggplot2. We’ll use the cars dataset, which contains information on car speed and stopping distances.\n\n\nA line plot is often used to visualize trends over time or any continuous variable. Although the cars dataset doesn’t have a time component, we can still visualize the trend of speed against stopping distance.\n\n\n\n\n\n\n\n\n\n\n\nWe can enhance the visualization by adding a smoothing line to better capture the underlying trend.\n\n\n\n\n\n\n\n\n\n\n\nYou can further customize trend lines by changing colors, line types, and smoothing methods. Let’s use a linear model (method = “lm”) to display the trend.\n\n\n\n\n\n\n\n\n\n\n\nFinally, let’s compare different trend lines by plotting both a linear model and a loess smoother together."
+  },
+  {
+    "objectID": "r_snacks/rbasics.html",
+    "href": "r_snacks/rbasics.html",
+    "title": "Getting Started with R: Installation and First Steps",
+    "section": "",
+    "text": "R is much more than just a statistical software! It’s a complete programming language and environment designed for:\n\nData analysis and statistics\nData visualization\nMachine learning\nReport generation\nWeb applications\nGeographic Information Systems (GIS)\nAnd much more!\n\n\n\n\n\n\n\nReal-World Applications in Fisheries\n\n\n\n\nAnalyzing catch data\nCreating automated reports\nMaking interactive dashboards\nMapping fishing grounds\nPopulation modeling\nImage analysis (e.g., fish identification)\nEnvironmental data processing"
+  },
+  {
+    "objectID": "r_snacks/rbasics.html#what-is-r",
+    "href": "r_snacks/rbasics.html#what-is-r",
+    "title": "Getting Started with R: Installation and First Steps",
+    "section": "",
+    "text": "R is much more than just a statistical software! It’s a complete programming language and environment designed for:\n\nData analysis and statistics\nData visualization\nMachine learning\nReport generation\nWeb applications\nGeographic Information Systems (GIS)\nAnd much more!\n\n\n\n\n\n\n\nReal-World Applications in Fisheries\n\n\n\n\nAnalyzing catch data\nCreating automated reports\nMaking interactive dashboards\nMapping fishing grounds\nPopulation modeling\nImage analysis (e.g., fish identification)\nEnvironmental data processing"
+  },
+  {
+    "objectID": "r_snacks/rbasics.html#why-choose-r",
+    "href": "r_snacks/rbasics.html#why-choose-r",
+    "title": "Getting Started with R: Installation and First Steps",
+    "section": "Why Choose R? 🎯",
+    "text": "Why Choose R? 🎯\n\nFree and Open Source\n\nNo license costs\nCommunity-driven development\nTransparent methods and algorithms\n\nHuge Community\n\nOver 19,000 packages available\nActive support forums\nRegular updates and improvements\n\nReproducible Research\n\nCode documents every step\nEasy to share and verify methods\nPerfect for scientific publications\n\nVersatile\n\nWorks on all major operating systems\nHandles various data formats\nIntegrates with other tools"
+  },
+  {
+    "objectID": "r_snacks/rbasics.html#installing-r-and-rstudio",
+    "href": "r_snacks/rbasics.html#installing-r-and-rstudio",
+    "title": "Getting Started with R: Installation and First Steps",
+    "section": "Installing R and RStudio 💻",
+    "text": "Installing R and RStudio 💻\n\nStep 1: Install R\nFirst, you need to install R itself:\n\nGo to CRAN (The Comprehensive R Archive Network)\nClick on the link for your operating system:\n\nWindows: “Download R for Windows” → “base” → Download the .exe file\nMac: “Download R for macOS” → Select the appropriate version\nLinux: Choose your distribution and follow the instructions\n\n\n\n\n\n\n\n\nInstallation Tips\n\n\n\n\nWindows users: Install R in the default directory (usually C:Files)\nMac users: You might need administrator privileges\nLinux users: Consider using your package manager (apt, yum, etc.)\n\n\n\n\n\nStep 2: Install RStudio\nRStudio is an Integrated Development Environment (IDE) that makes working with R much easier:\n\nVisit RStudio Downloads\nScroll down to “RStudio Desktop”\nDownload the free version for your operating system\nInstall following the default options\n\n\n\n\n\n\n\nImportant\n\n\n\nAlways install R first, then RStudio. RStudio needs R to work!"
+  },
+  {
+    "objectID": "r_snacks/rbasics.html#understanding-rstudios-interface",
+    "href": "r_snacks/rbasics.html#understanding-rstudios-interface",
+    "title": "Getting Started with R: Installation and First Steps",
+    "section": "Understanding RStudio’s Interface 🖥️",
+    "text": "Understanding RStudio’s Interface 🖥️\nRStudio has four main panels (clockwise from top-left):\n\nSource Editor\n\nWhere you write and edit your code\nCreate and modify R scripts\nWrite R Markdown documents\n\nEnvironment/History\n\nLists your current objects and data\nShows command history\nManages connections\n\nFiles/Plots/Packages/Help\n\nBrowse files and folders\nView plots\nInstall and load packages\nAccess documentation\n\nConsole\n\nRun R commands directly\nSee output and messages\nTest quick calculations"
+  },
+  {
+    "objectID": "r_snacks/rbasics.html#creating-your-first-r-project",
+    "href": "r_snacks/rbasics.html#creating-your-first-r-project",
+    "title": "Getting Started with R: Installation and First Steps",
+    "section": "Creating Your First R Project 📁",
+    "text": "Creating Your First R Project 📁\nProjects help organize your work and make it portable. Here’s how to create one:\n\nIn RStudio, click File → New Project\nChoose New Directory\nSelect New Project\nFill in:\n\nDirectory name (e.g., “my_fisheries_analysis”)\nWhere to create the project\nClick “Create Project”\n\n\n\nUnderstanding Project Structure\nA well-organized project should have these folders:\nmy_fisheries_analysis/\n├── data/          # Raw data files\n│   ├── raw/      # Original, unchanged data\n│   └── processed/ # Cleaned and processed data\n├── R/            # R scripts\n├── outputs/      # Results, figures, tables\n│   ├── figures/  # Plots and visualizations\n│   └── tables/   # Generated tables\n└── docs/         # Documentation and reports\nCreate this structure with:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nBest Practices for Project Organization\n\n\n\n\nKeep raw data separate and unchanged\nUse relative paths (project root as reference)\nName files and folders consistently\nInclude a README file explaining the project"
+  },
+  {
+    "objectID": "r_snacks/rbasics.html#your-first-task-setting-up-your-environment",
+    "href": "r_snacks/rbasics.html#your-first-task-setting-up-your-environment",
+    "title": "Getting Started with R: Installation and First Steps",
+    "section": "Your First Task: Setting Up Your Environment 📋",
+    "text": "Your First Task: Setting Up Your Environment 📋\n\nInstall Required Software\n\nDownload and install R\nDownload and install RStudio\nTest that both are working\n\nCreate Your First Project\n\nOpen RStudio\nCreate a new project called “ssf_analysis”\nSet up the folder structure as shown above\n\nVerify Your Setup\n\nOpen RStudio and create a new R script\nSave it in your R folder\nTry this simple code:"
+  },
+  {
+    "objectID": "r_snacks/rbasics.html#troubleshooting-common-issues",
+    "href": "r_snacks/rbasics.html#troubleshooting-common-issues",
+    "title": "Getting Started with R: Installation and First Steps",
+    "section": "Troubleshooting Common Issues 🔧",
+    "text": "Troubleshooting Common Issues 🔧\n\nProblem: R/RStudio Won’t Install\n\nCheck system requirements\nRun installer as administrator\nClear temporary files and try again\n\n\n\nProblem: Can’t Create Project\n\nCheck write permissions in target directory\nClose other RStudio instances\nRestart RStudio\n\n\n\nProblem: RStudio Doesn’t Find R\n\nReinstall R first, then RStudio\nCheck if R is in system PATH (Windows)\nVerify R installation directory"
+  },
+  {
+    "objectID": "r_snacks/rbasics.html#next-steps",
+    "href": "r_snacks/rbasics.html#next-steps",
+    "title": "Getting Started with R: Installation and First Steps",
+    "section": "Next Steps 🚀",
+    "text": "Next Steps 🚀\nAfter completing this setup: 1. Explore RStudio’s interface 2. Try creating and saving some R scripts 3. Practice navigating your project structure 4. Get ready for data import and analysis!\n\n\n\n\n\n\nAdditional Resources\n\n\n\n\nRStudio IDE Cheat Sheet\nProject Management with RStudio\nR Installation FAQs"
+  },
+  {
+    "objectID": "r_snacks/rbasics.html#need-help",
+    "href": "r_snacks/rbasics.html#need-help",
+    "title": "Getting Started with R: Installation and First Steps",
+    "section": "Need Help? 🆘",
+    "text": "Need Help? 🆘\nIf you encounter any issues: 1. Check our troubleshooting guide 2. Post in the comments section 3. Join our community forum 4. Contact the course instructors\nRemember: Taking time to set up your environment properly will save you hours of frustration later!"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "R for Small-Scale Fishery Data",
+    "section": "",
+    "text": "This collection is designed to help you work with small-scale fishery data using R. The examples are tailored to practical use cases, leveraging ggplot2 and other tools to analyze and visualize fisheries data. All code can be run interactively in your browser using quarto-live, meaning no installation is necessary to start learning and applying these techniques.\nThese data science “snacks” are meant to provide you with hands-on experience for working with real-world fishery datasets. They can serve as quick, practical insights or as stepping stones to more advanced analysis in fisheries research.\n\n\n\n\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nGetting Started with R: Installation and First Steps\n\n\n\n\n\n\nR\n\n\nSetup\n\n\nBasics\n\n\n\n\n\n\n\n\n\nNov 6, 2024\n\n\nSSF Training Team\n\n\n\n\n\n\n\n\n\n\n\n\nBasic Operations in R: A Complete Guide\n\n\n\n\n\n\nR\n\n\nBasics\n\n\nOperations\n\n\n\n\n\n\n\n\n\nNov 6, 2024\n\n\nSSF Training Team\n\n\n\n\n\n\n\n\n\n\n\n\nWorking with ggplot2: A Short Guide\n\n\n\n\n\n\nR\n\n\nVisualization\n\n\nggplot2\n\n\n\n\n\n\n\n\n\nSep 30, 2024\n\n\nLore\n\n\n\n\n\n\n\n\n\n\n\n\nGetting Started with R: Data Manipulation Basics\n\n\n\n\n\n\nR\n\n\nData Manipulation\n\n\ntidyverse\n\n\n\n\n\n\n\n\n\nSep 30, 2024\n\n\nLore\n\n\n\n\n\n\n\n\n\n\n\n\nVisualizing Trends with ggplot2\n\n\n\n\n\n\nR\n\n\nVisualization\n\n\nTrends\n\n\n\n\n\n\n\n\n\nSep 30, 2024\n\n\nLore\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "snack_template.html",
@@ -117,13 +201,6 @@
     "title": "Snack Template: R",
     "section": "Give Learners a Chance to Play",
     "text": "Give Learners a Chance to Play"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "R for Small-Scale Fishery Data",
-    "section": "",
-    "text": "This collection is designed to help you work with small-scale fishery data using R. The examples are tailored to practical use cases, leveraging ggplot2 and other tools to analyze and visualize fisheries data. All code can be run interactively in your browser using quarto-live, meaning no installation is necessary to start learning and applying these techniques.\nThese data science “snacks” are meant to provide you with hands-on experience for working with real-world fishery datasets. They can serve as quick, practical insights or as stepping stones to more advanced analysis in fisheries research.\n\n\n\n\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nGetting Started with R: An Interactive Guide\n\n\n\n\n\n\nR\n\n\nBasics\n\n\nInteractive\n\n\n\n\n\n\n\n\n\nNov 6, 2024\n\n\nSSF Training Team\n\n\n\n\n\n\n\n\n\n\n\n\nWorking with ggplot2: A Short Guide\n\n\n\n\n\n\nR\n\n\nVisualization\n\n\nggplot2\n\n\n\n\n\n\n\n\n\nSep 30, 2024\n\n\nLore\n\n\n\n\n\n\n\n\n\n\n\n\nGetting Started with R: Data Manipulation Basics\n\n\n\n\n\n\nR\n\n\nData Manipulation\n\n\ntidyverse\n\n\n\n\n\n\n\n\n\nSep 30, 2024\n\n\nLore\n\n\n\n\n\n\n\n\n\n\n\n\nVisualizing Trends with ggplot2\n\n\n\n\n\n\nR\n\n\nVisualization\n\n\nTrends\n\n\n\n\n\n\n\n\n\nSep 30, 2024\n\n\nLore\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "r_snacks/ggplot.html",

@@ -14,6 +14,5 @@ citation: true
 format:
   live-html:
     theme:
-      light: cosmo  # Light theme
-      dark: darkly  # Dark theme
-    css: styles.css  # Optional: your custom CSS
+      light: [cosmo, ../custom.scss]
+      dark: [cosmo, ../theme-dark.scss, ../custom.scss]

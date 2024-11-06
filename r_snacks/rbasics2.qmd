@@ -1,0 +1,516 @@
+---
+title: "Basic Operations in R: A Complete Guide"
+author: "SSF Training Team"
+date: 2024-11-06
+format: live-html
+engine: knitr
+categories: ["R", "Basics", "Operations"]
+webr:
+  autorun: false
+  render-df: gt-interactive
+---
+
+{{< include ../_extensions/r-wasm/live/_knitr.qmd >}}
+
+
+## Introduction 🎯
+
+Welcome to your guide to basic R operations! This tutorial will take you through the fundamental operations in R, building from simple calculations to more complex operations. We'll learn by doing, with plenty of examples and explanations.
+
+:::{.callout-note}
+## Learning Objectives
+By the end of this tutorial, you will be able to:
+- Perform basic calculations in R
+- Understand different data types
+- Create and manipulate variables
+- Work with vectors and basic data structures
+- Use basic R functions
+- Understand logical operations
+:::
+
+## 1. The R Console: Your Calculator 🔢
+
+Let's start by understanding how to use R as a calculator. The console is where we can type commands and see results immediately.
+
+### Basic Arithmetic Operations
+
+Try these operations in the console:
+
+```{webr}
+#| autorun: false
+# Addition
+5 + 3
+
+# Subtraction
+10 - 4
+
+# Multiplication
+6 * 8
+
+# Division
+15 / 3
+
+# Exponentiation (powers)
+2 ^ 3  # 2 to the power of 3
+
+# Integer division (drops remainder)
+17 %/% 5
+
+# Modulo (gives remainder)
+17 %% 5
+```
+
+:::{.callout-tip}
+## Mathematical Operators in R
+- `+` Addition
+- `-` Subtraction
+- `*` Multiplication
+- `/` Division
+- `^` or `**` Exponentiation
+- `%/%` Integer division
+- `%%` Modulo (remainder)
+:::
+
+### Order of Operations
+
+R follows the standard mathematical order of operations (PEMDAS):
+1. **P**arentheses
+2. **E**xponents
+3. **M**ultiplication and **D**ivision (left to right)
+4. **A**ddition and **S**ubtraction (left to right)
+
+Let's see some examples:
+
+```{webr}
+#| autorun: false
+# Without parentheses
+2 + 3 * 4
+
+# With parentheses
+(2 + 3) * 4
+
+# More complex example
+(2 + 3) * 4 ^ 2 / (1 + 1)
+
+# Breaking it down step by step:
+# 1. (2 + 3) = 5
+# 2. 4 ^ 2 = 16
+# 3. (1 + 1) = 2
+# 4. 5 * 16 = 80
+# 5. 80 / 2 = 40
+```
+
+## 2. Variables: Storing Values 📦
+
+Variables are containers for storing values. In R, we create variables using the assignment operator `<-` (or `=`, but `<-` is more common in R).
+
+### Creating Variables
+
+```{webr}
+#| autorun: false
+# Assign a value to a variable
+fish_count <- 25
+
+# Display the value
+fish_count
+
+# Multiple assignments
+length_cm <- 45.5
+weight_kg <- 2.3
+species_name <- "Tuna"
+
+# Display all values
+print(length_cm)
+print(weight_kg)
+print(species_name)
+
+# We can also use variables in calculations
+total_weight <- fish_count * weight_kg
+total_weight
+```
+
+:::{.callout-important}
+## Variable Naming Rules
+1. Names can contain letters, numbers, dots (.) and underscores (_)
+2. Names must start with a letter or a dot
+3. Names cannot start with a number
+4. Names are case-sensitive (`Fish` ≠ `fish`)
+5. Avoid using R's reserved words (like `if`, `for`, `function`)
+:::
+
+### Good Variable Naming Practices
+
+```{webr}
+#| autorun: false
+# Good names - clear and descriptive
+total_catch <- 156
+average_length <- 23.5
+species_count <- 5
+
+# Bad names - unclear or confusing
+x <- 156
+y <- 23.5
+z <- 5
+
+# Using names in calculations makes code readable
+catch_per_species <- total_catch / species_count
+catch_per_species
+```
+
+## 3. Data Types in R 📝
+
+R has several basic data types you need to know:
+
+### Numeric (numbers)
+
+```{webr}
+#| autorun: false
+# Regular numbers (double)
+length_cm <- 45.5
+weight_kg <- 2.3
+
+# Check the type
+class(length_cm)
+class(weight_kg)
+
+# Integer (whole numbers)
+count <- 42L  # The L makes it an integer
+class(count)
+```
+
+### Character (text)
+
+```{webr}
+#| autorun: false
+# Text must be in quotes (single or double)
+species <- "Tuna"
+location <- 'Pacific'
+
+# Check the type
+class(species)
+class(location)
+
+# Combining text
+paste(species, "from the", location)
+paste0(species, "-", location)  # paste0 doesn't add spaces
+```
+
+### Logical (TRUE/FALSE)
+
+```{webr}
+#| autorun: false
+# Logical values
+is_adult <- TRUE
+is_tagged <- FALSE
+
+# Check the type
+class(is_adult)
+
+# Logical values in calculations
+sum(c(TRUE, FALSE, TRUE))  # TRUE counts as 1, FALSE as 0
+```
+
+### Converting Between Types (Coercion)
+
+```{webr}
+#| autorun: false
+# Convert to numeric
+text_number <- "123"
+actual_number <- as.numeric(text_number)
+class(actual_number)
+
+# Convert to character
+number_text <- as.character(123)
+class(number_text)
+
+# Convert to logical
+logical_value <- as.logical(1)  # 1 becomes TRUE, 0 becomes FALSE
+logical_value
+```
+
+## 4. Vectors: Collections of Values 📚
+
+Vectors are one-dimensional arrays that can hold multiple values of the same type.
+
+### Creating Vectors
+
+```{webr}
+#| autorun: false
+# Create a numeric vector
+fish_lengths <- c(45, 50, 35, 40, 55)
+
+# Create a character vector
+species_names <- c("Tuna", "Mackerel", "Sardine", "Tuna", "Mackerel")
+
+# Create a logical vector
+is_mature <- c(TRUE, FALSE, TRUE, TRUE, FALSE)
+
+# Display vectors
+print(fish_lengths)
+print(species_names)
+print(is_mature)
+```
+
+### Vector Operations
+
+```{webr}
+#| autorun: false
+# Basic statistics
+mean(fish_lengths)  # Average
+median(fish_lengths)  # Median
+max(fish_lengths)   # Maximum
+min(fish_lengths)   # Minimum
+length(fish_lengths)  # Number of elements
+sum(fish_lengths)   # Total
+sd(fish_lengths)    # Standard deviation
+
+# Vector arithmetic
+fish_lengths * 2  # Multiply each element by 2
+fish_lengths + 5  # Add 5 to each element
+
+# Vector comparisons
+fish_lengths > 45  # Which lengths are greater than 45?
+fish_lengths[fish_lengths > 45]  # Get values greater than 45
+```
+
+### Accessing Vector Elements
+
+```{webr}
+#| autorun: false
+# By position
+fish_lengths[1]  # First element
+fish_lengths[2:4]  # Elements 2 to 4
+fish_lengths[c(1, 3, 5)]  # Select specific elements
+
+# By condition
+species_names[species_names == "Tuna"]  # All Tuna entries
+fish_lengths[fish_lengths > 40]  # All lengths over 40
+```
+
+## 5. Basic Functions in R 🛠️
+
+R has many built-in functions. Let's look at some common ones:
+
+### Mathematical Functions
+
+```{webr}
+#| autorun: false
+# Round numbers
+round(3.14159, digits = 2)
+ceiling(3.14159)  # Round up
+floor(3.14159)   # Round down
+
+# Absolute value
+abs(-15)
+
+# Square root
+sqrt(16)
+
+# Logarithms
+log(10)    # Natural log
+log10(100) # Base 10 log
+```
+
+### Statistical Functions
+
+```{webr}
+#| autorun: false
+# Create some data
+measurements <- c(23, 25, 21, 27, 24, 26, 22)
+
+# Basic statistics
+mean(measurements)    # Average
+median(measurements)  # Middle value
+sd(measurements)     # Standard deviation
+var(measurements)    # Variance
+range(measurements)  # Min and max
+sum(measurements)    # Total
+length(measurements) # Count
+```
+
+## 6. Logical Operations 🤔
+
+Logical operations help us make comparisons and decisions:
+
+```{webr}
+#| autorun: false
+# Comparisons
+x <- 5
+y <- 10
+
+# Equal to
+x == y
+
+# Not equal to
+x != y
+
+# Greater than
+x > y
+
+# Less than
+x < y
+
+# Greater than or equal to
+x >= y
+
+# Less than or equal to
+x <= y
+
+# Multiple conditions
+# AND operator (&)
+(x > 0) & (y < 20)
+
+# OR operator (|)
+(x > 10) | (y > 5)
+
+# NOT operator (!)
+!(x > y)
+```
+
+## Practice Exercises 💪
+
+Let's consolidate what we've learned with some exercises:
+
+### Exercise 1: Basic Calculations
+Try to calculate:
+1. The area of a circle with radius 5 (use `pi` for π)
+2. The volume of a sphere with the same radius
+3. Round both results to 2 decimal places
+
+```{webr}
+#| autorun: false
+# Your solution here
+# Area = πr²
+circle_area <- pi * 5^2
+round(circle_area, 2)
+
+# Volume = (4/3)πr³
+sphere_volume <- (4/3) * pi * 5^3
+round(sphere_volume, 2)
+```
+
+### Exercise 2: Working with Vectors
+Create a vector of fish weights (in kg): 1.2, 2.3, 3.4, 2.1, 1.9
+1. Calculate the total weight
+2. Find the average weight
+3. Identify weights above 2 kg
+4. Count how many fish weigh more than 2 kg
+
+```{webr}
+#| autorun: false
+# Create the vector
+weights <- c(1.2, 2.3, 3.4, 2.1, 1.9)
+
+# Total weight
+sum(weights)
+
+# Average weight
+mean(weights)
+
+# Weights above 2 kg
+weights[weights > 2]
+
+# Count weights above 2 kg
+sum(weights > 2)  # TRUE counts as 1, FALSE as 0
+```
+
+### Exercise 3: Combining Operations
+You have caught fish of different species. Create vectors for:
+1. Species names: "Tuna", "Mackerel", "Sardine", "Tuna", "Mackerel"
+2. Weights: 2.5, 1.2, 0.5, 2.3, 1.1
+3. Calculate the average weight per species
+
+```{webr}
+#| autorun: false
+# Create vectors
+species <- c("Tuna", "Mackerel", "Sardine", "Tuna", "Mackerel")
+weights <- c(2.5, 1.2, 0.5, 2.3, 1.1)
+
+# Calculate average weight for each species
+# For Tuna
+tuna_weights <- weights[species == "Tuna"]
+mean(tuna_weights)
+
+# For Mackerel
+mackerel_weights <- weights[species == "Mackerel"]
+mean(mackerel_weights)
+
+# For Sardine
+sardine_weights <- weights[species == "Sardine"]
+mean(sardine_weights)
+```
+
+## Troubleshooting Common Issues 🔧
+
+Here are some common issues you might encounter and how to fix them:
+
+### 1. Error in Variable Names
+```{webr}
+#| autorun: false
+# This will cause an error
+fish.weight <- 100
+Fish.weight  # Wrong! R is case-sensitive
+
+# Fix: Use exact same spelling and case
+fish.weight  # Correct
+```
+
+### 2. Missing Quotes for Text
+```{webr}
+#| autorun: false
+# This will cause an error
+# species <- Tuna  # Error!
+
+# Fix: Add quotes for text
+species <- "Tuna"  # Correct
+```
+
+### 3. Incorrect Vector Creation
+```{webr}
+#| autorun: false
+# This will cause an error
+# weights <- 1.2 2.3 3.4  # Error!
+
+# Fix: Use c() and commas
+weights <- c(1.2, 2.3, 3.4)  # Correct
+```
+
+## Next Steps 🚀
+
+Now that you understand basic R operations, you can:
+1. Start working with real data
+2. Learn about data frames
+3. Explore data visualization
+4. Begin basic statistical analysis
+
+:::{.callout-note}
+## Additional Resources
+- [R Documentation](https://www.rdocumentation.org/)
+- [Quick R](https://www.statmethods.net/)
+- [R Cookbook](https://rc2e.com/)
+:::
+
+## Practice Makes Perfect! 🎯
+
+The best way to learn R is by practicing. Try to:
+1. Modify the examples provided
+2. Create your own variables and vectors
+3. Experiment with different functions
+4. Work through the exercises multiple times
+5. Create your own exercises based on real data
+
+Remember: Don't worry about making mistakes - they're a natural part of learning!
+
+:::{.callout-tip}
+## Tips for Learning
+- Type out the code yourself instead of copying and pasting
+- Try to predict what code will do before running it
+- If you get an error, read it carefully - R usually tells you what's wrong
+- Keep notes of new functions and operations you learn
+:::
+
+Need help? Remember you can:
+1. Check the R documentation with `?function_name`
+2. Ask questions in the comments
+3. Join our community forum
+4. Practice with the interactive exercises above

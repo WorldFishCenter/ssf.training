@@ -1,0 +1,15 @@
+/*-- scss:rules --*/
+
+/* Logo styling for both themes */
+.navbar-brand img {
+    height: 50px !important;
+    width: auto;
+    max-height: 50px;
+    object-fit: contain;
+}
+
+.navbar {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    min-height: 70px;
+}
