@@ -10,8 +10,62 @@ listing:
   filter-ui: true
 page-layout: full
 title-block-banner: true
+code-tools: false
 ---
 
-This collection is designed to help you work with small-scale fishery data using R. The examples are tailored to practical use cases, leveraging `ggplot2` and other tools to analyze and visualize fisheries data. All code can be run interactively in your browser using `quarto-live`, meaning no installation is necessary to start learning and applying these techniques.
+Welcome to our interactive R training course designed specifically for small-scale fisheries data analysis! 🎯
 
-These data science "snacks" are meant to provide you with hands-on experience for working with real-world fishery datasets. They can serve as quick, practical insights or as stepping stones to more advanced analysis in fisheries research.
+## What's This Course About?
+
+This course provides a structured pathway to learn R programming with a specific focus on small-scale fisheries data. Whether you're a researcher, fishery manager, or practitioner, you'll learn how to effectively analyze and visualize fisheries data using modern R tools and techniques.
+
+## Why This Course?
+
+- **No Installation Required**: All tutorials run directly in your browser using `quarto-live`
+- **Fisheries-Focused**: Examples use real-world fisheries data and scenarios
+- **Progressive Learning**: Start from basics and build up to advanced analyses
+- **Practical Skills**: Learn techniques you can immediately apply to your work
+
+## Course Structure
+
+Our tutorials are organized into progressive modules:
+
+1. **Getting Started**
+   - R and RStudio setup
+   - Basic R operations
+   - Working with data frames
+
+2. **Essential Tools**
+   - Data manipulation with tidyverse
+   - in progress.....
+   
+
+## How to Use This Course
+
+1. **Start at the Beginning**: If you're new to R, begin with the installation and basics tutorials
+2. **Practice Actively**: Each tutorial includes interactive exercises
+3. **Build Your Skills**: Tutorials build on each other, gradually introducing more complex concepts
+4. **Apply Your Learning**: Try the techniques with your own data
+
+## Who Is This For?
+
+- Fisheries researchers
+- Data collectors and managers
+- NGO staff working with fisheries
+- Students in fisheries science
+- Anyone working with small-scale fisheries data
+
+## What You'll Learn
+
+By the end of this course, you'll be able to:
+- Efficiently organize and clean fisheries data
+- Create publication-quality visualizations
+- Perform common fisheries analyses
+- Automate routine data tasks
+- Generate reproducible reports
+
+## Getting Started
+
+Browse the tutorials below or start with our first module on R basics. Each tutorial can be run interactively in your browser, allowing you to learn and practice simultaneously.
+
+Remember: The best way to learn is by doing. Don't just read the tutorials - try the code, modify it, and experiment with your own data!

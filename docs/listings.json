@@ -2,11 +2,11 @@
   {
     "listing": "/index.html",
     "items": [
-      "/r_snacks/rbasics.html",
-      "/r_snacks/rbasics2.html",
-      "/r_snacks/ggplot.html",
-      "/r_snacks/tidyverse_basics.html",
-      "/r_snacks/trends.html"
+      "/r_snacks/1_rbasics.html",
+      "/r_snacks/2_rbasics.html",
+      "/r_snacks/3_dataframes.html",
+      "/r_snacks/4_packages.html",
+      "/r_snacks/5_tidyverse_basics.html"
     ]
   }
 ]

@@ -1,5 +1,5 @@
 ---
-title: "Getting Started with R: Data Manipulation Basics"
+title: "5. Getting Started with R: Data Manipulation Basics"
 author: "Lore"
 date: 2024-09-30
 format: live-html

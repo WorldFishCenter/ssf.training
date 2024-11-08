@@ -1,5 +1,5 @@
 ---
-title: "Basic Operations in R: A Complete Guide"
+title: "2. Basic Operations in R: A Complete Guide"
 author: "SSF Training Team"
 date: 2024-11-06
 format: live-html
@@ -52,12 +52,6 @@ Try these operations in the console:
 
 # Exponentiation (powers)
 2 ^ 3  # 2 to the power of 3
-
-# Integer division (drops remainder)
-17 %/% 5
-
-# Modulo (gives remainder)
-17 %% 5
 ```
 
 :::{.callout-tip}
@@ -67,8 +61,6 @@ Try these operations in the console:
 - `*` Multiplication
 - `/` Division
 - `^` or `**` Exponentiation
-- `%/%` Integer division
-- `%%` Modulo (remainder)
 :::
 
 ### Order of Operations
@@ -205,9 +197,6 @@ is_tagged <- FALSE
 
 # Check the type
 class(is_adult)
-
-# Logical values in calculations
-sum(c(TRUE, FALSE, TRUE))  # TRUE counts as 1, FALSE as 0
 ```
 
 ### Converting Between Types (Coercion)
@@ -511,6 +500,4 @@ Remember: Don't worry about making mistakes - they're a natural part of learning
 
 Need help? Remember you can:
 1. Check the R documentation with `?function_name`
-2. Ask questions in the comments
-3. Join our community forum
-4. Practice with the interactive exercises above
+2. Practice with the interactive exercises above

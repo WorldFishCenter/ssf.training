@@ -1,3 +1,4 @@
+# Basic configuration with sidebar navigation
 project:
   type: website
   render:
@@ -7,14 +8,70 @@ project:
   output-dir: docs
 
 website:
+  title: "R for SSF: Data Analysis Training"
   description: "Learn how to use R for small-scale fisheries data analysis"
+  
+  # Add a sidebar navigation
+  sidebar:
+    style: "floating"  # or "floating"
+    search: true
+    contents:
+      - section: "Getting Started"
+        contents:
+          - href: r_snacks/1_rbasics.qmd
+            text: "1. R Installation"
+          - href: r_snacks/2_rbasics.qmd
+            text: "2. Basic Operations"
+          - href: r_snacks/3_dataframes.qmd
+            text: "3. Data Frames"
+      - section: "Data Analysis"
+        contents:
+          - text: "Working with Packages"
+          - text: "Data Visualization"
+  
+  # Customize the navbar
   navbar:
     logo: https://upload.wikimedia.org/wikipedia/en/9/9e/WorldFish_logo.svg
+    href: https://worldfishcenter.org/
+    right:
+      - text: "Tutorials"
+        menu:
+          - text: "R Basics"
+            href: r_snacks/1_rbasics.qmd
+          - text: "Data Analysis"
+            href: r_snacks/3_dataframes.qmd
+      - icon: github
+        href: https://github.com/WorldFishCenter/ssf.training/
+
+  # Add a footer
+  page-footer:
+    left: "Copyright 2024 WorldFish"
     right:
       - icon: github
         href: https://github.com/WorldFishCenter/ssf.training/
+  
+  # Control search functionality
+  search:
+    location: navbar
+    type: overlay  # or "textbox"
+    
+# Page layout options
 format:
   html:
     theme:
-      light: [cosmo, custom.scss]  
+      light: [cosmo, custom.scss]
       dark: [cosmo, theme-dark.scss, custom.scss]
+    toc: true
+    toc-location: left  # or right
+    toc-title: "On this page"
+    code-fold: true
+    code-tools: true
+    code-link: true
+    highlight-style: github
+    
+# Control page width and margins
+    page-layout: full  # or article
+    grid:
+      sidebar-width: 300px
+      body-width: 900px
+      margin-width: 300px

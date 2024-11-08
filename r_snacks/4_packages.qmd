@@ -1,0 +1,330 @@
+---
+title: "4. Base R vs Tidyverse: Why Packages Matter"
+author: "SSF Training Team"
+date: 2024-11-06
+format: live-html
+engine: knitr
+categories: ["R", "Packages", "Tidyverse"]
+webr:
+  autorun: false
+  render-df: gt-interactive
+  packages:
+    - tidyverse
+---
+
+{{< include ../_extensions/r-wasm/live/_knitr.qmd >}}
+
+
+## Why Use Packages? A Practical Demonstration 🎯
+
+Let's explore how the same tasks can be accomplished using base R versus tidyverse packages. This will help you understand why packages can make your work more efficient and readable.
+
+:::{.callout-note}
+## Learning Objectives
+By the end of this tutorial, you will understand:
+- The differences between base R and tidyverse approaches
+- Why the pipe operator makes code more readable
+- When to use each approach
+- How packages can simplify complex operations
+:::
+
+## 1. Data Creation and Basic Operations 📊
+
+Let's start with creating and manipulating a simple fisheries dataset:
+
+### Creating a Dataset
+
+```{webr}
+#| autorun: false
+# Sample fisheries data
+# Base R approach
+fisheries_base <- data.frame(
+  date = as.Date(c("2024-01-01", "2024-01-02", "2024-01-03", "2024-01-01", "2024-01-02", "2024-01-03")),
+  species = c("Tuna", "Tuna", "Tuna", "Mackerel", "Mackerel", "Mackerel"),
+  catch_kg = c(100, 150, 200, 80, 120, 90),
+  location = c("Site A", "Site B", "Site A", "Site B", "Site A", "Site B")
+)
+
+# Tidyverse approach
+library(tidyverse)
+fisheries_tidy <- tibble(
+  date = as.Date(c("2024-01-01", "2024-01-02", "2024-01-03", "2024-01-01", "2024-01-02", "2024-01-03")),
+  species = c("Tuna", "Tuna", "Tuna", "Mackerel", "Mackerel", "Mackerel"),
+  catch_kg = c(100, 150, 200, 80, 120, 90),
+  location = c("Site A", "Site B", "Site A", "Site B", "Site A", "Site B")
+)
+```
+
+## 2. Filtering Data 🔍
+
+Let's find all Tuna catches over 120kg:
+
+```{webr}
+#| autorun: false
+# Base R approach
+fisheries_base[fisheries_base$species == "Tuna" & fisheries_base$catch_kg > 120, ]
+
+# Tidyverse approach
+fisheries_tidy %>%
+  filter(species == "Tuna", catch_kg > 120)
+```
+
+Notice how the tidyverse approach:
+- Doesn't need dollar signs ($)
+- Doesn't require comma separation for rows and columns
+- Reads more like English: "take fisheries_tidy and then filter..."
+
+## 3. Calculating Summary Statistics 📈
+
+Let's calculate average catch by species:
+
+```{webr}
+#| autorun: false
+# Base R approach
+aggregate(catch_kg ~ species, 
+         data = fisheries_base, 
+         FUN = function(x) c(mean = mean(x), 
+                            total = sum(x), 
+                            count = length(x)))
+
+# Tidyverse approach
+fisheries_tidy %>%
+  group_by(species) %>%
+  summarize(
+    mean_catch = mean(catch_kg),
+    total_catch = sum(catch_kg),
+    count = n()
+  )
+```
+
+The tidyverse approach:
+- Uses more intuitive function names
+- Produces cleaner output
+- Is easier to modify and extend
+
+## 4. Complex Data Manipulation 🛠️
+
+Let's perform a more complex analysis: calculate daily catch percentages by species:
+
+```{webr}
+#| autorun: false
+# Base R approach
+# Step 1: Calculate daily totals
+daily_totals <- aggregate(catch_kg ~ date, 
+                         data = fisheries_base, 
+                         FUN = sum)
+names(daily_totals)[2] <- "daily_total"
+
+# Step 2: Merge back with original data
+merged_data <- merge(fisheries_base, daily_totals, by = "date")
+
+# Step 3: Calculate percentages
+merged_data$percentage <- (merged_data$catch_kg / merged_data$daily_total) * 100
+
+# Step 4: Order the results
+merged_data[order(merged_data$date, merged_data$species), ]
+
+# Tidyverse approach
+fisheries_tidy %>%
+  group_by(date) %>%
+  mutate(
+    daily_total = sum(catch_kg),
+    percentage = (catch_kg / daily_total) * 100
+  ) %>%
+  arrange(date, species)
+```
+
+The differences are striking:
+- Base R requires multiple steps and intermediate objects
+- Tidyverse accomplishes everything in a single pipeline
+- The code intent is much clearer in the tidyverse version
+
+## 5. Reshaping Data 🔄
+
+Let's reshape our data to show catches by species in columns:
+
+```{webr}
+#| autorun: false
+# Base R approach
+reshape(fisheries_base, 
+       direction = "wide",
+       idvar = c("date", "location"),
+       timevar = "species",
+       v.names = "catch_kg")
+
+# Tidyverse approach
+fisheries_tidy %>%
+  pivot_wider(
+    names_from = species,
+    values_from = catch_kg
+  )
+```
+
+## 6. Complex Analysis Example: Catch Trends 📊
+
+Let's calculate running averages and relative changes:
+
+```{webr}
+#| autorun: false
+# Base R approach
+# Step 1: Order data
+ordered_data <- fisheries_base[order(fisheries_base$date), ]
+
+# Step 2: Split by species
+species_list <- split(ordered_data, ordered_data$species)
+
+# Step 3: Calculate running means and changes
+result_list <- lapply(species_list, function(x) {
+  running_mean <- zoo::rollmean(x$catch_kg, k = 2, fill = NA)
+  changes <- c(NA, diff(x$catch_kg))
+  data.frame(
+    date = x$date,
+    catch_kg = x$catch_kg,
+    running_mean = running_mean,
+    change = changes
+  )
+})
+
+# Step 4: Combine results
+do.call(rbind, result_list)
+
+# Tidyverse approach
+fisheries_tidy %>%
+  arrange(date) %>%
+  group_by(species) %>%
+  mutate(
+    running_mean = (catch_kg + lag(catch_kg)) / 2,
+    change = catch_kg - lag(catch_kg)
+  )
+```
+
+## 7. Data Quality Checks 🔍
+
+Let's check for potential data issues:
+
+```{webr}
+#| autorun: false
+# Base R approach
+# Check for missing values
+colSums(is.na(fisheries_base))
+
+# Check value ranges
+summary(fisheries_base$catch_kg)
+
+# Find unusual values
+outliers <- fisheries_base$catch_kg[
+  fisheries_base$catch_kg > 
+    mean(fisheries_base$catch_kg) + 2*sd(fisheries_base$catch_kg)
+]
+
+# Tidyverse approach
+fisheries_tidy %>%
+  summarise(
+    across(everything(), 
+           list(
+             missing = ~sum(is.na(.)),
+             unique = ~n_distinct(.)
+           ))
+  ) %>%
+  pivot_longer(everything(), 
+               names_to = c("column", "stat"), 
+               names_sep = "_")
+
+# Check for outliers
+fisheries_tidy %>%
+  mutate(
+    mean_catch = mean(catch_kg),
+    sd_catch = sd(catch_kg),
+    is_outlier = catch_kg > mean_catch + 2*sd_catch
+  ) %>%
+  filter(is_outlier)
+```
+
+## Practice Exercises: Convert Base R to Tidyverse 💪
+
+### Exercise 1: Basic Filtering and Summarizing
+
+Convert this base R code to tidyverse:
+
+```{webr}
+#| autorun: false
+# Base R
+result <- aggregate(
+  catch_kg ~ species + location, 
+  data = fisheries_base[fisheries_base$catch_kg > 100, ],
+  FUN = mean
+)
+result[order(-result$catch_kg), ]
+
+# Your tidyverse solution here
+fisheries_tidy %>%
+  filter(catch_kg > 100) %>%
+  group_by(species, location) %>%
+  summarize(avg_catch = mean(catch_kg)) %>%
+  arrange(desc(avg_catch))
+```
+
+### Exercise 2: Complex Data Manipulation
+
+Convert this base R code to tidyverse:
+
+```{webr}
+#| autorun: false
+# Base R
+species_summary <- tapply(fisheries_base$catch_kg, 
+                         fisheries_base$species, 
+                         function(x) {
+                           c(mean = mean(x),
+                             sd = sd(x),
+                             cv = sd(x)/mean(x))
+                         })
+as.data.frame(do.call(rbind, species_summary))
+
+# Your tidyverse solution here
+fisheries_tidy %>%
+  group_by(species) %>%
+  summarize(
+    mean = mean(catch_kg),
+    sd = sd(catch_kg),
+    cv = sd/mean
+  )
+```
+
+## Best Practices: When to Use Each Approach 📝
+
+### Use Base R When:
+- Working with very simple operations
+- Memory efficiency is crucial
+- Need maximum computational speed
+- Working with basic statistical functions
+- Teaching fundamental R concepts
+
+### Use Tidyverse When:
+- Working with data frames
+- Need readable and maintainable code
+- Performing data manipulation
+- Creating data pipelines
+- Working with dates and strings
+- Making plots with ggplot2
+
+:::{.callout-tip}
+## Pro Tip
+You can mix base R and tidyverse approaches! Use what makes the most sense for each specific task.
+:::
+
+## Key Takeaways 🎯
+
+1. **Readability**: Tidyverse code is generally more readable and self-documenting
+2. **Consistency**: Tidyverse functions work consistently together
+3. **Efficiency**: Tidyverse often requires less code for complex operations
+4. **Learning Curve**: Base R is simpler to start with but harder to master
+5. **Flexibility**: Both approaches have their place in data analysis
+
+## Next Steps 🚀
+
+1. Practice converting your existing base R code to tidyverse
+2. Learn more advanced tidyverse functions
+3. Explore other tidyverse packages like purrr and tidyr
+4. Develop your own style combining both approaches
+
+Remember: The goal is not to completely replace base R, but to use the right tool for each job!
