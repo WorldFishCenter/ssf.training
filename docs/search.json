@@ -187,6 +187,13 @@
     ]
   },
   {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "R for Small-Scale Fishery Data",
+    "section": "",
+    "text": "Welcome to our interactive R programming course, specifically designed for small-scale fisheries data analysis. Learn through practical tutorials that run directly in your browser - no installation needed. Our tutorials use real fisheries examples, from basic catch data calculations to stock assessments. Start with R fundamentals and progress at your own pace, practicing each concept with interactive exercises. Each tutorial builds on previous ones, helping you develop practical skills for analyzing your fisheries data. Browse the tutorials below to begin your journey in R programming for fisheries analysis.\nRemember: The best way to learn is by doing. Don’t just read the tutorials - try the code, modify it, and experiment with your own data!\n\n\n\n\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n1. Getting Started with R: Installation and First Steps\n\n\n\n\n\n\nR\n\n\nSetup\n\n\nBasics\n\n\n\n\n\n\n\n\n\nNov 6, 2024\n\n\nSSF Training Team\n\n\n\n\n\n\n\n\n\n\n\n\n2. Basic Operations in R: A Technical Guide\n\n\n\n\n\n\nR\n\n\nBasics\n\n\nOperations\n\n\n\n\n\n\n\n\n\nNov 6, 2024\n\n\nSSF Training Team\n\n\n\n\n\n\n\n\n\n\n\n\n3. Understanding Data Frames in R\n\n\n\n\n\n\nR\n\n\nData Frames\n\n\nBasics\n\n\n\n\n\n\n\n\n\nNov 6, 2024\n\n\nSSF Training Team\n\n\n\n\n\n\n\n\n\n\n\n\n4. Understanding R Packages: Making Your Life Easier\n\n\n\n\n\n\nR\n\n\nPackages\n\n\nBasics\n\n\n\n\n\n\n\n\n\nNov 6, 2024\n\n\nSSF Training Team\n\n\n\n\n\n\nNo matching items"
+  },
+  {
     "objectID": "r_snacks/1_rbasics.html",
     "href": "r_snacks/1_rbasics.html",
     "title": "1. Getting Started with R: Installation and First Steps",
@@ -284,27 +291,6 @@
       "Getting Started",
       "1. R Installation"
     ]
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "R for Small-Scale Fishery Data",
-    "section": "",
-    "text": "Welcome to our interactive R programming course, specifically designed for small-scale fisheries data analysis. Learn through practical tutorials that run directly in your browser - no installation needed. Our tutorials use real fisheries examples, from basic catch data calculations to stock assessments. Start with R fundamentals and progress at your own pace, practicing each concept with interactive exercises. Each tutorial builds on previous ones, helping you develop practical skills for analyzing your fisheries data. Browse the tutorials below to begin your journey in R programming for fisheries analysis.\nRemember: The best way to learn is by doing. Don’t just read the tutorials - try the code, modify it, and experiment with your own data!\n\n\n\n\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n1. Getting Started with R: Installation and First Steps\n\n\n\n\n\n\nR\n\n\nSetup\n\n\nBasics\n\n\n\n\n\n\n\n\n\nNov 6, 2024\n\n\nSSF Training Team\n\n\n\n\n\n\n\n\n\n\n\n\n2. Basic Operations in R: A Technical Guide\n\n\n\n\n\n\nR\n\n\nBasics\n\n\nOperations\n\n\n\n\n\n\n\n\n\nNov 6, 2024\n\n\nSSF Training Team\n\n\n\n\n\n\n\n\n\n\n\n\n3. Understanding Data Frames in R\n\n\n\n\n\n\nR\n\n\nData Frames\n\n\nBasics\n\n\n\n\n\n\n\n\n\nNov 6, 2024\n\n\nSSF Training Team\n\n\n\n\n\n\n\n\n\n\n\n\n4. Understanding R Packages: Making Your Life Easier\n\n\n\n\n\n\nR\n\n\nPackages\n\n\nBasics\n\n\n\n\n\n\n\n\n\nNov 6, 2024\n\n\nSSF Training Team\n\n\n\n\n\n\n\n\n\n\n\n\n5. Getting Started with R: Data Manipulation Basics\n\n\n\n\n\n\nR\n\n\nData Manipulation\n\n\ntidyverse\n\n\n\n\n\n\n\n\n\nSep 30, 2024\n\n\nLore\n\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "r_snacks/5_tidyverse_basics.html",
-    "href": "r_snacks/5_tidyverse_basics.html",
-    "title": "5. Getting Started with R: Data Manipulation Basics",
-    "section": "",
-    "text": "The tidyverse is a collection of R packages designed for data science. In this guide, we’ll explore the basics of data manipulation using dplyr, a core package of the tidyverse.\n\n\nFirst, let’s load the tidyverse package and create a simple dataset to work with:\n\n\n\n\n\n\n\n\n\n\n\nLet’s explore the fundamental dplyr verbs that you’ll use frequently:\n\n\nUse select() to choose specific columns:\n\n\n\n\n\n\n\n\n\n\n\nUse filter() to subset rows based on conditions:\n\n\n\n\n\n\n\n\n\n\n\nUse mutate() to add new columns:\n\n\n\n\n\n\n\n\n\n\n\n\nThe power of dplyr comes from combining operations using the pipe operator (%&gt;%):\n\n\n\n\n\n\n\n\n\n\n\nUse summarise() (or summarize()) with group_by() for aggregate statistics:"
-  },
-  {
-    "objectID": "r_snacks/5_tidyverse_basics.html#introduction-to-tidyverse",
-    "href": "r_snacks/5_tidyverse_basics.html#introduction-to-tidyverse",
-    "title": "5. Getting Started with R: Data Manipulation Basics",
-    "section": "",
-    "text": "The tidyverse is a collection of R packages designed for data science. In this guide, we’ll explore the basics of data manipulation using dplyr, a core package of the tidyverse.\n\n\nFirst, let’s load the tidyverse package and create a simple dataset to work with:\n\n\n\n\n\n\n\n\n\n\n\nLet’s explore the fundamental dplyr verbs that you’ll use frequently:\n\n\nUse select() to choose specific columns:\n\n\n\n\n\n\n\n\n\n\n\nUse filter() to subset rows based on conditions:\n\n\n\n\n\n\n\n\n\n\n\nUse mutate() to add new columns:\n\n\n\n\n\n\n\n\n\n\n\n\nThe power of dplyr comes from combining operations using the pipe operator (%&gt;%):\n\n\n\n\n\n\n\n\n\n\n\nUse summarise() (or summarize()) with group_by() for aggregate statistics:"
   },
   {
     "objectID": "r_snacks/3_dataframes.html",
