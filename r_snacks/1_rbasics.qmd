@@ -101,7 +101,7 @@ Always install R first, then RStudio. RStudio needs R to work!
 
 RStudio has four main panels (clockwise from top-left):
 
-![Description of the image](images/rinterface.png)
+![Rstudio standard interface](images/rinterface.png)
 
 1.  **Program Pane**
     -   Where you write and edit your code

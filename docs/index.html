@@ -129,6 +129,7 @@ window.Quarto = {
 };
 </script>
 
+<link rel="stylesheet" href="styles.css">
 </head>
 
 <body class="nav-sidebar floating nav-fixed">
@@ -142,7 +143,7 @@ window.Quarto = {
     <img src="https://upload.wikimedia.org/wikipedia/en/9/9e/WorldFish_logo.svg" alt="" class="navbar-logo">
     </a>
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">R for SSF: Data Analysis Training</span>
+    <span class="navbar-title">R for Small-Scale Fisheries</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -156,13 +157,70 @@ window.Quarto = {
  <span class="menu-text">Tutorials</span>
     </a>
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-tutorials">    
+        <li class="dropdown-header">Getting Started</li>
         <li>
     <a class="dropdown-item" href="./r_snacks/1_rbasics.html">
- <span class="dropdown-text">R Basics</span></a>
+ <span class="dropdown-text">1. R Installation</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./r_snacks/2_rbasics.html">
+ <span class="dropdown-text">2. Basic Operations</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="./r_snacks/3_dataframes.html">
- <span class="dropdown-text">Data Analysis</span></a>
+ <span class="dropdown-text">3. Data Frames</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./r_snacks/4_packages.html">
+ <span class="dropdown-text">3. Packages in R</span></a>
+  </li>  
+        <li class="dropdown-header">─────────────────</li>
+        <li class="dropdown-header">Data Processing</li>
+        <li class="dropdown-header">1. Preprocessing data 1</li>
+        <li>
+    <a class="dropdown-item" href="./r_snacks/workinprogress.html">
+ <span class="dropdown-text">This Section is currrently work in Progress</span></a>
+  </li>  
+        <li class="dropdown-header">2. Preprocessing data 2</li>
+        <li>
+    <a class="dropdown-item" href="./r_snacks/workinprogress.html">
+ <span class="dropdown-text">This Section is currrently work in Progress</span></a>
+  </li>  
+        <li class="dropdown-header">─────────────────</li>
+        <li class="dropdown-header">Data Validation</li>
+        <li class="dropdown-header">1. Validate data 1</li>
+        <li>
+    <a class="dropdown-item" href="./r_snacks/workinprogress.html">
+ <span class="dropdown-text">This Section is currrently work in Progress</span></a>
+  </li>  
+        <li class="dropdown-header">2. Validate data 2</li>
+        <li>
+    <a class="dropdown-item" href="./r_snacks/workinprogress.html">
+ <span class="dropdown-text">This Section is currrently work in Progress</span></a>
+  </li>  
+        <li class="dropdown-header">─────────────────</li>
+        <li class="dropdown-header">Data Visualization</li>
+        <li class="dropdown-header">1. Basics of Data Visualization in R</li>
+        <li>
+    <a class="dropdown-item" href="./r_snacks/workinprogress.html">
+ <span class="dropdown-text">This Section is currrently work in Progress</span></a>
+  </li>  
+        <li class="dropdown-header">2. Advanced Visualizations</li>
+        <li>
+    <a class="dropdown-item" href="./r_snacks/workinprogress.html">
+ <span class="dropdown-text">This Section is currrently work in Progress</span></a>
+  </li>  
+        <li class="dropdown-header">─────────────────</li>
+        <li class="dropdown-header">Data Analysis for Small-Scale Fisheries</li>
+        <li class="dropdown-header">1. Basics of Data Visualization in R</li>
+        <li>
+    <a class="dropdown-item" href="./r_snacks/workinprogress.html">
+ <span class="dropdown-text">This Section is currrently work in Progress</span></a>
+  </li>  
+        <li class="dropdown-header">2. Advanced Visualizations</li>
+        <li>
+    <a class="dropdown-item" href="./r_snacks/workinprogress.html">
+ <span class="dropdown-text">This Section is currrently work in Progress</span></a>
   </li>  
     </ul>
   </li>
@@ -193,7 +251,7 @@ window.Quarto = {
   </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block default toc-left page-columns page-full">
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
       <h1 class="title">R for Small-Scale Fishery Data</h1>
@@ -211,7 +269,9 @@ window.Quarto = {
   
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="quarto-sidebar-header"><div class="sidebar-header-item">
+<p>Course contents:</p>
+</div></div>
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
@@ -246,45 +306,114 @@ window.Quarto = {
  <span class="menu-text">3. Data Frames</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./r_snacks/4_packages.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3. Packages in R</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
- <span class="menu-text">Data Analysis</span></a>
+ <span class="menu-text">Data processing</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
- <span class="menu-text">Working with Packages</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="./r_snacks/workinprogress.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1. Preprocessing data 1</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
- <span class="menu-text">Data Visualization</span>
+  <div class="sidebar-item-container"> 
+  <a href="./r_snacks/workinprogress.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2. Preprocessing data 2</span></a>
+  </div>
+</li>
+      </ul>
   </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Data validation</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./r_snacks/workinprogress.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1. Validate data 1</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./r_snacks/workinprogress.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2. Validate data 2</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Data visualization</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./r_snacks/workinprogress.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1. Basic of data visualization in R</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./r_snacks/workinprogress.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2. Advanced visualizations</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">Data analysis for small scale fisheries</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./r_snacks/workinprogress.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1. Basic of data visualization in R</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./r_snacks/workinprogress.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2. Advanced visualizations</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
     </div>
-    <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#whats-this-course-about" id="toc-whats-this-course-about" class="nav-link active" data-scroll-target="#whats-this-course-about">What’s This Course About?</a></li>
-  <li><a href="#why-this-course" id="toc-why-this-course" class="nav-link" data-scroll-target="#why-this-course">Why This Course?</a></li>
-  <li><a href="#course-structure" id="toc-course-structure" class="nav-link" data-scroll-target="#course-structure">Course Structure</a></li>
-  <li><a href="#how-to-use-this-course" id="toc-how-to-use-this-course" class="nav-link" data-scroll-target="#how-to-use-this-course">How to Use This Course</a></li>
-  <li><a href="#who-is-this-for" id="toc-who-is-this-for" class="nav-link" data-scroll-target="#who-is-this-for">Who Is This For?</a></li>
-  <li><a href="#what-youll-learn" id="toc-what-youll-learn" class="nav-link" data-scroll-target="#what-youll-learn">What You’ll Learn</a></li>
-  <li><a href="#getting-started" id="toc-getting-started" class="nav-link" data-scroll-target="#getting-started">Getting Started</a></li>
-  </ul>
-</nav>
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(6)</span></div><div class="category" data-category="Basics">Basics <span class="quarto-category-count">(3)</span></div><div class="category" data-category="Data Frames">Data Frames <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Data Manipulation">Data Manipulation <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Operations">Operations <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Packages">Packages <span class="quarto-category-count">(1)</span></div><div class="category" data-category="R">R <span class="quarto-category-count">(5)</span></div><div class="category" data-category="Setup">Setup <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Tidyverse">Tidyverse <span class="quarto-category-count">(1)</span></div><div class="category" data-category="tidyverse">tidyverse <span class="quarto-category-count">(1)</span></div></div></div>
+        
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(6)</span></div><div class="category" data-category="Basics">Basics <span class="quarto-category-count">(4)</span></div><div class="category" data-category="Data Frames">Data Frames <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Data Manipulation">Data Manipulation <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Operations">Operations <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Packages">Packages <span class="quarto-category-count">(1)</span></div><div class="category" data-category="R">R <span class="quarto-category-count">(5)</span></div><div class="category" data-category="Setup">Setup <span class="quarto-category-count">(1)</span></div><div class="category" data-category="tidyverse">tidyverse <span class="quarto-category-count">(1)</span></div></div></div>
 <!-- main -->
 <main class="content quarto-banner-title-block column-body" id="quarto-document-content">
 
@@ -292,68 +421,11 @@ window.Quarto = {
 
 
 
-<p>Welcome to our interactive R training course designed specifically for small-scale fisheries data analysis! 🎯</p>
-<section id="whats-this-course-about" class="level2">
-<h2 class="anchored" data-anchor-id="whats-this-course-about">What’s This Course About?</h2>
-<p>This course provides a structured pathway to learn R programming with a specific focus on small-scale fisheries data. Whether you’re a researcher, fishery manager, or practitioner, you’ll learn how to effectively analyze and visualize fisheries data using modern R tools and techniques.</p>
-</section>
-<section id="why-this-course" class="level2">
-<h2 class="anchored" data-anchor-id="why-this-course">Why This Course?</h2>
-<ul>
-<li><strong>No Installation Required</strong>: All tutorials run directly in your browser using <code>quarto-live</code></li>
-<li><strong>Fisheries-Focused</strong>: Examples use real-world fisheries data and scenarios</li>
-<li><strong>Progressive Learning</strong>: Start from basics and build up to advanced analyses</li>
-<li><strong>Practical Skills</strong>: Learn techniques you can immediately apply to your work</li>
-</ul>
-</section>
-<section id="course-structure" class="level2">
-<h2 class="anchored" data-anchor-id="course-structure">Course Structure</h2>
-<p>Our tutorials are organized into progressive modules:</p>
-<ol type="1">
-<li><strong>Getting Started</strong>
-<ul>
-<li>R and RStudio setup</li>
-<li>Basic R operations</li>
-<li>Working with data frames</li>
-</ul></li>
-<li><strong>Essential Tools</strong>
-<ul>
-<li>Data manipulation with tidyverse</li>
-<li>in progress…..</li>
-</ul></li>
-</ol>
-</section>
-<section id="how-to-use-this-course" class="level2">
-<h2 class="anchored" data-anchor-id="how-to-use-this-course">How to Use This Course</h2>
-<ol type="1">
-<li><strong>Start at the Beginning</strong>: If you’re new to R, begin with the installation and basics tutorials</li>
-<li><strong>Practice Actively</strong>: Each tutorial includes interactive exercises</li>
-<li><strong>Build Your Skills</strong>: Tutorials build on each other, gradually introducing more complex concepts</li>
-<li><strong>Apply Your Learning</strong>: Try the techniques with your own data</li>
-</ol>
-</section>
-<section id="who-is-this-for" class="level2">
-<h2 class="anchored" data-anchor-id="who-is-this-for">Who Is This For?</h2>
-<ul>
-<li>Fisheries researchers</li>
-<li>Data collectors and managers</li>
-<li>NGO staff working with fisheries</li>
-<li>Students in fisheries science</li>
-<li>Anyone working with small-scale fisheries data</li>
-</ul>
-</section>
-<section id="what-youll-learn" class="level2">
-<h2 class="anchored" data-anchor-id="what-youll-learn">What You’ll Learn</h2>
-<p>By the end of this course, you’ll be able to: - Efficiently organize and clean fisheries data - Create publication-quality visualizations - Perform common fisheries analyses - Automate routine data tasks - Generate reproducible reports</p>
-</section>
-<section id="getting-started" class="level2">
-<h2 class="anchored" data-anchor-id="getting-started">Getting Started</h2>
-<p>Browse the tutorials below or start with our first module on R basics. Each tutorial can be run interactively in your browser, allowing you to learn and practice simultaneously.</p>
+<p>Welcome to our interactive R programming course, specifically designed for small-scale fisheries data analysis. Learn through practical tutorials that run directly in your browser - no installation needed. Our tutorials use real fisheries examples, from basic catch data calculations to stock assessments. Start with R fundamentals and progress at your own pace, practicing each concept with interactive exercises. Each tutorial builds on previous ones, helping you develop practical skills for analyzing your fisheries data. Browse the tutorials below to begin your journey in R programming for fisheries analysis.</p>
 <p>Remember: The best way to learn is by doing. Don’t just read the tutorials - try the code, modify it, and experiment with your own data!</p>
 
 
 
-</section>
 
 <div class="quarto-listing quarto-listing-container-default" id="listing-listing">
 <div class="listing-actions-group">
@@ -403,7 +475,7 @@ window.Quarto = {
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="1" data-categories="R,Setup,Basics" data-listing-date-sort="1730847600000" data-listing-file-modified-sort="1731102730692" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1071">
+<div class="quarto-post image-right" data-index="1" data-categories="R,Setup,Basics" data-listing-date-sort="1730847600000" data-listing-file-modified-sort="1731264100036" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1070">
 <div class="thumbnail">
 <p><a href="./r_snacks/1_rbasics.html" class="no-external"></a></p><a href="./r_snacks/1_rbasics.html" class="no-external">
 <p class="card-img-top"><img src="r_snacks/images/rinterface.png"  class="thumbnail-image card-img"/></p>
@@ -442,7 +514,7 @@ SSF Training Team
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="2" data-categories="R,Basics,Operations" data-listing-date-sort="1730847600000" data-listing-file-modified-sort="1731105167675" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1333">
+<div class="quarto-post image-right" data-index="2" data-categories="R,Basics,Operations" data-listing-date-sort="1730847600000" data-listing-file-modified-sort="1731239045626" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="15" data-listing-word-count-sort="2901">
 <div class="thumbnail">
 <p><a href="./r_snacks/2_rbasics.html" class="no-external"></a></p><a href="./r_snacks/2_rbasics.html" class="no-external">
 <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
@@ -450,7 +522,7 @@ SSF Training Team
 </div>
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="./r_snacks/2_rbasics.html" class="no-external">2. Basic Operations in R: A Complete Guide</a>
+<a href="./r_snacks/2_rbasics.html" class="no-external">2. Basic Operations in R: A Technical Guide</a>
 </h3>
 <div class="listing-subtitle">
 <a href="./r_snacks/2_rbasics.html" class="no-external"></a>
@@ -467,7 +539,7 @@ Operations
 </div>
 </div>
 <div class="listing-description">
-<a href="./r_snacks/2_rbasics.html" class="no-external">Welcome to your guide to basic R operations! This tutorial will take you through the fundamental operations in R, building from simple calculations to more complex…</a>
+<a href="./r_snacks/2_rbasics.html" class="no-external">When you open R, you’ll see the console window where you type commands and see results. Each command you type is called an “expression” and R evaluates it immediately when…</a>
 </div>
 </div>
 <div class="metadata">
@@ -481,7 +553,7 @@ SSF Training Team
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="3" data-categories="R,Data Frames,Basics" data-listing-date-sort="1730847600000" data-listing-file-modified-sort="1731102746164" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="658">
+<div class="quarto-post image-right" data-index="3" data-categories="R,Data Frames,Basics" data-listing-date-sort="1730847600000" data-listing-file-modified-sort="1731266560628" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="12" data-listing-word-count-sort="2391">
 <div class="thumbnail">
 <p><a href="./r_snacks/3_dataframes.html" class="no-external"></a></p><a href="./r_snacks/3_dataframes.html" class="no-external">
 <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
@@ -506,7 +578,7 @@ Basics
 </div>
 </div>
 <div class="listing-description">
-<a href="./r_snacks/3_dataframes.html" class="no-external">Data frames are R’s way of storing tabular data - think of them like spreadsheets. They’re the most common way to work with fisheries data, and understanding them is crucial…</a>
+<a href="./r_snacks/3_dataframes.html" class="no-external">When working with real fisheries data, you’ll rarely deal with simple vectors or single values. Most often, your data will be in a table format with multiple columns…</a>
 </div>
 </div>
 <div class="metadata">
@@ -520,7 +592,7 @@ SSF Training Team
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="4" data-categories="R,Packages,Tidyverse" data-listing-date-sort="1730847600000" data-listing-file-modified-sort="1731102752746" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1406">
+<div class="quarto-post image-right" data-index="4" data-categories="R,Packages,Basics" data-listing-date-sort="1730847600000" data-listing-file-modified-sort="1731277024231" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="22" data-listing-word-count-sort="4224">
 <div class="thumbnail">
 <p><a href="./r_snacks/4_packages.html" class="no-external"></a></p><a href="./r_snacks/4_packages.html" class="no-external">
 <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
@@ -528,7 +600,7 @@ SSF Training Team
 </div>
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="./r_snacks/4_packages.html" class="no-external">4. Base R vs Tidyverse: Why Packages Matter</a>
+<a href="./r_snacks/4_packages.html" class="no-external">4. Understanding R Packages: Making Your Life Easier</a>
 </h3>
 <div class="listing-subtitle">
 <a href="./r_snacks/4_packages.html" class="no-external"></a>
@@ -540,12 +612,12 @@ R
 <div class="listing-category" onclick="window.quartoListingCategory('Packages'); return false;">
 Packages
 </div>
-<div class="listing-category" onclick="window.quartoListingCategory('Tidyverse'); return false;">
-Tidyverse
+<div class="listing-category" onclick="window.quartoListingCategory('Basics'); return false;">
+Basics
 </div>
 </div>
 <div class="listing-description">
-<a href="./r_snacks/4_packages.html" class="no-external">Let’s explore how the same tasks can be accomplished using base R versus tidyverse packages. This will help you understand why packages can make your work more efficient and…</a>
+<a href="./r_snacks/4_packages.html" class="no-external">Imagine you’re setting up a kitchen. While basic pots and pans (like base R) are essential and can technically cook anything, having specialized tools like a food processor…</a>
 </div>
 </div>
 <div class="metadata">

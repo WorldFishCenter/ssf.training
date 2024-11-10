@@ -9,7 +9,7 @@
 <meta name="author" content="SSF Training Team">
 <meta name="dcterms.date" content="2024-11-06">
 
-<title>4. Base R vs Tidyverse: Why Packages Matter – R for SSF: Data Analysis Training</title>
+<title>4. Understanding R Packages: Making Your Life Easier – R for SSF: Data Analysis Training</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -88,7 +88,7 @@ ul.task-list li input[type="checkbox"] {
     <img src="https://upload.wikimedia.org/wikipedia/en/9/9e/WorldFish_logo.svg" alt="" class="navbar-logo">
     </a>
     <a class="navbar-brand" href="../index.html">
-    <span class="navbar-title">R for SSF: Data Analysis Training</span>
+    <span class="navbar-title">R for Small-Scale Fisheries</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -102,13 +102,70 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Tutorials</span>
     </a>
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-tutorials">    
+        <li class="dropdown-header">Getting Started</li>
         <li>
     <a class="dropdown-item" href="../r_snacks/1_rbasics.html">
- <span class="dropdown-text">R Basics</span></a>
+ <span class="dropdown-text">1. R Installation</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../r_snacks/2_rbasics.html">
+ <span class="dropdown-text">2. Basic Operations</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../r_snacks/3_dataframes.html">
- <span class="dropdown-text">Data Analysis</span></a>
+ <span class="dropdown-text">3. Data Frames</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../r_snacks/4_packages.html">
+ <span class="dropdown-text">3. Packages in R</span></a>
+  </li>  
+        <li class="dropdown-header">─────────────────</li>
+        <li class="dropdown-header">Data Processing</li>
+        <li class="dropdown-header">1. Preprocessing data 1</li>
+        <li>
+    <a class="dropdown-item" href="../r_snacks/workinprogress.html">
+ <span class="dropdown-text">This Section is currrently work in Progress</span></a>
+  </li>  
+        <li class="dropdown-header">2. Preprocessing data 2</li>
+        <li>
+    <a class="dropdown-item" href="../r_snacks/workinprogress.html">
+ <span class="dropdown-text">This Section is currrently work in Progress</span></a>
+  </li>  
+        <li class="dropdown-header">─────────────────</li>
+        <li class="dropdown-header">Data Validation</li>
+        <li class="dropdown-header">1. Validate data 1</li>
+        <li>
+    <a class="dropdown-item" href="../r_snacks/workinprogress.html">
+ <span class="dropdown-text">This Section is currrently work in Progress</span></a>
+  </li>  
+        <li class="dropdown-header">2. Validate data 2</li>
+        <li>
+    <a class="dropdown-item" href="../r_snacks/workinprogress.html">
+ <span class="dropdown-text">This Section is currrently work in Progress</span></a>
+  </li>  
+        <li class="dropdown-header">─────────────────</li>
+        <li class="dropdown-header">Data Visualization</li>
+        <li class="dropdown-header">1. Basics of Data Visualization in R</li>
+        <li>
+    <a class="dropdown-item" href="../r_snacks/workinprogress.html">
+ <span class="dropdown-text">This Section is currrently work in Progress</span></a>
+  </li>  
+        <li class="dropdown-header">2. Advanced Visualizations</li>
+        <li>
+    <a class="dropdown-item" href="../r_snacks/workinprogress.html">
+ <span class="dropdown-text">This Section is currrently work in Progress</span></a>
+  </li>  
+        <li class="dropdown-header">─────────────────</li>
+        <li class="dropdown-header">Data Analysis for Small-Scale Fisheries</li>
+        <li class="dropdown-header">1. Basics of Data Visualization in R</li>
+        <li>
+    <a class="dropdown-item" href="../r_snacks/workinprogress.html">
+ <span class="dropdown-text">This Section is currrently work in Progress</span></a>
+  </li>  
+        <li class="dropdown-header">2. Advanced Visualizations</li>
+        <li>
+    <a class="dropdown-item" href="../r_snacks/workinprogress.html">
+ <span class="dropdown-text">This Section is currrently work in Progress</span></a>
   </li>  
     </ul>
   </li>
@@ -129,7 +186,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">4. Base R vs Tidyverse: Why Packages Matter</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../r_snacks/1_rbasics.html">Getting Started</a></li><li class="breadcrumb-item"><a href="../r_snacks/4_packages.html">3. Packages in R</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -141,12 +198,12 @@ ul.task-list li input[type="checkbox"] {
 <!-- content -->
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-body">
-      <h1 class="title">4. Base R vs Tidyverse: Why Packages Matter</h1>
+    <div class="quarto-title column-body"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../r_snacks/1_rbasics.html">Getting Started</a></li><li class="breadcrumb-item"><a href="../r_snacks/4_packages.html">3. Packages in R</a></li></ol></nav>
+      <h1 class="title">4. Understanding R Packages: Making Your Life Easier</h1>
                                 <div class="quarto-categories">
                 <div class="quarto-category">R</div>
                 <div class="quarto-category">Packages</div>
-                <div class="quarto-category">Tidyverse</div>
+                <div class="quarto-category">Basics</div>
               </div>
                   </div>
   </div>
@@ -174,7 +231,9 @@ ul.task-list li input[type="checkbox"] {
   
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="quarto-sidebar-header"><div class="sidebar-header-item">
+<p>Course contents:</p>
+</div></div>
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
@@ -194,19 +253,25 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../r_snacks/1_rbasics.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">R Installation</span></a>
+ <span class="menu-text">1. R Installation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../r_snacks/2_rbasics.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Basic Operations</span></a>
+ <span class="menu-text">2. Basic Operations</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../r_snacks/3_dataframes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Data Frames</span></a>
+ <span class="menu-text">3. Data Frames</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../r_snacks/4_packages.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">3. Packages in R</span></a>
   </div>
 </li>
       </ul>
@@ -214,18 +279,93 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
- <span class="menu-text">Data Analysis</span></a>
+ <span class="menu-text">Data processing</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
- <span class="menu-text">Working with Packages</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="../r_snacks/workinprogress.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1. Preprocessing data 1</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
- <span class="menu-text">Data Visualization</span>
+  <div class="sidebar-item-container"> 
+  <a href="../r_snacks/workinprogress.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2. Preprocessing data 2</span></a>
+  </div>
+</li>
+      </ul>
   </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Data validation</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../r_snacks/workinprogress.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1. Validate data 1</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../r_snacks/workinprogress.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2. Validate data 2</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Data visualization</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../r_snacks/workinprogress.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1. Basic of data visualization in R</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../r_snacks/workinprogress.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2. Advanced visualizations</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">Data analysis for small scale fisheries</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../r_snacks/workinprogress.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1. Basic of data visualization in R</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../r_snacks/workinprogress.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2. Advanced visualizations</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -238,29 +378,39 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#why-use-packages-a-practical-demonstration" id="toc-why-use-packages-a-practical-demonstration" class="nav-link active" data-scroll-target="#why-use-packages-a-practical-demonstration">Why Use Packages? A Practical Demonstration 🎯</a></li>
-  <li><a href="#data-creation-and-basic-operations" id="toc-data-creation-and-basic-operations" class="nav-link" data-scroll-target="#data-creation-and-basic-operations">1. Data Creation and Basic Operations 📊</a>
+  <li><a href="#why-do-we-need-packages" id="toc-why-do-we-need-packages" class="nav-link active" data-scroll-target="#why-do-we-need-packages">Why Do We Need Packages? 📦</a>
   <ul class="collapse">
-  <li><a href="#creating-a-dataset" id="toc-creating-a-dataset" class="nav-link" data-scroll-target="#creating-a-dataset">Creating a Dataset</a></li>
+  <li><a href="#understanding-r-packages" id="toc-understanding-r-packages" class="nav-link" data-scroll-target="#understanding-r-packages">Understanding R Packages</a></li>
+  <li><a href="#why-packages-matter-a-real-world-perspective" id="toc-why-packages-matter-a-real-world-perspective" class="nav-link" data-scroll-target="#why-packages-matter-a-real-world-perspective">Why Packages Matter: A Real-World Perspective</a></li>
+  <li><a href="#popular-package-collections" id="toc-popular-package-collections" class="nav-link" data-scroll-target="#popular-package-collections">Popular Package Collections</a></li>
+  <li><a href="#how-packages-save-time-a-simple-example" id="toc-how-packages-save-time-a-simple-example" class="nav-link" data-scroll-target="#how-packages-save-time-a-simple-example">How Packages Save Time: A Simple Example</a></li>
   </ul></li>
-  <li><a href="#filtering-data" id="toc-filtering-data" class="nav-link" data-scroll-target="#filtering-data">2. Filtering Data 🔍</a></li>
-  <li><a href="#calculating-summary-statistics" id="toc-calculating-summary-statistics" class="nav-link" data-scroll-target="#calculating-summary-statistics">3. Calculating Summary Statistics 📈</a></li>
-  <li><a href="#complex-data-manipulation" id="toc-complex-data-manipulation" class="nav-link" data-scroll-target="#complex-data-manipulation">4. Complex Data Manipulation 🛠️</a></li>
-  <li><a href="#reshaping-data" id="toc-reshaping-data" class="nav-link" data-scroll-target="#reshaping-data">5. Reshaping Data 🔄</a></li>
-  <li><a href="#complex-analysis-example-catch-trends" id="toc-complex-analysis-example-catch-trends" class="nav-link" data-scroll-target="#complex-analysis-example-catch-trends">6. Complex Analysis Example: Catch Trends 📊</a></li>
-  <li><a href="#data-quality-checks" id="toc-data-quality-checks" class="nav-link" data-scroll-target="#data-quality-checks">7. Data Quality Checks 🔍</a></li>
-  <li><a href="#practice-exercises-convert-base-r-to-tidyverse" id="toc-practice-exercises-convert-base-r-to-tidyverse" class="nav-link" data-scroll-target="#practice-exercises-convert-base-r-to-tidyverse">Practice Exercises: Convert Base R to Tidyverse 💪</a>
+  <li><a href="#getting-started-with-packages-the-tidyverse-example" id="toc-getting-started-with-packages-the-tidyverse-example" class="nav-link" data-scroll-target="#getting-started-with-packages-the-tidyverse-example">Getting Started with Packages: The Tidyverse Example 🚀</a>
   <ul class="collapse">
-  <li><a href="#exercise-1-basic-filtering-and-summarizing" id="toc-exercise-1-basic-filtering-and-summarizing" class="nav-link" data-scroll-target="#exercise-1-basic-filtering-and-summarizing">Exercise 1: Basic Filtering and Summarizing</a></li>
-  <li><a href="#exercise-2-complex-data-manipulation" id="toc-exercise-2-complex-data-manipulation" class="nav-link" data-scroll-target="#exercise-2-complex-data-manipulation">Exercise 2: Complex Data Manipulation</a></li>
+  <li><a href="#installing-and-loading-packages" id="toc-installing-and-loading-packages" class="nav-link" data-scroll-target="#installing-and-loading-packages">Installing and Loading Packages</a></li>
+  <li><a href="#a-real-world-example-daily-catch-analysis" id="toc-a-real-world-example-daily-catch-analysis" class="nav-link" data-scroll-target="#a-real-world-example-daily-catch-analysis">A Real-World Example: Daily Catch Analysis</a></li>
+  <li><a href="#making-your-analysis-clear-and-reproducible" id="toc-making-your-analysis-clear-and-reproducible" class="nav-link" data-scroll-target="#making-your-analysis-clear-and-reproducible">Making Your Analysis Clear and Reproducible</a></li>
   </ul></li>
-  <li><a href="#best-practices-when-to-use-each-approach" id="toc-best-practices-when-to-use-each-approach" class="nav-link" data-scroll-target="#best-practices-when-to-use-each-approach">Best Practices: When to Use Each Approach 📝</a>
+  <li><a href="#the-pipe-operator-making-your-code-flow" id="toc-the-pipe-operator-making-your-code-flow" class="nav-link" data-scroll-target="#the-pipe-operator-making-your-code-flow">The Pipe Operator: Making Your Code Flow 🌊</a>
   <ul class="collapse">
-  <li><a href="#use-base-r-when" id="toc-use-base-r-when" class="nav-link" data-scroll-target="#use-base-r-when">Use Base R When:</a></li>
-  <li><a href="#use-tidyverse-when" id="toc-use-tidyverse-when" class="nav-link" data-scroll-target="#use-tidyverse-when">Use Tidyverse When:</a></li>
+  <li><a href="#whats-the-problem-were-solving" id="toc-whats-the-problem-were-solving" class="nav-link" data-scroll-target="#whats-the-problem-were-solving">What’s the Problem We’re Solving?</a></li>
+  <li><a href="#enter-the-pipe-a-better-way" id="toc-enter-the-pipe-a-better-way" class="nav-link" data-scroll-target="#enter-the-pipe-a-better-way">Enter the Pipe: A Better Way</a></li>
+  <li><a href="#real-world-example-complex-analysis-made-simple" id="toc-real-world-example-complex-analysis-made-simple" class="nav-link" data-scroll-target="#real-world-example-complex-analysis-made-simple">Real-World Example: Complex Analysis Made Simple</a></li>
+  <li><a href="#advanced-pipe-techniques" id="toc-advanced-pipe-techniques" class="nav-link" data-scroll-target="#advanced-pipe-techniques">Advanced Pipe Techniques</a></li>
   </ul></li>
-  <li><a href="#key-takeaways" id="toc-key-takeaways" class="nav-link" data-scroll-target="#key-takeaways">Key Takeaways 🎯</a></li>
-  <li><a href="#next-steps" id="toc-next-steps" class="nav-link" data-scroll-target="#next-steps">Next Steps 🚀</a></li>
+  <li><a href="#putting-it-all-together-real-world-analysis" id="toc-putting-it-all-together-real-world-analysis" class="nav-link" data-scroll-target="#putting-it-all-together-real-world-analysis">Putting It All Together: Real-World Analysis 🎯</a>
+  <ul class="collapse">
+  <li><a href="#a-complete-analysis-example" id="toc-a-complete-analysis-example" class="nav-link" data-scroll-target="#a-complete-analysis-example">A Complete Analysis Example</a></li>
+  <li><a href="#interactive-practice-exercises" id="toc-interactive-practice-exercises" class="nav-link" data-scroll-target="#interactive-practice-exercises">Interactive Practice Exercises 💪</a></li>
+  <li><a href="#key-concepts-to-remember" id="toc-key-concepts-to-remember" class="nav-link" data-scroll-target="#key-concepts-to-remember">Key Concepts to Remember 🗝️</a></li>
+  </ul></li>
+  <li><a href="#moving-forward-with-packages-and-pipes" id="toc-moving-forward-with-packages-and-pipes" class="nav-link" data-scroll-target="#moving-forward-with-packages-and-pipes">Moving Forward with Packages and Pipes 🚀</a>
+  <ul class="collapse">
+  <li><a href="#key-takeaways" id="toc-key-takeaways" class="nav-link" data-scroll-target="#key-takeaways">Key Takeaways</a></li>
+  <li><a href="#common-mistakes-to-avoid" id="toc-common-mistakes-to-avoid" class="nav-link" data-scroll-target="#common-mistakes-to-avoid">Common Mistakes to Avoid ⚠️</a></li>
+  <li><a href="#next-steps" id="toc-next-steps" class="nav-link" data-scroll-target="#next-steps">Next Steps 📚</a></li>
+  <li><a href="#resources-for-learning" id="toc-resources-for-learning" class="nav-link" data-scroll-target="#resources-for-learning">Resources for Learning 📖</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -271,221 +421,437 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="why-use-packages-a-practical-demonstration" class="level2">
-<h2 class="anchored" data-anchor-id="why-use-packages-a-practical-demonstration">Why Use Packages? A Practical Demonstration 🎯</h2>
-<p>Let’s explore how the same tasks can be accomplished using base R versus tidyverse packages. This will help you understand why packages can make your work more efficient and readable.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Learning Objectives
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>By the end of this tutorial, you will understand: - The differences between base R and tidyverse approaches - Why the pipe operator makes code more readable - When to use each approach - How packages can simplify complex operations</p>
-</div>
-</div>
-</section>
-<section id="data-creation-and-basic-operations" class="level2">
-<h2 class="anchored" data-anchor-id="data-creation-and-basic-operations">1. Data Creation and Basic Operations 📊</h2>
-<p>Let’s start with creating and manipulating a simple fisheries dataset:</p>
-<section id="creating-a-dataset" class="level3">
-<h3 class="anchored" data-anchor-id="creating-a-dataset">Creating a Dataset</h3>
+<section id="why-do-we-need-packages" class="level2">
+<h2 class="anchored" data-anchor-id="why-do-we-need-packages">Why Do We Need Packages? 📦</h2>
+<p>Imagine you’re setting up a kitchen. While basic pots and pans (like base R) are essential and can technically cook anything, having specialized tools like a food processor or a stand mixer (R packages) can make cooking much faster, easier, and more efficient. R packages work the same way - they’re collections of specialized tools that make specific tasks much easier.</p>
+<section id="understanding-r-packages" class="level3">
+<h3 class="anchored" data-anchor-id="understanding-r-packages">Understanding R Packages</h3>
+<p>When you first install R, you get what we call “base R” - it’s like those basic pots and pans. Base R is powerful and can do a lot, but as R has evolved, the community has created thousands of specialized packages that can: - Save you hours of coding time - Make complex analyses simpler - Provide specialized tools for specific types of analysis - Help you create better visualizations - Make your code more readable and maintainable</p>
+<p>Let’s see a real example. Suppose you want to calculate the average catch by species from your fishing data:</p>
 <div class="cell" data-autorun="false">
 <div>
 <div id="webr-1">
 
 </div>
 <script type="webr-1-contents">
-eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJldmFsIjp0cnVlLCJlZGl0Ijp0cnVlfSwiY29kZSI6IiMgU2FtcGxlIGZpc2hlcmllcyBkYXRhXG4jIEJhc2UgUiBhcHByb2FjaFxuZmlzaGVyaWVzX2Jhc2UgPC0gZGF0YS5mcmFtZShcbiAgZGF0ZSA9IGFzLkRhdGUoYyhcIjIwMjQtMDEtMDFcIiwgXCIyMDI0LTAxLTAyXCIsIFwiMjAyNC0wMS0wM1wiLCBcIjIwMjQtMDEtMDFcIiwgXCIyMDI0LTAxLTAyXCIsIFwiMjAyNC0wMS0wM1wiKSksXG4gIHNwZWNpZXMgPSBjKFwiVHVuYVwiLCBcIlR1bmFcIiwgXCJUdW5hXCIsIFwiTWFja2VyZWxcIiwgXCJNYWNrZXJlbFwiLCBcIk1hY2tlcmVsXCIpLFxuICBjYXRjaF9rZyA9IGMoMTAwLCAxNTAsIDIwMCwgODAsIDEyMCwgOTApLFxuICBsb2NhdGlvbiA9IGMoXCJTaXRlIEFcIiwgXCJTaXRlIEJcIiwgXCJTaXRlIEFcIiwgXCJTaXRlIEJcIiwgXCJTaXRlIEFcIiwgXCJTaXRlIEJcIilcbilcblxuIyBUaWR5dmVyc2UgYXBwcm9hY2hcbmxpYnJhcnkodGlkeXZlcnNlKVxuZmlzaGVyaWVzX3RpZHkgPC0gdGliYmxlKFxuICBkYXRlID0gYXMuRGF0ZShjKFwiMjAyNC0wMS0wMVwiLCBcIjIwMjQtMDEtMDJcIiwgXCIyMDI0LTAxLTAzXCIsIFwiMjAyNC0wMS0wMVwiLCBcIjIwMjQtMDEtMDJcIiwgXCIyMDI0LTAxLTAzXCIpKSxcbiAgc3BlY2llcyA9IGMoXCJUdW5hXCIsIFwiVHVuYVwiLCBcIlR1bmFcIiwgXCJNYWNrZXJlbFwiLCBcIk1hY2tlcmVsXCIsIFwiTWFja2VyZWxcIiksXG4gIGNhdGNoX2tnID0gYygxMDAsIDE1MCwgMjAwLCA4MCwgMTIwLCA5MCksXG4gIGxvY2F0aW9uID0gYyhcIlNpdGUgQVwiLCBcIlNpdGUgQlwiLCBcIlNpdGUgQVwiLCBcIlNpdGUgQlwiLCBcIlNpdGUgQVwiLCBcIlNpdGUgQlwiKVxuKSJ9
+eyJjb2RlIjoiIyBDcmVhdGUgc29tZSBzYW1wbGUgZmlzaGluZyBkYXRhXG5maXNoaW5nX2RhdGEgPC0gZGF0YS5mcmFtZShcbiAgICBkYXRlID0gYyhcIjIwMjQtMDEtMDFcIiwgXCIyMDI0LTAxLTAxXCIsIFwiMjAyNC0wMS0wMlwiKSxcbiAgICBzcGVjaWVzID0gYyhcIlR1bmFcIiwgXCJNYWNrZXJlbFwiLCBcIlR1bmFcIiksXG4gICAgY2F0Y2hfa2cgPSBjKDEwMCwgODAsIDEyMClcbilcblxuIyBCYXNlIFIgd2F5ICh3aXRob3V0IHBhY2thZ2VzKVxuc3BlY2llc19tZWFucyA8LSBhZ2dyZWdhdGUoY2F0Y2hfa2cgfiBzcGVjaWVzLCBcbiAgICAgICAgICAgICAgICAgICAgICAgICBkYXRhID0gZmlzaGluZ19kYXRhLCBcbiAgICAgICAgICAgICAgICAgICAgICAgICBGVU4gPSBtZWFuKVxucHJpbnQoXCJVc2luZyBiYXNlIFI6XCIpXG5zcGVjaWVzX21lYW5zXG5cbiMgVXNpbmcgYSBwYWNrYWdlIChkcGx5ciwgcGFydCBvZiB0aWR5dmVyc2UpXG5saWJyYXJ5KHRpZHl2ZXJzZSlcbnByaW50KFwiXFxuVXNpbmcgZHBseXIgcGFja2FnZTpcIilcbmZpc2hpbmdfZGF0YSAlPiVcbiAgICBncm91cF9ieShzcGVjaWVzKSAlPiVcbiAgICBzdW1tYXJpemUoYXZlcmFnZV9jYXRjaCA9IG1lYW4oY2F0Y2hfa2cpKSIsImF0dHIiOnsiYXV0b3J1biI6ZmFsc2UsImVkaXQiOnRydWUsImV2YWwiOnRydWV9fQ==
 </script>
 </div>
 </div>
+<p>While both approaches give the same result, as your analysis gets more complex, packages can dramatically simplify your work.</p>
 </section>
+<section id="why-packages-matter-a-real-world-perspective" class="level3">
+<h3 class="anchored" data-anchor-id="why-packages-matter-a-real-world-perspective">Why Packages Matter: A Real-World Perspective</h3>
+<p>Consider these common scenarios in fisheries research:</p>
+<ol type="1">
+<li><strong>Data Cleaning</strong>
+<ul>
+<li>Base R: Might take 50+ lines of complex code</li>
+<li>With packages: Often can be done in 10-15 lines of clear, readable code</li>
+</ul></li>
+<li><strong>Data Visualization</strong>
+<ul>
+<li>Base R: Basic plots with limited customization</li>
+<li>With ggplot2 package: Professional, publication-ready graphics</li>
+</ul></li>
+<li><strong>Date Handling</strong>
+<ul>
+<li>Base R: Complex date calculations</li>
+<li>With lubridate package: Simple, intuitive date manipulations</li>
+</ul></li>
+<li><strong>Report Generation</strong>
+<ul>
+<li>Base R: Limited options for sharing results</li>
+<li>With RMarkdown: Professional reports, presentations, and websites</li>
+</ul></li>
+</ol>
 </section>
-<section id="filtering-data" class="level2">
-<h2 class="anchored" data-anchor-id="filtering-data">2. Filtering Data 🔍</h2>
-<p>Let’s find all Tuna catches over 120kg:</p>
+<section id="popular-package-collections" class="level3">
+<h3 class="anchored" data-anchor-id="popular-package-collections">Popular Package Collections</h3>
+<p>One of the most important package collections in R is the “tidyverse”. Think of it as a comprehensive kitchen renovation that includes all the modern appliances you need. The tidyverse includes packages for: - Data manipulation (dplyr) - Data visualization (ggplot2) - Data import (readr) - Date handling (lubridate) - And much more</p>
+<p>Other important package collections include: - <strong>spatial</strong>: For mapping and spatial analysis - <strong>stats</strong>: For statistical analysis - <strong>shiny</strong>: For creating interactive web applications</p>
+</section>
+<section id="how-packages-save-time-a-simple-example" class="level3">
+<h3 class="anchored" data-anchor-id="how-packages-save-time-a-simple-example">How Packages Save Time: A Simple Example</h3>
+<p>Let’s look at a common task: finding and replacing values in your data:</p>
 <div class="cell" data-autorun="false">
 <div>
 <div id="webr-2">
 
 </div>
 <script type="webr-2-contents">
-eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJldmFsIjp0cnVlLCJlZGl0Ijp0cnVlfSwiY29kZSI6IiMgQmFzZSBSIGFwcHJvYWNoXG5maXNoZXJpZXNfYmFzZVtmaXNoZXJpZXNfYmFzZSRzcGVjaWVzID09IFwiVHVuYVwiICYgZmlzaGVyaWVzX2Jhc2UkY2F0Y2hfa2cgPiAxMjAsIF1cblxuIyBUaWR5dmVyc2UgYXBwcm9hY2hcbmZpc2hlcmllc190aWR5ICU+JVxuICBmaWx0ZXIoc3BlY2llcyA9PSBcIlR1bmFcIiwgY2F0Y2hfa2cgPiAxMjApIn0=
+eyJjb2RlIjoiIyBDcmVhdGUgc2FtcGxlIGRhdGEgd2l0aCBzcGVjaWVzIGNvZGVzXG5maXNoX2NvZGVzIDwtIGRhdGEuZnJhbWUoXG4gICAgY29kZSA9IGMoXCJUVU5cIiwgXCJNQUNcIiwgXCJTQVJcIiksXG4gICAgY2F0Y2ggPSBjKDEwMCwgODAsIDYwKVxuKVxuXG4jIEJhc2UgUiB3YXlcbmZpc2hfY29kZXMkc3BlY2llcyA8LSBOQVxuZmlzaF9jb2RlcyRzcGVjaWVzW2Zpc2hfY29kZXMkY29kZSA9PSBcIlRVTlwiXSA8LSBcIlR1bmFcIlxuZmlzaF9jb2RlcyRzcGVjaWVzW2Zpc2hfY29kZXMkY29kZSA9PSBcIk1BQ1wiXSA8LSBcIk1hY2tlcmVsXCJcbmZpc2hfY29kZXMkc3BlY2llc1tmaXNoX2NvZGVzJGNvZGUgPT0gXCJTQVJcIl0gPC0gXCJTYXJkaW5lXCJcblxuIyBVc2luZyBkcGx5ciBwYWNrYWdlXG5maXNoX2NvZGVzICU+JVxuICAgIG11dGF0ZShzcGVjaWVzID0gY2FzZV93aGVuKFxuICAgICAgICBjb2RlID09IFwiVFVOXCIgfiBcIlR1bmFcIixcbiAgICAgICAgY29kZSA9PSBcIk1BQ1wiIH4gXCJNYWNrZXJlbFwiLFxuICAgICAgICBjb2RlID09IFwiU0FSXCIgfiBcIlNhcmRpbmVcIlxuICAgICkpIiwiYXR0ciI6eyJhdXRvcnVuIjpmYWxzZSwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZX19
 </script>
 </div>
 </div>
-<p>Notice how the tidyverse approach: - Doesn’t need dollar signs ($) - Doesn’t require comma separation for rows and columns - Reads more like English: “take fisheries_tidy and then filter…”</p>
+<p>This is just a simple example - the benefits become even more apparent with larger, more complex datasets.</p>
 </section>
-<section id="calculating-summary-statistics" class="level2">
-<h2 class="anchored" data-anchor-id="calculating-summary-statistics">3. Calculating Summary Statistics 📈</h2>
-<p>Let’s calculate average catch by species:</p>
+</section>
+<section id="getting-started-with-packages-the-tidyverse-example" class="level2">
+<h2 class="anchored" data-anchor-id="getting-started-with-packages-the-tidyverse-example">Getting Started with Packages: The Tidyverse Example 🚀</h2>
+<p>Now that we understand why packages are important, let’s learn how to use them effectively. We’ll focus on the tidyverse because it’s designed to make data analysis more intuitive, especially for beginners.</p>
+<section id="installing-and-loading-packages" class="level3">
+<h3 class="anchored" data-anchor-id="installing-and-loading-packages">Installing and Loading Packages</h3>
+<p>Before we start using a package, we need to install and load it. Think of this like: - Installing: Buying a new kitchen appliance and bringing it home - Loading: Taking the appliance out and plugging it in</p>
 <div class="cell" data-autorun="false">
 <div>
 <div id="webr-3">
 
 </div>
 <script type="webr-3-contents">
-eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJldmFsIjp0cnVlLCJlZGl0Ijp0cnVlfSwiY29kZSI6IiMgQmFzZSBSIGFwcHJvYWNoXG5hZ2dyZWdhdGUoY2F0Y2hfa2cgfiBzcGVjaWVzLCBcbiAgICAgICAgIGRhdGEgPSBmaXNoZXJpZXNfYmFzZSwgXG4gICAgICAgICBGVU4gPSBmdW5jdGlvbih4KSBjKG1lYW4gPSBtZWFuKHgpLCBcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICB0b3RhbCA9IHN1bSh4KSwgXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgY291bnQgPSBsZW5ndGgoeCkpKVxuXG4jIFRpZHl2ZXJzZSBhcHByb2FjaFxuZmlzaGVyaWVzX3RpZHkgJT4lXG4gIGdyb3VwX2J5KHNwZWNpZXMpICU+JVxuICBzdW1tYXJpemUoXG4gICAgbWVhbl9jYXRjaCA9IG1lYW4oY2F0Y2hfa2cpLFxuICAgIHRvdGFsX2NhdGNoID0gc3VtKGNhdGNoX2tnKSxcbiAgICBjb3VudCA9IG4oKVxuICApIn0=
+eyJjb2RlIjoiIyBGaXJzdCB0aW1lIG9ubHkgKGluc3RhbGxpbmcpOlxuIyBpbnN0YWxsLnBhY2thZ2VzKFwidGlkeXZlcnNlXCIpXG5cbiMgRXZlcnkgdGltZSB5b3Ugd2FudCB0byB1c2UgaXQgKGxvYWRpbmcpOlxubGlicmFyeSh0aWR5dmVyc2UpIiwiYXR0ciI6eyJhdXRvcnVuIjpmYWxzZSwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZX19
 </script>
 </div>
 </div>
-<p>The tidyverse approach: - Uses more intuitive function names - Produces cleaner output - Is easier to modify and extend</p>
 </section>
-<section id="complex-data-manipulation" class="level2">
-<h2 class="anchored" data-anchor-id="complex-data-manipulation">4. Complex Data Manipulation 🛠️</h2>
-<p>Let’s perform a more complex analysis: calculate daily catch percentages by species:</p>
+<section id="a-real-world-example-daily-catch-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="a-real-world-example-daily-catch-analysis">A Real-World Example: Daily Catch Analysis</h3>
+<p>Let’s look at a typical fisheries analysis task to see how packages make our life easier. We’ll analyze daily catch data:</p>
 <div class="cell" data-autorun="false">
 <div>
 <div id="webr-4">
 
 </div>
 <script type="webr-4-contents">
-eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJldmFsIjp0cnVlLCJlZGl0Ijp0cnVlfSwiY29kZSI6IiMgQmFzZSBSIGFwcHJvYWNoXG4jIFN0ZXAgMTogQ2FsY3VsYXRlIGRhaWx5IHRvdGFsc1xuZGFpbHlfdG90YWxzIDwtIGFnZ3JlZ2F0ZShjYXRjaF9rZyB+IGRhdGUsIFxuICAgICAgICAgICAgICAgICAgICAgICAgIGRhdGEgPSBmaXNoZXJpZXNfYmFzZSwgXG4gICAgICAgICAgICAgICAgICAgICAgICAgRlVOID0gc3VtKVxubmFtZXMoZGFpbHlfdG90YWxzKVsyXSA8LSBcImRhaWx5X3RvdGFsXCJcblxuIyBTdGVwIDI6IE1lcmdlIGJhY2sgd2l0aCBvcmlnaW5hbCBkYXRhXG5tZXJnZWRfZGF0YSA8LSBtZXJnZShmaXNoZXJpZXNfYmFzZSwgZGFpbHlfdG90YWxzLCBieSA9IFwiZGF0ZVwiKVxuXG4jIFN0ZXAgMzogQ2FsY3VsYXRlIHBlcmNlbnRhZ2VzXG5tZXJnZWRfZGF0YSRwZXJjZW50YWdlIDwtIChtZXJnZWRfZGF0YSRjYXRjaF9rZyAvIG1lcmdlZF9kYXRhJGRhaWx5X3RvdGFsKSAqIDEwMFxuXG4jIFN0ZXAgNDogT3JkZXIgdGhlIHJlc3VsdHNcbm1lcmdlZF9kYXRhW29yZGVyKG1lcmdlZF9kYXRhJGRhdGUsIG1lcmdlZF9kYXRhJHNwZWNpZXMpLCBdXG5cbiMgVGlkeXZlcnNlIGFwcHJvYWNoXG5maXNoZXJpZXNfdGlkeSAlPiVcbiAgZ3JvdXBfYnkoZGF0ZSkgJT4lXG4gIG11dGF0ZShcbiAgICBkYWlseV90b3RhbCA9IHN1bShjYXRjaF9rZyksXG4gICAgcGVyY2VudGFnZSA9IChjYXRjaF9rZyAvIGRhaWx5X3RvdGFsKSAqIDEwMFxuICApICU+JVxuICBhcnJhbmdlKGRhdGUsIHNwZWNpZXMpIn0=
+eyJjb2RlIjoiIyBDcmVhdGUgYSByZWFsaXN0aWMgZmlzaGluZyBkYXRhc2V0XG5kYWlseV9jYXRjaGVzIDwtIGRhdGEuZnJhbWUoXG4gICAgZGF0ZSA9IHJlcChjKFwiMjAyNC0wMS0wMVwiLCBcIjIwMjQtMDEtMDJcIiwgXCIyMDI0LTAxLTAzXCIpLCBlYWNoID0gMyksXG4gICAgc2l0ZSA9IHJlcChjKFwiQmVhY2hcIiwgXCJSZWVmXCIsIFwiUGllclwiKSwgdGltZXMgPSAzKSxcbiAgICBzcGVjaWVzID0gYyhcIlR1bmFcIiwgXCJNYWNrZXJlbFwiLCBcIlNhcmRpbmVcIiwgXG4gICAgICAgICAgICAgICAgXCJUdW5hXCIsIFwiVHVuYVwiLCBcIk1hY2tlcmVsXCIsXG4gICAgICAgICAgICAgICAgXCJTYXJkaW5lXCIsIFwiVHVuYVwiLCBcIk1hY2tlcmVsXCIpLFxuICAgIGNhdGNoX2tnID0gYygxMjAsIDgwLCA0MCwgXG4gICAgICAgICAgICAgICAgIDE1MCwgMTMwLCA3MCxcbiAgICAgICAgICAgICAgICAgNTAsIDE0MCwgOTApLFxuICAgIGJvYXRzID0gYygzLCAyLCAxLFxuICAgICAgICAgICAgICA0LCAzLCAyLFxuICAgICAgICAgICAgICAyLCAzLCAyKVxuKVxuXG4jIExldCdzIHNheSB3ZSB3YW50IHRvOlxuIyAxLiBDYWxjdWxhdGUgY2F0Y2ggcGVyIGJvYXRcbiMgMi4gRmluZCB0aGUgYmVzdCBwZXJmb3JtaW5nIHNpdGVzXG4jIDMuIENyZWF0ZSBhIHN1bW1hcnkgYnkgc3BlY2llc1xuXG4jIEJhc2UgUiB3YXkgKHRyYWRpdGlvbmFsIGFwcHJvYWNoKVxucHJpbnQoXCJCYXNlIFIgYXBwcm9hY2g6XCIpXG4jIDEuIENhbGN1bGF0ZSBjYXRjaCBwZXIgYm9hdFxuZGFpbHlfY2F0Y2hlcyRjYXRjaF9wZXJfYm9hdCA8LSBkYWlseV9jYXRjaGVzJGNhdGNoX2tnIC8gZGFpbHlfY2F0Y2hlcyRib2F0c1xuXG4jIDIuIEJlc3Qgc2l0ZXMgKG11bHRpcGxlIHN0ZXBzKVxuc2l0ZV9hdmVyYWdlcyA8LSBhZ2dyZWdhdGUoY2F0Y2hfcGVyX2JvYXQgfiBzaXRlLCBcbiAgICAgICAgICAgICAgICAgICAgICAgICAgZGF0YSA9IGRhaWx5X2NhdGNoZXMsIFxuICAgICAgICAgICAgICAgICAgICAgICAgICBGVU4gPSBtZWFuKVxuYmVzdF9zaXRlcyA8LSBzaXRlX2F2ZXJhZ2VzW29yZGVyKHNpdGVfYXZlcmFnZXMkY2F0Y2hfcGVyX2JvYXQsIFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgZGVjcmVhc2luZyA9IFRSVUUpLCBdXG5wcmludChiZXN0X3NpdGVzKVxuXG4jIDMuIFNwZWNpZXMgc3VtbWFyeSAobXVsdGlwbGUgc3RlcHMgYWdhaW4pXG5zcGVjaWVzX3N1bW1hcnkgPC0gYWdncmVnYXRlKGNhdGNoX2tnIH4gc3BlY2llcywgXG4gICAgICAgICAgICAgICAgICAgICAgICAgICBkYXRhID0gZGFpbHlfY2F0Y2hlcyxcbiAgICAgICAgICAgICAgICAgICAgICAgICAgIEZVTiA9IGZ1bmN0aW9uKHgpIGModG90YWwgPSBzdW0oeCksIFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgbWVhbiA9IG1lYW4oeCksXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBjb3VudCA9IGxlbmd0aCh4KSkpXG5wcmludChzcGVjaWVzX3N1bW1hcnkpXG5cbiMgTm93IHRoZSB0aWR5dmVyc2Ugd2F5XG5wcmludChcIlxcblRpZHl2ZXJzZSBhcHByb2FjaDpcIilcbmRhaWx5X2NhdGNoZXMgJT4lXG4gICAgIyAxLiBDYWxjdWxhdGUgY2F0Y2ggcGVyIGJvYXRcbiAgICBtdXRhdGUoY2F0Y2hfcGVyX2JvYXQgPSBjYXRjaF9rZyAvIGJvYXRzKSAlPiVcbiAgICAjIDIuIENhbGN1bGF0ZSBzaXRlIGF2ZXJhZ2VzXG4gICAgZ3JvdXBfYnkoc2l0ZSkgJT4lXG4gICAgc3VtbWFyaXplKFxuICAgICAgICBhdmdfY2F0Y2hfcGVyX2JvYXQgPSBtZWFuKGNhdGNoX3Blcl9ib2F0KSxcbiAgICAgICAgdG90YWxfY2F0Y2ggPSBzdW0oY2F0Y2hfa2cpLFxuICAgICAgICBkYXlzX2Zpc2hlZCA9IG5fZGlzdGluY3QoZGF0ZSlcbiAgICApICU+JVxuICAgICMgU29ydCB0byBmaW5kIGJlc3Qgc2l0ZXNcbiAgICBhcnJhbmdlKGRlc2MoYXZnX2NhdGNoX3Blcl9ib2F0KSkiLCJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfX0=
 </script>
 </div>
 </div>
-<p>The differences are striking: - Base R requires multiple steps and intermediate objects - Tidyverse accomplishes everything in a single pipeline - The code intent is much clearer in the tidyverse version</p>
+<p>Notice how the tidyverse approach: 1. Reads like a story - each step follows logically from the last 2. Requires less intermediate steps 3. Produces clearer output 4. Is easier to modify if we want to add more analyses</p>
 </section>
-<section id="reshaping-data" class="level2">
-<h2 class="anchored" data-anchor-id="reshaping-data">5. Reshaping Data 🔄</h2>
-<p>Let’s reshape our data to show catches by species in columns:</p>
+<section id="making-your-analysis-clear-and-reproducible" class="level3">
+<h3 class="anchored" data-anchor-id="making-your-analysis-clear-and-reproducible">Making Your Analysis Clear and Reproducible</h3>
+<p>One of the biggest advantages of using packages like tidyverse is that they make your analysis more understandable and reproducible. Let’s look at a more complex example:</p>
 <div class="cell" data-autorun="false">
 <div>
 <div id="webr-5">
 
 </div>
 <script type="webr-5-contents">
-eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJldmFsIjp0cnVlLCJlZGl0Ijp0cnVlfSwiY29kZSI6IiMgQmFzZSBSIGFwcHJvYWNoXG5yZXNoYXBlKGZpc2hlcmllc19iYXNlLCBcbiAgICAgICBkaXJlY3Rpb24gPSBcIndpZGVcIixcbiAgICAgICBpZHZhciA9IGMoXCJkYXRlXCIsIFwibG9jYXRpb25cIiksXG4gICAgICAgdGltZXZhciA9IFwic3BlY2llc1wiLFxuICAgICAgIHYubmFtZXMgPSBcImNhdGNoX2tnXCIpXG5cbiMgVGlkeXZlcnNlIGFwcHJvYWNoXG5maXNoZXJpZXNfdGlkeSAlPiVcbiAgcGl2b3Rfd2lkZXIoXG4gICAgbmFtZXNfZnJvbSA9IHNwZWNpZXMsXG4gICAgdmFsdWVzX2Zyb20gPSBjYXRjaF9rZ1xuICApIn0=
+eyJjb2RlIjoiIyBMZXQncyBhbmFseXplIGZpc2hpbmcgZWZmaWNpZW5jeSBvdmVyIHRpbWVcblxuIyBGaXJzdCwgbWVzc3kgYmFzZSBSIHdheVxuZWZmaWNpZW5jeV9iYXNlIDwtIGRhaWx5X2NhdGNoZXNcbmVmZmljaWVuY3lfYmFzZSRtb250aCA8LSBzdWJzdHIoZWZmaWNpZW5jeV9iYXNlJGRhdGUsIDYsIDcpXG5lZmZpY2llbmN5X2Jhc2UkY2F0Y2hfcGVyX2JvYXQgPC0gZWZmaWNpZW5jeV9iYXNlJGNhdGNoX2tnIC8gZWZmaWNpZW5jeV9iYXNlJGJvYXRzXG5tb250aGx5X3N0YXRzIDwtIGFnZ3JlZ2F0ZShjYXRjaF9wZXJfYm9hdCB+IG1vbnRoICsgc3BlY2llcywgXG4gICAgICAgICAgICAgICAgICAgICAgICAgZGF0YSA9IGVmZmljaWVuY3lfYmFzZSxcbiAgICAgICAgICAgICAgICAgICAgICAgICBGVU4gPSBmdW5jdGlvbih4KSBjKG1lYW4gPSBtZWFuKHgpLCBzZCA9IHNkKHgpKSlcbnByaW50KFwiQmFzZSBSIHJlc3VsdHM6XCIpXG5wcmludChtb250aGx5X3N0YXRzKVxuXG4jIE5vdywgY2xlYXIgdGlkeXZlcnNlIHdheVxucHJpbnQoXCJcXG5UaWR5dmVyc2UgcmVzdWx0czpcIilcbmRhaWx5X2NhdGNoZXMgJT4lXG4gICAgIyBBZGQgbW9udGggYW5kIGVmZmljaWVuY3kgY2FsY3VsYXRpb25zXG4gICAgbXV0YXRlKFxuICAgICAgICBtb250aCA9IHN1YnN0cihkYXRlLCA2LCA3KSxcbiAgICAgICAgZWZmaWNpZW5jeSA9IGNhdGNoX2tnIC8gYm9hdHNcbiAgICApICU+JVxuICAgICMgR3JvdXAgYnkgbW9udGggYW5kIHNwZWNpZXNcbiAgICBncm91cF9ieShtb250aCwgc3BlY2llcykgJT4lXG4gICAgIyBDYWxjdWxhdGUgc3RhdGlzdGljc1xuICAgIHN1bW1hcml6ZShcbiAgICAgICAgYXZnX2VmZmljaWVuY3kgPSBtZWFuKGVmZmljaWVuY3kpLFxuICAgICAgICBzZF9lZmZpY2llbmN5ID0gc2QoZWZmaWNpZW5jeSksXG4gICAgICAgIHRvdGFsX2NhdGNoID0gc3VtKGNhdGNoX2tnKSxcbiAgICAgICAgdG90YWxfYm9hdHMgPSBzdW0oYm9hdHMpXG4gICAgKSAlPiVcbiAgICAjIFNvcnQgYnkgbW9udGggYW5kIGVmZmljaWVuY3lcbiAgICBhcnJhbmdlKG1vbnRoLCBkZXNjKGF2Z19lZmZpY2llbmN5KSkiLCJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfX0=
 </script>
 </div>
 </div>
+<p>The tidyverse version: 1. Shows clearly what each step does 2. Makes it easy to add or remove analyses 3. Produces well-organized output 4. Reduces the chance of errors</p>
 </section>
-<section id="complex-analysis-example-catch-trends" class="level2">
-<h2 class="anchored" data-anchor-id="complex-analysis-example-catch-trends">6. Complex Analysis Example: Catch Trends 📊</h2>
-<p>Let’s calculate running averages and relative changes:</p>
+</section>
+<section id="the-pipe-operator-making-your-code-flow" class="level2">
+<h2 class="anchored" data-anchor-id="the-pipe-operator-making-your-code-flow">The Pipe Operator: Making Your Code Flow 🌊</h2>
+<p>Now that we understand how packages can help us, let’s learn about one of the most powerful features in modern R programming: the pipe operator (<code>%&gt;%</code>).</p>
+<section id="whats-the-problem-were-solving" class="level3">
+<h3 class="anchored" data-anchor-id="whats-the-problem-were-solving">What’s the Problem We’re Solving?</h3>
+<p>Before we introduce the pipe, let’s see why we need it. Consider this common situation in fisheries analysis:</p>
 <div class="cell" data-autorun="false">
 <div>
 <div id="webr-6">
 
 </div>
 <script type="webr-6-contents">
-eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJldmFsIjp0cnVlLCJlZGl0Ijp0cnVlfSwiY29kZSI6IiMgQmFzZSBSIGFwcHJvYWNoXG4jIFN0ZXAgMTogT3JkZXIgZGF0YVxub3JkZXJlZF9kYXRhIDwtIGZpc2hlcmllc19iYXNlW29yZGVyKGZpc2hlcmllc19iYXNlJGRhdGUpLCBdXG5cbiMgU3RlcCAyOiBTcGxpdCBieSBzcGVjaWVzXG5zcGVjaWVzX2xpc3QgPC0gc3BsaXQob3JkZXJlZF9kYXRhLCBvcmRlcmVkX2RhdGEkc3BlY2llcylcblxuIyBTdGVwIDM6IENhbGN1bGF0ZSBydW5uaW5nIG1lYW5zIGFuZCBjaGFuZ2VzXG5yZXN1bHRfbGlzdCA8LSBsYXBwbHkoc3BlY2llc19saXN0LCBmdW5jdGlvbih4KSB7XG4gIHJ1bm5pbmdfbWVhbiA8LSB6b286OnJvbGxtZWFuKHgkY2F0Y2hfa2csIGsgPSAyLCBmaWxsID0gTkEpXG4gIGNoYW5nZXMgPC0gYyhOQSwgZGlmZih4JGNhdGNoX2tnKSlcbiAgZGF0YS5mcmFtZShcbiAgICBkYXRlID0geCRkYXRlLFxuICAgIGNhdGNoX2tnID0geCRjYXRjaF9rZyxcbiAgICBydW5uaW5nX21lYW4gPSBydW5uaW5nX21lYW4sXG4gICAgY2hhbmdlID0gY2hhbmdlc1xuICApXG59KVxuXG4jIFN0ZXAgNDogQ29tYmluZSByZXN1bHRzXG5kby5jYWxsKHJiaW5kLCByZXN1bHRfbGlzdClcblxuIyBUaWR5dmVyc2UgYXBwcm9hY2hcbmZpc2hlcmllc190aWR5ICU+JVxuICBhcnJhbmdlKGRhdGUpICU+JVxuICBncm91cF9ieShzcGVjaWVzKSAlPiVcbiAgbXV0YXRlKFxuICAgIHJ1bm5pbmdfbWVhbiA9IChjYXRjaF9rZyArIGxhZyhjYXRjaF9rZykpIC8gMixcbiAgICBjaGFuZ2UgPSBjYXRjaF9rZyAtIGxhZyhjYXRjaF9rZylcbiAgKSJ9
+eyJjb2RlIjoiIyBDcmVhdGUgYSBtZXNzeSBmaXNoaW5nIGRhdGFzZXRcbmZpc2hpbmdfZGF0YSA8LSBkYXRhLmZyYW1lKFxuICAgIGRhdGUgPSByZXAoYyhcIjIwMjQtMDEtMDFcIiwgXCIyMDI0LTAxLTAyXCIpLCBlYWNoID0gNCksXG4gICAgc2l0ZSA9IHJlcChjKFwiQmVhY2hcIiwgXCJSZWVmXCIpLCB0aW1lcyA9IDQpLFxuICAgIHNwZWNpZXMgPSBjKFwiVHVuYVwiLCBcIk1hY2tlcmVsXCIsIFwiVHVuYVwiLCBcIlNhcmRpbmVcIixcbiAgICAgICAgICAgICAgICBcIk1hY2tlcmVsXCIsIFwiVHVuYVwiLCBcIlNhcmRpbmVcIiwgXCJUdW5hXCIpLFxuICAgIGNhdGNoX2tnID0gYygxMjAsIDgwLCAxNTAsIDQwLCA5MCwgMTMwLCA1MCwgMTQwKSxcbiAgICBxdWFsaXR5ID0gYyhcIkdvb2RcIiwgXCJQb29yXCIsIFwiR29vZFwiLCBcIlBvb3JcIixcbiAgICAgICAgICAgICAgICBcIkdvb2RcIiwgXCJHb29kXCIsIFwiUG9vclwiLCBcIkdvb2RcIilcbilcblxuIyBMZXQncyBzYXkgd2Ugd2FudCB0bzpcbiMgMS4gUmVtb3ZlIHBvb3IgcXVhbGl0eSBkYXRhXG4jIDIuIENhbGN1bGF0ZSBhdmVyYWdlIGNhdGNoIGJ5IHNwZWNpZXNcbiMgMy4gU29ydCBmcm9tIGhpZ2hlc3QgdG8gbG93ZXN0IGNhdGNoXG4jIDQuIEtlZXAgb25seSBjYXRjaGVzIGFib3ZlIDEwMGtnXG5cbiMgVHJhZGl0aW9uYWwgd2F5IChuZXN0ZWQgZnVuY3Rpb25zKVxuc29ydGVkX2NhdGNoZXMgPC0gc3Vic2V0KFxuICAgIGFnZ3JlZ2F0ZShcbiAgICAgICAgY2F0Y2hfa2cgfiBzcGVjaWVzLCBcbiAgICAgICAgZGF0YSA9IHN1YnNldChmaXNoaW5nX2RhdGEsIHF1YWxpdHkgPT0gXCJHb29kXCIpLFxuICAgICAgICBGVU4gPSBtZWFuXG4gICAgKSxcbiAgICBjYXRjaF9rZyA+IDEwMFxuKVxucHJpbnQoXCJUcmFkaXRpb25hbCBuZXN0ZWQgYXBwcm9hY2g6XCIpXG5zb3J0ZWRfY2F0Y2hlc1tvcmRlcihzb3J0ZWRfY2F0Y2hlcyRjYXRjaF9rZywgZGVjcmVhc2luZyA9IFRSVUUpLCBdIiwiYXR0ciI6eyJhdXRvcnVuIjpmYWxzZSwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZX19
 </script>
 </div>
 </div>
+<p>The problems with this nested approach: 1. It reads inside-out (have to start from the innermost function) 2. It’s hard to understand what’s happening 3. It’s difficult to modify or debug 4. Adding more steps makes it even more confusing</p>
 </section>
-<section id="data-quality-checks" class="level2">
-<h2 class="anchored" data-anchor-id="data-quality-checks">7. Data Quality Checks 🔍</h2>
-<p>Let’s check for potential data issues:</p>
+<section id="enter-the-pipe-a-better-way" class="level3">
+<h3 class="anchored" data-anchor-id="enter-the-pipe-a-better-way">Enter the Pipe: A Better Way</h3>
+<p>The pipe operator (<code>%&gt;%</code>) takes what’s on the left and passes it as the first argument to the function on the right. Think of it as saying “and then” between steps:</p>
 <div class="cell" data-autorun="false">
 <div>
 <div id="webr-7">
 
 </div>
 <script type="webr-7-contents">
-eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJldmFsIjp0cnVlLCJlZGl0Ijp0cnVlfSwiY29kZSI6IiMgQmFzZSBSIGFwcHJvYWNoXG4jIENoZWNrIGZvciBtaXNzaW5nIHZhbHVlc1xuY29sU3Vtcyhpcy5uYShmaXNoZXJpZXNfYmFzZSkpXG5cbiMgQ2hlY2sgdmFsdWUgcmFuZ2VzXG5zdW1tYXJ5KGZpc2hlcmllc19iYXNlJGNhdGNoX2tnKVxuXG4jIEZpbmQgdW51c3VhbCB2YWx1ZXNcbm91dGxpZXJzIDwtIGZpc2hlcmllc19iYXNlJGNhdGNoX2tnW1xuICBmaXNoZXJpZXNfYmFzZSRjYXRjaF9rZyA+IFxuICAgIG1lYW4oZmlzaGVyaWVzX2Jhc2UkY2F0Y2hfa2cpICsgMipzZChmaXNoZXJpZXNfYmFzZSRjYXRjaF9rZylcbl1cblxuIyBUaWR5dmVyc2UgYXBwcm9hY2hcbmZpc2hlcmllc190aWR5ICU+JVxuICBzdW1tYXJpc2UoXG4gICAgYWNyb3NzKGV2ZXJ5dGhpbmcoKSwgXG4gICAgICAgICAgIGxpc3QoXG4gICAgICAgICAgICAgbWlzc2luZyA9IH5zdW0oaXMubmEoLikpLFxuICAgICAgICAgICAgIHVuaXF1ZSA9IH5uX2Rpc3RpbmN0KC4pXG4gICAgICAgICAgICkpXG4gICkgJT4lXG4gIHBpdm90X2xvbmdlcihldmVyeXRoaW5nKCksIFxuICAgICAgICAgICAgICAgbmFtZXNfdG8gPSBjKFwiY29sdW1uXCIsIFwic3RhdFwiKSwgXG4gICAgICAgICAgICAgICBuYW1lc19zZXAgPSBcIl9cIilcblxuIyBDaGVjayBmb3Igb3V0bGllcnNcbmZpc2hlcmllc190aWR5ICU+JVxuICBtdXRhdGUoXG4gICAgbWVhbl9jYXRjaCA9IG1lYW4oY2F0Y2hfa2cpLFxuICAgIHNkX2NhdGNoID0gc2QoY2F0Y2hfa2cpLFxuICAgIGlzX291dGxpZXIgPSBjYXRjaF9rZyA+IG1lYW5fY2F0Y2ggKyAyKnNkX2NhdGNoXG4gICkgJT4lXG4gIGZpbHRlcihpc19vdXRsaWVyKSJ9
+eyJjb2RlIjoicHJpbnQoXCJcXG5QaXBlIGFwcHJvYWNoOlwiKVxuZmlzaGluZ19kYXRhICU+JVxuICAgICMgU3RhcnQgd2l0aCBhbGwgZGF0YSBBTkQgVEhFTlxuICAgIGZpbHRlcihxdWFsaXR5ID09IFwiR29vZFwiKSAlPiVcbiAgICAjIEtlZXAgb25seSBnb29kIHF1YWxpdHkgQU5EIFRIRU5cbiAgICBncm91cF9ieShzcGVjaWVzKSAlPiVcbiAgICAjIEdyb3VwIGJ5IHNwZWNpZXMgQU5EIFRIRU5cbiAgICBzdW1tYXJpemUoYXZnX2NhdGNoID0gbWVhbihjYXRjaF9rZykpICU+JVxuICAgICMgQ2FsY3VsYXRlIG1lYW5zIEFORCBUSEVOXG4gICAgZmlsdGVyKGF2Z19jYXRjaCA+IDEwMCkgJT4lXG4gICAgIyBLZWVwIGhpZ2ggY2F0Y2hlcyBBTkQgVEhFTlxuICAgIGFycmFuZ2UoZGVzYyhhdmdfY2F0Y2gpKVxuICAgICMgU29ydCBmcm9tIGhpZ2hlc3QgdG8gbG93ZXN0IiwiYXR0ciI6eyJhdXRvcnVuIjpmYWxzZSwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZX19
 </script>
 </div>
 </div>
+<p>See how much clearer that is? It: 1. Reads like a step-by-step recipe 2. Is easy to understand what each step does 3. Can be modified by adding or removing steps 4. Makes debugging simple (can comment out steps)</p>
 </section>
-<section id="practice-exercises-convert-base-r-to-tidyverse" class="level2">
-<h2 class="anchored" data-anchor-id="practice-exercises-convert-base-r-to-tidyverse">Practice Exercises: Convert Base R to Tidyverse 💪</h2>
-<section id="exercise-1-basic-filtering-and-summarizing" class="level3">
-<h3 class="anchored" data-anchor-id="exercise-1-basic-filtering-and-summarizing">Exercise 1: Basic Filtering and Summarizing</h3>
-<p>Convert this base R code to tidyverse:</p>
+<section id="real-world-example-complex-analysis-made-simple" class="level3">
+<h3 class="anchored" data-anchor-id="real-world-example-complex-analysis-made-simple">Real-World Example: Complex Analysis Made Simple</h3>
+<p>Let’s do a more complex analysis to really see the power of the pipe:</p>
 <div class="cell" data-autorun="false">
 <div>
 <div id="webr-8">
 
 </div>
 <script type="webr-8-contents">
-eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJldmFsIjp0cnVlLCJlZGl0Ijp0cnVlfSwiY29kZSI6IiMgQmFzZSBSXG5yZXN1bHQgPC0gYWdncmVnYXRlKFxuICBjYXRjaF9rZyB+IHNwZWNpZXMgKyBsb2NhdGlvbiwgXG4gIGRhdGEgPSBmaXNoZXJpZXNfYmFzZVtmaXNoZXJpZXNfYmFzZSRjYXRjaF9rZyA+IDEwMCwgXSxcbiAgRlVOID0gbWVhblxuKVxucmVzdWx0W29yZGVyKC1yZXN1bHQkY2F0Y2hfa2cpLCBdXG5cbiMgWW91ciB0aWR5dmVyc2Ugc29sdXRpb24gaGVyZVxuZmlzaGVyaWVzX3RpZHkgJT4lXG4gIGZpbHRlcihjYXRjaF9rZyA+IDEwMCkgJT4lXG4gIGdyb3VwX2J5KHNwZWNpZXMsIGxvY2F0aW9uKSAlPiVcbiAgc3VtbWFyaXplKGF2Z19jYXRjaCA9IG1lYW4oY2F0Y2hfa2cpKSAlPiVcbiAgYXJyYW5nZShkZXNjKGF2Z19jYXRjaCkpIn0=
+eyJjb2RlIjoiIyBMZXQncyBhbmFseXplIGZpc2hpbmcgZWZmaWNpZW5jeSBieSBzaXRlIGFuZCBzcGVjaWVzXG4jIEluY2x1ZGluZzogY2F0Y2ggcGVyIGRheSwgcXVhbGl0eSByYXRpb3MsIGFuZCByYW5raW5nc1xuXG4jIEZpcnN0LCB0aGUgdHJhZGl0aW9uYWwgd2F5IChwYWluZnVsISlcbmZpc2hpbmdfZGF0YSRjYXRjaF9kYXkgPC0gYXMubnVtZXJpYyhmYWN0b3IoZmlzaGluZ19kYXRhJGRhdGUpKVxuc2l0ZV9zdGF0cyA8LSBhZ2dyZWdhdGUoXG4gICAgY2JpbmQoY2F0Y2hfa2csIHF1YWxpdHkgPT0gXCJHb29kXCIpIH4gc2l0ZSArIHNwZWNpZXMsXG4gICAgZGF0YSA9IGZpc2hpbmdfZGF0YSxcbiAgICBGVU4gPSBmdW5jdGlvbih4KSBjKHRvdGFsID0gc3VtKHgpLCBtZWFuID0gbWVhbih4KSlcbilcbm5hbWVzKHNpdGVfc3RhdHMpWzM6NF0gPC0gYyhcInRvdGFsX2NhdGNoXCIsIFwicXVhbGl0eV9yYXRpb1wiKVxuc2l0ZV9zdGF0cyRyYW5rIDwtIHJhbmsoLXNpdGVfc3RhdHMkdG90YWxfY2F0Y2gpXG5wcmludChcIlRyYWRpdGlvbmFsIGFwcHJvYWNoOlwiKVxucHJpbnQoc2l0ZV9zdGF0cylcblxuIyBOb3cgd2l0aCBwaXBlcyAoYmVhdXRpZnVsISlcbnByaW50KFwiXFxuUGlwZSBhcHByb2FjaDpcIilcbmZpc2hpbmdfZGF0YSAlPiVcbiAgICBncm91cF9ieShzaXRlLCBzcGVjaWVzKSAlPiVcbiAgICBzdW1tYXJpemUoXG4gICAgICAgIHRvdGFsX2NhdGNoID0gc3VtKGNhdGNoX2tnKSxcbiAgICAgICAgYXZnX2NhdGNoID0gbWVhbihjYXRjaF9rZyksXG4gICAgICAgIHF1YWxpdHlfcmF0aW8gPSBtZWFuKHF1YWxpdHkgPT0gXCJHb29kXCIpLFxuICAgICAgICBkYXlzX2Zpc2hlZCA9IG5fZGlzdGluY3QoZGF0ZSlcbiAgICApICU+JVxuICAgIG11dGF0ZShcbiAgICAgICAgY2F0Y2hfcGVyX2RheSA9IHRvdGFsX2NhdGNoIC8gZGF5c19maXNoZWQsXG4gICAgICAgIHJhbmsgPSByYW5rKC10b3RhbF9jYXRjaClcbiAgICApICU+JVxuICAgIGFycmFuZ2UocmFuaykiLCJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfX0=
 </script>
 </div>
 </div>
+<p>Let’s break down why the pipe version is better:</p>
+<ol type="1">
+<li><strong>Readability</strong>
+<ul>
+<li>Each line has a clear purpose</li>
+<li>The steps follow a logical order</li>
+<li>You can read it like a story</li>
+</ul></li>
+<li><strong>Maintainability</strong>
+<ul>
+<li>Easy to add new calculations</li>
+<li>Can rearrange steps easily</li>
+<li>Simple to modify existing steps</li>
+</ul></li>
+<li><strong>Debugging</strong>
+<ul>
+<li>Can comment out steps to find problems</li>
+<li>Each step’s output feeds into the next</li>
+<li>Can check intermediate results</li>
+</ul></li>
+</ol>
 </section>
-<section id="exercise-2-complex-data-manipulation" class="level3">
-<h3 class="anchored" data-anchor-id="exercise-2-complex-data-manipulation">Exercise 2: Complex Data Manipulation</h3>
-<p>Convert this base R code to tidyverse:</p>
+<section id="advanced-pipe-techniques" class="level3">
+<h3 class="anchored" data-anchor-id="advanced-pipe-techniques">Advanced Pipe Techniques</h3>
+<p>Once you’re comfortable with basic pipes, you can do even more:</p>
 <div class="cell" data-autorun="false">
 <div>
 <div id="webr-9">
 
 </div>
 <script type="webr-9-contents">
-eyJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJldmFsIjp0cnVlLCJlZGl0Ijp0cnVlfSwiY29kZSI6IiMgQmFzZSBSXG5zcGVjaWVzX3N1bW1hcnkgPC0gdGFwcGx5KGZpc2hlcmllc19iYXNlJGNhdGNoX2tnLCBcbiAgICAgICAgICAgICAgICAgICAgICAgICBmaXNoZXJpZXNfYmFzZSRzcGVjaWVzLCBcbiAgICAgICAgICAgICAgICAgICAgICAgICBmdW5jdGlvbih4KSB7XG4gICAgICAgICAgICAgICAgICAgICAgICAgICBjKG1lYW4gPSBtZWFuKHgpLFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICBzZCA9IHNkKHgpLFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICBjdiA9IHNkKHgpL21lYW4oeCkpXG4gICAgICAgICAgICAgICAgICAgICAgICAgfSlcbmFzLmRhdGEuZnJhbWUoZG8uY2FsbChyYmluZCwgc3BlY2llc19zdW1tYXJ5KSlcblxuIyBZb3VyIHRpZHl2ZXJzZSBzb2x1dGlvbiBoZXJlXG5maXNoZXJpZXNfdGlkeSAlPiVcbiAgZ3JvdXBfYnkoc3BlY2llcykgJT4lXG4gIHN1bW1hcml6ZShcbiAgICBtZWFuID0gbWVhbihjYXRjaF9rZyksXG4gICAgc2QgPSBzZChjYXRjaF9rZyksXG4gICAgY3YgPSBzZC9tZWFuXG4gICkifQ==
+eyJjb2RlIjoiIyBNdWx0aXBsZSBvcGVyYXRpb25zIGluIG9uZSBwaXBlbGluZVxuZmlzaGluZ19kYXRhICU+JVxuICAgICMgRmlyc3QsIGNhbGN1bGF0ZSBzb21lIHN0YXRpc3RpY3NcbiAgICBncm91cF9ieShzaXRlLCBzcGVjaWVzKSAlPiVcbiAgICBzdW1tYXJpemUoXG4gICAgICAgIGF2Z19jYXRjaCA9IG1lYW4oY2F0Y2hfa2cpLFxuICAgICAgICBxdWFsaXR5X3JhdGlvID0gbWVhbihxdWFsaXR5ID09IFwiR29vZFwiKVxuICAgICkgJT4lXG4gICAgIyBUaGVuIGNyZWF0ZSBtdWx0aXBsZSBkZXJpdmVkIGNvbHVtbnNcbiAgICBtdXRhdGUoXG4gICAgICAgIHBlcmZvcm1hbmNlID0gY2FzZV93aGVuKFxuICAgICAgICAgICAgYXZnX2NhdGNoID4gMTAwICYgcXVhbGl0eV9yYXRpbyA+IDAuNyB+IFwiRXhjZWxsZW50XCIsXG4gICAgICAgICAgICBhdmdfY2F0Y2ggPiAxMDAgfCBxdWFsaXR5X3JhdGlvID4gMC43IH4gXCJHb29kXCIsXG4gICAgICAgICAgICBUUlVFIH4gXCJOZWVkcyBJbXByb3ZlbWVudFwiXG4gICAgICAgICksXG4gICAgICAgIGNhdGNoX2NhdGVnb3J5ID0gY3V0KFxuICAgICAgICAgICAgYXZnX2NhdGNoLFxuICAgICAgICAgICAgYnJlYWtzID0gYygwLCA1MCwgMTAwLCBJbmYpLFxuICAgICAgICAgICAgbGFiZWxzID0gYyhcIkxvd1wiLCBcIk1lZGl1bVwiLCBcIkhpZ2hcIilcbiAgICAgICAgKVxuICAgICkgJT4lXG4gICAgIyBGaW5hbGx5LCBvcmdhbml6ZSB0aGUgb3V0cHV0XG4gICAgYXJyYW5nZShkZXNjKGF2Z19jYXRjaCkpIiwiYXR0ciI6eyJhdXRvcnVuIjpmYWxzZSwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZX19
 </script>
 </div>
 </div>
 </section>
 </section>
-<section id="best-practices-when-to-use-each-approach" class="level2">
-<h2 class="anchored" data-anchor-id="best-practices-when-to-use-each-approach">Best Practices: When to Use Each Approach 📝</h2>
-<section id="use-base-r-when" class="level3">
-<h3 class="anchored" data-anchor-id="use-base-r-when">Use Base R When:</h3>
-<ul>
-<li>Working with very simple operations</li>
-<li>Memory efficiency is crucial</li>
-<li>Need maximum computational speed</li>
-<li>Working with basic statistical functions</li>
-<li>Teaching fundamental R concepts</li>
-</ul>
-</section>
-<section id="use-tidyverse-when" class="level3">
-<h3 class="anchored" data-anchor-id="use-tidyverse-when">Use Tidyverse When:</h3>
-<ul>
-<li>Working with data frames</li>
-<li>Need readable and maintainable code</li>
-<li>Performing data manipulation</li>
-<li>Creating data pipelines</li>
-<li>Working with dates and strings</li>
-<li>Making plots with ggplot2</li>
-</ul>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<section id="putting-it-all-together-real-world-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="putting-it-all-together-real-world-analysis">Putting It All Together: Real-World Analysis 🎯</h2>
+<p>Let’s tackle a complete fisheries data analysis that you might encounter in your work. This will show how packages and pipes can handle complex tasks elegantly.</p>
+<section id="a-complete-analysis-example" class="level3">
+<h3 class="anchored" data-anchor-id="a-complete-analysis-example">A Complete Analysis Example</h3>
+<p>Let’s say we have data from multiple fishing sites over several days, and we need to create a comprehensive report:</p>
+<div class="cell" data-autorun="false">
+<div>
+<div id="webr-10">
+
 </div>
-<div class="callout-title-container flex-fill">
-Pro Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>You can mix base R and tidyverse approaches! Use what makes the most sense for each specific task.</p>
+<script type="webr-10-contents">
+eyJjb2RlIjoiIyBDcmVhdGUgYSByZWFsaXN0aWMgZmlzaGluZyBkYXRhc2V0XG5maXNoaW5nX3N1cnZleSA8LSBkYXRhLmZyYW1lKFxuICAgIGRhdGUgPSByZXAoYXMuRGF0ZShjKFwiMjAyNC0wMS0wMVwiLCBcIjIwMjQtMDEtMDJcIiwgXCIyMDI0LTAxLTAzXCIpKSwgZWFjaCA9IDQpLFxuICAgIHNpdGUgPSByZXAoYyhcIkJlYWNoXCIsIFwiUmVlZlwiKSwgdGltZXMgPSA2KSxcbiAgICBzcGVjaWVzID0gYyhcIlR1bmFcIiwgXCJNYWNrZXJlbFwiLCBcIlR1bmFcIiwgXCJTYXJkaW5lXCIsXG4gICAgICAgICAgICAgICAgXCJNYWNrZXJlbFwiLCBcIlR1bmFcIiwgXCJTYXJkaW5lXCIsIFwiVHVuYVwiLFxuICAgICAgICAgICAgICAgIFwiVHVuYVwiLCBcIk1hY2tlcmVsXCIsIFwiU2FyZGluZVwiLCBcIlR1bmFcIiksXG4gICAgY2F0Y2hfa2cgPSBjKDEyMCwgODAsIDE1MCwgNDAsIDkwLCAxMzAsIDUwLCAxNDAsXG4gICAgICAgICAgICAgICAgIDExMCwgNzUsIDQ1LCAxNjApLFxuICAgIGdlYXJfdHlwZSA9IHJlcChjKFwiTmV0XCIsIFwiTGluZVwiKSwgdGltZXMgPSA2KSxcbiAgICB3YXRlcl90ZW1wID0gYygyNSwgMjUsIDI0LCAyNCwgMjYsIDI2LCAyNSwgMjUsXG4gICAgICAgICAgICAgICAgICAgMjcsIDI3LCAyNiwgMjYpLFxuICAgIGVmZm9ydF9ob3VycyA9IGMoNCwgMywgNSwgMiwgNCwgNSwgMywgNCxcbiAgICAgICAgICAgICAgICAgICAgNSwgMywgMiwgNilcbilcblxuIyBMZXQncyBwZXJmb3JtIGEgY29tcHJlaGVuc2l2ZSBhbmFseXNpc1xuZGV0YWlsZWRfYW5hbHlzaXMgPC0gZmlzaGluZ19zdXJ2ZXkgJT4lXG4gICAgIyBGaXJzdCwgY2FsY3VsYXRlIGNhdGNoIHBlciB1bml0IGVmZm9ydCAoQ1BVRSlcbiAgICBtdXRhdGUoXG4gICAgICAgIGNwdWUgPSBjYXRjaF9rZyAvIGVmZm9ydF9ob3VycyxcbiAgICAgICAgZGF5X29mX3dlZWsgPSB3ZWVrZGF5cyhkYXRlKVxuICAgICkgJT4lXG4gICAgIyBHcm91cCBieSBzaXRlIGFuZCBzcGVjaWVzXG4gICAgZ3JvdXBfYnkoc2l0ZSwgc3BlY2llcykgJT4lXG4gICAgc3VtbWFyaXplKFxuICAgICAgICAjIENhdGNoIHN0YXRpc3RpY3NcbiAgICAgICAgdG90YWxfY2F0Y2ggPSBzdW0oY2F0Y2hfa2cpLFxuICAgICAgICBhdmdfY2F0Y2ggPSBtZWFuKGNhdGNoX2tnKSxcbiAgICAgICAgbWF4X2NhdGNoID0gbWF4KGNhdGNoX2tnKSxcbiAgICAgICAgXG4gICAgICAgICMgRWZmb3J0IHN0YXRpc3RpY3NcbiAgICAgICAgdG90YWxfaG91cnMgPSBzdW0oZWZmb3J0X2hvdXJzKSxcbiAgICAgICAgYXZnX2NwdWUgPSBtZWFuKGNwdWUpLFxuICAgICAgICBcbiAgICAgICAgIyBFbnZpcm9ubWVudGFsIGRhdGFcbiAgICAgICAgYXZnX3RlbXAgPSBtZWFuKHdhdGVyX3RlbXApLFxuICAgICAgICBcbiAgICAgICAgIyBDb3VudCBmaXNoaW5nIGRheXNcbiAgICAgICAgZmlzaGluZ19kYXlzID0gbl9kaXN0aW5jdChkYXRlKSxcbiAgICAgICAgXG4gICAgICAgICMgS2VlcCBncm91cGluZyBmb3IgbmV4dCBvcGVyYXRpb25zXG4gICAgICAgIC5ncm91cHMgPSBcImtlZXBcIlxuICAgICkgJT4lXG4gICAgIyBBZGQgZGVyaXZlZCBtZXRyaWNzXG4gICAgbXV0YXRlKFxuICAgICAgICAjIENhbGN1bGF0ZSByZWxhdGl2ZSBwZXJmb3JtYW5jZVxuICAgICAgICBjYXRjaF9yYW5rID0gcmFuaygtdG90YWxfY2F0Y2gpLFxuICAgICAgICBjcHVlX3JhbmsgPSByYW5rKC1hdmdfY3B1ZSksXG4gICAgICAgIFxuICAgICAgICAjIENyZWF0ZSBwZXJmb3JtYW5jZSBjYXRlZ29yaWVzXG4gICAgICAgIHBlcmZvcm1hbmNlID0gY2FzZV93aGVuKFxuICAgICAgICAgICAgYXZnX2NwdWUgPiBtZWFuKGF2Z19jcHVlKSArIHNkKGF2Z19jcHVlKSB+IFwiRXhjZWxsZW50XCIsXG4gICAgICAgICAgICBhdmdfY3B1ZSA+IG1lYW4oYXZnX2NwdWUpIH4gXCJBYm92ZSBBdmVyYWdlXCIsXG4gICAgICAgICAgICBhdmdfY3B1ZSA+IG1lYW4oYXZnX2NwdWUpIC0gc2QoYXZnX2NwdWUpIH4gXCJBdmVyYWdlXCIsXG4gICAgICAgICAgICBUUlVFIH4gXCJCZWxvdyBBdmVyYWdlXCJcbiAgICAgICAgKVxuICAgICkgJT4lXG4gICAgIyBTb3J0IGJ5IHRvdGFsIGNhdGNoXG4gICAgYXJyYW5nZShkZXNjKHRvdGFsX2NhdGNoKSlcblxuIyBWaWV3IHRoZSByZXN1bHRzXG5wcmludChcIkRldGFpbGVkIEZpc2hpbmcgQW5hbHlzaXM6XCIpXG5kZXRhaWxlZF9hbmFseXNpcyIsImF0dHIiOnsiYXV0b3J1biI6ZmFsc2UsImVkaXQiOnRydWUsImV2YWwiOnRydWV9fQ==
+</script>
 </div>
 </div>
 </section>
-</section>
-<section id="key-takeaways" class="level2">
-<h2 class="anchored" data-anchor-id="key-takeaways">Key Takeaways 🎯</h2>
+<section id="interactive-practice-exercises" class="level3">
+<h3 class="anchored" data-anchor-id="interactive-practice-exercises">Interactive Practice Exercises 💪</h3>
+<p>Now it’s your turn! Try these exercises using our fishing_survey data:</p>
 <ol type="1">
-<li><strong>Readability</strong>: Tidyverse code is generally more readable and self-documenting</li>
-<li><strong>Consistency</strong>: Tidyverse functions work consistently together</li>
-<li><strong>Efficiency</strong>: Tidyverse often requires less code for complex operations</li>
-<li><strong>Learning Curve</strong>: Base R is simpler to start with but harder to master</li>
-<li><strong>Flexibility</strong>: Both approaches have their place in data analysis</li>
+<li>Basic Analysis Exercise:</li>
+</ol>
+<div class="cell" data-autorun="false">
+<div>
+<div id="webr-11">
+
+</div>
+<script type="webr-11-contents">
+eyJjb2RlIjoiIyBDYWxjdWxhdGUgdGhlIGF2ZXJhZ2UgY2F0Y2ggYnkgZ2VhciB0eXBlIGFuZCBzcGVjaWVzXG4jIE9yZGVyIHJlc3VsdHMgZnJvbSBoaWdoZXN0IHRvIGxvd2VzdCBhdmVyYWdlIGNhdGNoXG5cbiMgV3JpdGUgeW91ciBzb2x1dGlvbiBiZWxvdzoiLCJhdHRyIjp7ImVkaXQiOnRydWUsImF1dG9ydW4iOmZhbHNlLCJlY2hvIjp0cnVlLCJldmFsIjp0cnVlfX0=
+</script>
+</div>
+</div>
+<details>
+<summary>
+Click to see solution
+</summary>
+<div class="cell" data-autorun="false">
+<div>
+<div id="webr-12">
+
+</div>
+<script type="webr-12-contents">
+eyJjb2RlIjoiZmlzaGluZ19zdXJ2ZXkgJT4lXG4gICAgZ3JvdXBfYnkoZ2Vhcl90eXBlLCBzcGVjaWVzKSAlPiVcbiAgICBzdW1tYXJpemUoXG4gICAgICAgIGF2Z19jYXRjaCA9IG1lYW4oY2F0Y2hfa2cpLFxuICAgICAgICB0b3RhbF9jYXRjaCA9IHN1bShjYXRjaF9rZyksXG4gICAgICAgIG5fY2F0Y2hlcyA9IG4oKVxuICAgICkgJT4lXG4gICAgYXJyYW5nZShkZXNjKGF2Z19jYXRjaCkpIiwiYXR0ciI6eyJhdXRvcnVuIjpmYWxzZSwiZWRpdCI6ZmFsc2UsImV2YWwiOmZhbHNlfX0=
+</script>
+</div>
+</div>
+</details>
+<ol start="2" type="1">
+<li>Advanced Analysis Exercise:</li>
+</ol>
+<div class="cell" data-autorun="false">
+<div>
+<div id="webr-13">
+
+</div>
+<script type="webr-13-contents">
+eyJjb2RlIjoiIyBGaW5kIHRoZSBtb3N0IGVmZmljaWVudCBmaXNoaW5nIGRheXMgYnk6XG4jIDEuIENhbGN1bGF0aW5nIENQVUUgKGNhdGNoX2tnIC8gZWZmb3J0X2hvdXJzKVxuIyAyLiBHcm91cGluZyBieSBkYXRlIGFuZCBzaXRlXG4jIDMuIEZpbmRpbmcgZGF5cyB3aXRoIGFib3ZlLWF2ZXJhZ2UgQ1BVRVxuIyA0LiBJbmNsdWRpbmcgdGhlIHdhdGVyIHRlbXBlcmF0dXJlXG5cbiMgV3JpdGUgeW91ciBzb2x1dGlvbiBiZWxvdzoiLCJhdHRyIjp7ImVkaXQiOnRydWUsImF1dG9ydW4iOmZhbHNlLCJlY2hvIjp0cnVlLCJldmFsIjp0cnVlfX0=
+</script>
+</div>
+</div>
+<details>
+<summary>
+Click to see solution
+</summary>
+<div class="cell" data-autorun="false">
+<div>
+<div id="webr-14">
+
+</div>
+<script type="webr-14-contents">
+eyJjb2RlIjoiZmlzaGluZ19zdXJ2ZXkgJT4lXG4gICAgIyBDYWxjdWxhdGUgQ1BVRVxuICAgIG11dGF0ZShjcHVlID0gY2F0Y2hfa2cgLyBlZmZvcnRfaG91cnMpICU+JVxuICAgICMgR3JvdXAgYnkgZGF0ZSBhbmQgc2l0ZVxuICAgIGdyb3VwX2J5KGRhdGUsIHNpdGUpICU+JVxuICAgIHN1bW1hcml6ZShcbiAgICAgICAgYXZnX2NwdWUgPSBtZWFuKGNwdWUpLFxuICAgICAgICB0b3RhbF9jYXRjaCA9IHN1bShjYXRjaF9rZyksXG4gICAgICAgIGF2Z190ZW1wID0gbWVhbih3YXRlcl90ZW1wKSxcbiAgICAgICAgbl9zcGVjaWVzID0gbl9kaXN0aW5jdChzcGVjaWVzKVxuICAgICkgJT4lXG4gICAgIyBGaW5kIGFib3ZlIGF2ZXJhZ2UgQ1BVRVxuICAgIHVuZ3JvdXAoKSAlPiVcbiAgICBtdXRhdGUoXG4gICAgICAgIGlzX2VmZmljaWVudCA9IGF2Z19jcHVlID4gbWVhbihhdmdfY3B1ZSksXG4gICAgICAgIGVmZmljaWVuY3lfc2NvcmUgPSBzY2FsZShhdmdfY3B1ZSlcbiAgICApICU+JVxuICAgICMgU29ydCBieSBlZmZpY2llbmN5XG4gICAgYXJyYW5nZShkZXNjKGF2Z19jcHVlKSkiLCJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0IjpmYWxzZSwiZXZhbCI6ZmFsc2V9fQ==
+</script>
+</div>
+</div>
+</details>
+<ol start="3" type="1">
+<li>Comprehensive Report Exercise:</li>
+</ol>
+<div class="cell" data-autorun="false">
+<div>
+<div id="webr-15">
+
+</div>
+<script type="webr-15-contents">
+eyJjb2RlIjoiIyBDcmVhdGUgYSBjb21wbGV0ZSBmaXNoaW5nIHJlcG9ydCBpbmNsdWRpbmc6XG4jIDEuIERhaWx5IHN1bW1hcmllcyBieSBzaXRlXG4jIDIuIFNwZWNpZXMgY29tcG9zaXRpb25cbiMgMy4gR2VhciB0eXBlIGVmZmVjdGl2ZW5lc3NcbiMgNC4gVGVtcGVyYXR1cmUgZWZmZWN0cyBvbiBjYXRjaFxuXG4jIFdyaXRlIHlvdXIgc29sdXRpb24gYmVsb3c6IiwiYXR0ciI6eyJlZGl0Ijp0cnVlLCJhdXRvcnVuIjpmYWxzZSwiZWNobyI6dHJ1ZSwiZXZhbCI6dHJ1ZX19
+</script>
+</div>
+</div>
+<details>
+<summary>
+Click to see solution
+</summary>
+<div class="cell" data-autorun="false">
+<div>
+<div id="webr-16">
+
+</div>
+<script type="webr-16-contents">
+eyJjb2RlIjoiIyBDb21wbGV0ZSBmaXNoaW5nIHJlcG9ydFxuZmlzaGluZ19zdXJ2ZXkgJT4lXG4gICAgIyBDYWxjdWxhdGUgZGFpbHkgbWV0cmljc1xuICAgIG11dGF0ZShjcHVlID0gY2F0Y2hfa2cgLyBlZmZvcnRfaG91cnMpICU+JVxuICAgICMgRGFpbHkgc2l0ZSBzdW1tYXJ5XG4gICAgZ3JvdXBfYnkoZGF0ZSwgc2l0ZSkgJT4lXG4gICAgc3VtbWFyaXplKFxuICAgICAgICB0b3RhbF9jYXRjaCA9IHN1bShjYXRjaF9rZyksXG4gICAgICAgIHNwZWNpZXNfY2F1Z2h0ID0gbl9kaXN0aW5jdChzcGVjaWVzKSxcbiAgICAgICAgYXZnX3RlbXAgPSBtZWFuKHdhdGVyX3RlbXApLFxuICAgICAgICB0b3RhbF9lZmZvcnQgPSBzdW0oZWZmb3J0X2hvdXJzKSxcbiAgICAgICAgYXZnX2NwdWUgPSBtZWFuKGNwdWUpLFxuICAgICAgICAuZ3JvdXBzID0gXCJkcm9wXCJcbiAgICApICU+JVxuICAgICMgQWRkIHRlbXBlcmF0dXJlIGVmZmVjdCBhbmFseXNpc1xuICAgIG11dGF0ZShcbiAgICAgICAgdGVtcF9lZmZlY3QgPSBjb3IodG90YWxfY2F0Y2gsIGF2Z190ZW1wKSxcbiAgICAgICAgZWZmaWNpZW5jeSA9IGNhc2Vfd2hlbihcbiAgICAgICAgICAgIGF2Z19jcHVlID49IHF1YW50aWxlKGF2Z19jcHVlLCAwLjc1KSB+IFwiSGlnaFwiLFxuICAgICAgICAgICAgYXZnX2NwdWUgPj0gcXVhbnRpbGUoYXZnX2NwdWUsIDAuMjUpIH4gXCJNZWRpdW1cIixcbiAgICAgICAgICAgIFRSVUUgfiBcIkxvd1wiXG4gICAgICAgIClcbiAgICApICU+JVxuICAgIGFycmFuZ2UoZGF0ZSwgZGVzYyh0b3RhbF9jYXRjaCkpIiwiYXR0ciI6eyJhdXRvcnVuIjpmYWxzZSwiZWRpdCI6ZmFsc2UsImV2YWwiOmZhbHNlfX0=
+</script>
+</div>
+</div>
+</details>
+</section>
+<section id="key-concepts-to-remember" class="level3">
+<h3 class="anchored" data-anchor-id="key-concepts-to-remember">Key Concepts to Remember 🗝️</h3>
+<p>When working with packages and pipes:</p>
+<ol type="1">
+<li><strong>Build Gradually</strong>
+<ul>
+<li>Start with simple operations</li>
+<li>Add complexity step by step</li>
+<li>Check your results at each stage</li>
+</ul></li>
+<li><strong>Think in Transformations</strong>
+<ul>
+<li>Each pipe step should transform the data</li>
+<li>Keep steps logical and clear</li>
+<li>Use appropriate grouping</li>
+</ul></li>
+<li><strong>Maintain Readability</strong>
+<ul>
+<li>Use clear variable names</li>
+<li>Add comments for complex operations</li>
+<li>Break long pipes into logical chunks</li>
+</ul></li>
 </ol>
 </section>
-<section id="next-steps" class="level2">
-<h2 class="anchored" data-anchor-id="next-steps">Next Steps 🚀</h2>
+</section>
+<section id="moving-forward-with-packages-and-pipes" class="level2">
+<h2 class="anchored" data-anchor-id="moving-forward-with-packages-and-pipes">Moving Forward with Packages and Pipes 🚀</h2>
+<section id="key-takeaways" class="level3">
+<h3 class="anchored" data-anchor-id="key-takeaways">Key Takeaways</h3>
 <ol type="1">
-<li>Practice converting your existing base R code to tidyverse</li>
-<li>Learn more advanced tidyverse functions</li>
-<li>Explore other tidyverse packages like purrr and tidyr</li>
-<li>Develop your own style combining both approaches</li>
+<li><strong>Why Packages Matter</strong>
+<ul>
+<li>Save significant time in data analysis</li>
+<li>Make complex operations simpler</li>
+<li>Provide specialized tools for specific needs</li>
+<li>Lead to more readable and maintainable code</li>
+</ul></li>
+<li><strong>The Power of Pipes</strong>
+<ul>
+<li>Transform complex nested operations into readable steps</li>
+<li>Make your analysis flow logically</li>
+<li>Easier to modify and debug code</li>
+<li>More intuitive for collaboration</li>
+</ul></li>
+<li><strong>Best Practices</strong></li>
 </ol>
-<p>Remember: The goal is not to completely replace base R, but to use the right tool for each job!</p>
+<div class="cell" data-autorun="false">
+<div>
+<div id="webr-17">
+
+</div>
+<script type="webr-17-contents">
+eyJjb2RlIjoiIyBETzogQnJlYWsgY29tcGxleCBvcGVyYXRpb25zIGludG8gY2xlYXIgc3RlcHNcbmZpc2hpbmdfZGF0YSAlPiVcbiAgICBncm91cF9ieShzcGVjaWVzKSAlPiUgICAgIyBHcm91cCBmaXJzdFxuICAgIHN1bW1hcml6ZSggICAgICAgICAgICAgICAjIFRoZW4gc3VtbWFyaXplXG4gICAgICAgIGF2Z19jYXRjaCA9IG1lYW4oY2F0Y2hfa2cpLFxuICAgICAgICB0b3RhbCA9IHN1bShjYXRjaF9rZylcbiAgICApXG5cbiMgRE9OJ1Q6IFRyeSB0byBkbyBldmVyeXRoaW5nIGF0IG9uY2VcbiMgZmlzaGluZ19kYXRhICU+JSBncm91cF9ieShzcGVjaWVzKSAlPiUgc3VtbWFyaXplKGF2Z19jYXRjaCA9IG1lYW4oY2F0Y2hfa2cpLCB0b3RhbCA9IHN1bShjYXRjaF9rZyksIHJhdGlvID0gdG90YWwvc3VtKHRvdGFsKSwgcmFuayA9IHJhbmsoLXRvdGFsKSkiLCJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfX0=
+</script>
+</div>
+</div>
+</section>
+<section id="common-mistakes-to-avoid" class="level3">
+<h3 class="anchored" data-anchor-id="common-mistakes-to-avoid">Common Mistakes to Avoid ⚠️</h3>
+<ol type="1">
+<li><strong>Package Overload</strong>
+<ul>
+<li>Don’t load packages you don’t need</li>
+<li>Stick to well-maintained, popular packages</li>
+<li>Learn one package at a time</li>
+</ul></li>
+<li><strong>Pipe Complexity</strong>
+<ul>
+<li>Keep pipe sequences reasonably short</li>
+<li>Add comments for clarity</li>
+<li>Check intermediate results when debugging</li>
+</ul></li>
+<li><strong>Data Consistency</strong>
+<ul>
+<li>Always check your data structure</li>
+<li>Verify results after each transformation</li>
+<li>Keep track of your grouping variables</li>
+</ul></li>
+</ol>
+</section>
+<section id="next-steps" class="level3">
+<h3 class="anchored" data-anchor-id="next-steps">Next Steps 📚</h3>
+<p>As you continue your R journey:</p>
+<ol type="1">
+<li><strong>Start Simple</strong>
+<ul>
+<li>Begin with basic dplyr functions: filter(), select(), mutate()</li>
+<li>Add more complex operations as you get comfortable</li>
+<li>Practice with your own data</li>
+</ul></li>
+<li><strong>Expand Your Toolkit</strong>
+<ul>
+<li>Explore visualization with ggplot2</li>
+<li>Learn data reshaping with tidyr</li>
+<li>Try date manipulation with lubridate</li>
+</ul></li>
+<li><strong>Build Your Skills</strong>
+<ul>
+<li>Work through tutorials</li>
+<li>Join R user groups</li>
+<li>Share code with colleagues</li>
+</ul></li>
+</ol>
+</section>
+<section id="resources-for-learning" class="level3">
+<h3 class="anchored" data-anchor-id="resources-for-learning">Resources for Learning 📖</h3>
+<ol type="1">
+<li><strong>Official Documentation</strong>
+<ul>
+<li>tidyverse.org</li>
+<li>R package vignettes</li>
+<li>RStudio cheatsheets</li>
+</ul></li>
+<li><strong>Online Learning</strong>
+<ul>
+<li>R for Data Science (r4ds.had.co.nz)</li>
+<li>Stack Overflow</li>
+<li>RStudio Community</li>
+</ul></li>
+</ol>
+<p>Remember: The goal isn’t to memorize every function, but to: - Understand the basic principles - Know where to find help - Practice regularly with real data - Build your confidence step by step</p>
+<p>Happy coding! 🎉</p>
 
 
 <script type="webr-data">
-eyJyZW5kZXJfZGYiOiJndC1pbnRlcmFjdGl2ZSIsIm9wdGlvbnMiOnsiYmFzZVVybCI6Imh0dHBzOi8vd2Vici5yLXdhc20ub3JnL3YwLjQuMS8ifSwicGFja2FnZXMiOnsicmVwb3MiOltdLCJwa2dzIjpbImV2YWx1YXRlIiwia25pdHIiLCJodG1sdG9vbHMiLCJ0aWR5dmVyc2UiLCJndCJdfX0=
+eyJwYWNrYWdlcyI6eyJyZXBvcyI6W10sInBrZ3MiOlsiZXZhbHVhdGUiLCJrbml0ciIsImh0bWx0b29scyIsInRpZHl2ZXJzZSIsImd0Il19LCJyZW5kZXJfZGYiOiJndC1pbnRlcmFjdGl2ZSIsIm9wdGlvbnMiOnsiYmFzZVVybCI6Imh0dHBzOi8vd2Vici5yLXdhc20ub3JnL3YwLjQuMS8ifX0=
 </script>
 <script type="ojs-module-contents">
-eyJjb250ZW50cyI6W3sic291cmNlIjoie1xuICAvLyBXYWl0IGZvciBvdXRwdXQgdG8gYmUgd3JpdHRlbiB0byB0aGUgRE9NLCB0aGVuIHRyaWdnZXIgd2lkZ2V0IHJlbmRlcmluZ1xuICBhd2FpdCBfd2Vicl92YWx1ZV85O1xuICBpZiAod2luZG93LkhUTUxXaWRnZXRzKSB7XG4gICAgd2luZG93LkhUTUxXaWRnZXRzLnN0YXRpY1JlbmRlcigpO1xuICB9XG4gIGlmICh3aW5kb3cuUGFnZWRUYWJsZURvYykge1xuICAgIHdpbmRvdy5QYWdlZFRhYmxlRG9jLmluaXRBbGwoKTtcbiAgfVxufVxuIiwiY2VsbE5hbWUiOiJ3ZWJyLXdpZGdldC05IiwiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0In0seyJzb3VyY2UiOiJ2aWV3b2YgX3dlYnJfZWRpdG9yXzkgPSB7XG4gIGNvbnN0IHsgV2ViUkV4ZXJjaXNlRWRpdG9yLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwid2Vici05LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHdlYnItOS1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBXZWJSRXhlcmNpc2VFZGl0b3Iod2ViUk9qcy53ZWJSUHJvbWlzZSwgYmxvY2suY29kZSwgb3B0aW9ucyk7XG5cbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG5fd2Vicl92YWx1ZV85ID0gd2ViUk9qcy5wcm9jZXNzKF93ZWJyX2VkaXRvcl85LCB7fSk7XG4iLCJjZWxsTmFtZSI6IndlYnItOSIsImlubGluZSI6ZmFsc2UsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXQifSx7InNvdXJjZSI6IntcbiAgLy8gV2FpdCBmb3Igb3V0cHV0IHRvIGJlIHdyaXR0ZW4gdG8gdGhlIERPTSwgdGhlbiB0cmlnZ2VyIHdpZGdldCByZW5kZXJpbmdcbiAgYXdhaXQgX3dlYnJfdmFsdWVfODtcbiAgaWYgKHdpbmRvdy5IVE1MV2lkZ2V0cykge1xuICAgIHdpbmRvdy5IVE1MV2lkZ2V0cy5zdGF0aWNSZW5kZXIoKTtcbiAgfVxuICBpZiAod2luZG93LlBhZ2VkVGFibGVEb2MpIHtcbiAgICB3aW5kb3cuUGFnZWRUYWJsZURvYy5pbml0QWxsKCk7XG4gIH1cbn1cbiIsImNlbGxOYW1lIjoid2Vici13aWRnZXQtOCIsImlubGluZSI6ZmFsc2UsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCJ9LHsic291cmNlIjoidmlld29mIF93ZWJyX2VkaXRvcl84ID0ge1xuICBjb25zdCB7IFdlYlJFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuICBjb25zdCBzY3JpcHRDb250ZW50ID0gZG9jdW1lbnQucXVlcnlTZWxlY3Rvcihgc2NyaXB0W3R5cGU9XFxcIndlYnItOC1jb250ZW50c1xcXCJdYCkudGV4dENvbnRlbnQ7XG4gIGNvbnN0IGJsb2NrID0gSlNPTi5wYXJzZShiNjREZWNvZGUoc2NyaXB0Q29udGVudCkpO1xuXG4gIGNvbnN0IG9wdGlvbnMgPSBPYmplY3QuYXNzaWduKHsgaWQ6IGB3ZWJyLTgtY29udGVudHNgIH0sIGJsb2NrLmF0dHIpO1xuICBjb25zdCBlZGl0b3IgPSBuZXcgV2ViUkV4ZXJjaXNlRWRpdG9yKHdlYlJPanMud2ViUlByb21pc2UsIGJsb2NrLmNvZGUsIG9wdGlvbnMpO1xuXG4gIHJldHVybiBlZGl0b3IuY29udGFpbmVyO1xufVxuX3dlYnJfdmFsdWVfOCA9IHdlYlJPanMucHJvY2Vzcyhfd2Vicl9lZGl0b3JfOCwge30pO1xuIiwiY2VsbE5hbWUiOiJ3ZWJyLTgiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0In0seyJzb3VyY2UiOiJ7XG4gIC8vIFdhaXQgZm9yIG91dHB1dCB0byBiZSB3cml0dGVuIHRvIHRoZSBET00sIHRoZW4gdHJpZ2dlciB3aWRnZXQgcmVuZGVyaW5nXG4gIGF3YWl0IF93ZWJyX3ZhbHVlXzc7XG4gIGlmICh3aW5kb3cuSFRNTFdpZGdldHMpIHtcbiAgICB3aW5kb3cuSFRNTFdpZGdldHMuc3RhdGljUmVuZGVyKCk7XG4gIH1cbiAgaWYgKHdpbmRvdy5QYWdlZFRhYmxlRG9jKSB7XG4gICAgd2luZG93LlBhZ2VkVGFibGVEb2MuaW5pdEFsbCgpO1xuICB9XG59XG4iLCJjZWxsTmFtZSI6IndlYnItd2lkZ2V0LTciLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQifSx7InNvdXJjZSI6InZpZXdvZiBfd2Vicl9lZGl0b3JfNyA9IHtcbiAgY29uc3QgeyBXZWJSRXhlcmNpc2VFZGl0b3IsIGI2NERlY29kZSB9ID0gd2luZG93Ll9leGVyY2lzZV9vanNfcnVudGltZTtcbiAgY29uc3Qgc2NyaXB0Q29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJ3ZWJyLTctY29udGVudHNcXFwiXWApLnRleHRDb250ZW50O1xuICBjb25zdCBibG9jayA9IEpTT04ucGFyc2UoYjY0RGVjb2RlKHNjcmlwdENvbnRlbnQpKTtcblxuICBjb25zdCBvcHRpb25zID0gT2JqZWN0LmFzc2lnbih7IGlkOiBgd2Vici03LWNvbnRlbnRzYCB9LCBibG9jay5hdHRyKTtcbiAgY29uc3QgZWRpdG9yID0gbmV3IFdlYlJFeGVyY2lzZUVkaXRvcih3ZWJST2pzLndlYlJQcm9taXNlLCBibG9jay5jb2RlLCBvcHRpb25zKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl93ZWJyX3ZhbHVlXzcgPSB3ZWJST2pzLnByb2Nlc3MoX3dlYnJfZWRpdG9yXzcsIHt9KTtcbiIsImNlbGxOYW1lIjoid2Vici03IiwiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldCJ9LHsic291cmNlIjoie1xuICAvLyBXYWl0IGZvciBvdXRwdXQgdG8gYmUgd3JpdHRlbiB0byB0aGUgRE9NLCB0aGVuIHRyaWdnZXIgd2lkZ2V0IHJlbmRlcmluZ1xuICBhd2FpdCBfd2Vicl92YWx1ZV82O1xuICBpZiAod2luZG93LkhUTUxXaWRnZXRzKSB7XG4gICAgd2luZG93LkhUTUxXaWRnZXRzLnN0YXRpY1JlbmRlcigpO1xuICB9XG4gIGlmICh3aW5kb3cuUGFnZWRUYWJsZURvYykge1xuICAgIHdpbmRvdy5QYWdlZFRhYmxlRG9jLmluaXRBbGwoKTtcbiAgfVxufVxuIiwiY2VsbE5hbWUiOiJ3ZWJyLXdpZGdldC02IiwiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0In0seyJzb3VyY2UiOiJ2aWV3b2YgX3dlYnJfZWRpdG9yXzYgPSB7XG4gIGNvbnN0IHsgV2ViUkV4ZXJjaXNlRWRpdG9yLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwid2Vici02LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHdlYnItNi1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBXZWJSRXhlcmNpc2VFZGl0b3Iod2ViUk9qcy53ZWJSUHJvbWlzZSwgYmxvY2suY29kZSwgb3B0aW9ucyk7XG5cbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG5fd2Vicl92YWx1ZV82ID0gd2ViUk9qcy5wcm9jZXNzKF93ZWJyX2VkaXRvcl82LCB7fSk7XG4iLCJjZWxsTmFtZSI6IndlYnItNiIsImlubGluZSI6ZmFsc2UsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXQifSx7InNvdXJjZSI6IntcbiAgLy8gV2FpdCBmb3Igb3V0cHV0IHRvIGJlIHdyaXR0ZW4gdG8gdGhlIERPTSwgdGhlbiB0cmlnZ2VyIHdpZGdldCByZW5kZXJpbmdcbiAgYXdhaXQgX3dlYnJfdmFsdWVfNTtcbiAgaWYgKHdpbmRvdy5IVE1MV2lkZ2V0cykge1xuICAgIHdpbmRvdy5IVE1MV2lkZ2V0cy5zdGF0aWNSZW5kZXIoKTtcbiAgfVxuICBpZiAod2luZG93LlBhZ2VkVGFibGVEb2MpIHtcbiAgICB3aW5kb3cuUGFnZWRUYWJsZURvYy5pbml0QWxsKCk7XG4gIH1cbn1cbiIsImNlbGxOYW1lIjoid2Vici13aWRnZXQtNSIsImlubGluZSI6ZmFsc2UsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCJ9LHsic291cmNlIjoidmlld29mIF93ZWJyX2VkaXRvcl81ID0ge1xuICBjb25zdCB7IFdlYlJFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuICBjb25zdCBzY3JpcHRDb250ZW50ID0gZG9jdW1lbnQucXVlcnlTZWxlY3Rvcihgc2NyaXB0W3R5cGU9XFxcIndlYnItNS1jb250ZW50c1xcXCJdYCkudGV4dENvbnRlbnQ7XG4gIGNvbnN0IGJsb2NrID0gSlNPTi5wYXJzZShiNjREZWNvZGUoc2NyaXB0Q29udGVudCkpO1xuXG4gIGNvbnN0IG9wdGlvbnMgPSBPYmplY3QuYXNzaWduKHsgaWQ6IGB3ZWJyLTUtY29udGVudHNgIH0sIGJsb2NrLmF0dHIpO1xuICBjb25zdCBlZGl0b3IgPSBuZXcgV2ViUkV4ZXJjaXNlRWRpdG9yKHdlYlJPanMud2ViUlByb21pc2UsIGJsb2NrLmNvZGUsIG9wdGlvbnMpO1xuXG4gIHJldHVybiBlZGl0b3IuY29udGFpbmVyO1xufVxuX3dlYnJfdmFsdWVfNSA9IHdlYlJPanMucHJvY2Vzcyhfd2Vicl9lZGl0b3JfNSwge30pO1xuIiwiY2VsbE5hbWUiOiJ3ZWJyLTUiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0In0seyJzb3VyY2UiOiJ7XG4gIC8vIFdhaXQgZm9yIG91dHB1dCB0byBiZSB3cml0dGVuIHRvIHRoZSBET00sIHRoZW4gdHJpZ2dlciB3aWRnZXQgcmVuZGVyaW5nXG4gIGF3YWl0IF93ZWJyX3ZhbHVlXzQ7XG4gIGlmICh3aW5kb3cuSFRNTFdpZGdldHMpIHtcbiAgICB3aW5kb3cuSFRNTFdpZGdldHMuc3RhdGljUmVuZGVyKCk7XG4gIH1cbiAgaWYgKHdpbmRvdy5QYWdlZFRhYmxlRG9jKSB7XG4gICAgd2luZG93LlBhZ2VkVGFibGVEb2MuaW5pdEFsbCgpO1xuICB9XG59XG4iLCJjZWxsTmFtZSI6IndlYnItd2lkZ2V0LTQiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQifSx7InNvdXJjZSI6InZpZXdvZiBfd2Vicl9lZGl0b3JfNCA9IHtcbiAgY29uc3QgeyBXZWJSRXhlcmNpc2VFZGl0b3IsIGI2NERlY29kZSB9ID0gd2luZG93Ll9leGVyY2lzZV9vanNfcnVudGltZTtcbiAgY29uc3Qgc2NyaXB0Q29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJ3ZWJyLTQtY29udGVudHNcXFwiXWApLnRleHRDb250ZW50O1xuICBjb25zdCBibG9jayA9IEpTT04ucGFyc2UoYjY0RGVjb2RlKHNjcmlwdENvbnRlbnQpKTtcblxuICBjb25zdCBvcHRpb25zID0gT2JqZWN0LmFzc2lnbih7IGlkOiBgd2Vici00LWNvbnRlbnRzYCB9LCBibG9jay5hdHRyKTtcbiAgY29uc3QgZWRpdG9yID0gbmV3IFdlYlJFeGVyY2lzZUVkaXRvcih3ZWJST2pzLndlYlJQcm9taXNlLCBibG9jay5jb2RlLCBvcHRpb25zKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl93ZWJyX3ZhbHVlXzQgPSB3ZWJST2pzLnByb2Nlc3MoX3dlYnJfZWRpdG9yXzQsIHt9KTtcbiIsImNlbGxOYW1lIjoid2Vici00IiwiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldCJ9LHsic291cmNlIjoie1xuICAvLyBXYWl0IGZvciBvdXRwdXQgdG8gYmUgd3JpdHRlbiB0byB0aGUgRE9NLCB0aGVuIHRyaWdnZXIgd2lkZ2V0IHJlbmRlcmluZ1xuICBhd2FpdCBfd2Vicl92YWx1ZV8zO1xuICBpZiAod2luZG93LkhUTUxXaWRnZXRzKSB7XG4gICAgd2luZG93LkhUTUxXaWRnZXRzLnN0YXRpY1JlbmRlcigpO1xuICB9XG4gIGlmICh3aW5kb3cuUGFnZWRUYWJsZURvYykge1xuICAgIHdpbmRvdy5QYWdlZFRhYmxlRG9jLmluaXRBbGwoKTtcbiAgfVxufVxuIiwiY2VsbE5hbWUiOiJ3ZWJyLXdpZGdldC0zIiwiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0In0seyJzb3VyY2UiOiJ2aWV3b2YgX3dlYnJfZWRpdG9yXzMgPSB7XG4gIGNvbnN0IHsgV2ViUkV4ZXJjaXNlRWRpdG9yLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwid2Vici0zLWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHdlYnItMy1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBXZWJSRXhlcmNpc2VFZGl0b3Iod2ViUk9qcy53ZWJSUHJvbWlzZSwgYmxvY2suY29kZSwgb3B0aW9ucyk7XG5cbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG5fd2Vicl92YWx1ZV8zID0gd2ViUk9qcy5wcm9jZXNzKF93ZWJyX2VkaXRvcl8zLCB7fSk7XG4iLCJjZWxsTmFtZSI6IndlYnItMyIsImlubGluZSI6ZmFsc2UsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXQifSx7InNvdXJjZSI6IntcbiAgLy8gV2FpdCBmb3Igb3V0cHV0IHRvIGJlIHdyaXR0ZW4gdG8gdGhlIERPTSwgdGhlbiB0cmlnZ2VyIHdpZGdldCByZW5kZXJpbmdcbiAgYXdhaXQgX3dlYnJfdmFsdWVfMjtcbiAgaWYgKHdpbmRvdy5IVE1MV2lkZ2V0cykge1xuICAgIHdpbmRvdy5IVE1MV2lkZ2V0cy5zdGF0aWNSZW5kZXIoKTtcbiAgfVxuICBpZiAod2luZG93LlBhZ2VkVGFibGVEb2MpIHtcbiAgICB3aW5kb3cuUGFnZWRUYWJsZURvYy5pbml0QWxsKCk7XG4gIH1cbn1cbiIsImNlbGxOYW1lIjoid2Vici13aWRnZXQtMiIsImlubGluZSI6ZmFsc2UsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCJ9LHsic291cmNlIjoidmlld29mIF93ZWJyX2VkaXRvcl8yID0ge1xuICBjb25zdCB7IFdlYlJFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuICBjb25zdCBzY3JpcHRDb250ZW50ID0gZG9jdW1lbnQucXVlcnlTZWxlY3Rvcihgc2NyaXB0W3R5cGU9XFxcIndlYnItMi1jb250ZW50c1xcXCJdYCkudGV4dENvbnRlbnQ7XG4gIGNvbnN0IGJsb2NrID0gSlNPTi5wYXJzZShiNjREZWNvZGUoc2NyaXB0Q29udGVudCkpO1xuXG4gIGNvbnN0IG9wdGlvbnMgPSBPYmplY3QuYXNzaWduKHsgaWQ6IGB3ZWJyLTItY29udGVudHNgIH0sIGJsb2NrLmF0dHIpO1xuICBjb25zdCBlZGl0b3IgPSBuZXcgV2ViUkV4ZXJjaXNlRWRpdG9yKHdlYlJPanMud2ViUlByb21pc2UsIGJsb2NrLmNvZGUsIG9wdGlvbnMpO1xuXG4gIHJldHVybiBlZGl0b3IuY29udGFpbmVyO1xufVxuX3dlYnJfdmFsdWVfMiA9IHdlYlJPanMucHJvY2Vzcyhfd2Vicl9lZGl0b3JfMiwge30pO1xuIiwiY2VsbE5hbWUiOiJ3ZWJyLTIiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0In0seyJzb3VyY2UiOiJ7XG4gIC8vIFdhaXQgZm9yIG91dHB1dCB0byBiZSB3cml0dGVuIHRvIHRoZSBET00sIHRoZW4gdHJpZ2dlciB3aWRnZXQgcmVuZGVyaW5nXG4gIGF3YWl0IF93ZWJyX3ZhbHVlXzE7XG4gIGlmICh3aW5kb3cuSFRNTFdpZGdldHMpIHtcbiAgICB3aW5kb3cuSFRNTFdpZGdldHMuc3RhdGljUmVuZGVyKCk7XG4gIH1cbiAgaWYgKHdpbmRvdy5QYWdlZFRhYmxlRG9jKSB7XG4gICAgd2luZG93LlBhZ2VkVGFibGVEb2MuaW5pdEFsbCgpO1xuICB9XG59XG4iLCJjZWxsTmFtZSI6IndlYnItd2lkZ2V0LTEiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQifSx7InNvdXJjZSI6InZpZXdvZiBfd2Vicl9lZGl0b3JfMSA9IHtcbiAgY29uc3QgeyBXZWJSRXhlcmNpc2VFZGl0b3IsIGI2NERlY29kZSB9ID0gd2luZG93Ll9leGVyY2lzZV9vanNfcnVudGltZTtcbiAgY29uc3Qgc2NyaXB0Q29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJ3ZWJyLTEtY29udGVudHNcXFwiXWApLnRleHRDb250ZW50O1xuICBjb25zdCBibG9jayA9IEpTT04ucGFyc2UoYjY0RGVjb2RlKHNjcmlwdENvbnRlbnQpKTtcblxuICBjb25zdCBvcHRpb25zID0gT2JqZWN0LmFzc2lnbih7IGlkOiBgd2Vici0xLWNvbnRlbnRzYCB9LCBibG9jay5hdHRyKTtcbiAgY29uc3QgZWRpdG9yID0gbmV3IFdlYlJFeGVyY2lzZUVkaXRvcih3ZWJST2pzLndlYlJQcm9taXNlLCBibG9jay5jb2RlLCBvcHRpb25zKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl93ZWJyX3ZhbHVlXzEgPSB3ZWJST2pzLnByb2Nlc3MoX3dlYnJfZWRpdG9yXzEsIHt9KTtcbiIsImNlbGxOYW1lIjoid2Vici0xIiwiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldCJ9LHsic291cmNlIjoid2ViUk9qcyA9IHtcbiAgY29uc3QgeyBXZWJSIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lLldlYlI7XG4gIGNvbnN0IHtcbiAgICBXZWJSRXZhbHVhdG9yLFxuICAgIFdlYlJFbnZpcm9ubWVudE1hbmFnZXIsXG4gICAgc2V0dXBSLFxuICAgIGI2NERlY29kZSxcbiAgICBjb2xsYXBzZVBhdGhcbiAgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG5cbiAgY29uc3Qgc3RhdHVzQ29udGFpbmVyID0gZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoXCJleGVyY2lzZS1sb2FkaW5nLXN0YXR1c1wiKTtcbiAgY29uc3QgaW5kaWNhdG9yQ29udGFpbmVyID0gZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoXCJleGVyY2lzZS1sb2FkaW5nLWluZGljYXRvclwiKTtcbiAgaW5kaWNhdG9yQ29udGFpbmVyLmNsYXNzTGlzdC5yZW1vdmUoXCJkLW5vbmVcIik7XG5cbiAgbGV0IHN0YXR1c1RleHQgPSBkb2N1bWVudC5jcmVhdGVFbGVtZW50KFwiZGl2XCIpXG4gIHN0YXR1c1RleHQuY2xhc3NMaXN0ID0gXCJleGVyY2lzZS1sb2FkaW5nLWRldGFpbHNcIjtcbiAgc3RhdHVzVGV4dCA9IHN0YXR1c0NvbnRhaW5lci5hcHBlbmRDaGlsZChzdGF0dXNUZXh0KTtcbiAgc3RhdHVzVGV4dC50ZXh0Q29udGVudCA9IGBJbml0aWFsaXNlYDtcblxuICAvLyBIb2lzdCBpbmRpY2F0b3Igb3V0IGZyb20gZmluYWwgc2xpZGUgd2hlbiBydW5uaW5nIHVuZGVyIHJldmVhbFxuICBjb25zdCByZXZlYWxTdGF0dXMgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKFwiLnJldmVhbCAuZXhlcmNpc2UtbG9hZGluZy1pbmRpY2F0b3JcIik7XG4gIGlmIChyZXZlYWxTdGF0dXMpIHtcbiAgICByZXZlYWxTdGF0dXMucmVtb3ZlKCk7XG4gICAgZG9jdW1lbnQucXVlcnlTZWxlY3RvcihcIi5yZXZlYWwgPiAuc2xpZGVzXCIpLmFwcGVuZENoaWxkKHJldmVhbFN0YXR1cyk7XG4gIH1cblxuICAvLyB3ZWJSIHN1cHBsZW1lbnRhbCBkYXRhIGFuZCBvcHRpb25zXG4gIGNvbnN0IGRhdGFDb250ZW50ID0gZG9jdW1lbnQucXVlcnlTZWxlY3Rvcihgc2NyaXB0W3R5cGU9XFxcIndlYnItZGF0YVxcXCJdYCkudGV4dENvbnRlbnQ7XG4gIGNvbnN0IGRhdGEgPSBKU09OLnBhcnNlKGI2NERlY29kZShkYXRhQ29udGVudCkpO1xuXG4gIC8vIEdyYWIgbGlzdCBvZiByZXNvdXJjZXMgdG8gYmUgZG93bmxvYWRlZFxuICBjb25zdCBmaWxlc0NvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwidmZzLWZpbGVcXFwiXWApLnRleHRDb250ZW50O1xuICBjb25zdCBmaWxlcyA9IEpTT04ucGFyc2UoYjY0RGVjb2RlKGZpbGVzQ29udGVudCkpO1xuXG4gIC8vIEluaXRpYWxpc2Ugd2ViUiBhbmQgc2V0dXAgZm9yIFIgY29kZSBldmFsdWF0aW9uXG4gIGxldCB3ZWJSUHJvbWlzZSA9IChhc3luYyAod2ViUikgPT4ge1xuICAgIHN0YXR1c1RleHQudGV4dENvbnRlbnQgPSBgRG93bmxvYWRpbmcgd2ViUmA7XG4gICAgYXdhaXQgd2ViUi5pbml0KCk7XG5cbiAgICAvLyBJbnN0YWxsIHByb3ZpZGVkIGxpc3Qgb2YgcGFja2FnZXNcbiAgICAvLyBFbnN1cmUgd2ViUiBkZWZhdWx0IHJlcG8gaXMgaW5jbHVkZWRcbiAgICBkYXRhLnBhY2thZ2VzLnJlcG9zLnB1c2goXCJodHRwczovL3JlcG8uci13YXNtLm9yZ1wiKVxuICAgIGF3YWl0IGRhdGEucGFja2FnZXMucGtncy5tYXAoKHBrZykgPT4gKCkgPT4ge1xuICAgICAgc3RhdHVzVGV4dC50ZXh0Q29udGVudCA9IGBEb3dubG9hZGluZyBwYWNrYWdlOiAke3BrZ31gO1xuICAgICAgcmV0dXJuIHdlYlIuZXZhbFJWb2lkKGBcbiAgICAgICAgd2Vicjo6aW5zdGFsbChwa2csIHJlcG9zID0gcmVwb3MpXG4gICAgICAgIGxpYnJhcnkocGtnLCBjaGFyYWN0ZXIub25seSA9IFRSVUUpXG4gICAgICBgLCB7IGVudjoge1xuICAgICAgICBwa2c6IHBrZyxcbiAgICAgICAgcmVwb3M6IGRhdGEucGFja2FnZXMucmVwb3MsXG4gICAgICB9fSk7XG4gICAgfSkucmVkdWNlKChjdXIsIG5leHQpID0+IGN1ci50aGVuKG5leHQpLCBQcm9taXNlLnJlc29sdmUoKSk7XG5cbiAgICAvLyBEb3dubG9hZCBhbmQgaW5zdGFsbCByZXNvdXJjZXNcbiAgICBhd2FpdCBmaWxlcy5tYXAoKGZpbGUpID0+IGFzeW5jICgpID0+IHtcbiAgICAgIGNvbnN0IG5hbWUgPSBmaWxlLnN1YnN0cmluZyhmaWxlLmxhc3RJbmRleE9mKCcvJykgKyAxKTtcbiAgICAgIHN0YXR1c1RleHQudGV4dENvbnRlbnQgPSBgRG93bmxvYWRpbmcgcmVzb3VyY2U6ICR7bmFtZX1gO1xuICAgICAgY29uc3QgcmVzcG9uc2UgPSBhd2FpdCBmZXRjaChmaWxlKTtcbiAgICAgIGlmICghcmVzcG9uc2Uub2spIHtcbiAgICAgICAgdGhyb3cgbmV3IEVycm9yKGBDYW4ndCBkb3dubG9hZCBcXGAke2ZpbGV9XFxgLiBFcnJvciAke3Jlc3BvbnNlLnN0YXR1c306IFwiJHtyZXNwb25zZS5zdGF0dXNUZXh0fVwiLmApO1xuICAgICAgfVxuICAgICAgY29uc3QgZGF0YSA9IGF3YWl0IHJlc3BvbnNlLmFycmF5QnVmZmVyKCk7XG5cbiAgICAgIC8vIFN0b3JlIFVSTHMgaW4gdGhlIGN3ZCB3aXRob3V0IGFueSBzdWJkaXJlY3Rvcnkgc3RydWN0dXJlXG4gICAgICBpZiAoZmlsZS5pbmNsdWRlcyhcIjovL1wiKSkge1xuICAgICAgICBmaWxlID0gbmFtZTtcbiAgICAgIH1cblxuICAgICAgLy8gQ29sbGFwc2UgaGlnaGVyIGRpcmVjdG9yeSBzdHJ1Y3R1cmVcbiAgICAgIGZpbGUgPSBjb2xsYXBzZVBhdGgoZmlsZSk7XG5cbiAgICAgIC8vIENyZWF0ZSBkaXJlY3RvcnkgdHJlZSwgaWdub3JpbmcgXCJkaXJlY3RvcnkgZXhpc3RzXCIgVkZTIGVycm9yc1xuICAgICAgY29uc3QgcGFydHMgPSBmaWxlLnNwbGl0KCcvJykuc2xpY2UoMCwgLTEpO1xuICAgICAgbGV0IHBhdGggPSAnJztcbiAgICAgIHdoaWxlIChwYXJ0cy5sZW5ndGggPiAwKSB7XG4gICAgICAgIHBhdGggKz0gcGFydHMuc2hpZnQoKSArICcvJztcbiAgICAgICAgdHJ5IHtcbiAgICAgICAgICBhd2FpdCB3ZWJSLkZTLm1rZGlyKHBhdGgpO1xuICAgICAgICB9IGNhdGNoIChlKSB7XG4gICAgICAgICAgaWYgKCFlLm1lc3NhZ2UuaW5jbHVkZXMoXCJGUyBlcnJvclwiKSkge1xuICAgICAgICAgICAgdGhyb3cgZTtcbiAgICAgICAgICB9XG4gICAgICAgIH1cbiAgICAgIH1cblxuICAgICAgLy8gV3JpdGUgdGhpcyBmaWxlIHRvIHRoZSBWRlNcbiAgICAgIHJldHVybiBhd2FpdCB3ZWJSLkZTLndyaXRlRmlsZShmaWxlLCBuZXcgVWludDhBcnJheShkYXRhKSk7XG4gICAgfSkucmVkdWNlKChjdXIsIG5leHQpID0+IGN1ci50aGVuKG5leHQpLCBQcm9taXNlLnJlc29sdmUoKSk7XG5cbiAgICBzdGF0dXNUZXh0LnRleHRDb250ZW50ID0gYEluc3RhbGxpbmcgd2ViUiBzaGltc2A7XG4gICAgYXdhaXQgd2ViUi5ldmFsUlZvaWQoYHdlYnI6OnNoaW1faW5zdGFsbCgpYCk7XG5cbiAgICBzdGF0dXNUZXh0LnRleHRDb250ZW50ID0gYFdlYlIgZW52aXJvbm1lbnQgc2V0dXBgO1xuICAgIGF3YWl0IHNldHVwUih3ZWJSLCBkYXRhKTtcblxuICAgIHN0YXR1c1RleHQucmVtb3ZlKCk7XG4gICAgaWYgKHN0YXR1c0NvbnRhaW5lci5jaGlsZHJlbi5sZW5ndGggPT0gMCkge1xuICAgICAgc3RhdHVzQ29udGFpbmVyLnBhcmVudE5vZGUucmVtb3ZlKCk7XG4gICAgfVxuICAgIHJldHVybiB3ZWJSO1xuICB9KShuZXcgV2ViUihkYXRhLm9wdGlvbnMpKTtcblxuICAvLyBLZWVwIHRyYWNrIG9mIGluaXRpYWwgT0pTIGJsb2NrIHJlbmRlclxuICBjb25zdCByZW5kZXJlZE9qcyA9IHt9O1xuXG4gIGNvbnN0IHByb2Nlc3MgPSBhc3luYyAoY29udGV4dCwgaW5wdXRzKSA9PiB7XG4gICAgY29uc3Qgd2ViUiA9IGF3YWl0IHdlYlJQcm9taXNlO1xuICAgIGNvbnN0IGV2YWx1YXRvciA9IG5ldyBXZWJSRXZhbHVhdG9yKHdlYlIsIGNvbnRleHQpXG4gICAgYXdhaXQgZXZhbHVhdG9yLnByb2Nlc3MoaW5wdXRzKTtcbiAgICByZXR1cm4gZXZhbHVhdG9yLmNvbnRhaW5lcjtcbiAgfVxuXG4gIHJldHVybiB7XG4gICAgcHJvY2VzcyxcbiAgICB3ZWJSUHJvbWlzZSxcbiAgICByZW5kZXJlZE9qcyxcbiAgfTtcbn1cbiIsImNlbGxOYW1lIjoid2Vici1wcmVsdWRlIiwiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0In1dfQ==
+eyJjb250ZW50cyI6W3sic291cmNlIjoie1xuICAvLyBXYWl0IGZvciBvdXRwdXQgdG8gYmUgd3JpdHRlbiB0byB0aGUgRE9NLCB0aGVuIHRyaWdnZXIgd2lkZ2V0IHJlbmRlcmluZ1xuICBhd2FpdCBfd2Vicl92YWx1ZV8xNztcbiAgaWYgKHdpbmRvdy5IVE1MV2lkZ2V0cykge1xuICAgIHdpbmRvdy5IVE1MV2lkZ2V0cy5zdGF0aWNSZW5kZXIoKTtcbiAgfVxuICBpZiAod2luZG93LlBhZ2VkVGFibGVEb2MpIHtcbiAgICB3aW5kb3cuUGFnZWRUYWJsZURvYy5pbml0QWxsKCk7XG4gIH1cbn1cbiIsImNlbGxOYW1lIjoid2Vici13aWRnZXQtMTciLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJpbmxpbmUiOmZhbHNlfSx7InNvdXJjZSI6InZpZXdvZiBfd2Vicl9lZGl0b3JfMTcgPSB7XG4gIGNvbnN0IHsgV2ViUkV4ZXJjaXNlRWRpdG9yLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwid2Vici0xNy1jb250ZW50c1xcXCJdYCkudGV4dENvbnRlbnQ7XG4gIGNvbnN0IGJsb2NrID0gSlNPTi5wYXJzZShiNjREZWNvZGUoc2NyaXB0Q29udGVudCkpO1xuXG4gIGNvbnN0IG9wdGlvbnMgPSBPYmplY3QuYXNzaWduKHsgaWQ6IGB3ZWJyLTE3LWNvbnRlbnRzYCB9LCBibG9jay5hdHRyKTtcbiAgY29uc3QgZWRpdG9yID0gbmV3IFdlYlJFeGVyY2lzZUVkaXRvcih3ZWJST2pzLndlYlJQcm9taXNlLCBibG9jay5jb2RlLCBvcHRpb25zKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl93ZWJyX3ZhbHVlXzE3ID0gd2ViUk9qcy5wcm9jZXNzKF93ZWJyX2VkaXRvcl8xNywge30pO1xuIiwiY2VsbE5hbWUiOiJ3ZWJyLTE3IiwibWV0aG9kTmFtZSI6ImludGVycHJldCIsImlubGluZSI6ZmFsc2V9LHsic291cmNlIjoie1xuICAvLyBXYWl0IGZvciBvdXRwdXQgdG8gYmUgd3JpdHRlbiB0byB0aGUgRE9NLCB0aGVuIHRyaWdnZXIgd2lkZ2V0IHJlbmRlcmluZ1xuICBhd2FpdCBfd2Vicl92YWx1ZV8xNjtcbiAgaWYgKHdpbmRvdy5IVE1MV2lkZ2V0cykge1xuICAgIHdpbmRvdy5IVE1MV2lkZ2V0cy5zdGF0aWNSZW5kZXIoKTtcbiAgfVxuICBpZiAod2luZG93LlBhZ2VkVGFibGVEb2MpIHtcbiAgICB3aW5kb3cuUGFnZWRUYWJsZURvYy5pbml0QWxsKCk7XG4gIH1cbn1cbiIsImNlbGxOYW1lIjoid2Vici13aWRnZXQtMTYiLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJpbmxpbmUiOmZhbHNlfSx7InNvdXJjZSI6Il93ZWJyX3ZhbHVlXzE2ID0ge1xuICBjb25zdCB7IGhpZ2hsaWdodFIsIGI2NERlY29kZSB9ID0gd2luZG93Ll9leGVyY2lzZV9vanNfcnVudGltZTtcbiAgY29uc3Qgc2NyaXB0Q29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJ3ZWJyLTE2LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgLy8gRGVmYXVsdCBldmFsdWF0aW9uIGNvbmZpZ3VyYXRpb25cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oe1xuICAgIGlkOiBcIndlYnItMTYtY29udGVudHNcIixcbiAgICBlY2hvOiB0cnVlLFxuICAgIG91dHB1dDogdHJ1ZVxuICB9LCBibG9jay5hdHRyKTtcblxuICAvLyBFdmFsdWF0ZSB0aGUgcHJvdmlkZWQgUiBjb2RlXG4gIGNvbnN0IHJlc3VsdCA9IHdlYlJPanMucHJvY2Vzcyh7Y29kZTogYmxvY2suY29kZSwgb3B0aW9uc30sIHt9KTtcblxuICAvLyBFYXJseSB5aWVsZCB3aGlsZSB3ZSB3YWl0IGZvciB0aGUgZmlyc3QgZXZhbHVhdGlvbiBhbmQgcmVuZGVyXG4gIGlmIChvcHRpb25zLm91dHB1dCAmJiAhKFwiMTZcIiBpbiB3ZWJST2pzLnJlbmRlcmVkT2pzKSkge1xuICAgIGNvbnN0IGNvbnRhaW5lciA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoXCJkaXZcIik7XG4gICAgY29uc3Qgc3Bpbm5lciA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoXCJkaXZcIik7XG5cbiAgICBpZiAob3B0aW9ucy5lY2hvKSB7XG4gICAgICAvLyBTaG93IG91dHB1dCBhcyBoaWdobGlnaHRlZCBzb3VyY2VcbiAgICAgIGNvbnN0IHByZUVsZW0gPSBkb2N1bWVudC5jcmVhdGVFbGVtZW50KFwicHJlXCIpO1xuICAgICAgY29udGFpbmVyLmNsYXNzTmFtZSA9IFwic291cmNlQ29kZVwiO1xuICAgICAgcHJlRWxlbS5jbGFzc05hbWUgPSBcInNvdXJjZUNvZGUgclwiO1xuICAgICAgcHJlRWxlbS5hcHBlbmRDaGlsZChoaWdobGlnaHRSKGJsb2NrLmNvZGUpKTtcbiAgICAgIHNwaW5uZXIuY2xhc3NOYW1lID0gXCJzcGlubmVyLWdyb3cgc3Bpbm5lci1ncm93LXNtIG0tMiBwb3NpdGlvbi1hYnNvbHV0ZSB0b3AtMCBlbmQtMFwiO1xuICAgICAgcHJlRWxlbS5hcHBlbmRDaGlsZChzcGlubmVyKTtcbiAgICAgIGNvbnRhaW5lci5hcHBlbmRDaGlsZChwcmVFbGVtKTtcbiAgICB9IGVsc2Uge1xuICAgICAgc3Bpbm5lci5jbGFzc05hbWUgPSBcInNwaW5uZXItYm9yZGVyIHNwaW5uZXItYm9yZGVyLXNtXCI7XG4gICAgICBjb250YWluZXIuYXBwZW5kQ2hpbGQoc3Bpbm5lcik7XG4gICAgfVxuXG4gICAgeWllbGQgY29udGFpbmVyO1xuICB9XG5cbiAgd2ViUk9qcy5yZW5kZXJlZE9qc1tcIjE2XCJdID0gdHJ1ZTtcbiAgeWllbGQgYXdhaXQgcmVzdWx0O1xufVxuIiwiY2VsbE5hbWUiOiJ3ZWJyLTE2IiwibWV0aG9kTmFtZSI6ImludGVycHJldCIsImlubGluZSI6ZmFsc2V9LHsic291cmNlIjoie1xuICAvLyBXYWl0IGZvciBvdXRwdXQgdG8gYmUgd3JpdHRlbiB0byB0aGUgRE9NLCB0aGVuIHRyaWdnZXIgd2lkZ2V0IHJlbmRlcmluZ1xuICBhd2FpdCBfd2Vicl92YWx1ZV8xNTtcbiAgaWYgKHdpbmRvdy5IVE1MV2lkZ2V0cykge1xuICAgIHdpbmRvdy5IVE1MV2lkZ2V0cy5zdGF0aWNSZW5kZXIoKTtcbiAgfVxuICBpZiAod2luZG93LlBhZ2VkVGFibGVEb2MpIHtcbiAgICB3aW5kb3cuUGFnZWRUYWJsZURvYy5pbml0QWxsKCk7XG4gIH1cbn1cbiIsImNlbGxOYW1lIjoid2Vici13aWRnZXQtMTUiLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJpbmxpbmUiOmZhbHNlfSx7InNvdXJjZSI6InZpZXdvZiBfd2Vicl9lZGl0b3JfMTUgPSB7XG4gIGNvbnN0IHsgV2ViUkV4ZXJjaXNlRWRpdG9yLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwid2Vici0xNS1jb250ZW50c1xcXCJdYCkudGV4dENvbnRlbnQ7XG4gIGNvbnN0IGJsb2NrID0gSlNPTi5wYXJzZShiNjREZWNvZGUoc2NyaXB0Q29udGVudCkpO1xuXG4gIGNvbnN0IG9wdGlvbnMgPSBPYmplY3QuYXNzaWduKHsgaWQ6IGB3ZWJyLTE1LWNvbnRlbnRzYCB9LCBibG9jay5hdHRyKTtcbiAgY29uc3QgZWRpdG9yID0gbmV3IFdlYlJFeGVyY2lzZUVkaXRvcih3ZWJST2pzLndlYlJQcm9taXNlLCBibG9jay5jb2RlLCBvcHRpb25zKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl93ZWJyX3ZhbHVlXzE1ID0gd2ViUk9qcy5wcm9jZXNzKF93ZWJyX2VkaXRvcl8xNSwge30pO1xuIiwiY2VsbE5hbWUiOiJ3ZWJyLTE1IiwibWV0aG9kTmFtZSI6ImludGVycHJldCIsImlubGluZSI6ZmFsc2V9LHsic291cmNlIjoie1xuICAvLyBXYWl0IGZvciBvdXRwdXQgdG8gYmUgd3JpdHRlbiB0byB0aGUgRE9NLCB0aGVuIHRyaWdnZXIgd2lkZ2V0IHJlbmRlcmluZ1xuICBhd2FpdCBfd2Vicl92YWx1ZV8xNDtcbiAgaWYgKHdpbmRvdy5IVE1MV2lkZ2V0cykge1xuICAgIHdpbmRvdy5IVE1MV2lkZ2V0cy5zdGF0aWNSZW5kZXIoKTtcbiAgfVxuICBpZiAod2luZG93LlBhZ2VkVGFibGVEb2MpIHtcbiAgICB3aW5kb3cuUGFnZWRUYWJsZURvYy5pbml0QWxsKCk7XG4gIH1cbn1cbiIsImNlbGxOYW1lIjoid2Vici13aWRnZXQtMTQiLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJpbmxpbmUiOmZhbHNlfSx7InNvdXJjZSI6Il93ZWJyX3ZhbHVlXzE0ID0ge1xuICBjb25zdCB7IGhpZ2hsaWdodFIsIGI2NERlY29kZSB9ID0gd2luZG93Ll9leGVyY2lzZV9vanNfcnVudGltZTtcbiAgY29uc3Qgc2NyaXB0Q29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJ3ZWJyLTE0LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgLy8gRGVmYXVsdCBldmFsdWF0aW9uIGNvbmZpZ3VyYXRpb25cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oe1xuICAgIGlkOiBcIndlYnItMTQtY29udGVudHNcIixcbiAgICBlY2hvOiB0cnVlLFxuICAgIG91dHB1dDogdHJ1ZVxuICB9LCBibG9jay5hdHRyKTtcblxuICAvLyBFdmFsdWF0ZSB0aGUgcHJvdmlkZWQgUiBjb2RlXG4gIGNvbnN0IHJlc3VsdCA9IHdlYlJPanMucHJvY2Vzcyh7Y29kZTogYmxvY2suY29kZSwgb3B0aW9uc30sIHt9KTtcblxuICAvLyBFYXJseSB5aWVsZCB3aGlsZSB3ZSB3YWl0IGZvciB0aGUgZmlyc3QgZXZhbHVhdGlvbiBhbmQgcmVuZGVyXG4gIGlmIChvcHRpb25zLm91dHB1dCAmJiAhKFwiMTRcIiBpbiB3ZWJST2pzLnJlbmRlcmVkT2pzKSkge1xuICAgIGNvbnN0IGNvbnRhaW5lciA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoXCJkaXZcIik7XG4gICAgY29uc3Qgc3Bpbm5lciA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoXCJkaXZcIik7XG5cbiAgICBpZiAob3B0aW9ucy5lY2hvKSB7XG4gICAgICAvLyBTaG93IG91dHB1dCBhcyBoaWdobGlnaHRlZCBzb3VyY2VcbiAgICAgIGNvbnN0IHByZUVsZW0gPSBkb2N1bWVudC5jcmVhdGVFbGVtZW50KFwicHJlXCIpO1xuICAgICAgY29udGFpbmVyLmNsYXNzTmFtZSA9IFwic291cmNlQ29kZVwiO1xuICAgICAgcHJlRWxlbS5jbGFzc05hbWUgPSBcInNvdXJjZUNvZGUgclwiO1xuICAgICAgcHJlRWxlbS5hcHBlbmRDaGlsZChoaWdobGlnaHRSKGJsb2NrLmNvZGUpKTtcbiAgICAgIHNwaW5uZXIuY2xhc3NOYW1lID0gXCJzcGlubmVyLWdyb3cgc3Bpbm5lci1ncm93LXNtIG0tMiBwb3NpdGlvbi1hYnNvbHV0ZSB0b3AtMCBlbmQtMFwiO1xuICAgICAgcHJlRWxlbS5hcHBlbmRDaGlsZChzcGlubmVyKTtcbiAgICAgIGNvbnRhaW5lci5hcHBlbmRDaGlsZChwcmVFbGVtKTtcbiAgICB9IGVsc2Uge1xuICAgICAgc3Bpbm5lci5jbGFzc05hbWUgPSBcInNwaW5uZXItYm9yZGVyIHNwaW5uZXItYm9yZGVyLXNtXCI7XG4gICAgICBjb250YWluZXIuYXBwZW5kQ2hpbGQoc3Bpbm5lcik7XG4gICAgfVxuXG4gICAgeWllbGQgY29udGFpbmVyO1xuICB9XG5cbiAgd2ViUk9qcy5yZW5kZXJlZE9qc1tcIjE0XCJdID0gdHJ1ZTtcbiAgeWllbGQgYXdhaXQgcmVzdWx0O1xufVxuIiwiY2VsbE5hbWUiOiJ3ZWJyLTE0IiwibWV0aG9kTmFtZSI6ImludGVycHJldCIsImlubGluZSI6ZmFsc2V9LHsic291cmNlIjoie1xuICAvLyBXYWl0IGZvciBvdXRwdXQgdG8gYmUgd3JpdHRlbiB0byB0aGUgRE9NLCB0aGVuIHRyaWdnZXIgd2lkZ2V0IHJlbmRlcmluZ1xuICBhd2FpdCBfd2Vicl92YWx1ZV8xMztcbiAgaWYgKHdpbmRvdy5IVE1MV2lkZ2V0cykge1xuICAgIHdpbmRvdy5IVE1MV2lkZ2V0cy5zdGF0aWNSZW5kZXIoKTtcbiAgfVxuICBpZiAod2luZG93LlBhZ2VkVGFibGVEb2MpIHtcbiAgICB3aW5kb3cuUGFnZWRUYWJsZURvYy5pbml0QWxsKCk7XG4gIH1cbn1cbiIsImNlbGxOYW1lIjoid2Vici13aWRnZXQtMTMiLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJpbmxpbmUiOmZhbHNlfSx7InNvdXJjZSI6InZpZXdvZiBfd2Vicl9lZGl0b3JfMTMgPSB7XG4gIGNvbnN0IHsgV2ViUkV4ZXJjaXNlRWRpdG9yLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwid2Vici0xMy1jb250ZW50c1xcXCJdYCkudGV4dENvbnRlbnQ7XG4gIGNvbnN0IGJsb2NrID0gSlNPTi5wYXJzZShiNjREZWNvZGUoc2NyaXB0Q29udGVudCkpO1xuXG4gIGNvbnN0IG9wdGlvbnMgPSBPYmplY3QuYXNzaWduKHsgaWQ6IGB3ZWJyLTEzLWNvbnRlbnRzYCB9LCBibG9jay5hdHRyKTtcbiAgY29uc3QgZWRpdG9yID0gbmV3IFdlYlJFeGVyY2lzZUVkaXRvcih3ZWJST2pzLndlYlJQcm9taXNlLCBibG9jay5jb2RlLCBvcHRpb25zKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl93ZWJyX3ZhbHVlXzEzID0gd2ViUk9qcy5wcm9jZXNzKF93ZWJyX2VkaXRvcl8xMywge30pO1xuIiwiY2VsbE5hbWUiOiJ3ZWJyLTEzIiwibWV0aG9kTmFtZSI6ImludGVycHJldCIsImlubGluZSI6ZmFsc2V9LHsic291cmNlIjoie1xuICAvLyBXYWl0IGZvciBvdXRwdXQgdG8gYmUgd3JpdHRlbiB0byB0aGUgRE9NLCB0aGVuIHRyaWdnZXIgd2lkZ2V0IHJlbmRlcmluZ1xuICBhd2FpdCBfd2Vicl92YWx1ZV8xMjtcbiAgaWYgKHdpbmRvdy5IVE1MV2lkZ2V0cykge1xuICAgIHdpbmRvdy5IVE1MV2lkZ2V0cy5zdGF0aWNSZW5kZXIoKTtcbiAgfVxuICBpZiAod2luZG93LlBhZ2VkVGFibGVEb2MpIHtcbiAgICB3aW5kb3cuUGFnZWRUYWJsZURvYy5pbml0QWxsKCk7XG4gIH1cbn1cbiIsImNlbGxOYW1lIjoid2Vici13aWRnZXQtMTIiLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJpbmxpbmUiOmZhbHNlfSx7InNvdXJjZSI6Il93ZWJyX3ZhbHVlXzEyID0ge1xuICBjb25zdCB7IGhpZ2hsaWdodFIsIGI2NERlY29kZSB9ID0gd2luZG93Ll9leGVyY2lzZV9vanNfcnVudGltZTtcbiAgY29uc3Qgc2NyaXB0Q29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJ3ZWJyLTEyLWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgLy8gRGVmYXVsdCBldmFsdWF0aW9uIGNvbmZpZ3VyYXRpb25cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oe1xuICAgIGlkOiBcIndlYnItMTItY29udGVudHNcIixcbiAgICBlY2hvOiB0cnVlLFxuICAgIG91dHB1dDogdHJ1ZVxuICB9LCBibG9jay5hdHRyKTtcblxuICAvLyBFdmFsdWF0ZSB0aGUgcHJvdmlkZWQgUiBjb2RlXG4gIGNvbnN0IHJlc3VsdCA9IHdlYlJPanMucHJvY2Vzcyh7Y29kZTogYmxvY2suY29kZSwgb3B0aW9uc30sIHt9KTtcblxuICAvLyBFYXJseSB5aWVsZCB3aGlsZSB3ZSB3YWl0IGZvciB0aGUgZmlyc3QgZXZhbHVhdGlvbiBhbmQgcmVuZGVyXG4gIGlmIChvcHRpb25zLm91dHB1dCAmJiAhKFwiMTJcIiBpbiB3ZWJST2pzLnJlbmRlcmVkT2pzKSkge1xuICAgIGNvbnN0IGNvbnRhaW5lciA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoXCJkaXZcIik7XG4gICAgY29uc3Qgc3Bpbm5lciA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoXCJkaXZcIik7XG5cbiAgICBpZiAob3B0aW9ucy5lY2hvKSB7XG4gICAgICAvLyBTaG93IG91dHB1dCBhcyBoaWdobGlnaHRlZCBzb3VyY2VcbiAgICAgIGNvbnN0IHByZUVsZW0gPSBkb2N1bWVudC5jcmVhdGVFbGVtZW50KFwicHJlXCIpO1xuICAgICAgY29udGFpbmVyLmNsYXNzTmFtZSA9IFwic291cmNlQ29kZVwiO1xuICAgICAgcHJlRWxlbS5jbGFzc05hbWUgPSBcInNvdXJjZUNvZGUgclwiO1xuICAgICAgcHJlRWxlbS5hcHBlbmRDaGlsZChoaWdobGlnaHRSKGJsb2NrLmNvZGUpKTtcbiAgICAgIHNwaW5uZXIuY2xhc3NOYW1lID0gXCJzcGlubmVyLWdyb3cgc3Bpbm5lci1ncm93LXNtIG0tMiBwb3NpdGlvbi1hYnNvbHV0ZSB0b3AtMCBlbmQtMFwiO1xuICAgICAgcHJlRWxlbS5hcHBlbmRDaGlsZChzcGlubmVyKTtcbiAgICAgIGNvbnRhaW5lci5hcHBlbmRDaGlsZChwcmVFbGVtKTtcbiAgICB9IGVsc2Uge1xuICAgICAgc3Bpbm5lci5jbGFzc05hbWUgPSBcInNwaW5uZXItYm9yZGVyIHNwaW5uZXItYm9yZGVyLXNtXCI7XG4gICAgICBjb250YWluZXIuYXBwZW5kQ2hpbGQoc3Bpbm5lcik7XG4gICAgfVxuXG4gICAgeWllbGQgY29udGFpbmVyO1xuICB9XG5cbiAgd2ViUk9qcy5yZW5kZXJlZE9qc1tcIjEyXCJdID0gdHJ1ZTtcbiAgeWllbGQgYXdhaXQgcmVzdWx0O1xufVxuIiwiY2VsbE5hbWUiOiJ3ZWJyLTEyIiwibWV0aG9kTmFtZSI6ImludGVycHJldCIsImlubGluZSI6ZmFsc2V9LHsic291cmNlIjoie1xuICAvLyBXYWl0IGZvciBvdXRwdXQgdG8gYmUgd3JpdHRlbiB0byB0aGUgRE9NLCB0aGVuIHRyaWdnZXIgd2lkZ2V0IHJlbmRlcmluZ1xuICBhd2FpdCBfd2Vicl92YWx1ZV8xMTtcbiAgaWYgKHdpbmRvdy5IVE1MV2lkZ2V0cykge1xuICAgIHdpbmRvdy5IVE1MV2lkZ2V0cy5zdGF0aWNSZW5kZXIoKTtcbiAgfVxuICBpZiAod2luZG93LlBhZ2VkVGFibGVEb2MpIHtcbiAgICB3aW5kb3cuUGFnZWRUYWJsZURvYy5pbml0QWxsKCk7XG4gIH1cbn1cbiIsImNlbGxOYW1lIjoid2Vici13aWRnZXQtMTEiLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJpbmxpbmUiOmZhbHNlfSx7InNvdXJjZSI6InZpZXdvZiBfd2Vicl9lZGl0b3JfMTEgPSB7XG4gIGNvbnN0IHsgV2ViUkV4ZXJjaXNlRWRpdG9yLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwid2Vici0xMS1jb250ZW50c1xcXCJdYCkudGV4dENvbnRlbnQ7XG4gIGNvbnN0IGJsb2NrID0gSlNPTi5wYXJzZShiNjREZWNvZGUoc2NyaXB0Q29udGVudCkpO1xuXG4gIGNvbnN0IG9wdGlvbnMgPSBPYmplY3QuYXNzaWduKHsgaWQ6IGB3ZWJyLTExLWNvbnRlbnRzYCB9LCBibG9jay5hdHRyKTtcbiAgY29uc3QgZWRpdG9yID0gbmV3IFdlYlJFeGVyY2lzZUVkaXRvcih3ZWJST2pzLndlYlJQcm9taXNlLCBibG9jay5jb2RlLCBvcHRpb25zKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl93ZWJyX3ZhbHVlXzExID0gd2ViUk9qcy5wcm9jZXNzKF93ZWJyX2VkaXRvcl8xMSwge30pO1xuIiwiY2VsbE5hbWUiOiJ3ZWJyLTExIiwibWV0aG9kTmFtZSI6ImludGVycHJldCIsImlubGluZSI6ZmFsc2V9LHsic291cmNlIjoie1xuICAvLyBXYWl0IGZvciBvdXRwdXQgdG8gYmUgd3JpdHRlbiB0byB0aGUgRE9NLCB0aGVuIHRyaWdnZXIgd2lkZ2V0IHJlbmRlcmluZ1xuICBhd2FpdCBfd2Vicl92YWx1ZV8xMDtcbiAgaWYgKHdpbmRvdy5IVE1MV2lkZ2V0cykge1xuICAgIHdpbmRvdy5IVE1MV2lkZ2V0cy5zdGF0aWNSZW5kZXIoKTtcbiAgfVxuICBpZiAod2luZG93LlBhZ2VkVGFibGVEb2MpIHtcbiAgICB3aW5kb3cuUGFnZWRUYWJsZURvYy5pbml0QWxsKCk7XG4gIH1cbn1cbiIsImNlbGxOYW1lIjoid2Vici13aWRnZXQtMTAiLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJpbmxpbmUiOmZhbHNlfSx7InNvdXJjZSI6InZpZXdvZiBfd2Vicl9lZGl0b3JfMTAgPSB7XG4gIGNvbnN0IHsgV2ViUkV4ZXJjaXNlRWRpdG9yLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwid2Vici0xMC1jb250ZW50c1xcXCJdYCkudGV4dENvbnRlbnQ7XG4gIGNvbnN0IGJsb2NrID0gSlNPTi5wYXJzZShiNjREZWNvZGUoc2NyaXB0Q29udGVudCkpO1xuXG4gIGNvbnN0IG9wdGlvbnMgPSBPYmplY3QuYXNzaWduKHsgaWQ6IGB3ZWJyLTEwLWNvbnRlbnRzYCB9LCBibG9jay5hdHRyKTtcbiAgY29uc3QgZWRpdG9yID0gbmV3IFdlYlJFeGVyY2lzZUVkaXRvcih3ZWJST2pzLndlYlJQcm9taXNlLCBibG9jay5jb2RlLCBvcHRpb25zKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl93ZWJyX3ZhbHVlXzEwID0gd2ViUk9qcy5wcm9jZXNzKF93ZWJyX2VkaXRvcl8xMCwge30pO1xuIiwiY2VsbE5hbWUiOiJ3ZWJyLTEwIiwibWV0aG9kTmFtZSI6ImludGVycHJldCIsImlubGluZSI6ZmFsc2V9LHsic291cmNlIjoie1xuICAvLyBXYWl0IGZvciBvdXRwdXQgdG8gYmUgd3JpdHRlbiB0byB0aGUgRE9NLCB0aGVuIHRyaWdnZXIgd2lkZ2V0IHJlbmRlcmluZ1xuICBhd2FpdCBfd2Vicl92YWx1ZV85O1xuICBpZiAod2luZG93LkhUTUxXaWRnZXRzKSB7XG4gICAgd2luZG93LkhUTUxXaWRnZXRzLnN0YXRpY1JlbmRlcigpO1xuICB9XG4gIGlmICh3aW5kb3cuUGFnZWRUYWJsZURvYykge1xuICAgIHdpbmRvdy5QYWdlZFRhYmxlRG9jLmluaXRBbGwoKTtcbiAgfVxufVxuIiwiY2VsbE5hbWUiOiJ3ZWJyLXdpZGdldC05IiwibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0IiwiaW5saW5lIjpmYWxzZX0seyJzb3VyY2UiOiJ2aWV3b2YgX3dlYnJfZWRpdG9yXzkgPSB7XG4gIGNvbnN0IHsgV2ViUkV4ZXJjaXNlRWRpdG9yLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwid2Vici05LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHdlYnItOS1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBXZWJSRXhlcmNpc2VFZGl0b3Iod2ViUk9qcy53ZWJSUHJvbWlzZSwgYmxvY2suY29kZSwgb3B0aW9ucyk7XG5cbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG5fd2Vicl92YWx1ZV85ID0gd2ViUk9qcy5wcm9jZXNzKF93ZWJyX2VkaXRvcl85LCB7fSk7XG4iLCJjZWxsTmFtZSI6IndlYnItOSIsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJpbmxpbmUiOmZhbHNlfSx7InNvdXJjZSI6IntcbiAgLy8gV2FpdCBmb3Igb3V0cHV0IHRvIGJlIHdyaXR0ZW4gdG8gdGhlIERPTSwgdGhlbiB0cmlnZ2VyIHdpZGdldCByZW5kZXJpbmdcbiAgYXdhaXQgX3dlYnJfdmFsdWVfODtcbiAgaWYgKHdpbmRvdy5IVE1MV2lkZ2V0cykge1xuICAgIHdpbmRvdy5IVE1MV2lkZ2V0cy5zdGF0aWNSZW5kZXIoKTtcbiAgfVxuICBpZiAod2luZG93LlBhZ2VkVGFibGVEb2MpIHtcbiAgICB3aW5kb3cuUGFnZWRUYWJsZURvYy5pbml0QWxsKCk7XG4gIH1cbn1cbiIsImNlbGxOYW1lIjoid2Vici13aWRnZXQtOCIsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsImlubGluZSI6ZmFsc2V9LHsic291cmNlIjoidmlld29mIF93ZWJyX2VkaXRvcl84ID0ge1xuICBjb25zdCB7IFdlYlJFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuICBjb25zdCBzY3JpcHRDb250ZW50ID0gZG9jdW1lbnQucXVlcnlTZWxlY3Rvcihgc2NyaXB0W3R5cGU9XFxcIndlYnItOC1jb250ZW50c1xcXCJdYCkudGV4dENvbnRlbnQ7XG4gIGNvbnN0IGJsb2NrID0gSlNPTi5wYXJzZShiNjREZWNvZGUoc2NyaXB0Q29udGVudCkpO1xuXG4gIGNvbnN0IG9wdGlvbnMgPSBPYmplY3QuYXNzaWduKHsgaWQ6IGB3ZWJyLTgtY29udGVudHNgIH0sIGJsb2NrLmF0dHIpO1xuICBjb25zdCBlZGl0b3IgPSBuZXcgV2ViUkV4ZXJjaXNlRWRpdG9yKHdlYlJPanMud2ViUlByb21pc2UsIGJsb2NrLmNvZGUsIG9wdGlvbnMpO1xuXG4gIHJldHVybiBlZGl0b3IuY29udGFpbmVyO1xufVxuX3dlYnJfdmFsdWVfOCA9IHdlYlJPanMucHJvY2Vzcyhfd2Vicl9lZGl0b3JfOCwge30pO1xuIiwiY2VsbE5hbWUiOiJ3ZWJyLTgiLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiaW5saW5lIjpmYWxzZX0seyJzb3VyY2UiOiJ7XG4gIC8vIFdhaXQgZm9yIG91dHB1dCB0byBiZSB3cml0dGVuIHRvIHRoZSBET00sIHRoZW4gdHJpZ2dlciB3aWRnZXQgcmVuZGVyaW5nXG4gIGF3YWl0IF93ZWJyX3ZhbHVlXzc7XG4gIGlmICh3aW5kb3cuSFRNTFdpZGdldHMpIHtcbiAgICB3aW5kb3cuSFRNTFdpZGdldHMuc3RhdGljUmVuZGVyKCk7XG4gIH1cbiAgaWYgKHdpbmRvdy5QYWdlZFRhYmxlRG9jKSB7XG4gICAgd2luZG93LlBhZ2VkVGFibGVEb2MuaW5pdEFsbCgpO1xuICB9XG59XG4iLCJjZWxsTmFtZSI6IndlYnItd2lkZ2V0LTciLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJpbmxpbmUiOmZhbHNlfSx7InNvdXJjZSI6InZpZXdvZiBfd2Vicl9lZGl0b3JfNyA9IHtcbiAgY29uc3QgeyBXZWJSRXhlcmNpc2VFZGl0b3IsIGI2NERlY29kZSB9ID0gd2luZG93Ll9leGVyY2lzZV9vanNfcnVudGltZTtcbiAgY29uc3Qgc2NyaXB0Q29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJ3ZWJyLTctY29udGVudHNcXFwiXWApLnRleHRDb250ZW50O1xuICBjb25zdCBibG9jayA9IEpTT04ucGFyc2UoYjY0RGVjb2RlKHNjcmlwdENvbnRlbnQpKTtcblxuICBjb25zdCBvcHRpb25zID0gT2JqZWN0LmFzc2lnbih7IGlkOiBgd2Vici03LWNvbnRlbnRzYCB9LCBibG9jay5hdHRyKTtcbiAgY29uc3QgZWRpdG9yID0gbmV3IFdlYlJFeGVyY2lzZUVkaXRvcih3ZWJST2pzLndlYlJQcm9taXNlLCBibG9jay5jb2RlLCBvcHRpb25zKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl93ZWJyX3ZhbHVlXzcgPSB3ZWJST2pzLnByb2Nlc3MoX3dlYnJfZWRpdG9yXzcsIHt9KTtcbiIsImNlbGxOYW1lIjoid2Vici03IiwibWV0aG9kTmFtZSI6ImludGVycHJldCIsImlubGluZSI6ZmFsc2V9LHsic291cmNlIjoie1xuICAvLyBXYWl0IGZvciBvdXRwdXQgdG8gYmUgd3JpdHRlbiB0byB0aGUgRE9NLCB0aGVuIHRyaWdnZXIgd2lkZ2V0IHJlbmRlcmluZ1xuICBhd2FpdCBfd2Vicl92YWx1ZV82O1xuICBpZiAod2luZG93LkhUTUxXaWRnZXRzKSB7XG4gICAgd2luZG93LkhUTUxXaWRnZXRzLnN0YXRpY1JlbmRlcigpO1xuICB9XG4gIGlmICh3aW5kb3cuUGFnZWRUYWJsZURvYykge1xuICAgIHdpbmRvdy5QYWdlZFRhYmxlRG9jLmluaXRBbGwoKTtcbiAgfVxufVxuIiwiY2VsbE5hbWUiOiJ3ZWJyLXdpZGdldC02IiwibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0IiwiaW5saW5lIjpmYWxzZX0seyJzb3VyY2UiOiJ2aWV3b2YgX3dlYnJfZWRpdG9yXzYgPSB7XG4gIGNvbnN0IHsgV2ViUkV4ZXJjaXNlRWRpdG9yLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwid2Vici02LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHdlYnItNi1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBXZWJSRXhlcmNpc2VFZGl0b3Iod2ViUk9qcy53ZWJSUHJvbWlzZSwgYmxvY2suY29kZSwgb3B0aW9ucyk7XG5cbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG5fd2Vicl92YWx1ZV82ID0gd2ViUk9qcy5wcm9jZXNzKF93ZWJyX2VkaXRvcl82LCB7fSk7XG4iLCJjZWxsTmFtZSI6IndlYnItNiIsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJpbmxpbmUiOmZhbHNlfSx7InNvdXJjZSI6IntcbiAgLy8gV2FpdCBmb3Igb3V0cHV0IHRvIGJlIHdyaXR0ZW4gdG8gdGhlIERPTSwgdGhlbiB0cmlnZ2VyIHdpZGdldCByZW5kZXJpbmdcbiAgYXdhaXQgX3dlYnJfdmFsdWVfNTtcbiAgaWYgKHdpbmRvdy5IVE1MV2lkZ2V0cykge1xuICAgIHdpbmRvdy5IVE1MV2lkZ2V0cy5zdGF0aWNSZW5kZXIoKTtcbiAgfVxuICBpZiAod2luZG93LlBhZ2VkVGFibGVEb2MpIHtcbiAgICB3aW5kb3cuUGFnZWRUYWJsZURvYy5pbml0QWxsKCk7XG4gIH1cbn1cbiIsImNlbGxOYW1lIjoid2Vici13aWRnZXQtNSIsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsImlubGluZSI6ZmFsc2V9LHsic291cmNlIjoidmlld29mIF93ZWJyX2VkaXRvcl81ID0ge1xuICBjb25zdCB7IFdlYlJFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuICBjb25zdCBzY3JpcHRDb250ZW50ID0gZG9jdW1lbnQucXVlcnlTZWxlY3Rvcihgc2NyaXB0W3R5cGU9XFxcIndlYnItNS1jb250ZW50c1xcXCJdYCkudGV4dENvbnRlbnQ7XG4gIGNvbnN0IGJsb2NrID0gSlNPTi5wYXJzZShiNjREZWNvZGUoc2NyaXB0Q29udGVudCkpO1xuXG4gIGNvbnN0IG9wdGlvbnMgPSBPYmplY3QuYXNzaWduKHsgaWQ6IGB3ZWJyLTUtY29udGVudHNgIH0sIGJsb2NrLmF0dHIpO1xuICBjb25zdCBlZGl0b3IgPSBuZXcgV2ViUkV4ZXJjaXNlRWRpdG9yKHdlYlJPanMud2ViUlByb21pc2UsIGJsb2NrLmNvZGUsIG9wdGlvbnMpO1xuXG4gIHJldHVybiBlZGl0b3IuY29udGFpbmVyO1xufVxuX3dlYnJfdmFsdWVfNSA9IHdlYlJPanMucHJvY2Vzcyhfd2Vicl9lZGl0b3JfNSwge30pO1xuIiwiY2VsbE5hbWUiOiJ3ZWJyLTUiLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiaW5saW5lIjpmYWxzZX0seyJzb3VyY2UiOiJ7XG4gIC8vIFdhaXQgZm9yIG91dHB1dCB0byBiZSB3cml0dGVuIHRvIHRoZSBET00sIHRoZW4gdHJpZ2dlciB3aWRnZXQgcmVuZGVyaW5nXG4gIGF3YWl0IF93ZWJyX3ZhbHVlXzQ7XG4gIGlmICh3aW5kb3cuSFRNTFdpZGdldHMpIHtcbiAgICB3aW5kb3cuSFRNTFdpZGdldHMuc3RhdGljUmVuZGVyKCk7XG4gIH1cbiAgaWYgKHdpbmRvdy5QYWdlZFRhYmxlRG9jKSB7XG4gICAgd2luZG93LlBhZ2VkVGFibGVEb2MuaW5pdEFsbCgpO1xuICB9XG59XG4iLCJjZWxsTmFtZSI6IndlYnItd2lkZ2V0LTQiLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJpbmxpbmUiOmZhbHNlfSx7InNvdXJjZSI6InZpZXdvZiBfd2Vicl9lZGl0b3JfNCA9IHtcbiAgY29uc3QgeyBXZWJSRXhlcmNpc2VFZGl0b3IsIGI2NERlY29kZSB9ID0gd2luZG93Ll9leGVyY2lzZV9vanNfcnVudGltZTtcbiAgY29uc3Qgc2NyaXB0Q29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJ3ZWJyLTQtY29udGVudHNcXFwiXWApLnRleHRDb250ZW50O1xuICBjb25zdCBibG9jayA9IEpTT04ucGFyc2UoYjY0RGVjb2RlKHNjcmlwdENvbnRlbnQpKTtcblxuICBjb25zdCBvcHRpb25zID0gT2JqZWN0LmFzc2lnbih7IGlkOiBgd2Vici00LWNvbnRlbnRzYCB9LCBibG9jay5hdHRyKTtcbiAgY29uc3QgZWRpdG9yID0gbmV3IFdlYlJFeGVyY2lzZUVkaXRvcih3ZWJST2pzLndlYlJQcm9taXNlLCBibG9jay5jb2RlLCBvcHRpb25zKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl93ZWJyX3ZhbHVlXzQgPSB3ZWJST2pzLnByb2Nlc3MoX3dlYnJfZWRpdG9yXzQsIHt9KTtcbiIsImNlbGxOYW1lIjoid2Vici00IiwibWV0aG9kTmFtZSI6ImludGVycHJldCIsImlubGluZSI6ZmFsc2V9LHsic291cmNlIjoie1xuICAvLyBXYWl0IGZvciBvdXRwdXQgdG8gYmUgd3JpdHRlbiB0byB0aGUgRE9NLCB0aGVuIHRyaWdnZXIgd2lkZ2V0IHJlbmRlcmluZ1xuICBhd2FpdCBfd2Vicl92YWx1ZV8zO1xuICBpZiAod2luZG93LkhUTUxXaWRnZXRzKSB7XG4gICAgd2luZG93LkhUTUxXaWRnZXRzLnN0YXRpY1JlbmRlcigpO1xuICB9XG4gIGlmICh3aW5kb3cuUGFnZWRUYWJsZURvYykge1xuICAgIHdpbmRvdy5QYWdlZFRhYmxlRG9jLmluaXRBbGwoKTtcbiAgfVxufVxuIiwiY2VsbE5hbWUiOiJ3ZWJyLXdpZGdldC0zIiwibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0IiwiaW5saW5lIjpmYWxzZX0seyJzb3VyY2UiOiJ2aWV3b2YgX3dlYnJfZWRpdG9yXzMgPSB7XG4gIGNvbnN0IHsgV2ViUkV4ZXJjaXNlRWRpdG9yLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwid2Vici0zLWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHdlYnItMy1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBXZWJSRXhlcmNpc2VFZGl0b3Iod2ViUk9qcy53ZWJSUHJvbWlzZSwgYmxvY2suY29kZSwgb3B0aW9ucyk7XG5cbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG5fd2Vicl92YWx1ZV8zID0gd2ViUk9qcy5wcm9jZXNzKF93ZWJyX2VkaXRvcl8zLCB7fSk7XG4iLCJjZWxsTmFtZSI6IndlYnItMyIsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJpbmxpbmUiOmZhbHNlfSx7InNvdXJjZSI6IntcbiAgLy8gV2FpdCBmb3Igb3V0cHV0IHRvIGJlIHdyaXR0ZW4gdG8gdGhlIERPTSwgdGhlbiB0cmlnZ2VyIHdpZGdldCByZW5kZXJpbmdcbiAgYXdhaXQgX3dlYnJfdmFsdWVfMjtcbiAgaWYgKHdpbmRvdy5IVE1MV2lkZ2V0cykge1xuICAgIHdpbmRvdy5IVE1MV2lkZ2V0cy5zdGF0aWNSZW5kZXIoKTtcbiAgfVxuICBpZiAod2luZG93LlBhZ2VkVGFibGVEb2MpIHtcbiAgICB3aW5kb3cuUGFnZWRUYWJsZURvYy5pbml0QWxsKCk7XG4gIH1cbn1cbiIsImNlbGxOYW1lIjoid2Vici13aWRnZXQtMiIsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsImlubGluZSI6ZmFsc2V9LHsic291cmNlIjoidmlld29mIF93ZWJyX2VkaXRvcl8yID0ge1xuICBjb25zdCB7IFdlYlJFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuICBjb25zdCBzY3JpcHRDb250ZW50ID0gZG9jdW1lbnQucXVlcnlTZWxlY3Rvcihgc2NyaXB0W3R5cGU9XFxcIndlYnItMi1jb250ZW50c1xcXCJdYCkudGV4dENvbnRlbnQ7XG4gIGNvbnN0IGJsb2NrID0gSlNPTi5wYXJzZShiNjREZWNvZGUoc2NyaXB0Q29udGVudCkpO1xuXG4gIGNvbnN0IG9wdGlvbnMgPSBPYmplY3QuYXNzaWduKHsgaWQ6IGB3ZWJyLTItY29udGVudHNgIH0sIGJsb2NrLmF0dHIpO1xuICBjb25zdCBlZGl0b3IgPSBuZXcgV2ViUkV4ZXJjaXNlRWRpdG9yKHdlYlJPanMud2ViUlByb21pc2UsIGJsb2NrLmNvZGUsIG9wdGlvbnMpO1xuXG4gIHJldHVybiBlZGl0b3IuY29udGFpbmVyO1xufVxuX3dlYnJfdmFsdWVfMiA9IHdlYlJPanMucHJvY2Vzcyhfd2Vicl9lZGl0b3JfMiwge30pO1xuIiwiY2VsbE5hbWUiOiJ3ZWJyLTIiLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiaW5saW5lIjpmYWxzZX0seyJzb3VyY2UiOiJ7XG4gIC8vIFdhaXQgZm9yIG91dHB1dCB0byBiZSB3cml0dGVuIHRvIHRoZSBET00sIHRoZW4gdHJpZ2dlciB3aWRnZXQgcmVuZGVyaW5nXG4gIGF3YWl0IF93ZWJyX3ZhbHVlXzE7XG4gIGlmICh3aW5kb3cuSFRNTFdpZGdldHMpIHtcbiAgICB3aW5kb3cuSFRNTFdpZGdldHMuc3RhdGljUmVuZGVyKCk7XG4gIH1cbiAgaWYgKHdpbmRvdy5QYWdlZFRhYmxlRG9jKSB7XG4gICAgd2luZG93LlBhZ2VkVGFibGVEb2MuaW5pdEFsbCgpO1xuICB9XG59XG4iLCJjZWxsTmFtZSI6IndlYnItd2lkZ2V0LTEiLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJpbmxpbmUiOmZhbHNlfSx7InNvdXJjZSI6InZpZXdvZiBfd2Vicl9lZGl0b3JfMSA9IHtcbiAgY29uc3QgeyBXZWJSRXhlcmNpc2VFZGl0b3IsIGI2NERlY29kZSB9ID0gd2luZG93Ll9leGVyY2lzZV9vanNfcnVudGltZTtcbiAgY29uc3Qgc2NyaXB0Q29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJ3ZWJyLTEtY29udGVudHNcXFwiXWApLnRleHRDb250ZW50O1xuICBjb25zdCBibG9jayA9IEpTT04ucGFyc2UoYjY0RGVjb2RlKHNjcmlwdENvbnRlbnQpKTtcblxuICBjb25zdCBvcHRpb25zID0gT2JqZWN0LmFzc2lnbih7IGlkOiBgd2Vici0xLWNvbnRlbnRzYCB9LCBibG9jay5hdHRyKTtcbiAgY29uc3QgZWRpdG9yID0gbmV3IFdlYlJFeGVyY2lzZUVkaXRvcih3ZWJST2pzLndlYlJQcm9taXNlLCBibG9jay5jb2RlLCBvcHRpb25zKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl93ZWJyX3ZhbHVlXzEgPSB3ZWJST2pzLnByb2Nlc3MoX3dlYnJfZWRpdG9yXzEsIHt9KTtcbiIsImNlbGxOYW1lIjoid2Vici0xIiwibWV0aG9kTmFtZSI6ImludGVycHJldCIsImlubGluZSI6ZmFsc2V9LHsic291cmNlIjoid2ViUk9qcyA9IHtcbiAgY29uc3QgeyBXZWJSIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lLldlYlI7XG4gIGNvbnN0IHtcbiAgICBXZWJSRXZhbHVhdG9yLFxuICAgIFdlYlJFbnZpcm9ubWVudE1hbmFnZXIsXG4gICAgc2V0dXBSLFxuICAgIGI2NERlY29kZSxcbiAgICBjb2xsYXBzZVBhdGhcbiAgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG5cbiAgY29uc3Qgc3RhdHVzQ29udGFpbmVyID0gZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoXCJleGVyY2lzZS1sb2FkaW5nLXN0YXR1c1wiKTtcbiAgY29uc3QgaW5kaWNhdG9yQ29udGFpbmVyID0gZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoXCJleGVyY2lzZS1sb2FkaW5nLWluZGljYXRvclwiKTtcbiAgaW5kaWNhdG9yQ29udGFpbmVyLmNsYXNzTGlzdC5yZW1vdmUoXCJkLW5vbmVcIik7XG5cbiAgbGV0IHN0YXR1c1RleHQgPSBkb2N1bWVudC5jcmVhdGVFbGVtZW50KFwiZGl2XCIpXG4gIHN0YXR1c1RleHQuY2xhc3NMaXN0ID0gXCJleGVyY2lzZS1sb2FkaW5nLWRldGFpbHNcIjtcbiAgc3RhdHVzVGV4dCA9IHN0YXR1c0NvbnRhaW5lci5hcHBlbmRDaGlsZChzdGF0dXNUZXh0KTtcbiAgc3RhdHVzVGV4dC50ZXh0Q29udGVudCA9IGBJbml0aWFsaXNlYDtcblxuICAvLyBIb2lzdCBpbmRpY2F0b3Igb3V0IGZyb20gZmluYWwgc2xpZGUgd2hlbiBydW5uaW5nIHVuZGVyIHJldmVhbFxuICBjb25zdCByZXZlYWxTdGF0dXMgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKFwiLnJldmVhbCAuZXhlcmNpc2UtbG9hZGluZy1pbmRpY2F0b3JcIik7XG4gIGlmIChyZXZlYWxTdGF0dXMpIHtcbiAgICByZXZlYWxTdGF0dXMucmVtb3ZlKCk7XG4gICAgZG9jdW1lbnQucXVlcnlTZWxlY3RvcihcIi5yZXZlYWwgPiAuc2xpZGVzXCIpLmFwcGVuZENoaWxkKHJldmVhbFN0YXR1cyk7XG4gIH1cblxuICAvLyB3ZWJSIHN1cHBsZW1lbnRhbCBkYXRhIGFuZCBvcHRpb25zXG4gIGNvbnN0IGRhdGFDb250ZW50ID0gZG9jdW1lbnQucXVlcnlTZWxlY3Rvcihgc2NyaXB0W3R5cGU9XFxcIndlYnItZGF0YVxcXCJdYCkudGV4dENvbnRlbnQ7XG4gIGNvbnN0IGRhdGEgPSBKU09OLnBhcnNlKGI2NERlY29kZShkYXRhQ29udGVudCkpO1xuXG4gIC8vIEdyYWIgbGlzdCBvZiByZXNvdXJjZXMgdG8gYmUgZG93bmxvYWRlZFxuICBjb25zdCBmaWxlc0NvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwidmZzLWZpbGVcXFwiXWApLnRleHRDb250ZW50O1xuICBjb25zdCBmaWxlcyA9IEpTT04ucGFyc2UoYjY0RGVjb2RlKGZpbGVzQ29udGVudCkpO1xuXG4gIC8vIEluaXRpYWxpc2Ugd2ViUiBhbmQgc2V0dXAgZm9yIFIgY29kZSBldmFsdWF0aW9uXG4gIGxldCB3ZWJSUHJvbWlzZSA9IChhc3luYyAod2ViUikgPT4ge1xuICAgIHN0YXR1c1RleHQudGV4dENvbnRlbnQgPSBgRG93bmxvYWRpbmcgd2ViUmA7XG4gICAgYXdhaXQgd2ViUi5pbml0KCk7XG5cbiAgICAvLyBJbnN0YWxsIHByb3ZpZGVkIGxpc3Qgb2YgcGFja2FnZXNcbiAgICAvLyBFbnN1cmUgd2ViUiBkZWZhdWx0IHJlcG8gaXMgaW5jbHVkZWRcbiAgICBkYXRhLnBhY2thZ2VzLnJlcG9zLnB1c2goXCJodHRwczovL3JlcG8uci13YXNtLm9yZ1wiKVxuICAgIGF3YWl0IGRhdGEucGFja2FnZXMucGtncy5tYXAoKHBrZykgPT4gKCkgPT4ge1xuICAgICAgc3RhdHVzVGV4dC50ZXh0Q29udGVudCA9IGBEb3dubG9hZGluZyBwYWNrYWdlOiAke3BrZ31gO1xuICAgICAgcmV0dXJuIHdlYlIuZXZhbFJWb2lkKGBcbiAgICAgICAgd2Vicjo6aW5zdGFsbChwa2csIHJlcG9zID0gcmVwb3MpXG4gICAgICAgIGxpYnJhcnkocGtnLCBjaGFyYWN0ZXIub25seSA9IFRSVUUpXG4gICAgICBgLCB7IGVudjoge1xuICAgICAgICBwa2c6IHBrZyxcbiAgICAgICAgcmVwb3M6IGRhdGEucGFja2FnZXMucmVwb3MsXG4gICAgICB9fSk7XG4gICAgfSkucmVkdWNlKChjdXIsIG5leHQpID0+IGN1ci50aGVuKG5leHQpLCBQcm9taXNlLnJlc29sdmUoKSk7XG5cbiAgICAvLyBEb3dubG9hZCBhbmQgaW5zdGFsbCByZXNvdXJjZXNcbiAgICBhd2FpdCBmaWxlcy5tYXAoKGZpbGUpID0+IGFzeW5jICgpID0+IHtcbiAgICAgIGNvbnN0IG5hbWUgPSBmaWxlLnN1YnN0cmluZyhmaWxlLmxhc3RJbmRleE9mKCcvJykgKyAxKTtcbiAgICAgIHN0YXR1c1RleHQudGV4dENvbnRlbnQgPSBgRG93bmxvYWRpbmcgcmVzb3VyY2U6ICR7bmFtZX1gO1xuICAgICAgY29uc3QgcmVzcG9uc2UgPSBhd2FpdCBmZXRjaChmaWxlKTtcbiAgICAgIGlmICghcmVzcG9uc2Uub2spIHtcbiAgICAgICAgdGhyb3cgbmV3IEVycm9yKGBDYW4ndCBkb3dubG9hZCBcXGAke2ZpbGV9XFxgLiBFcnJvciAke3Jlc3BvbnNlLnN0YXR1c306IFwiJHtyZXNwb25zZS5zdGF0dXNUZXh0fVwiLmApO1xuICAgICAgfVxuICAgICAgY29uc3QgZGF0YSA9IGF3YWl0IHJlc3BvbnNlLmFycmF5QnVmZmVyKCk7XG5cbiAgICAgIC8vIFN0b3JlIFVSTHMgaW4gdGhlIGN3ZCB3aXRob3V0IGFueSBzdWJkaXJlY3Rvcnkgc3RydWN0dXJlXG4gICAgICBpZiAoZmlsZS5pbmNsdWRlcyhcIjovL1wiKSkge1xuICAgICAgICBmaWxlID0gbmFtZTtcbiAgICAgIH1cblxuICAgICAgLy8gQ29sbGFwc2UgaGlnaGVyIGRpcmVjdG9yeSBzdHJ1Y3R1cmVcbiAgICAgIGZpbGUgPSBjb2xsYXBzZVBhdGgoZmlsZSk7XG5cbiAgICAgIC8vIENyZWF0ZSBkaXJlY3RvcnkgdHJlZSwgaWdub3JpbmcgXCJkaXJlY3RvcnkgZXhpc3RzXCIgVkZTIGVycm9yc1xuICAgICAgY29uc3QgcGFydHMgPSBmaWxlLnNwbGl0KCcvJykuc2xpY2UoMCwgLTEpO1xuICAgICAgbGV0IHBhdGggPSAnJztcbiAgICAgIHdoaWxlIChwYXJ0cy5sZW5ndGggPiAwKSB7XG4gICAgICAgIHBhdGggKz0gcGFydHMuc2hpZnQoKSArICcvJztcbiAgICAgICAgdHJ5IHtcbiAgICAgICAgICBhd2FpdCB3ZWJSLkZTLm1rZGlyKHBhdGgpO1xuICAgICAgICB9IGNhdGNoIChlKSB7XG4gICAgICAgICAgaWYgKCFlLm1lc3NhZ2UuaW5jbHVkZXMoXCJGUyBlcnJvclwiKSkge1xuICAgICAgICAgICAgdGhyb3cgZTtcbiAgICAgICAgICB9XG4gICAgICAgIH1cbiAgICAgIH1cblxuICAgICAgLy8gV3JpdGUgdGhpcyBmaWxlIHRvIHRoZSBWRlNcbiAgICAgIHJldHVybiBhd2FpdCB3ZWJSLkZTLndyaXRlRmlsZShmaWxlLCBuZXcgVWludDhBcnJheShkYXRhKSk7XG4gICAgfSkucmVkdWNlKChjdXIsIG5leHQpID0+IGN1ci50aGVuKG5leHQpLCBQcm9taXNlLnJlc29sdmUoKSk7XG5cbiAgICBzdGF0dXNUZXh0LnRleHRDb250ZW50ID0gYEluc3RhbGxpbmcgd2ViUiBzaGltc2A7XG4gICAgYXdhaXQgd2ViUi5ldmFsUlZvaWQoYHdlYnI6OnNoaW1faW5zdGFsbCgpYCk7XG5cbiAgICBzdGF0dXNUZXh0LnRleHRDb250ZW50ID0gYFdlYlIgZW52aXJvbm1lbnQgc2V0dXBgO1xuICAgIGF3YWl0IHNldHVwUih3ZWJSLCBkYXRhKTtcblxuICAgIHN0YXR1c1RleHQucmVtb3ZlKCk7XG4gICAgaWYgKHN0YXR1c0NvbnRhaW5lci5jaGlsZHJlbi5sZW5ndGggPT0gMCkge1xuICAgICAgc3RhdHVzQ29udGFpbmVyLnBhcmVudE5vZGUucmVtb3ZlKCk7XG4gICAgfVxuICAgIHJldHVybiB3ZWJSO1xuICB9KShuZXcgV2ViUihkYXRhLm9wdGlvbnMpKTtcblxuICAvLyBLZWVwIHRyYWNrIG9mIGluaXRpYWwgT0pTIGJsb2NrIHJlbmRlclxuICBjb25zdCByZW5kZXJlZE9qcyA9IHt9O1xuXG4gIGNvbnN0IHByb2Nlc3MgPSBhc3luYyAoY29udGV4dCwgaW5wdXRzKSA9PiB7XG4gICAgY29uc3Qgd2ViUiA9IGF3YWl0IHdlYlJQcm9taXNlO1xuICAgIGNvbnN0IGV2YWx1YXRvciA9IG5ldyBXZWJSRXZhbHVhdG9yKHdlYlIsIGNvbnRleHQpXG4gICAgYXdhaXQgZXZhbHVhdG9yLnByb2Nlc3MoaW5wdXRzKTtcbiAgICByZXR1cm4gZXZhbHVhdG9yLmNvbnRhaW5lcjtcbiAgfVxuXG4gIHJldHVybiB7XG4gICAgcHJvY2VzcyxcbiAgICB3ZWJSUHJvbWlzZSxcbiAgICByZW5kZXJlZE9qcyxcbiAgfTtcbn1cbiIsImNlbGxOYW1lIjoid2Vici1wcmVsdWRlIiwibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0IiwiaW5saW5lIjpmYWxzZX1dfQ==
 </script>
 <div id="exercise-loading-indicator" class="exercise-loading-indicator d-none d-flex align-items-center gap-2">
 <div id="exercise-loading-status" class="d-flex gap-2">
@@ -499,17 +865,9 @@ eyJjb250ZW50cyI6W3sic291cmNlIjoie1xuICAvLyBXYWl0IGZvciBvdXRwdXQgdG8gYmUgd3JpdHRl
 W10=
 </script>
 </section>
+</section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{training_team2024,
-  author = {Training Team, SSF},
-  title = {4. {Base} {R} Vs {Tidyverse:} {Why} {Packages} {Matter}},
-  date = {2024-11-06},
-  langid = {en}
-}
-</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-training_team2024" class="csl-entry quarto-appendix-citeas" role="listitem">
-Training Team, SSF. 2024. <span>“4. Base R Vs Tidyverse: Why Packages
-Matter.”</span> November 6, 2024.
-</div></div></section></div></main> <!-- /main -->
+</main> <!-- /main -->
 <script type="ojs-module-contents">
 eyJjb250ZW50cyI6W119
 </script>

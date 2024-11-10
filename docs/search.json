@@ -2,254 +2,188 @@
   {
     "objectID": "r_snacks/2_rbasics.html",
     "href": "r_snacks/2_rbasics.html",
-    "title": "2. Basic Operations in R: A Complete Guide",
+    "title": "2. Basic Operations in R: A Technical Guide",
     "section": "",
-    "text": "Welcome to your guide to basic R operations! This tutorial will take you through the fundamental operations in R, building from simple calculations to more complex operations. We’ll learn by doing, with plenty of examples and explanations.\n\n\n\n\n\n\nLearning Objectives\n\n\n\nBy the end of this tutorial, you will be able to: - Perform basic calculations in R - Understand different data types - Create and manipulate variables - Work with vectors and basic data structures - Use basic R functions - Understand logical operations",
+    "text": "When you open R, you’ll see the console window where you type commands and see results. Each command you type is called an “expression” and R evaluates it immediately when you press Enter.\n\n\nLet’s look at how R handles calculations and what each symbol means:\n\n\n\n\n\n\n\n\nWhen you run this command: 1. R reads the numbers on either side of the + 2. Performs the addition 3. Returns the result 4. The # symbol starts a comment - R ignores everything after it\nLet’s try multiple operations:\n\n\n\n\n\n\n\n\nThis result shows that R follows standard mathematical order of operations: 1. Multiplication (*) happens before addition (+) 2. So R first calculates 3 * 2 = 6 3. Then adds 5 to get 5 + 6 = 11\nTo change this order, use parentheses:\n\n\n\n\n\n\n\n\nHere’s what happened: 1. Parentheses tell R “do this first” 2. So R calculates 5 + 3 = 8 3. Then multiplies by 2 to get 8 * 2 = 16\n\n\n\nR uses decimals (floating-point numbers) by default:\n\n\n\n\n\n\n\n\nImportant points about decimals in R: - You can write numbers with or without .0 - R will show as many decimal places as needed - Use round() to control decimal places:\n\n\n\n\n\n\n\n\n\n\n\nYou’ll sometimes see error messages. Let’s look at common ones:\n\n\n\n\n\n\n\n\nWhen you see an error: 1. Read the message carefully 2. Check for missing operators (+, -, *, /) 3. Check for matching parentheses 4. Look for missing quotation marks 5. Verify no spaces in numbers (1000 not 1 000)\n\n\n\n\n\n\nConsole Tips\n\n\n\n\nUse the up/down arrow keys to recall previous commands\nPress Esc to cancel a command\nPress Ctrl+L (Cmd+L on Mac) to clear the console\nType ?function_name to get help (e.g., ?round)",
     "crumbs": [
       "Getting Started",
-      "Basic Operations"
+      "2. Basic Operations"
     ]
   },
   {
-    "objectID": "r_snacks/2_rbasics.html#introduction",
-    "href": "r_snacks/2_rbasics.html#introduction",
-    "title": "2. Basic Operations in R: A Complete Guide",
+    "objectID": "r_snacks/2_rbasics.html#the-r-console-understanding-your-work-environment",
+    "href": "r_snacks/2_rbasics.html#the-r-console-understanding-your-work-environment",
+    "title": "2. Basic Operations in R: A Technical Guide",
     "section": "",
-    "text": "Welcome to your guide to basic R operations! This tutorial will take you through the fundamental operations in R, building from simple calculations to more complex operations. We’ll learn by doing, with plenty of examples and explanations.\n\n\n\n\n\n\nLearning Objectives\n\n\n\nBy the end of this tutorial, you will be able to: - Perform basic calculations in R - Understand different data types - Create and manipulate variables - Work with vectors and basic data structures - Use basic R functions - Understand logical operations",
+    "text": "When you open R, you’ll see the console window where you type commands and see results. Each command you type is called an “expression” and R evaluates it immediately when you press Enter.\n\n\nLet’s look at how R handles calculations and what each symbol means:\n\n\n\n\n\n\n\n\nWhen you run this command: 1. R reads the numbers on either side of the + 2. Performs the addition 3. Returns the result 4. The # symbol starts a comment - R ignores everything after it\nLet’s try multiple operations:\n\n\n\n\n\n\n\n\nThis result shows that R follows standard mathematical order of operations: 1. Multiplication (*) happens before addition (+) 2. So R first calculates 3 * 2 = 6 3. Then adds 5 to get 5 + 6 = 11\nTo change this order, use parentheses:\n\n\n\n\n\n\n\n\nHere’s what happened: 1. Parentheses tell R “do this first” 2. So R calculates 5 + 3 = 8 3. Then multiplies by 2 to get 8 * 2 = 16\n\n\n\nR uses decimals (floating-point numbers) by default:\n\n\n\n\n\n\n\n\nImportant points about decimals in R: - You can write numbers with or without .0 - R will show as many decimal places as needed - Use round() to control decimal places:\n\n\n\n\n\n\n\n\n\n\n\nYou’ll sometimes see error messages. Let’s look at common ones:\n\n\n\n\n\n\n\n\nWhen you see an error: 1. Read the message carefully 2. Check for missing operators (+, -, *, /) 3. Check for matching parentheses 4. Look for missing quotation marks 5. Verify no spaces in numbers (1000 not 1 000)\n\n\n\n\n\n\nConsole Tips\n\n\n\n\nUse the up/down arrow keys to recall previous commands\nPress Esc to cancel a command\nPress Ctrl+L (Cmd+L on Mac) to clear the console\nType ?function_name to get help (e.g., ?round)",
     "crumbs": [
       "Getting Started",
-      "Basic Operations"
+      "2. Basic Operations"
     ]
   },
   {
-    "objectID": "r_snacks/2_rbasics.html#the-r-console-your-calculator",
-    "href": "r_snacks/2_rbasics.html#the-r-console-your-calculator",
-    "title": "2. Basic Operations in R: A Complete Guide",
-    "section": "1. The R Console: Your Calculator 🔢",
-    "text": "1. The R Console: Your Calculator 🔢\nLet’s start by understanding how to use R as a calculator. The console is where we can type commands and see results immediately.\n\nBasic Arithmetic Operations\nTry these operations in the console:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMathematical Operators in R\n\n\n\n\n+ Addition\n- Subtraction\n* Multiplication\n/ Division\n^ or ** Exponentiation\n\n\n\n\n\nOrder of Operations\nR follows the standard mathematical order of operations (PEMDAS): 1. Parentheses 2. Exponents 3. Multiplication and Division (left to right) 4. Addition and Subtraction (left to right)\nLet’s see some examples:",
+    "objectID": "r_snacks/2_rbasics.html#variables-understanding-data-storage",
+    "href": "r_snacks/2_rbasics.html#variables-understanding-data-storage",
+    "title": "2. Basic Operations in R: A Technical Guide",
+    "section": "2. Variables: Understanding Data Storage 📦",
+    "text": "2. Variables: Understanding Data Storage 📦\nVariables are containers that store values in R. Understanding how R handles variables is crucial for working with data effectively.\n\nThe Assignment Operator\nR uses &lt;- or = for assignment. While both work, &lt;- is preferred in R:\n\n\n\n\n\n\n\n\nWhat happens during assignment: 1. R evaluates the right side first 2. Creates a name in memory (left side) 3. Stores the value in that memory location 4. The variable name now points to that value\nYou can see all variables in memory:\n\n\n\n\n\n\n\n\n\n\nVariable Naming Rules\nR has specific rules for variable names:\n\n\n\n\n\n\n\n\nRules for variable names: 1. Must start with a letter or . 2. Can contain letters, numbers, _ and . 3. Cannot contain spaces or - 4. Case sensitive (weight ≠ Weight) 5. Cannot use R’s reserved words (if, for, etc.)\n\n\nUnderstanding Variable Updates\nVariables can be modified after creation:\n\n\n\n\n\n\n\n\nWhat happens in the update: 1. R reads the current value of count (10) 2. Adds 5 to it 3. Stores the new value (15) back in count 4. The old value is removed from memory\n\n\nMultiple Assignments\nYou can work with multiple variables:\n\n\n\n\n\n\n\n\nEach variable: 1. Exists independently in memory 2. Can be used in calculations 3. Can be updated separately 4. Remains until removed or overwritten\n\n\n\n\n\n\nCommon Variable Mistakes\n\n\n\n\nMisspelling variable names\nUsing different capitalization\nNot updating variables when needed\nUsing reserved words as names\nForgetting to assign results to a variable",
     "crumbs": [
       "Getting Started",
-      "Basic Operations"
+      "2. Basic Operations"
     ]
   },
   {
-    "objectID": "r_snacks/2_rbasics.html#variables-storing-values",
-    "href": "r_snacks/2_rbasics.html#variables-storing-values",
-    "title": "2. Basic Operations in R: A Complete Guide",
-    "section": "2. Variables: Storing Values 📦",
-    "text": "2. Variables: Storing Values 📦\nVariables are containers for storing values. In R, we create variables using the assignment operator &lt;- (or =, but &lt;- is more common in R).\n\nCreating Variables\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nVariable Naming Rules\n\n\n\n\nNames can contain letters, numbers, dots (.) and underscores (_)\nNames must start with a letter or a dot\nNames cannot start with a number\nNames are case-sensitive (Fish ≠ fish)\nAvoid using R’s reserved words (like if, for, function)\n\n\n\n\n\nGood Variable Naming Practices",
+    "objectID": "r_snacks/2_rbasics.html#understanding-data-types",
+    "href": "r_snacks/2_rbasics.html#understanding-data-types",
+    "title": "2. Basic Operations in R: A Technical Guide",
+    "section": "3. Understanding Data Types 📝",
+    "text": "3. Understanding Data Types 📝\nR has several basic data types. Understanding these is crucial for handling different kinds of data correctly.\n\nNumeric Data (Numbers)\nR has two types of numbers: 1. Double (decimal numbers) 2. Integer (whole numbers)\n\n\n\n\n\n\n\n\nKey points about numbers: - Doubles are default - Integers use less memory - Conversion may lose precision - Mathematical operations work with both\n\n\nCharacter Data (Text)\nText data must be in quotes:\n\n\n\n\n\n\n\n\nWhat’s happening: 1. R stores text as “strings” 2. Each character takes memory 3. paste() adds spaces between items 4. paste0() concatenates directly\n\n\nLogical Data (TRUE/FALSE)\nLogical values are essential for comparisons:\n\n\n\n\n\n\n\n\nUnderstanding logical operations: 1. TRUE and FALSE are special values 2. Comparisons return logical values 3. Can be used in calculations (TRUE=1, FALSE=0) 4. Essential for filtering data\n\n\nType Conversion\nR can convert between types:\n\n\n\n\n\n\n\n\nImportant conversion rules: 1. Not all conversions are possible 2. Failed conversions create NA 3. Check results after converting 4. Use appropriate conversion function\n\n\n\n\n\n\nChecking Data Types\n\n\n\nUse these functions to check types: - class() - Basic type - typeof() - Internal type - is.numeric() - Type test - str() - Structure and type",
     "crumbs": [
       "Getting Started",
-      "Basic Operations"
+      "2. Basic Operations"
     ]
   },
   {
-    "objectID": "r_snacks/2_rbasics.html#data-types-in-r",
-    "href": "r_snacks/2_rbasics.html#data-types-in-r",
-    "title": "2. Basic Operations in R: A Complete Guide",
-    "section": "3. Data Types in R 📝",
-    "text": "3. Data Types in R 📝\nR has several basic data types you need to know:\n\nNumeric (numbers)\n\n\n\n\n\n\n\n\n\n\nCharacter (text)\n\n\n\n\n\n\n\n\n\n\nLogical (TRUE/FALSE)\n\n\n\n\n\n\n\n\n\n\nConverting Between Types (Coercion)",
+    "objectID": "r_snacks/2_rbasics.html#working-with-vectors",
+    "href": "r_snacks/2_rbasics.html#working-with-vectors",
+    "title": "2. Basic Operations in R: A Technical Guide",
+    "section": "4. Working with Vectors 📚",
+    "text": "4. Working with Vectors 📚\nVectors are one-dimensional arrays of data. They’re fundamental to R programming.\n\nCreating Vectors\nThe c() function combines values into a vector:\n\n\n\n\n\n\n\n\nWhat happens: 1. R allocates memory for all values 2. Values must be same type 3. Vector length is number of elements 4. Elements are ordered and indexed\n\n\nVector Operations\nOperations apply to all elements:\n\n\n\n\n\n\n\n\nVector rules: 1. Operations apply element-wise 2. Vectors must be same length 3. Shorter vector is recycled if needed 4. Warning if lengths don’t match exactly\n\n\nAccessing Vector Elements\nElements are accessed by position:\n\n\n\n\n\n\n\n\nUnderstanding indexing: 1. Positions start at 1 (not 0) 2. Use [ ] for indexing 3. Can select multiple elements 4. Negative indices remove elements\n\n\nVector Functions\nR has many functions for vectors:\n\n\n\n\n\n\n\n\nCommon vector operations: 1. Statistical functions 2. Mathematical operations 3. Sorting and ordering 4. Finding unique values",
     "crumbs": [
       "Getting Started",
-      "Basic Operations"
+      "2. Basic Operations"
     ]
   },
   {
-    "objectID": "r_snacks/2_rbasics.html#vectors-collections-of-values",
-    "href": "r_snacks/2_rbasics.html#vectors-collections-of-values",
-    "title": "2. Basic Operations in R: A Complete Guide",
-    "section": "4. Vectors: Collections of Values 📚",
-    "text": "4. Vectors: Collections of Values 📚\nVectors are one-dimensional arrays that can hold multiple values of the same type.\n\nCreating Vectors\n\n\n\n\n\n\n\n\n\n\nVector Operations\n\n\n\n\n\n\n\n\n\n\nAccessing Vector Elements",
+    "objectID": "r_snacks/2_rbasics.html#understanding-functions",
+    "href": "r_snacks/2_rbasics.html#understanding-functions",
+    "title": "2. Basic Operations in R: A Technical Guide",
+    "section": "5. Understanding Functions 🛠️",
+    "text": "5. Understanding Functions 🛠️\nFunctions are reusable blocks of code that perform specific tasks.\n\nUsing Built-in Functions\nR has many built-in functions:\n\n\n\n\n\n\n\n\nFunction components: 1. Function name 2. Parentheses () 3. Arguments inside parentheses 4. Returns a value\n\n\nFunction Arguments\nFunctions can have multiple arguments:\n\n\n\n\n\n\n\n\nUnderstanding arguments: 1. Can be positional or named 2. Some have default values 3. Order matters for positional 4. Names make code clearer\n\n\nGetting Help with Functions\nR’s help system is comprehensive:\n\n\n\n\n\n\n\n\nHelp pages show: 1. Function purpose 2. Required arguments 3. Optional arguments 4. Return value 5. Examples",
     "crumbs": [
       "Getting Started",
-      "Basic Operations"
-    ]
-  },
-  {
-    "objectID": "r_snacks/2_rbasics.html#basic-functions-in-r",
-    "href": "r_snacks/2_rbasics.html#basic-functions-in-r",
-    "title": "2. Basic Operations in R: A Complete Guide",
-    "section": "5. Basic Functions in R 🛠️",
-    "text": "5. Basic Functions in R 🛠️\nR has many built-in functions. Let’s look at some common ones:\n\nMathematical Functions\n\n\n\n\n\n\n\n\n\n\nStatistical Functions",
-    "crumbs": [
-      "Getting Started",
-      "Basic Operations"
-    ]
-  },
-  {
-    "objectID": "r_snacks/2_rbasics.html#logical-operations",
-    "href": "r_snacks/2_rbasics.html#logical-operations",
-    "title": "2. Basic Operations in R: A Complete Guide",
-    "section": "6. Logical Operations 🤔",
-    "text": "6. Logical Operations 🤔\nLogical operations help us make comparisons and decisions:",
-    "crumbs": [
-      "Getting Started",
-      "Basic Operations"
+      "2. Basic Operations"
     ]
   },
   {
     "objectID": "r_snacks/2_rbasics.html#practice-exercises",
     "href": "r_snacks/2_rbasics.html#practice-exercises",
-    "title": "2. Basic Operations in R: A Complete Guide",
+    "title": "2. Basic Operations in R: A Technical Guide",
     "section": "Practice Exercises 💪",
-    "text": "Practice Exercises 💪\nLet’s consolidate what we’ve learned with some exercises:\n\nExercise 1: Basic Calculations\nTry to calculate: 1. The area of a circle with radius 5 (use pi for π) 2. The volume of a sphere with the same radius 3. Round both results to 2 decimal places\n\n\n\n\n\n\n\n\n\n\nExercise 2: Working with Vectors\nCreate a vector of fish weights (in kg): 1.2, 2.3, 3.4, 2.1, 1.9 1. Calculate the total weight 2. Find the average weight 3. Identify weights above 2 kg 4. Count how many fish weigh more than 2 kg\n\n\n\n\n\n\n\n\n\n\nExercise 3: Combining Operations\nYou have caught fish of different species. Create vectors for: 1. Species names: “Tuna”, “Mackerel”, “Sardine”, “Tuna”, “Mackerel” 2. Weights: 2.5, 1.2, 0.5, 2.3, 1.1 3. Calculate the average weight per species",
+    "text": "Practice Exercises 💪\n\nExercise 1: Calculate Average Catch\nUsing this week’s daily catch data (in kg), calculate the average catch excluding missing values.\n\n\n\n\n\n\n\n\n\n\nClick to see solution\n\n\n\n\n\n\n\n\n\n\n\n\nExercise 2: Analyzing Species Composition\nHere’s the data for species caught during a sampling day. How many tuna were caught?\n\n\n\n\n\n\n\n\n\n\nClick to see solution\n\n\n\n\n\n\n\n\n\n\n\n\nExercise 3: Finding Large Fish\nGiven these fish lengths, identify which ones are above average:\n\n\n\n\n\n\n\n\n\n\nClick to see solution\n\n\n\n\n\n\n\n\n\n\n\n\nExercise 4: Working with Multiple Variables\nAnalyze this catch data to find: 1. Total catch weight 2. Average weight per fish 3. Maximum weight\n\n\n\n\n\n\n\n\n\n\nClick to see solution\n\n\n\n\n\n\n\n\n\n\n\n\nExercise 5: Data Filtering\nFind all catches over 2kg and count how many there are:\n\n\n\n\n\n\n\n\n\n\nClick to see solution\n\n\n\n\n\n\n\n\n\n\n\n\nExercise 6: Multiple Operations\nFor this set of lengths, calculate: 1. The range (max - min) 2. The variance 3. How many fish are between 40 and 50 cm\n\n\n\n\n\n\n\n\n\n\nClick to see solution\n\n\n\n\n\n\n\n\n\n\nKey changes: 1. Used HTML &lt;details&gt; tags to hide solutions 2. Set eval: false in solution chunks to prevent automatic execution 3. Kept exercise chunks for practice 4. Added clear instructions in each exercise 5. Provided comments in solutions to explain steps\nWould you like me to modify this format further or add more exercises? Each exercise now: 1. Shows the initial data 2. Provides clear instructions 3. Has space for practice 4. Shows the complete solution 5. Often includes explanatory output using cat() 6. Builds in complexity progressively\nWould you like me to add more exercises or modify these in any way?",
     "crumbs": [
       "Getting Started",
-      "Basic Operations"
+      "2. Basic Operations"
     ]
   },
   {
-    "objectID": "r_snacks/2_rbasics.html#troubleshooting-common-issues",
-    "href": "r_snacks/2_rbasics.html#troubleshooting-common-issues",
-    "title": "2. Basic Operations in R: A Complete Guide",
-    "section": "Troubleshooting Common Issues 🔧",
-    "text": "Troubleshooting Common Issues 🔧\nHere are some common issues you might encounter and how to fix them:\n\n1. Error in Variable Names\n\n\n\n\n\n\n\n\n\n\n2. Missing Quotes for Text\n\n\n\n\n\n\n\n\n\n\n3. Incorrect Vector Creation",
+    "objectID": "r_snacks/2_rbasics.html#advanced-vector-operations",
+    "href": "r_snacks/2_rbasics.html#advanced-vector-operations",
+    "title": "2. Basic Operations in R: A Technical Guide",
+    "section": "7. Advanced Vector Operations 🚀",
+    "text": "7. Advanced Vector Operations 🚀\nLet’s explore more complex operations with vectors that you’ll commonly use in data analysis.\n\nVector Arithmetic with Different Lengths\nUnderstanding how R handles vectors of different lengths is crucial:\n\n\n\n\n\n\n\n\nWhat’s happening here: 1. R sees vectors of different lengths 2. Shorter vector is recycled to match longer 3. 10 is added to 1,3 and 20 to 2,4 4. Warning if longer length isn’t multiple of shorter\n\n\n\n\n\n\nVector Recycling Rules\n\n\n\n\nShorter vector is repeated\nMust be even division to avoid warning\nCan lead to unexpected results\nBest to use equal length vectors\n\n\n\n\n\nLogical Operations with Vectors\nComplex filtering often requires multiple conditions:\n\n\n\n\n\n\n\n\nUnderstanding logical operators: - & AND: both conditions must be TRUE - | OR: at least one condition TRUE - ! NOT: reverses TRUE/FALSE - Use parentheses to group conditions\n\n\nMissing Values (NA)\nReal data often has missing values:\n\n\n\n\n\n\n\n\nKey points about NA: 1. NA propagates through calculations 2. Use na.rm=TRUE to ignore NAs 3. is.na() identifies missing values 4. Different from zero or empty string\n\n\nVector Sorting and Ordering\nR provides multiple ways to sort data:\n\n\n\n\n\n\n\n\nUnderstanding sort vs order: 1. sort() returns sorted values 2. order() returns positions 3. order() useful for sorting multiple vectors 4. Can sort ascending or descending",
     "crumbs": [
       "Getting Started",
-      "Basic Operations"
+      "2. Basic Operations"
     ]
   },
   {
-    "objectID": "r_snacks/2_rbasics.html#next-steps",
-    "href": "r_snacks/2_rbasics.html#next-steps",
-    "title": "2. Basic Operations in R: A Complete Guide",
-    "section": "Next Steps 🚀",
-    "text": "Next Steps 🚀\nNow that you understand basic R operations, you can: 1. Start working with real data 2. Learn about data frames 3. Explore data visualization 4. Begin basic statistical analysis\n\n\n\n\n\n\nAdditional Resources\n\n\n\n\nR Documentation\nQuick R\nR Cookbook",
+    "objectID": "r_snacks/2_rbasics.html#understanding-matrices",
+    "href": "r_snacks/2_rbasics.html#understanding-matrices",
+    "title": "2. Basic Operations in R: A Technical Guide",
+    "section": "8. Understanding Matrices 📊",
+    "text": "8. Understanding Matrices 📊\nMatrices are 2-dimensional arrays. They’re useful for tabular data:\n\n\n\n\n\n\n\n\nMatrix properties: 1. All elements same type 2. Rectangular structure 3. Can have row/column names 4. Accessed by row,column index\n\nMatrix Operations",
     "crumbs": [
       "Getting Started",
-      "Basic Operations"
+      "2. Basic Operations"
     ]
   },
   {
-    "objectID": "r_snacks/2_rbasics.html#practice-makes-perfect",
-    "href": "r_snacks/2_rbasics.html#practice-makes-perfect",
-    "title": "2. Basic Operations in R: A Complete Guide",
-    "section": "Practice Makes Perfect! 🎯",
-    "text": "Practice Makes Perfect! 🎯\nThe best way to learn R is by practicing. Try to: 1. Modify the examples provided 2. Create your own variables and vectors 3. Experiment with different functions 4. Work through the exercises multiple times 5. Create your own exercises based on real data\nRemember: Don’t worry about making mistakes - they’re a natural part of learning!\n\n\n\n\n\n\nTips for Learning\n\n\n\n\nType out the code yourself instead of copying and pasting\nTry to predict what code will do before running it\nIf you get an error, read it carefully - R usually tells you what’s wrong\nKeep notes of new functions and operations you learn\n\n\n\nNeed help? Remember you can: 1. Check the R documentation with ?function_name 2. Practice with the interactive exercises above",
+    "objectID": "r_snacks/2_rbasics.html#real-world-data-exercise",
+    "href": "r_snacks/2_rbasics.html#real-world-data-exercise",
+    "title": "2. Basic Operations in R: A Technical Guide",
+    "section": "9. Real-World Data Exercise 🌊",
+    "text": "9. Real-World Data Exercise 🌊\nLet’s analyze a complete fishing dataset by combining several operations. You’ll need to: 1. Calculate the average catch (excluding missing values) 2. Identify which catches were above average 3. Count how many tuna were caught\n\n\n\n\n\n\n\n\n\n\nClick for hints\n\n\nFor step 1: Use mean() with na.rm = TRUE\nFor step 2: Use &gt; to compare values with the average\nFor step 3: Use sum() with species == \"tuna\"\n\n\n\n\nClick to see solution\n\n\n\n\n\n\n\n\n\n\n\nAdditional Challenge\nOnce you’ve completed the main tasks, try these additional analyses: 1. What percentage of catches were above average? 2. What is the average catch weight specifically for tuna? 3. On which days (positions) were tuna caught?\n\n\n\n\n\n\n\n\n\n\nClick to see additional challenge solution",
     "crumbs": [
       "Getting Started",
-      "Basic Operations"
+      "2. Basic Operations"
     ]
   },
   {
-    "objectID": "r_snacks/3_dataframes.html",
-    "href": "r_snacks/3_dataframes.html",
-    "title": "3. Understanding Data Frames in R",
+    "objectID": "r_snacks/2_rbasics.html#additional-resources-and-next-steps",
+    "href": "r_snacks/2_rbasics.html#additional-resources-and-next-steps",
+    "title": "2. Basic Operations in R: A Technical Guide",
+    "section": "10. Additional Resources and Next Steps 📚",
+    "text": "10. Additional Resources and Next Steps 📚\nAfter mastering these basics, you can:\n\nLearn Data Frames: The next step for handling real datasets\nExplore Visualization: Create plots with ggplot2\nStudy Statistics: R’s statistical functions\nWrite Functions: Create your own reusable code\n\n\n\n\n\n\n\nPractice Tips\n\n\n\n\nType code yourself, don’t copy-paste\nExperiment with different values\nTry to predict results before running\nUse help documentation regularly\nKeep notes on new functions\n\n\n\nRemember: R has a helpful community. Use resources like: - R documentation (?function_name) - RStudio Community forums - Stack Overflow with [r] tag - R-bloggers for tutorials\nHappy coding! 🎉",
+    "crumbs": [
+      "Getting Started",
+      "2. Basic Operations"
+    ]
+  },
+  {
+    "objectID": "r_snacks/4_packages.html",
+    "href": "r_snacks/4_packages.html",
+    "title": "4. Understanding R Packages: Making Your Life Easier",
     "section": "",
-    "text": "Data frames are R’s way of storing tabular data - think of them like spreadsheets. They’re the most common way to work with fisheries data, and understanding them is crucial before we dive into more advanced data manipulation.\n\n\n\n\n\n\nLearning Objectives\n\n\n\nBy the end of this tutorial, you will: - Understand what data frames are - Know how to create and inspect data frames - Be able to access and modify data frame contents - Understand basic data frame operations",
+    "text": "Imagine you’re setting up a kitchen. While basic pots and pans (like base R) are essential and can technically cook anything, having specialized tools like a food processor or a stand mixer (R packages) can make cooking much faster, easier, and more efficient. R packages work the same way - they’re collections of specialized tools that make specific tasks much easier.\n\n\nWhen you first install R, you get what we call “base R” - it’s like those basic pots and pans. Base R is powerful and can do a lot, but as R has evolved, the community has created thousands of specialized packages that can: - Save you hours of coding time - Make complex analyses simpler - Provide specialized tools for specific types of analysis - Help you create better visualizations - Make your code more readable and maintainable\nLet’s see a real example. Suppose you want to calculate the average catch by species from your fishing data:\n\n\n\n\n\n\n\n\nWhile both approaches give the same result, as your analysis gets more complex, packages can dramatically simplify your work.\n\n\n\nConsider these common scenarios in fisheries research:\n\nData Cleaning\n\nBase R: Might take 50+ lines of complex code\nWith packages: Often can be done in 10-15 lines of clear, readable code\n\nData Visualization\n\nBase R: Basic plots with limited customization\nWith ggplot2 package: Professional, publication-ready graphics\n\nDate Handling\n\nBase R: Complex date calculations\nWith lubridate package: Simple, intuitive date manipulations\n\nReport Generation\n\nBase R: Limited options for sharing results\nWith RMarkdown: Professional reports, presentations, and websites\n\n\n\n\n\nOne of the most important package collections in R is the “tidyverse”. Think of it as a comprehensive kitchen renovation that includes all the modern appliances you need. The tidyverse includes packages for: - Data manipulation (dplyr) - Data visualization (ggplot2) - Data import (readr) - Date handling (lubridate) - And much more\nOther important package collections include: - spatial: For mapping and spatial analysis - stats: For statistical analysis - shiny: For creating interactive web applications\n\n\n\nLet’s look at a common task: finding and replacing values in your data:\n\n\n\n\n\n\n\n\nThis is just a simple example - the benefits become even more apparent with larger, more complex datasets.",
     "crumbs": [
       "Getting Started",
-      "3. Data Frames"
+      "3. Packages in R"
     ]
   },
   {
-    "objectID": "r_snacks/3_dataframes.html#introduction",
-    "href": "r_snacks/3_dataframes.html#introduction",
-    "title": "3. Understanding Data Frames in R",
+    "objectID": "r_snacks/4_packages.html#why-do-we-need-packages",
+    "href": "r_snacks/4_packages.html#why-do-we-need-packages",
+    "title": "4. Understanding R Packages: Making Your Life Easier",
     "section": "",
-    "text": "Data frames are R’s way of storing tabular data - think of them like spreadsheets. They’re the most common way to work with fisheries data, and understanding them is crucial before we dive into more advanced data manipulation.\n\n\n\n\n\n\nLearning Objectives\n\n\n\nBy the end of this tutorial, you will: - Understand what data frames are - Know how to create and inspect data frames - Be able to access and modify data frame contents - Understand basic data frame operations",
+    "text": "Imagine you’re setting up a kitchen. While basic pots and pans (like base R) are essential and can technically cook anything, having specialized tools like a food processor or a stand mixer (R packages) can make cooking much faster, easier, and more efficient. R packages work the same way - they’re collections of specialized tools that make specific tasks much easier.\n\n\nWhen you first install R, you get what we call “base R” - it’s like those basic pots and pans. Base R is powerful and can do a lot, but as R has evolved, the community has created thousands of specialized packages that can: - Save you hours of coding time - Make complex analyses simpler - Provide specialized tools for specific types of analysis - Help you create better visualizations - Make your code more readable and maintainable\nLet’s see a real example. Suppose you want to calculate the average catch by species from your fishing data:\n\n\n\n\n\n\n\n\nWhile both approaches give the same result, as your analysis gets more complex, packages can dramatically simplify your work.\n\n\n\nConsider these common scenarios in fisheries research:\n\nData Cleaning\n\nBase R: Might take 50+ lines of complex code\nWith packages: Often can be done in 10-15 lines of clear, readable code\n\nData Visualization\n\nBase R: Basic plots with limited customization\nWith ggplot2 package: Professional, publication-ready graphics\n\nDate Handling\n\nBase R: Complex date calculations\nWith lubridate package: Simple, intuitive date manipulations\n\nReport Generation\n\nBase R: Limited options for sharing results\nWith RMarkdown: Professional reports, presentations, and websites\n\n\n\n\n\nOne of the most important package collections in R is the “tidyverse”. Think of it as a comprehensive kitchen renovation that includes all the modern appliances you need. The tidyverse includes packages for: - Data manipulation (dplyr) - Data visualization (ggplot2) - Data import (readr) - Date handling (lubridate) - And much more\nOther important package collections include: - spatial: For mapping and spatial analysis - stats: For statistical analysis - shiny: For creating interactive web applications\n\n\n\nLet’s look at a common task: finding and replacing values in your data:\n\n\n\n\n\n\n\n\nThis is just a simple example - the benefits become even more apparent with larger, more complex datasets.",
     "crumbs": [
       "Getting Started",
-      "3. Data Frames"
+      "3. Packages in R"
     ]
   },
   {
-    "objectID": "r_snacks/3_dataframes.html#what-is-a-data-frame",
-    "href": "r_snacks/3_dataframes.html#what-is-a-data-frame",
-    "title": "3. Understanding Data Frames in R",
-    "section": "What is a Data Frame? 📊",
-    "text": "What is a Data Frame? 📊\nA data frame is a 2-dimensional table where: - Each column can hold different types of data (numbers, text, etc.) - All columns must have the same length - Each column has a name\nThink of it like an Excel spreadsheet: - Rows are observations (e.g., individual fish) - Columns are variables (e.g., species, length, weight)",
+    "objectID": "r_snacks/4_packages.html#getting-started-with-packages-the-tidyverse-example",
+    "href": "r_snacks/4_packages.html#getting-started-with-packages-the-tidyverse-example",
+    "title": "4. Understanding R Packages: Making Your Life Easier",
+    "section": "Getting Started with Packages: The Tidyverse Example 🚀",
+    "text": "Getting Started with Packages: The Tidyverse Example 🚀\nNow that we understand why packages are important, let’s learn how to use them effectively. We’ll focus on the tidyverse because it’s designed to make data analysis more intuitive, especially for beginners.\n\nInstalling and Loading Packages\nBefore we start using a package, we need to install and load it. Think of this like: - Installing: Buying a new kitchen appliance and bringing it home - Loading: Taking the appliance out and plugging it in\n\n\n\n\n\n\n\n\n\n\nA Real-World Example: Daily Catch Analysis\nLet’s look at a typical fisheries analysis task to see how packages make our life easier. We’ll analyze daily catch data:\n\n\n\n\n\n\n\n\nNotice how the tidyverse approach: 1. Reads like a story - each step follows logically from the last 2. Requires less intermediate steps 3. Produces clearer output 4. Is easier to modify if we want to add more analyses\n\n\nMaking Your Analysis Clear and Reproducible\nOne of the biggest advantages of using packages like tidyverse is that they make your analysis more understandable and reproducible. Let’s look at a more complex example:\n\n\n\n\n\n\n\n\nThe tidyverse version: 1. Shows clearly what each step does 2. Makes it easy to add or remove analyses 3. Produces well-organized output 4. Reduces the chance of errors",
     "crumbs": [
       "Getting Started",
-      "3. Data Frames"
+      "3. Packages in R"
     ]
   },
   {
-    "objectID": "r_snacks/3_dataframes.html#creating-data-frames",
-    "href": "r_snacks/3_dataframes.html#creating-data-frames",
-    "title": "3. Understanding Data Frames in R",
-    "section": "Creating Data Frames 📝",
-    "text": "Creating Data Frames 📝\nLet’s create a simple fisheries data frame:",
+    "objectID": "r_snacks/4_packages.html#the-pipe-operator-making-your-code-flow",
+    "href": "r_snacks/4_packages.html#the-pipe-operator-making-your-code-flow",
+    "title": "4. Understanding R Packages: Making Your Life Easier",
+    "section": "The Pipe Operator: Making Your Code Flow 🌊",
+    "text": "The Pipe Operator: Making Your Code Flow 🌊\nNow that we understand how packages can help us, let’s learn about one of the most powerful features in modern R programming: the pipe operator (%&gt;%).\n\nWhat’s the Problem We’re Solving?\nBefore we introduce the pipe, let’s see why we need it. Consider this common situation in fisheries analysis:\n\n\n\n\n\n\n\n\nThe problems with this nested approach: 1. It reads inside-out (have to start from the innermost function) 2. It’s hard to understand what’s happening 3. It’s difficult to modify or debug 4. Adding more steps makes it even more confusing\n\n\nEnter the Pipe: A Better Way\nThe pipe operator (%&gt;%) takes what’s on the left and passes it as the first argument to the function on the right. Think of it as saying “and then” between steps:\n\n\n\n\n\n\n\n\nSee how much clearer that is? It: 1. Reads like a step-by-step recipe 2. Is easy to understand what each step does 3. Can be modified by adding or removing steps 4. Makes debugging simple (can comment out steps)\n\n\nReal-World Example: Complex Analysis Made Simple\nLet’s do a more complex analysis to really see the power of the pipe:\n\n\n\n\n\n\n\n\nLet’s break down why the pipe version is better:\n\nReadability\n\nEach line has a clear purpose\nThe steps follow a logical order\nYou can read it like a story\n\nMaintainability\n\nEasy to add new calculations\nCan rearrange steps easily\nSimple to modify existing steps\n\nDebugging\n\nCan comment out steps to find problems\nEach step’s output feeds into the next\nCan check intermediate results\n\n\n\n\nAdvanced Pipe Techniques\nOnce you’re comfortable with basic pipes, you can do even more:",
     "crumbs": [
       "Getting Started",
-      "3. Data Frames"
+      "3. Packages in R"
     ]
   },
   {
-    "objectID": "r_snacks/3_dataframes.html#inspecting-data-frames",
-    "href": "r_snacks/3_dataframes.html#inspecting-data-frames",
-    "title": "3. Understanding Data Frames in R",
-    "section": "Inspecting Data Frames 🔍",
-    "text": "Inspecting Data Frames 🔍",
+    "objectID": "r_snacks/4_packages.html#putting-it-all-together-real-world-analysis",
+    "href": "r_snacks/4_packages.html#putting-it-all-together-real-world-analysis",
+    "title": "4. Understanding R Packages: Making Your Life Easier",
+    "section": "Putting It All Together: Real-World Analysis 🎯",
+    "text": "Putting It All Together: Real-World Analysis 🎯\nLet’s tackle a complete fisheries data analysis that you might encounter in your work. This will show how packages and pipes can handle complex tasks elegantly.\n\nA Complete Analysis Example\nLet’s say we have data from multiple fishing sites over several days, and we need to create a comprehensive report:\n\n\n\n\n\n\n\n\n\n\nInteractive Practice Exercises 💪\nNow it’s your turn! Try these exercises using our fishing_survey data:\n\nBasic Analysis Exercise:\n\n\n\n\n\n\n\n\n\n\n\nClick to see solution\n\n\n\n\n\n\n\n\n\n\n\nAdvanced Analysis Exercise:\n\n\n\n\n\n\n\n\n\n\n\nClick to see solution\n\n\n\n\n\n\n\n\n\n\n\nComprehensive Report Exercise:\n\n\n\n\n\n\n\n\n\n\n\nClick to see solution\n\n\n\n\n\n\n\n\n\n\n\n\nKey Concepts to Remember 🗝️\nWhen working with packages and pipes:\n\nBuild Gradually\n\nStart with simple operations\nAdd complexity step by step\nCheck your results at each stage\n\nThink in Transformations\n\nEach pipe step should transform the data\nKeep steps logical and clear\nUse appropriate grouping\n\nMaintain Readability\n\nUse clear variable names\nAdd comments for complex operations\nBreak long pipes into logical chunks",
     "crumbs": [
       "Getting Started",
-      "3. Data Frames"
+      "3. Packages in R"
     ]
   },
   {
-    "objectID": "r_snacks/3_dataframes.html#accessing-data-frame-contents",
-    "href": "r_snacks/3_dataframes.html#accessing-data-frame-contents",
-    "title": "3. Understanding Data Frames in R",
-    "section": "Accessing Data Frame Contents 📑",
-    "text": "Accessing Data Frame Contents 📑\n\nBy Column\n\n\n\n\n\n\n\n\n\n\nBy Position",
+    "objectID": "r_snacks/4_packages.html#moving-forward-with-packages-and-pipes",
+    "href": "r_snacks/4_packages.html#moving-forward-with-packages-and-pipes",
+    "title": "4. Understanding R Packages: Making Your Life Easier",
+    "section": "Moving Forward with Packages and Pipes 🚀",
+    "text": "Moving Forward with Packages and Pipes 🚀\n\nKey Takeaways\n\nWhy Packages Matter\n\nSave significant time in data analysis\nMake complex operations simpler\nProvide specialized tools for specific needs\nLead to more readable and maintainable code\n\nThe Power of Pipes\n\nTransform complex nested operations into readable steps\nMake your analysis flow logically\nEasier to modify and debug code\nMore intuitive for collaboration\n\nBest Practices\n\n\n\n\n\n\n\n\n\n\n\nCommon Mistakes to Avoid ⚠️\n\nPackage Overload\n\nDon’t load packages you don’t need\nStick to well-maintained, popular packages\nLearn one package at a time\n\nPipe Complexity\n\nKeep pipe sequences reasonably short\nAdd comments for clarity\nCheck intermediate results when debugging\n\nData Consistency\n\nAlways check your data structure\nVerify results after each transformation\nKeep track of your grouping variables\n\n\n\n\nNext Steps 📚\nAs you continue your R journey:\n\nStart Simple\n\nBegin with basic dplyr functions: filter(), select(), mutate()\nAdd more complex operations as you get comfortable\nPractice with your own data\n\nExpand Your Toolkit\n\nExplore visualization with ggplot2\nLearn data reshaping with tidyr\nTry date manipulation with lubridate\n\nBuild Your Skills\n\nWork through tutorials\nJoin R user groups\nShare code with colleagues\n\n\n\n\nResources for Learning 📖\n\nOfficial Documentation\n\ntidyverse.org\nR package vignettes\nRStudio cheatsheets\n\nOnline Learning\n\nR for Data Science (r4ds.had.co.nz)\nStack Overflow\nRStudio Community\n\n\nRemember: The goal isn’t to memorize every function, but to: - Understand the basic principles - Know where to find help - Practice regularly with real data - Build your confidence step by step\nHappy coding! 🎉",
     "crumbs": [
       "Getting Started",
-      "3. Data Frames"
-    ]
-  },
-  {
-    "objectID": "r_snacks/3_dataframes.html#basic-operations-with-data-frames",
-    "href": "r_snacks/3_dataframes.html#basic-operations-with-data-frames",
-    "title": "3. Understanding Data Frames in R",
-    "section": "Basic Operations with Data Frames 🛠️",
-    "text": "Basic Operations with Data Frames 🛠️\n\nAdding New Columns\n\n\n\n\n\n\n\n\n\n\nSubsetting Data\n\n\n\n\n\n\n\n\n\n\nSimple Summaries",
-    "crumbs": [
-      "Getting Started",
-      "3. Data Frames"
-    ]
-  },
-  {
-    "objectID": "r_snacks/3_dataframes.html#practice-exercises",
-    "href": "r_snacks/3_dataframes.html#practice-exercises",
-    "title": "3. Understanding Data Frames in R",
-    "section": "Practice Exercises 💪",
-    "text": "Practice Exercises 💪\n\nExercise 1: Create a Data Frame\nCreate a data frame containing fishing trip data: - Date (3 days) - Location (2 different sites) - Catch (kg) - Number of boats\n\n\n\n\n\n\n\n\n\n\nExercise 2: Data Frame Operations\nUsing the trips data frame: 1. Calculate catch per boat 2. Add a column for weekend/weekday 3. Find trips with above-average catch",
-    "crumbs": [
-      "Getting Started",
-      "3. Data Frames"
-    ]
-  },
-  {
-    "objectID": "r_snacks/3_dataframes.html#common-mistakes-to-avoid",
-    "href": "r_snacks/3_dataframes.html#common-mistakes-to-avoid",
-    "title": "3. Understanding Data Frames in R",
-    "section": "Common Mistakes to Avoid ⚠️",
-    "text": "Common Mistakes to Avoid ⚠️\n\n\n\n\n\n\nWatch Out For:\n\n\n\n\nMixing data types in columns\nForgetting to handle missing values (NA)\nUsing the wrong type of brackets [ vs [[ vs $\nNot checking data frame dimensions before operations",
-    "crumbs": [
-      "Getting Started",
-      "3. Data Frames"
-    ]
-  },
-  {
-    "objectID": "r_snacks/3_dataframes.html#whats-next",
-    "href": "r_snacks/3_dataframes.html#whats-next",
-    "title": "3. Understanding Data Frames in R",
-    "section": "What’s Next? 🚀",
-    "text": "What’s Next? 🚀\nNow that you understand data frames, you’re ready to learn: 1. Advanced data manipulation with dplyr 2. Data visualization with ggplot2 3. More complex data operations 4. Working with real fisheries datasets\n\n\n\n\n\n\nTip\n\n\n\nThe next tutorial will introduce you to the tidyverse, which provides more powerful and intuitive tools for working with data frames!",
-    "crumbs": [
-      "Getting Started",
-      "3. Data Frames"
-    ]
-  },
-  {
-    "objectID": "r_snacks/3_dataframes.html#additional-resources",
-    "href": "r_snacks/3_dataframes.html#additional-resources",
-    "title": "3. Understanding Data Frames in R",
-    "section": "Additional Resources 📚",
-    "text": "Additional Resources 📚\n\nR Data Frames Cheat Sheet\nData Frame Documentation\nPractice datasets: data(package = \"datasets\")\n\nRemember: Data frames are fundamental to data analysis in R. The basic operations we learned here will help you understand more advanced tools coming up in the next tutorials!",
-    "crumbs": [
-      "Getting Started",
-      "3. Data Frames"
+      "3. Packages in R"
     ]
   },
   {
@@ -301,7 +235,7 @@
     "href": "r_snacks/1_rbasics.html#understanding-rstudios-interface",
     "title": "1. Getting Started with R: Installation and First Steps",
     "section": "Understanding RStudio’s Interface 🖥️",
-    "text": "Understanding RStudio’s Interface 🖥️\nRStudio has four main panels (clockwise from top-left):\n\n\n\nDescription of the image\n\n\n\nProgram Pane\n\nWhere you write and edit your code\nCreate and modify R scripts\nWrite R Markdown documents\n\nEnvironment/History\n\nLists your current objects and data\nShows command history\nManages connections\n\nFiles/Plots/Packages/Help\n\nBrowse files and folders\nView plots\nInstall and load packages\nAccess documentation\n\nConsole\n\nRun R commands directly\nSee output and messages\nTest quick calculations",
+    "text": "Understanding RStudio’s Interface 🖥️\nRStudio has four main panels (clockwise from top-left):\n\n\n\nRstudio standard interface\n\n\n\nProgram Pane\n\nWhere you write and edit your code\nCreate and modify R scripts\nWrite R Markdown documents\n\nEnvironment/History\n\nLists your current objects and data\nShows command history\nManages connections\n\nFiles/Plots/Packages/Help\n\nBrowse files and folders\nView plots\nInstall and load packages\nAccess documentation\n\nConsole\n\nRun R commands directly\nSee output and messages\nTest quick calculations",
     "crumbs": [
       "Getting Started",
       "1. R Installation"
@@ -356,56 +290,7 @@
     "href": "index.html",
     "title": "R for Small-Scale Fishery Data",
     "section": "",
-    "text": "Welcome to our interactive R training course designed specifically for small-scale fisheries data analysis! 🎯"
-  },
-  {
-    "objectID": "index.html#whats-this-course-about",
-    "href": "index.html#whats-this-course-about",
-    "title": "R for Small-Scale Fishery Data",
-    "section": "What’s This Course About?",
-    "text": "What’s This Course About?\nThis course provides a structured pathway to learn R programming with a specific focus on small-scale fisheries data. Whether you’re a researcher, fishery manager, or practitioner, you’ll learn how to effectively analyze and visualize fisheries data using modern R tools and techniques."
-  },
-  {
-    "objectID": "index.html#why-this-course",
-    "href": "index.html#why-this-course",
-    "title": "R for Small-Scale Fishery Data",
-    "section": "Why This Course?",
-    "text": "Why This Course?\n\nNo Installation Required: All tutorials run directly in your browser using quarto-live\nFisheries-Focused: Examples use real-world fisheries data and scenarios\nProgressive Learning: Start from basics and build up to advanced analyses\nPractical Skills: Learn techniques you can immediately apply to your work"
-  },
-  {
-    "objectID": "index.html#course-structure",
-    "href": "index.html#course-structure",
-    "title": "R for Small-Scale Fishery Data",
-    "section": "Course Structure",
-    "text": "Course Structure\nOur tutorials are organized into progressive modules:\n\nGetting Started\n\nR and RStudio setup\nBasic R operations\nWorking with data frames\n\nEssential Tools\n\nData manipulation with tidyverse\nin progress….."
-  },
-  {
-    "objectID": "index.html#how-to-use-this-course",
-    "href": "index.html#how-to-use-this-course",
-    "title": "R for Small-Scale Fishery Data",
-    "section": "How to Use This Course",
-    "text": "How to Use This Course\n\nStart at the Beginning: If you’re new to R, begin with the installation and basics tutorials\nPractice Actively: Each tutorial includes interactive exercises\nBuild Your Skills: Tutorials build on each other, gradually introducing more complex concepts\nApply Your Learning: Try the techniques with your own data"
-  },
-  {
-    "objectID": "index.html#who-is-this-for",
-    "href": "index.html#who-is-this-for",
-    "title": "R for Small-Scale Fishery Data",
-    "section": "Who Is This For?",
-    "text": "Who Is This For?\n\nFisheries researchers\nData collectors and managers\nNGO staff working with fisheries\nStudents in fisheries science\nAnyone working with small-scale fisheries data"
-  },
-  {
-    "objectID": "index.html#what-youll-learn",
-    "href": "index.html#what-youll-learn",
-    "title": "R for Small-Scale Fishery Data",
-    "section": "What You’ll Learn",
-    "text": "What You’ll Learn\nBy the end of this course, you’ll be able to: - Efficiently organize and clean fisheries data - Create publication-quality visualizations - Perform common fisheries analyses - Automate routine data tasks - Generate reproducible reports"
-  },
-  {
-    "objectID": "index.html#getting-started",
-    "href": "index.html#getting-started",
-    "title": "R for Small-Scale Fishery Data",
-    "section": "Getting Started",
-    "text": "Getting Started\nBrowse the tutorials below or start with our first module on R basics. Each tutorial can be run interactively in your browser, allowing you to learn and practice simultaneously.\nRemember: The best way to learn is by doing. Don’t just read the tutorials - try the code, modify it, and experiment with your own data!"
+    "text": "Welcome to our interactive R programming course, specifically designed for small-scale fisheries data analysis. Learn through practical tutorials that run directly in your browser - no installation needed. Our tutorials use real fisheries examples, from basic catch data calculations to stock assessments. Start with R fundamentals and progress at your own pace, practicing each concept with interactive exercises. Each tutorial builds on previous ones, helping you develop practical skills for analyzing your fisheries data. Browse the tutorials below to begin your journey in R programming for fisheries analysis.\nRemember: The best way to learn is by doing. Don’t just read the tutorials - try the code, modify it, and experiment with your own data!\n\n\n\n\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n1. Getting Started with R: Installation and First Steps\n\n\n\n\n\n\nR\n\n\nSetup\n\n\nBasics\n\n\n\n\n\n\n\n\n\nNov 6, 2024\n\n\nSSF Training Team\n\n\n\n\n\n\n\n\n\n\n\n\n2. Basic Operations in R: A Technical Guide\n\n\n\n\n\n\nR\n\n\nBasics\n\n\nOperations\n\n\n\n\n\n\n\n\n\nNov 6, 2024\n\n\nSSF Training Team\n\n\n\n\n\n\n\n\n\n\n\n\n3. Understanding Data Frames in R\n\n\n\n\n\n\nR\n\n\nData Frames\n\n\nBasics\n\n\n\n\n\n\n\n\n\nNov 6, 2024\n\n\nSSF Training Team\n\n\n\n\n\n\n\n\n\n\n\n\n4. Understanding R Packages: Making Your Life Easier\n\n\n\n\n\n\nR\n\n\nPackages\n\n\nBasics\n\n\n\n\n\n\n\n\n\nNov 6, 2024\n\n\nSSF Training Team\n\n\n\n\n\n\n\n\n\n\n\n\n5. Getting Started with R: Data Manipulation Basics\n\n\n\n\n\n\nR\n\n\nData Manipulation\n\n\ntidyverse\n\n\n\n\n\n\n\n\n\nSep 30, 2024\n\n\nLore\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "r_snacks/5_tidyverse_basics.html",
@@ -422,94 +307,113 @@
     "text": "The tidyverse is a collection of R packages designed for data science. In this guide, we’ll explore the basics of data manipulation using dplyr, a core package of the tidyverse.\n\n\nFirst, let’s load the tidyverse package and create a simple dataset to work with:\n\n\n\n\n\n\n\n\n\n\n\nLet’s explore the fundamental dplyr verbs that you’ll use frequently:\n\n\nUse select() to choose specific columns:\n\n\n\n\n\n\n\n\n\n\n\nUse filter() to subset rows based on conditions:\n\n\n\n\n\n\n\n\n\n\n\nUse mutate() to add new columns:\n\n\n\n\n\n\n\n\n\n\n\n\nThe power of dplyr comes from combining operations using the pipe operator (%&gt;%):\n\n\n\n\n\n\n\n\n\n\n\nUse summarise() (or summarize()) with group_by() for aggregate statistics:"
   },
   {
-    "objectID": "r_snacks/4_packages.html",
-    "href": "r_snacks/4_packages.html",
-    "title": "4. Base R vs Tidyverse: Why Packages Matter",
+    "objectID": "r_snacks/3_dataframes.html",
+    "href": "r_snacks/3_dataframes.html",
+    "title": "3. Understanding Data Frames in R",
     "section": "",
-    "text": "Let’s explore how the same tasks can be accomplished using base R versus tidyverse packages. This will help you understand why packages can make your work more efficient and readable.\n\n\n\n\n\n\nLearning Objectives\n\n\n\nBy the end of this tutorial, you will understand: - The differences between base R and tidyverse approaches - Why the pipe operator makes code more readable - When to use each approach - How packages can simplify complex operations"
+    "text": "When working with real fisheries data, you’ll rarely deal with simple vectors or single values. Most often, your data will be in a table format with multiple columns representing different measurements or observations. In R, these tables are called “data frames”, and they’re one of the most important concepts to understand.\nA data frame is essentially R’s version of a spreadsheet. If you’ve used Excel or similar programs, you’ll find data frames familiar - they organize data in rows and columns. However, data frames in R are more powerful because they’re designed for programmatic data manipulation and analysis.\nLet’s start by understanding what makes data frames special and why they’re so useful for fisheries data.",
+    "crumbs": [
+      "Getting Started",
+      "3. Data Frames"
+    ]
   },
   {
-    "objectID": "r_snacks/4_packages.html#why-use-packages-a-practical-demonstration",
-    "href": "r_snacks/4_packages.html#why-use-packages-a-practical-demonstration",
-    "title": "4. Base R vs Tidyverse: Why Packages Matter",
+    "objectID": "r_snacks/3_dataframes.html#introduction-to-data-frames",
+    "href": "r_snacks/3_dataframes.html#introduction-to-data-frames",
+    "title": "3. Understanding Data Frames in R",
     "section": "",
-    "text": "Let’s explore how the same tasks can be accomplished using base R versus tidyverse packages. This will help you understand why packages can make your work more efficient and readable.\n\n\n\n\n\n\nLearning Objectives\n\n\n\nBy the end of this tutorial, you will understand: - The differences between base R and tidyverse approaches - Why the pipe operator makes code more readable - When to use each approach - How packages can simplify complex operations"
+    "text": "When working with real fisheries data, you’ll rarely deal with simple vectors or single values. Most often, your data will be in a table format with multiple columns representing different measurements or observations. In R, these tables are called “data frames”, and they’re one of the most important concepts to understand.\nA data frame is essentially R’s version of a spreadsheet. If you’ve used Excel or similar programs, you’ll find data frames familiar - they organize data in rows and columns. However, data frames in R are more powerful because they’re designed for programmatic data manipulation and analysis.\nLet’s start by understanding what makes data frames special and why they’re so useful for fisheries data.",
+    "crumbs": [
+      "Getting Started",
+      "3. Data Frames"
+    ]
   },
   {
-    "objectID": "r_snacks/4_packages.html#data-creation-and-basic-operations",
-    "href": "r_snacks/4_packages.html#data-creation-and-basic-operations",
-    "title": "4. Base R vs Tidyverse: Why Packages Matter",
-    "section": "1. Data Creation and Basic Operations 📊",
-    "text": "1. Data Creation and Basic Operations 📊\nLet’s start with creating and manipulating a simple fisheries dataset:\n\nCreating a Dataset"
+    "objectID": "r_snacks/3_dataframes.html#the-structure-of-data-frames",
+    "href": "r_snacks/3_dataframes.html#the-structure-of-data-frames",
+    "title": "3. Understanding Data Frames in R",
+    "section": "The Structure of Data Frames 📊",
+    "text": "The Structure of Data Frames 📊\nA data frame has some special properties that make it ideal for data analysis:\n\nMixed Data Types: Unlike matrices, each column can contain different types of data:\n\nYou can have species names (text) alongside lengths (numbers)\nDates can sit next to catch counts\nTRUE/FALSE flags can be included with measurements\n\nRectangular Structure:\n\nEvery column must have the same number of rows\nThis enforces data consistency\nMissing values are explicitly marked as NA\n\nNamed Components:\n\nEvery column has a name\nEvery row can be identified by its position\nThis makes it easy to reference specific data points\n\n\nLet’s see this in practice with a simple fisheries example:\n\n\n\n\n\n\n\n\nIn this example: - The ‘day’ column contains text (character data) - The ‘catch’ column contains decimal numbers (numeric data) - The ‘boats’ column contains whole numbers (integer data)\nEach row represents a complete day of fishing data, and all our measurements are organized together. This structure makes it easy to answer questions like: - What was the total catch? - Which day had the most boats? - What was the average catch per boat?",
+    "crumbs": [
+      "Getting Started",
+      "3. Data Frames"
+    ]
   },
   {
-    "objectID": "r_snacks/4_packages.html#filtering-data",
-    "href": "r_snacks/4_packages.html#filtering-data",
-    "title": "4. Base R vs Tidyverse: Why Packages Matter",
-    "section": "2. Filtering Data 🔍",
-    "text": "2. Filtering Data 🔍\nLet’s find all Tuna catches over 120kg:\n\n\n\n\n\n\n\n\nNotice how the tidyverse approach: - Doesn’t need dollar signs ($) - Doesn’t require comma separation for rows and columns - Reads more like English: “take fisheries_tidy and then filter…”"
+    "objectID": "r_snacks/3_dataframes.html#creating-data-frames",
+    "href": "r_snacks/3_dataframes.html#creating-data-frames",
+    "title": "3. Understanding Data Frames in R",
+    "section": "Creating Data Frames 📝",
+    "text": "Creating Data Frames 📝\nThere are several ways to create a data frame. Let’s explore each method and understand when to use them.\n\nMethod 1: From Individual Vectors\nThis is the most common way when you’re entering data manually:\n\n\n\n\n\n\n\n\nNotice several important points: 1. Each vector becomes a column 2. We can name columns differently from our vectors 3. All vectors must be the same length 4. The order of values is preserved\n\n\nMethod 2: Direct Creation\nFor smaller datasets, we can create the data frame in one step:\n\n\n\n\n\n\n\n\n\n\nMethod 3: From a Matrix\nSometimes you might have data in a matrix format:\n\n\n\n\n\n\n\n\nNote: When converting from a matrix, all columns will initially be the same type because matrices can only contain one data type.",
+    "crumbs": [
+      "Getting Started",
+      "3. Data Frames"
+    ]
   },
   {
-    "objectID": "r_snacks/4_packages.html#calculating-summary-statistics",
-    "href": "r_snacks/4_packages.html#calculating-summary-statistics",
-    "title": "4. Base R vs Tidyverse: Why Packages Matter",
-    "section": "3. Calculating Summary Statistics 📈",
-    "text": "3. Calculating Summary Statistics 📈\nLet’s calculate average catch by species:\n\n\n\n\n\n\n\n\nThe tidyverse approach: - Uses more intuitive function names - Produces cleaner output - Is easier to modify and extend"
+    "objectID": "r_snacks/3_dataframes.html#inspecting-data-frames",
+    "href": "r_snacks/3_dataframes.html#inspecting-data-frames",
+    "title": "3. Understanding Data Frames in R",
+    "section": "Inspecting Data Frames 🔍",
+    "text": "Inspecting Data Frames 🔍\nWhen working with data frames, especially large ones, you need to understand what’s in them before analyzing. R provides several functions to examine your data frame’s structure and contents. Let’s learn how to use these tools effectively.\n\nUnderstanding Your Data’s Structure\nLet’s create a realistic fisheries dataset to work with:\n\n\n\n\n\n\n\n\n\nMethod 1: Basic Structure\n\n\n\n\n\n\n\n\nThe str() function shows us: 1. The type of object (data.frame) 2. Number of observations (rows) and variables (columns) 3. Each column’s name and data type 4. The first few values in each column\nThis is particularly useful when: - You’ve just loaded new data and need to verify its structure - You want to check if columns are the correct data type - You need to quickly see how many rows/columns you have\n\n\nMethod 2: Data Preview\n\n\n\n\n\n\n\n\nUsing head() and tail() helps you: - Quickly verify data was loaded correctly - Check if data is sorted as expected - Spot any obvious issues in the data\n\n\nMethod 3: Summary Statistics\n\n\n\n\n\n\n\n\nThe summary() function is powerful because it: - Provides different summaries based on data type - For numeric columns: min, max, mean, median, quartiles - For categorical columns: counts of each value - Shows number of NA values - Helps identify potential data issues\n\n\n\nDimensions and Names\nUnderstanding your data frame’s size and structure:\n\n\n\n\n\n\n\n\nWhy these are useful: - dim(): Quick check if data has expected dimensions - nrow()/ncol(): Often used in calculations or loops - names(): Verify column names for data manipulation - rownames(): Usually less important but sometimes used for merging data\n\n\nChecking Data Types\nUnderstanding the type of data in each column is crucial:\n\n\n\n\n\n\n\n\nThis is important because: - Different data types allow different operations - Some functions require specific data types - Type mismatches can cause errors in analysis\n\n\nPractice Exercise: Data Inspection\nLet’s practice inspecting data frames. Try to answer these questions about our fishing_data:\n\n\n\n\n\n\n\n\n\n\nClick to see solution",
+    "crumbs": [
+      "Getting Started",
+      "3. Data Frames"
+    ]
   },
   {
-    "objectID": "r_snacks/4_packages.html#complex-data-manipulation",
-    "href": "r_snacks/4_packages.html#complex-data-manipulation",
-    "title": "4. Base R vs Tidyverse: Why Packages Matter",
-    "section": "4. Complex Data Manipulation 🛠️",
-    "text": "4. Complex Data Manipulation 🛠️\nLet’s perform a more complex analysis: calculate daily catch percentages by species:\n\n\n\n\n\n\n\n\nThe differences are striking: - Base R requires multiple steps and intermediate objects - Tidyverse accomplishes everything in a single pipeline - The code intent is much clearer in the tidyverse version"
+    "objectID": "r_snacks/3_dataframes.html#accessing-and-modifying-data-frames",
+    "href": "r_snacks/3_dataframes.html#accessing-and-modifying-data-frames",
+    "title": "3. Understanding Data Frames in R",
+    "section": "Accessing and Modifying Data Frames 📑",
+    "text": "Accessing and Modifying Data Frames 📑\nThere are multiple ways to access data in a data frame. Understanding these methods is crucial for data analysis. Let’s explore each method with practical examples.\nFirst, let’s create a sample dataset to work with:\n\n\n\n\n\n\n\n\n\nMethod 1: Using the $ Operator\nThe $ operator is one of the most common ways to access columns:\n\n\n\n\n\n\n\n\nKey points about using $: - Returns the column as a vector - Can be used for reading or assignment - Allows partial matching of column names (but avoid this!) - Auto-completion in RStudio makes it convenient\n\n\nMethod 2: Using Square Brackets [ ]\nSquare brackets are very flexible and can access any part of the data frame:\n\n\n\n\n\n\n\n\nUnderstanding the square bracket notation: - data[row, column] - Leave row or column blank to get all rows/columns - Can use numbers or names for columns - Can use logical vectors for filtering\n\n\nMethod 3: Using Double Brackets [[ ]]\nDouble brackets extract a single column as a vector:\n\n\n\n\n\n\n\n\nWhen to use which method: - $ : Quick interactive work, clear to read - [ ] : When you need multiple columns/rows - [[ ]] : Programming, exact matching\n\n\nFiltering Data\nOne of the most common operations is filtering rows based on conditions:\n\n\n\n\n\n\n\n\nUnderstanding filtering: - Condition goes in row position - Returns rows where condition is TRUE - Can combine conditions with & (and) and | (or) - Remember to keep the comma\n\n\nModifying Data Frames\nLet’s look at different ways to modify our data:\n\nAdding New Columns:\n\n\n\n\n\n\n\n\n\n\nModifying Existing Values:\n\n\n\n\n\n\n\n\n\n\n\nPractice Exercise: Data Frame Operations\nTry these operations on our fishing_data:\n\n\n\n\n\n\n\n\n\n\nClick to see solution",
+    "crumbs": [
+      "Getting Started",
+      "3. Data Frames"
+    ]
   },
   {
-    "objectID": "r_snacks/4_packages.html#reshaping-data",
-    "href": "r_snacks/4_packages.html#reshaping-data",
-    "title": "4. Base R vs Tidyverse: Why Packages Matter",
-    "section": "5. Reshaping Data 🔄",
-    "text": "5. Reshaping Data 🔄\nLet’s reshape our data to show catches by species in columns:"
+    "objectID": "r_snacks/3_dataframes.html#common-mistakes-to-avoid",
+    "href": "r_snacks/3_dataframes.html#common-mistakes-to-avoid",
+    "title": "3. Understanding Data Frames in R",
+    "section": "Common Mistakes to Avoid ⚠️",
+    "text": "Common Mistakes to Avoid ⚠️\nWhen working with data frames, watch out for these common issues:\n\nColumn Type Mismatches\n\n\n\n\n\n\n\n\nMissing Values",
+    "crumbs": [
+      "Getting Started",
+      "3. Data Frames"
+    ]
   },
   {
-    "objectID": "r_snacks/4_packages.html#complex-analysis-example-catch-trends",
-    "href": "r_snacks/4_packages.html#complex-analysis-example-catch-trends",
-    "title": "4. Base R vs Tidyverse: Why Packages Matter",
-    "section": "6. Complex Analysis Example: Catch Trends 📊",
-    "text": "6. Complex Analysis Example: Catch Trends 📊\nLet’s calculate running averages and relative changes:"
+    "objectID": "r_snacks/3_dataframes.html#practice-exercise-final-challenge",
+    "href": "r_snacks/3_dataframes.html#practice-exercise-final-challenge",
+    "title": "3. Understanding Data Frames in R",
+    "section": "Practice Exercise: Final Challenge",
+    "text": "Practice Exercise: Final Challenge\nLet’s put everything together with a comprehensive exercise:\n\n\n\n\n\n\n\n\n\n\nClick to see solution",
+    "crumbs": [
+      "Getting Started",
+      "3. Data Frames"
+    ]
   },
   {
-    "objectID": "r_snacks/4_packages.html#data-quality-checks",
-    "href": "r_snacks/4_packages.html#data-quality-checks",
-    "title": "4. Base R vs Tidyverse: Why Packages Matter",
-    "section": "7. Data Quality Checks 🔍",
-    "text": "7. Data Quality Checks 🔍\nLet’s check for potential data issues:"
-  },
-  {
-    "objectID": "r_snacks/4_packages.html#practice-exercises-convert-base-r-to-tidyverse",
-    "href": "r_snacks/4_packages.html#practice-exercises-convert-base-r-to-tidyverse",
-    "title": "4. Base R vs Tidyverse: Why Packages Matter",
-    "section": "Practice Exercises: Convert Base R to Tidyverse 💪",
-    "text": "Practice Exercises: Convert Base R to Tidyverse 💪\n\nExercise 1: Basic Filtering and Summarizing\nConvert this base R code to tidyverse:\n\n\n\n\n\n\n\n\n\n\nExercise 2: Complex Data Manipulation\nConvert this base R code to tidyverse:"
-  },
-  {
-    "objectID": "r_snacks/4_packages.html#best-practices-when-to-use-each-approach",
-    "href": "r_snacks/4_packages.html#best-practices-when-to-use-each-approach",
-    "title": "4. Base R vs Tidyverse: Why Packages Matter",
-    "section": "Best Practices: When to Use Each Approach 📝",
-    "text": "Best Practices: When to Use Each Approach 📝\n\nUse Base R When:\n\nWorking with very simple operations\nMemory efficiency is crucial\nNeed maximum computational speed\nWorking with basic statistical functions\nTeaching fundamental R concepts\n\n\n\nUse Tidyverse When:\n\nWorking with data frames\nNeed readable and maintainable code\nPerforming data manipulation\nCreating data pipelines\nWorking with dates and strings\nMaking plots with ggplot2\n\n\n\n\n\n\n\nPro Tip\n\n\n\nYou can mix base R and tidyverse approaches! Use what makes the most sense for each specific task."
-  },
-  {
-    "objectID": "r_snacks/4_packages.html#key-takeaways",
-    "href": "r_snacks/4_packages.html#key-takeaways",
-    "title": "4. Base R vs Tidyverse: Why Packages Matter",
-    "section": "Key Takeaways 🎯",
-    "text": "Key Takeaways 🎯\n\nReadability: Tidyverse code is generally more readable and self-documenting\nConsistency: Tidyverse functions work consistently together\nEfficiency: Tidyverse often requires less code for complex operations\nLearning Curve: Base R is simpler to start with but harder to master\nFlexibility: Both approaches have their place in data analysis"
-  },
-  {
-    "objectID": "r_snacks/4_packages.html#next-steps",
-    "href": "r_snacks/4_packages.html#next-steps",
-    "title": "4. Base R vs Tidyverse: Why Packages Matter",
+    "objectID": "r_snacks/3_dataframes.html#next-steps",
+    "href": "r_snacks/3_dataframes.html#next-steps",
+    "title": "3. Understanding Data Frames in R",
     "section": "Next Steps 🚀",
-    "text": "Next Steps 🚀\n\nPractice converting your existing base R code to tidyverse\nLearn more advanced tidyverse functions\nExplore other tidyverse packages like purrr and tidyr\nDevelop your own style combining both approaches\n\nRemember: The goal is not to completely replace base R, but to use the right tool for each job!"
+    "text": "Next Steps 🚀\nNow that you understand data frames, you’re ready to:\n\nLearn Data Manipulation Packages\n\ndplyr for easier data manipulation\ntidyr for reshaping data\nLearn about the tidyverse ecosystem\n\nWork with Real Data\n\nImport data from CSV files\nClean and prepare real fisheries datasets\nCreate summary reports\n\nData Visualization\n\nCreate plots with ggplot2\nVisualize relationships in your data\nMake professional reports\n\nAdvanced Analysis\n\nStatistical tests\nTime series analysis\nSpatial data analysis",
+    "crumbs": [
+      "Getting Started",
+      "3. Data Frames"
+    ]
+  },
+  {
+    "objectID": "r_snacks/3_dataframes.html#quick-reference-guide",
+    "href": "r_snacks/3_dataframes.html#quick-reference-guide",
+    "title": "3. Understanding Data Frames in R",
+    "section": "Quick Reference Guide 📝",
+    "text": "Quick Reference Guide 📝\nKeep this handy for common data frame operations:\n# Basic Operations\ndf$column              # Access a column\ndf[row, column]        # Access specific elements\ndf[df$x &gt; 5, ]        # Filter rows\nnames(df)             # Get column names\nnrow(df), ncol(df)    # Get dimensions\n\n# Useful Functions\nhead(df)              # View first rows\nsummary(df)           # Statistical summary\nstr(df)               # Structure overview\naggregate(y ~ x, df)  # Group by calculations\nRemember: - Always check your data structure with str() or summary() - Handle missing values explicitly with na.rm = TRUE - Keep track of your data types - Make backups before major modifications",
+    "crumbs": [
+      "Getting Started",
+      "3. Data Frames"
+    ]
   }
 ]

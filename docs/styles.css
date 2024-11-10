@@ -1,0 +1,13 @@
+/* Logo sizing and responsive behavior */
+.navbar-brand img {
+    max-height: 40px;
+    width: auto;
+}
+
+/* Adjust logo size on mobile */
+@media (max-width: 768px) {
+    .navbar-brand img {
+        max-height: 30px;
+    }
+}
+

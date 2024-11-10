@@ -1,20 +1,20 @@
-# Basic configuration with sidebar navigation
 project:
   type: website
   render:
-    - "*.qmd"         # Applies to all .qmd files in the root
-    - "r_snacks/*.qmd"  # Ensures all files within r_snacks are rendered
-    - "!r_snacks/index.qmd"  # Exclude this if not needed
+    - "*.qmd"
+    - "r_snacks/*.qmd"
+    - "!r_snacks/index.qmd"
   output-dir: docs
 
 website:
   title: "R for SSF: Data Analysis Training"
   description: "Learn how to use R for small-scale fisheries data analysis"
   
-  # Add a sidebar navigation
+  
   sidebar:
-    style: "floating"  # or "floating"
+    style: "floating"
     search: true
+    header: "Course contents:"
     contents:
       - section: "Getting Started"
         contents:
@@ -24,53 +24,104 @@ website:
             text: "2. Basic Operations"
           - href: r_snacks/3_dataframes.qmd
             text: "3. Data Frames"
-      - section: "Data Analysis"
+          - href: r_snacks/4_packages.qmd
+            text: "3. Packages in R"
+      - section: "Data processing"
         contents:
-          - text: "Working with Packages"
-          - text: "Data Visualization"
-  
-  # Customize the navbar
+          - href: r_snacks/workinprogress.qmd
+            text: "1. Preprocessing data 1"
+          - href: r_snacks/workinprogress.qmd
+            text: "2. Preprocessing data 2"
+      - section: "Data validation"
+        contents:
+          - href: r_snacks/workinprogress.qmd
+            text: "1. Validate data 1"
+          - href: r_snacks/workinprogress.qmd
+            text: "2. Validate data 2"
+      - section: "Data visualization"
+        contents:
+          - href: r_snacks/workinprogress.qmd
+            text: "1. Basic of data visualization in R"
+          - href: r_snacks/workinprogress.qmd
+            text: "2. Advanced visualizations"
+      - section: "Data analysis for small scale fisheries"
+        contents:
+          - href: r_snacks/workinprogress.qmd
+            text: "1. Basic of data visualization in R"
+          - href: r_snacks/workinprogress.qmd
+            text: "2. Advanced visualizations"
+            
   navbar:
-    logo: https://upload.wikimedia.org/wikipedia/en/9/9e/WorldFish_logo.svg
-    href: https://worldfishcenter.org/
+    logo: https://upload.wikimedia.org/wikipedia/en/9/9e/WorldFish_logo.svg           
+    title: "R for Small-Scale Fisheries"  
     right:
       - text: "Tutorials"
         menu:
-          - text: "R Basics"
+          - text: "Getting Started"
+          - text: "1. R Installation"
             href: r_snacks/1_rbasics.qmd
-          - text: "Data Analysis"
+          - text: "2. Basic Operations"
+            href: r_snacks/2_rbasics.qmd
+          - text: "3. Data Frames"
             href: r_snacks/3_dataframes.qmd
+          - text: "3. Packages in R"
+            href: r_snacks/4_packages.qmd
+          
+          - text: "─────────────────"
+          - text: "Data Processing"
+          - text: "1. Preprocessing data 1"
+          - href: r_snacks/workinprogress.qmd
+          - text: "2. Preprocessing data 2"
+          - href: r_snacks/workinprogress.qmd
+
+          - text: "─────────────────"
+          - text: "Data Validation"
+          - text: "1. Validate data 1"
+          - href: r_snacks/workinprogress.qmd
+          - text: "2. Validate data 2"
+          - href: r_snacks/workinprogress.qmd
+          
+          - text: "─────────────────"
+          - text: "Data Visualization"
+          - text: "1. Basics of Data Visualization in R"
+          - href: r_snacks/workinprogress.qmd
+          - text: "2. Advanced Visualizations"
+          - href: r_snacks/workinprogress.qmd
+          
+          - text: "─────────────────"
+          - text: "Data Analysis for Small-Scale Fisheries"
+          - text: "1. Basics of Data Visualization in R"
+          - href: r_snacks/workinprogress.qmd
+          - text: "2. Advanced Visualizations"
+          - href: r_snacks/workinprogress.qmd
+          
       - icon: github
         href: https://github.com/WorldFishCenter/ssf.training/
 
-  # Add a footer
   page-footer:
     left: "Copyright 2024 WorldFish"
     right:
       - icon: github
         href: https://github.com/WorldFishCenter/ssf.training/
   
-  # Control search functionality
   search:
     location: navbar
-    type: overlay  # or "textbox"
-    
-# Page layout options
+    type: overlay
+
 format:
   html:
     theme:
       light: [cosmo, custom.scss]
       dark: [cosmo, theme-dark.scss, custom.scss]
     toc: true
-    toc-location: left  # or right
+    toc-location: right
     toc-title: "On this page"
     code-fold: true
     code-tools: true
     code-link: true
     highlight-style: github
-    
-# Control page width and margins
-    page-layout: full  # or article
+    css: styles.css
+    page-layout: full
     grid:
       sidebar-width: 300px
       body-width: 900px

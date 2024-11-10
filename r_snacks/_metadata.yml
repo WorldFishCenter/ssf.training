@@ -8,7 +8,7 @@ freeze: false
 title-block-banner: true
 toc: true
 page-layout: article
-citation: true
+citation: false
 
 # Inherit theme and CSS from main _quarto.yml
 format:
