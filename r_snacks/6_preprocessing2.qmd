@@ -1,0 +1,57 @@
+---
+title: "6. Data Preprocessing in R: Real Study Case from Malawi fisheries"
+author: "SSF Training Team"
+date: 2024-11-06
+format: live-html
+engine: knitr
+categories: ["R", "Data Cleaning", "Preprocessing"]
+webr:
+  autorun: false
+  render-df: gt-interactive
+  packages:
+    - tidyverse
+    - janitor
+    - lubridate
+    - readr
+resources: 
+  - ../data  
+---
+
+{{< include ../_extensions/r-wasm/live/_knitr.qmd >}}
+
+## Introduction 🎯
+
+In Small-Scale Fisheries (SSF) research, data rarely comes in a perfect, analysis-ready format. Field data collection, multiple data sources, and various recording methods often result in messy datasets that need careful preprocessing before analysis. This tutorial will teach you essential data preprocessing techniques using R's powerful tidyverse ecosystem.
+
+Think of data preprocessing like preparing fish for cooking - before you can make a delicious meal (analysis), you need to clean, scale, and cut the fish properly (preprocess the data). Just as a chef needs the right tools and techniques, we'll learn the right R packages and methods for effective data preprocessing.
+
+:::{.callout-note}
+## Learning Objectives
+By the end of this tutorial, you will:
+- Understand why data preprocessing is crucial for analysis
+- Learn essential tidyverse functions for data cleaning
+- Master common preprocessing tasks in fisheries data
+- Develop a systematic approach to data preprocessing
+- Handle missing values and inconsistencies effectively
+:::
+
+## Understanding Data Preprocessing 📋
+
+### Why Preprocess Data?
+
+Raw fisheries data often comes with several challenges:
+- Inconsistent variable names
+- Missing values
+- Mixed data types
+- Duplicate records
+- Unstandardized categories
+- Nested or complex data structures
+
+Let's look at a typical raw fisheries dataset:
+
+```{webr}
+#| autorun: false
+malawissf <- readr::read_csv("data/malawi_ssf.csv")
+```
+
+

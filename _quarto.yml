@@ -4,6 +4,7 @@ project:
     - "*.qmd"
     - "r_snacks/*.qmd"
     - "!r_snacks/index.qmd"
+    - "!r_snacks/6_preprocessing2.qmd"
   output-dir: docs
 
 website:
@@ -25,25 +26,19 @@ website:
           - href: r_snacks/3_dataframes.qmd
             text: "3. Data Frames"
           - href: r_snacks/4_packages.qmd
-            text: "3. Packages in R"
+            text: "4. Packages in R"
       - section: "Data processing"
         contents:
+          - href: r_snacks/5_preprocessing1.qmd
+            text: "1. From messy to tidy data"
           - href: r_snacks/workinprogress.qmd
-            text: "1. Preprocessing data 1"
-          - href: r_snacks/workinprogress.qmd
-            text: "2. Preprocessing data 2"
+            text: "2. A real case study"
       - section: "Data validation"
         contents:
           - href: r_snacks/workinprogress.qmd
-            text: "1. Validate data 1"
+            text: "1. Data validation 1"
           - href: r_snacks/workinprogress.qmd
-            text: "2. Validate data 2"
-      - section: "Data visualization"
-        contents:
-          - href: r_snacks/workinprogress.qmd
-            text: "1. Basic of data visualization in R"
-          - href: r_snacks/workinprogress.qmd
-            text: "2. Advanced visualizations"
+            text: "2. Data validation 2"
       - section: "Data analysis for small scale fisheries"
         contents:
           - href: r_snacks/workinprogress.qmd
@@ -64,36 +59,29 @@ website:
             href: r_snacks/2_rbasics.qmd
           - text: "3. Data Frames"
             href: r_snacks/3_dataframes.qmd
-          - text: "3. Packages in R"
+          - text: "4. Packages in R"
             href: r_snacks/4_packages.qmd
           
           - text: "─────────────────"
           - text: "Data Processing"
-          - text: "1. Preprocessing data 1"
-          - href: r_snacks/workinprogress.qmd
-          - text: "2. Preprocessing data 2"
-          - href: r_snacks/workinprogress.qmd
+          - text: "1. From messy to tidy data"
+            href: r_snacks/5_preprocessing1.qmd
+          - text: "2. A real case study"
+            href: r_snacks/workinprogress.qmd
 
           - text: "─────────────────"
           - text: "Data Validation"
-          - text: "1. Validate data 1"
-          - href: r_snacks/workinprogress.qmd
-          - text: "2. Validate data 2"
-          - href: r_snacks/workinprogress.qmd
-          
-          - text: "─────────────────"
-          - text: "Data Visualization"
-          - text: "1. Basics of Data Visualization in R"
-          - href: r_snacks/workinprogress.qmd
-          - text: "2. Advanced Visualizations"
-          - href: r_snacks/workinprogress.qmd
+          - text: "1. Data validation 1"
+            href: r_snacks/workinprogress.qmd
+          - text: "2. Data validation 2"
+            href: r_snacks/workinprogress.qmd
           
           - text: "─────────────────"
           - text: "Data Analysis for Small-Scale Fisheries"
           - text: "1. Basics of Data Visualization in R"
-          - href: r_snacks/workinprogress.qmd
+            href: r_snacks/workinprogress.qmd
           - text: "2. Advanced Visualizations"
-          - href: r_snacks/workinprogress.qmd
+            href: r_snacks/workinprogress.qmd
           
       - icon: github
         href: https://github.com/WorldFishCenter/ssf.training/

@@ -1,0 +1,617 @@
+---
+title: "3. Understanding Data Frames in R"
+author: "SSF Training Team"
+date: 2024-11-06
+format: live-html
+engine: knitr
+categories: ["R", "Data Frames", "Basics"]
+webr:
+  autorun: false
+  render-df: gt-interactive
+---
+
+{{< include ../_extensions/r-wasm/live/_knitr.qmd >}}
+
+## Introduction to Data Frames 🎯
+
+When working with real fisheries data, you'll rarely deal with simple vectors or single values. Most often, your data will be in a table format with multiple columns representing different measurements or observations. In R, these tables are called "data frames", and they're one of the most important concepts to understand.
+
+A data frame is essentially R's version of a spreadsheet. If you've used Excel or similar programs, you'll find data frames familiar - they organize data in rows and columns. However, data frames in R are more powerful because they're designed for programmatic data manipulation and analysis.
+
+Let's start by understanding what makes data frames special and why they're so useful for fisheries data.
+
+## The Structure of Data Frames 📊
+
+A data frame has some special properties that make it ideal for data analysis:
+
+1. **Mixed Data Types**: Unlike matrices, each column can contain different types of data:
+   - You can have species names (text) alongside lengths (numbers)
+   - Dates can sit next to catch counts
+   - TRUE/FALSE flags can be included with measurements
+
+2. **Rectangular Structure**: 
+   - Every column must have the same number of rows
+   - This enforces data consistency
+   - Missing values are explicitly marked as NA
+
+3. **Named Components**:
+   - Every column has a name
+   - Every row can be identified by its position
+   - This makes it easy to reference specific data points
+
+Let's see this in practice with a simple fisheries example:
+
+```{webr}
+#| autorun: false
+
+# First, let's create some sample fisheries data
+fishing_day <- c("Monday", "Tuesday", "Wednesday")
+catch_kg <- c(156.5, 223.8, 175.2)
+boats_out <- c(5, 7, 6)
+
+# Now let's combine these into a data frame
+daily_fishing <- data.frame(
+  day = fishing_day,
+  catch = catch_kg,
+  boats = boats_out
+)
+
+# Let's look at our data frame
+daily_fishing
+```
+
+In this example:
+- The 'day' column contains text (character data)
+- The 'catch' column contains decimal numbers (numeric data)
+- The 'boats' column contains whole numbers (integer data)
+
+Each row represents a complete day of fishing data, and all our measurements are organized together. This structure makes it easy to answer questions like:
+- What was the total catch?
+- Which day had the most boats?
+- What was the average catch per boat?
+
+## Creating Data Frames 📝
+
+There are several ways to create a data frame. Let's explore each method and understand when to use them.
+
+### Method 1: From Individual Vectors
+
+This is the most common way when you're entering data manually:
+
+```{webr}
+#| autorun: false
+# Create vectors first
+species <- c("Tuna", "Mackerel", "Sardine")
+length_cm <- c(45, 30, 15)
+weight_kg <- c(3.5, 1.2, 0.3)
+
+# Combine into a data frame
+fish_data <- data.frame(
+  species = species,    # Note: column name = vector
+  length = length_cm,   # We can use different names
+  weight = weight_kg
+)
+
+# View the result
+fish_data
+```
+
+Notice several important points:
+1. Each vector becomes a column
+2. We can name columns differently from our vectors
+3. All vectors must be the same length
+4. The order of values is preserved
+
+### Method 2: Direct Creation
+
+For smaller datasets, we can create the data frame in one step:
+
+```{webr}
+#| autorun: false
+# Create directly with vectors
+fish_data2 <- data.frame(
+  species = c("Tuna", "Mackerel", "Sardine"),
+  length = c(45, 30, 15),
+  weight = c(3.5, 1.2, 0.3)
+)
+
+# Same result as previous method
+fish_data2
+```
+
+### Method 3: From a Matrix
+
+Sometimes you might have data in a matrix format:
+
+```{webr}
+#| autorun: false
+# Create a matrix
+fish_matrix <- matrix(
+  c(45, 30, 15,    # lengths
+    3.5, 1.2, 0.3),# weights
+  nrow = 3,
+  byrow = FALSE
+)
+
+# Convert to data frame
+fish_data3 <- data.frame(fish_matrix)
+
+# Add column names
+names(fish_data3) <- c("length", "weight")
+
+# View result
+fish_data3
+```
+
+Note: When converting from a matrix, all columns will initially be the same type because matrices can only contain one data type.
+
+## Inspecting Data Frames 🔍
+
+When working with data frames, especially large ones, you need to understand what's in them before analyzing. R provides several functions to examine your data frame's structure and contents. Let's learn how to use these tools effectively.
+
+### Understanding Your Data's Structure
+
+Let's create a realistic fisheries dataset to work with:
+
+```{webr}
+#| autorun: false
+# Create a more complete fishing dataset
+fishing_data <- data.frame(
+    date = as.Date(c("2024-01-01", "2024-01-01", "2024-01-02", "2024-01-02")),
+    site = c("Reef", "Beach", "Reef", "Beach"),
+    species = c("Tuna", "Mackerel", "Tuna", "Sardine"),
+    length_cm = c(45, 30, 42, 15),
+    weight_kg = c(3.5, 1.2, 3.2, 0.3),
+    gear_type = c("Net", "Line", "Net", "Net")
+)
+
+# Now let's examine it different ways
+```
+
+#### Method 1: Basic Structure
+```{webr}
+#| autorun: false
+# Look at the structure of the data
+str(fishing_data)
+```
+
+The `str()` function shows us:
+1. The type of object (data.frame)
+2. Number of observations (rows) and variables (columns)
+3. Each column's name and data type
+4. The first few values in each column
+
+This is particularly useful when:
+- You've just loaded new data and need to verify its structure
+- You want to check if columns are the correct data type
+- You need to quickly see how many rows/columns you have
+
+#### Method 2: Data Preview
+```{webr}
+#| autorun: false
+# Look at the first few rows
+head(fishing_data)
+
+# Look at the last few rows
+tail(fishing_data)
+```
+
+Using `head()` and `tail()` helps you:
+- Quickly verify data was loaded correctly
+- Check if data is sorted as expected
+- Spot any obvious issues in the data
+
+#### Method 3: Summary Statistics
+```{webr}
+#| autorun: false
+# Get a statistical summary
+summary(fishing_data)
+```
+
+The `summary()` function is powerful because it:
+- Provides different summaries based on data type
+- For numeric columns: min, max, mean, median, quartiles
+- For categorical columns: counts of each value
+- Shows number of NA values
+- Helps identify potential data issues
+
+### Dimensions and Names
+
+Understanding your data frame's size and structure:
+
+```{webr}
+#| autorun: false
+# Get dimensions
+dim(fishing_data)    # Returns [rows, columns]
+nrow(fishing_data)   # Just number of rows
+ncol(fishing_data)   # Just number of columns
+
+# Look at column names
+names(fishing_data)  # All column names
+colnames(fishing_data)  # Same as names()
+
+# Look at row names (usually just numbers)
+rownames(fishing_data)
+```
+
+Why these are useful:
+- `dim()`: Quick check if data has expected dimensions
+- `nrow()`/`ncol()`: Often used in calculations or loops
+- `names()`: Verify column names for data manipulation
+- `rownames()`: Usually less important but sometimes used for merging data
+
+### Checking Data Types
+
+Understanding the type of data in each column is crucial:
+
+```{webr}
+#| autorun: false
+# Check types of specific columns
+class(fishing_data$date)
+class(fishing_data$length_cm)
+class(fishing_data$species)
+
+# Check if columns are specific types
+is.numeric(fishing_data$length_cm)
+is.character(fishing_data$species)
+is.factor(fishing_data$site)
+```
+
+This is important because:
+- Different data types allow different operations
+- Some functions require specific data types
+- Type mismatches can cause errors in analysis
+
+### Practice Exercise: Data Inspection
+
+Let's practice inspecting data frames. Try to answer these questions about our fishing_data:
+
+```{webr}
+#| autorun: false
+#| echo: true
+# Examine the fishing_data and try to answer:
+# 1. How many different fishing sites are there?
+# 2. What's the average fish length?
+# 3. How many different gear types were used?
+
+# Write your code below:
+
+```
+
+<details>
+<summary>Click to see solution</summary>
+
+```{webr}
+#| autorun: false
+#| eval: false
+# 1. Count unique sites
+unique(fishing_data$site)
+length(unique(fishing_data$site))
+
+# 2. Calculate average length
+mean(fishing_data$length_cm)
+
+# 3. Count gear types
+unique(fishing_data$gear_type)
+length(unique(fishing_data$gear_type))
+```
+</details>
+
+## Accessing and Modifying Data Frames 📑
+
+There are multiple ways to access data in a data frame. Understanding these methods is crucial for data analysis. Let's explore each method with practical examples.
+
+First, let's create a sample dataset to work with:
+
+```{webr}
+#| autorun: false
+# Create a fishing dataset
+fishing_data <- data.frame(
+    date = as.Date(c("2024-01-01", "2024-01-01", "2024-01-02", "2024-01-02", "2024-01-03")),
+    site = c("Reef", "Beach", "Reef", "Beach", "Reef"),
+    species = c("Tuna", "Mackerel", "Tuna", "Sardine", "Tuna"),
+    length_cm = c(45, 30, 42, 15, 48),
+    weight_kg = c(3.5, 1.2, 3.2, 0.3, 3.8),
+    gear_type = c("Net", "Line", "Net", "Net", "Line")
+)
+```
+
+### Method 1: Using the $ Operator
+
+The $ operator is one of the most common ways to access columns:
+
+```{webr}
+#| autorun: false
+# Get the length column
+fishing_data$length_cm
+
+# Get the species column
+fishing_data$species
+```
+
+Key points about using $:
+- Returns the column as a vector
+- Can be used for reading or assignment
+- Allows partial matching of column names (but avoid this!)
+- Auto-completion in RStudio makes it convenient
+
+### Method 2: Using Square Brackets [ ]
+
+Square brackets are very flexible and can access any part of the data frame:
+
+```{webr}
+#| autorun: false
+# Get a single column (returns data frame)
+fishing_data["length_cm"]
+
+# Get multiple columns
+fishing_data[c("species", "weight_kg")]
+
+# Get first row
+fishing_data[1, ]
+
+# Get specific value (row 1, column 3)
+fishing_data[1, 3]
+
+# Get rows 1-3 and columns 2-4
+fishing_data[1:3, 2:4]
+```
+
+Understanding the square bracket notation:
+- `data[row, column]`
+- Leave row or column blank to get all rows/columns
+- Can use numbers or names for columns
+- Can use logical vectors for filtering
+
+### Method 3: Using Double Brackets [[ ]]
+
+Double brackets extract a single column as a vector:
+
+```{webr}
+#| autorun: false
+# Get length column as vector
+fishing_data[["length_cm"]]
+```
+
+When to use which method:
+- $ : Quick interactive work, clear to read
+- [ ] : When you need multiple columns/rows
+- [[ ]] : Programming, exact matching
+
+### Filtering Data
+
+One of the most common operations is filtering rows based on conditions:
+
+```{webr}
+#| autorun: false
+# Get all Tuna records
+tuna_catches <- fishing_data[fishing_data$species == "Tuna", ]
+
+# Get large fish (over 40cm)
+large_fish <- fishing_data[fishing_data$length_cm > 40, ]
+
+# Multiple conditions: Tuna caught at Reef
+reef_tuna <- fishing_data[fishing_data$species == "Tuna" & 
+                         fishing_data$site == "Reef", ]
+
+# Show the results
+print("Tuna catches:")
+tuna_catches
+print("\nLarge fish:")
+large_fish
+print("\nReef tuna:")
+reef_tuna
+```
+
+Understanding filtering:
+- Condition goes in row position
+- Returns rows where condition is TRUE
+- Can combine conditions with & (and) and | (or)
+- Remember to keep the comma
+
+### Modifying Data Frames
+
+Let's look at different ways to modify our data:
+
+#### Adding New Columns:
+```{webr}
+#| autorun: false
+# Add a catch value column (length * weight)
+fishing_data$catch_value <- fishing_data$length_cm * fishing_data$weight_kg
+
+# Add a size category
+fishing_data$size_class <- ifelse(fishing_data$length_cm > 40, 
+                                 "Large", "Small")
+
+# View updated data
+head(fishing_data)
+```
+
+#### Modifying Existing Values:
+```{webr}
+#| autorun: false
+# Convert length to meters
+fishing_data$length_m <- fishing_data$length_cm / 100
+
+# Round weights to 1 decimal
+fishing_data$weight_kg <- round(fishing_data$weight_kg, 1)
+
+# Change specific values
+fishing_data$gear_type[fishing_data$gear_type == "Line"] <- "Fishing Line"
+```
+
+### Practice Exercise: Data Frame Operations
+
+Try these operations on our fishing_data:
+
+```{webr}
+#| autorun: false
+#| echo: true
+# 1. Create a new column for catch per unit length (weight_kg/length_cm)
+# 2. Find all fish caught using Net that are larger than the average length
+# 3. Create a category column: "High Value" if weight > 2kg, "Low Value" otherwise
+
+# Write your code below:
+
+```
+
+<details>
+<summary>Click to see solution</summary>
+
+```{webr}
+#| autorun: false
+#| eval: false
+# 1. Catch per unit length
+fishing_data$catch_per_length <- fishing_data$weight_kg / fishing_data$length_cm
+
+# 2. Net-caught fish larger than average
+avg_length <- mean(fishing_data$length_cm)
+big_net_fish <- fishing_data[fishing_data$gear_type == "Net" & 
+                            fishing_data$length_cm > avg_length, ]
+
+# 3. Value category
+fishing_data$value_category <- ifelse(fishing_data$weight_kg > 2, 
+                                    "High Value", "Low Value")
+
+# View results
+print("Catch per unit length:")
+fishing_data$catch_per_length
+
+print("\nBig net-caught fish:")
+big_net_fish
+
+print("\nValue categories:")
+table(fishing_data$value_category)
+```
+</details>
+
+## Common Mistakes to Avoid ⚠️
+
+When working with data frames, watch out for these common issues:
+
+1. **Column Type Mismatches**
+   ```{webr}
+#| autorun: false
+   # This will cause issues - mixing types incorrectly
+   problem_data <- data.frame(
+     numbers = c(1, 2, "three"),  # Converts all to character
+     dates = c("2024-01-01", NA, "not a date")  # Won't convert to dates
+   )
+   str(problem_data)  # Check the structure
+   ```
+
+2. **Missing Values**
+   ```{webr}
+#| autorun: false
+   # Proper way to handle NA values
+   length_data <- c(45, NA, 42)
+   weight_data <- c(3.5, 1.2, NA)
+   good_data <- data.frame(
+     length = length_data,
+     weight = weight_data
+   )
+   # Use na.rm = TRUE for calculations
+   mean(good_data$length, na.rm = TRUE)
+   ```
+
+## Practice Exercise: Final Challenge
+
+Let's put everything together with a comprehensive exercise:
+
+```{webr}
+#| autorun: false
+#| echo: true
+# Here's a small fishing dataset
+catch_data <- data.frame(
+    date = as.Date(c("2024-01-01", "2024-01-02", "2024-01-02", "2024-01-03")),
+    site = c("Reef", "Beach", "Reef", "Beach"),
+    catch_kg = c(125, 85, 155, 95),
+    boats = c(5, 3, 6, 4),
+    gear = c("Net", "Line", "Net", "Line")
+)
+
+# Your tasks:
+# 1. Calculate catch per boat for each row
+# 2. Find which sites had above-average catch
+# 3. Calculate the total catch by gear type
+# 4. Create a column showing if it was a "good" fishing day 
+#    (above average catch per boat)
+
+# Write your code below:
+
+```
+
+<details>
+<summary>Click to see solution</summary>
+
+```{webr}
+#| autorun: false
+#| eval: false
+# 1. Catch per boat
+catch_data$catch_per_boat <- catch_data$catch_kg / catch_data$boats
+
+# 2. Above average catch sites
+avg_catch <- mean(catch_data$catch_kg)
+high_catch_sites <- unique(catch_data$site[catch_data$catch_kg > avg_catch])
+print("Sites with above average catch:")
+high_catch_sites
+
+# 3. Total catch by gear
+aggregate(catch_kg ~ gear, data = catch_data, sum)
+
+# 4. Good fishing day
+catch_data$good_day <- catch_data$catch_per_boat > mean(catch_data$catch_per_boat)
+print("\nFishing day quality:")
+catch_data[, c("date", "site", "catch_per_boat", "good_day")]
+```
+</details>
+
+## Next Steps 🚀
+
+Now that you understand data frames, you're ready to:
+
+1. **Learn Data Manipulation Packages**
+   - dplyr for easier data manipulation
+   - tidyr for reshaping data
+   - Learn about the tidyverse ecosystem
+
+2. **Work with Real Data**
+   - Import data from CSV files
+   - Clean and prepare real fisheries datasets
+   - Create summary reports
+
+3. **Data Visualization**
+   - Create plots with ggplot2
+   - Visualize relationships in your data
+   - Make professional reports
+
+4. **Advanced Analysis**
+   - Statistical tests
+   - Time series analysis
+   - Spatial data analysis
+
+## Quick Reference Guide 📝
+
+Keep this handy for common data frame operations:
+
+```r
+# Basic Operations
+df$column              # Access a column
+df[row, column]        # Access specific elements
+df[df$x > 5, ]        # Filter rows
+names(df)             # Get column names
+nrow(df), ncol(df)    # Get dimensions
+
+# Useful Functions
+head(df)              # View first rows
+summary(df)           # Statistical summary
+str(df)               # Structure overview
+aggregate(y ~ x, df)  # Group by calculations
+```
+
+Remember:
+- Always check your data structure with `str()` or `summary()`
+- Handle missing values explicitly with `na.rm = TRUE`
+- Keep track of your data types
+- Make backups before major modifications
+

@@ -1,0 +1,770 @@
+---
+title: "5. Data Preprocessing in R: Getting Your Fisheries Data Ready for Analysis"
+author: "SSF Training Team"
+date: 2024-11-06
+format: live-html
+engine: knitr
+categories: ["R", "Data Cleaning", "Preprocessing"]
+webr:
+  autorun: false
+  render-df: gt-interactive
+  packages:
+    - tidyverse
+    - janitor
+    - lubridate
+---
+
+{{< include ../_extensions/r-wasm/live/_knitr.qmd >}}
+
+## Introduction 🎯
+
+In Small-Scale Fisheries (SSF) research, data rarely comes in a perfect, analysis-ready format. Field data collection, multiple data sources, and various recording methods often result in messy datasets that need careful preprocessing before analysis. This tutorial will teach you essential data preprocessing techniques using R's powerful tidyverse ecosystem.
+
+Think of data preprocessing like preparing fish for cooking - before you can make a delicious meal (analysis), you need to clean, scale, and cut the fish properly (preprocess the data). Just as a chef needs the right tools and techniques, we'll learn the right R packages and methods for effective data preprocessing.
+
+:::{.callout-note}
+## Learning Objectives
+By the end of this tutorial, you will:
+- Understand why data preprocessing is crucial for analysis
+- Learn essential tidyverse functions for data cleaning
+- Master common preprocessing tasks in fisheries data
+- Develop a systematic approach to data preprocessing
+- Handle missing values and inconsistencies effectively
+:::
+
+## Understanding Data Preprocessing 📋
+
+### Why Preprocess Data?
+
+Raw fisheries data often comes with several challenges:
+- Inconsistent variable names
+- Missing values
+- Mixed data types
+- Duplicate records
+- Unstandardized categories
+- Nested or complex data structures
+
+Let's look at a typical raw fisheries dataset:
+
+```{webr}
+#| autorun: false
+# Create a messy fisheries dataset
+raw_fishing_data <- data.frame(
+    Date = c("2024-01-01", "2024/01/02", "2024.01.03"),
+    Landing.Site = c("Beach A", "beach a", "BEACH_A"),
+    Species_Name = c("Tuna", NA, "tuna"),
+    catch.weight = c("120 kg", "80", "90.5"),
+    Gear_type = c("gillnet", "Gill Net", "GILLNET"),
+    No.of.fishers = c("3", NA, "2"),
+    temp_C = c(25, 26, NA),
+    stringsAsFactors = FALSE
+)
+
+print("Raw messy data:")
+raw_fishing_data
+```
+
+This data has several common issues:
+1. Inconsistent date formats
+2. Different cases in site names
+3. Missing values (NA)
+4. Inconsistent units and measurements
+5. Variable naming inconsistencies
+6. Mixed data types
+
+### Essential Packages for Preprocessing
+
+Before we start cleaning, let's load and understand our preprocessing toolkit:
+
+```{webr}
+#| autorun: false
+# Load required packages
+library(tidyverse)  # Core data manipulation and transformation (includes dplyr, ggplot2, readr)
+library(janitor)    # Clean variable names and data consistency
+library(lubridate)  # Handle dates and times effectively
+library(stringr)    # String manipulation and pattern matching
+```
+
+Each package serves specific purposes:
+- **tidyverse**: Core data manipulation and transformation packages
+  - dplyr: Data manipulation functions like filter(), select(), mutate()
+  - tidyr: Tools for creating tidy data with pivot_longer() and pivot_wider()
+  - ggplot2: Data visualization
+  - readr: Fast and friendly data import
+- **janitor**: Clean variable names and data consistency, with functions like clean_names()
+- **lubridate**: Handle dates and times effectively with intuitive parsing functions
+- **stringr**: String manipulation with consistent str_ prefix functions
+
+### Initial Data Inspection
+
+Before diving into cleaning, it's crucial to understand our data structure. The `glimpse()` function provides a compact and informative view:
+
+```{webr}
+#| autorun: false
+# Initial inspection of our data
+glimpse(raw_fishing_data)
+
+# Get a statistical summary
+summary(raw_fishing_data)
+
+# Check for missing values
+colSums(is.na(raw_fishing_data))
+```
+
+What these functions tell us:
+- `glimpse()`: Shows dimensions, column types, and data preview
+- `summary()`: Provides statistical summaries for each column
+- `colSums(is.na())`: Counts missing values per column
+
+From this inspection, we can identify several issues to address in our preprocessing steps.
+
+## Starting with Clean Names 🏷️
+
+The first step in preprocessing is usually standardizing variable names. Consistent naming makes your code more readable and less prone to errors.
+
+### Using clean_names()
+
+The `janitor::clean_names()` function provides a simple way to standardize column names:
+
+```{webr}
+#| autorun: false
+# Clean the variable names
+clean_names_data <- raw_fishing_data %>%
+    janitor::clean_names()
+
+# Compare original and cleaned names
+data.frame(
+    original = names(raw_fishing_data),
+    cleaned = names(clean_names_data)
+) %>%
+    print()
+
+print("\nData with cleaned names:")
+clean_names_data
+```
+
+Notice how `clean_names()`:
+- Converts to lowercase
+- Replaces spaces with underscores
+- Removes special characters
+- Creates consistent naming patterns
+
+## String Manipulation and Pattern Matching 🔤
+
+String manipulation is crucial for cleaning text data like species names, locations, and gear types. The `stringr` package provides consistent functions for these tasks.
+
+### Core stringr Functions
+
+Let's explore the most commonly used string functions:
+
+```{webr}
+#| autorun: false
+# Create sample messy text data
+text_examples <- c(
+    "  Yellowfin TUNA  ",
+    "SKIP-JACK",
+    "Big_eye_tuna",
+    "YellowfinTuna",
+    "yft"
+)
+
+# Demonstrate core stringr functions
+string_cleaning <- tibble(
+    original = text_examples,
+    
+    # Basic cleaning
+    trimmed = str_trim(original),           # Remove whitespace
+    lowercase = str_to_lower(trimmed),      # Convert to lowercase
+    no_special = str_replace_all(lowercase, "[^[:alnum:]]", " "), # Remove special characters
+    
+    # Pattern matching
+    has_tuna = str_detect(lowercase, "tuna"),  # Check for pattern
+    
+    # Extract patterns
+    abbreviation = str_extract(lowercase, "[a-z]{2,3}$"),  # Extract 2-3 letter codes
+    
+    # String length
+    length = str_length(original)
+)
+
+print("String cleaning examples:")
+string_cleaning
+```
+
+### Standardizing Text Values
+
+Let's apply these string functions to clean categorical variables:
+
+```{webr}
+#| autorun: false
+# Clean and standardize our text columns
+standardized_data <- clean_names_data %>%
+    mutate(
+        # Standardize landing site names
+        landing_site = str_to_lower(landing_site) %>%
+            str_replace_all("_", " ") %>%
+            str_trim(),
+        
+        # Standardize species names
+        species_name = str_to_lower(species_name) %>%
+            str_trim(),
+            
+        # Clean catch weight (remove 'kg' and convert to numeric)
+        catch_weight = str_remove(catch_weight, " kg") %>%
+            as.numeric(),
+            
+        # Standardize gear types
+        gear_type = case_when(
+            str_detect(str_to_lower(gear_type), "gill") ~ "gillnet",
+            TRUE ~ str_to_lower(gear_type)
+        )
+    )
+
+print("Standardized data:")
+standardized_data
+```
+
+## Handling Missing Values (NA) 🔍
+
+Missing values are common in fisheries data and can appear in different forms. Understanding and handling them properly is crucial for reliable analysis.
+
+### Identifying Missing Values
+
+First, let's understand different types of missing values:
+
+```{webr}
+#| autorun: false
+# Create data with various types of missing values
+missing_data <- data.frame(
+    date = c("2024-01-01", "", "2024-01-03", "2024-01-04"),
+    catch = c(100, NA, -999, 80),
+    species = c("tuna", "unknown", NA, "tuna"),
+    effort = c(5, -9, 0, 4),
+    stringsAsFactors = FALSE
+)
+
+# Check for different types of missing values
+missing_patterns <- missing_data %>%
+    summarise(
+        empty_strings = colSums(. == "", na.rm = TRUE),
+        NA_values = colSums(is.na(.)),
+        sentinel_values = colSums(. %in% c(-999, -9), na.rm = TRUE),
+        zeros = colSums(. == 0, na.rm = TRUE),
+        unknown_text = colSums(. == "unknown", na.rm = TRUE)
+    )
+
+print("Missing value patterns:")
+missing_patterns
+```
+
+### Cleaning Missing Values
+
+Let's handle these different types of missing values:
+
+```{webr}
+#| autorun: false
+# Clean missing values systematically
+clean_missing <- missing_data %>%
+    mutate(
+        # Clean date column
+        date = na_if(date, ""),  # Convert empty strings to NA
+        
+        # Clean catch column
+        catch = case_when(
+            catch == -999 ~ NA_real_,  # Convert sentinel values to NA
+            TRUE ~ catch
+        ),
+        
+        # Clean species column
+        species = na_if(species, "unknown"),  # Convert "unknown" to NA
+        
+        # Clean effort column
+        effort = case_when(
+            effort %in% c(-9, 0) ~ NA_real_,  # Convert sentinel and zero values to NA
+            TRUE ~ effort
+        )
+    )
+
+print("Data with cleaned missing values:")
+clean_missing
+```
+
+### Strategies for Handling Missing Values
+
+There are several approaches to dealing with missing values:
+
+```{webr}
+#| autorun: false
+# Demonstrate different missing value strategies
+missing_strategies <- clean_missing %>%
+    # Strategy 1: Remove rows with any missing values
+    drop_na() %>%
+    print("Complete cases only:") %>%
+    
+    # Strategy 2: Fill missing values with group means
+    group_by(species) %>%
+    mutate(
+        catch_filled = coalesce(catch, mean(catch, na.rm = TRUE)),
+        effort_filled = coalesce(effort, mean(effort, na.rm = TRUE))
+    ) %>%
+    ungroup() %>%
+    print("\nFilled with group means:") %>%
+    
+    # Strategy 3: Carry forward last observation
+    arrange(date) %>%
+    fill(catch, effort, .direction = "down") %>%
+    print("\nFilled with last observation:")
+```
+
+## Working with Dates and Times ⏰
+
+Handling dates and times is crucial in fisheries data. The `lubridate` package makes this task much easier by providing intuitive functions for parsing and manipulating dates.
+
+### Understanding Date Formats
+
+Dates in R can be stored in several formats:
+- `Date`: Simple dates (e.g., "2024-01-01")
+- `POSIXct`: Date-time objects stored as seconds since 1970
+- `POSIXlt`: Date-time objects stored as a list of components
+
+```{webr}
+#| autorun: false
+# Create data with various date formats
+dates_data <- data.frame(
+    date_str = c(
+        "2024-01-01",    # ISO format (YYYY-MM-DD)
+        "01/02/2024",    # American format (MM/DD/YYYY)
+        "03.01.2024",    # European format with dots
+        "2024/01/04",    # ISO with slashes
+        "05-Jan-2024",   # Mixed format with month name
+        "06Jan24"        # Abbreviated format
+    ),
+    time_str = c(
+        "09:30",         # 24-hour format
+        "9:30 AM",       # 12-hour format with AM/PM
+        "0930",          # 24-hour without colon
+        "14:45",         # 24-hour format
+        "2:45 PM",       # 12-hour with PM
+        "1445"           # 24-hour without colon
+    ),
+    stringsAsFactors = FALSE
+)
+
+# Show the structure of our date data
+glimpse(dates_data)
+```
+
+### Converting Strings to Dates
+
+Lubridate provides functions named after date formats:
+- `ymd()`: For "2024-01-01"
+- `mdy()`: For "01/02/2024"
+- `dmy()`: For "03.01.2024"
+
+```{webr}
+#| autorun: false
+# Convert dates using lubridate
+clean_dates <- dates_data %>%
+    mutate(
+        # Parse dates based on their format
+        date_clean = case_when(
+            str_detect(date_str, "^\\d{4}") ~ ymd(date_str),
+            str_detect(date_str, "/") ~ mdy(date_str),
+            str_detect(date_str, "-[A-Za-z]") ~ dmy(date_str),
+            TRUE ~ parse_date_time(date_str, orders = c("ymd", "dmY", "bdY"))
+        ),
+        
+        # Parse times
+        time_clean = case_when(
+            str_detect(time_str, ":") & !str_detect(time_str, "M$") ~ 
+                hm(time_str),
+            str_detect(time_str, "M$") ~ 
+                parse_date_time(time_str, "I:M p"),
+            nchar(time_str) == 4 ~ 
+                parse_date_time(time_str, "HM"),
+            TRUE ~ NA_POSIXct_
+        )
+    )
+
+print("Cleaned dates and times:")
+clean_dates
+```
+
+### Working with Date Components
+
+Lubridate makes it easy to extract and work with date components:
+
+```{webr}
+#| autorun: false
+# Create a sample datetime
+example_datetime <- ymd_hms("2024-01-15 14:30:45")
+
+# Extract various components
+date_components <- tibble(
+    original = example_datetime,
+    year = year(original),
+    month = month(original),
+    month_label = month(original, label = TRUE),
+    day = day(original),
+    wday = wday(original, label = TRUE),
+    hour = hour(original),
+    minute = minute(original),
+    second = second(original),
+    quarter = quarter(original)
+)
+
+print("Date components:")
+date_components
+```
+
+### Working with Time Periods and Durations
+
+```{webr}
+#| autorun: false
+# Create sample fishing trip times
+trip_data <- tibble(
+    start_time = ymd_hm("2024-01-15 06:30"),
+    end_time = ymd_hm("2024-01-15 14:45")
+) %>%
+    mutate(
+        duration_hours = as.numeric(difftime(end_time, start_time, units = "hours")),
+        duration_minutes = as.numeric(difftime(end_time, start_time, units = "mins")),
+        trip_period = interval(start_time, end_time),
+        is_morning = hour(start_time) < 12
+    )
+
+print("Trip duration analysis:")
+trip_data
+```
+
+### Fishing Seasons and Periods
+
+Let's analyze seasonal patterns in fishing data:
+
+```{webr}
+#| autorun: false
+# Create seasonal fishing data
+seasonal_data <- data.frame(
+    date = seq(as_date("2024-01-01"), as_date("2024-12-31"), by = "months"),
+    catch_kg = runif(12, 50, 150)
+)
+
+# Add seasonal information
+seasonal_analysis <- seasonal_data %>%
+    mutate(
+        # Basic date components
+        month_name = month(date, label = TRUE),
+        quarter = quarter(date),
+        
+        # Custom season definition
+        season = case_when(
+            month(date) %in% c(12, 1, 2) ~ "Winter",
+            month(date) %in% c(3, 4, 5) ~ "Spring",
+            month(date) %in% c(6, 7, 8) ~ "Summer",
+            TRUE ~ "Fall"
+        ),
+        
+        # Fishing period calculations
+        is_peak_season = month(date) %in% c(6, 7, 8),
+        days_in_month = days_in_month(date),
+        daily_avg_catch = catch_kg / days_in_month,
+        
+        # Additional time-based metrics
+        day_of_year = yday(date),
+        week_number = week(date),
+        weekday = wday(date, label = TRUE)
+    )
+
+print("Seasonal analysis:")
+seasonal_analysis
+```
+
+## Reshaping Data Structures 🔄
+
+Data often needs to be reshaped between wide and long formats for different types of analysis.
+
+### Long to Wide Format
+
+```{webr}
+#| autorun: false
+# Create long-format catch data
+long_catches <- data.frame(
+    date = rep(seq(as_date("2024-01-01"), as_date("2024-01-03"), by = "days"), each = 3),
+    species = rep(c("tuna", "mackerel", "sardine"), times = 3),
+    catch_kg = runif(9, 50, 150),
+    effort_hrs = runif(9, 3, 8)
+)
+
+# Convert to wide format
+wide_catches <- long_catches %>%
+    pivot_wider(
+        id_cols = date,
+        names_from = species,
+        values_from = c(catch_kg, effort_hrs)
+    )
+
+print("Original long format:")
+long_catches
+
+print("\nConverted to wide format:")
+wide_catches
+```
+
+### Wide to Long Format
+
+```{webr}
+#| autorun: false
+# Create wide-format data
+wide_data <- data.frame(
+    site = c("Beach A", "Beach B", "Beach C"),
+    tuna_catch = c(100, 120, 90),
+    tuna_value = c(1000, 1200, 900),
+    mackerel_catch = c(80, 70, 85),
+    mackerel_value = c(400, 350, 425)
+)
+
+# Convert to long format
+long_data <- wide_data %>%
+    pivot_longer(
+        cols = -site,
+        names_to = c("species", "variable"),
+        names_pattern = "(.+)_(.+)",
+        values_to = "value"
+    ) %>%
+    pivot_wider(
+        names_from = variable,
+        values_from = value
+    )
+
+print("Original wide format:")
+wide_data
+
+print("\nConverted to long format:")
+long_data
+```
+
+## Combining Multiple Datasets 🔄
+
+In fisheries research, we often need to combine data from different sources, such as catch data, effort data, and environmental measurements. Understanding different types of joins is crucial for this task.
+
+### Understanding Different Join Types
+
+Let's create some sample datasets that we might encounter in fisheries research:
+
+```{webr}
+#| autorun: false
+# Create three related datasets
+# 1. Catch data
+catch_data <- data.frame(
+    date = c("2024-01-01", "2024-01-02", "2024-01-03"),
+    site = c("Beach A", "Beach B", "Beach A"),
+    catch_kg = c(100, 80, 120),
+    species = c("tuna", "mackerel", "tuna")
+)
+
+# 2. Effort data (might have more dates)
+effort_data <- data.frame(
+    date = c("2024-01-01", "2024-01-02", "2024-01-03", "2024-01-04"),
+    site = c("Beach A", "Beach B", "Beach C", "Beach A"),
+    n_boats = c(3, 2, 2, 3),
+    n_fishers = c(9, 6, 6, 9)
+)
+
+# 3. Environmental data
+env_data <- data.frame(
+    date = c("2024-01-01", "2024-01-02", "2024-01-03"),
+    site = c("Beach A", "Beach B", "Beach A"),
+    temp_c = c(25, 26, 24),
+    wind_speed = c(10, 15, 12)
+)
+
+# Show our original datasets
+print("Catch data:")
+catch_data
+print("\nEffort data:")
+effort_data
+print("\nEnvironmental data:")
+env_data
+```
+
+### Types of Joins
+
+Let's explore different ways to combine these datasets:
+
+```{webr}
+#| autorun: false
+# 1. Inner join (keep only matching records)
+inner_joined <- catch_data %>%
+    inner_join(effort_data, by = c("date", "site")) %>%
+    inner_join(env_data, by = c("date", "site"))
+
+# 2. Left join (keep all catch records)
+left_joined <- catch_data %>%
+    left_join(effort_data, by = c("date", "site")) %>%
+    left_join(env_data, by = c("date", "site"))
+
+# 3. Full join (keep all records from all datasets)
+full_joined <- catch_data %>%
+    full_join(effort_data, by = c("date", "site")) %>%
+    full_join(env_data, by = c("date", "site"))
+
+# Compare results
+print("Inner join result (only matching records):")
+inner_joined
+
+print("\nLeft join result (all catch records):")
+left_joined
+
+print("\nFull join result (all records from all datasets):")
+full_joined
+```
+
+### Handling Join Complications
+
+Often, data from different sources needs cleaning before joining:
+
+```{webr}
+#| autorun: false
+# Create datasets with common joining problems
+catches_messy <- data.frame(
+    survey_date = c("2024-01-01", "2024-01-02", "2024-01-03"),
+    location = c("BEACH A", "Beach B", "beach a"),
+    catch_kg = c(100, 80, 120)
+)
+
+effort_messy <- data.frame(
+    date = c("01/01/2024", "02/01/2024", "03/01/2024"),
+    site_name = c("Beach A", "Beach B", "Beach A"),
+    boats = c(3, 2, 3)
+)
+
+# Clean and join messy data
+clean_joined <- catches_messy %>%
+    # Clean catch data first
+    mutate(
+        survey_date = ymd(survey_date),
+        location = str_to_lower(location) %>%
+            str_replace_all("_", " ") %>%
+            str_trim()
+    ) %>%
+    # Join with cleaned effort data
+    left_join(
+        effort_messy %>%
+            mutate(
+                date = dmy(date),
+                site_name = str_to_lower(site_name)
+            ),
+        by = c("survey_date" = "date", "location" = "site_name")
+    )
+
+print("Cleaned and joined data:")
+clean_joined
+```
+
+### Using bind_rows() and bind_cols()
+
+Sometimes we need to combine data vertically or horizontally:
+
+```{webr}
+#| autorun: false
+# Create sample datasets for binding
+data_2023 <- data.frame(
+    date = c("2023-12-30", "2023-12-31"),
+    site = c("Beach A", "Beach B"),
+    catch = c(90, 85)
+)
+
+data_2024 <- data.frame(
+    date = c("2024-01-01", "2024-01-02"),
+    site = c("Beach A", "Beach B"),
+    catch = c(100, 95)
+)
+
+# Vertical binding (stacking)
+combined_years <- bind_rows(
+    data_2023 %>% mutate(year = "2023"),
+    data_2024 %>% mutate(year = "2024")
+)
+
+print("Vertically combined data:")
+combined_years
+```
+
+### Practice Exercises 💪
+
+Let's practice combining datasets:
+
+```{webr}
+#| autorun: false
+#| echo: true
+# Exercise 1: Join these datasets
+catch_records <- data.frame(
+    date = c("2024-01-01", "2024-01-02"),
+    site = c("Site A", "Site B"),
+    catch = c(100, 80)
+)
+
+site_info <- data.frame(
+    site_name = c("Site A", "Site B", "Site C"),
+    type = c("Beach", "Reef", "Beach"),
+    region = c("North", "North", "South")
+)
+
+# Your code here:
+
+```
+
+<details>
+<summary>Click to see solution</summary>
+
+```{webr}
+#| autorun: false
+#| eval: false
+catch_records %>%
+    left_join(
+        site_info %>%
+            rename(site = site_name),
+        by = "site"
+    ) %>%
+    mutate(
+        date = ymd(date),
+        site = str_trim(site),
+        type = str_trim(type)
+    )
+```
+</details>
+
+## Key Points to Remember 🗝️
+
+1. Data Cleaning Strategy:
+   - Always inspect data before cleaning
+   - Document your cleaning steps
+   - Keep original data unchanged
+   - Use consistent naming conventions
+   - Handle missing values appropriately
+
+2. Essential Functions:
+   - `clean_names()` for variable names
+   - `str_` functions for text cleaning
+   - Lubridate functions for dates
+   - `pivot_` functions for reshaping
+   - Join functions for combining data
+
+3. Best Practices:
+   - Clean data before joining
+   - Check results after each step
+   - Use appropriate data types
+   - Handle missing values explicitly
+   - Keep transformations reproducible
+
+## Next Steps 🚀
+
+Now that you've mastered basic preprocessing, you can:
+- Create preprocessing workflows for your own data
+- Explore more advanced cleaning techniques
+- Learn about quality control methods
+- Automate your preprocessing steps
+- Share your knowledge with colleagues
+
+Remember: Good preprocessing is the foundation of reliable analysis. Take the time to do it right! 🎯
+
