@@ -12,8 +12,7 @@ webr:
     - tidyverse
     - janitor
     - skimr
-resources: 
-  - ../data/malawi_ssf.csv
+    - readr
 ---
 
 {{< include ../_extensions/r-wasm/live/_knitr.qmd >}}
@@ -47,7 +46,7 @@ library(janitor)
 library(skimr)
 
 # Read the landing site data
-malawi_ssf <- read.csv("data/malawi_ssf.csv")
+malawi_ssf <- readr::read_csv("https://raw.githubusercontent.com/WorldFishCenter/ssf.training/refs/heads/update-pages/data/malawi_ssf.csv")
 
 # Initial inspection
 glimpse(malawi_ssf)
