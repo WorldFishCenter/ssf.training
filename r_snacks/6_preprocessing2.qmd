@@ -13,7 +13,7 @@ webr:
     - janitor
     - skimr
 resources: 
-  - ../data
+  - ../data/malawi_ssf.csv
 ---
 
 {{< include ../_extensions/r-wasm/live/_knitr.qmd >}}
