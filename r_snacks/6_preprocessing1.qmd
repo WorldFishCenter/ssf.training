@@ -86,14 +86,14 @@ library(stringr)    # String manipulation and pattern matching
 ```
 
 Each package serves specific purposes:
-- **tidyverse**: Core data manipulation and transformation packages
-  - dplyr: Data manipulation functions like filter(), select(), mutate()
-  - tidyr: Tools for creating tidy data with pivot_longer() and pivot_wider()
-  - ggplot2: Data visualization
-  - readr: Fast and friendly data import
-- **janitor**: Clean variable names and data consistency, with functions like clean_names()
-- **lubridate**: Handle dates and times effectively with intuitive parsing functions
-- **stringr**: String manipulation with consistent str_ prefix functions
+- [**tidyverse**](https://www.tidyverse.org/): Core data manipulation and transformation packages
+  - [dplyr](https://dplyr.tidyverse.org/): Data manipulation functions like filter(), select(), mutate()
+  - [tidyr](https://tidyr.tidyverse.org/): Tools for creating tidy data with pivot_longer() and pivot_wider()
+  - [ggplot2](https://ggplot2.tidyverse.org/): Data visualization
+  - [readr](https://readr.tidyverse.org/): Fast and friendly data import
+- [**janitor**](https://cran.r-project.org/web/packages/janitor/vignettes/janitor.html): Clean variable names and data consistency, with functions like clean_names()
+- [**lubridate**](https://lubridate.tidyverse.org/): Handle dates and times effectively with intuitive parsing functions
+- [**stringr**](https://stringr.tidyverse.org/): String manipulation with consistent str_ prefix functions
 
 ### Initial Data Inspection
 
@@ -245,16 +245,29 @@ missing_data <- data.frame(
 
 # Check for different types of missing values
 missing_patterns <- missing_data %>%
-    summarise(
-        empty_strings = colSums(. == "", na.rm = TRUE),
-        NA_values = colSums(is.na(.)),
-        sentinel_values = colSums(. %in% c(-999, -9), na.rm = TRUE),
-        zeros = colSums(. == 0, na.rm = TRUE),
-        unknown_text = colSums(. == "unknown", na.rm = TRUE)
+    summarise(across(everything(), 
+        list(
+            empty_strings = ~sum(. == "", na.rm = TRUE),
+            NA_values = ~sum(is.na(.)),
+            sentinel_values = ~sum(. %in% c(-999, -9), na.rm = TRUE),
+            zeros = ~sum(. == 0, na.rm = TRUE),
+            unknown_text = ~sum(. == "unknown", na.rm = TRUE)
+        )
+    )) %>%
+    # Reshape for better viewing
+    tidyr::pivot_longer(
+        everything(),
+        names_to = c("variable", "type"),
+        names_pattern = "(.*)_(.*)",
+        values_to = "count"
+    ) %>%
+    tidyr::pivot_wider(
+        names_from = "type",
+        values_from = "count"
     )
 
 print("Missing value patterns:")
-missing_patterns
+print(missing_patterns)
 ```
 
 ### Cleaning Missing Values
@@ -295,25 +308,45 @@ There are several approaches to dealing with missing values:
 
 ```{webr}
 #| autorun: false
-# Demonstrate different missing value strategies
-missing_strategies <- clean_missing %>%
-    # Strategy 1: Remove rows with any missing values
-    drop_na() %>%
-    print("Complete cases only:") %>%
-    
-    # Strategy 2: Fill missing values with group means
+# Create data with various types of missing values
+missing_data <- data.frame(
+    date = c("2024-01-01", "", "2024-01-03", "2024-01-04"),
+    catch = c(100, NA, -999, 80),
+    species = c("tuna", "unknown", NA, "tuna"),
+    effort = c(5, -9, 0, 4),
+    stringsAsFactors = FALSE
+)
+
+# Clean missing values
+clean_missing <- missing_data %>%
+    mutate(
+        # Clean character columns
+        date = na_if(date, ""),
+        species = na_if(species, "unknown"),
+        # Clean numeric columns
+        catch = if_else(catch == -999, NA_real_, catch),
+        effort = if_else(effort == -9, NA_real_, effort)
+    )
+
+# Show different strategies
+# 1. Remove rows with any missing values
+print("Strategy 1: Complete cases only")
+clean_missing %>% drop_na()
+
+# 2. Fill with group means
+print("\nStrategy 2: Fill with group means")
+clean_missing %>%
     group_by(species) %>%
     mutate(
-        catch_filled = coalesce(catch, mean(catch, na.rm = TRUE)),
-        effort_filled = coalesce(effort, mean(effort, na.rm = TRUE))
-    ) %>%
-    ungroup() %>%
-    print("\nFilled with group means:") %>%
-    
-    # Strategy 3: Carry forward last observation
+        catch = ifelse(is.na(catch), mean(catch, na.rm = TRUE), catch),
+        effort = ifelse(is.na(effort), mean(effort, na.rm = TRUE), effort)
+    )
+
+# 3. Carry forward last observation
+print("\nStrategy 3: Fill with previous values")
+clean_missing %>%
     arrange(date) %>%
-    fill(catch, effort, .direction = "down") %>%
-    print("\nFilled with last observation:")
+    fill(catch, effort)
 ```
 
 ## Working with Dates and Times ⏰
@@ -363,31 +396,43 @@ Lubridate provides functions named after date formats:
 
 ```{webr}
 #| autorun: false
-# Convert dates using lubridate
+# Create sample data with various date/time formats
+dates_data <- data.frame(
+    date_str = c(
+        "2024-01-01",    # ISO format
+        "01/02/2024",    # American format
+        "03-Jan-2024",   # British format with month name
+        "2024/01/04"     # ISO with slashes
+    ),
+    time_str = c(
+        "09:30",         # 24-hour format
+        "9:30 AM",       # 12-hour format
+        "0930",          # 24-hour without colon
+        "14:45"          # 24-hour format
+    ),
+    stringsAsFactors = FALSE
+)
+
+# Clean dates and times separately
 clean_dates <- dates_data %>%
     mutate(
-        # Parse dates based on their format
+        # Clean dates
         date_clean = case_when(
             str_detect(date_str, "^\\d{4}") ~ ymd(date_str),
             str_detect(date_str, "/") ~ mdy(date_str),
             str_detect(date_str, "-[A-Za-z]") ~ dmy(date_str),
-            TRUE ~ parse_date_time(date_str, orders = c("ymd", "dmY", "bdY"))
+            TRUE ~ as.Date(NA)
         ),
         
-        # Parse times
-        time_clean = case_when(
-            str_detect(time_str, ":") & !str_detect(time_str, "M$") ~ 
-                hm(time_str),
-            str_detect(time_str, "M$") ~ 
-                parse_date_time(time_str, "I:M p"),
-            nchar(time_str) == 4 ~ 
-                parse_date_time(time_str, "HM"),
-            TRUE ~ NA_POSIXct_
-        )
+        # Clean times - convert all to 24-hour format
+        time_clean = hms::as_hms(parse_date_time(time_str, 
+            orders = c("HM", "IMp", "HM")))
     )
 
-print("Cleaned dates and times:")
-clean_dates
+# Show results
+print("Original and cleaned dates/times:")
+print(clean_dates)
+
 ```
 
 ### Working with Date Components

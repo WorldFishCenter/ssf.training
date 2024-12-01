@@ -7,8 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="SSF Training Team">
+<meta name="dcterms.date" content="2024-11-06">
 
-<title>This Section is currrently work in Progress – R for SSF: Data Analysis Training</title>
+<title>4.6 R Resources for Fisheries Analysis: Essential Tools and Packages – R for SSF: Data Analysis Training</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -163,7 +164,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">This Section is currrently work in Progress</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../r_snacks/9_references.html">Resources</a></li><li class="breadcrumb-item"><a href="../r_snacks/9_references.html">1. Resources for Fisheries Analysis</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -175,9 +176,14 @@ ul.task-list li input[type="checkbox"] {
 <!-- content -->
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-body">
-      <h1 class="title">This Section is currrently work in Progress</h1>
-                      </div>
+    <div class="quarto-title column-body"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../r_snacks/9_references.html">Resources</a></li><li class="breadcrumb-item"><a href="../r_snacks/9_references.html">1. Resources for Fisheries Analysis</a></li></ol></nav>
+      <h1 class="title">4.6 R Resources for Fisheries Analysis: Essential Tools and Packages</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">R</div>
+                <div class="quarto-category">Fisheries</div>
+                <div class="quarto-category">Resources</div>
+              </div>
+                  </div>
   </div>
     
   
@@ -190,6 +196,12 @@ ul.task-list li input[type="checkbox"] {
             </div>
     </div>
       
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">November 6, 2024</p>
+      </div>
+    </div>
     
       
     </div>
@@ -299,7 +311,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../r_snacks/9_references.html" class="sidebar-item-text sidebar-link">
+  <a href="../r_snacks/9_references.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">1. Resources for Fisheries Analysis</span></a>
   </div>
 </li>
@@ -310,8 +322,21 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#essential-r-resources-for-fisheries-analysis" id="toc-essential-r-resources-for-fisheries-analysis" class="nav-link active" data-scroll-target="#essential-r-resources-for-fisheries-analysis">Essential R Resources for Fisheries Analysis 🎯</a>
+  <ul class="collapse">
+  <li><a href="#core-fisheries-resources-in-r" id="toc-core-fisheries-resources-in-r" class="nav-link" data-scroll-target="#core-fisheries-resources-in-r">Core Fisheries Resources in R</a></li>
+  <li><a href="#additional-useful-resources" id="toc-additional-useful-resources" class="nav-link" data-scroll-target="#additional-useful-resources">Additional Useful Resources 📚</a></li>
+  <li><a href="#online-learning-resources" id="toc-online-learning-resources" class="nav-link" data-scroll-target="#online-learning-resources">Online Learning Resources 🌐</a></li>
+  <li><a href="#practice-exercise-accessing-fisheries-data" id="toc-practice-exercise-accessing-fisheries-data" class="nav-link" data-scroll-target="#practice-exercise-accessing-fisheries-data">Practice Exercise: Accessing Fisheries Data 💪</a></li>
+  <li><a href="#next-steps" id="toc-next-steps" class="nav-link" data-scroll-target="#next-steps">Next Steps 🚀</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
@@ -320,15 +345,181 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/workinprogress.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" width="150"></p>
-</figure>
+<section id="essential-r-resources-for-fisheries-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="essential-r-resources-for-fisheries-analysis">Essential R Resources for Fisheries Analysis 🎯</h2>
+<p>R has become a cornerstone tool in fisheries science, offering a wide range of specialized packages and resources. This tutorial will guide you through some of the most valuable R resources available for fisheries analysis, from data access to stock assessment.</p>
+<section id="core-fisheries-resources-in-r" class="level3">
+<h3 class="anchored" data-anchor-id="core-fisheries-resources-in-r">Core Fisheries Resources in R</h3>
+<p>Let’s explore some essential resources that every fisheries researcher should know about:</p>
+<section id="fishbase-access-with-rfishbase-works-only-locally" class="level4">
+<h4 class="anchored" data-anchor-id="fishbase-access-with-rfishbase-works-only-locally">1. FishBase Access with rfishbase (works only locally) 🐟</h4>
+<p>The <code>rfishbase</code> package provides programmatic access to FishBase, one of the most comprehensive databases of fish species information:</p>
+<div class="cell" data-autorun="false">
+<div>
+<div id="webr-1">
+
 </div>
+<script type="webr-1-contents">
+eyJjb2RlIjoiIyBMb2FkIHJlcXVpcmVkIHBhY2thZ2VzXG5saWJyYXJ5KHJmaXNoYmFzZSlcblxuIyBFeGFtcGxlOiBHZXQgaW5mb3JtYXRpb24gYWJvdXQgTmlsZSBUaWxhcGlhXG5zcGVjaWVzX2luZm8gPC0gc3BlY2llcyhcIk9yZW9jaHJvbWlzIG5pbG90aWN1c1wiKVxuXG4jIFZpZXcgYmFzaWMgaW5mb3JtYXRpb25cbnByaW50KFwiQmFzaWMgc3BlY2llcyBpbmZvcm1hdGlvbjpcIilcbnNwZWNpZXNfaW5mbyAlPiVcbiAgICBzZWxlY3QoU3BlY2llcywgRkJuYW1lLCBGcmVzaCwgQnJhY2ssIFNhbHR3YXRlciwgRGVtZXJzUGVsYWcpICU+JVxuICAgIHByaW50KClcblxuIyBHZXQgc2l6ZSBpbmZvcm1hdGlvblxuc2l6ZV9pbmZvIDwtIGxlbmd0aF93ZWlnaHQoXCJPcmVvY2hyb21pcyBuaWxvdGljdXNcIilcbnByaW50KFwiXFxuTGVuZ3RoLXdlaWdodCByZWxhdGlvbnNoaXBzOlwiKVxuc2l6ZV9pbmZvICU+JVxuICAgIHNlbGVjdChhLCBiLCBUeXBlKSAlPiVcbiAgICBoZWFkKCkiLCJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJldmFsIjp0cnVlLCJlZGl0Ijp0cnVlfX0=
+</script>
+</div>
+</div>
+<p>Key features of rfishbase: - Access to species taxonomy - Life history parameters - Length-weight relationships - Distribution data - Ecological information</p>
+</section>
+<section id="the-fishr-package" class="level4">
+<h4 class="anchored" data-anchor-id="the-fishr-package">2. The fishR Package 📊</h4>
+<p>The fishR package, documented at <a href="https://fishr-core-team.github.io/fishR/">fishR-Core-Team</a>, provides tools specifically designed for fisheries analysis. You can find <a href="https://fishr-core-team.github.io/fishR/pages/packages.html">there</a> an incredible collection of teaching materials and packages for fisheries science.</p>
+<div class="cell" data-autorun="false">
+<div>
+<div id="webr-2">
+
+</div>
+<script type="webr-2-contents">
+eyJjb2RlIjoiIyBFeGFtcGxlIG9mIGNvbW1vbiBmaXNoZXJpZXMgY2FsY3VsYXRpb25zXG4jIE5vdGU6IFVzaW5nIGJhc2UgUiBmb3IgaWxsdXN0cmF0aW9uIGFzIGZpc2hSIGlzbid0IGF2YWlsYWJsZSBpbiB3ZWJSXG5cbiMgTGVuZ3RoLXdlaWdodCByZWxhdGlvbnNoaXBcbmxlbmd0aHMgPC0gYygxMiwgMTUsIDE4LCAyMCwgMjIsIDI1KVxud2VpZ2h0cyA8LSBjKDI1LCA0NSwgNzgsIDEwNSwgMTQwLCAxOTApXG5cbiMgTG9nLXRyYW5zZm9ybSBmb3IgbGluZWFyIHJlbGF0aW9uc2hpcFxubG1fZml0IDwtIGxtKGxvZyh3ZWlnaHRzKSB+IGxvZyhsZW5ndGhzKSlcblxuIyBQbG90IHJlbGF0aW9uc2hpcFxucGxvdChsb2cobGVuZ3RocyksIGxvZyh3ZWlnaHRzKSxcbiAgICAgeGxhYiA9IFwibG9nKExlbmd0aClcIixcbiAgICAgeWxhYiA9IFwibG9nKFdlaWdodClcIixcbiAgICAgbWFpbiA9IFwiTGVuZ3RoLVdlaWdodCBSZWxhdGlvbnNoaXBcIilcbmFibGluZShsbV9maXQsIGNvbCA9IFwicmVkXCIpIiwiYXR0ciI6eyJhdXRvcnVuIjpmYWxzZSwiZXZhbCI6dHJ1ZSwiZWRpdCI6dHJ1ZX19
+</script>
+</div>
+</div>
+<p>fishR provides: - Age and growth analysis - Mortality estimation - Stock assessment tools - Data visualization functions</p>
+</section>
+<section id="using-mixed-effects-models-in-fisheries" class="level4">
+<h4 class="anchored" data-anchor-id="using-mixed-effects-models-in-fisheries">3. Using Mixed-Effects Models in Fisheries</h4>
+<p>The book “Using R for Modelling and Quantitative Methods in Fisheries” (<a href="https://haddonm.github.io/URMQMF/">URMQMF</a>) provides excellent guidance on: - Statistical modeling - Stock assessment - Time series analysis - Survey design</p>
+<p>Let’s look at an example of modeling catch data:</p>
+<div class="cell" data-autorun="false">
+<div>
+<div id="webr-3">
+
+</div>
+<script type="webr-3-contents">
+eyJjb2RlIjoiIyBFeGFtcGxlIG9mIG1vZGVsaW5nIGNhdGNoIGRhdGFcbiMgQ3JlYXRlIHNhbXBsZSBkYXRhXG5zZXQuc2VlZCgxMjMpXG5jYXRjaF9kYXRhIDwtIGRhdGEuZnJhbWUoXG4gICAgeWVhciA9IHJlcCgyMDIwOjIwMjQsIGVhY2ggPSA0KSxcbiAgICBzZWFzb24gPSByZXAoYyhcIlNwcmluZ1wiLCBcIlN1bW1lclwiLCBcIkZhbGxcIiwgXCJXaW50ZXJcIiksIHRpbWVzID0gNSksXG4gICAgY2F0Y2ggPSBybm9ybSgyMCwgbWVhbiA9IDEwMCwgc2QgPSAyMClcbilcblxuIyBGaXQgYSBzaW1wbGUgbGluZWFyIG1vZGVsXG5tb2RlbCA8LSBsbShjYXRjaCB+IHllYXIgKyBzZWFzb24sIGRhdGEgPSBjYXRjaF9kYXRhKVxuXG4jIFZpZXcgbW9kZWwgc3VtbWFyeVxuc3VtbWFyeShtb2RlbClcblxuIyBQbG90IHByZWRpY3Rpb25zXG5nZ3Bsb3QoY2F0Y2hfZGF0YSwgYWVzKHggPSB5ZWFyLCB5ID0gY2F0Y2gsIGNvbG9yID0gc2Vhc29uKSkgK1xuICAgIGdlb21fcG9pbnQoKSArXG4gICAgZ2VvbV9zbW9vdGgobWV0aG9kID0gXCJsbVwiLCBzZSA9IEZBTFNFKSArXG4gICAgbGFicyh0aXRsZSA9IFwiQ2F0Y2ggVHJlbmRzIGJ5IFNlYXNvblwiLFxuICAgICAgICAgeCA9IFwiWWVhclwiLFxuICAgICAgICAgeSA9IFwiQ2F0Y2hcIikgK1xuICAgIHRoZW1lX21pbmltYWwoKSIsImF0dHIiOnsiYXV0b3J1biI6ZmFsc2UsImV2YWwiOnRydWUsImVkaXQiOnRydWV9fQ==
+</script>
+</div>
+</div>
+</section>
+</section>
+<section id="additional-useful-resources" class="level3">
+<h3 class="anchored" data-anchor-id="additional-useful-resources">Additional Useful Resources 📚</h3>
+<ol type="1">
+<li><strong>Stock Assessment Packages</strong>
+<ul>
+<li><code>FSA</code> (Fisheries Stock Assessment)</li>
+<li><code>TropFishR</code> for tropical fisheries</li>
+<li><code>ss3sim</code> for Stock Synthesis simulations</li>
+</ul></li>
+<li><strong>Spatial Analysis</strong>
+<ul>
+<li><code>sf</code> for spatial features</li>
+<li><code>marmap</code> for marine maps</li>
+<li><code>oceanmap</code> for oceanographic data</li>
+</ul></li>
+</ol>
+<p>Let’s see an example of spatial visualization:</p>
+<div class="cell" data-autorun="false">
+<div>
+<div id="webr-4">
+
+</div>
+<script type="webr-4-contents">
+eyJjb2RlIjoiIyBDcmVhdGUgc2FtcGxlIGZpc2hpbmcgbG9jYXRpb25zXG5maXNoaW5nX3Nwb3RzIDwtIGRhdGEuZnJhbWUoXG4gICAgbG9uID0gYygzNC42MiwgMzQuNTksIDM0LjYxKSxcbiAgICBsYXQgPSBjKC0xMy43MiwgLTEzLjY4LCAtMTMuNzApLFxuICAgIGNhdGNoID0gYygxMjAsIDg1LCA5NSlcbilcblxuIyBCYXNpYyBwbG90XG5nZ3Bsb3QoZmlzaGluZ19zcG90cywgYWVzKHggPSBsb24sIHkgPSBsYXQpKSArXG4gICAgZ2VvbV9wb2ludChhZXMoc2l6ZSA9IGNhdGNoKSwgY29sb3IgPSBcImJsdWVcIiwgYWxwaGEgPSAwLjYpICtcbiAgICBjb29yZF9tYXAoKSArXG4gICAgbGFicyh0aXRsZSA9IFwiRmlzaGluZyBMb2NhdGlvbnNcIixcbiAgICAgICAgIHggPSBcIkxvbmdpdHVkZVwiLFxuICAgICAgICAgeSA9IFwiTGF0aXR1ZGVcIixcbiAgICAgICAgIHNpemUgPSBcIkNhdGNoIChrZylcIikgK1xuICAgIHRoZW1lX21pbmltYWwoKSIsImF0dHIiOnsiYXV0b3J1biI6ZmFsc2UsImV2YWwiOnRydWUsImVkaXQiOnRydWV9fQ==
+</script>
+</div>
+</div>
+</section>
+<section id="online-learning-resources" class="level3">
+<h3 class="anchored" data-anchor-id="online-learning-resources">Online Learning Resources 🌐</h3>
+<ol type="1">
+<li><strong>Tutorials and Courses</strong>
+<ul>
+<li><a href="https://fishr-core-team.github.io/fishR/articles/">FishR Course</a></li>
+<li><a href="https://www.fisheries.noaa.gov/resource/educational-materials/r-training-materials">NOAA’s R Training</a></li>
+<li>Stock assessment workshops materials</li>
+</ul></li>
+<li><strong>Reference Materials</strong>
+<ul>
+<li><a href="https://ropensci.org/packages/fisheries/">RFisheries Documentation</a></li>
+<li><a href="https://cran.r-project.org/web/packages/FSA/vignettes/">FSA Package Vignettes</a></li>
+<li>Community forums and discussion groups</li>
+</ul></li>
+</ol>
+</section>
+<section id="practice-exercise-accessing-fisheries-data" class="level3">
+<h3 class="anchored" data-anchor-id="practice-exercise-accessing-fisheries-data">Practice Exercise: Accessing Fisheries Data 💪</h3>
+<p>Let’s practice using some of these resources:</p>
+<div class="cell" data-autorun="false">
+<div>
+<div id="webr-5">
+
+</div>
+<script type="webr-5-contents">
+eyJjb2RlIjoiIyBFeGVyY2lzZTogVXNlIHJmaXNoYmFzZSB0bzpcbiMgMS4gR2V0IGluZm9ybWF0aW9uIGFib3V0IGEgc3BlY2llcyBvZiB5b3VyIGNob2ljZVxuIyAyLiBFeHRyYWN0IGl0cyBncm93dGggcGFyYW1ldGVyc1xuIyAzLiBDcmVhdGUgYSBzaW1wbGUgdmlzdWFsaXphdGlvbiBvZiB0aGUgZGF0YVxuXG4jIFlvdXIgY29kZSBoZXJlOiIsImF0dHIiOnsiYXV0b3J1biI6ZmFsc2UsImV2YWwiOnRydWUsImVkaXQiOnRydWUsImVjaG8iOnRydWV9fQ==
+</script>
+</div>
+</div>
+<details>
+<summary>
+Click to see solution
+</summary>
+<div class="cell" data-autorun="false">
+<div>
+<div id="webr-6">
+
+</div>
+<script type="webr-6-contents">
+eyJjb2RlIjoiIyBHZXQgc3BlY2llcyBpbmZvcm1hdGlvblxuc3BlY2llc19kYXRhIDwtIHNwZWNpZXMoXCJDaGFtYm9cIikgJT4lXG4gICAgc2VsZWN0KFNwZWNpZXMsIEZCbmFtZSwgRnJlc2gsIEJyYWNrLCBTYWx0d2F0ZXIpXG5cbiMgR2V0IGdyb3d0aCBwYXJhbWV0ZXJzXG5ncm93dGhfZGF0YSA8LSBwb3Bncm93dGgoXCJDaGFtYm9cIilcblxuIyBDcmVhdGUgdmlzdWFsaXphdGlvblxuaWYobnJvdyhncm93dGhfZGF0YSkgPiAwKSB7XG4gICAgZ2dwbG90KGdyb3d0aF9kYXRhLCBhZXMoeCA9IEssIHkgPSBMaW5mKSkgK1xuICAgICAgICBnZW9tX3BvaW50KCkgK1xuICAgICAgICBsYWJzKHRpdGxlID0gXCJHcm93dGggUGFyYW1ldGVycyBmb3IgQ2hhbWJvXCIsXG4gICAgICAgICAgICAgeCA9IFwiR3Jvd3RoIENvZWZmaWNpZW50IChLKVwiLFxuICAgICAgICAgICAgIHkgPSBcIkFzeW1wdG90aWMgTGVuZ3RoIChMaW5mKVwiKSArXG4gICAgICAgIHRoZW1lX21pbmltYWwoKVxufSIsImF0dHIiOnsiYXV0b3J1biI6ZmFsc2UsImV2YWwiOmZhbHNlLCJlZGl0IjpmYWxzZX19
+</script>
+</div>
+</div>
+</details>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tips for Using R in Fisheries Research
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>Start with well-documented packages</li>
+<li>Use version control for your analyses</li>
+<li>Document your analysis workflows</li>
+<li>Share code and methods with colleagues</li>
+<li>Engage with the R fisheries community</li>
+</ol>
+</div>
+</div>
+</section>
+<section id="next-steps" class="level3">
+<h3 class="anchored" data-anchor-id="next-steps">Next Steps 🚀</h3>
+<p>To deepen your R fisheries analysis skills:</p>
+<ol type="1">
+<li><strong>Explore Package Documentation</strong>
+<ul>
+<li>Read package vignettes thoroughly</li>
+<li>Try worked examples</li>
+<li>Understand function arguments</li>
+</ul></li>
+<li><strong>Join Communities</strong>
+<ul>
+<li>GitHub fisheries repositories</li>
+<li>Regional working groups</li>
+</ul></li>
+<li><strong>Practice with Real Data</strong>
+<ul>
+<li>Start with simple analyses</li>
+<li>Gradually increase complexity</li>
+<li>Document your workflows</li>
+</ul></li>
+</ol>
+<p>Remember: The R fisheries community is active and supportive. Don’t hesitate to ask questions and share your experiences! 🎣</p>
 
 
+<script type="webr-data">
+eyJwYWNrYWdlcyI6eyJwa2dzIjpbImV2YWx1YXRlIiwia25pdHIiLCJodG1sdG9vbHMiLCJ0aWR5dmVyc2UiLCJyZmlzaGJhc2UiLCJtYXBwcm9qIiwiZ3QiXSwicmVwb3MiOltdfSwib3B0aW9ucyI6eyJiYXNlVXJsIjoiaHR0cHM6Ly93ZWJyLnItd2FzbS5vcmcvdjAuNC4xLyJ9LCJyZW5kZXJfZGYiOiJndC1pbnRlcmFjdGl2ZSJ9
+</script>
 <script type="ojs-module-contents">
-eyJjb250ZW50cyI6W119
+eyJjb250ZW50cyI6W3siaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoie1xuICAvLyBXYWl0IGZvciBvdXRwdXQgdG8gYmUgd3JpdHRlbiB0byB0aGUgRE9NLCB0aGVuIHRyaWdnZXIgd2lkZ2V0IHJlbmRlcmluZ1xuICBhd2FpdCBfd2Vicl92YWx1ZV82O1xuICBpZiAod2luZG93LkhUTUxXaWRnZXRzKSB7XG4gICAgd2luZG93LkhUTUxXaWRnZXRzLnN0YXRpY1JlbmRlcigpO1xuICB9XG4gIGlmICh3aW5kb3cuUGFnZWRUYWJsZURvYykge1xuICAgIHdpbmRvdy5QYWdlZFRhYmxlRG9jLmluaXRBbGwoKTtcbiAgfVxufVxuIiwiY2VsbE5hbWUiOiJ3ZWJyLXdpZGdldC02In0seyJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoiX3dlYnJfdmFsdWVfNiA9IHtcbiAgY29uc3QgeyBoaWdobGlnaHRSLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwid2Vici02LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgLy8gRGVmYXVsdCBldmFsdWF0aW9uIGNvbmZpZ3VyYXRpb25cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oe1xuICAgIGlkOiBcIndlYnItNi1jb250ZW50c1wiLFxuICAgIGVjaG86IHRydWUsXG4gICAgb3V0cHV0OiB0cnVlXG4gIH0sIGJsb2NrLmF0dHIpO1xuXG4gIC8vIEV2YWx1YXRlIHRoZSBwcm92aWRlZCBSIGNvZGVcbiAgY29uc3QgcmVzdWx0ID0gd2ViUk9qcy5wcm9jZXNzKHtjb2RlOiBibG9jay5jb2RlLCBvcHRpb25zfSwge30pO1xuXG4gIC8vIEVhcmx5IHlpZWxkIHdoaWxlIHdlIHdhaXQgZm9yIHRoZSBmaXJzdCBldmFsdWF0aW9uIGFuZCByZW5kZXJcbiAgaWYgKG9wdGlvbnMub3V0cHV0ICYmICEoXCI2XCIgaW4gd2ViUk9qcy5yZW5kZXJlZE9qcykpIHtcbiAgICBjb25zdCBjb250YWluZXIgPSBkb2N1bWVudC5jcmVhdGVFbGVtZW50KFwiZGl2XCIpO1xuICAgIGNvbnN0IHNwaW5uZXIgPSBkb2N1bWVudC5jcmVhdGVFbGVtZW50KFwiZGl2XCIpO1xuXG4gICAgaWYgKG9wdGlvbnMuZWNobykge1xuICAgICAgLy8gU2hvdyBvdXRwdXQgYXMgaGlnaGxpZ2h0ZWQgc291cmNlXG4gICAgICBjb25zdCBwcmVFbGVtID0gZG9jdW1lbnQuY3JlYXRlRWxlbWVudChcInByZVwiKTtcbiAgICAgIGNvbnRhaW5lci5jbGFzc05hbWUgPSBcInNvdXJjZUNvZGVcIjtcbiAgICAgIHByZUVsZW0uY2xhc3NOYW1lID0gXCJzb3VyY2VDb2RlIHJcIjtcbiAgICAgIHByZUVsZW0uYXBwZW5kQ2hpbGQoaGlnaGxpZ2h0UihibG9jay5jb2RlKSk7XG4gICAgICBzcGlubmVyLmNsYXNzTmFtZSA9IFwic3Bpbm5lci1ncm93IHNwaW5uZXItZ3Jvdy1zbSBtLTIgcG9zaXRpb24tYWJzb2x1dGUgdG9wLTAgZW5kLTBcIjtcbiAgICAgIHByZUVsZW0uYXBwZW5kQ2hpbGQoc3Bpbm5lcik7XG4gICAgICBjb250YWluZXIuYXBwZW5kQ2hpbGQocHJlRWxlbSk7XG4gICAgfSBlbHNlIHtcbiAgICAgIHNwaW5uZXIuY2xhc3NOYW1lID0gXCJzcGlubmVyLWJvcmRlciBzcGlubmVyLWJvcmRlci1zbVwiO1xuICAgICAgY29udGFpbmVyLmFwcGVuZENoaWxkKHNwaW5uZXIpO1xuICAgIH1cblxuICAgIHlpZWxkIGNvbnRhaW5lcjtcbiAgfVxuXG4gIHdlYlJPanMucmVuZGVyZWRPanNbXCI2XCJdID0gdHJ1ZTtcbiAgeWllbGQgYXdhaXQgcmVzdWx0O1xufVxuIiwiY2VsbE5hbWUiOiJ3ZWJyLTYifSx7ImlubGluZSI6ZmFsc2UsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6IntcbiAgLy8gV2FpdCBmb3Igb3V0cHV0IHRvIGJlIHdyaXR0ZW4gdG8gdGhlIERPTSwgdGhlbiB0cmlnZ2VyIHdpZGdldCByZW5kZXJpbmdcbiAgYXdhaXQgX3dlYnJfdmFsdWVfNTtcbiAgaWYgKHdpbmRvdy5IVE1MV2lkZ2V0cykge1xuICAgIHdpbmRvdy5IVE1MV2lkZ2V0cy5zdGF0aWNSZW5kZXIoKTtcbiAgfVxuICBpZiAod2luZG93LlBhZ2VkVGFibGVEb2MpIHtcbiAgICB3aW5kb3cuUGFnZWRUYWJsZURvYy5pbml0QWxsKCk7XG4gIH1cbn1cbiIsImNlbGxOYW1lIjoid2Vici13aWRnZXQtNSJ9LHsiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldCIsInNvdXJjZSI6InZpZXdvZiBfd2Vicl9lZGl0b3JfNSA9IHtcbiAgY29uc3QgeyBXZWJSRXhlcmNpc2VFZGl0b3IsIGI2NERlY29kZSB9ID0gd2luZG93Ll9leGVyY2lzZV9vanNfcnVudGltZTtcbiAgY29uc3Qgc2NyaXB0Q29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJ3ZWJyLTUtY29udGVudHNcXFwiXWApLnRleHRDb250ZW50O1xuICBjb25zdCBibG9jayA9IEpTT04ucGFyc2UoYjY0RGVjb2RlKHNjcmlwdENvbnRlbnQpKTtcblxuICBjb25zdCBvcHRpb25zID0gT2JqZWN0LmFzc2lnbih7IGlkOiBgd2Vici01LWNvbnRlbnRzYCB9LCBibG9jay5hdHRyKTtcbiAgY29uc3QgZWRpdG9yID0gbmV3IFdlYlJFeGVyY2lzZUVkaXRvcih3ZWJST2pzLndlYlJQcm9taXNlLCBibG9jay5jb2RlLCBvcHRpb25zKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl93ZWJyX3ZhbHVlXzUgPSB3ZWJST2pzLnByb2Nlc3MoX3dlYnJfZWRpdG9yXzUsIHt9KTtcbiIsImNlbGxOYW1lIjoid2Vici01In0seyJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJ7XG4gIC8vIFdhaXQgZm9yIG91dHB1dCB0byBiZSB3cml0dGVuIHRvIHRoZSBET00sIHRoZW4gdHJpZ2dlciB3aWRnZXQgcmVuZGVyaW5nXG4gIGF3YWl0IF93ZWJyX3ZhbHVlXzQ7XG4gIGlmICh3aW5kb3cuSFRNTFdpZGdldHMpIHtcbiAgICB3aW5kb3cuSFRNTFdpZGdldHMuc3RhdGljUmVuZGVyKCk7XG4gIH1cbiAgaWYgKHdpbmRvdy5QYWdlZFRhYmxlRG9jKSB7XG4gICAgd2luZG93LlBhZ2VkVGFibGVEb2MuaW5pdEFsbCgpO1xuICB9XG59XG4iLCJjZWxsTmFtZSI6IndlYnItd2lkZ2V0LTQifSx7ImlubGluZSI6ZmFsc2UsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJzb3VyY2UiOiJ2aWV3b2YgX3dlYnJfZWRpdG9yXzQgPSB7XG4gIGNvbnN0IHsgV2ViUkV4ZXJjaXNlRWRpdG9yLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwid2Vici00LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHdlYnItNC1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBXZWJSRXhlcmNpc2VFZGl0b3Iod2ViUk9qcy53ZWJSUHJvbWlzZSwgYmxvY2suY29kZSwgb3B0aW9ucyk7XG5cbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG5fd2Vicl92YWx1ZV80ID0gd2ViUk9qcy5wcm9jZXNzKF93ZWJyX2VkaXRvcl80LCB7fSk7XG4iLCJjZWxsTmFtZSI6IndlYnItNCJ9LHsiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoie1xuICAvLyBXYWl0IGZvciBvdXRwdXQgdG8gYmUgd3JpdHRlbiB0byB0aGUgRE9NLCB0aGVuIHRyaWdnZXIgd2lkZ2V0IHJlbmRlcmluZ1xuICBhd2FpdCBfd2Vicl92YWx1ZV8zO1xuICBpZiAod2luZG93LkhUTUxXaWRnZXRzKSB7XG4gICAgd2luZG93LkhUTUxXaWRnZXRzLnN0YXRpY1JlbmRlcigpO1xuICB9XG4gIGlmICh3aW5kb3cuUGFnZWRUYWJsZURvYykge1xuICAgIHdpbmRvdy5QYWdlZFRhYmxlRG9jLmluaXRBbGwoKTtcbiAgfVxufVxuIiwiY2VsbE5hbWUiOiJ3ZWJyLXdpZGdldC0zIn0seyJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF93ZWJyX2VkaXRvcl8zID0ge1xuICBjb25zdCB7IFdlYlJFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuICBjb25zdCBzY3JpcHRDb250ZW50ID0gZG9jdW1lbnQucXVlcnlTZWxlY3Rvcihgc2NyaXB0W3R5cGU9XFxcIndlYnItMy1jb250ZW50c1xcXCJdYCkudGV4dENvbnRlbnQ7XG4gIGNvbnN0IGJsb2NrID0gSlNPTi5wYXJzZShiNjREZWNvZGUoc2NyaXB0Q29udGVudCkpO1xuXG4gIGNvbnN0IG9wdGlvbnMgPSBPYmplY3QuYXNzaWduKHsgaWQ6IGB3ZWJyLTMtY29udGVudHNgIH0sIGJsb2NrLmF0dHIpO1xuICBjb25zdCBlZGl0b3IgPSBuZXcgV2ViUkV4ZXJjaXNlRWRpdG9yKHdlYlJPanMud2ViUlByb21pc2UsIGJsb2NrLmNvZGUsIG9wdGlvbnMpO1xuXG4gIHJldHVybiBlZGl0b3IuY29udGFpbmVyO1xufVxuX3dlYnJfdmFsdWVfMyA9IHdlYlJPanMucHJvY2Vzcyhfd2Vicl9lZGl0b3JfMywge30pO1xuIiwiY2VsbE5hbWUiOiJ3ZWJyLTMifSx7ImlubGluZSI6ZmFsc2UsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6IntcbiAgLy8gV2FpdCBmb3Igb3V0cHV0IHRvIGJlIHdyaXR0ZW4gdG8gdGhlIERPTSwgdGhlbiB0cmlnZ2VyIHdpZGdldCByZW5kZXJpbmdcbiAgYXdhaXQgX3dlYnJfdmFsdWVfMjtcbiAgaWYgKHdpbmRvdy5IVE1MV2lkZ2V0cykge1xuICAgIHdpbmRvdy5IVE1MV2lkZ2V0cy5zdGF0aWNSZW5kZXIoKTtcbiAgfVxuICBpZiAod2luZG93LlBhZ2VkVGFibGVEb2MpIHtcbiAgICB3aW5kb3cuUGFnZWRUYWJsZURvYy5pbml0QWxsKCk7XG4gIH1cbn1cbiIsImNlbGxOYW1lIjoid2Vici13aWRnZXQtMiJ9LHsiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldCIsInNvdXJjZSI6InZpZXdvZiBfd2Vicl9lZGl0b3JfMiA9IHtcbiAgY29uc3QgeyBXZWJSRXhlcmNpc2VFZGl0b3IsIGI2NERlY29kZSB9ID0gd2luZG93Ll9leGVyY2lzZV9vanNfcnVudGltZTtcbiAgY29uc3Qgc2NyaXB0Q29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJ3ZWJyLTItY29udGVudHNcXFwiXWApLnRleHRDb250ZW50O1xuICBjb25zdCBibG9jayA9IEpTT04ucGFyc2UoYjY0RGVjb2RlKHNjcmlwdENvbnRlbnQpKTtcblxuICBjb25zdCBvcHRpb25zID0gT2JqZWN0LmFzc2lnbih7IGlkOiBgd2Vici0yLWNvbnRlbnRzYCB9LCBibG9jay5hdHRyKTtcbiAgY29uc3QgZWRpdG9yID0gbmV3IFdlYlJFeGVyY2lzZUVkaXRvcih3ZWJST2pzLndlYlJQcm9taXNlLCBibG9jay5jb2RlLCBvcHRpb25zKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl93ZWJyX3ZhbHVlXzIgPSB3ZWJST2pzLnByb2Nlc3MoX3dlYnJfZWRpdG9yXzIsIHt9KTtcbiIsImNlbGxOYW1lIjoid2Vici0yIn0seyJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJ7XG4gIC8vIFdhaXQgZm9yIG91dHB1dCB0byBiZSB3cml0dGVuIHRvIHRoZSBET00sIHRoZW4gdHJpZ2dlciB3aWRnZXQgcmVuZGVyaW5nXG4gIGF3YWl0IF93ZWJyX3ZhbHVlXzE7XG4gIGlmICh3aW5kb3cuSFRNTFdpZGdldHMpIHtcbiAgICB3aW5kb3cuSFRNTFdpZGdldHMuc3RhdGljUmVuZGVyKCk7XG4gIH1cbiAgaWYgKHdpbmRvdy5QYWdlZFRhYmxlRG9jKSB7XG4gICAgd2luZG93LlBhZ2VkVGFibGVEb2MuaW5pdEFsbCgpO1xuICB9XG59XG4iLCJjZWxsTmFtZSI6IndlYnItd2lkZ2V0LTEifSx7ImlubGluZSI6ZmFsc2UsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJzb3VyY2UiOiJ2aWV3b2YgX3dlYnJfZWRpdG9yXzEgPSB7XG4gIGNvbnN0IHsgV2ViUkV4ZXJjaXNlRWRpdG9yLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwid2Vici0xLWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHdlYnItMS1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBXZWJSRXhlcmNpc2VFZGl0b3Iod2ViUk9qcy53ZWJSUHJvbWlzZSwgYmxvY2suY29kZSwgb3B0aW9ucyk7XG5cbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG5fd2Vicl92YWx1ZV8xID0gd2ViUk9qcy5wcm9jZXNzKF93ZWJyX2VkaXRvcl8xLCB7fSk7XG4iLCJjZWxsTmFtZSI6IndlYnItMSJ9LHsiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoid2ViUk9qcyA9IHtcbiAgY29uc3QgeyBXZWJSIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lLldlYlI7XG4gIGNvbnN0IHtcbiAgICBXZWJSRXZhbHVhdG9yLFxuICAgIFdlYlJFbnZpcm9ubWVudE1hbmFnZXIsXG4gICAgc2V0dXBSLFxuICAgIGI2NERlY29kZSxcbiAgICBjb2xsYXBzZVBhdGhcbiAgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG5cbiAgY29uc3Qgc3RhdHVzQ29udGFpbmVyID0gZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoXCJleGVyY2lzZS1sb2FkaW5nLXN0YXR1c1wiKTtcbiAgY29uc3QgaW5kaWNhdG9yQ29udGFpbmVyID0gZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoXCJleGVyY2lzZS1sb2FkaW5nLWluZGljYXRvclwiKTtcbiAgaW5kaWNhdG9yQ29udGFpbmVyLmNsYXNzTGlzdC5yZW1vdmUoXCJkLW5vbmVcIik7XG5cbiAgbGV0IHN0YXR1c1RleHQgPSBkb2N1bWVudC5jcmVhdGVFbGVtZW50KFwiZGl2XCIpXG4gIHN0YXR1c1RleHQuY2xhc3NMaXN0ID0gXCJleGVyY2lzZS1sb2FkaW5nLWRldGFpbHNcIjtcbiAgc3RhdHVzVGV4dCA9IHN0YXR1c0NvbnRhaW5lci5hcHBlbmRDaGlsZChzdGF0dXNUZXh0KTtcbiAgc3RhdHVzVGV4dC50ZXh0Q29udGVudCA9IGBJbml0aWFsaXNlYDtcblxuICAvLyBIb2lzdCBpbmRpY2F0b3Igb3V0IGZyb20gZmluYWwgc2xpZGUgd2hlbiBydW5uaW5nIHVuZGVyIHJldmVhbFxuICBjb25zdCByZXZlYWxTdGF0dXMgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKFwiLnJldmVhbCAuZXhlcmNpc2UtbG9hZGluZy1pbmRpY2F0b3JcIik7XG4gIGlmIChyZXZlYWxTdGF0dXMpIHtcbiAgICByZXZlYWxTdGF0dXMucmVtb3ZlKCk7XG4gICAgZG9jdW1lbnQucXVlcnlTZWxlY3RvcihcIi5yZXZlYWwgPiAuc2xpZGVzXCIpLmFwcGVuZENoaWxkKHJldmVhbFN0YXR1cyk7XG4gIH1cblxuICAvLyB3ZWJSIHN1cHBsZW1lbnRhbCBkYXRhIGFuZCBvcHRpb25zXG4gIGNvbnN0IGRhdGFDb250ZW50ID0gZG9jdW1lbnQucXVlcnlTZWxlY3Rvcihgc2NyaXB0W3R5cGU9XFxcIndlYnItZGF0YVxcXCJdYCkudGV4dENvbnRlbnQ7XG4gIGNvbnN0IGRhdGEgPSBKU09OLnBhcnNlKGI2NERlY29kZShkYXRhQ29udGVudCkpO1xuXG4gIC8vIEdyYWIgbGlzdCBvZiByZXNvdXJjZXMgdG8gYmUgZG93bmxvYWRlZFxuICBjb25zdCBmaWxlc0NvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwidmZzLWZpbGVcXFwiXWApLnRleHRDb250ZW50O1xuICBjb25zdCBmaWxlcyA9IEpTT04ucGFyc2UoYjY0RGVjb2RlKGZpbGVzQ29udGVudCkpO1xuXG4gIC8vIEluaXRpYWxpc2Ugd2ViUiBhbmQgc2V0dXAgZm9yIFIgY29kZSBldmFsdWF0aW9uXG4gIGxldCB3ZWJSUHJvbWlzZSA9IChhc3luYyAod2ViUikgPT4ge1xuICAgIHN0YXR1c1RleHQudGV4dENvbnRlbnQgPSBgRG93bmxvYWRpbmcgd2ViUmA7XG4gICAgYXdhaXQgd2ViUi5pbml0KCk7XG5cbiAgICAvLyBJbnN0YWxsIHByb3ZpZGVkIGxpc3Qgb2YgcGFja2FnZXNcbiAgICAvLyBFbnN1cmUgd2ViUiBkZWZhdWx0IHJlcG8gaXMgaW5jbHVkZWRcbiAgICBkYXRhLnBhY2thZ2VzLnJlcG9zLnB1c2goXCJodHRwczovL3JlcG8uci13YXNtLm9yZ1wiKVxuICAgIGF3YWl0IGRhdGEucGFja2FnZXMucGtncy5tYXAoKHBrZykgPT4gKCkgPT4ge1xuICAgICAgc3RhdHVzVGV4dC50ZXh0Q29udGVudCA9IGBEb3dubG9hZGluZyBwYWNrYWdlOiAke3BrZ31gO1xuICAgICAgcmV0dXJuIHdlYlIuZXZhbFJWb2lkKGBcbiAgICAgICAgd2Vicjo6aW5zdGFsbChwa2csIHJlcG9zID0gcmVwb3MpXG4gICAgICAgIGxpYnJhcnkocGtnLCBjaGFyYWN0ZXIub25seSA9IFRSVUUpXG4gICAgICBgLCB7IGVudjoge1xuICAgICAgICBwa2c6IHBrZyxcbiAgICAgICAgcmVwb3M6IGRhdGEucGFja2FnZXMucmVwb3MsXG4gICAgICB9fSk7XG4gICAgfSkucmVkdWNlKChjdXIsIG5leHQpID0+IGN1ci50aGVuKG5leHQpLCBQcm9taXNlLnJlc29sdmUoKSk7XG5cbiAgICAvLyBEb3dubG9hZCBhbmQgaW5zdGFsbCByZXNvdXJjZXNcbiAgICBhd2FpdCBmaWxlcy5tYXAoKGZpbGUpID0+IGFzeW5jICgpID0+IHtcbiAgICAgIGNvbnN0IG5hbWUgPSBmaWxlLnN1YnN0cmluZyhmaWxlLmxhc3RJbmRleE9mKCcvJykgKyAxKTtcbiAgICAgIHN0YXR1c1RleHQudGV4dENvbnRlbnQgPSBgRG93bmxvYWRpbmcgcmVzb3VyY2U6ICR7bmFtZX1gO1xuICAgICAgY29uc3QgcmVzcG9uc2UgPSBhd2FpdCBmZXRjaChmaWxlKTtcbiAgICAgIGlmICghcmVzcG9uc2Uub2spIHtcbiAgICAgICAgdGhyb3cgbmV3IEVycm9yKGBDYW4ndCBkb3dubG9hZCBcXGAke2ZpbGV9XFxgLiBFcnJvciAke3Jlc3BvbnNlLnN0YXR1c306IFwiJHtyZXNwb25zZS5zdGF0dXNUZXh0fVwiLmApO1xuICAgICAgfVxuICAgICAgY29uc3QgZGF0YSA9IGF3YWl0IHJlc3BvbnNlLmFycmF5QnVmZmVyKCk7XG5cbiAgICAgIC8vIFN0b3JlIFVSTHMgaW4gdGhlIGN3ZCB3aXRob3V0IGFueSBzdWJkaXJlY3Rvcnkgc3RydWN0dXJlXG4gICAgICBpZiAoZmlsZS5pbmNsdWRlcyhcIjovL1wiKSkge1xuICAgICAgICBmaWxlID0gbmFtZTtcbiAgICAgIH1cblxuICAgICAgLy8gQ29sbGFwc2UgaGlnaGVyIGRpcmVjdG9yeSBzdHJ1Y3R1cmVcbiAgICAgIGZpbGUgPSBjb2xsYXBzZVBhdGgoZmlsZSk7XG5cbiAgICAgIC8vIENyZWF0ZSBkaXJlY3RvcnkgdHJlZSwgaWdub3JpbmcgXCJkaXJlY3RvcnkgZXhpc3RzXCIgVkZTIGVycm9yc1xuICAgICAgY29uc3QgcGFydHMgPSBmaWxlLnNwbGl0KCcvJykuc2xpY2UoMCwgLTEpO1xuICAgICAgbGV0IHBhdGggPSAnJztcbiAgICAgIHdoaWxlIChwYXJ0cy5sZW5ndGggPiAwKSB7XG4gICAgICAgIHBhdGggKz0gcGFydHMuc2hpZnQoKSArICcvJztcbiAgICAgICAgdHJ5IHtcbiAgICAgICAgICBhd2FpdCB3ZWJSLkZTLm1rZGlyKHBhdGgpO1xuICAgICAgICB9IGNhdGNoIChlKSB7XG4gICAgICAgICAgaWYgKCFlLm1lc3NhZ2UuaW5jbHVkZXMoXCJGUyBlcnJvclwiKSkge1xuICAgICAgICAgICAgdGhyb3cgZTtcbiAgICAgICAgICB9XG4gICAgICAgIH1cbiAgICAgIH1cblxuICAgICAgLy8gV3JpdGUgdGhpcyBmaWxlIHRvIHRoZSBWRlNcbiAgICAgIHJldHVybiBhd2FpdCB3ZWJSLkZTLndyaXRlRmlsZShmaWxlLCBuZXcgVWludDhBcnJheShkYXRhKSk7XG4gICAgfSkucmVkdWNlKChjdXIsIG5leHQpID0+IGN1ci50aGVuKG5leHQpLCBQcm9taXNlLnJlc29sdmUoKSk7XG5cbiAgICBzdGF0dXNUZXh0LnRleHRDb250ZW50ID0gYEluc3RhbGxpbmcgd2ViUiBzaGltc2A7XG4gICAgYXdhaXQgd2ViUi5ldmFsUlZvaWQoYHdlYnI6OnNoaW1faW5zdGFsbCgpYCk7XG5cbiAgICBzdGF0dXNUZXh0LnRleHRDb250ZW50ID0gYFdlYlIgZW52aXJvbm1lbnQgc2V0dXBgO1xuICAgIGF3YWl0IHNldHVwUih3ZWJSLCBkYXRhKTtcblxuICAgIHN0YXR1c1RleHQucmVtb3ZlKCk7XG4gICAgaWYgKHN0YXR1c0NvbnRhaW5lci5jaGlsZHJlbi5sZW5ndGggPT0gMCkge1xuICAgICAgc3RhdHVzQ29udGFpbmVyLnBhcmVudE5vZGUucmVtb3ZlKCk7XG4gICAgfVxuICAgIHJldHVybiB3ZWJSO1xuICB9KShuZXcgV2ViUihkYXRhLm9wdGlvbnMpKTtcblxuICAvLyBLZWVwIHRyYWNrIG9mIGluaXRpYWwgT0pTIGJsb2NrIHJlbmRlclxuICBjb25zdCByZW5kZXJlZE9qcyA9IHt9O1xuXG4gIGNvbnN0IHByb2Nlc3MgPSBhc3luYyAoY29udGV4dCwgaW5wdXRzKSA9PiB7XG4gICAgY29uc3Qgd2ViUiA9IGF3YWl0IHdlYlJQcm9taXNlO1xuICAgIGNvbnN0IGV2YWx1YXRvciA9IG5ldyBXZWJSRXZhbHVhdG9yKHdlYlIsIGNvbnRleHQpXG4gICAgYXdhaXQgZXZhbHVhdG9yLnByb2Nlc3MoaW5wdXRzKTtcbiAgICByZXR1cm4gZXZhbHVhdG9yLmNvbnRhaW5lcjtcbiAgfVxuXG4gIHJldHVybiB7XG4gICAgcHJvY2VzcyxcbiAgICB3ZWJSUHJvbWlzZSxcbiAgICByZW5kZXJlZE9qcyxcbiAgfTtcbn1cbiIsImNlbGxOYW1lIjoid2Vici1wcmVsdWRlIn1dfQ==
 </script>
 <div id="exercise-loading-indicator" class="exercise-loading-indicator d-none d-flex align-items-center gap-2">
 <div id="exercise-loading-status" class="d-flex gap-2">
@@ -341,6 +532,8 @@ eyJjb250ZW50cyI6W119
 <script type="vfs-file">
 W10=
 </script>
+</section>
+</section>
 
 </main> <!-- /main -->
 <script type="ojs-module-contents">

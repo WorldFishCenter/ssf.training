@@ -1,0 +1,1397 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.56">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="SSF Training Team">
+<meta name="dcterms.date" content="2024-11-06">
+
+<title>5. Data Preprocessing in R: Getting Your Fisheries Data Ready for Analysis – R for SSF: Data Analysis Training</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../site_libs/quarto-contrib/live-runtime/live-runtime.js" type="module"></script>
+<link href="../site_libs/quarto-contrib/live-runtime/live-runtime.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script type="module" src="../site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
+<link href="../site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
+
+
+</head>
+
+<body class="nav-sidebar floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="https://upload.wikimedia.org/wikipedia/en/9/9e/WorldFish_logo.svg" alt="" class="navbar-logo">
+    </a>
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">R for Small-Scale Fisheries</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-tutorials" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Tutorials</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-tutorials">    
+        <li class="dropdown-header">Getting Started</li>
+        <li>
+    <a class="dropdown-item" href="../r_snacks/1_rbasics.html">
+ <span class="dropdown-text">1. R Installation</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../r_snacks/2_rbasics.html">
+ <span class="dropdown-text">2. Basic Operations</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../r_snacks/3_dataframes.html">
+ <span class="dropdown-text">3. Data Frames</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../r_snacks/4_packages.html">
+ <span class="dropdown-text">4. Packages in R</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../r_snacks/5_visualization.html">
+ <span class="dropdown-text">5. Data visualization</span></a>
+  </li>  
+        <li class="dropdown-header">─────────────────</li>
+        <li class="dropdown-header">Data Processing</li>
+        <li>
+    <a class="dropdown-item" href="../r_snacks/6_preprocessing1.html">
+ <span class="dropdown-text">1. From messy to tidy data</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../r_snacks/7_preprocessing2.html">
+ <span class="dropdown-text">2. A real case study</span></a>
+  </li>  
+        <li class="dropdown-header">─────────────────</li>
+        <li class="dropdown-header">Data Validation</li>
+        <li>
+    <a class="dropdown-item" href="../r_snacks/8_validation1.html">
+ <span class="dropdown-text">1. Validation in fisheries data</span></a>
+  </li>  
+        <li class="dropdown-header">─────────────────</li>
+        <li class="dropdown-header">Resources</li>
+        <li>
+    <a class="dropdown-item" href="../r_snacks/9_references.html">
+ <span class="dropdown-text">1. Resources for Fisheries Analysis</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/WorldFishCenter/ssf.training/"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../r_snacks/6_preprocessing1.html">Data processing</a></li><li class="breadcrumb-item"><a href="../r_snacks/6_preprocessing1.html">1. From messy to tidy data</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../r_snacks/6_preprocessing1.html">Data processing</a></li><li class="breadcrumb-item"><a href="../r_snacks/6_preprocessing1.html">1. From messy to tidy data</a></li></ol></nav>
+      <h1 class="title">5. Data Preprocessing in R: Getting Your Fisheries Data Ready for Analysis</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">R</div>
+                <div class="quarto-category">Data Cleaning</div>
+                <div class="quarto-category">Preprocessing</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>SSF Training Team </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">November 6, 2024</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="quarto-sidebar-header"><div class="sidebar-header-item">
+<p>Course contents:</p>
+</div></div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Getting Started</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../r_snacks/1_rbasics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1. R Installation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../r_snacks/2_rbasics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2. Basic Operations</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../r_snacks/3_dataframes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3. Data Frames</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../r_snacks/4_packages.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">4. Packages in R</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../r_snacks/5_visualization.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">5. Data visualization</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Data processing</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../r_snacks/6_preprocessing1.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">1. From messy to tidy data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../r_snacks/7_preprocessing2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2. A real case study</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Data validation</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../r_snacks/8_validation1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1. Validation in fisheries data</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Resources</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../r_snacks/9_references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1. Resources for Fisheries Analysis</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction 🎯</a></li>
+  <li><a href="#understanding-data-preprocessing" id="toc-understanding-data-preprocessing" class="nav-link" data-scroll-target="#understanding-data-preprocessing">Understanding Data Preprocessing 📋</a>
+  <ul class="collapse">
+  <li><a href="#why-preprocess-data" id="toc-why-preprocess-data" class="nav-link" data-scroll-target="#why-preprocess-data">Why Preprocess Data?</a></li>
+  <li><a href="#essential-packages-for-preprocessing" id="toc-essential-packages-for-preprocessing" class="nav-link" data-scroll-target="#essential-packages-for-preprocessing">Essential Packages for Preprocessing</a></li>
+  <li><a href="#initial-data-inspection" id="toc-initial-data-inspection" class="nav-link" data-scroll-target="#initial-data-inspection">Initial Data Inspection</a></li>
+  </ul></li>
+  <li><a href="#starting-with-clean-names" id="toc-starting-with-clean-names" class="nav-link" data-scroll-target="#starting-with-clean-names">Starting with Clean Names 🏷️</a>
+  <ul class="collapse">
+  <li><a href="#using-clean_names" id="toc-using-clean_names" class="nav-link" data-scroll-target="#using-clean_names">Using clean_names()</a></li>
+  </ul></li>
+  <li><a href="#string-manipulation-and-pattern-matching" id="toc-string-manipulation-and-pattern-matching" class="nav-link" data-scroll-target="#string-manipulation-and-pattern-matching">String Manipulation and Pattern Matching 🔤</a>
+  <ul class="collapse">
+  <li><a href="#core-stringr-functions" id="toc-core-stringr-functions" class="nav-link" data-scroll-target="#core-stringr-functions">Core stringr Functions</a></li>
+  <li><a href="#standardizing-text-values" id="toc-standardizing-text-values" class="nav-link" data-scroll-target="#standardizing-text-values">Standardizing Text Values</a></li>
+  </ul></li>
+  <li><a href="#handling-missing-values-na" id="toc-handling-missing-values-na" class="nav-link" data-scroll-target="#handling-missing-values-na">Handling Missing Values (NA) 🔍</a>
+  <ul class="collapse">
+  <li><a href="#identifying-missing-values" id="toc-identifying-missing-values" class="nav-link" data-scroll-target="#identifying-missing-values">Identifying Missing Values</a></li>
+  <li><a href="#cleaning-missing-values" id="toc-cleaning-missing-values" class="nav-link" data-scroll-target="#cleaning-missing-values">Cleaning Missing Values</a></li>
+  <li><a href="#strategies-for-handling-missing-values" id="toc-strategies-for-handling-missing-values" class="nav-link" data-scroll-target="#strategies-for-handling-missing-values">Strategies for Handling Missing Values</a></li>
+  </ul></li>
+  <li><a href="#working-with-dates-and-times" id="toc-working-with-dates-and-times" class="nav-link" data-scroll-target="#working-with-dates-and-times">Working with Dates and Times ⏰</a>
+  <ul class="collapse">
+  <li><a href="#understanding-date-formats" id="toc-understanding-date-formats" class="nav-link" data-scroll-target="#understanding-date-formats">Understanding Date Formats</a></li>
+  <li><a href="#converting-strings-to-dates" id="toc-converting-strings-to-dates" class="nav-link" data-scroll-target="#converting-strings-to-dates">Converting Strings to Dates</a></li>
+  <li><a href="#working-with-date-components" id="toc-working-with-date-components" class="nav-link" data-scroll-target="#working-with-date-components">Working with Date Components</a></li>
+  <li><a href="#working-with-time-periods-and-durations" id="toc-working-with-time-periods-and-durations" class="nav-link" data-scroll-target="#working-with-time-periods-and-durations">Working with Time Periods and Durations</a></li>
+  <li><a href="#fishing-seasons-and-periods" id="toc-fishing-seasons-and-periods" class="nav-link" data-scroll-target="#fishing-seasons-and-periods">Fishing Seasons and Periods</a></li>
+  </ul></li>
+  <li><a href="#reshaping-data-structures" id="toc-reshaping-data-structures" class="nav-link" data-scroll-target="#reshaping-data-structures">Reshaping Data Structures 🔄</a>
+  <ul class="collapse">
+  <li><a href="#long-to-wide-format" id="toc-long-to-wide-format" class="nav-link" data-scroll-target="#long-to-wide-format">Long to Wide Format</a></li>
+  <li><a href="#wide-to-long-format" id="toc-wide-to-long-format" class="nav-link" data-scroll-target="#wide-to-long-format">Wide to Long Format</a></li>
+  </ul></li>
+  <li><a href="#combining-multiple-datasets" id="toc-combining-multiple-datasets" class="nav-link" data-scroll-target="#combining-multiple-datasets">Combining Multiple Datasets 🔄</a>
+  <ul class="collapse">
+  <li><a href="#understanding-different-join-types" id="toc-understanding-different-join-types" class="nav-link" data-scroll-target="#understanding-different-join-types">Understanding Different Join Types</a></li>
+  <li><a href="#types-of-joins" id="toc-types-of-joins" class="nav-link" data-scroll-target="#types-of-joins">Types of Joins</a></li>
+  <li><a href="#handling-join-complications" id="toc-handling-join-complications" class="nav-link" data-scroll-target="#handling-join-complications">Handling Join Complications</a></li>
+  <li><a href="#using-bind_rows-and-bind_cols" id="toc-using-bind_rows-and-bind_cols" class="nav-link" data-scroll-target="#using-bind_rows-and-bind_cols">Using bind_rows() and bind_cols()</a></li>
+  <li><a href="#practice-exercises" id="toc-practice-exercises" class="nav-link" data-scroll-target="#practice-exercises">Practice Exercises 💪</a></li>
+  </ul></li>
+  <li><a href="#key-points-to-remember" id="toc-key-points-to-remember" class="nav-link" data-scroll-target="#key-points-to-remember">Key Points to Remember 🗝️</a></li>
+  <li><a href="#next-steps" id="toc-next-steps" class="nav-link" data-scroll-target="#next-steps">Next Steps 🚀</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction 🎯</h2>
+<p>In Small-Scale Fisheries (SSF) research, data rarely comes in a perfect, analysis-ready format. Field data collection, multiple data sources, and various recording methods often result in messy datasets that need careful preprocessing before analysis. This tutorial will teach you essential data preprocessing techniques using R’s powerful tidyverse ecosystem.</p>
+<p>Think of data preprocessing like preparing fish for cooking - before you can make a delicious meal (analysis), you need to clean, scale, and cut the fish properly (preprocess the data). Just as a chef needs the right tools and techniques, we’ll learn the right R packages and methods for effective data preprocessing.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Learning Objectives
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>By the end of this tutorial, you will: - Understand why data preprocessing is crucial for analysis - Learn essential tidyverse functions for data cleaning - Master common preprocessing tasks in fisheries data - Develop a systematic approach to data preprocessing - Handle missing values and inconsistencies effectively</p>
+</div>
+</div>
+</section>
+<section id="understanding-data-preprocessing" class="level2">
+<h2 class="anchored" data-anchor-id="understanding-data-preprocessing">Understanding Data Preprocessing 📋</h2>
+<section id="why-preprocess-data" class="level3">
+<h3 class="anchored" data-anchor-id="why-preprocess-data">Why Preprocess Data?</h3>
+<p>Raw fisheries data often comes with several challenges: - Inconsistent variable names - Missing values - Mixed data types - Duplicate records - Unstandardized categories - Nested or complex data structures</p>
+<p>Let’s look at a typical raw fisheries dataset:</p>
+<div class="cell" data-autorun="false">
+<div>
+<div id="webr-1">
+
+</div>
+<script type="webr-1-contents">
+eyJjb2RlIjoiIyBDcmVhdGUgYSBtZXNzeSBmaXNoZXJpZXMgZGF0YXNldFxucmF3X2Zpc2hpbmdfZGF0YSA8LSBkYXRhLmZyYW1lKFxuICAgIERhdGUgPSBjKFwiMjAyNC0wMS0wMVwiLCBcIjIwMjQvMDEvMDJcIiwgXCIyMDI0LjAxLjAzXCIpLFxuICAgIExhbmRpbmcuU2l0ZSA9IGMoXCJCZWFjaCBBXCIsIFwiYmVhY2ggYVwiLCBcIkJFQUNIX0FcIiksXG4gICAgU3BlY2llc19OYW1lID0gYyhcIlR1bmFcIiwgTkEsIFwidHVuYVwiKSxcbiAgICBjYXRjaC53ZWlnaHQgPSBjKFwiMTIwIGtnXCIsIFwiODBcIiwgXCI5MC41XCIpLFxuICAgIEdlYXJfdHlwZSA9IGMoXCJnaWxsbmV0XCIsIFwiR2lsbCBOZXRcIiwgXCJHSUxMTkVUXCIpLFxuICAgIE5vLm9mLmZpc2hlcnMgPSBjKFwiM1wiLCBOQSwgXCIyXCIpLFxuICAgIHRlbXBfQyA9IGMoMjUsIDI2LCBOQSksXG4gICAgc3RyaW5nc0FzRmFjdG9ycyA9IEZBTFNFXG4pXG5cbnByaW50KFwiUmF3IG1lc3N5IGRhdGE6XCIpXG5yYXdfZmlzaGluZ19kYXRhIiwiYXR0ciI6eyJhdXRvcnVuIjpmYWxzZSwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZX19
+</script>
+</div>
+</div>
+<p>This data has several common issues: 1. Inconsistent date formats 2. Different cases in site names 3. Missing values (NA) 4. Inconsistent units and measurements 5. Variable naming inconsistencies 6. Mixed data types</p>
+</section>
+<section id="essential-packages-for-preprocessing" class="level3">
+<h3 class="anchored" data-anchor-id="essential-packages-for-preprocessing">Essential Packages for Preprocessing</h3>
+<p>Before we start cleaning, let’s load and understand our preprocessing toolkit:</p>
+<div class="cell" data-autorun="false">
+<div>
+<div id="webr-2">
+
+</div>
+<script type="webr-2-contents">
+eyJjb2RlIjoiIyBMb2FkIHJlcXVpcmVkIHBhY2thZ2VzXG5saWJyYXJ5KHRpZHl2ZXJzZSkgICMgQ29yZSBkYXRhIG1hbmlwdWxhdGlvbiBhbmQgdHJhbnNmb3JtYXRpb24gKGluY2x1ZGVzIGRwbHlyLCBnZ3Bsb3QyLCByZWFkcilcbmxpYnJhcnkoamFuaXRvcikgICAgIyBDbGVhbiB2YXJpYWJsZSBuYW1lcyBhbmQgZGF0YSBjb25zaXN0ZW5jeVxubGlicmFyeShsdWJyaWRhdGUpICAjIEhhbmRsZSBkYXRlcyBhbmQgdGltZXMgZWZmZWN0aXZlbHlcbmxpYnJhcnkoc3RyaW5ncikgICAgIyBTdHJpbmcgbWFuaXB1bGF0aW9uIGFuZCBwYXR0ZXJuIG1hdGNoaW5nIiwiYXR0ciI6eyJhdXRvcnVuIjpmYWxzZSwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZX19
+</script>
+</div>
+</div>
+<p>Each package serves specific purposes: - <a href="https://www.tidyverse.org/"><strong>tidyverse</strong></a>: Core data manipulation and transformation packages - <a href="https://dplyr.tidyverse.org/">dplyr</a>: Data manipulation functions like filter(), select(), mutate() - <a href="https://tidyr.tidyverse.org/">tidyr</a>: Tools for creating tidy data with pivot_longer() and pivot_wider() - <a href="https://ggplot2.tidyverse.org/">ggplot2</a>: Data visualization - <a href="https://readr.tidyverse.org/">readr</a>: Fast and friendly data import - <a href="https://cran.r-project.org/web/packages/janitor/vignettes/janitor.html"><strong>janitor</strong></a>: Clean variable names and data consistency, with functions like clean_names() - <a href="https://lubridate.tidyverse.org/"><strong>lubridate</strong></a>: Handle dates and times effectively with intuitive parsing functions - <a href="https://stringr.tidyverse.org/"><strong>stringr</strong></a>: String manipulation with consistent str_ prefix functions</p>
+</section>
+<section id="initial-data-inspection" class="level3">
+<h3 class="anchored" data-anchor-id="initial-data-inspection">Initial Data Inspection</h3>
+<p>Before diving into cleaning, it’s crucial to understand our data structure. The <code>glimpse()</code> function provides a compact and informative view:</p>
+<div class="cell" data-autorun="false">
+<div>
+<div id="webr-3">
+
+</div>
+<script type="webr-3-contents">
+eyJjb2RlIjoiIyBJbml0aWFsIGluc3BlY3Rpb24gb2Ygb3VyIGRhdGFcbmdsaW1wc2UocmF3X2Zpc2hpbmdfZGF0YSlcblxuIyBHZXQgYSBzdGF0aXN0aWNhbCBzdW1tYXJ5XG5zdW1tYXJ5KHJhd19maXNoaW5nX2RhdGEpXG5cbiMgQ2hlY2sgZm9yIG1pc3NpbmcgdmFsdWVzXG5jb2xTdW1zKGlzLm5hKHJhd19maXNoaW5nX2RhdGEpKSIsImF0dHIiOnsiYXV0b3J1biI6ZmFsc2UsImVkaXQiOnRydWUsImV2YWwiOnRydWV9fQ==
+</script>
+</div>
+</div>
+<p>What these functions tell us: - <code>glimpse()</code>: Shows dimensions, column types, and data preview - <code>summary()</code>: Provides statistical summaries for each column - <code>colSums(is.na())</code>: Counts missing values per column</p>
+<p>From this inspection, we can identify several issues to address in our preprocessing steps.</p>
+</section>
+</section>
+<section id="starting-with-clean-names" class="level2">
+<h2 class="anchored" data-anchor-id="starting-with-clean-names">Starting with Clean Names 🏷️</h2>
+<p>The first step in preprocessing is usually standardizing variable names. Consistent naming makes your code more readable and less prone to errors.</p>
+<section id="using-clean_names" class="level3">
+<h3 class="anchored" data-anchor-id="using-clean_names">Using clean_names()</h3>
+<p>The <code>janitor::clean_names()</code> function provides a simple way to standardize column names:</p>
+<div class="cell" data-autorun="false">
+<div>
+<div id="webr-4">
+
+</div>
+<script type="webr-4-contents">
+eyJjb2RlIjoiIyBDbGVhbiB0aGUgdmFyaWFibGUgbmFtZXNcbmNsZWFuX25hbWVzX2RhdGEgPC0gcmF3X2Zpc2hpbmdfZGF0YSAlPiVcbiAgICBqYW5pdG9yOjpjbGVhbl9uYW1lcygpXG5cbiMgQ29tcGFyZSBvcmlnaW5hbCBhbmQgY2xlYW5lZCBuYW1lc1xuZGF0YS5mcmFtZShcbiAgICBvcmlnaW5hbCA9IG5hbWVzKHJhd19maXNoaW5nX2RhdGEpLFxuICAgIGNsZWFuZWQgPSBuYW1lcyhjbGVhbl9uYW1lc19kYXRhKVxuKSAlPiVcbiAgICBwcmludCgpXG5cbnByaW50KFwiXFxuRGF0YSB3aXRoIGNsZWFuZWQgbmFtZXM6XCIpXG5jbGVhbl9uYW1lc19kYXRhIiwiYXR0ciI6eyJhdXRvcnVuIjpmYWxzZSwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZX19
+</script>
+</div>
+</div>
+<p>Notice how <code>clean_names()</code>: - Converts to lowercase - Replaces spaces with underscores - Removes special characters - Creates consistent naming patterns</p>
+</section>
+</section>
+<section id="string-manipulation-and-pattern-matching" class="level2">
+<h2 class="anchored" data-anchor-id="string-manipulation-and-pattern-matching">String Manipulation and Pattern Matching 🔤</h2>
+<p>String manipulation is crucial for cleaning text data like species names, locations, and gear types. The <code>stringr</code> package provides consistent functions for these tasks.</p>
+<section id="core-stringr-functions" class="level3">
+<h3 class="anchored" data-anchor-id="core-stringr-functions">Core stringr Functions</h3>
+<p>Let’s explore the most commonly used string functions:</p>
+<div class="cell" data-autorun="false">
+<div>
+<div id="webr-5">
+
+</div>
+<script type="webr-5-contents">
+eyJjb2RlIjoiIyBDcmVhdGUgc2FtcGxlIG1lc3N5IHRleHQgZGF0YVxudGV4dF9leGFtcGxlcyA8LSBjKFxuICAgIFwiICBZZWxsb3dmaW4gVFVOQSAgXCIsXG4gICAgXCJTS0lQLUpBQ0tcIixcbiAgICBcIkJpZ19leWVfdHVuYVwiLFxuICAgIFwiWWVsbG93ZmluVHVuYVwiLFxuICAgIFwieWZ0XCJcbilcblxuIyBEZW1vbnN0cmF0ZSBjb3JlIHN0cmluZ3IgZnVuY3Rpb25zXG5zdHJpbmdfY2xlYW5pbmcgPC0gdGliYmxlKFxuICAgIG9yaWdpbmFsID0gdGV4dF9leGFtcGxlcyxcbiAgICBcbiAgICAjIEJhc2ljIGNsZWFuaW5nXG4gICAgdHJpbW1lZCA9IHN0cl90cmltKG9yaWdpbmFsKSwgICAgICAgICAgICMgUmVtb3ZlIHdoaXRlc3BhY2VcbiAgICBsb3dlcmNhc2UgPSBzdHJfdG9fbG93ZXIodHJpbW1lZCksICAgICAgIyBDb252ZXJ0IHRvIGxvd2VyY2FzZVxuICAgIG5vX3NwZWNpYWwgPSBzdHJfcmVwbGFjZV9hbGwobG93ZXJjYXNlLCBcIlteWzphbG51bTpdXVwiLCBcIiBcIiksICMgUmVtb3ZlIHNwZWNpYWwgY2hhcmFjdGVyc1xuICAgIFxuICAgICMgUGF0dGVybiBtYXRjaGluZ1xuICAgIGhhc190dW5hID0gc3RyX2RldGVjdChsb3dlcmNhc2UsIFwidHVuYVwiKSwgICMgQ2hlY2sgZm9yIHBhdHRlcm5cbiAgICBcbiAgICAjIEV4dHJhY3QgcGF0dGVybnNcbiAgICBhYmJyZXZpYXRpb24gPSBzdHJfZXh0cmFjdChsb3dlcmNhc2UsIFwiW2Etel17MiwzfSRcIiksICAjIEV4dHJhY3QgMi0zIGxldHRlciBjb2Rlc1xuICAgIFxuICAgICMgU3RyaW5nIGxlbmd0aFxuICAgIGxlbmd0aCA9IHN0cl9sZW5ndGgob3JpZ2luYWwpXG4pXG5cbnByaW50KFwiU3RyaW5nIGNsZWFuaW5nIGV4YW1wbGVzOlwiKVxuc3RyaW5nX2NsZWFuaW5nIiwiYXR0ciI6eyJhdXRvcnVuIjpmYWxzZSwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZX19
+</script>
+</div>
+</div>
+</section>
+<section id="standardizing-text-values" class="level3">
+<h3 class="anchored" data-anchor-id="standardizing-text-values">Standardizing Text Values</h3>
+<p>Let’s apply these string functions to clean categorical variables:</p>
+<div class="cell" data-autorun="false">
+<div>
+<div id="webr-6">
+
+</div>
+<script type="webr-6-contents">
+eyJjb2RlIjoiIyBDbGVhbiBhbmQgc3RhbmRhcmRpemUgb3VyIHRleHQgY29sdW1uc1xuc3RhbmRhcmRpemVkX2RhdGEgPC0gY2xlYW5fbmFtZXNfZGF0YSAlPiVcbiAgICBtdXRhdGUoXG4gICAgICAgICMgU3RhbmRhcmRpemUgbGFuZGluZyBzaXRlIG5hbWVzXG4gICAgICAgIGxhbmRpbmdfc2l0ZSA9IHN0cl90b19sb3dlcihsYW5kaW5nX3NpdGUpICU+JVxuICAgICAgICAgICAgc3RyX3JlcGxhY2VfYWxsKFwiX1wiLCBcIiBcIikgJT4lXG4gICAgICAgICAgICBzdHJfdHJpbSgpLFxuICAgICAgICBcbiAgICAgICAgIyBTdGFuZGFyZGl6ZSBzcGVjaWVzIG5hbWVzXG4gICAgICAgIHNwZWNpZXNfbmFtZSA9IHN0cl90b19sb3dlcihzcGVjaWVzX25hbWUpICU+JVxuICAgICAgICAgICAgc3RyX3RyaW0oKSxcbiAgICAgICAgICAgIFxuICAgICAgICAjIENsZWFuIGNhdGNoIHdlaWdodCAocmVtb3ZlICdrZycgYW5kIGNvbnZlcnQgdG8gbnVtZXJpYylcbiAgICAgICAgY2F0Y2hfd2VpZ2h0ID0gc3RyX3JlbW92ZShjYXRjaF93ZWlnaHQsIFwiIGtnXCIpICU+JVxuICAgICAgICAgICAgYXMubnVtZXJpYygpLFxuICAgICAgICAgICAgXG4gICAgICAgICMgU3RhbmRhcmRpemUgZ2VhciB0eXBlc1xuICAgICAgICBnZWFyX3R5cGUgPSBjYXNlX3doZW4oXG4gICAgICAgICAgICBzdHJfZGV0ZWN0KHN0cl90b19sb3dlcihnZWFyX3R5cGUpLCBcImdpbGxcIikgfiBcImdpbGxuZXRcIixcbiAgICAgICAgICAgIFRSVUUgfiBzdHJfdG9fbG93ZXIoZ2Vhcl90eXBlKVxuICAgICAgICApXG4gICAgKVxuXG5wcmludChcIlN0YW5kYXJkaXplZCBkYXRhOlwiKVxuc3RhbmRhcmRpemVkX2RhdGEiLCJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfX0=
+</script>
+</div>
+</div>
+</section>
+</section>
+<section id="handling-missing-values-na" class="level2">
+<h2 class="anchored" data-anchor-id="handling-missing-values-na">Handling Missing Values (NA) 🔍</h2>
+<p>Missing values are common in fisheries data and can appear in different forms. Understanding and handling them properly is crucial for reliable analysis.</p>
+<section id="identifying-missing-values" class="level3">
+<h3 class="anchored" data-anchor-id="identifying-missing-values">Identifying Missing Values</h3>
+<p>First, let’s understand different types of missing values:</p>
+<div class="cell" data-autorun="false">
+<div>
+<div id="webr-7">
+
+</div>
+<script type="webr-7-contents">
+eyJjb2RlIjoiIyBDcmVhdGUgZGF0YSB3aXRoIHZhcmlvdXMgdHlwZXMgb2YgbWlzc2luZyB2YWx1ZXNcbm1pc3NpbmdfZGF0YSA8LSBkYXRhLmZyYW1lKFxuICAgIGRhdGUgPSBjKFwiMjAyNC0wMS0wMVwiLCBcIlwiLCBcIjIwMjQtMDEtMDNcIiwgXCIyMDI0LTAxLTA0XCIpLFxuICAgIGNhdGNoID0gYygxMDAsIE5BLCAtOTk5LCA4MCksXG4gICAgc3BlY2llcyA9IGMoXCJ0dW5hXCIsIFwidW5rbm93blwiLCBOQSwgXCJ0dW5hXCIpLFxuICAgIGVmZm9ydCA9IGMoNSwgLTksIDAsIDQpLFxuICAgIHN0cmluZ3NBc0ZhY3RvcnMgPSBGQUxTRVxuKVxuXG4jIENoZWNrIGZvciBkaWZmZXJlbnQgdHlwZXMgb2YgbWlzc2luZyB2YWx1ZXNcbm1pc3NpbmdfcGF0dGVybnMgPC0gbWlzc2luZ19kYXRhICU+JVxuICAgIHN1bW1hcmlzZShhY3Jvc3MoZXZlcnl0aGluZygpLCBcbiAgICAgICAgbGlzdChcbiAgICAgICAgICAgIGVtcHR5X3N0cmluZ3MgPSB+c3VtKC4gPT0gXCJcIiwgbmEucm0gPSBUUlVFKSxcbiAgICAgICAgICAgIE5BX3ZhbHVlcyA9IH5zdW0oaXMubmEoLikpLFxuICAgICAgICAgICAgc2VudGluZWxfdmFsdWVzID0gfnN1bSguICVpbiUgYygtOTk5LCAtOSksIG5hLnJtID0gVFJVRSksXG4gICAgICAgICAgICB6ZXJvcyA9IH5zdW0oLiA9PSAwLCBuYS5ybSA9IFRSVUUpLFxuICAgICAgICAgICAgdW5rbm93bl90ZXh0ID0gfnN1bSguID09IFwidW5rbm93blwiLCBuYS5ybSA9IFRSVUUpXG4gICAgICAgIClcbiAgICApKSAlPiVcbiAgICAjIFJlc2hhcGUgZm9yIGJldHRlciB2aWV3aW5nXG4gICAgdGlkeXI6OnBpdm90X2xvbmdlcihcbiAgICAgICAgZXZlcnl0aGluZygpLFxuICAgICAgICBuYW1lc190byA9IGMoXCJ2YXJpYWJsZVwiLCBcInR5cGVcIiksXG4gICAgICAgIG5hbWVzX3BhdHRlcm4gPSBcIiguKilfKC4qKVwiLFxuICAgICAgICB2YWx1ZXNfdG8gPSBcImNvdW50XCJcbiAgICApICU+JVxuICAgIHRpZHlyOjpwaXZvdF93aWRlcihcbiAgICAgICAgbmFtZXNfZnJvbSA9IFwidHlwZVwiLFxuICAgICAgICB2YWx1ZXNfZnJvbSA9IFwiY291bnRcIlxuICAgIClcblxucHJpbnQoXCJNaXNzaW5nIHZhbHVlIHBhdHRlcm5zOlwiKVxucHJpbnQobWlzc2luZ19wYXR0ZXJucykiLCJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfX0=
+</script>
+</div>
+</div>
+</section>
+<section id="cleaning-missing-values" class="level3">
+<h3 class="anchored" data-anchor-id="cleaning-missing-values">Cleaning Missing Values</h3>
+<p>Let’s handle these different types of missing values:</p>
+<div class="cell" data-autorun="false">
+<div>
+<div id="webr-8">
+
+</div>
+<script type="webr-8-contents">
+eyJjb2RlIjoiIyBDbGVhbiBtaXNzaW5nIHZhbHVlcyBzeXN0ZW1hdGljYWxseVxuY2xlYW5fbWlzc2luZyA8LSBtaXNzaW5nX2RhdGEgJT4lXG4gICAgbXV0YXRlKFxuICAgICAgICAjIENsZWFuIGRhdGUgY29sdW1uXG4gICAgICAgIGRhdGUgPSBuYV9pZihkYXRlLCBcIlwiKSwgICMgQ29udmVydCBlbXB0eSBzdHJpbmdzIHRvIE5BXG4gICAgICAgIFxuICAgICAgICAjIENsZWFuIGNhdGNoIGNvbHVtblxuICAgICAgICBjYXRjaCA9IGNhc2Vfd2hlbihcbiAgICAgICAgICAgIGNhdGNoID09IC05OTkgfiBOQV9yZWFsXywgICMgQ29udmVydCBzZW50aW5lbCB2YWx1ZXMgdG8gTkFcbiAgICAgICAgICAgIFRSVUUgfiBjYXRjaFxuICAgICAgICApLFxuICAgICAgICBcbiAgICAgICAgIyBDbGVhbiBzcGVjaWVzIGNvbHVtblxuICAgICAgICBzcGVjaWVzID0gbmFfaWYoc3BlY2llcywgXCJ1bmtub3duXCIpLCAgIyBDb252ZXJ0IFwidW5rbm93blwiIHRvIE5BXG4gICAgICAgIFxuICAgICAgICAjIENsZWFuIGVmZm9ydCBjb2x1bW5cbiAgICAgICAgZWZmb3J0ID0gY2FzZV93aGVuKFxuICAgICAgICAgICAgZWZmb3J0ICVpbiUgYygtOSwgMCkgfiBOQV9yZWFsXywgICMgQ29udmVydCBzZW50aW5lbCBhbmQgemVybyB2YWx1ZXMgdG8gTkFcbiAgICAgICAgICAgIFRSVUUgfiBlZmZvcnRcbiAgICAgICAgKVxuICAgIClcblxucHJpbnQoXCJEYXRhIHdpdGggY2xlYW5lZCBtaXNzaW5nIHZhbHVlczpcIilcbmNsZWFuX21pc3NpbmciLCJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfX0=
+</script>
+</div>
+</div>
+</section>
+<section id="strategies-for-handling-missing-values" class="level3">
+<h3 class="anchored" data-anchor-id="strategies-for-handling-missing-values">Strategies for Handling Missing Values</h3>
+<p>There are several approaches to dealing with missing values:</p>
+<div class="cell" data-autorun="false">
+<div>
+<div id="webr-9">
+
+</div>
+<script type="webr-9-contents">
+eyJjb2RlIjoiIyBDcmVhdGUgZGF0YSB3aXRoIHZhcmlvdXMgdHlwZXMgb2YgbWlzc2luZyB2YWx1ZXNcbm1pc3NpbmdfZGF0YSA8LSBkYXRhLmZyYW1lKFxuICAgIGRhdGUgPSBjKFwiMjAyNC0wMS0wMVwiLCBcIlwiLCBcIjIwMjQtMDEtMDNcIiwgXCIyMDI0LTAxLTA0XCIpLFxuICAgIGNhdGNoID0gYygxMDAsIE5BLCAtOTk5LCA4MCksXG4gICAgc3BlY2llcyA9IGMoXCJ0dW5hXCIsIFwidW5rbm93blwiLCBOQSwgXCJ0dW5hXCIpLFxuICAgIGVmZm9ydCA9IGMoNSwgLTksIDAsIDQpLFxuICAgIHN0cmluZ3NBc0ZhY3RvcnMgPSBGQUxTRVxuKVxuXG4jIENsZWFuIG1pc3NpbmcgdmFsdWVzXG5jbGVhbl9taXNzaW5nIDwtIG1pc3NpbmdfZGF0YSAlPiVcbiAgICBtdXRhdGUoXG4gICAgICAgICMgQ2xlYW4gY2hhcmFjdGVyIGNvbHVtbnNcbiAgICAgICAgZGF0ZSA9IG5hX2lmKGRhdGUsIFwiXCIpLFxuICAgICAgICBzcGVjaWVzID0gbmFfaWYoc3BlY2llcywgXCJ1bmtub3duXCIpLFxuICAgICAgICAjIENsZWFuIG51bWVyaWMgY29sdW1uc1xuICAgICAgICBjYXRjaCA9IGlmX2Vsc2UoY2F0Y2ggPT0gLTk5OSwgTkFfcmVhbF8sIGNhdGNoKSxcbiAgICAgICAgZWZmb3J0ID0gaWZfZWxzZShlZmZvcnQgPT0gLTksIE5BX3JlYWxfLCBlZmZvcnQpXG4gICAgKVxuXG4jIFNob3cgZGlmZmVyZW50IHN0cmF0ZWdpZXNcbiMgMS4gUmVtb3ZlIHJvd3Mgd2l0aCBhbnkgbWlzc2luZyB2YWx1ZXNcbnByaW50KFwiU3RyYXRlZ3kgMTogQ29tcGxldGUgY2FzZXMgb25seVwiKVxuY2xlYW5fbWlzc2luZyAlPiUgZHJvcF9uYSgpXG5cbiMgMi4gRmlsbCB3aXRoIGdyb3VwIG1lYW5zXG5wcmludChcIlxcblN0cmF0ZWd5IDI6IEZpbGwgd2l0aCBncm91cCBtZWFuc1wiKVxuY2xlYW5fbWlzc2luZyAlPiVcbiAgICBncm91cF9ieShzcGVjaWVzKSAlPiVcbiAgICBtdXRhdGUoXG4gICAgICAgIGNhdGNoID0gaWZlbHNlKGlzLm5hKGNhdGNoKSwgbWVhbihjYXRjaCwgbmEucm0gPSBUUlVFKSwgY2F0Y2gpLFxuICAgICAgICBlZmZvcnQgPSBpZmVsc2UoaXMubmEoZWZmb3J0KSwgbWVhbihlZmZvcnQsIG5hLnJtID0gVFJVRSksIGVmZm9ydClcbiAgICApXG5cbiMgMy4gQ2FycnkgZm9yd2FyZCBsYXN0IG9ic2VydmF0aW9uXG5wcmludChcIlxcblN0cmF0ZWd5IDM6IEZpbGwgd2l0aCBwcmV2aW91cyB2YWx1ZXNcIilcbmNsZWFuX21pc3NpbmcgJT4lXG4gICAgYXJyYW5nZShkYXRlKSAlPiVcbiAgICBmaWxsKGNhdGNoLCBlZmZvcnQpIiwiYXR0ciI6eyJhdXRvcnVuIjpmYWxzZSwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZX19
+</script>
+</div>
+</div>
+</section>
+</section>
+<section id="working-with-dates-and-times" class="level2">
+<h2 class="anchored" data-anchor-id="working-with-dates-and-times">Working with Dates and Times ⏰</h2>
+<p>Handling dates and times is crucial in fisheries data. The <code>lubridate</code> package makes this task much easier by providing intuitive functions for parsing and manipulating dates.</p>
+<section id="understanding-date-formats" class="level3">
+<h3 class="anchored" data-anchor-id="understanding-date-formats">Understanding Date Formats</h3>
+<p>Dates in R can be stored in several formats: - <code>Date</code>: Simple dates (e.g., “2024-01-01”) - <code>POSIXct</code>: Date-time objects stored as seconds since 1970 - <code>POSIXlt</code>: Date-time objects stored as a list of components</p>
+<div class="cell" data-autorun="false">
+<div>
+<div id="webr-10">
+
+</div>
+<script type="webr-10-contents">
+eyJjb2RlIjoiIyBDcmVhdGUgZGF0YSB3aXRoIHZhcmlvdXMgZGF0ZSBmb3JtYXRzXG5kYXRlc19kYXRhIDwtIGRhdGEuZnJhbWUoXG4gICAgZGF0ZV9zdHIgPSBjKFxuICAgICAgICBcIjIwMjQtMDEtMDFcIiwgICAgIyBJU08gZm9ybWF0IChZWVlZLU1NLUREKVxuICAgICAgICBcIjAxLzAyLzIwMjRcIiwgICAgIyBBbWVyaWNhbiBmb3JtYXQgKE1NL0REL1lZWVkpXG4gICAgICAgIFwiMDMuMDEuMjAyNFwiLCAgICAjIEV1cm9wZWFuIGZvcm1hdCB3aXRoIGRvdHNcbiAgICAgICAgXCIyMDI0LzAxLzA0XCIsICAgICMgSVNPIHdpdGggc2xhc2hlc1xuICAgICAgICBcIjA1LUphbi0yMDI0XCIsICAgIyBNaXhlZCBmb3JtYXQgd2l0aCBtb250aCBuYW1lXG4gICAgICAgIFwiMDZKYW4yNFwiICAgICAgICAjIEFiYnJldmlhdGVkIGZvcm1hdFxuICAgICksXG4gICAgdGltZV9zdHIgPSBjKFxuICAgICAgICBcIjA5OjMwXCIsICAgICAgICAgIyAyNC1ob3VyIGZvcm1hdFxuICAgICAgICBcIjk6MzAgQU1cIiwgICAgICAgIyAxMi1ob3VyIGZvcm1hdCB3aXRoIEFNL1BNXG4gICAgICAgIFwiMDkzMFwiLCAgICAgICAgICAjIDI0LWhvdXIgd2l0aG91dCBjb2xvblxuICAgICAgICBcIjE0OjQ1XCIsICAgICAgICAgIyAyNC1ob3VyIGZvcm1hdFxuICAgICAgICBcIjI6NDUgUE1cIiwgICAgICAgIyAxMi1ob3VyIHdpdGggUE1cbiAgICAgICAgXCIxNDQ1XCIgICAgICAgICAgICMgMjQtaG91ciB3aXRob3V0IGNvbG9uXG4gICAgKSxcbiAgICBzdHJpbmdzQXNGYWN0b3JzID0gRkFMU0VcbilcblxuIyBTaG93IHRoZSBzdHJ1Y3R1cmUgb2Ygb3VyIGRhdGUgZGF0YVxuZ2xpbXBzZShkYXRlc19kYXRhKSIsImF0dHIiOnsiYXV0b3J1biI6ZmFsc2UsImVkaXQiOnRydWUsImV2YWwiOnRydWV9fQ==
+</script>
+</div>
+</div>
+</section>
+<section id="converting-strings-to-dates" class="level3">
+<h3 class="anchored" data-anchor-id="converting-strings-to-dates">Converting Strings to Dates</h3>
+<p>Lubridate provides functions named after date formats: - <code>ymd()</code>: For “2024-01-01” - <code>mdy()</code>: For “01/02/2024” - <code>dmy()</code>: For “03.01.2024”</p>
+<div class="cell" data-autorun="false">
+<div>
+<div id="webr-11">
+
+</div>
+<script type="webr-11-contents">
+eyJjb2RlIjoiIyBDcmVhdGUgc2FtcGxlIGRhdGEgd2l0aCB2YXJpb3VzIGRhdGUvdGltZSBmb3JtYXRzXG5kYXRlc19kYXRhIDwtIGRhdGEuZnJhbWUoXG4gICAgZGF0ZV9zdHIgPSBjKFxuICAgICAgICBcIjIwMjQtMDEtMDFcIiwgICAgIyBJU08gZm9ybWF0XG4gICAgICAgIFwiMDEvMDIvMjAyNFwiLCAgICAjIEFtZXJpY2FuIGZvcm1hdFxuICAgICAgICBcIjAzLUphbi0yMDI0XCIsICAgIyBCcml0aXNoIGZvcm1hdCB3aXRoIG1vbnRoIG5hbWVcbiAgICAgICAgXCIyMDI0LzAxLzA0XCIgICAgICMgSVNPIHdpdGggc2xhc2hlc1xuICAgICksXG4gICAgdGltZV9zdHIgPSBjKFxuICAgICAgICBcIjA5OjMwXCIsICAgICAgICAgIyAyNC1ob3VyIGZvcm1hdFxuICAgICAgICBcIjk6MzAgQU1cIiwgICAgICAgIyAxMi1ob3VyIGZvcm1hdFxuICAgICAgICBcIjA5MzBcIiwgICAgICAgICAgIyAyNC1ob3VyIHdpdGhvdXQgY29sb25cbiAgICAgICAgXCIxNDo0NVwiICAgICAgICAgICMgMjQtaG91ciBmb3JtYXRcbiAgICApLFxuICAgIHN0cmluZ3NBc0ZhY3RvcnMgPSBGQUxTRVxuKVxuXG4jIENsZWFuIGRhdGVzIGFuZCB0aW1lcyBzZXBhcmF0ZWx5XG5jbGVhbl9kYXRlcyA8LSBkYXRlc19kYXRhICU+JVxuICAgIG11dGF0ZShcbiAgICAgICAgIyBDbGVhbiBkYXRlc1xuICAgICAgICBkYXRlX2NsZWFuID0gY2FzZV93aGVuKFxuICAgICAgICAgICAgc3RyX2RldGVjdChkYXRlX3N0ciwgXCJeXFxcXGR7NH1cIikgfiB5bWQoZGF0ZV9zdHIpLFxuICAgICAgICAgICAgc3RyX2RldGVjdChkYXRlX3N0ciwgXCIvXCIpIH4gbWR5KGRhdGVfc3RyKSxcbiAgICAgICAgICAgIHN0cl9kZXRlY3QoZGF0ZV9zdHIsIFwiLVtBLVphLXpdXCIpIH4gZG15KGRhdGVfc3RyKSxcbiAgICAgICAgICAgIFRSVUUgfiBhcy5EYXRlKE5BKVxuICAgICAgICApLFxuICAgICAgICBcbiAgICAgICAgIyBDbGVhbiB0aW1lcyAtIGNvbnZlcnQgYWxsIHRvIDI0LWhvdXIgZm9ybWF0XG4gICAgICAgIHRpbWVfY2xlYW4gPSBobXM6OmFzX2htcyhwYXJzZV9kYXRlX3RpbWUodGltZV9zdHIsIFxuICAgICAgICAgICAgb3JkZXJzID0gYyhcIkhNXCIsIFwiSU1wXCIsIFwiSE1cIikpKVxuICAgIClcblxuIyBTaG93IHJlc3VsdHNcbnByaW50KFwiT3JpZ2luYWwgYW5kIGNsZWFuZWQgZGF0ZXMvdGltZXM6XCIpXG5wcmludChjbGVhbl9kYXRlcykiLCJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfX0=
+</script>
+</div>
+</div>
+</section>
+<section id="working-with-date-components" class="level3">
+<h3 class="anchored" data-anchor-id="working-with-date-components">Working with Date Components</h3>
+<p>Lubridate makes it easy to extract and work with date components:</p>
+<div class="cell" data-autorun="false">
+<div>
+<div id="webr-12">
+
+</div>
+<script type="webr-12-contents">
+eyJjb2RlIjoiIyBDcmVhdGUgYSBzYW1wbGUgZGF0ZXRpbWVcbmV4YW1wbGVfZGF0ZXRpbWUgPC0geW1kX2htcyhcIjIwMjQtMDEtMTUgMTQ6MzA6NDVcIilcblxuIyBFeHRyYWN0IHZhcmlvdXMgY29tcG9uZW50c1xuZGF0ZV9jb21wb25lbnRzIDwtIHRpYmJsZShcbiAgICBvcmlnaW5hbCA9IGV4YW1wbGVfZGF0ZXRpbWUsXG4gICAgeWVhciA9IHllYXIob3JpZ2luYWwpLFxuICAgIG1vbnRoID0gbW9udGgob3JpZ2luYWwpLFxuICAgIG1vbnRoX2xhYmVsID0gbW9udGgob3JpZ2luYWwsIGxhYmVsID0gVFJVRSksXG4gICAgZGF5ID0gZGF5KG9yaWdpbmFsKSxcbiAgICB3ZGF5ID0gd2RheShvcmlnaW5hbCwgbGFiZWwgPSBUUlVFKSxcbiAgICBob3VyID0gaG91cihvcmlnaW5hbCksXG4gICAgbWludXRlID0gbWludXRlKG9yaWdpbmFsKSxcbiAgICBzZWNvbmQgPSBzZWNvbmQob3JpZ2luYWwpLFxuICAgIHF1YXJ0ZXIgPSBxdWFydGVyKG9yaWdpbmFsKVxuKVxuXG5wcmludChcIkRhdGUgY29tcG9uZW50czpcIilcbmRhdGVfY29tcG9uZW50cyIsImF0dHIiOnsiYXV0b3J1biI6ZmFsc2UsImVkaXQiOnRydWUsImV2YWwiOnRydWV9fQ==
+</script>
+</div>
+</div>
+</section>
+<section id="working-with-time-periods-and-durations" class="level3">
+<h3 class="anchored" data-anchor-id="working-with-time-periods-and-durations">Working with Time Periods and Durations</h3>
+<div class="cell" data-autorun="false">
+<div>
+<div id="webr-13">
+
+</div>
+<script type="webr-13-contents">
+eyJjb2RlIjoiIyBDcmVhdGUgc2FtcGxlIGZpc2hpbmcgdHJpcCB0aW1lc1xudHJpcF9kYXRhIDwtIHRpYmJsZShcbiAgICBzdGFydF90aW1lID0geW1kX2htKFwiMjAyNC0wMS0xNSAwNjozMFwiKSxcbiAgICBlbmRfdGltZSA9IHltZF9obShcIjIwMjQtMDEtMTUgMTQ6NDVcIilcbikgJT4lXG4gICAgbXV0YXRlKFxuICAgICAgICBkdXJhdGlvbl9ob3VycyA9IGFzLm51bWVyaWMoZGlmZnRpbWUoZW5kX3RpbWUsIHN0YXJ0X3RpbWUsIHVuaXRzID0gXCJob3Vyc1wiKSksXG4gICAgICAgIGR1cmF0aW9uX21pbnV0ZXMgPSBhcy5udW1lcmljKGRpZmZ0aW1lKGVuZF90aW1lLCBzdGFydF90aW1lLCB1bml0cyA9IFwibWluc1wiKSksXG4gICAgICAgIHRyaXBfcGVyaW9kID0gaW50ZXJ2YWwoc3RhcnRfdGltZSwgZW5kX3RpbWUpLFxuICAgICAgICBpc19tb3JuaW5nID0gaG91cihzdGFydF90aW1lKSA8IDEyXG4gICAgKVxuXG5wcmludChcIlRyaXAgZHVyYXRpb24gYW5hbHlzaXM6XCIpXG50cmlwX2RhdGEiLCJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfX0=
+</script>
+</div>
+</div>
+</section>
+<section id="fishing-seasons-and-periods" class="level3">
+<h3 class="anchored" data-anchor-id="fishing-seasons-and-periods">Fishing Seasons and Periods</h3>
+<p>Let’s analyze seasonal patterns in fishing data:</p>
+<div class="cell" data-autorun="false">
+<div>
+<div id="webr-14">
+
+</div>
+<script type="webr-14-contents">
+eyJjb2RlIjoiIyBDcmVhdGUgc2Vhc29uYWwgZmlzaGluZyBkYXRhXG5zZWFzb25hbF9kYXRhIDwtIGRhdGEuZnJhbWUoXG4gICAgZGF0ZSA9IHNlcShhc19kYXRlKFwiMjAyNC0wMS0wMVwiKSwgYXNfZGF0ZShcIjIwMjQtMTItMzFcIiksIGJ5ID0gXCJtb250aHNcIiksXG4gICAgY2F0Y2hfa2cgPSBydW5pZigxMiwgNTAsIDE1MClcbilcblxuIyBBZGQgc2Vhc29uYWwgaW5mb3JtYXRpb25cbnNlYXNvbmFsX2FuYWx5c2lzIDwtIHNlYXNvbmFsX2RhdGEgJT4lXG4gICAgbXV0YXRlKFxuICAgICAgICAjIEJhc2ljIGRhdGUgY29tcG9uZW50c1xuICAgICAgICBtb250aF9uYW1lID0gbW9udGgoZGF0ZSwgbGFiZWwgPSBUUlVFKSxcbiAgICAgICAgcXVhcnRlciA9IHF1YXJ0ZXIoZGF0ZSksXG4gICAgICAgIFxuICAgICAgICAjIEN1c3RvbSBzZWFzb24gZGVmaW5pdGlvblxuICAgICAgICBzZWFzb24gPSBjYXNlX3doZW4oXG4gICAgICAgICAgICBtb250aChkYXRlKSAlaW4lIGMoMTIsIDEsIDIpIH4gXCJXaW50ZXJcIixcbiAgICAgICAgICAgIG1vbnRoKGRhdGUpICVpbiUgYygzLCA0LCA1KSB+IFwiU3ByaW5nXCIsXG4gICAgICAgICAgICBtb250aChkYXRlKSAlaW4lIGMoNiwgNywgOCkgfiBcIlN1bW1lclwiLFxuICAgICAgICAgICAgVFJVRSB+IFwiRmFsbFwiXG4gICAgICAgICksXG4gICAgICAgIFxuICAgICAgICAjIEZpc2hpbmcgcGVyaW9kIGNhbGN1bGF0aW9uc1xuICAgICAgICBpc19wZWFrX3NlYXNvbiA9IG1vbnRoKGRhdGUpICVpbiUgYyg2LCA3LCA4KSxcbiAgICAgICAgZGF5c19pbl9tb250aCA9IGRheXNfaW5fbW9udGgoZGF0ZSksXG4gICAgICAgIGRhaWx5X2F2Z19jYXRjaCA9IGNhdGNoX2tnIC8gZGF5c19pbl9tb250aCxcbiAgICAgICAgXG4gICAgICAgICMgQWRkaXRpb25hbCB0aW1lLWJhc2VkIG1ldHJpY3NcbiAgICAgICAgZGF5X29mX3llYXIgPSB5ZGF5KGRhdGUpLFxuICAgICAgICB3ZWVrX251bWJlciA9IHdlZWsoZGF0ZSksXG4gICAgICAgIHdlZWtkYXkgPSB3ZGF5KGRhdGUsIGxhYmVsID0gVFJVRSlcbiAgICApXG5cbnByaW50KFwiU2Vhc29uYWwgYW5hbHlzaXM6XCIpXG5zZWFzb25hbF9hbmFseXNpcyIsImF0dHIiOnsiYXV0b3J1biI6ZmFsc2UsImVkaXQiOnRydWUsImV2YWwiOnRydWV9fQ==
+</script>
+</div>
+</div>
+</section>
+</section>
+<section id="reshaping-data-structures" class="level2">
+<h2 class="anchored" data-anchor-id="reshaping-data-structures">Reshaping Data Structures 🔄</h2>
+<p>Data often needs to be reshaped between wide and long formats for different types of analysis.</p>
+<section id="long-to-wide-format" class="level3">
+<h3 class="anchored" data-anchor-id="long-to-wide-format">Long to Wide Format</h3>
+<div class="cell" data-autorun="false">
+<div>
+<div id="webr-15">
+
+</div>
+<script type="webr-15-contents">
+eyJjb2RlIjoiIyBDcmVhdGUgbG9uZy1mb3JtYXQgY2F0Y2ggZGF0YVxubG9uZ19jYXRjaGVzIDwtIGRhdGEuZnJhbWUoXG4gICAgZGF0ZSA9IHJlcChzZXEoYXNfZGF0ZShcIjIwMjQtMDEtMDFcIiksIGFzX2RhdGUoXCIyMDI0LTAxLTAzXCIpLCBieSA9IFwiZGF5c1wiKSwgZWFjaCA9IDMpLFxuICAgIHNwZWNpZXMgPSByZXAoYyhcInR1bmFcIiwgXCJtYWNrZXJlbFwiLCBcInNhcmRpbmVcIiksIHRpbWVzID0gMyksXG4gICAgY2F0Y2hfa2cgPSBydW5pZig5LCA1MCwgMTUwKSxcbiAgICBlZmZvcnRfaHJzID0gcnVuaWYoOSwgMywgOClcbilcblxuIyBDb252ZXJ0IHRvIHdpZGUgZm9ybWF0XG53aWRlX2NhdGNoZXMgPC0gbG9uZ19jYXRjaGVzICU+JVxuICAgIHBpdm90X3dpZGVyKFxuICAgICAgICBpZF9jb2xzID0gZGF0ZSxcbiAgICAgICAgbmFtZXNfZnJvbSA9IHNwZWNpZXMsXG4gICAgICAgIHZhbHVlc19mcm9tID0gYyhjYXRjaF9rZywgZWZmb3J0X2hycylcbiAgICApXG5cbnByaW50KFwiT3JpZ2luYWwgbG9uZyBmb3JtYXQ6XCIpXG5sb25nX2NhdGNoZXNcblxucHJpbnQoXCJcXG5Db252ZXJ0ZWQgdG8gd2lkZSBmb3JtYXQ6XCIpXG53aWRlX2NhdGNoZXMiLCJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfX0=
+</script>
+</div>
+</div>
+</section>
+<section id="wide-to-long-format" class="level3">
+<h3 class="anchored" data-anchor-id="wide-to-long-format">Wide to Long Format</h3>
+<div class="cell" data-autorun="false">
+<div>
+<div id="webr-16">
+
+</div>
+<script type="webr-16-contents">
+eyJjb2RlIjoiIyBDcmVhdGUgd2lkZS1mb3JtYXQgZGF0YVxud2lkZV9kYXRhIDwtIGRhdGEuZnJhbWUoXG4gICAgc2l0ZSA9IGMoXCJCZWFjaCBBXCIsIFwiQmVhY2ggQlwiLCBcIkJlYWNoIENcIiksXG4gICAgdHVuYV9jYXRjaCA9IGMoMTAwLCAxMjAsIDkwKSxcbiAgICB0dW5hX3ZhbHVlID0gYygxMDAwLCAxMjAwLCA5MDApLFxuICAgIG1hY2tlcmVsX2NhdGNoID0gYyg4MCwgNzAsIDg1KSxcbiAgICBtYWNrZXJlbF92YWx1ZSA9IGMoNDAwLCAzNTAsIDQyNSlcbilcblxuIyBDb252ZXJ0IHRvIGxvbmcgZm9ybWF0XG5sb25nX2RhdGEgPC0gd2lkZV9kYXRhICU+JVxuICAgIHBpdm90X2xvbmdlcihcbiAgICAgICAgY29scyA9IC1zaXRlLFxuICAgICAgICBuYW1lc190byA9IGMoXCJzcGVjaWVzXCIsIFwidmFyaWFibGVcIiksXG4gICAgICAgIG5hbWVzX3BhdHRlcm4gPSBcIiguKylfKC4rKVwiLFxuICAgICAgICB2YWx1ZXNfdG8gPSBcInZhbHVlXCJcbiAgICApICU+JVxuICAgIHBpdm90X3dpZGVyKFxuICAgICAgICBuYW1lc19mcm9tID0gdmFyaWFibGUsXG4gICAgICAgIHZhbHVlc19mcm9tID0gdmFsdWVcbiAgICApXG5cbnByaW50KFwiT3JpZ2luYWwgd2lkZSBmb3JtYXQ6XCIpXG53aWRlX2RhdGFcblxucHJpbnQoXCJcXG5Db252ZXJ0ZWQgdG8gbG9uZyBmb3JtYXQ6XCIpXG5sb25nX2RhdGEiLCJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfX0=
+</script>
+</div>
+</div>
+</section>
+</section>
+<section id="combining-multiple-datasets" class="level2">
+<h2 class="anchored" data-anchor-id="combining-multiple-datasets">Combining Multiple Datasets 🔄</h2>
+<p>In fisheries research, we often need to combine data from different sources, such as catch data, effort data, and environmental measurements. Understanding different types of joins is crucial for this task.</p>
+<section id="understanding-different-join-types" class="level3">
+<h3 class="anchored" data-anchor-id="understanding-different-join-types">Understanding Different Join Types</h3>
+<p>Let’s create some sample datasets that we might encounter in fisheries research:</p>
+<div class="cell" data-autorun="false">
+<div>
+<div id="webr-17">
+
+</div>
+<script type="webr-17-contents">
+eyJjb2RlIjoiIyBDcmVhdGUgdGhyZWUgcmVsYXRlZCBkYXRhc2V0c1xuIyAxLiBDYXRjaCBkYXRhXG5jYXRjaF9kYXRhIDwtIGRhdGEuZnJhbWUoXG4gICAgZGF0ZSA9IGMoXCIyMDI0LTAxLTAxXCIsIFwiMjAyNC0wMS0wMlwiLCBcIjIwMjQtMDEtMDNcIiksXG4gICAgc2l0ZSA9IGMoXCJCZWFjaCBBXCIsIFwiQmVhY2ggQlwiLCBcIkJlYWNoIEFcIiksXG4gICAgY2F0Y2hfa2cgPSBjKDEwMCwgODAsIDEyMCksXG4gICAgc3BlY2llcyA9IGMoXCJ0dW5hXCIsIFwibWFja2VyZWxcIiwgXCJ0dW5hXCIpXG4pXG5cbiMgMi4gRWZmb3J0IGRhdGEgKG1pZ2h0IGhhdmUgbW9yZSBkYXRlcylcbmVmZm9ydF9kYXRhIDwtIGRhdGEuZnJhbWUoXG4gICAgZGF0ZSA9IGMoXCIyMDI0LTAxLTAxXCIsIFwiMjAyNC0wMS0wMlwiLCBcIjIwMjQtMDEtMDNcIiwgXCIyMDI0LTAxLTA0XCIpLFxuICAgIHNpdGUgPSBjKFwiQmVhY2ggQVwiLCBcIkJlYWNoIEJcIiwgXCJCZWFjaCBDXCIsIFwiQmVhY2ggQVwiKSxcbiAgICBuX2JvYXRzID0gYygzLCAyLCAyLCAzKSxcbiAgICBuX2Zpc2hlcnMgPSBjKDksIDYsIDYsIDkpXG4pXG5cbiMgMy4gRW52aXJvbm1lbnRhbCBkYXRhXG5lbnZfZGF0YSA8LSBkYXRhLmZyYW1lKFxuICAgIGRhdGUgPSBjKFwiMjAyNC0wMS0wMVwiLCBcIjIwMjQtMDEtMDJcIiwgXCIyMDI0LTAxLTAzXCIpLFxuICAgIHNpdGUgPSBjKFwiQmVhY2ggQVwiLCBcIkJlYWNoIEJcIiwgXCJCZWFjaCBBXCIpLFxuICAgIHRlbXBfYyA9IGMoMjUsIDI2LCAyNCksXG4gICAgd2luZF9zcGVlZCA9IGMoMTAsIDE1LCAxMilcbilcblxuIyBTaG93IG91ciBvcmlnaW5hbCBkYXRhc2V0c1xucHJpbnQoXCJDYXRjaCBkYXRhOlwiKVxuY2F0Y2hfZGF0YVxucHJpbnQoXCJcXG5FZmZvcnQgZGF0YTpcIilcbmVmZm9ydF9kYXRhXG5wcmludChcIlxcbkVudmlyb25tZW50YWwgZGF0YTpcIilcbmVudl9kYXRhIiwiYXR0ciI6eyJhdXRvcnVuIjpmYWxzZSwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZX19
+</script>
+</div>
+</div>
+</section>
+<section id="types-of-joins" class="level3">
+<h3 class="anchored" data-anchor-id="types-of-joins">Types of Joins</h3>
+<p>Let’s explore different ways to combine these datasets:</p>
+<div class="cell" data-autorun="false">
+<div>
+<div id="webr-18">
+
+</div>
+<script type="webr-18-contents">
+eyJjb2RlIjoiIyAxLiBJbm5lciBqb2luIChrZWVwIG9ubHkgbWF0Y2hpbmcgcmVjb3JkcylcbmlubmVyX2pvaW5lZCA8LSBjYXRjaF9kYXRhICU+JVxuICAgIGlubmVyX2pvaW4oZWZmb3J0X2RhdGEsIGJ5ID0gYyhcImRhdGVcIiwgXCJzaXRlXCIpKSAlPiVcbiAgICBpbm5lcl9qb2luKGVudl9kYXRhLCBieSA9IGMoXCJkYXRlXCIsIFwic2l0ZVwiKSlcblxuIyAyLiBMZWZ0IGpvaW4gKGtlZXAgYWxsIGNhdGNoIHJlY29yZHMpXG5sZWZ0X2pvaW5lZCA8LSBjYXRjaF9kYXRhICU+JVxuICAgIGxlZnRfam9pbihlZmZvcnRfZGF0YSwgYnkgPSBjKFwiZGF0ZVwiLCBcInNpdGVcIikpICU+JVxuICAgIGxlZnRfam9pbihlbnZfZGF0YSwgYnkgPSBjKFwiZGF0ZVwiLCBcInNpdGVcIikpXG5cbiMgMy4gRnVsbCBqb2luIChrZWVwIGFsbCByZWNvcmRzIGZyb20gYWxsIGRhdGFzZXRzKVxuZnVsbF9qb2luZWQgPC0gY2F0Y2hfZGF0YSAlPiVcbiAgICBmdWxsX2pvaW4oZWZmb3J0X2RhdGEsIGJ5ID0gYyhcImRhdGVcIiwgXCJzaXRlXCIpKSAlPiVcbiAgICBmdWxsX2pvaW4oZW52X2RhdGEsIGJ5ID0gYyhcImRhdGVcIiwgXCJzaXRlXCIpKVxuXG4jIENvbXBhcmUgcmVzdWx0c1xucHJpbnQoXCJJbm5lciBqb2luIHJlc3VsdCAob25seSBtYXRjaGluZyByZWNvcmRzKTpcIilcbmlubmVyX2pvaW5lZFxuXG5wcmludChcIlxcbkxlZnQgam9pbiByZXN1bHQgKGFsbCBjYXRjaCByZWNvcmRzKTpcIilcbmxlZnRfam9pbmVkXG5cbnByaW50KFwiXFxuRnVsbCBqb2luIHJlc3VsdCAoYWxsIHJlY29yZHMgZnJvbSBhbGwgZGF0YXNldHMpOlwiKVxuZnVsbF9qb2luZWQiLCJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVlfX0=
+</script>
+</div>
+</div>
+</section>
+<section id="handling-join-complications" class="level3">
+<h3 class="anchored" data-anchor-id="handling-join-complications">Handling Join Complications</h3>
+<p>Often, data from different sources needs cleaning before joining:</p>
+<div class="cell" data-autorun="false">
+<div>
+<div id="webr-19">
+
+</div>
+<script type="webr-19-contents">
+eyJjb2RlIjoiIyBDcmVhdGUgZGF0YXNldHMgd2l0aCBjb21tb24gam9pbmluZyBwcm9ibGVtc1xuY2F0Y2hlc19tZXNzeSA8LSBkYXRhLmZyYW1lKFxuICAgIHN1cnZleV9kYXRlID0gYyhcIjIwMjQtMDEtMDFcIiwgXCIyMDI0LTAxLTAyXCIsIFwiMjAyNC0wMS0wM1wiKSxcbiAgICBsb2NhdGlvbiA9IGMoXCJCRUFDSCBBXCIsIFwiQmVhY2ggQlwiLCBcImJlYWNoIGFcIiksXG4gICAgY2F0Y2hfa2cgPSBjKDEwMCwgODAsIDEyMClcbilcblxuZWZmb3J0X21lc3N5IDwtIGRhdGEuZnJhbWUoXG4gICAgZGF0ZSA9IGMoXCIwMS8wMS8yMDI0XCIsIFwiMDIvMDEvMjAyNFwiLCBcIjAzLzAxLzIwMjRcIiksXG4gICAgc2l0ZV9uYW1lID0gYyhcIkJlYWNoIEFcIiwgXCJCZWFjaCBCXCIsIFwiQmVhY2ggQVwiKSxcbiAgICBib2F0cyA9IGMoMywgMiwgMylcbilcblxuIyBDbGVhbiBhbmQgam9pbiBtZXNzeSBkYXRhXG5jbGVhbl9qb2luZWQgPC0gY2F0Y2hlc19tZXNzeSAlPiVcbiAgICAjIENsZWFuIGNhdGNoIGRhdGEgZmlyc3RcbiAgICBtdXRhdGUoXG4gICAgICAgIHN1cnZleV9kYXRlID0geW1kKHN1cnZleV9kYXRlKSxcbiAgICAgICAgbG9jYXRpb24gPSBzdHJfdG9fbG93ZXIobG9jYXRpb24pICU+JVxuICAgICAgICAgICAgc3RyX3JlcGxhY2VfYWxsKFwiX1wiLCBcIiBcIikgJT4lXG4gICAgICAgICAgICBzdHJfdHJpbSgpXG4gICAgKSAlPiVcbiAgICAjIEpvaW4gd2l0aCBjbGVhbmVkIGVmZm9ydCBkYXRhXG4gICAgbGVmdF9qb2luKFxuICAgICAgICBlZmZvcnRfbWVzc3kgJT4lXG4gICAgICAgICAgICBtdXRhdGUoXG4gICAgICAgICAgICAgICAgZGF0ZSA9IGRteShkYXRlKSxcbiAgICAgICAgICAgICAgICBzaXRlX25hbWUgPSBzdHJfdG9fbG93ZXIoc2l0ZV9uYW1lKVxuICAgICAgICAgICAgKSxcbiAgICAgICAgYnkgPSBjKFwic3VydmV5X2RhdGVcIiA9IFwiZGF0ZVwiLCBcImxvY2F0aW9uXCIgPSBcInNpdGVfbmFtZVwiKVxuICAgIClcblxucHJpbnQoXCJDbGVhbmVkIGFuZCBqb2luZWQgZGF0YTpcIilcbmNsZWFuX2pvaW5lZCIsImF0dHIiOnsiYXV0b3J1biI6ZmFsc2UsImVkaXQiOnRydWUsImV2YWwiOnRydWV9fQ==
+</script>
+</div>
+</div>
+</section>
+<section id="using-bind_rows-and-bind_cols" class="level3">
+<h3 class="anchored" data-anchor-id="using-bind_rows-and-bind_cols">Using bind_rows() and bind_cols()</h3>
+<p>Sometimes we need to combine data vertically or horizontally:</p>
+<div class="cell" data-autorun="false">
+<div>
+<div id="webr-20">
+
+</div>
+<script type="webr-20-contents">
+eyJjb2RlIjoiIyBDcmVhdGUgc2FtcGxlIGRhdGFzZXRzIGZvciBiaW5kaW5nXG5kYXRhXzIwMjMgPC0gZGF0YS5mcmFtZShcbiAgICBkYXRlID0gYyhcIjIwMjMtMTItMzBcIiwgXCIyMDIzLTEyLTMxXCIpLFxuICAgIHNpdGUgPSBjKFwiQmVhY2ggQVwiLCBcIkJlYWNoIEJcIiksXG4gICAgY2F0Y2ggPSBjKDkwLCA4NSlcbilcblxuZGF0YV8yMDI0IDwtIGRhdGEuZnJhbWUoXG4gICAgZGF0ZSA9IGMoXCIyMDI0LTAxLTAxXCIsIFwiMjAyNC0wMS0wMlwiKSxcbiAgICBzaXRlID0gYyhcIkJlYWNoIEFcIiwgXCJCZWFjaCBCXCIpLFxuICAgIGNhdGNoID0gYygxMDAsIDk1KVxuKVxuXG4jIFZlcnRpY2FsIGJpbmRpbmcgKHN0YWNraW5nKVxuY29tYmluZWRfeWVhcnMgPC0gYmluZF9yb3dzKFxuICAgIGRhdGFfMjAyMyAlPiUgbXV0YXRlKHllYXIgPSBcIjIwMjNcIiksXG4gICAgZGF0YV8yMDI0ICU+JSBtdXRhdGUoeWVhciA9IFwiMjAyNFwiKVxuKVxuXG5wcmludChcIlZlcnRpY2FsbHkgY29tYmluZWQgZGF0YTpcIilcbmNvbWJpbmVkX3llYXJzIiwiYXR0ciI6eyJhdXRvcnVuIjpmYWxzZSwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZX19
+</script>
+</div>
+</div>
+</section>
+<section id="practice-exercises" class="level3">
+<h3 class="anchored" data-anchor-id="practice-exercises">Practice Exercises 💪</h3>
+<p>Let’s practice combining datasets:</p>
+<div class="cell" data-autorun="false">
+<div>
+<div id="webr-21">
+
+</div>
+<script type="webr-21-contents">
+eyJjb2RlIjoiIyBFeGVyY2lzZSAxOiBKb2luIHRoZXNlIGRhdGFzZXRzXG5jYXRjaF9yZWNvcmRzIDwtIGRhdGEuZnJhbWUoXG4gICAgZGF0ZSA9IGMoXCIyMDI0LTAxLTAxXCIsIFwiMjAyNC0wMS0wMlwiKSxcbiAgICBzaXRlID0gYyhcIlNpdGUgQVwiLCBcIlNpdGUgQlwiKSxcbiAgICBjYXRjaCA9IGMoMTAwLCA4MClcbilcblxuc2l0ZV9pbmZvIDwtIGRhdGEuZnJhbWUoXG4gICAgc2l0ZV9uYW1lID0gYyhcIlNpdGUgQVwiLCBcIlNpdGUgQlwiLCBcIlNpdGUgQ1wiKSxcbiAgICB0eXBlID0gYyhcIkJlYWNoXCIsIFwiUmVlZlwiLCBcIkJlYWNoXCIpLFxuICAgIHJlZ2lvbiA9IGMoXCJOb3J0aFwiLCBcIk5vcnRoXCIsIFwiU291dGhcIilcbilcblxuIyBZb3VyIGNvZGUgaGVyZToiLCJhdHRyIjp7ImVkaXQiOnRydWUsImVjaG8iOnRydWUsImF1dG9ydW4iOmZhbHNlLCJldmFsIjp0cnVlfX0=
+</script>
+</div>
+</div>
+<details>
+<summary>
+Click to see solution
+</summary>
+<div class="cell" data-autorun="false">
+<div>
+<div id="webr-22">
+
+</div>
+<script type="webr-22-contents">
+eyJjb2RlIjoiY2F0Y2hfcmVjb3JkcyAlPiVcbiAgICBsZWZ0X2pvaW4oXG4gICAgICAgIHNpdGVfaW5mbyAlPiVcbiAgICAgICAgICAgIHJlbmFtZShzaXRlID0gc2l0ZV9uYW1lKSxcbiAgICAgICAgYnkgPSBcInNpdGVcIlxuICAgICkgJT4lXG4gICAgbXV0YXRlKFxuICAgICAgICBkYXRlID0geW1kKGRhdGUpLFxuICAgICAgICBzaXRlID0gc3RyX3RyaW0oc2l0ZSksXG4gICAgICAgIHR5cGUgPSBzdHJfdHJpbSh0eXBlKVxuICAgICkiLCJhdHRyIjp7ImF1dG9ydW4iOmZhbHNlLCJlZGl0IjpmYWxzZSwiZXZhbCI6ZmFsc2V9fQ==
+</script>
+</div>
+</div>
+</details>
+</section>
+</section>
+<section id="key-points-to-remember" class="level2">
+<h2 class="anchored" data-anchor-id="key-points-to-remember">Key Points to Remember 🗝️</h2>
+<ol type="1">
+<li>Data Cleaning Strategy:
+<ul>
+<li>Always inspect data before cleaning</li>
+<li>Document your cleaning steps</li>
+<li>Keep original data unchanged</li>
+<li>Use consistent naming conventions</li>
+<li>Handle missing values appropriately</li>
+</ul></li>
+<li>Essential Functions:
+<ul>
+<li><code>clean_names()</code> for variable names</li>
+<li><code>str_</code> functions for text cleaning</li>
+<li>Lubridate functions for dates</li>
+<li><code>pivot_</code> functions for reshaping</li>
+<li>Join functions for combining data</li>
+</ul></li>
+<li>Best Practices:
+<ul>
+<li>Clean data before joining</li>
+<li>Check results after each step</li>
+<li>Use appropriate data types</li>
+<li>Handle missing values explicitly</li>
+<li>Keep transformations reproducible</li>
+</ul></li>
+</ol>
+</section>
+<section id="next-steps" class="level2">
+<h2 class="anchored" data-anchor-id="next-steps">Next Steps 🚀</h2>
+<p>Now that you’ve mastered basic preprocessing, you can: - Create preprocessing workflows for your own data - Explore more advanced cleaning techniques - Learn about quality control methods - Automate your preprocessing steps - Share your knowledge with colleagues</p>
+<p>Remember: Good preprocessing is the foundation of reliable analysis. Take the time to do it right! 🎯</p>
+
+
+<script type="webr-data">
+eyJyZW5kZXJfZGYiOiJndC1pbnRlcmFjdGl2ZSIsInBhY2thZ2VzIjp7InBrZ3MiOlsiZXZhbHVhdGUiLCJrbml0ciIsImh0bWx0b29scyIsInRpZHl2ZXJzZSIsImphbml0b3IiLCJsdWJyaWRhdGUiLCJndCJdLCJyZXBvcyI6W119LCJvcHRpb25zIjp7ImJhc2VVcmwiOiJodHRwczovL3dlYnIuci13YXNtLm9yZy92MC40LjEvIn19
+</script>
+<script type="ojs-module-contents">
+eyJjb250ZW50cyI6W3sic291cmNlIjoie1xuICAvLyBXYWl0IGZvciBvdXRwdXQgdG8gYmUgd3JpdHRlbiB0byB0aGUgRE9NLCB0aGVuIHRyaWdnZXIgd2lkZ2V0IHJlbmRlcmluZ1xuICBhd2FpdCBfd2Vicl92YWx1ZV8yMjtcbiAgaWYgKHdpbmRvdy5IVE1MV2lkZ2V0cykge1xuICAgIHdpbmRvdy5IVE1MV2lkZ2V0cy5zdGF0aWNSZW5kZXIoKTtcbiAgfVxuICBpZiAod2luZG93LlBhZ2VkVGFibGVEb2MpIHtcbiAgICB3aW5kb3cuUGFnZWRUYWJsZURvYy5pbml0QWxsKCk7XG4gIH1cbn1cbiIsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsImlubGluZSI6ZmFsc2UsImNlbGxOYW1lIjoid2Vici13aWRnZXQtMjIifSx7InNvdXJjZSI6Il93ZWJyX3ZhbHVlXzIyID0ge1xuICBjb25zdCB7IGhpZ2hsaWdodFIsIGI2NERlY29kZSB9ID0gd2luZG93Ll9leGVyY2lzZV9vanNfcnVudGltZTtcbiAgY29uc3Qgc2NyaXB0Q29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJ3ZWJyLTIyLWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgLy8gRGVmYXVsdCBldmFsdWF0aW9uIGNvbmZpZ3VyYXRpb25cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oe1xuICAgIGlkOiBcIndlYnItMjItY29udGVudHNcIixcbiAgICBlY2hvOiB0cnVlLFxuICAgIG91dHB1dDogdHJ1ZVxuICB9LCBibG9jay5hdHRyKTtcblxuICAvLyBFdmFsdWF0ZSB0aGUgcHJvdmlkZWQgUiBjb2RlXG4gIGNvbnN0IHJlc3VsdCA9IHdlYlJPanMucHJvY2Vzcyh7Y29kZTogYmxvY2suY29kZSwgb3B0aW9uc30sIHt9KTtcblxuICAvLyBFYXJseSB5aWVsZCB3aGlsZSB3ZSB3YWl0IGZvciB0aGUgZmlyc3QgZXZhbHVhdGlvbiBhbmQgcmVuZGVyXG4gIGlmIChvcHRpb25zLm91dHB1dCAmJiAhKFwiMjJcIiBpbiB3ZWJST2pzLnJlbmRlcmVkT2pzKSkge1xuICAgIGNvbnN0IGNvbnRhaW5lciA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoXCJkaXZcIik7XG4gICAgY29uc3Qgc3Bpbm5lciA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoXCJkaXZcIik7XG5cbiAgICBpZiAob3B0aW9ucy5lY2hvKSB7XG4gICAgICAvLyBTaG93IG91dHB1dCBhcyBoaWdobGlnaHRlZCBzb3VyY2VcbiAgICAgIGNvbnN0IHByZUVsZW0gPSBkb2N1bWVudC5jcmVhdGVFbGVtZW50KFwicHJlXCIpO1xuICAgICAgY29udGFpbmVyLmNsYXNzTmFtZSA9IFwic291cmNlQ29kZVwiO1xuICAgICAgcHJlRWxlbS5jbGFzc05hbWUgPSBcInNvdXJjZUNvZGUgclwiO1xuICAgICAgcHJlRWxlbS5hcHBlbmRDaGlsZChoaWdobGlnaHRSKGJsb2NrLmNvZGUpKTtcbiAgICAgIHNwaW5uZXIuY2xhc3NOYW1lID0gXCJzcGlubmVyLWdyb3cgc3Bpbm5lci1ncm93LXNtIG0tMiBwb3NpdGlvbi1hYnNvbHV0ZSB0b3AtMCBlbmQtMFwiO1xuICAgICAgcHJlRWxlbS5hcHBlbmRDaGlsZChzcGlubmVyKTtcbiAgICAgIGNvbnRhaW5lci5hcHBlbmRDaGlsZChwcmVFbGVtKTtcbiAgICB9IGVsc2Uge1xuICAgICAgc3Bpbm5lci5jbGFzc05hbWUgPSBcInNwaW5uZXItYm9yZGVyIHNwaW5uZXItYm9yZGVyLXNtXCI7XG4gICAgICBjb250YWluZXIuYXBwZW5kQ2hpbGQoc3Bpbm5lcik7XG4gICAgfVxuXG4gICAgeWllbGQgY29udGFpbmVyO1xuICB9XG5cbiAgd2ViUk9qcy5yZW5kZXJlZE9qc1tcIjIyXCJdID0gdHJ1ZTtcbiAgeWllbGQgYXdhaXQgcmVzdWx0O1xufVxuIiwibWV0aG9kTmFtZSI6ImludGVycHJldCIsImlubGluZSI6ZmFsc2UsImNlbGxOYW1lIjoid2Vici0yMiJ9LHsic291cmNlIjoie1xuICAvLyBXYWl0IGZvciBvdXRwdXQgdG8gYmUgd3JpdHRlbiB0byB0aGUgRE9NLCB0aGVuIHRyaWdnZXIgd2lkZ2V0IHJlbmRlcmluZ1xuICBhd2FpdCBfd2Vicl92YWx1ZV8yMTtcbiAgaWYgKHdpbmRvdy5IVE1MV2lkZ2V0cykge1xuICAgIHdpbmRvdy5IVE1MV2lkZ2V0cy5zdGF0aWNSZW5kZXIoKTtcbiAgfVxuICBpZiAod2luZG93LlBhZ2VkVGFibGVEb2MpIHtcbiAgICB3aW5kb3cuUGFnZWRUYWJsZURvYy5pbml0QWxsKCk7XG4gIH1cbn1cbiIsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsImlubGluZSI6ZmFsc2UsImNlbGxOYW1lIjoid2Vici13aWRnZXQtMjEifSx7InNvdXJjZSI6InZpZXdvZiBfd2Vicl9lZGl0b3JfMjEgPSB7XG4gIGNvbnN0IHsgV2ViUkV4ZXJjaXNlRWRpdG9yLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwid2Vici0yMS1jb250ZW50c1xcXCJdYCkudGV4dENvbnRlbnQ7XG4gIGNvbnN0IGJsb2NrID0gSlNPTi5wYXJzZShiNjREZWNvZGUoc2NyaXB0Q29udGVudCkpO1xuXG4gIGNvbnN0IG9wdGlvbnMgPSBPYmplY3QuYXNzaWduKHsgaWQ6IGB3ZWJyLTIxLWNvbnRlbnRzYCB9LCBibG9jay5hdHRyKTtcbiAgY29uc3QgZWRpdG9yID0gbmV3IFdlYlJFeGVyY2lzZUVkaXRvcih3ZWJST2pzLndlYlJQcm9taXNlLCBibG9jay5jb2RlLCBvcHRpb25zKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl93ZWJyX3ZhbHVlXzIxID0gd2ViUk9qcy5wcm9jZXNzKF93ZWJyX2VkaXRvcl8yMSwge30pO1xuIiwibWV0aG9kTmFtZSI6ImludGVycHJldCIsImlubGluZSI6ZmFsc2UsImNlbGxOYW1lIjoid2Vici0yMSJ9LHsic291cmNlIjoie1xuICAvLyBXYWl0IGZvciBvdXRwdXQgdG8gYmUgd3JpdHRlbiB0byB0aGUgRE9NLCB0aGVuIHRyaWdnZXIgd2lkZ2V0IHJlbmRlcmluZ1xuICBhd2FpdCBfd2Vicl92YWx1ZV8yMDtcbiAgaWYgKHdpbmRvdy5IVE1MV2lkZ2V0cykge1xuICAgIHdpbmRvdy5IVE1MV2lkZ2V0cy5zdGF0aWNSZW5kZXIoKTtcbiAgfVxuICBpZiAod2luZG93LlBhZ2VkVGFibGVEb2MpIHtcbiAgICB3aW5kb3cuUGFnZWRUYWJsZURvYy5pbml0QWxsKCk7XG4gIH1cbn1cbiIsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsImlubGluZSI6ZmFsc2UsImNlbGxOYW1lIjoid2Vici13aWRnZXQtMjAifSx7InNvdXJjZSI6InZpZXdvZiBfd2Vicl9lZGl0b3JfMjAgPSB7XG4gIGNvbnN0IHsgV2ViUkV4ZXJjaXNlRWRpdG9yLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwid2Vici0yMC1jb250ZW50c1xcXCJdYCkudGV4dENvbnRlbnQ7XG4gIGNvbnN0IGJsb2NrID0gSlNPTi5wYXJzZShiNjREZWNvZGUoc2NyaXB0Q29udGVudCkpO1xuXG4gIGNvbnN0IG9wdGlvbnMgPSBPYmplY3QuYXNzaWduKHsgaWQ6IGB3ZWJyLTIwLWNvbnRlbnRzYCB9LCBibG9jay5hdHRyKTtcbiAgY29uc3QgZWRpdG9yID0gbmV3IFdlYlJFeGVyY2lzZUVkaXRvcih3ZWJST2pzLndlYlJQcm9taXNlLCBibG9jay5jb2RlLCBvcHRpb25zKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl93ZWJyX3ZhbHVlXzIwID0gd2ViUk9qcy5wcm9jZXNzKF93ZWJyX2VkaXRvcl8yMCwge30pO1xuIiwibWV0aG9kTmFtZSI6ImludGVycHJldCIsImlubGluZSI6ZmFsc2UsImNlbGxOYW1lIjoid2Vici0yMCJ9LHsic291cmNlIjoie1xuICAvLyBXYWl0IGZvciBvdXRwdXQgdG8gYmUgd3JpdHRlbiB0byB0aGUgRE9NLCB0aGVuIHRyaWdnZXIgd2lkZ2V0IHJlbmRlcmluZ1xuICBhd2FpdCBfd2Vicl92YWx1ZV8xOTtcbiAgaWYgKHdpbmRvdy5IVE1MV2lkZ2V0cykge1xuICAgIHdpbmRvdy5IVE1MV2lkZ2V0cy5zdGF0aWNSZW5kZXIoKTtcbiAgfVxuICBpZiAod2luZG93LlBhZ2VkVGFibGVEb2MpIHtcbiAgICB3aW5kb3cuUGFnZWRUYWJsZURvYy5pbml0QWxsKCk7XG4gIH1cbn1cbiIsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsImlubGluZSI6ZmFsc2UsImNlbGxOYW1lIjoid2Vici13aWRnZXQtMTkifSx7InNvdXJjZSI6InZpZXdvZiBfd2Vicl9lZGl0b3JfMTkgPSB7XG4gIGNvbnN0IHsgV2ViUkV4ZXJjaXNlRWRpdG9yLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwid2Vici0xOS1jb250ZW50c1xcXCJdYCkudGV4dENvbnRlbnQ7XG4gIGNvbnN0IGJsb2NrID0gSlNPTi5wYXJzZShiNjREZWNvZGUoc2NyaXB0Q29udGVudCkpO1xuXG4gIGNvbnN0IG9wdGlvbnMgPSBPYmplY3QuYXNzaWduKHsgaWQ6IGB3ZWJyLTE5LWNvbnRlbnRzYCB9LCBibG9jay5hdHRyKTtcbiAgY29uc3QgZWRpdG9yID0gbmV3IFdlYlJFeGVyY2lzZUVkaXRvcih3ZWJST2pzLndlYlJQcm9taXNlLCBibG9jay5jb2RlLCBvcHRpb25zKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl93ZWJyX3ZhbHVlXzE5ID0gd2ViUk9qcy5wcm9jZXNzKF93ZWJyX2VkaXRvcl8xOSwge30pO1xuIiwibWV0aG9kTmFtZSI6ImludGVycHJldCIsImlubGluZSI6ZmFsc2UsImNlbGxOYW1lIjoid2Vici0xOSJ9LHsic291cmNlIjoie1xuICAvLyBXYWl0IGZvciBvdXRwdXQgdG8gYmUgd3JpdHRlbiB0byB0aGUgRE9NLCB0aGVuIHRyaWdnZXIgd2lkZ2V0IHJlbmRlcmluZ1xuICBhd2FpdCBfd2Vicl92YWx1ZV8xODtcbiAgaWYgKHdpbmRvdy5IVE1MV2lkZ2V0cykge1xuICAgIHdpbmRvdy5IVE1MV2lkZ2V0cy5zdGF0aWNSZW5kZXIoKTtcbiAgfVxuICBpZiAod2luZG93LlBhZ2VkVGFibGVEb2MpIHtcbiAgICB3aW5kb3cuUGFnZWRUYWJsZURvYy5pbml0QWxsKCk7XG4gIH1cbn1cbiIsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsImlubGluZSI6ZmFsc2UsImNlbGxOYW1lIjoid2Vici13aWRnZXQtMTgifSx7InNvdXJjZSI6InZpZXdvZiBfd2Vicl9lZGl0b3JfMTggPSB7XG4gIGNvbnN0IHsgV2ViUkV4ZXJjaXNlRWRpdG9yLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwid2Vici0xOC1jb250ZW50c1xcXCJdYCkudGV4dENvbnRlbnQ7XG4gIGNvbnN0IGJsb2NrID0gSlNPTi5wYXJzZShiNjREZWNvZGUoc2NyaXB0Q29udGVudCkpO1xuXG4gIGNvbnN0IG9wdGlvbnMgPSBPYmplY3QuYXNzaWduKHsgaWQ6IGB3ZWJyLTE4LWNvbnRlbnRzYCB9LCBibG9jay5hdHRyKTtcbiAgY29uc3QgZWRpdG9yID0gbmV3IFdlYlJFeGVyY2lzZUVkaXRvcih3ZWJST2pzLndlYlJQcm9taXNlLCBibG9jay5jb2RlLCBvcHRpb25zKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl93ZWJyX3ZhbHVlXzE4ID0gd2ViUk9qcy5wcm9jZXNzKF93ZWJyX2VkaXRvcl8xOCwge30pO1xuIiwibWV0aG9kTmFtZSI6ImludGVycHJldCIsImlubGluZSI6ZmFsc2UsImNlbGxOYW1lIjoid2Vici0xOCJ9LHsic291cmNlIjoie1xuICAvLyBXYWl0IGZvciBvdXRwdXQgdG8gYmUgd3JpdHRlbiB0byB0aGUgRE9NLCB0aGVuIHRyaWdnZXIgd2lkZ2V0IHJlbmRlcmluZ1xuICBhd2FpdCBfd2Vicl92YWx1ZV8xNztcbiAgaWYgKHdpbmRvdy5IVE1MV2lkZ2V0cykge1xuICAgIHdpbmRvdy5IVE1MV2lkZ2V0cy5zdGF0aWNSZW5kZXIoKTtcbiAgfVxuICBpZiAod2luZG93LlBhZ2VkVGFibGVEb2MpIHtcbiAgICB3aW5kb3cuUGFnZWRUYWJsZURvYy5pbml0QWxsKCk7XG4gIH1cbn1cbiIsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsImlubGluZSI6ZmFsc2UsImNlbGxOYW1lIjoid2Vici13aWRnZXQtMTcifSx7InNvdXJjZSI6InZpZXdvZiBfd2Vicl9lZGl0b3JfMTcgPSB7XG4gIGNvbnN0IHsgV2ViUkV4ZXJjaXNlRWRpdG9yLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwid2Vici0xNy1jb250ZW50c1xcXCJdYCkudGV4dENvbnRlbnQ7XG4gIGNvbnN0IGJsb2NrID0gSlNPTi5wYXJzZShiNjREZWNvZGUoc2NyaXB0Q29udGVudCkpO1xuXG4gIGNvbnN0IG9wdGlvbnMgPSBPYmplY3QuYXNzaWduKHsgaWQ6IGB3ZWJyLTE3LWNvbnRlbnRzYCB9LCBibG9jay5hdHRyKTtcbiAgY29uc3QgZWRpdG9yID0gbmV3IFdlYlJFeGVyY2lzZUVkaXRvcih3ZWJST2pzLndlYlJQcm9taXNlLCBibG9jay5jb2RlLCBvcHRpb25zKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl93ZWJyX3ZhbHVlXzE3ID0gd2ViUk9qcy5wcm9jZXNzKF93ZWJyX2VkaXRvcl8xNywge30pO1xuIiwibWV0aG9kTmFtZSI6ImludGVycHJldCIsImlubGluZSI6ZmFsc2UsImNlbGxOYW1lIjoid2Vici0xNyJ9LHsic291cmNlIjoie1xuICAvLyBXYWl0IGZvciBvdXRwdXQgdG8gYmUgd3JpdHRlbiB0byB0aGUgRE9NLCB0aGVuIHRyaWdnZXIgd2lkZ2V0IHJlbmRlcmluZ1xuICBhd2FpdCBfd2Vicl92YWx1ZV8xNjtcbiAgaWYgKHdpbmRvdy5IVE1MV2lkZ2V0cykge1xuICAgIHdpbmRvdy5IVE1MV2lkZ2V0cy5zdGF0aWNSZW5kZXIoKTtcbiAgfVxuICBpZiAod2luZG93LlBhZ2VkVGFibGVEb2MpIHtcbiAgICB3aW5kb3cuUGFnZWRUYWJsZURvYy5pbml0QWxsKCk7XG4gIH1cbn1cbiIsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsImlubGluZSI6ZmFsc2UsImNlbGxOYW1lIjoid2Vici13aWRnZXQtMTYifSx7InNvdXJjZSI6InZpZXdvZiBfd2Vicl9lZGl0b3JfMTYgPSB7XG4gIGNvbnN0IHsgV2ViUkV4ZXJjaXNlRWRpdG9yLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwid2Vici0xNi1jb250ZW50c1xcXCJdYCkudGV4dENvbnRlbnQ7XG4gIGNvbnN0IGJsb2NrID0gSlNPTi5wYXJzZShiNjREZWNvZGUoc2NyaXB0Q29udGVudCkpO1xuXG4gIGNvbnN0IG9wdGlvbnMgPSBPYmplY3QuYXNzaWduKHsgaWQ6IGB3ZWJyLTE2LWNvbnRlbnRzYCB9LCBibG9jay5hdHRyKTtcbiAgY29uc3QgZWRpdG9yID0gbmV3IFdlYlJFeGVyY2lzZUVkaXRvcih3ZWJST2pzLndlYlJQcm9taXNlLCBibG9jay5jb2RlLCBvcHRpb25zKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl93ZWJyX3ZhbHVlXzE2ID0gd2ViUk9qcy5wcm9jZXNzKF93ZWJyX2VkaXRvcl8xNiwge30pO1xuIiwibWV0aG9kTmFtZSI6ImludGVycHJldCIsImlubGluZSI6ZmFsc2UsImNlbGxOYW1lIjoid2Vici0xNiJ9LHsic291cmNlIjoie1xuICAvLyBXYWl0IGZvciBvdXRwdXQgdG8gYmUgd3JpdHRlbiB0byB0aGUgRE9NLCB0aGVuIHRyaWdnZXIgd2lkZ2V0IHJlbmRlcmluZ1xuICBhd2FpdCBfd2Vicl92YWx1ZV8xNTtcbiAgaWYgKHdpbmRvdy5IVE1MV2lkZ2V0cykge1xuICAgIHdpbmRvdy5IVE1MV2lkZ2V0cy5zdGF0aWNSZW5kZXIoKTtcbiAgfVxuICBpZiAod2luZG93LlBhZ2VkVGFibGVEb2MpIHtcbiAgICB3aW5kb3cuUGFnZWRUYWJsZURvYy5pbml0QWxsKCk7XG4gIH1cbn1cbiIsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsImlubGluZSI6ZmFsc2UsImNlbGxOYW1lIjoid2Vici13aWRnZXQtMTUifSx7InNvdXJjZSI6InZpZXdvZiBfd2Vicl9lZGl0b3JfMTUgPSB7XG4gIGNvbnN0IHsgV2ViUkV4ZXJjaXNlRWRpdG9yLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwid2Vici0xNS1jb250ZW50c1xcXCJdYCkudGV4dENvbnRlbnQ7XG4gIGNvbnN0IGJsb2NrID0gSlNPTi5wYXJzZShiNjREZWNvZGUoc2NyaXB0Q29udGVudCkpO1xuXG4gIGNvbnN0IG9wdGlvbnMgPSBPYmplY3QuYXNzaWduKHsgaWQ6IGB3ZWJyLTE1LWNvbnRlbnRzYCB9LCBibG9jay5hdHRyKTtcbiAgY29uc3QgZWRpdG9yID0gbmV3IFdlYlJFeGVyY2lzZUVkaXRvcih3ZWJST2pzLndlYlJQcm9taXNlLCBibG9jay5jb2RlLCBvcHRpb25zKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl93ZWJyX3ZhbHVlXzE1ID0gd2ViUk9qcy5wcm9jZXNzKF93ZWJyX2VkaXRvcl8xNSwge30pO1xuIiwibWV0aG9kTmFtZSI6ImludGVycHJldCIsImlubGluZSI6ZmFsc2UsImNlbGxOYW1lIjoid2Vici0xNSJ9LHsic291cmNlIjoie1xuICAvLyBXYWl0IGZvciBvdXRwdXQgdG8gYmUgd3JpdHRlbiB0byB0aGUgRE9NLCB0aGVuIHRyaWdnZXIgd2lkZ2V0IHJlbmRlcmluZ1xuICBhd2FpdCBfd2Vicl92YWx1ZV8xNDtcbiAgaWYgKHdpbmRvdy5IVE1MV2lkZ2V0cykge1xuICAgIHdpbmRvdy5IVE1MV2lkZ2V0cy5zdGF0aWNSZW5kZXIoKTtcbiAgfVxuICBpZiAod2luZG93LlBhZ2VkVGFibGVEb2MpIHtcbiAgICB3aW5kb3cuUGFnZWRUYWJsZURvYy5pbml0QWxsKCk7XG4gIH1cbn1cbiIsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsImlubGluZSI6ZmFsc2UsImNlbGxOYW1lIjoid2Vici13aWRnZXQtMTQifSx7InNvdXJjZSI6InZpZXdvZiBfd2Vicl9lZGl0b3JfMTQgPSB7XG4gIGNvbnN0IHsgV2ViUkV4ZXJjaXNlRWRpdG9yLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwid2Vici0xNC1jb250ZW50c1xcXCJdYCkudGV4dENvbnRlbnQ7XG4gIGNvbnN0IGJsb2NrID0gSlNPTi5wYXJzZShiNjREZWNvZGUoc2NyaXB0Q29udGVudCkpO1xuXG4gIGNvbnN0IG9wdGlvbnMgPSBPYmplY3QuYXNzaWduKHsgaWQ6IGB3ZWJyLTE0LWNvbnRlbnRzYCB9LCBibG9jay5hdHRyKTtcbiAgY29uc3QgZWRpdG9yID0gbmV3IFdlYlJFeGVyY2lzZUVkaXRvcih3ZWJST2pzLndlYlJQcm9taXNlLCBibG9jay5jb2RlLCBvcHRpb25zKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl93ZWJyX3ZhbHVlXzE0ID0gd2ViUk9qcy5wcm9jZXNzKF93ZWJyX2VkaXRvcl8xNCwge30pO1xuIiwibWV0aG9kTmFtZSI6ImludGVycHJldCIsImlubGluZSI6ZmFsc2UsImNlbGxOYW1lIjoid2Vici0xNCJ9LHsic291cmNlIjoie1xuICAvLyBXYWl0IGZvciBvdXRwdXQgdG8gYmUgd3JpdHRlbiB0byB0aGUgRE9NLCB0aGVuIHRyaWdnZXIgd2lkZ2V0IHJlbmRlcmluZ1xuICBhd2FpdCBfd2Vicl92YWx1ZV8xMztcbiAgaWYgKHdpbmRvdy5IVE1MV2lkZ2V0cykge1xuICAgIHdpbmRvdy5IVE1MV2lkZ2V0cy5zdGF0aWNSZW5kZXIoKTtcbiAgfVxuICBpZiAod2luZG93LlBhZ2VkVGFibGVEb2MpIHtcbiAgICB3aW5kb3cuUGFnZWRUYWJsZURvYy5pbml0QWxsKCk7XG4gIH1cbn1cbiIsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsImlubGluZSI6ZmFsc2UsImNlbGxOYW1lIjoid2Vici13aWRnZXQtMTMifSx7InNvdXJjZSI6InZpZXdvZiBfd2Vicl9lZGl0b3JfMTMgPSB7XG4gIGNvbnN0IHsgV2ViUkV4ZXJjaXNlRWRpdG9yLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwid2Vici0xMy1jb250ZW50c1xcXCJdYCkudGV4dENvbnRlbnQ7XG4gIGNvbnN0IGJsb2NrID0gSlNPTi5wYXJzZShiNjREZWNvZGUoc2NyaXB0Q29udGVudCkpO1xuXG4gIGNvbnN0IG9wdGlvbnMgPSBPYmplY3QuYXNzaWduKHsgaWQ6IGB3ZWJyLTEzLWNvbnRlbnRzYCB9LCBibG9jay5hdHRyKTtcbiAgY29uc3QgZWRpdG9yID0gbmV3IFdlYlJFeGVyY2lzZUVkaXRvcih3ZWJST2pzLndlYlJQcm9taXNlLCBibG9jay5jb2RlLCBvcHRpb25zKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl93ZWJyX3ZhbHVlXzEzID0gd2ViUk9qcy5wcm9jZXNzKF93ZWJyX2VkaXRvcl8xMywge30pO1xuIiwibWV0aG9kTmFtZSI6ImludGVycHJldCIsImlubGluZSI6ZmFsc2UsImNlbGxOYW1lIjoid2Vici0xMyJ9LHsic291cmNlIjoie1xuICAvLyBXYWl0IGZvciBvdXRwdXQgdG8gYmUgd3JpdHRlbiB0byB0aGUgRE9NLCB0aGVuIHRyaWdnZXIgd2lkZ2V0IHJlbmRlcmluZ1xuICBhd2FpdCBfd2Vicl92YWx1ZV8xMjtcbiAgaWYgKHdpbmRvdy5IVE1MV2lkZ2V0cykge1xuICAgIHdpbmRvdy5IVE1MV2lkZ2V0cy5zdGF0aWNSZW5kZXIoKTtcbiAgfVxuICBpZiAod2luZG93LlBhZ2VkVGFibGVEb2MpIHtcbiAgICB3aW5kb3cuUGFnZWRUYWJsZURvYy5pbml0QWxsKCk7XG4gIH1cbn1cbiIsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsImlubGluZSI6ZmFsc2UsImNlbGxOYW1lIjoid2Vici13aWRnZXQtMTIifSx7InNvdXJjZSI6InZpZXdvZiBfd2Vicl9lZGl0b3JfMTIgPSB7XG4gIGNvbnN0IHsgV2ViUkV4ZXJjaXNlRWRpdG9yLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwid2Vici0xMi1jb250ZW50c1xcXCJdYCkudGV4dENvbnRlbnQ7XG4gIGNvbnN0IGJsb2NrID0gSlNPTi5wYXJzZShiNjREZWNvZGUoc2NyaXB0Q29udGVudCkpO1xuXG4gIGNvbnN0IG9wdGlvbnMgPSBPYmplY3QuYXNzaWduKHsgaWQ6IGB3ZWJyLTEyLWNvbnRlbnRzYCB9LCBibG9jay5hdHRyKTtcbiAgY29uc3QgZWRpdG9yID0gbmV3IFdlYlJFeGVyY2lzZUVkaXRvcih3ZWJST2pzLndlYlJQcm9taXNlLCBibG9jay5jb2RlLCBvcHRpb25zKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl93ZWJyX3ZhbHVlXzEyID0gd2ViUk9qcy5wcm9jZXNzKF93ZWJyX2VkaXRvcl8xMiwge30pO1xuIiwibWV0aG9kTmFtZSI6ImludGVycHJldCIsImlubGluZSI6ZmFsc2UsImNlbGxOYW1lIjoid2Vici0xMiJ9LHsic291cmNlIjoie1xuICAvLyBXYWl0IGZvciBvdXRwdXQgdG8gYmUgd3JpdHRlbiB0byB0aGUgRE9NLCB0aGVuIHRyaWdnZXIgd2lkZ2V0IHJlbmRlcmluZ1xuICBhd2FpdCBfd2Vicl92YWx1ZV8xMTtcbiAgaWYgKHdpbmRvdy5IVE1MV2lkZ2V0cykge1xuICAgIHdpbmRvdy5IVE1MV2lkZ2V0cy5zdGF0aWNSZW5kZXIoKTtcbiAgfVxuICBpZiAod2luZG93LlBhZ2VkVGFibGVEb2MpIHtcbiAgICB3aW5kb3cuUGFnZWRUYWJsZURvYy5pbml0QWxsKCk7XG4gIH1cbn1cbiIsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsImlubGluZSI6ZmFsc2UsImNlbGxOYW1lIjoid2Vici13aWRnZXQtMTEifSx7InNvdXJjZSI6InZpZXdvZiBfd2Vicl9lZGl0b3JfMTEgPSB7XG4gIGNvbnN0IHsgV2ViUkV4ZXJjaXNlRWRpdG9yLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwid2Vici0xMS1jb250ZW50c1xcXCJdYCkudGV4dENvbnRlbnQ7XG4gIGNvbnN0IGJsb2NrID0gSlNPTi5wYXJzZShiNjREZWNvZGUoc2NyaXB0Q29udGVudCkpO1xuXG4gIGNvbnN0IG9wdGlvbnMgPSBPYmplY3QuYXNzaWduKHsgaWQ6IGB3ZWJyLTExLWNvbnRlbnRzYCB9LCBibG9jay5hdHRyKTtcbiAgY29uc3QgZWRpdG9yID0gbmV3IFdlYlJFeGVyY2lzZUVkaXRvcih3ZWJST2pzLndlYlJQcm9taXNlLCBibG9jay5jb2RlLCBvcHRpb25zKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl93ZWJyX3ZhbHVlXzExID0gd2ViUk9qcy5wcm9jZXNzKF93ZWJyX2VkaXRvcl8xMSwge30pO1xuIiwibWV0aG9kTmFtZSI6ImludGVycHJldCIsImlubGluZSI6ZmFsc2UsImNlbGxOYW1lIjoid2Vici0xMSJ9LHsic291cmNlIjoie1xuICAvLyBXYWl0IGZvciBvdXRwdXQgdG8gYmUgd3JpdHRlbiB0byB0aGUgRE9NLCB0aGVuIHRyaWdnZXIgd2lkZ2V0IHJlbmRlcmluZ1xuICBhd2FpdCBfd2Vicl92YWx1ZV8xMDtcbiAgaWYgKHdpbmRvdy5IVE1MV2lkZ2V0cykge1xuICAgIHdpbmRvdy5IVE1MV2lkZ2V0cy5zdGF0aWNSZW5kZXIoKTtcbiAgfVxuICBpZiAod2luZG93LlBhZ2VkVGFibGVEb2MpIHtcbiAgICB3aW5kb3cuUGFnZWRUYWJsZURvYy5pbml0QWxsKCk7XG4gIH1cbn1cbiIsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsImlubGluZSI6ZmFsc2UsImNlbGxOYW1lIjoid2Vici13aWRnZXQtMTAifSx7InNvdXJjZSI6InZpZXdvZiBfd2Vicl9lZGl0b3JfMTAgPSB7XG4gIGNvbnN0IHsgV2ViUkV4ZXJjaXNlRWRpdG9yLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwid2Vici0xMC1jb250ZW50c1xcXCJdYCkudGV4dENvbnRlbnQ7XG4gIGNvbnN0IGJsb2NrID0gSlNPTi5wYXJzZShiNjREZWNvZGUoc2NyaXB0Q29udGVudCkpO1xuXG4gIGNvbnN0IG9wdGlvbnMgPSBPYmplY3QuYXNzaWduKHsgaWQ6IGB3ZWJyLTEwLWNvbnRlbnRzYCB9LCBibG9jay5hdHRyKTtcbiAgY29uc3QgZWRpdG9yID0gbmV3IFdlYlJFeGVyY2lzZUVkaXRvcih3ZWJST2pzLndlYlJQcm9taXNlLCBibG9jay5jb2RlLCBvcHRpb25zKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl93ZWJyX3ZhbHVlXzEwID0gd2ViUk9qcy5wcm9jZXNzKF93ZWJyX2VkaXRvcl8xMCwge30pO1xuIiwibWV0aG9kTmFtZSI6ImludGVycHJldCIsImlubGluZSI6ZmFsc2UsImNlbGxOYW1lIjoid2Vici0xMCJ9LHsic291cmNlIjoie1xuICAvLyBXYWl0IGZvciBvdXRwdXQgdG8gYmUgd3JpdHRlbiB0byB0aGUgRE9NLCB0aGVuIHRyaWdnZXIgd2lkZ2V0IHJlbmRlcmluZ1xuICBhd2FpdCBfd2Vicl92YWx1ZV85O1xuICBpZiAod2luZG93LkhUTUxXaWRnZXRzKSB7XG4gICAgd2luZG93LkhUTUxXaWRnZXRzLnN0YXRpY1JlbmRlcigpO1xuICB9XG4gIGlmICh3aW5kb3cuUGFnZWRUYWJsZURvYykge1xuICAgIHdpbmRvdy5QYWdlZFRhYmxlRG9jLmluaXRBbGwoKTtcbiAgfVxufVxuIiwibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0IiwiaW5saW5lIjpmYWxzZSwiY2VsbE5hbWUiOiJ3ZWJyLXdpZGdldC05In0seyJzb3VyY2UiOiJ2aWV3b2YgX3dlYnJfZWRpdG9yXzkgPSB7XG4gIGNvbnN0IHsgV2ViUkV4ZXJjaXNlRWRpdG9yLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwid2Vici05LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHdlYnItOS1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBXZWJSRXhlcmNpc2VFZGl0b3Iod2ViUk9qcy53ZWJSUHJvbWlzZSwgYmxvY2suY29kZSwgb3B0aW9ucyk7XG5cbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG5fd2Vicl92YWx1ZV85ID0gd2ViUk9qcy5wcm9jZXNzKF93ZWJyX2VkaXRvcl85LCB7fSk7XG4iLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiaW5saW5lIjpmYWxzZSwiY2VsbE5hbWUiOiJ3ZWJyLTkifSx7InNvdXJjZSI6IntcbiAgLy8gV2FpdCBmb3Igb3V0cHV0IHRvIGJlIHdyaXR0ZW4gdG8gdGhlIERPTSwgdGhlbiB0cmlnZ2VyIHdpZGdldCByZW5kZXJpbmdcbiAgYXdhaXQgX3dlYnJfdmFsdWVfODtcbiAgaWYgKHdpbmRvdy5IVE1MV2lkZ2V0cykge1xuICAgIHdpbmRvdy5IVE1MV2lkZ2V0cy5zdGF0aWNSZW5kZXIoKTtcbiAgfVxuICBpZiAod2luZG93LlBhZ2VkVGFibGVEb2MpIHtcbiAgICB3aW5kb3cuUGFnZWRUYWJsZURvYy5pbml0QWxsKCk7XG4gIH1cbn1cbiIsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsImlubGluZSI6ZmFsc2UsImNlbGxOYW1lIjoid2Vici13aWRnZXQtOCJ9LHsic291cmNlIjoidmlld29mIF93ZWJyX2VkaXRvcl84ID0ge1xuICBjb25zdCB7IFdlYlJFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuICBjb25zdCBzY3JpcHRDb250ZW50ID0gZG9jdW1lbnQucXVlcnlTZWxlY3Rvcihgc2NyaXB0W3R5cGU9XFxcIndlYnItOC1jb250ZW50c1xcXCJdYCkudGV4dENvbnRlbnQ7XG4gIGNvbnN0IGJsb2NrID0gSlNPTi5wYXJzZShiNjREZWNvZGUoc2NyaXB0Q29udGVudCkpO1xuXG4gIGNvbnN0IG9wdGlvbnMgPSBPYmplY3QuYXNzaWduKHsgaWQ6IGB3ZWJyLTgtY29udGVudHNgIH0sIGJsb2NrLmF0dHIpO1xuICBjb25zdCBlZGl0b3IgPSBuZXcgV2ViUkV4ZXJjaXNlRWRpdG9yKHdlYlJPanMud2ViUlByb21pc2UsIGJsb2NrLmNvZGUsIG9wdGlvbnMpO1xuXG4gIHJldHVybiBlZGl0b3IuY29udGFpbmVyO1xufVxuX3dlYnJfdmFsdWVfOCA9IHdlYlJPanMucHJvY2Vzcyhfd2Vicl9lZGl0b3JfOCwge30pO1xuIiwibWV0aG9kTmFtZSI6ImludGVycHJldCIsImlubGluZSI6ZmFsc2UsImNlbGxOYW1lIjoid2Vici04In0seyJzb3VyY2UiOiJ7XG4gIC8vIFdhaXQgZm9yIG91dHB1dCB0byBiZSB3cml0dGVuIHRvIHRoZSBET00sIHRoZW4gdHJpZ2dlciB3aWRnZXQgcmVuZGVyaW5nXG4gIGF3YWl0IF93ZWJyX3ZhbHVlXzc7XG4gIGlmICh3aW5kb3cuSFRNTFdpZGdldHMpIHtcbiAgICB3aW5kb3cuSFRNTFdpZGdldHMuc3RhdGljUmVuZGVyKCk7XG4gIH1cbiAgaWYgKHdpbmRvdy5QYWdlZFRhYmxlRG9jKSB7XG4gICAgd2luZG93LlBhZ2VkVGFibGVEb2MuaW5pdEFsbCgpO1xuICB9XG59XG4iLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJpbmxpbmUiOmZhbHNlLCJjZWxsTmFtZSI6IndlYnItd2lkZ2V0LTcifSx7InNvdXJjZSI6InZpZXdvZiBfd2Vicl9lZGl0b3JfNyA9IHtcbiAgY29uc3QgeyBXZWJSRXhlcmNpc2VFZGl0b3IsIGI2NERlY29kZSB9ID0gd2luZG93Ll9leGVyY2lzZV9vanNfcnVudGltZTtcbiAgY29uc3Qgc2NyaXB0Q29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJ3ZWJyLTctY29udGVudHNcXFwiXWApLnRleHRDb250ZW50O1xuICBjb25zdCBibG9jayA9IEpTT04ucGFyc2UoYjY0RGVjb2RlKHNjcmlwdENvbnRlbnQpKTtcblxuICBjb25zdCBvcHRpb25zID0gT2JqZWN0LmFzc2lnbih7IGlkOiBgd2Vici03LWNvbnRlbnRzYCB9LCBibG9jay5hdHRyKTtcbiAgY29uc3QgZWRpdG9yID0gbmV3IFdlYlJFeGVyY2lzZUVkaXRvcih3ZWJST2pzLndlYlJQcm9taXNlLCBibG9jay5jb2RlLCBvcHRpb25zKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl93ZWJyX3ZhbHVlXzcgPSB3ZWJST2pzLnByb2Nlc3MoX3dlYnJfZWRpdG9yXzcsIHt9KTtcbiIsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJpbmxpbmUiOmZhbHNlLCJjZWxsTmFtZSI6IndlYnItNyJ9LHsic291cmNlIjoie1xuICAvLyBXYWl0IGZvciBvdXRwdXQgdG8gYmUgd3JpdHRlbiB0byB0aGUgRE9NLCB0aGVuIHRyaWdnZXIgd2lkZ2V0IHJlbmRlcmluZ1xuICBhd2FpdCBfd2Vicl92YWx1ZV82O1xuICBpZiAod2luZG93LkhUTUxXaWRnZXRzKSB7XG4gICAgd2luZG93LkhUTUxXaWRnZXRzLnN0YXRpY1JlbmRlcigpO1xuICB9XG4gIGlmICh3aW5kb3cuUGFnZWRUYWJsZURvYykge1xuICAgIHdpbmRvdy5QYWdlZFRhYmxlRG9jLmluaXRBbGwoKTtcbiAgfVxufVxuIiwibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0IiwiaW5saW5lIjpmYWxzZSwiY2VsbE5hbWUiOiJ3ZWJyLXdpZGdldC02In0seyJzb3VyY2UiOiJ2aWV3b2YgX3dlYnJfZWRpdG9yXzYgPSB7XG4gIGNvbnN0IHsgV2ViUkV4ZXJjaXNlRWRpdG9yLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwid2Vici02LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHdlYnItNi1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBXZWJSRXhlcmNpc2VFZGl0b3Iod2ViUk9qcy53ZWJSUHJvbWlzZSwgYmxvY2suY29kZSwgb3B0aW9ucyk7XG5cbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG5fd2Vicl92YWx1ZV82ID0gd2ViUk9qcy5wcm9jZXNzKF93ZWJyX2VkaXRvcl82LCB7fSk7XG4iLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiaW5saW5lIjpmYWxzZSwiY2VsbE5hbWUiOiJ3ZWJyLTYifSx7InNvdXJjZSI6IntcbiAgLy8gV2FpdCBmb3Igb3V0cHV0IHRvIGJlIHdyaXR0ZW4gdG8gdGhlIERPTSwgdGhlbiB0cmlnZ2VyIHdpZGdldCByZW5kZXJpbmdcbiAgYXdhaXQgX3dlYnJfdmFsdWVfNTtcbiAgaWYgKHdpbmRvdy5IVE1MV2lkZ2V0cykge1xuICAgIHdpbmRvdy5IVE1MV2lkZ2V0cy5zdGF0aWNSZW5kZXIoKTtcbiAgfVxuICBpZiAod2luZG93LlBhZ2VkVGFibGVEb2MpIHtcbiAgICB3aW5kb3cuUGFnZWRUYWJsZURvYy5pbml0QWxsKCk7XG4gIH1cbn1cbiIsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsImlubGluZSI6ZmFsc2UsImNlbGxOYW1lIjoid2Vici13aWRnZXQtNSJ9LHsic291cmNlIjoidmlld29mIF93ZWJyX2VkaXRvcl81ID0ge1xuICBjb25zdCB7IFdlYlJFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuICBjb25zdCBzY3JpcHRDb250ZW50ID0gZG9jdW1lbnQucXVlcnlTZWxlY3Rvcihgc2NyaXB0W3R5cGU9XFxcIndlYnItNS1jb250ZW50c1xcXCJdYCkudGV4dENvbnRlbnQ7XG4gIGNvbnN0IGJsb2NrID0gSlNPTi5wYXJzZShiNjREZWNvZGUoc2NyaXB0Q29udGVudCkpO1xuXG4gIGNvbnN0IG9wdGlvbnMgPSBPYmplY3QuYXNzaWduKHsgaWQ6IGB3ZWJyLTUtY29udGVudHNgIH0sIGJsb2NrLmF0dHIpO1xuICBjb25zdCBlZGl0b3IgPSBuZXcgV2ViUkV4ZXJjaXNlRWRpdG9yKHdlYlJPanMud2ViUlByb21pc2UsIGJsb2NrLmNvZGUsIG9wdGlvbnMpO1xuXG4gIHJldHVybiBlZGl0b3IuY29udGFpbmVyO1xufVxuX3dlYnJfdmFsdWVfNSA9IHdlYlJPanMucHJvY2Vzcyhfd2Vicl9lZGl0b3JfNSwge30pO1xuIiwibWV0aG9kTmFtZSI6ImludGVycHJldCIsImlubGluZSI6ZmFsc2UsImNlbGxOYW1lIjoid2Vici01In0seyJzb3VyY2UiOiJ7XG4gIC8vIFdhaXQgZm9yIG91dHB1dCB0byBiZSB3cml0dGVuIHRvIHRoZSBET00sIHRoZW4gdHJpZ2dlciB3aWRnZXQgcmVuZGVyaW5nXG4gIGF3YWl0IF93ZWJyX3ZhbHVlXzQ7XG4gIGlmICh3aW5kb3cuSFRNTFdpZGdldHMpIHtcbiAgICB3aW5kb3cuSFRNTFdpZGdldHMuc3RhdGljUmVuZGVyKCk7XG4gIH1cbiAgaWYgKHdpbmRvdy5QYWdlZFRhYmxlRG9jKSB7XG4gICAgd2luZG93LlBhZ2VkVGFibGVEb2MuaW5pdEFsbCgpO1xuICB9XG59XG4iLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJpbmxpbmUiOmZhbHNlLCJjZWxsTmFtZSI6IndlYnItd2lkZ2V0LTQifSx7InNvdXJjZSI6InZpZXdvZiBfd2Vicl9lZGl0b3JfNCA9IHtcbiAgY29uc3QgeyBXZWJSRXhlcmNpc2VFZGl0b3IsIGI2NERlY29kZSB9ID0gd2luZG93Ll9leGVyY2lzZV9vanNfcnVudGltZTtcbiAgY29uc3Qgc2NyaXB0Q29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJ3ZWJyLTQtY29udGVudHNcXFwiXWApLnRleHRDb250ZW50O1xuICBjb25zdCBibG9jayA9IEpTT04ucGFyc2UoYjY0RGVjb2RlKHNjcmlwdENvbnRlbnQpKTtcblxuICBjb25zdCBvcHRpb25zID0gT2JqZWN0LmFzc2lnbih7IGlkOiBgd2Vici00LWNvbnRlbnRzYCB9LCBibG9jay5hdHRyKTtcbiAgY29uc3QgZWRpdG9yID0gbmV3IFdlYlJFeGVyY2lzZUVkaXRvcih3ZWJST2pzLndlYlJQcm9taXNlLCBibG9jay5jb2RlLCBvcHRpb25zKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl93ZWJyX3ZhbHVlXzQgPSB3ZWJST2pzLnByb2Nlc3MoX3dlYnJfZWRpdG9yXzQsIHt9KTtcbiIsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJpbmxpbmUiOmZhbHNlLCJjZWxsTmFtZSI6IndlYnItNCJ9LHsic291cmNlIjoie1xuICAvLyBXYWl0IGZvciBvdXRwdXQgdG8gYmUgd3JpdHRlbiB0byB0aGUgRE9NLCB0aGVuIHRyaWdnZXIgd2lkZ2V0IHJlbmRlcmluZ1xuICBhd2FpdCBfd2Vicl92YWx1ZV8zO1xuICBpZiAod2luZG93LkhUTUxXaWRnZXRzKSB7XG4gICAgd2luZG93LkhUTUxXaWRnZXRzLnN0YXRpY1JlbmRlcigpO1xuICB9XG4gIGlmICh3aW5kb3cuUGFnZWRUYWJsZURvYykge1xuICAgIHdpbmRvdy5QYWdlZFRhYmxlRG9jLmluaXRBbGwoKTtcbiAgfVxufVxuIiwibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0IiwiaW5saW5lIjpmYWxzZSwiY2VsbE5hbWUiOiJ3ZWJyLXdpZGdldC0zIn0seyJzb3VyY2UiOiJ2aWV3b2YgX3dlYnJfZWRpdG9yXzMgPSB7XG4gIGNvbnN0IHsgV2ViUkV4ZXJjaXNlRWRpdG9yLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwid2Vici0zLWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHdlYnItMy1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBXZWJSRXhlcmNpc2VFZGl0b3Iod2ViUk9qcy53ZWJSUHJvbWlzZSwgYmxvY2suY29kZSwgb3B0aW9ucyk7XG5cbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG5fd2Vicl92YWx1ZV8zID0gd2ViUk9qcy5wcm9jZXNzKF93ZWJyX2VkaXRvcl8zLCB7fSk7XG4iLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiaW5saW5lIjpmYWxzZSwiY2VsbE5hbWUiOiJ3ZWJyLTMifSx7InNvdXJjZSI6IntcbiAgLy8gV2FpdCBmb3Igb3V0cHV0IHRvIGJlIHdyaXR0ZW4gdG8gdGhlIERPTSwgdGhlbiB0cmlnZ2VyIHdpZGdldCByZW5kZXJpbmdcbiAgYXdhaXQgX3dlYnJfdmFsdWVfMjtcbiAgaWYgKHdpbmRvdy5IVE1MV2lkZ2V0cykge1xuICAgIHdpbmRvdy5IVE1MV2lkZ2V0cy5zdGF0aWNSZW5kZXIoKTtcbiAgfVxuICBpZiAod2luZG93LlBhZ2VkVGFibGVEb2MpIHtcbiAgICB3aW5kb3cuUGFnZWRUYWJsZURvYy5pbml0QWxsKCk7XG4gIH1cbn1cbiIsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsImlubGluZSI6ZmFsc2UsImNlbGxOYW1lIjoid2Vici13aWRnZXQtMiJ9LHsic291cmNlIjoidmlld29mIF93ZWJyX2VkaXRvcl8yID0ge1xuICBjb25zdCB7IFdlYlJFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuICBjb25zdCBzY3JpcHRDb250ZW50ID0gZG9jdW1lbnQucXVlcnlTZWxlY3Rvcihgc2NyaXB0W3R5cGU9XFxcIndlYnItMi1jb250ZW50c1xcXCJdYCkudGV4dENvbnRlbnQ7XG4gIGNvbnN0IGJsb2NrID0gSlNPTi5wYXJzZShiNjREZWNvZGUoc2NyaXB0Q29udGVudCkpO1xuXG4gIGNvbnN0IG9wdGlvbnMgPSBPYmplY3QuYXNzaWduKHsgaWQ6IGB3ZWJyLTItY29udGVudHNgIH0sIGJsb2NrLmF0dHIpO1xuICBjb25zdCBlZGl0b3IgPSBuZXcgV2ViUkV4ZXJjaXNlRWRpdG9yKHdlYlJPanMud2ViUlByb21pc2UsIGJsb2NrLmNvZGUsIG9wdGlvbnMpO1xuXG4gIHJldHVybiBlZGl0b3IuY29udGFpbmVyO1xufVxuX3dlYnJfdmFsdWVfMiA9IHdlYlJPanMucHJvY2Vzcyhfd2Vicl9lZGl0b3JfMiwge30pO1xuIiwibWV0aG9kTmFtZSI6ImludGVycHJldCIsImlubGluZSI6ZmFsc2UsImNlbGxOYW1lIjoid2Vici0yIn0seyJzb3VyY2UiOiJ7XG4gIC8vIFdhaXQgZm9yIG91dHB1dCB0byBiZSB3cml0dGVuIHRvIHRoZSBET00sIHRoZW4gdHJpZ2dlciB3aWRnZXQgcmVuZGVyaW5nXG4gIGF3YWl0IF93ZWJyX3ZhbHVlXzE7XG4gIGlmICh3aW5kb3cuSFRNTFdpZGdldHMpIHtcbiAgICB3aW5kb3cuSFRNTFdpZGdldHMuc3RhdGljUmVuZGVyKCk7XG4gIH1cbiAgaWYgKHdpbmRvdy5QYWdlZFRhYmxlRG9jKSB7XG4gICAgd2luZG93LlBhZ2VkVGFibGVEb2MuaW5pdEFsbCgpO1xuICB9XG59XG4iLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJpbmxpbmUiOmZhbHNlLCJjZWxsTmFtZSI6IndlYnItd2lkZ2V0LTEifSx7InNvdXJjZSI6InZpZXdvZiBfd2Vicl9lZGl0b3JfMSA9IHtcbiAgY29uc3QgeyBXZWJSRXhlcmNpc2VFZGl0b3IsIGI2NERlY29kZSB9ID0gd2luZG93Ll9leGVyY2lzZV9vanNfcnVudGltZTtcbiAgY29uc3Qgc2NyaXB0Q29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJ3ZWJyLTEtY29udGVudHNcXFwiXWApLnRleHRDb250ZW50O1xuICBjb25zdCBibG9jayA9IEpTT04ucGFyc2UoYjY0RGVjb2RlKHNjcmlwdENvbnRlbnQpKTtcblxuICBjb25zdCBvcHRpb25zID0gT2JqZWN0LmFzc2lnbih7IGlkOiBgd2Vici0xLWNvbnRlbnRzYCB9LCBibG9jay5hdHRyKTtcbiAgY29uc3QgZWRpdG9yID0gbmV3IFdlYlJFeGVyY2lzZUVkaXRvcih3ZWJST2pzLndlYlJQcm9taXNlLCBibG9jay5jb2RlLCBvcHRpb25zKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl93ZWJyX3ZhbHVlXzEgPSB3ZWJST2pzLnByb2Nlc3MoX3dlYnJfZWRpdG9yXzEsIHt9KTtcbiIsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJpbmxpbmUiOmZhbHNlLCJjZWxsTmFtZSI6IndlYnItMSJ9LHsic291cmNlIjoid2ViUk9qcyA9IHtcbiAgY29uc3QgeyBXZWJSIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lLldlYlI7XG4gIGNvbnN0IHtcbiAgICBXZWJSRXZhbHVhdG9yLFxuICAgIFdlYlJFbnZpcm9ubWVudE1hbmFnZXIsXG4gICAgc2V0dXBSLFxuICAgIGI2NERlY29kZSxcbiAgICBjb2xsYXBzZVBhdGhcbiAgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG5cbiAgY29uc3Qgc3RhdHVzQ29udGFpbmVyID0gZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoXCJleGVyY2lzZS1sb2FkaW5nLXN0YXR1c1wiKTtcbiAgY29uc3QgaW5kaWNhdG9yQ29udGFpbmVyID0gZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoXCJleGVyY2lzZS1sb2FkaW5nLWluZGljYXRvclwiKTtcbiAgaW5kaWNhdG9yQ29udGFpbmVyLmNsYXNzTGlzdC5yZW1vdmUoXCJkLW5vbmVcIik7XG5cbiAgbGV0IHN0YXR1c1RleHQgPSBkb2N1bWVudC5jcmVhdGVFbGVtZW50KFwiZGl2XCIpXG4gIHN0YXR1c1RleHQuY2xhc3NMaXN0ID0gXCJleGVyY2lzZS1sb2FkaW5nLWRldGFpbHNcIjtcbiAgc3RhdHVzVGV4dCA9IHN0YXR1c0NvbnRhaW5lci5hcHBlbmRDaGlsZChzdGF0dXNUZXh0KTtcbiAgc3RhdHVzVGV4dC50ZXh0Q29udGVudCA9IGBJbml0aWFsaXNlYDtcblxuICAvLyBIb2lzdCBpbmRpY2F0b3Igb3V0IGZyb20gZmluYWwgc2xpZGUgd2hlbiBydW5uaW5nIHVuZGVyIHJldmVhbFxuICBjb25zdCByZXZlYWxTdGF0dXMgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKFwiLnJldmVhbCAuZXhlcmNpc2UtbG9hZGluZy1pbmRpY2F0b3JcIik7XG4gIGlmIChyZXZlYWxTdGF0dXMpIHtcbiAgICByZXZlYWxTdGF0dXMucmVtb3ZlKCk7XG4gICAgZG9jdW1lbnQucXVlcnlTZWxlY3RvcihcIi5yZXZlYWwgPiAuc2xpZGVzXCIpLmFwcGVuZENoaWxkKHJldmVhbFN0YXR1cyk7XG4gIH1cblxuICAvLyB3ZWJSIHN1cHBsZW1lbnRhbCBkYXRhIGFuZCBvcHRpb25zXG4gIGNvbnN0IGRhdGFDb250ZW50ID0gZG9jdW1lbnQucXVlcnlTZWxlY3Rvcihgc2NyaXB0W3R5cGU9XFxcIndlYnItZGF0YVxcXCJdYCkudGV4dENvbnRlbnQ7XG4gIGNvbnN0IGRhdGEgPSBKU09OLnBhcnNlKGI2NERlY29kZShkYXRhQ29udGVudCkpO1xuXG4gIC8vIEdyYWIgbGlzdCBvZiByZXNvdXJjZXMgdG8gYmUgZG93bmxvYWRlZFxuICBjb25zdCBmaWxlc0NvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwidmZzLWZpbGVcXFwiXWApLnRleHRDb250ZW50O1xuICBjb25zdCBmaWxlcyA9IEpTT04ucGFyc2UoYjY0RGVjb2RlKGZpbGVzQ29udGVudCkpO1xuXG4gIC8vIEluaXRpYWxpc2Ugd2ViUiBhbmQgc2V0dXAgZm9yIFIgY29kZSBldmFsdWF0aW9uXG4gIGxldCB3ZWJSUHJvbWlzZSA9IChhc3luYyAod2ViUikgPT4ge1xuICAgIHN0YXR1c1RleHQudGV4dENvbnRlbnQgPSBgRG93bmxvYWRpbmcgd2ViUmA7XG4gICAgYXdhaXQgd2ViUi5pbml0KCk7XG5cbiAgICAvLyBJbnN0YWxsIHByb3ZpZGVkIGxpc3Qgb2YgcGFja2FnZXNcbiAgICAvLyBFbnN1cmUgd2ViUiBkZWZhdWx0IHJlcG8gaXMgaW5jbHVkZWRcbiAgICBkYXRhLnBhY2thZ2VzLnJlcG9zLnB1c2goXCJodHRwczovL3JlcG8uci13YXNtLm9yZ1wiKVxuICAgIGF3YWl0IGRhdGEucGFja2FnZXMucGtncy5tYXAoKHBrZykgPT4gKCkgPT4ge1xuICAgICAgc3RhdHVzVGV4dC50ZXh0Q29udGVudCA9IGBEb3dubG9hZGluZyBwYWNrYWdlOiAke3BrZ31gO1xuICAgICAgcmV0dXJuIHdlYlIuZXZhbFJWb2lkKGBcbiAgICAgICAgd2Vicjo6aW5zdGFsbChwa2csIHJlcG9zID0gcmVwb3MpXG4gICAgICAgIGxpYnJhcnkocGtnLCBjaGFyYWN0ZXIub25seSA9IFRSVUUpXG4gICAgICBgLCB7IGVudjoge1xuICAgICAgICBwa2c6IHBrZyxcbiAgICAgICAgcmVwb3M6IGRhdGEucGFja2FnZXMucmVwb3MsXG4gICAgICB9fSk7XG4gICAgfSkucmVkdWNlKChjdXIsIG5leHQpID0+IGN1ci50aGVuKG5leHQpLCBQcm9taXNlLnJlc29sdmUoKSk7XG5cbiAgICAvLyBEb3dubG9hZCBhbmQgaW5zdGFsbCByZXNvdXJjZXNcbiAgICBhd2FpdCBmaWxlcy5tYXAoKGZpbGUpID0+IGFzeW5jICgpID0+IHtcbiAgICAgIGNvbnN0IG5hbWUgPSBmaWxlLnN1YnN0cmluZyhmaWxlLmxhc3RJbmRleE9mKCcvJykgKyAxKTtcbiAgICAgIHN0YXR1c1RleHQudGV4dENvbnRlbnQgPSBgRG93bmxvYWRpbmcgcmVzb3VyY2U6ICR7bmFtZX1gO1xuICAgICAgY29uc3QgcmVzcG9uc2UgPSBhd2FpdCBmZXRjaChmaWxlKTtcbiAgICAgIGlmICghcmVzcG9uc2Uub2spIHtcbiAgICAgICAgdGhyb3cgbmV3IEVycm9yKGBDYW4ndCBkb3dubG9hZCBcXGAke2ZpbGV9XFxgLiBFcnJvciAke3Jlc3BvbnNlLnN0YXR1c306IFwiJHtyZXNwb25zZS5zdGF0dXNUZXh0fVwiLmApO1xuICAgICAgfVxuICAgICAgY29uc3QgZGF0YSA9IGF3YWl0IHJlc3BvbnNlLmFycmF5QnVmZmVyKCk7XG5cbiAgICAgIC8vIFN0b3JlIFVSTHMgaW4gdGhlIGN3ZCB3aXRob3V0IGFueSBzdWJkaXJlY3Rvcnkgc3RydWN0dXJlXG4gICAgICBpZiAoZmlsZS5pbmNsdWRlcyhcIjovL1wiKSkge1xuICAgICAgICBmaWxlID0gbmFtZTtcbiAgICAgIH1cblxuICAgICAgLy8gQ29sbGFwc2UgaGlnaGVyIGRpcmVjdG9yeSBzdHJ1Y3R1cmVcbiAgICAgIGZpbGUgPSBjb2xsYXBzZVBhdGgoZmlsZSk7XG5cbiAgICAgIC8vIENyZWF0ZSBkaXJlY3RvcnkgdHJlZSwgaWdub3JpbmcgXCJkaXJlY3RvcnkgZXhpc3RzXCIgVkZTIGVycm9yc1xuICAgICAgY29uc3QgcGFydHMgPSBmaWxlLnNwbGl0KCcvJykuc2xpY2UoMCwgLTEpO1xuICAgICAgbGV0IHBhdGggPSAnJztcbiAgICAgIHdoaWxlIChwYXJ0cy5sZW5ndGggPiAwKSB7XG4gICAgICAgIHBhdGggKz0gcGFydHMuc2hpZnQoKSArICcvJztcbiAgICAgICAgdHJ5IHtcbiAgICAgICAgICBhd2FpdCB3ZWJSLkZTLm1rZGlyKHBhdGgpO1xuICAgICAgICB9IGNhdGNoIChlKSB7XG4gICAgICAgICAgaWYgKCFlLm1lc3NhZ2UuaW5jbHVkZXMoXCJGUyBlcnJvclwiKSkge1xuICAgICAgICAgICAgdGhyb3cgZTtcbiAgICAgICAgICB9XG4gICAgICAgIH1cbiAgICAgIH1cblxuICAgICAgLy8gV3JpdGUgdGhpcyBmaWxlIHRvIHRoZSBWRlNcbiAgICAgIHJldHVybiBhd2FpdCB3ZWJSLkZTLndyaXRlRmlsZShmaWxlLCBuZXcgVWludDhBcnJheShkYXRhKSk7XG4gICAgfSkucmVkdWNlKChjdXIsIG5leHQpID0+IGN1ci50aGVuKG5leHQpLCBQcm9taXNlLnJlc29sdmUoKSk7XG5cbiAgICBzdGF0dXNUZXh0LnRleHRDb250ZW50ID0gYEluc3RhbGxpbmcgd2ViUiBzaGltc2A7XG4gICAgYXdhaXQgd2ViUi5ldmFsUlZvaWQoYHdlYnI6OnNoaW1faW5zdGFsbCgpYCk7XG5cbiAgICBzdGF0dXNUZXh0LnRleHRDb250ZW50ID0gYFdlYlIgZW52aXJvbm1lbnQgc2V0dXBgO1xuICAgIGF3YWl0IHNldHVwUih3ZWJSLCBkYXRhKTtcblxuICAgIHN0YXR1c1RleHQucmVtb3ZlKCk7XG4gICAgaWYgKHN0YXR1c0NvbnRhaW5lci5jaGlsZHJlbi5sZW5ndGggPT0gMCkge1xuICAgICAgc3RhdHVzQ29udGFpbmVyLnBhcmVudE5vZGUucmVtb3ZlKCk7XG4gICAgfVxuICAgIHJldHVybiB3ZWJSO1xuICB9KShuZXcgV2ViUihkYXRhLm9wdGlvbnMpKTtcblxuICAvLyBLZWVwIHRyYWNrIG9mIGluaXRpYWwgT0pTIGJsb2NrIHJlbmRlclxuICBjb25zdCByZW5kZXJlZE9qcyA9IHt9O1xuXG4gIGNvbnN0IHByb2Nlc3MgPSBhc3luYyAoY29udGV4dCwgaW5wdXRzKSA9PiB7XG4gICAgY29uc3Qgd2ViUiA9IGF3YWl0IHdlYlJQcm9taXNlO1xuICAgIGNvbnN0IGV2YWx1YXRvciA9IG5ldyBXZWJSRXZhbHVhdG9yKHdlYlIsIGNvbnRleHQpXG4gICAgYXdhaXQgZXZhbHVhdG9yLnByb2Nlc3MoaW5wdXRzKTtcbiAgICByZXR1cm4gZXZhbHVhdG9yLmNvbnRhaW5lcjtcbiAgfVxuXG4gIHJldHVybiB7XG4gICAgcHJvY2VzcyxcbiAgICB3ZWJSUHJvbWlzZSxcbiAgICByZW5kZXJlZE9qcyxcbiAgfTtcbn1cbiIsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsImlubGluZSI6ZmFsc2UsImNlbGxOYW1lIjoid2Vici1wcmVsdWRlIn1dfQ==
+</script>
+<div id="exercise-loading-indicator" class="exercise-loading-indicator d-none d-flex align-items-center gap-2">
+<div id="exercise-loading-status" class="d-flex gap-2">
+
+</div>
+<div class="spinner-grow spinner-grow-sm">
+
+</div>
+</div>
+<script type="vfs-file">
+W10=
+</script>
+</section>
+
+</main> <!-- /main -->
+<script type="ojs-module-contents">
+eyJjb250ZW50cyI6W119
+</script>
+<script type="module">
+if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
+window._ojs.paths.runtimeToDoc = "../../r_snacks";
+window._ojs.paths.runtimeToRoot = "../..";
+window._ojs.paths.docToRoot = "..";
+window._ojs.selfContained = false;
+window._ojs.runtime.interpretFromScriptTags();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Copyright 2024 WorldFish</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/WorldFishCenter/ssf.training/">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

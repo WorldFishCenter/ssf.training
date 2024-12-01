@@ -90,16 +90,24 @@ Let's examine the quality issues we need to address:
 #| autorun: false
 # Check different types of missing values
 missing_patterns <- malawi_ssf %>%
-  summarise(
-    across(everything(), ~sum(is.na(.) | . == "", na.rm = TRUE))
-  ) %>%
-  pivot_longer(everything(), 
-              names_to = "variable", 
-              values_to = "missing_count")
+    # Check missing values by column type
+    summarise(across(everything(), ~ {
+        if (is.numeric(.)) {
+            sum(is.na(.))
+        } else if (is.character(.)) {
+            sum(is.na(.) | . == "" | trimws(.) == "", na.rm = TRUE)
+        } else {
+            sum(is.na(.))
+        }
+    })) %>%
+    pivot_longer(everything(), 
+                names_to = "variable", 
+                values_to = "missing_count")
 
+# Display results
 print("Missing value counts by variable:")
 missing_patterns %>%
-  arrange(desc(missing_count))
+    arrange(desc(missing_count))
 
 # Examine categorical variables
 cat("\nUnique catch_usage values:\n")
@@ -141,14 +149,15 @@ names(malawi_ssf)
 
 # Clean names using janitor
 clean_ssf <- malawi_ssf %>%
-  janitor::clean_names()
+    janitor::clean_names()
 
-# Compare original and cleaned names
-data.frame(
-  original = names(malawi_ssf),
-  cleaned = names(clean_ssf)
-) %>%
-  print("Comparison of original and cleaned names:")
+# Compare names in a clear format
+cat("\nComparison of original and cleaned names:\n")
+name_comparison <- data.frame(
+    original = names(malawi_ssf),
+    cleaned = names(clean_ssf)
+)
+print(name_comparison)
 ```
 
 The `clean_names()` function has:
@@ -210,45 +219,62 @@ Our dataset has various types of missing values that need careful handling:
 #| autorun: false
 # Examine patterns of missing values
 missing_summary <- clean_ssf %>%
-  summarise(
-    across(everything(), 
-           list(
-             na_count = ~sum(is.na(.)),
-             empty_str = ~sum(. == "", na.rm = TRUE),
-             zero_count = ~sum(. == 0, na.rm = TRUE)
-           )
-    )
-  ) %>%
-  pivot_longer(
-    everything(),
-    names_to = c("variable", "type"),
-    names_pattern = "(.+)_(.+)$"
-  )
+    # Check each column
+    summarise(
+        across(everything(), ~ sum(is.na(.)))
+    ) %>%
+    # Convert to long format for easier reading
+    pivot_longer(
+        everything(),
+        names_to = "variable",
+        values_to = "missing_count"
+    ) %>%
+    # Sort by number of missing values
+    arrange(desc(missing_count))
 
-print("Missing value patterns:")
-missing_summary
+# Display results
+print("Number of missing values by variable:")
+print(missing_summary)
+
+# Show quick summary of key categorical variables
+cat("\nUnique values in important categories:\n")
+cat("\nCatch usage types:\n")
+print(unique(clean_ssf$catch_usage))
+cat("\nSpecies caught:\n")
+print(unique(clean_ssf$catch_taxon))
+
 ```
 
 Let's handle these missing values systematically:
 
 ```{webr}
 #| autorun: false
-# Clean missing values
+# Clean the data with proper type conversion
 clean_ssf <- clean_ssf %>%
-  # Convert empty strings to NA
-  mutate(across(everything(), ~na_if(., ""))) %>%
-  # Remove completely empty submissions
-  filter(!if_all(c(catch_kg, price_kg, n_fishers, n_boats), is.na)) %>%
-  # Handle specific columns
-  mutate(
-    # Convert zero values to NA where appropriate
-    n_fishers = if_else(n_fishers == 0, NA_real_, n_fishers),
-    n_boats = if_else(n_boats == 0, NA_real_, n_boats),
-    trip_length = if_else(trip_length == 0, NA_real_, trip_length)
-  )
+    # Handle character columns first
+    mutate(
+        across(where(is.character), ~na_if(., "")),
+        # Convert columns to numeric first, then handle zeros
+        n_boats = as.numeric(gsub("[^0-9.]", "", n_boats)),
+        n_fishers = as.numeric(n_fishers),
+        trip_length = as.numeric(gsub("[^0-9.]", "", trip_length)),
+        # Now convert zeros to NA
+        n_boats = ifelse(is.na(n_boats) | n_boats == 0, NA_real_, n_boats),
+        n_fishers = ifelse(is.na(n_fishers) | n_fishers == 0, NA_real_, n_fishers),
+        trip_length = ifelse(is.na(trip_length) | trip_length == 0, NA_real_, trip_length)
+    ) %>%
+    # Remove completely empty submissions
+    filter(!if_all(c(catch_kg, price_kg, n_fishers, n_boats), is.na))
 
-# Examine results
-summary(clean_ssf)
+# Show summary of cleaned data
+print("Summary of cleaned data:")
+summary(clean_ssf[c("catch_kg", "price_kg", "n_fishers", "n_boats", "trip_length")])
+
+# Show missing value counts
+print("\nMissing values in key columns:")
+sapply(clean_ssf[c("catch_kg", "price_kg", "n_fishers", "n_boats")], 
+       function(x) sum(is.na(x)))
+
 ```
 
 Our missing value strategy:
@@ -341,7 +367,7 @@ head(clean_ssf$landing_date)
 clean_ssf <- clean_ssf %>%
   mutate(
     # Convert landing_date to proper Date format
-    landing_date = ymd_hms(landing_date),
+    landing_date = as.Date(landing_date),
     
     # Extract useful date components
     landing_year = year(landing_date),
@@ -393,14 +419,11 @@ clean_ssf <- clean_ssf %>%
     
     # Create week numbers for temporal analysis
     week_number = week(landing_date),
-    
-    # Flag weekend vs weekday landings
-    is_weekend = weekday(landing_date) %in% c(1, 7)
   )
 
 # Examine new temporal groupings
 temporal_groups <- clean_ssf %>%
-  select(landing_date, fishing_season, week_number, is_weekend) %>%
+  select(landing_date, fishing_season, week_number) %>%
   head(10)
 
 print("Temporal groupings:")

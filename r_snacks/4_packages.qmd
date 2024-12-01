@@ -65,23 +65,23 @@ Consider these common scenarios in fisheries research:
 
 2. **Data Visualization**
    - Base R: Basic plots with limited customization
-   - With ggplot2 package: Professional, publication-ready graphics
+   - With [ggplot2](https://ggplot2.tidyverse.org/) package: Professional, publication-ready graphics
 
 3. **Date Handling**
    - Base R: Complex date calculations
-   - With lubridate package: Simple, intuitive date manipulations
+   - With [lubridate](https://lubridate.tidyverse.org/) package: Simple, intuitive date manipulations
 
 4. **Report Generation**
    - Base R: Limited options for sharing results
-   - With RMarkdown: Professional reports, presentations, and websites
+   - With [RMarkdown](https://rmarkdown.rstudio.com/): Professional reports, presentations, and websites
 
 ### Popular Package Collections
 
 One of the most important package collections in R is the "tidyverse". Think of it as a comprehensive kitchen renovation that includes all the modern appliances you need. The tidyverse includes packages for:
-- Data manipulation (dplyr)
-- Data visualization (ggplot2)
-- Data import (readr)
-- Date handling (lubridate)
+- Data manipulation [dplyr](https://dplyr.tidyverse.org/)
+- Data visualization [ggplot2](https://ggplot2.tidyverse.org/)
+- Data import [readr](https://readr.tidyverse.org/)
+- Date handling [lubridate](https://lubridate.tidyverse.org/)
 - And much more
 
 Other important package collections include:

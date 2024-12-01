@@ -26,25 +26,23 @@ website:
             text: "3. Data Frames"
           - href: r_snacks/4_packages.qmd
             text: "4. Packages in R"
+          - href: r_snacks/5_visualization.qmd
+            text: "5. Data visualization"
       - section: "Data processing"
         contents:
-          - href: r_snacks/5_preprocessing1.qmd
+          - href: r_snacks/6_preprocessing1.qmd
             text: "1. From messy to tidy data"
-          - href: r_snacks/6_preprocessing2.qmd
+          - href: r_snacks/7_preprocessing2.qmd
             text: "2. A real case study"
       - section: "Data validation"
         contents:
-          - href: r_snacks/workinprogress.qmd
-            text: "1. Data validation 1"
-          - href: r_snacks/workinprogress.qmd
-            text: "2. Data validation 2"
-      - section: "Data analysis for small scale fisheries"
+          - href: r_snacks/8_validation1.qmd
+            text: "1. Validation in fisheries data"
+      - section: "Resources"
         contents:
-          - href: r_snacks/workinprogress.qmd
-            text: "1. Basic of data visualization in R"
-          - href: r_snacks/workinprogress.qmd
-            text: "2. Advanced visualizations"
-            
+          - href: r_snacks/9_references.qmd
+            text: "1. Resources for Fisheries Analysis"
+
   navbar:
     logo: https://upload.wikimedia.org/wikipedia/en/9/9e/WorldFish_logo.svg           
     title: "R for Small-Scale Fisheries"  
@@ -60,28 +58,26 @@ website:
             href: r_snacks/3_dataframes.qmd
           - text: "4. Packages in R"
             href: r_snacks/4_packages.qmd
+          - text: "5. Data visualization"
+            href: r_snacks/5_visualization.qmd
           
           - text: "─────────────────"
           - text: "Data Processing"
           - text: "1. From messy to tidy data"
-            href: r_snacks/5_preprocessing1.qmd
+            href: r_snacks/6_preprocessing1.qmd
           - text: "2. A real case study"
-            href: r_snacks/6_preprocessing2.qmd
+            href: r_snacks/7_preprocessing2.qmd
 
           - text: "─────────────────"
           - text: "Data Validation"
-          - text: "1. Data validation 1"
-            href: r_snacks/workinprogress.qmd
-          - text: "2. Data validation 2"
-            href: r_snacks/workinprogress.qmd
-          
+          - text: "1. Validation in fisheries data"
+            href: r_snacks/8_validation1.qmd
+
           - text: "─────────────────"
-          - text: "Data Analysis for Small-Scale Fisheries"
-          - text: "1. Basics of Data Visualization in R"
-            href: r_snacks/workinprogress.qmd
-          - text: "2. Advanced Visualizations"
-            href: r_snacks/workinprogress.qmd
-          
+          - text: "Resources"
+          - text: "1. Resources for Fisheries Analysis"
+            href: r_snacks/9_references.qmd
+
       - icon: github
         href: https://github.com/WorldFishCenter/ssf.training/
 

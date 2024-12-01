@@ -1,0 +1,1475 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.56">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="SSF Training Team">
+<meta name="dcterms.date" content="2024-11-06">
+
+<title>3.5 Data Visualization in R: Common Plot Types for Fisheries Data – R for SSF: Data Analysis Training</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../site_libs/quarto-contrib/live-runtime/live-runtime.js" type="module"></script>
+<link href="../site_libs/quarto-contrib/live-runtime/live-runtime.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script type="module" src="../site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
+<link href="../site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
+
+
+</head>
+
+<body class="nav-sidebar floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="https://upload.wikimedia.org/wikipedia/en/9/9e/WorldFish_logo.svg" alt="" class="navbar-logo">
+    </a>
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">R for Small-Scale Fisheries</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-tutorials" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Tutorials</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-tutorials">    
+        <li class="dropdown-header">Getting Started</li>
+        <li>
+    <a class="dropdown-item" href="../r_snacks/1_rbasics.html">
+ <span class="dropdown-text">1. R Installation</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../r_snacks/2_rbasics.html">
+ <span class="dropdown-text">2. Basic Operations</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../r_snacks/3_dataframes.html">
+ <span class="dropdown-text">3. Data Frames</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../r_snacks/4_packages.html">
+ <span class="dropdown-text">4. Packages in R</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../r_snacks/5_visualization.html">
+ <span class="dropdown-text">5. Data visualization</span></a>
+  </li>  
+        <li class="dropdown-header">─────────────────</li>
+        <li class="dropdown-header">Data Processing</li>
+        <li>
+    <a class="dropdown-item" href="../r_snacks/6_preprocessing1.html">
+ <span class="dropdown-text">1. From messy to tidy data</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../r_snacks/7_preprocessing2.html">
+ <span class="dropdown-text">2. A real case study</span></a>
+  </li>  
+        <li class="dropdown-header">─────────────────</li>
+        <li class="dropdown-header">Data Validation</li>
+        <li>
+    <a class="dropdown-item" href="../r_snacks/8_validation1.html">
+ <span class="dropdown-text">1. Validation in fisheries data</span></a>
+  </li>  
+        <li class="dropdown-header">─────────────────</li>
+        <li class="dropdown-header">Resources</li>
+        <li>
+    <a class="dropdown-item" href="../r_snacks/9_references.html">
+ <span class="dropdown-text">1. Resources for Fisheries Analysis</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/WorldFishCenter/ssf.training/"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../r_snacks/1_rbasics.html">Getting Started</a></li><li class="breadcrumb-item"><a href="../r_snacks/5_visualization.html">5. Data visualization</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../r_snacks/1_rbasics.html">Getting Started</a></li><li class="breadcrumb-item"><a href="../r_snacks/5_visualization.html">5. Data visualization</a></li></ol></nav>
+      <h1 class="title">3.5 Data Visualization in R: Common Plot Types for Fisheries Data</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">R</div>
+                <div class="quarto-category">Visualization</div>
+                <div class="quarto-category">ggplot2</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>SSF Training Team </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">2024-11-06</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="quarto-sidebar-header"><div class="sidebar-header-item">
+<p>Course contents:</p>
+</div></div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Getting Started</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../r_snacks/1_rbasics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1. R Installation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../r_snacks/2_rbasics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2. Basic Operations</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../r_snacks/3_dataframes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3. Data Frames</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../r_snacks/4_packages.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">4. Packages in R</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../r_snacks/5_visualization.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">5. Data visualization</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Data processing</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../r_snacks/6_preprocessing1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1. From messy to tidy data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../r_snacks/7_preprocessing2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2. A real case study</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Data validation</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../r_snacks/8_validation1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1. Validation in fisheries data</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Resources</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../r_snacks/9_references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1. Resources for Fisheries Analysis</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#why-visualize-data" id="toc-why-visualize-data" class="nav-link active" data-scroll-target="#why-visualize-data">Why Visualize Data? 🎯</a></li>
+  <li><a href="#understanding-ggplot2-the-grammar-of-graphics" id="toc-understanding-ggplot2-the-grammar-of-graphics" class="nav-link" data-scroll-target="#understanding-ggplot2-the-grammar-of-graphics">Understanding ggplot2: The Grammar of Graphics 📊</a>
+  <ul class="collapse">
+  <li><a href="#what-is-ggplot2" id="toc-what-is-ggplot2" class="nav-link" data-scroll-target="#what-is-ggplot2">What is ggplot2?</a></li>
+  <li><a href="#the-basic-components" id="toc-the-basic-components" class="nav-link" data-scroll-target="#the-basic-components">The Basic Components</a></li>
+  <li><a href="#understanding-layers" id="toc-understanding-layers" class="nav-link" data-scroll-target="#understanding-layers">Understanding Layers</a></li>
+  <li><a href="#essential-aesthetic-mappings" id="toc-essential-aesthetic-mappings" class="nav-link" data-scroll-target="#essential-aesthetic-mappings">Essential Aesthetic Mappings</a></li>
+  <li><a href="#practice-exercise-creating-basic-plots" id="toc-practice-exercise-creating-basic-plots" class="nav-link" data-scroll-target="#practice-exercise-creating-basic-plots">Practice Exercise: Creating Basic Plots</a></li>
+  </ul></li>
+  <li><a href="#essential-plot-types-for-fisheries-data" id="toc-essential-plot-types-for-fisheries-data" class="nav-link" data-scroll-target="#essential-plot-types-for-fisheries-data">Essential Plot Types for Fisheries Data 📊</a>
+  <ul class="collapse">
+  <li><a href="#time-series-plots-tracking-temporal-patterns" id="toc-time-series-plots-tracking-temporal-patterns" class="nav-link" data-scroll-target="#time-series-plots-tracking-temporal-patterns">1. Time Series Plots: Tracking Temporal Patterns 📈</a></li>
+  <li><a href="#distribution-plots-understanding-variation" id="toc-distribution-plots-understanding-variation" class="nav-link" data-scroll-target="#distribution-plots-understanding-variation">2. Distribution Plots: Understanding Variation 📊</a></li>
+  <li><a href="#relationship-plots-understanding-connections" id="toc-relationship-plots-understanding-connections" class="nav-link" data-scroll-target="#relationship-plots-understanding-connections">3. Relationship Plots: Understanding Connections 🔄</a></li>
+  <li><a href="#compositional-plots-understanding-proportions" id="toc-compositional-plots-understanding-proportions" class="nav-link" data-scroll-target="#compositional-plots-understanding-proportions">4. Compositional Plots: Understanding Proportions 📊</a></li>
+  <li><a href="#practice-exercise-creating-common-plots" id="toc-practice-exercise-creating-common-plots" class="nav-link" data-scroll-target="#practice-exercise-creating-common-plots">Practice Exercise: Creating Common Plots 💪</a></li>
+  <li><a href="#key-points-to-remember" id="toc-key-points-to-remember" class="nav-link" data-scroll-target="#key-points-to-remember">Key Points to Remember 🗝️</a></li>
+  </ul></li>
+  <li><a href="#applying-ggplot2-to-fisheries-analysis" id="toc-applying-ggplot2-to-fisheries-analysis" class="nav-link" data-scroll-target="#applying-ggplot2-to-fisheries-analysis">Applying ggplot2 to Fisheries Analysis 📊</a>
+  <ul class="collapse">
+  <li><a href="#understanding-temporal-patterns-with-multiple-layers" id="toc-understanding-temporal-patterns-with-multiple-layers" class="nav-link" data-scroll-target="#understanding-temporal-patterns-with-multiple-layers">Understanding Temporal Patterns with Multiple Layers</a></li>
+  <li><a href="#adding-complexity-multiple-variables-and-faceting" id="toc-adding-complexity-multiple-variables-and-faceting" class="nav-link" data-scroll-target="#adding-complexity-multiple-variables-and-faceting">Adding Complexity: Multiple Variables and Faceting</a></li>
+  <li><a href="#exploring-distributions-with-combined-geometries" id="toc-exploring-distributions-with-combined-geometries" class="nav-link" data-scroll-target="#exploring-distributions-with-combined-geometries">Exploring Distributions with Combined Geometries</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+<section id="why-visualize-data" class="level2">
+<h2 class="anchored" data-anchor-id="why-visualize-data">Why Visualize Data? 🎯</h2>
+<p>Before diving into complex data preprocessing and analysis, understanding your data through visualization is crucial. Think of it like preparing for a fishing trip - just as you would survey the waters, check weather conditions, and observe fish behavior before casting your nets, visualizing your data helps you:</p>
+<ul>
+<li><strong>Understand Patterns</strong>: Just as ripples on water might indicate fish movement, patterns in your data can reveal important trends</li>
+<li><strong>Identify Issues</strong>: Like spotting damaged gear before fishing, visualization helps detect data problems early</li>
+<li><strong>Generate Insights</strong>: Similar to how experienced fishers read the water, good visualization helps you “read” your data</li>
+<li><strong>Communicate Findings</strong>: Visual representations make it easier to share insights with colleagues and stakeholders</li>
+</ul>
+<p>In Small-Scale Fisheries (SSF) research, visualization is particularly valuable because:</p>
+<ol type="1">
+<li><strong>Complex Data Structure</strong>
+<ul>
+<li>Multiple species caught simultaneously</li>
+<li>Various gear types used</li>
+<li>Different fishing grounds</li>
+<li>Seasonal variations</li>
+</ul></li>
+<li><strong>Quality Control</strong>
+<ul>
+<li>Field data collection errors</li>
+<li>Missing or incorrect values</li>
+<li>Outliers and unusual patterns</li>
+<li>Inconsistent measurements</li>
+</ul></li>
+<li><strong>Communication Needs</strong>
+<ul>
+<li>Sharing findings with fishers</li>
+<li>Reporting to management</li>
+<li>Contributing to research</li>
+<li>Informing policy decisions</li>
+</ul></li>
+</ol>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Learning Objectives
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>By the end of this tutorial, you will: - Understand the principles of effective data visualization - Master the fundamentals of ggplot2 syntax and structure - Create basic to advanced plots for exploring fisheries data - Learn to customize visualizations for different audiences - Use plots to identify data quality issues - Develop skills for creating publication-ready graphics</p>
+</div>
+</div>
+</section>
+<section id="understanding-ggplot2-the-grammar-of-graphics" class="level2">
+<h2 class="anchored" data-anchor-id="understanding-ggplot2-the-grammar-of-graphics">Understanding ggplot2: The Grammar of Graphics 📊</h2>
+<section id="what-is-ggplot2" class="level3">
+<h3 class="anchored" data-anchor-id="what-is-ggplot2">What is ggplot2?</h3>
+<p>ggplot2 is not just another plotting package - it’s a complete system for creating visualizations based on the “Grammar of Graphics.” This approach breaks down any visualization into fundamental components, similar to how we break down language into grammar components.</p>
+<p>Think of it like constructing a sentence: - A sentence needs a subject, verb, and object - A ggplot2 visualization needs data, aesthetics, and geometries</p>
+</section>
+<section id="the-basic-components" class="level3">
+<h3 class="anchored" data-anchor-id="the-basic-components">The Basic Components</h3>
+<p>Let’s understand each component using a fishing analogy:</p>
+<ol type="1">
+<li><strong>Data</strong>: Your dataset
+<ul>
+<li>Like your catch records or survey data</li>
+<li>Must be in a tidy format (each variable in a column)</li>
+</ul></li>
+<li><strong>Aesthetics (aes)</strong>: How variables map to visual elements
+<ul>
+<li>Like deciding how to sort fish (by size, species, etc.)</li>
+<li>Maps variables to visual properties (position, color, size)</li>
+</ul></li>
+<li><strong>Geometries (geom)</strong>: The type of plot
+<ul>
+<li>Like choosing how to display fish (in boxes, on a scale, etc.)</li>
+<li>Determines how data is visually represented (points, lines, bars)</li>
+</ul></li>
+</ol>
+<p>Let’s see this in practice with some sample data:</p>
+<div class="cell" data-autorun="false">
+<div>
+<div id="webr-1">
+
+</div>
+<script type="webr-1-contents">
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImF1dG9ydW4iOmZhbHNlfSwiY29kZSI6IiMgTG9hZCByZXF1aXJlZCBwYWNrYWdlc1xubGlicmFyeSh0aWR5dmVyc2UpXG5cbiMgQ3JlYXRlIHNhbXBsZSBmaXNoaW5nIGRhdGFcbmRhaWx5X2NhdGNoIDwtIHRpYmJsZShcbiAgICBkYXRlID0gc2VxKGFzLkRhdGUoXCIyMDI0LTAxLTAxXCIpLCBhcy5EYXRlKFwiMjAyNC0wMS0xMFwiKSwgYnkgPSBcImRheVwiKSxcbiAgICBjYXRjaF9rZyA9IGMoMTI1LCA5NSwgMTQwLCAxMTUsIDE2MCwgMTMwLCAxNDUsIDExMCwgMTM1LCAxNTApLFxuICAgIHNwZWNpZXMgPSByZXAoYyhcIlR1bmFcIiwgXCJNYWNrZXJlbFwiKSwgZWFjaCA9IDUpLFxuICAgIHdlYXRoZXIgPSBjKFwiU3VubnlcIiwgXCJDbG91ZHlcIiwgXCJTdW5ueVwiLCBcIlJhaW55XCIsIFwiU3VubnlcIixcbiAgICAgICAgICAgICAgICBcIkNsb3VkeVwiLCBcIlN1bm55XCIsIFwiU3VubnlcIiwgXCJSYWlueVwiLCBcIlN1bm55XCIpXG4pXG5cbiMgTG9vayBhdCBvdXIgZGF0YVxucHJpbnQoXCJTYW1wbGUgZmlzaGluZyBkYXRhOlwiKVxuZGFpbHlfY2F0Y2gifQ==
+</script>
+</div>
+</div>
+<p>Now, let’s build our first plot step by step:</p>
+<div class="cell" data-autorun="false">
+<div>
+<div id="webr-2">
+
+</div>
+<script type="webr-2-contents">
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImF1dG9ydW4iOmZhbHNlfSwiY29kZSI6IiMgU3RlcCAxOiBTdGFydCB3aXRoIHRoZSBkYXRhXG5zdGVwMSA8LSBnZ3Bsb3QoZGFpbHlfY2F0Y2gpXG5wcmludChcIlN0ZXAgMTogRW1wdHkgcGxvdCBjYW52YXNcIilcbnN0ZXAxXG5cbiMgU3RlcCAyOiBBZGQgYWVzdGhldGljcyAobWFwcGluZylcbnN0ZXAyIDwtIGdncGxvdChkYWlseV9jYXRjaCxcbiAgICAgICAgICAgICAgICBhZXMoeCA9IGRhdGUsIHkgPSBjYXRjaF9rZykpXG5wcmludChcIlN0ZXAgMjogUGxvdCB3aXRoIGFlc3RoZXRpY3MgKGJ1dCBubyB2aXN1YWxpemF0aW9uIHlldClcIilcbnN0ZXAyXG5cbiMgU3RlcCAzOiBBZGQgZ2VvbWV0cnlcbnN0ZXAzIDwtIGdncGxvdChkYWlseV9jYXRjaCxcbiAgICAgICAgICAgICAgICBhZXMoeCA9IGRhdGUsIHkgPSBjYXRjaF9rZykpICtcbiAgICBnZW9tX3BvaW50KClcbnByaW50KFwiU3RlcCAzOiBDb21wbGV0ZSBiYXNpYyBzY2F0dGVyIHBsb3RcIilcbnN0ZXAzIn0=
+</script>
+</div>
+</div>
+<p>Let’s break down what happened:</p>
+<ol type="1">
+<li><strong>Step 1</strong>: Created a blank canvas
+<ul>
+<li>Like preparing your workspace</li>
+<li>No visual elements yet</li>
+</ul></li>
+<li><strong>Step 2</strong>: Added aesthetic mappings
+<ul>
+<li>Defined what goes on x and y axes</li>
+<li>Set up the coordinate system</li>
+<li>Still no visible elements</li>
+</ul></li>
+<li><strong>Step 3</strong>: Added geometric elements
+<ul>
+<li>Points appear on the plot</li>
+<li>Each point represents one day’s catch</li>
+</ul></li>
+</ol>
+</section>
+<section id="understanding-layers" class="level3">
+<h3 class="anchored" data-anchor-id="understanding-layers">Understanding Layers</h3>
+<p>One of ggplot2’s most powerful features is its layering system. You can add multiple layers to create complex visualizations:</p>
+<div class="cell" data-autorun="false">
+<div>
+<div id="webr-3">
+
+</div>
+<script type="webr-3-contents">
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImF1dG9ydW4iOmZhbHNlfSwiY29kZSI6IiMgQ3JlYXRlIGEgbXVsdGktbGF5ZXIgcGxvdFxuZ2dwbG90KGRhaWx5X2NhdGNoLCBhZXMoeCA9IGRhdGUsIHkgPSBjYXRjaF9rZykpICtcbiAgICAjIExheWVyIDE6IFBvaW50cyBmb3IgZWFjaCBvYnNlcnZhdGlvblxuICAgIGdlb21fcG9pbnQoYWVzKGNvbG9yID0gc3BlY2llcyksIHNpemUgPSAzKSArXG4gICAgIyBMYXllciAyOiBDb25uZWN0aW5nIGxpbmVcbiAgICBnZW9tX2xpbmUoYWxwaGEgPSAwLjUpICtcbiAgICAjIExheWVyIDM6IFRyZW5kIGxpbmVcbiAgICBnZW9tX3Ntb290aChtZXRob2QgPSBcImxvZXNzXCIsIHNlID0gRkFMU0UsIGxpbmV0eXBlID0gXCJkYXNoZWRcIikgK1xuICAgICMgTGF5ZXIgNDogTGFiZWxzIGFuZCB0aXRsZXNcbiAgICBsYWJzKHRpdGxlID0gXCJEYWlseSBDYXRjaCBUcmVuZHNcIixcbiAgICAgICAgIHN1YnRpdGxlID0gXCJKYW51YXJ5IDIwMjRcIixcbiAgICAgICAgIHggPSBcIkRhdGVcIixcbiAgICAgICAgIHkgPSBcIkNhdGNoIChrZylcIixcbiAgICAgICAgIGNvbG9yID0gXCJTcGVjaWVzXCIpICtcbiAgICAjIExheWVyIDU6IFRoZW1lIGN1c3RvbWl6YXRpb25cbiAgICB0aGVtZV9taW5pbWFsKCkifQ==
+</script>
+</div>
+</div>
+<p>Each layer adds new information: 1. Points show individual observations 2. Line connects points to show sequence 3. Trend line shows overall pattern 4. Labels provide context 5. Theme controls overall appearance</p>
+</section>
+<section id="essential-aesthetic-mappings" class="level3">
+<h3 class="anchored" data-anchor-id="essential-aesthetic-mappings">Essential Aesthetic Mappings</h3>
+<p>Let’s explore the main types of aesthetic mappings:</p>
+<div class="cell" data-autorun="false">
+<div>
+<div id="webr-4">
+
+</div>
+<script type="webr-4-contents">
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImF1dG9ydW4iOmZhbHNlfSwiY29kZSI6IiMgQ3JlYXRlIGRhdGEgd2l0aCBtdWx0aXBsZSB2YXJpYWJsZXNcbmZpc2hpbmdfZGF0YSA8LSB0aWJibGUoXG4gICAgZGF0ZSA9IHJlcChzZXEoYXMuRGF0ZShcIjIwMjQtMDEtMDFcIiksIGFzLkRhdGUoXCIyMDI0LTAxLTA1XCIpLCBieSA9IFwiZGF5XCIpLCAyKSxcbiAgICBjYXRjaF9rZyA9IGMoMTI1LCA5NSwgMTQwLCAxMTUsIDE2MCwgMTMwLCAxNDUsIDExMCwgMTM1LCAxNTApLFxuICAgIHNwZWNpZXMgPSByZXAoYyhcIlR1bmFcIiwgXCJNYWNrZXJlbFwiKSwgZWFjaCA9IDUpLFxuICAgIHZhbHVlX3Blcl9rZyA9IGMoMTAwMCwgOTUwLCAxMTAwLCA5MDAsIDEwNTAsIDUwMCwgNDgwLCA1MjAsIDQ5MCwgNTEwKVxuKVxuXG4jIERlbW9uc3RyYXRlIGRpZmZlcmVudCBhZXN0aGV0aWMgbWFwcGluZ3NcbiMgMS4gQ29sb3JcbnBsb3QxIDwtIGdncGxvdChmaXNoaW5nX2RhdGEsIGFlcyh4ID0gZGF0ZSwgeSA9IGNhdGNoX2tnLCBjb2xvciA9IHNwZWNpZXMpKSArXG4gICAgZ2VvbV9wb2ludChzaXplID0gMykgK1xuICAgIGxhYnModGl0bGUgPSBcIkNvbG9yIE1hcHBpbmdcIikgK1xuICAgIHRoZW1lX21pbmltYWwoKVxuXG4jIDIuIFNpemVcbnBsb3QyIDwtIGdncGxvdChmaXNoaW5nX2RhdGEsIGFlcyh4ID0gZGF0ZSwgeSA9IGNhdGNoX2tnLCBzaXplID0gdmFsdWVfcGVyX2tnKSkgK1xuICAgIGdlb21fcG9pbnQoKSArXG4gICAgbGFicyh0aXRsZSA9IFwiU2l6ZSBNYXBwaW5nXCIpICtcbiAgICB0aGVtZV9taW5pbWFsKClcblxuIyAzLiBTaGFwZVxucGxvdDMgPC0gZ2dwbG90KGZpc2hpbmdfZGF0YSwgYWVzKHggPSBkYXRlLCB5ID0gY2F0Y2hfa2csIHNoYXBlID0gc3BlY2llcykpICtcbiAgICBnZW9tX3BvaW50KHNpemUgPSAzKSArXG4gICAgbGFicyh0aXRsZSA9IFwiU2hhcGUgTWFwcGluZ1wiKSArXG4gICAgdGhlbWVfbWluaW1hbCgpXG5cbiMgRGlzcGxheSBhbGwgcGxvdHNcbnByaW50KFwiRGlmZmVyZW50IGFlc3RoZXRpYyBtYXBwaW5nczpcIilcbnBsb3QxXG5wbG90MlxucGxvdDMifQ==
+</script>
+</div>
+</div>
+<p>Key aesthetic mappings include:</p>
+<ol type="1">
+<li><strong>Position (x, y)</strong>
+<ul>
+<li>Most fundamental mapping</li>
+<li>Determines location of elements</li>
+<li>Usually maps to continuous variables</li>
+</ul></li>
+<li><strong>Color</strong>
+<ul>
+<li>Great for categorical variables</li>
+<li>Can show differences between groups</li>
+<li>Use carefully for color-blind accessibility</li>
+</ul></li>
+<li><strong>Size</strong>
+<ul>
+<li>Works well for continuous variables</li>
+<li>Can show importance or magnitude</li>
+<li>Don’t use for too many different values</li>
+</ul></li>
+<li><strong>Shape</strong>
+<ul>
+<li>Best for categorical variables</li>
+<li>Limited to 6-7 distinct shapes</li>
+<li>Combines well with color</li>
+</ul></li>
+</ol>
+</section>
+<section id="practice-exercise-creating-basic-plots" class="level3">
+<h3 class="anchored" data-anchor-id="practice-exercise-creating-basic-plots">Practice Exercise: Creating Basic Plots</h3>
+<p>Let’s practice what we’ve learned with some exercises:</p>
+<div class="cell" data-autorun="false">
+<div>
+<div id="webr-5">
+
+</div>
+<script type="webr-5-contents">
+eyJhdHRyIjp7ImVjaG8iOnRydWUsImVkaXQiOnRydWUsImV2YWwiOnRydWUsImF1dG9ydW4iOmZhbHNlfSwiY29kZSI6IiMgRXhlcmNpc2UgMTogQ3JlYXRlIGEgYmFzaWMgc2NhdHRlciBwbG90XG4jIFVzZSB0aGUgZmlzaGluZ19kYXRhIGRhdGFzZXQgdG8gY3JlYXRlIGEgc2NhdHRlciBwbG90IHNob3dpbmc6XG4jIC0gY2F0Y2hfa2cgb24geS1heGlzXG4jIC0gZGF0ZSBvbiB4LWF4aXNcbiMgLSBQb2ludHMgY29sb3JlZCBieSBzcGVjaWVzXG4jIC0gQWRkIGFwcHJvcHJpYXRlIGxhYmVsc1xuXG4jIFlvdXIgY29kZSBoZXJlOiJ9
+</script>
+</div>
+</div>
+<details>
+<summary>
+Click to see solution
+</summary>
+<div class="cell" data-autorun="false">
+<div>
+<div id="webr-6">
+
+</div>
+<script type="webr-6-contents">
+eyJhdHRyIjp7ImVkaXQiOmZhbHNlLCJldmFsIjpmYWxzZSwiYXV0b3J1biI6ZmFsc2V9LCJjb2RlIjoiZ2dwbG90KGZpc2hpbmdfZGF0YSwgYWVzKHggPSBkYXRlLCB5ID0gY2F0Y2hfa2csIGNvbG9yID0gc3BlY2llcykpICtcbiAgICBnZW9tX3BvaW50KHNpemUgPSAzKSArXG4gICAgbGFicyh0aXRsZSA9IFwiRGFpbHkgQ2F0Y2ggYnkgU3BlY2llc1wiLFxuICAgICAgICAgeCA9IFwiRGF0ZVwiLFxuICAgICAgICAgeSA9IFwiQ2F0Y2ggKGtnKVwiLFxuICAgICAgICAgY29sb3IgPSBcIlNwZWNpZXNcIikgK1xuICAgIHRoZW1lX21pbmltYWwoKSJ9
+</script>
+</div>
+</div>
+</details>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tips for Effective Basic Plots
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>Always include clear axis labels</li>
+<li>Choose appropriate scales for your data</li>
+<li>Use colors meaningfully, not just for decoration</li>
+<li>Consider your audience when adding complexity</li>
+<li>Start simple and add layers as needed</li>
+</ol>
+</div>
+</div>
+<p>This concludes Part 1 of our tutorial on data visualization with ggplot2. In the next part, we’ll explore different types of plots commonly used in fisheries data analysis, along with more advanced customization options.</p>
+</section>
+</section>
+<section id="essential-plot-types-for-fisheries-data" class="level2">
+<h2 class="anchored" data-anchor-id="essential-plot-types-for-fisheries-data">Essential Plot Types for Fisheries Data 📊</h2>
+<p>Different aspects of fisheries data require different visualization approaches. Let’s explore the most common and useful plot types you’ll need in your work. We’ll start by creating a realistic dataset that represents typical small-scale fisheries data:</p>
+<div class="cell" data-autorun="false">
+<div>
+<div id="webr-7">
+
+</div>
+<script type="webr-7-contents">
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImF1dG9ydW4iOmZhbHNlfSwiY29kZSI6IiMgTG9hZCByZXF1aXJlZCBwYWNrYWdlc1xubGlicmFyeSh0aWR5dmVyc2UpXG5cbiMgQ3JlYXRlIGEgY29tcHJlaGVuc2l2ZSBmaXNoaW5nIGRhdGFzZXRcbnNldC5zZWVkKDEyMykgICMgRm9yIHJlcHJvZHVjaWJpbGl0eVxuXG5uX2RheXMgPC0gYXMubnVtZXJpYyhkaWZmdGltZShhcy5EYXRlKFwiMjAyNC0wMy0zMVwiKSwgYXMuRGF0ZShcIjIwMjQtMDEtMDFcIikpKSArIDFcbnRvdGFsX3Jvd3MgPC0gbl9kYXlzICogMyAgIyAzIG9ic2VydmF0aW9ucyBwZXIgZGF5XG5cbmZpc2hpbmdfZGF0YSA8LSB0aWJibGUoXG4gIGRhdGUgPSByZXAoc2VxKGFzLkRhdGUoXCIyMDI0LTAxLTAxXCIpLCBhcy5EYXRlKFwiMjAyNC0wMy0zMVwiKSwgYnkgPSBcImRheVwiKSwgZWFjaCA9IDMpLFxuICBzaXRlID0gcmVwKGMoXCJCZWFjaFwiLCBcIlJlZWZcIiwgXCJQaWVyXCIpLCB0aW1lcyA9IG5fZGF5cyksXG4gIHNwZWNpZXMgPSByZXAoYyhcIlR1bmFcIiwgXCJNYWNrZXJlbFwiLCBcIlNhcmRpbmVcIiksIHRpbWVzID0gbl9kYXlzKSxcbiAgY2F0Y2hfa2cgPSByb3VuZChhYnMocm5vcm0odG90YWxfcm93cywgbWVhbiA9IDEwMCwgc2QgPSAzMCkpICsgXG4gICAgICAgICAgICAgICAgICAgICBpZmVsc2UocmVwKGMoXCJUdW5hXCIsIFwiTWFja2VyZWxcIiwgXCJTYXJkaW5lXCIpLCB0aW1lcyA9IG5fZGF5cykgPT0gXCJUdW5hXCIsIDUwLCAwKSwgMSksXG4gIHByaWNlX3Blcl9rZyA9IHJvdW5kKGFicyhybm9ybSh0b3RhbF9yb3dzLCBtZWFuID0gODAwLCBzZCA9IDIwMCkpICtcbiAgICAgICAgICAgICAgICAgICAgICAgICBpZmVsc2UocmVwKGMoXCJUdW5hXCIsIFwiTWFja2VyZWxcIiwgXCJTYXJkaW5lXCIpLCB0aW1lcyA9IG5fZGF5cykgPT0gXCJUdW5hXCIsIDMwMCwgMCksIDApLFxuICBuX2JvYXRzID0gc2FtcGxlKDE6NSwgdG90YWxfcm93cywgcmVwbGFjZSA9IFRSVUUpLFxuICB0cmlwX2hvdXJzID0gcm91bmQocnVuaWYodG90YWxfcm93cywgNCwgMTIpLCAxKSxcbiAgd2F0ZXJfdGVtcCA9IHJvdW5kKHJub3JtKHRvdGFsX3Jvd3MsIG1lYW4gPSAyNSwgc2QgPSAyKSwgMSksXG4gIG1vb25fcGhhc2UgPSByZXAoYyhcIk5ld1wiLCBcIkZpcnN0IFF1YXJ0ZXJcIiwgXCJGdWxsXCIsIFwiTGFzdCBRdWFydGVyXCIpLCBcbiAgICAgICAgICAgICAgICAgICBsZW5ndGgub3V0ID0gdG90YWxfcm93cylcbilcblxuXG4jIEFkZCBzb21lIHNlYXNvbmFsIHBhdHRlcm5zXG5maXNoaW5nX2RhdGEgPC0gZmlzaGluZ19kYXRhICU+JVxuICAgIG11dGF0ZShcbiAgICAgICAgIyBBZGQgc2Vhc29uYWwgZWZmZWN0IHRvIGNhdGNoXG4gICAgICAgIGNhdGNoX2tnID0gY2F0Y2hfa2cgKiAoMSArIDAuMyAqIHNpbihhcy5udW1lcmljKGRhdGUpIC8gMzApKSxcbiAgICAgICAgIyBDYWxjdWxhdGUgZGVyaXZlZCB2YXJpYWJsZXNcbiAgICAgICAgY3B1ZSA9IGNhdGNoX2tnIC8gdHJpcF9ob3VycyxcbiAgICAgICAgdG90YWxfdmFsdWUgPSBjYXRjaF9rZyAqIHByaWNlX3Blcl9rZ1xuICAgIClcblxucHJpbnQoXCJTYW1wbGUgb2Ygb3VyIGZpc2hpbmcgZGF0YXNldDpcIilcbmhlYWQoZmlzaGluZ19kYXRhKSJ9
+</script>
+</div>
+</div>
+<section id="time-series-plots-tracking-temporal-patterns" class="level3">
+<h3 class="anchored" data-anchor-id="time-series-plots-tracking-temporal-patterns">1. Time Series Plots: Tracking Temporal Patterns 📈</h3>
+<p>Time series plots are essential for understanding patterns over time, such as: - Daily/monthly catch trends - Seasonal variations - Long-term changes in CPUE - Price fluctuations</p>
+<p>Let’s create several types of time series visualizations:</p>
+<div class="cell" data-autorun="false">
+<div>
+<div id="webr-8">
+
+</div>
+<script type="webr-8-contents">
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImF1dG9ydW4iOmZhbHNlfSwiY29kZSI6IiMgQmFzaWMgdGltZSBzZXJpZXMgd2l0aCBtdWx0aXBsZSBzcGVjaWVzXG5kYWlseV9jYXRjaGVzIDwtIGZpc2hpbmdfZGF0YSAlPiVcbiAgICBncm91cF9ieShkYXRlLCBzcGVjaWVzKSAlPiVcbiAgICBzdW1tYXJpc2UodG90YWxfY2F0Y2ggPSBzdW0oY2F0Y2hfa2cpLFxuICAgICAgICAgICAgICAuZ3JvdXBzID0gJ2Ryb3AnKVxuXG4jIENyZWF0ZSBhbiBlbmhhbmNlZCB0aW1lIHNlcmllcyBwbG90XG5nZ3Bsb3QoZGFpbHlfY2F0Y2hlcywgYWVzKHggPSBkYXRlLCB5ID0gdG90YWxfY2F0Y2gsIGNvbG9yID0gc3BlY2llcykpICtcbiAgICAjIEFkZCBsaW5lcyBjb25uZWN0aW5nIHBvaW50c1xuICAgIGdlb21fbGluZShhbHBoYSA9IDAuNykgK1xuICAgICMgQWRkIHBvaW50cyBmb3IgaW5kaXZpZHVhbCBvYnNlcnZhdGlvbnNcbiAgICBnZW9tX3BvaW50KHNpemUgPSAyLCBhbHBoYSA9IDAuNikgK1xuICAgICMgQWRkIHNtb290aGVkIHRyZW5kIGxpbmVcbiAgICBnZW9tX3Ntb290aChzZSA9IEZBTFNFLCBsaW5ldHlwZSA9IFwiZGFzaGVkXCIpICtcbiAgICAjIEN1c3RvbWl6ZSBhcHBlYXJhbmNlXG4gICAgc2NhbGVfY29sb3JfYnJld2VyKHBhbGV0dGUgPSBcIlNldDFcIikgK1xuICAgIGxhYnModGl0bGUgPSBcIkRhaWx5IENhdGNoIFRyZW5kcyBieSBTcGVjaWVzXCIsXG4gICAgICAgICBzdWJ0aXRsZSA9IFwiSmFudWFyeSAtIE1hcmNoIDIwMjRcIixcbiAgICAgICAgIHggPSBcIkRhdGVcIixcbiAgICAgICAgIHkgPSBcIlRvdGFsIENhdGNoIChrZylcIixcbiAgICAgICAgIGNvbG9yID0gXCJTcGVjaWVzXCIpICtcbiAgICB0aGVtZV9taW5pbWFsKCkgK1xuICAgIHRoZW1lKGxlZ2VuZC5wb3NpdGlvbiA9IFwiYm90dG9tXCIpIn0=
+</script>
+</div>
+</div>
+<p>For monthly patterns, we can aggregate the data:</p>
+<div class="cell" data-autorun="false">
+<div>
+<div id="webr-9">
+
+</div>
+<script type="webr-9-contents">
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImF1dG9ydW4iOmZhbHNlfSwiY29kZSI6IiMgTW9udGhseSBhZ2dyZWdhdGlvblxubW9udGhseV9jYXRjaGVzIDwtIGZpc2hpbmdfZGF0YSAlPiVcbiAgICBtdXRhdGUobW9udGggPSBmbG9vcl9kYXRlKGRhdGUsIFwibW9udGhcIikpICU+JVxuICAgIGdyb3VwX2J5KG1vbnRoLCBzcGVjaWVzKSAlPiVcbiAgICBzdW1tYXJpc2UoXG4gICAgICAgIHRvdGFsX2NhdGNoID0gc3VtKGNhdGNoX2tnKSxcbiAgICAgICAgYXZnX3ByaWNlID0gbWVhbihwcmljZV9wZXJfa2cpLFxuICAgICAgICAuZ3JvdXBzID0gJ2Ryb3AnXG4gICAgKVxuXG4jIENyZWF0ZSBtb250aGx5IGNvbXBhcmlzb24gcGxvdFxuZ2dwbG90KG1vbnRobHlfY2F0Y2hlcywgYWVzKHggPSBtb250aCwgeSA9IHRvdGFsX2NhdGNoLCBmaWxsID0gc3BlY2llcykpICtcbiAgICBnZW9tX2NvbChwb3NpdGlvbiA9IFwiZG9kZ2VcIikgK1xuICAgIHNjYWxlX2ZpbGxfYnJld2VyKHBhbGV0dGUgPSBcIlNldDJcIikgK1xuICAgIGxhYnModGl0bGUgPSBcIk1vbnRobHkgQ2F0Y2ggYnkgU3BlY2llc1wiLFxuICAgICAgICAgeCA9IFwiTW9udGhcIixcbiAgICAgICAgIHkgPSBcIlRvdGFsIENhdGNoIChrZylcIixcbiAgICAgICAgIGZpbGwgPSBcIlNwZWNpZXNcIikgK1xuICAgIHRoZW1lX21pbmltYWwoKSArXG4gICAgdGhlbWUobGVnZW5kLnBvc2l0aW9uID0gXCJib3R0b21cIikifQ==
+</script>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Time Series Visualization Tips
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>Use lines to show continuity in data</li>
+<li>Add points to show actual observations</li>
+<li>Consider smoothing for trend visualization</li>
+<li>Group by relevant time periods (day, week, month)</li>
+<li>Account for seasonal patterns</li>
+</ol>
+</div>
+</div>
+</section>
+<section id="distribution-plots-understanding-variation" class="level3">
+<h3 class="anchored" data-anchor-id="distribution-plots-understanding-variation">2. Distribution Plots: Understanding Variation 📊</h3>
+<p>Distribution plots help us understand how values are spread out, which is crucial for: - Catch size distributions - Price variations - Effort patterns - Environmental variables</p>
+<p>Let’s explore different ways to visualize distributions:</p>
+<div class="cell" data-autorun="false">
+<div>
+<div id="webr-10">
+
+</div>
+<script type="webr-10-contents">
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImF1dG9ydW4iOmZhbHNlfSwiY29kZSI6IiMgQ3JlYXRlIGEgY29tYmluYXRpb24gcGxvdCBzaG93aW5nIG11bHRpcGxlIGRpc3RyaWJ1dGlvbiBhc3BlY3RzXG4jIDEuIEhpc3RvZ3JhbSB3aXRoIGRlbnNpdHkgY3VydmVcbnAxIDwtIGdncGxvdChmaXNoaW5nX2RhdGEsIGFlcyh4ID0gY2F0Y2hfa2cpKSArXG4gICAgZ2VvbV9oaXN0b2dyYW0oYWVzKHkgPSAuLmRlbnNpdHkuLiksIFxuICAgICAgICAgICAgICAgICAgYmlucyA9IDMwLCBcbiAgICAgICAgICAgICAgICAgIGZpbGwgPSBcImxpZ2h0Ymx1ZVwiLCBcbiAgICAgICAgICAgICAgICAgIGNvbG9yID0gXCJ3aGl0ZVwiKSArXG4gICAgZ2VvbV9kZW5zaXR5KGNvbG9yID0gXCJkYXJrYmx1ZVwiLCBsaW5ld2lkdGggPSAxKSArXG4gICAgbGFicyh0aXRsZSA9IFwiQ2F0Y2ggRGlzdHJpYnV0aW9uXCIsXG4gICAgICAgICB4ID0gXCJDYXRjaCAoa2cpXCIsXG4gICAgICAgICB5ID0gXCJEZW5zaXR5XCIpICtcbiAgICB0aGVtZV9taW5pbWFsKClcblxuIyAyLiBCb3ggcGxvdHMgYnkgc3BlY2llc1xucDIgPC0gZ2dwbG90KGZpc2hpbmdfZGF0YSwgYWVzKHggPSBzcGVjaWVzLCB5ID0gY2F0Y2hfa2csIGZpbGwgPSBzcGVjaWVzKSkgK1xuICAgIGdlb21fYm94cGxvdCgpICtcbiAgICBsYWJzKHRpdGxlID0gXCJDYXRjaCBEaXN0cmlidXRpb24gYnkgU3BlY2llc1wiLFxuICAgICAgICAgeCA9IFwiU3BlY2llc1wiLFxuICAgICAgICAgeSA9IFwiQ2F0Y2ggKGtnKVwiKSArXG4gICAgdGhlbWVfbWluaW1hbCgpICtcbiAgICB0aGVtZShsZWdlbmQucG9zaXRpb24gPSBcIm5vbmVcIilcblxuIyAzLiBWaW9saW4gcGxvdHMgd2l0aCBwb2ludHNcbnAzIDwtIGdncGxvdChmaXNoaW5nX2RhdGEsIGFlcyh4ID0gc3BlY2llcywgeSA9IGNhdGNoX2tnLCBmaWxsID0gc3BlY2llcykpICtcbiAgICBnZW9tX3Zpb2xpbihhbHBoYSA9IDAuNSkgK1xuICAgIGdlb21faml0dGVyKHdpZHRoID0gMC4yLCBhbHBoYSA9IDAuMikgK1xuICAgIGxhYnModGl0bGUgPSBcIkRldGFpbGVkIENhdGNoIERpc3RyaWJ1dGlvblwiLFxuICAgICAgICAgeCA9IFwiU3BlY2llc1wiLFxuICAgICAgICAgeSA9IFwiQ2F0Y2ggKGtnKVwiKSArXG4gICAgdGhlbWVfbWluaW1hbCgpICtcbiAgICB0aGVtZShsZWdlbmQucG9zaXRpb24gPSBcIm5vbmVcIilcblxuIyBEaXNwbGF5IGFsbCBwbG90c1xucHJpbnQoXCJEaWZmZXJlbnQgZGlzdHJpYnV0aW9uIHZpc3VhbGl6YXRpb25zOlwiKVxucDFcbnAyXG5wMyJ9
+</script>
+</div>
+</div>
+<p>Each type of distribution plot serves a different purpose: - <strong>Histograms</strong>: Show frequency of values in bins - <strong>Density plots</strong>: Smooth representation of distribution - <strong>Box plots</strong>: Show median, quartiles, and outliers - <strong>Violin plots</strong>: Combine box plot with density distribution - <strong>Point overlays</strong>: Show actual data points</p>
+</section>
+<section id="relationship-plots-understanding-connections" class="level3">
+<h3 class="anchored" data-anchor-id="relationship-plots-understanding-connections">3. Relationship Plots: Understanding Connections 🔄</h3>
+<p>Understanding relationships between variables is crucial in fisheries research. Common relationships to explore include: - Catch vs.&nbsp;effort - Price vs.&nbsp;quantity - Environmental factors vs.&nbsp;catch - Temporal patterns vs.&nbsp;catch</p>
+<p>Let’s create various relationship plots:</p>
+<div class="cell" data-autorun="false">
+<div>
+<div id="webr-11">
+
+</div>
+<script type="webr-11-contents">
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImF1dG9ydW4iOmZhbHNlfSwiY29kZSI6IiMgMS4gQmFzaWMgc2NhdHRlciBwbG90IHdpdGggdHJlbmQgbGluZVxucDEgPC0gZ2dwbG90KGZpc2hpbmdfZGF0YSwgYWVzKHggPSB0cmlwX2hvdXJzLCB5ID0gY2F0Y2hfa2csIGNvbG9yID0gc3BlY2llcykpICtcbiAgICBnZW9tX3BvaW50KGFscGhhID0gMC41KSArXG4gICAgZ2VvbV9zbW9vdGgobWV0aG9kID0gXCJsbVwiLCBzZSA9IEZBTFNFKSArXG4gICAgbGFicyh0aXRsZSA9IFwiQ2F0Y2ggdnMuIEVmZm9ydFwiLFxuICAgICAgICAgeCA9IFwiVHJpcCBEdXJhdGlvbiAoaG91cnMpXCIsXG4gICAgICAgICB5ID0gXCJDYXRjaCAoa2cpXCIpICtcbiAgICB0aGVtZV9taW5pbWFsKClcblxuIyAyLiBCdWJibGUgcGxvdCBhZGRpbmcgdGhpcmQgdmFyaWFibGVcbnAyIDwtIGdncGxvdChmaXNoaW5nX2RhdGEsIFxuICAgICAgICAgICAgYWVzKHggPSB3YXRlcl90ZW1wLCB5ID0gY2F0Y2hfa2csIFxuICAgICAgICAgICAgICAgIHNpemUgPSBwcmljZV9wZXJfa2csIGNvbG9yID0gc3BlY2llcykpICtcbiAgICBnZW9tX3BvaW50KGFscGhhID0gMC42KSArXG4gICAgbGFicyh0aXRsZSA9IFwiQ2F0Y2ggdnMuIFRlbXBlcmF0dXJlXCIsXG4gICAgICAgICBzdWJ0aXRsZSA9IFwiUG9pbnQgc2l6ZSBpbmRpY2F0ZXMgcHJpY2VcIixcbiAgICAgICAgIHggPSBcIldhdGVyIFRlbXBlcmF0dXJlICjCsEMpXCIsXG4gICAgICAgICB5ID0gXCJDYXRjaCAoa2cpXCIpICtcbiAgICB0aGVtZV9taW5pbWFsKClcblxuIyAzLiBGYWNldGVkIHJlbGF0aW9uc2hpcCBwbG90XG5wMyA8LSBnZ3Bsb3QoZmlzaGluZ19kYXRhLCBhZXMoeCA9IHRyaXBfaG91cnMsIHkgPSBjcHVlLCBjb2xvciA9IHNwZWNpZXMpKSArXG4gICAgZ2VvbV9wb2ludChhbHBoYSA9IDAuNSkgK1xuICAgIGdlb21fc21vb3RoKG1ldGhvZCA9IFwibG9lc3NcIiwgc2UgPSBGQUxTRSkgK1xuICAgIGZhY2V0X3dyYXAofnNpdGUpICtcbiAgICBsYWJzKHRpdGxlID0gXCJDUFVFIHZzLiBUcmlwIER1cmF0aW9uIGJ5IFNpdGVcIixcbiAgICAgICAgIHggPSBcIlRyaXAgRHVyYXRpb24gKGhvdXJzKVwiLFxuICAgICAgICAgeSA9IFwiQ2F0Y2ggcGVyIFVuaXQgRWZmb3J0IChrZy9ob3VyKVwiKSArXG4gICAgdGhlbWVfbWluaW1hbCgpXG5cbiMgRGlzcGxheSB0aGUgcGxvdHNcbnByaW50KFwiUmVsYXRpb25zaGlwIHZpc3VhbGl6YXRpb25zOlwiKVxucDFcbnAyXG5wMyJ9
+</script>
+</div>
+</div>
+</section>
+<section id="compositional-plots-understanding-proportions" class="level3">
+<h3 class="anchored" data-anchor-id="compositional-plots-understanding-proportions">4. Compositional Plots: Understanding Proportions 📊</h3>
+<p>Compositional plots are valuable for showing: - Species composition of catches - Proportion of catch by site - Value distribution across species - Effort allocation</p>
+<p>Let’s explore different ways to show composition:</p>
+<div class="cell" data-autorun="false">
+<div>
+<div id="webr-12">
+
+</div>
+<script type="webr-12-contents">
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImF1dG9ydW4iOmZhbHNlfSwiY29kZSI6IiMgUHJlcGFyZSBkYXRhIGZvciBjb21wb3NpdGlvbmFsIGFuYWx5c2lzXG5jb21wb3NpdGlvbl9kYXRhIDwtIGZpc2hpbmdfZGF0YSAlPiVcbiAgICBncm91cF9ieShzaXRlLCBzcGVjaWVzKSAlPiVcbiAgICBzdW1tYXJpc2UoXG4gICAgICAgIHRvdGFsX2NhdGNoID0gc3VtKGNhdGNoX2tnKSxcbiAgICAgICAgdG90YWxfdmFsdWUgPSBzdW0odG90YWxfdmFsdWUpLFxuICAgICAgICAuZ3JvdXBzID0gJ2Ryb3AnXG4gICAgKVxuXG4jIDEuIFN0YWNrZWQgYmFyIHBsb3RcbnAxIDwtIGdncGxvdChjb21wb3NpdGlvbl9kYXRhLCBcbiAgICAgICAgICAgIGFlcyh4ID0gc2l0ZSwgeSA9IHRvdGFsX2NhdGNoLCBmaWxsID0gc3BlY2llcykpICtcbiAgICBnZW9tX2NvbCgpICtcbiAgICBsYWJzKHRpdGxlID0gXCJDYXRjaCBDb21wb3NpdGlvbiBieSBTaXRlXCIsXG4gICAgICAgICB4ID0gXCJTaXRlXCIsXG4gICAgICAgICB5ID0gXCJUb3RhbCBDYXRjaCAoa2cpXCIpICtcbiAgICB0aGVtZV9taW5pbWFsKClcblxuIyAyLiAxMDAlIHN0YWNrZWQgYmFyIHBsb3RcbnAyIDwtIGdncGxvdChjb21wb3NpdGlvbl9kYXRhLCBcbiAgICAgICAgICAgIGFlcyh4ID0gc2l0ZSwgeSA9IHRvdGFsX2NhdGNoLCBmaWxsID0gc3BlY2llcykpICtcbiAgICBnZW9tX2NvbChwb3NpdGlvbiA9IFwiZmlsbFwiKSArXG4gICAgbGFicyh0aXRsZSA9IFwiUmVsYXRpdmUgQ2F0Y2ggQ29tcG9zaXRpb25cIixcbiAgICAgICAgIHggPSBcIlNpdGVcIixcbiAgICAgICAgIHkgPSBcIlByb3BvcnRpb24gb2YgVG90YWwgQ2F0Y2hcIikgK1xuICAgIHRoZW1lX21pbmltYWwoKVxuXG4jIDMuIFBpZSBjaGFydHMgKHVzaW5nIGNvb3JkX3BvbGFyKVxucDMgPC0gZ2dwbG90KGNvbXBvc2l0aW9uX2RhdGEsIFxuICAgICAgICAgICAgYWVzKHggPSBcIlwiLCB5ID0gdG90YWxfdmFsdWUsIGZpbGwgPSBzcGVjaWVzKSkgK1xuICAgIGdlb21fY29sKCkgK1xuICAgIGNvb3JkX3BvbGFyKFwieVwiLCBzdGFydCA9IDApICtcbiAgICBmYWNldF93cmFwKH5zaXRlKSArXG4gICAgbGFicyh0aXRsZSA9IFwiVmFsdWUgRGlzdHJpYnV0aW9uIGJ5IFNpdGVcIikgK1xuICAgIHRoZW1lX3ZvaWQoKSArXG4gICAgdGhlbWUobGVnZW5kLnBvc2l0aW9uID0gXCJib3R0b21cIilcblxuIyBEaXNwbGF5IHRoZSBwbG90c1xucHJpbnQoXCJDb21wb3NpdGlvbmFsIHZpc3VhbGl6YXRpb25zOlwiKVxucDFcbnAyXG5wMyJ9
+</script>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Notes on Pie Charts
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>While pie charts can be visually appealing: 1. They’re harder to compare than bar charts 2. Use only for 2-6 categories 3. Consider alternatives like stacked bars 4. Best for showing part-to-whole relationships</p>
+</div>
+</div>
+</section>
+<section id="practice-exercise-creating-common-plots" class="level3">
+<h3 class="anchored" data-anchor-id="practice-exercise-creating-common-plots">Practice Exercise: Creating Common Plots 💪</h3>
+<p>Let’s practice creating these plot types with our fisheries data:</p>
+<div class="cell" data-autorun="false">
+<div>
+<div id="webr-13">
+
+</div>
+<script type="webr-13-contents">
+eyJhdHRyIjp7ImVjaG8iOnRydWUsImVkaXQiOnRydWUsImV2YWwiOnRydWUsImF1dG9ydW4iOmZhbHNlfSwiY29kZSI6IiMgRXhlcmNpc2UgMTogQ3JlYXRlIGEgdGltZSBzZXJpZXNcbiMgU2hvdyBkYWlseSBDUFVFIHRyZW5kcyBieSBzcGVjaWVzXG4jIEluY2x1ZGUgYm90aCBwb2ludHMgYW5kIHNtb290aCB0cmVuZCBsaW5lc1xuXG4jIFlvdXIgY29kZSBoZXJlOiJ9
+</script>
+</div>
+</div>
+<details>
+<summary>
+Click to see solution
+</summary>
+<div class="cell" data-autorun="false">
+<div>
+<div id="webr-14">
+
+</div>
+<script type="webr-14-contents">
+eyJhdHRyIjp7ImVkaXQiOmZhbHNlLCJldmFsIjpmYWxzZSwiYXV0b3J1biI6ZmFsc2V9LCJjb2RlIjoiZ2dwbG90KGZpc2hpbmdfZGF0YSwgYWVzKHggPSBkYXRlLCB5ID0gY3B1ZSwgY29sb3IgPSBzcGVjaWVzKSkgK1xuICAgIGdlb21fcG9pbnQoYWxwaGEgPSAwLjMpICtcbiAgICBnZW9tX3Ntb290aChzZSA9IEZBTFNFKSArXG4gICAgbGFicyh0aXRsZSA9IFwiRGFpbHkgQ1BVRSBUcmVuZHNcIixcbiAgICAgICAgIHggPSBcIkRhdGVcIixcbiAgICAgICAgIHkgPSBcIkNhdGNoIHBlciBVbml0IEVmZm9ydCAoa2cvaG91cilcIixcbiAgICAgICAgIGNvbG9yID0gXCJTcGVjaWVzXCIpICtcbiAgICB0aGVtZV9taW5pbWFsKCkifQ==
+</script>
+</div>
+</div>
+</details>
+<div class="cell" data-autorun="false">
+<div>
+<div id="webr-15">
+
+</div>
+<script type="webr-15-contents">
+eyJhdHRyIjp7ImVjaG8iOnRydWUsImVkaXQiOnRydWUsImV2YWwiOnRydWUsImF1dG9ydW4iOmZhbHNlfSwiY29kZSI6IiMgRXhlcmNpc2UgMjogQ3JlYXRlIGEgZGlzdHJpYnV0aW9uIGNvbXBhcmlzb25cbiMgQ29tcGFyZSBjYXRjaCBkaXN0cmlidXRpb25zIGFjcm9zcyBzaXRlcyBhbmQgc3BlY2llc1xuIyBVc2UgdmlvbGluIHBsb3RzIHdpdGggb3ZlcmxhaWQgYm94IHBsb3RzXG5cbiMgWW91ciBjb2RlIGhlcmU6In0=
+</script>
+</div>
+</div>
+<details>
+<summary>
+Click to see solution
+</summary>
+<div class="cell" data-autorun="false">
+<div>
+<div id="webr-16">
+
+</div>
+<script type="webr-16-contents">
+eyJhdHRyIjp7ImVkaXQiOmZhbHNlLCJldmFsIjpmYWxzZSwiYXV0b3J1biI6ZmFsc2V9LCJjb2RlIjoiZ2dwbG90KGZpc2hpbmdfZGF0YSwgYWVzKHggPSBzaXRlLCB5ID0gY2F0Y2hfa2csIGZpbGwgPSBzcGVjaWVzKSkgK1xuICAgIGdlb21fdmlvbGluKGFscGhhID0gMC41KSArXG4gICAgZ2VvbV9ib3hwbG90KHdpZHRoID0gMC4yLCBhbHBoYSA9IDAuOCkgK1xuICAgIGxhYnModGl0bGUgPSBcIkNhdGNoIERpc3RyaWJ1dGlvbiBieSBTaXRlIGFuZCBTcGVjaWVzXCIsXG4gICAgICAgICB4ID0gXCJMYW5kaW5nIFNpdGVcIixcbiAgICAgICAgIHkgPSBcIkNhdGNoIChrZylcIixcbiAgICAgICAgIGZpbGwgPSBcIlNwZWNpZXNcIikgK1xuICAgIHRoZW1lX21pbmltYWwoKSJ9
+</script>
+</div>
+</div>
+</details>
+</section>
+<section id="key-points-to-remember" class="level3">
+<h3 class="anchored" data-anchor-id="key-points-to-remember">Key Points to Remember 🗝️</h3>
+<p>When choosing plot types for fisheries data:</p>
+<ol type="1">
+<li><strong>Time Series Plots</strong>
+<ul>
+<li>Best for showing trends over time</li>
+<li>Consider seasonality</li>
+<li>Use appropriate time aggregation</li>
+<li>Include confidence intervals when relevant</li>
+</ul></li>
+<li><strong>Distribution Plots</strong>
+<ul>
+<li>Use histograms for single variables</li>
+<li>Box plots for group comparisons</li>
+<li>Violin plots for detailed distributions</li>
+<li>Consider sample size when choosing</li>
+</ul></li>
+<li><strong>Relationship Plots</strong>
+<ul>
+<li>Scatter plots for two continuous variables</li>
+<li>Add trend lines to show patterns</li>
+<li>Use facets for additional grouping</li>
+<li>Consider adding uncertainty</li>
+</ul></li>
+<li><strong>Compositional Plots</strong>
+<ul>
+<li>Stacked bars for absolute values</li>
+<li>100% stacks for proportions</li>
+<li>Use pie charts sparingly</li>
+<li>Consider the number of categories</li>
+</ul></li>
+</ol>
+</section>
+</section>
+<section id="applying-ggplot2-to-fisheries-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="applying-ggplot2-to-fisheries-analysis">Applying ggplot2 to Fisheries Analysis 📊</h2>
+<p>Now that we understand how to build plots using layers and aesthetic mappings, let’s apply these concepts to real fisheries analysis. While our previous examples helped us learn the basics, actual fisheries data involves multiple interrelated variables that tell important stories about fishing patterns, catch composition, and temporal trends.</p>
+<p>To explore these relationships effectively, let’s first expand our dataset to better represent the complexity of small-scale fisheries data:</p>
+<div class="cell" data-autorun="false">
+<div>
+<div id="webr-17">
+
+</div>
+<script type="webr-17-contents">
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImF1dG9ydW4iOmZhbHNlfSwiY29kZSI6IiMgQ3JlYXRlIGEgbW9yZSBjb21wcmVoZW5zaXZlIGZpc2hpbmcgZGF0YXNldFxubl9kYXlzIDwtIGFzLm51bWVyaWMoZGlmZnRpbWUoYXMuRGF0ZShcIjIwMjQtMDMtMzFcIiksIGFzLkRhdGUoXCIyMDI0LTAxLTAxXCIpKSkgKyAxXG50b3RhbF9yb3dzIDwtIG5fZGF5cyAqIDMgICMgMyBvYnNlcnZhdGlvbnMgcGVyIGRheVxuXG5maXNoaW5nX2RhdGEgPC0gdGliYmxlKFxuICBkYXRlID0gcmVwKHNlcShhcy5EYXRlKFwiMjAyNC0wMS0wMVwiKSwgYXMuRGF0ZShcIjIwMjQtMDMtMzFcIiksIGJ5ID0gXCJkYXlcIiksIGVhY2ggPSAzKSxcbiAgc2l0ZSA9IHJlcChjKFwiQmVhY2hcIiwgXCJSZWVmXCIsIFwiUGllclwiKSwgdGltZXMgPSBuX2RheXMpLFxuICBzcGVjaWVzID0gcmVwKGMoXCJUdW5hXCIsIFwiTWFja2VyZWxcIiwgXCJTYXJkaW5lXCIpLCB0aW1lcyA9IG5fZGF5cyksXG4gIGNhdGNoX2tnID0gcm91bmQoYWJzKHJub3JtKHRvdGFsX3Jvd3MsIG1lYW4gPSAxMDAsIHNkID0gMzApKSArIFxuICAgICAgICAgICAgICAgICAgICAgaWZlbHNlKHJlcChjKFwiVHVuYVwiLCBcIk1hY2tlcmVsXCIsIFwiU2FyZGluZVwiKSwgdGltZXMgPSBuX2RheXMpID09IFwiVHVuYVwiLCA1MCwgMCksIDEpLFxuICBwcmljZV9wZXJfa2cgPSByb3VuZChhYnMocm5vcm0odG90YWxfcm93cywgbWVhbiA9IDgwMCwgc2QgPSAyMDApKSArXG4gICAgICAgICAgICAgICAgICAgICAgICAgaWZlbHNlKHJlcChjKFwiVHVuYVwiLCBcIk1hY2tlcmVsXCIsIFwiU2FyZGluZVwiKSwgdGltZXMgPSBuX2RheXMpID09IFwiVHVuYVwiLCAzMDAsIDApLCAwKSxcbiAgbl9ib2F0cyA9IHNhbXBsZSgxOjUsIHRvdGFsX3Jvd3MsIHJlcGxhY2UgPSBUUlVFKSxcbiAgdHJpcF9ob3VycyA9IHJvdW5kKHJ1bmlmKHRvdGFsX3Jvd3MsIDQsIDEyKSwgMSksXG4gIHdhdGVyX3RlbXAgPSByb3VuZChybm9ybSh0b3RhbF9yb3dzLCBtZWFuID0gMjUsIHNkID0gMiksIDEpLFxuICBtb29uX3BoYXNlID0gcmVwKGMoXCJOZXdcIiwgXCJGaXJzdCBRdWFydGVyXCIsIFwiRnVsbFwiLCBcIkxhc3QgUXVhcnRlclwiKSwgXG4gICAgICAgICAgICAgICAgICAgbGVuZ3RoLm91dCA9IHRvdGFsX3Jvd3MpXG4pICU+JSBcbiAgICBtdXRhdGUoXG4gICAgICAgICMgQWRkIHNlYXNvbmFsIGVmZmVjdCB0byBjYXRjaFxuICAgICAgICBjYXRjaF9rZyA9IGNhdGNoX2tnICogKDEgKyAwLjMgKiBzaW4oYXMubnVtZXJpYyhkYXRlKSAvIDMwKSksXG4gICAgICAgICMgQ2FsY3VsYXRlIGRlcml2ZWQgdmFyaWFibGVzXG4gICAgICAgIGNwdWUgPSBjYXRjaF9rZyAvIHRyaXBfaG91cnMsXG4gICAgICAgIHRvdGFsX3ZhbHVlID0gY2F0Y2hfa2cgKiBwcmljZV9wZXJfa2dcbiAgICApIn0=
+</script>
+</div>
+</div>
+<p>This dataset represents three months of daily fishing activities across different sites, including: - Temporal information (dates) - Spatial information (fishing sites) - Catch composition (species) - Effort metrics (number of boats, trip duration) - Economic data (prices) - Environmental conditions (water temperature, moon phase)</p>
+<p>Using our understanding of aesthetic mappings and layers, we can now explore different aspects of this data through various visualization approaches.</p>
+<section id="understanding-temporal-patterns-with-multiple-layers" class="level3">
+<h3 class="anchored" data-anchor-id="understanding-temporal-patterns-with-multiple-layers">Understanding Temporal Patterns with Multiple Layers</h3>
+<p>Remember how we used <code>geom_point()</code> and <code>geom_line()</code> in our basic examples? We can combine these with additional aesthetics and geometries to reveal rich temporal patterns in our fishing data:</p>
+<div class="cell" data-autorun="false">
+<div>
+<div id="webr-18">
+
+</div>
+<script type="webr-18-contents">
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImF1dG9ydW4iOmZhbHNlfSwiY29kZSI6IiMgRmlyc3QsIGxldCdzIGFnZ3JlZ2F0ZSBkYWlseSBjYXRjaGVzIGJ5IHNwZWNpZXNcbmRhaWx5X2NhdGNoZXMgPC0gZmlzaGluZ19kYXRhICU+JVxuICAgIGdyb3VwX2J5KGRhdGUsIHNwZWNpZXMpICU+JVxuICAgIHN1bW1hcmlzZShcbiAgICAgICAgdG90YWxfY2F0Y2ggPSBzdW0oY2F0Y2hfa2cpLFxuICAgICAgICBhdmdfcHJpY2UgPSBtZWFuKHByaWNlX3Blcl9rZyksXG4gICAgICAgIC5ncm91cHMgPSAnZHJvcCdcbiAgICApXG5cbiMgQ3JlYXRlIGFuIGVuaGFuY2VkIHRpbWUgc2VyaWVzIHZpc3VhbGl6YXRpb25cbmdncGxvdChkYWlseV9jYXRjaGVzLCBhZXMoeCA9IGRhdGUsIHkgPSB0b3RhbF9jYXRjaCwgY29sb3IgPSBzcGVjaWVzKSkgK1xuICAgICMgQmFzZSBsYXllcjogQWRkIGxpbmVzIHRvIHNob3cgY29udGludWl0eVxuICAgIGdlb21fbGluZShhbHBoYSA9IDAuNykgK1xuICAgICMgQWRkIHBvaW50cyB0byBzaG93IGFjdHVhbCBvYnNlcnZhdGlvbnNcbiAgICBnZW9tX3BvaW50KHNpemUgPSAyLCBhbHBoYSA9IDAuNikgK1xuICAgICMgQWRkIHNtb290aGVkIHRyZW5kIHRvIHNob3cgcGF0dGVybnNcbiAgICBnZW9tX3Ntb290aChzZSA9IEZBTFNFLCBsaW5ldHlwZSA9IFwiZGFzaGVkXCIpICtcbiAgICAjIEVuaGFuY2Ugd2l0aCBwcm9wZXIgbGFiZWxpbmdcbiAgICBsYWJzKHRpdGxlID0gXCJEYWlseSBDYXRjaCBUcmVuZHMgYnkgU3BlY2llc1wiLFxuICAgICAgICAgc3VidGl0bGUgPSBcIlNob3dpbmcgYWN0dWFsIHZhbHVlcywgdHJlbmRzLCBhbmQgc3BlY2llcyBkaWZmZXJlbmNlc1wiLFxuICAgICAgICAgeCA9IFwiRGF0ZVwiLFxuICAgICAgICAgeSA9IFwiVG90YWwgQ2F0Y2ggKGtnKVwiLFxuICAgICAgICAgY29sb3IgPSBcIlNwZWNpZXNcIikgK1xuICAgICMgVXNlIGEgY2xlYW4gdGhlbWVcbiAgICB0aGVtZV9taW5pbWFsKCkgK1xuICAgICMgQ3VzdG9taXplIHRoZSBsZWdlbmQgcG9zaXRpb25cbiAgICB0aGVtZShsZWdlbmQucG9zaXRpb24gPSBcImJvdHRvbVwiKSJ9
+</script>
+</div>
+</div>
+<p>This plot combines multiple layers we learned about earlier: 1. <code>geom_line()</code>: Shows the continuous nature of time series data 2. <code>geom_point()</code>: Marks actual daily observations 3. <code>geom_smooth()</code>: Reveals underlying trends 4. Color aesthetic: Distinguishes between species</p>
+</section>
+<section id="adding-complexity-multiple-variables-and-faceting" class="level3">
+<h3 class="anchored" data-anchor-id="adding-complexity-multiple-variables-and-faceting">Adding Complexity: Multiple Variables and Faceting</h3>
+<p>Now let’s build on our understanding of aesthetics to explore relationships between multiple variables. We’ll use faceting to create small multiples, a powerful technique for comparing patterns across groups:</p>
+<div class="cell" data-autorun="false">
+<div>
+<div id="webr-19">
+
+</div>
+<script type="webr-19-contents">
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImF1dG9ydW4iOmZhbHNlfSwiY29kZSI6IiMgQ3JlYXRlIGEgbXVsdGktZmFjZXRlZCBhbmFseXNpcyBvZiBDUFVFXG5nZ3Bsb3QoZmlzaGluZ19kYXRhLCBhZXMoeCA9IHdhdGVyX3RlbXAsIHkgPSBjcHVlLCBjb2xvciA9IHNwZWNpZXMpKSArXG4gICAgIyBCYXNlIGxheWVyOiBzY2F0dGVyIHBsb3RcbiAgICBnZW9tX3BvaW50KGFscGhhID0gMC41KSArXG4gICAgIyBBZGQgdHJlbmQgbGluZXMgZm9yIGVhY2ggc3BlY2llc1xuICAgIGdlb21fc21vb3RoKG1ldGhvZCA9IFwibG1cIiwgc2UgPSBGQUxTRSkgK1xuICAgICMgU2VwYXJhdGUgYnkgc2l0ZVxuICAgIGZhY2V0X3dyYXAofnNpdGUpICtcbiAgICAjIEVuaGFuY2VkIGxhYmVsaW5nXG4gICAgbGFicyh0aXRsZSA9IFwiQ1BVRSB2cyBXYXRlciBUZW1wZXJhdHVyZVwiLFxuICAgICAgICAgc3VidGl0bGUgPSBcIlJlbGF0aW9uc2hpcHMgYWNyb3NzIGRpZmZlcmVudCBzaXRlc1wiLFxuICAgICAgICAgeCA9IFwiV2F0ZXIgVGVtcGVyYXR1cmUgKMKwQylcIixcbiAgICAgICAgIHkgPSBcIkNhdGNoIHBlciBVbml0IEVmZm9ydCAoa2cvaG91cilcIixcbiAgICAgICAgIGNvbG9yID0gXCJTcGVjaWVzXCIpICtcbiAgICAjIEN1c3RvbWl6ZSBhcHBlYXJhbmNlXG4gICAgdGhlbWVfbWluaW1hbCgpICtcbiAgICB0aGVtZShcbiAgICAgICAgbGVnZW5kLnBvc2l0aW9uID0gXCJib3R0b21cIixcbiAgICAgICAgcGFuZWwuc3BhY2luZyA9IHVuaXQoMSwgXCJsaW5lc1wiKSxcbiAgICAgICAgc3RyaXAuYmFja2dyb3VuZCA9IGVsZW1lbnRfcmVjdChmaWxsID0gXCJncmF5OTVcIilcbiAgICApIn0=
+</script>
+</div>
+</div>
+<p>This visualization demonstrates several advanced concepts: 1. Multiple variable relationships (CPUE, temperature, species) 2. Faceting to compare across sites 3. Trend lines to show relationships 4. Thoughtful use of transparency and spacing</p>
+</section>
+<section id="exploring-distributions-with-combined-geometries" class="level3">
+<h3 class="anchored" data-anchor-id="exploring-distributions-with-combined-geometries">Exploring Distributions with Combined Geometries</h3>
+<p>Let’s extend our knowledge of geometries to create more sophisticated distribution visualizations:</p>
+<div class="cell" data-autorun="false">
+<div>
+<div id="webr-20">
+
+</div>
+<script type="webr-20-contents">
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImF1dG9ydW4iOmZhbHNlfSwiY29kZSI6IiMgQ3JlYXRlIGEgZGV0YWlsZWQgZGlzdHJpYnV0aW9uIGFuYWx5c2lzXG5nZ3Bsb3QoZmlzaGluZ19kYXRhLCBhZXMoeCA9IHNwZWNpZXMsIHkgPSBjYXRjaF9rZywgZmlsbCA9IHNwZWNpZXMpKSArXG4gICAgIyBBZGQgdmlvbGluIHBsb3QgZm9yIGRpc3RyaWJ1dGlvbiBzaGFwZVxuICAgIGdlb21fdmlvbGluKGFscGhhID0gMC4zKSArXG4gICAgIyBPdmVybGF5IGJveCBwbG90IGZvciBzdW1tYXJ5IHN0YXRpc3RpY3NcbiAgICBnZW9tX2JveHBsb3Qod2lkdGggPSAwLjIsIGFscGhhID0gMC43KSArXG4gICAgIyBBZGQgaW5kaXZpZHVhbCBwb2ludHMgd2l0aCBqaXR0ZXJcbiAgICBnZW9tX2ppdHRlcih3aWR0aCA9IDAuMSwgYWxwaGEgPSAwLjIsIGNvbG9yID0gXCJibGFja1wiKSArXG4gICAgIyBTZXBhcmF0ZSBieSBzaXRlXG4gICAgZmFjZXRfd3JhcCh+c2l0ZSkgK1xuICAgICMgRW5oYW5jZSBhcHBlYXJhbmNlXG4gICAgbGFicyh0aXRsZSA9IFwiQ2F0Y2ggRGlzdHJpYnV0aW9uIEFuYWx5c2lzXCIsXG4gICAgICAgICBzdWJ0aXRsZSA9IFwiQ29tYmluaW5nIG11bHRpcGxlIGdlb21ldHJpZXMgZm9yIGRldGFpbGVkIGluc2lnaHRcIixcbiAgICAgICAgIHggPSBcIlNwZWNpZXNcIixcbiAgICAgICAgIHkgPSBcIkNhdGNoIChrZylcIikgK1xuICAgIHRoZW1lX21pbmltYWwoKSArXG4gICAgdGhlbWUobGVnZW5kLnBvc2l0aW9uID0gXCJub25lXCIpIn0=
+</script>
+</div>
+</div>
+<p>This plot combines multiple geometries to show different aspects of the data: 1. <code>geom_violin()</code>: Shows the full distribution shape 2. <code>geom_boxplot()</code>: Displays summary statistics 3. <code>geom_jitter()</code>: Reveals individual observations 4. Faceting: Allows comparison across sites</p>
+
+
+<script type="webr-data">
+eyJyZW5kZXJfZGYiOiJndC1pbnRlcmFjdGl2ZSIsIm9wdGlvbnMiOnsiYmFzZVVybCI6Imh0dHBzOi8vd2Vici5yLXdhc20ub3JnL3YwLjQuMS8ifSwicGFja2FnZXMiOnsicmVwb3MiOltdLCJwa2dzIjpbImV2YWx1YXRlIiwia25pdHIiLCJodG1sdG9vbHMiLCJ0aWR5dmVyc2UiLCJndCJdfX0=
+</script>
+<script type="ojs-module-contents">
+eyJjb250ZW50cyI6W3siY2VsbE5hbWUiOiJ3ZWJyLXdpZGdldC0yMCIsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6IntcbiAgLy8gV2FpdCBmb3Igb3V0cHV0IHRvIGJlIHdyaXR0ZW4gdG8gdGhlIERPTSwgdGhlbiB0cmlnZ2VyIHdpZGdldCByZW5kZXJpbmdcbiAgYXdhaXQgX3dlYnJfdmFsdWVfMjA7XG4gIGlmICh3aW5kb3cuSFRNTFdpZGdldHMpIHtcbiAgICB3aW5kb3cuSFRNTFdpZGdldHMuc3RhdGljUmVuZGVyKCk7XG4gIH1cbiAgaWYgKHdpbmRvdy5QYWdlZFRhYmxlRG9jKSB7XG4gICAgd2luZG93LlBhZ2VkVGFibGVEb2MuaW5pdEFsbCgpO1xuICB9XG59XG4ifSx7ImNlbGxOYW1lIjoid2Vici0yMCIsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJ2aWV3b2YgX3dlYnJfZWRpdG9yXzIwID0ge1xuICBjb25zdCB7IFdlYlJFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuICBjb25zdCBzY3JpcHRDb250ZW50ID0gZG9jdW1lbnQucXVlcnlTZWxlY3Rvcihgc2NyaXB0W3R5cGU9XFxcIndlYnItMjAtY29udGVudHNcXFwiXWApLnRleHRDb250ZW50O1xuICBjb25zdCBibG9jayA9IEpTT04ucGFyc2UoYjY0RGVjb2RlKHNjcmlwdENvbnRlbnQpKTtcblxuICBjb25zdCBvcHRpb25zID0gT2JqZWN0LmFzc2lnbih7IGlkOiBgd2Vici0yMC1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBXZWJSRXhlcmNpc2VFZGl0b3Iod2ViUk9qcy53ZWJSUHJvbWlzZSwgYmxvY2suY29kZSwgb3B0aW9ucyk7XG5cbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG5fd2Vicl92YWx1ZV8yMCA9IHdlYlJPanMucHJvY2Vzcyhfd2Vicl9lZGl0b3JfMjAsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJ3ZWJyLXdpZGdldC0xOSIsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6IntcbiAgLy8gV2FpdCBmb3Igb3V0cHV0IHRvIGJlIHdyaXR0ZW4gdG8gdGhlIERPTSwgdGhlbiB0cmlnZ2VyIHdpZGdldCByZW5kZXJpbmdcbiAgYXdhaXQgX3dlYnJfdmFsdWVfMTk7XG4gIGlmICh3aW5kb3cuSFRNTFdpZGdldHMpIHtcbiAgICB3aW5kb3cuSFRNTFdpZGdldHMuc3RhdGljUmVuZGVyKCk7XG4gIH1cbiAgaWYgKHdpbmRvdy5QYWdlZFRhYmxlRG9jKSB7XG4gICAgd2luZG93LlBhZ2VkVGFibGVEb2MuaW5pdEFsbCgpO1xuICB9XG59XG4ifSx7ImNlbGxOYW1lIjoid2Vici0xOSIsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJ2aWV3b2YgX3dlYnJfZWRpdG9yXzE5ID0ge1xuICBjb25zdCB7IFdlYlJFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuICBjb25zdCBzY3JpcHRDb250ZW50ID0gZG9jdW1lbnQucXVlcnlTZWxlY3Rvcihgc2NyaXB0W3R5cGU9XFxcIndlYnItMTktY29udGVudHNcXFwiXWApLnRleHRDb250ZW50O1xuICBjb25zdCBibG9jayA9IEpTT04ucGFyc2UoYjY0RGVjb2RlKHNjcmlwdENvbnRlbnQpKTtcblxuICBjb25zdCBvcHRpb25zID0gT2JqZWN0LmFzc2lnbih7IGlkOiBgd2Vici0xOS1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBXZWJSRXhlcmNpc2VFZGl0b3Iod2ViUk9qcy53ZWJSUHJvbWlzZSwgYmxvY2suY29kZSwgb3B0aW9ucyk7XG5cbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG5fd2Vicl92YWx1ZV8xOSA9IHdlYlJPanMucHJvY2Vzcyhfd2Vicl9lZGl0b3JfMTksIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJ3ZWJyLXdpZGdldC0xOCIsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6IntcbiAgLy8gV2FpdCBmb3Igb3V0cHV0IHRvIGJlIHdyaXR0ZW4gdG8gdGhlIERPTSwgdGhlbiB0cmlnZ2VyIHdpZGdldCByZW5kZXJpbmdcbiAgYXdhaXQgX3dlYnJfdmFsdWVfMTg7XG4gIGlmICh3aW5kb3cuSFRNTFdpZGdldHMpIHtcbiAgICB3aW5kb3cuSFRNTFdpZGdldHMuc3RhdGljUmVuZGVyKCk7XG4gIH1cbiAgaWYgKHdpbmRvdy5QYWdlZFRhYmxlRG9jKSB7XG4gICAgd2luZG93LlBhZ2VkVGFibGVEb2MuaW5pdEFsbCgpO1xuICB9XG59XG4ifSx7ImNlbGxOYW1lIjoid2Vici0xOCIsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJ2aWV3b2YgX3dlYnJfZWRpdG9yXzE4ID0ge1xuICBjb25zdCB7IFdlYlJFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuICBjb25zdCBzY3JpcHRDb250ZW50ID0gZG9jdW1lbnQucXVlcnlTZWxlY3Rvcihgc2NyaXB0W3R5cGU9XFxcIndlYnItMTgtY29udGVudHNcXFwiXWApLnRleHRDb250ZW50O1xuICBjb25zdCBibG9jayA9IEpTT04ucGFyc2UoYjY0RGVjb2RlKHNjcmlwdENvbnRlbnQpKTtcblxuICBjb25zdCBvcHRpb25zID0gT2JqZWN0LmFzc2lnbih7IGlkOiBgd2Vici0xOC1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBXZWJSRXhlcmNpc2VFZGl0b3Iod2ViUk9qcy53ZWJSUHJvbWlzZSwgYmxvY2suY29kZSwgb3B0aW9ucyk7XG5cbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG5fd2Vicl92YWx1ZV8xOCA9IHdlYlJPanMucHJvY2Vzcyhfd2Vicl9lZGl0b3JfMTgsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJ3ZWJyLXdpZGdldC0xNyIsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6IntcbiAgLy8gV2FpdCBmb3Igb3V0cHV0IHRvIGJlIHdyaXR0ZW4gdG8gdGhlIERPTSwgdGhlbiB0cmlnZ2VyIHdpZGdldCByZW5kZXJpbmdcbiAgYXdhaXQgX3dlYnJfdmFsdWVfMTc7XG4gIGlmICh3aW5kb3cuSFRNTFdpZGdldHMpIHtcbiAgICB3aW5kb3cuSFRNTFdpZGdldHMuc3RhdGljUmVuZGVyKCk7XG4gIH1cbiAgaWYgKHdpbmRvdy5QYWdlZFRhYmxlRG9jKSB7XG4gICAgd2luZG93LlBhZ2VkVGFibGVEb2MuaW5pdEFsbCgpO1xuICB9XG59XG4ifSx7ImNlbGxOYW1lIjoid2Vici0xNyIsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJ2aWV3b2YgX3dlYnJfZWRpdG9yXzE3ID0ge1xuICBjb25zdCB7IFdlYlJFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuICBjb25zdCBzY3JpcHRDb250ZW50ID0gZG9jdW1lbnQucXVlcnlTZWxlY3Rvcihgc2NyaXB0W3R5cGU9XFxcIndlYnItMTctY29udGVudHNcXFwiXWApLnRleHRDb250ZW50O1xuICBjb25zdCBibG9jayA9IEpTT04ucGFyc2UoYjY0RGVjb2RlKHNjcmlwdENvbnRlbnQpKTtcblxuICBjb25zdCBvcHRpb25zID0gT2JqZWN0LmFzc2lnbih7IGlkOiBgd2Vici0xNy1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBXZWJSRXhlcmNpc2VFZGl0b3Iod2ViUk9qcy53ZWJSUHJvbWlzZSwgYmxvY2suY29kZSwgb3B0aW9ucyk7XG5cbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG5fd2Vicl92YWx1ZV8xNyA9IHdlYlJPanMucHJvY2Vzcyhfd2Vicl9lZGl0b3JfMTcsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJ3ZWJyLXdpZGdldC0xNiIsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6IntcbiAgLy8gV2FpdCBmb3Igb3V0cHV0IHRvIGJlIHdyaXR0ZW4gdG8gdGhlIERPTSwgdGhlbiB0cmlnZ2VyIHdpZGdldCByZW5kZXJpbmdcbiAgYXdhaXQgX3dlYnJfdmFsdWVfMTY7XG4gIGlmICh3aW5kb3cuSFRNTFdpZGdldHMpIHtcbiAgICB3aW5kb3cuSFRNTFdpZGdldHMuc3RhdGljUmVuZGVyKCk7XG4gIH1cbiAgaWYgKHdpbmRvdy5QYWdlZFRhYmxlRG9jKSB7XG4gICAgd2luZG93LlBhZ2VkVGFibGVEb2MuaW5pdEFsbCgpO1xuICB9XG59XG4ifSx7ImNlbGxOYW1lIjoid2Vici0xNiIsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJfd2Vicl92YWx1ZV8xNiA9IHtcbiAgY29uc3QgeyBoaWdobGlnaHRSLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwid2Vici0xNi1jb250ZW50c1xcXCJdYCkudGV4dENvbnRlbnQ7XG4gIGNvbnN0IGJsb2NrID0gSlNPTi5wYXJzZShiNjREZWNvZGUoc2NyaXB0Q29udGVudCkpO1xuXG4gIC8vIERlZmF1bHQgZXZhbHVhdGlvbiBjb25maWd1cmF0aW9uXG4gIGNvbnN0IG9wdGlvbnMgPSBPYmplY3QuYXNzaWduKHtcbiAgICBpZDogXCJ3ZWJyLTE2LWNvbnRlbnRzXCIsXG4gICAgZWNobzogdHJ1ZSxcbiAgICBvdXRwdXQ6IHRydWVcbiAgfSwgYmxvY2suYXR0cik7XG5cbiAgLy8gRXZhbHVhdGUgdGhlIHByb3ZpZGVkIFIgY29kZVxuICBjb25zdCByZXN1bHQgPSB3ZWJST2pzLnByb2Nlc3Moe2NvZGU6IGJsb2NrLmNvZGUsIG9wdGlvbnN9LCB7fSk7XG5cbiAgLy8gRWFybHkgeWllbGQgd2hpbGUgd2Ugd2FpdCBmb3IgdGhlIGZpcnN0IGV2YWx1YXRpb24gYW5kIHJlbmRlclxuICBpZiAob3B0aW9ucy5vdXRwdXQgJiYgIShcIjE2XCIgaW4gd2ViUk9qcy5yZW5kZXJlZE9qcykpIHtcbiAgICBjb25zdCBjb250YWluZXIgPSBkb2N1bWVudC5jcmVhdGVFbGVtZW50KFwiZGl2XCIpO1xuICAgIGNvbnN0IHNwaW5uZXIgPSBkb2N1bWVudC5jcmVhdGVFbGVtZW50KFwiZGl2XCIpO1xuXG4gICAgaWYgKG9wdGlvbnMuZWNobykge1xuICAgICAgLy8gU2hvdyBvdXRwdXQgYXMgaGlnaGxpZ2h0ZWQgc291cmNlXG4gICAgICBjb25zdCBwcmVFbGVtID0gZG9jdW1lbnQuY3JlYXRlRWxlbWVudChcInByZVwiKTtcbiAgICAgIGNvbnRhaW5lci5jbGFzc05hbWUgPSBcInNvdXJjZUNvZGVcIjtcbiAgICAgIHByZUVsZW0uY2xhc3NOYW1lID0gXCJzb3VyY2VDb2RlIHJcIjtcbiAgICAgIHByZUVsZW0uYXBwZW5kQ2hpbGQoaGlnaGxpZ2h0UihibG9jay5jb2RlKSk7XG4gICAgICBzcGlubmVyLmNsYXNzTmFtZSA9IFwic3Bpbm5lci1ncm93IHNwaW5uZXItZ3Jvdy1zbSBtLTIgcG9zaXRpb24tYWJzb2x1dGUgdG9wLTAgZW5kLTBcIjtcbiAgICAgIHByZUVsZW0uYXBwZW5kQ2hpbGQoc3Bpbm5lcik7XG4gICAgICBjb250YWluZXIuYXBwZW5kQ2hpbGQocHJlRWxlbSk7XG4gICAgfSBlbHNlIHtcbiAgICAgIHNwaW5uZXIuY2xhc3NOYW1lID0gXCJzcGlubmVyLWJvcmRlciBzcGlubmVyLWJvcmRlci1zbVwiO1xuICAgICAgY29udGFpbmVyLmFwcGVuZENoaWxkKHNwaW5uZXIpO1xuICAgIH1cblxuICAgIHlpZWxkIGNvbnRhaW5lcjtcbiAgfVxuXG4gIHdlYlJPanMucmVuZGVyZWRPanNbXCIxNlwiXSA9IHRydWU7XG4gIHlpZWxkIGF3YWl0IHJlc3VsdDtcbn1cbiJ9LHsiY2VsbE5hbWUiOiJ3ZWJyLXdpZGdldC0xNSIsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6IntcbiAgLy8gV2FpdCBmb3Igb3V0cHV0IHRvIGJlIHdyaXR0ZW4gdG8gdGhlIERPTSwgdGhlbiB0cmlnZ2VyIHdpZGdldCByZW5kZXJpbmdcbiAgYXdhaXQgX3dlYnJfdmFsdWVfMTU7XG4gIGlmICh3aW5kb3cuSFRNTFdpZGdldHMpIHtcbiAgICB3aW5kb3cuSFRNTFdpZGdldHMuc3RhdGljUmVuZGVyKCk7XG4gIH1cbiAgaWYgKHdpbmRvdy5QYWdlZFRhYmxlRG9jKSB7XG4gICAgd2luZG93LlBhZ2VkVGFibGVEb2MuaW5pdEFsbCgpO1xuICB9XG59XG4ifSx7ImNlbGxOYW1lIjoid2Vici0xNSIsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJ2aWV3b2YgX3dlYnJfZWRpdG9yXzE1ID0ge1xuICBjb25zdCB7IFdlYlJFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuICBjb25zdCBzY3JpcHRDb250ZW50ID0gZG9jdW1lbnQucXVlcnlTZWxlY3Rvcihgc2NyaXB0W3R5cGU9XFxcIndlYnItMTUtY29udGVudHNcXFwiXWApLnRleHRDb250ZW50O1xuICBjb25zdCBibG9jayA9IEpTT04ucGFyc2UoYjY0RGVjb2RlKHNjcmlwdENvbnRlbnQpKTtcblxuICBjb25zdCBvcHRpb25zID0gT2JqZWN0LmFzc2lnbih7IGlkOiBgd2Vici0xNS1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBXZWJSRXhlcmNpc2VFZGl0b3Iod2ViUk9qcy53ZWJSUHJvbWlzZSwgYmxvY2suY29kZSwgb3B0aW9ucyk7XG5cbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG5fd2Vicl92YWx1ZV8xNSA9IHdlYlJPanMucHJvY2Vzcyhfd2Vicl9lZGl0b3JfMTUsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJ3ZWJyLXdpZGdldC0xNCIsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6IntcbiAgLy8gV2FpdCBmb3Igb3V0cHV0IHRvIGJlIHdyaXR0ZW4gdG8gdGhlIERPTSwgdGhlbiB0cmlnZ2VyIHdpZGdldCByZW5kZXJpbmdcbiAgYXdhaXQgX3dlYnJfdmFsdWVfMTQ7XG4gIGlmICh3aW5kb3cuSFRNTFdpZGdldHMpIHtcbiAgICB3aW5kb3cuSFRNTFdpZGdldHMuc3RhdGljUmVuZGVyKCk7XG4gIH1cbiAgaWYgKHdpbmRvdy5QYWdlZFRhYmxlRG9jKSB7XG4gICAgd2luZG93LlBhZ2VkVGFibGVEb2MuaW5pdEFsbCgpO1xuICB9XG59XG4ifSx7ImNlbGxOYW1lIjoid2Vici0xNCIsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJfd2Vicl92YWx1ZV8xNCA9IHtcbiAgY29uc3QgeyBoaWdobGlnaHRSLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwid2Vici0xNC1jb250ZW50c1xcXCJdYCkudGV4dENvbnRlbnQ7XG4gIGNvbnN0IGJsb2NrID0gSlNPTi5wYXJzZShiNjREZWNvZGUoc2NyaXB0Q29udGVudCkpO1xuXG4gIC8vIERlZmF1bHQgZXZhbHVhdGlvbiBjb25maWd1cmF0aW9uXG4gIGNvbnN0IG9wdGlvbnMgPSBPYmplY3QuYXNzaWduKHtcbiAgICBpZDogXCJ3ZWJyLTE0LWNvbnRlbnRzXCIsXG4gICAgZWNobzogdHJ1ZSxcbiAgICBvdXRwdXQ6IHRydWVcbiAgfSwgYmxvY2suYXR0cik7XG5cbiAgLy8gRXZhbHVhdGUgdGhlIHByb3ZpZGVkIFIgY29kZVxuICBjb25zdCByZXN1bHQgPSB3ZWJST2pzLnByb2Nlc3Moe2NvZGU6IGJsb2NrLmNvZGUsIG9wdGlvbnN9LCB7fSk7XG5cbiAgLy8gRWFybHkgeWllbGQgd2hpbGUgd2Ugd2FpdCBmb3IgdGhlIGZpcnN0IGV2YWx1YXRpb24gYW5kIHJlbmRlclxuICBpZiAob3B0aW9ucy5vdXRwdXQgJiYgIShcIjE0XCIgaW4gd2ViUk9qcy5yZW5kZXJlZE9qcykpIHtcbiAgICBjb25zdCBjb250YWluZXIgPSBkb2N1bWVudC5jcmVhdGVFbGVtZW50KFwiZGl2XCIpO1xuICAgIGNvbnN0IHNwaW5uZXIgPSBkb2N1bWVudC5jcmVhdGVFbGVtZW50KFwiZGl2XCIpO1xuXG4gICAgaWYgKG9wdGlvbnMuZWNobykge1xuICAgICAgLy8gU2hvdyBvdXRwdXQgYXMgaGlnaGxpZ2h0ZWQgc291cmNlXG4gICAgICBjb25zdCBwcmVFbGVtID0gZG9jdW1lbnQuY3JlYXRlRWxlbWVudChcInByZVwiKTtcbiAgICAgIGNvbnRhaW5lci5jbGFzc05hbWUgPSBcInNvdXJjZUNvZGVcIjtcbiAgICAgIHByZUVsZW0uY2xhc3NOYW1lID0gXCJzb3VyY2VDb2RlIHJcIjtcbiAgICAgIHByZUVsZW0uYXBwZW5kQ2hpbGQoaGlnaGxpZ2h0UihibG9jay5jb2RlKSk7XG4gICAgICBzcGlubmVyLmNsYXNzTmFtZSA9IFwic3Bpbm5lci1ncm93IHNwaW5uZXItZ3Jvdy1zbSBtLTIgcG9zaXRpb24tYWJzb2x1dGUgdG9wLTAgZW5kLTBcIjtcbiAgICAgIHByZUVsZW0uYXBwZW5kQ2hpbGQoc3Bpbm5lcik7XG4gICAgICBjb250YWluZXIuYXBwZW5kQ2hpbGQocHJlRWxlbSk7XG4gICAgfSBlbHNlIHtcbiAgICAgIHNwaW5uZXIuY2xhc3NOYW1lID0gXCJzcGlubmVyLWJvcmRlciBzcGlubmVyLWJvcmRlci1zbVwiO1xuICAgICAgY29udGFpbmVyLmFwcGVuZENoaWxkKHNwaW5uZXIpO1xuICAgIH1cblxuICAgIHlpZWxkIGNvbnRhaW5lcjtcbiAgfVxuXG4gIHdlYlJPanMucmVuZGVyZWRPanNbXCIxNFwiXSA9IHRydWU7XG4gIHlpZWxkIGF3YWl0IHJlc3VsdDtcbn1cbiJ9LHsiY2VsbE5hbWUiOiJ3ZWJyLXdpZGdldC0xMyIsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6IntcbiAgLy8gV2FpdCBmb3Igb3V0cHV0IHRvIGJlIHdyaXR0ZW4gdG8gdGhlIERPTSwgdGhlbiB0cmlnZ2VyIHdpZGdldCByZW5kZXJpbmdcbiAgYXdhaXQgX3dlYnJfdmFsdWVfMTM7XG4gIGlmICh3aW5kb3cuSFRNTFdpZGdldHMpIHtcbiAgICB3aW5kb3cuSFRNTFdpZGdldHMuc3RhdGljUmVuZGVyKCk7XG4gIH1cbiAgaWYgKHdpbmRvdy5QYWdlZFRhYmxlRG9jKSB7XG4gICAgd2luZG93LlBhZ2VkVGFibGVEb2MuaW5pdEFsbCgpO1xuICB9XG59XG4ifSx7ImNlbGxOYW1lIjoid2Vici0xMyIsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJ2aWV3b2YgX3dlYnJfZWRpdG9yXzEzID0ge1xuICBjb25zdCB7IFdlYlJFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuICBjb25zdCBzY3JpcHRDb250ZW50ID0gZG9jdW1lbnQucXVlcnlTZWxlY3Rvcihgc2NyaXB0W3R5cGU9XFxcIndlYnItMTMtY29udGVudHNcXFwiXWApLnRleHRDb250ZW50O1xuICBjb25zdCBibG9jayA9IEpTT04ucGFyc2UoYjY0RGVjb2RlKHNjcmlwdENvbnRlbnQpKTtcblxuICBjb25zdCBvcHRpb25zID0gT2JqZWN0LmFzc2lnbih7IGlkOiBgd2Vici0xMy1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBXZWJSRXhlcmNpc2VFZGl0b3Iod2ViUk9qcy53ZWJSUHJvbWlzZSwgYmxvY2suY29kZSwgb3B0aW9ucyk7XG5cbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG5fd2Vicl92YWx1ZV8xMyA9IHdlYlJPanMucHJvY2Vzcyhfd2Vicl9lZGl0b3JfMTMsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJ3ZWJyLXdpZGdldC0xMiIsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6IntcbiAgLy8gV2FpdCBmb3Igb3V0cHV0IHRvIGJlIHdyaXR0ZW4gdG8gdGhlIERPTSwgdGhlbiB0cmlnZ2VyIHdpZGdldCByZW5kZXJpbmdcbiAgYXdhaXQgX3dlYnJfdmFsdWVfMTI7XG4gIGlmICh3aW5kb3cuSFRNTFdpZGdldHMpIHtcbiAgICB3aW5kb3cuSFRNTFdpZGdldHMuc3RhdGljUmVuZGVyKCk7XG4gIH1cbiAgaWYgKHdpbmRvdy5QYWdlZFRhYmxlRG9jKSB7XG4gICAgd2luZG93LlBhZ2VkVGFibGVEb2MuaW5pdEFsbCgpO1xuICB9XG59XG4ifSx7ImNlbGxOYW1lIjoid2Vici0xMiIsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJ2aWV3b2YgX3dlYnJfZWRpdG9yXzEyID0ge1xuICBjb25zdCB7IFdlYlJFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuICBjb25zdCBzY3JpcHRDb250ZW50ID0gZG9jdW1lbnQucXVlcnlTZWxlY3Rvcihgc2NyaXB0W3R5cGU9XFxcIndlYnItMTItY29udGVudHNcXFwiXWApLnRleHRDb250ZW50O1xuICBjb25zdCBibG9jayA9IEpTT04ucGFyc2UoYjY0RGVjb2RlKHNjcmlwdENvbnRlbnQpKTtcblxuICBjb25zdCBvcHRpb25zID0gT2JqZWN0LmFzc2lnbih7IGlkOiBgd2Vici0xMi1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBXZWJSRXhlcmNpc2VFZGl0b3Iod2ViUk9qcy53ZWJSUHJvbWlzZSwgYmxvY2suY29kZSwgb3B0aW9ucyk7XG5cbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG5fd2Vicl92YWx1ZV8xMiA9IHdlYlJPanMucHJvY2Vzcyhfd2Vicl9lZGl0b3JfMTIsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJ3ZWJyLXdpZGdldC0xMSIsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6IntcbiAgLy8gV2FpdCBmb3Igb3V0cHV0IHRvIGJlIHdyaXR0ZW4gdG8gdGhlIERPTSwgdGhlbiB0cmlnZ2VyIHdpZGdldCByZW5kZXJpbmdcbiAgYXdhaXQgX3dlYnJfdmFsdWVfMTE7XG4gIGlmICh3aW5kb3cuSFRNTFdpZGdldHMpIHtcbiAgICB3aW5kb3cuSFRNTFdpZGdldHMuc3RhdGljUmVuZGVyKCk7XG4gIH1cbiAgaWYgKHdpbmRvdy5QYWdlZFRhYmxlRG9jKSB7XG4gICAgd2luZG93LlBhZ2VkVGFibGVEb2MuaW5pdEFsbCgpO1xuICB9XG59XG4ifSx7ImNlbGxOYW1lIjoid2Vici0xMSIsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJ2aWV3b2YgX3dlYnJfZWRpdG9yXzExID0ge1xuICBjb25zdCB7IFdlYlJFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuICBjb25zdCBzY3JpcHRDb250ZW50ID0gZG9jdW1lbnQucXVlcnlTZWxlY3Rvcihgc2NyaXB0W3R5cGU9XFxcIndlYnItMTEtY29udGVudHNcXFwiXWApLnRleHRDb250ZW50O1xuICBjb25zdCBibG9jayA9IEpTT04ucGFyc2UoYjY0RGVjb2RlKHNjcmlwdENvbnRlbnQpKTtcblxuICBjb25zdCBvcHRpb25zID0gT2JqZWN0LmFzc2lnbih7IGlkOiBgd2Vici0xMS1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBXZWJSRXhlcmNpc2VFZGl0b3Iod2ViUk9qcy53ZWJSUHJvbWlzZSwgYmxvY2suY29kZSwgb3B0aW9ucyk7XG5cbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG5fd2Vicl92YWx1ZV8xMSA9IHdlYlJPanMucHJvY2Vzcyhfd2Vicl9lZGl0b3JfMTEsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJ3ZWJyLXdpZGdldC0xMCIsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6IntcbiAgLy8gV2FpdCBmb3Igb3V0cHV0IHRvIGJlIHdyaXR0ZW4gdG8gdGhlIERPTSwgdGhlbiB0cmlnZ2VyIHdpZGdldCByZW5kZXJpbmdcbiAgYXdhaXQgX3dlYnJfdmFsdWVfMTA7XG4gIGlmICh3aW5kb3cuSFRNTFdpZGdldHMpIHtcbiAgICB3aW5kb3cuSFRNTFdpZGdldHMuc3RhdGljUmVuZGVyKCk7XG4gIH1cbiAgaWYgKHdpbmRvdy5QYWdlZFRhYmxlRG9jKSB7XG4gICAgd2luZG93LlBhZ2VkVGFibGVEb2MuaW5pdEFsbCgpO1xuICB9XG59XG4ifSx7ImNlbGxOYW1lIjoid2Vici0xMCIsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJ2aWV3b2YgX3dlYnJfZWRpdG9yXzEwID0ge1xuICBjb25zdCB7IFdlYlJFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuICBjb25zdCBzY3JpcHRDb250ZW50ID0gZG9jdW1lbnQucXVlcnlTZWxlY3Rvcihgc2NyaXB0W3R5cGU9XFxcIndlYnItMTAtY29udGVudHNcXFwiXWApLnRleHRDb250ZW50O1xuICBjb25zdCBibG9jayA9IEpTT04ucGFyc2UoYjY0RGVjb2RlKHNjcmlwdENvbnRlbnQpKTtcblxuICBjb25zdCBvcHRpb25zID0gT2JqZWN0LmFzc2lnbih7IGlkOiBgd2Vici0xMC1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBXZWJSRXhlcmNpc2VFZGl0b3Iod2ViUk9qcy53ZWJSUHJvbWlzZSwgYmxvY2suY29kZSwgb3B0aW9ucyk7XG5cbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG5fd2Vicl92YWx1ZV8xMCA9IHdlYlJPanMucHJvY2Vzcyhfd2Vicl9lZGl0b3JfMTAsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJ3ZWJyLXdpZGdldC05IiwibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0IiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoie1xuICAvLyBXYWl0IGZvciBvdXRwdXQgdG8gYmUgd3JpdHRlbiB0byB0aGUgRE9NLCB0aGVuIHRyaWdnZXIgd2lkZ2V0IHJlbmRlcmluZ1xuICBhd2FpdCBfd2Vicl92YWx1ZV85O1xuICBpZiAod2luZG93LkhUTUxXaWRnZXRzKSB7XG4gICAgd2luZG93LkhUTUxXaWRnZXRzLnN0YXRpY1JlbmRlcigpO1xuICB9XG4gIGlmICh3aW5kb3cuUGFnZWRUYWJsZURvYykge1xuICAgIHdpbmRvdy5QYWdlZFRhYmxlRG9jLmluaXRBbGwoKTtcbiAgfVxufVxuIn0seyJjZWxsTmFtZSI6IndlYnItOSIsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJ2aWV3b2YgX3dlYnJfZWRpdG9yXzkgPSB7XG4gIGNvbnN0IHsgV2ViUkV4ZXJjaXNlRWRpdG9yLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwid2Vici05LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHdlYnItOS1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBXZWJSRXhlcmNpc2VFZGl0b3Iod2ViUk9qcy53ZWJSUHJvbWlzZSwgYmxvY2suY29kZSwgb3B0aW9ucyk7XG5cbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG5fd2Vicl92YWx1ZV85ID0gd2ViUk9qcy5wcm9jZXNzKF93ZWJyX2VkaXRvcl85LCB7fSk7XG4ifSx7ImNlbGxOYW1lIjoid2Vici13aWRnZXQtOCIsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6IntcbiAgLy8gV2FpdCBmb3Igb3V0cHV0IHRvIGJlIHdyaXR0ZW4gdG8gdGhlIERPTSwgdGhlbiB0cmlnZ2VyIHdpZGdldCByZW5kZXJpbmdcbiAgYXdhaXQgX3dlYnJfdmFsdWVfODtcbiAgaWYgKHdpbmRvdy5IVE1MV2lkZ2V0cykge1xuICAgIHdpbmRvdy5IVE1MV2lkZ2V0cy5zdGF0aWNSZW5kZXIoKTtcbiAgfVxuICBpZiAod2luZG93LlBhZ2VkVGFibGVEb2MpIHtcbiAgICB3aW5kb3cuUGFnZWRUYWJsZURvYy5pbml0QWxsKCk7XG4gIH1cbn1cbiJ9LHsiY2VsbE5hbWUiOiJ3ZWJyLTgiLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoidmlld29mIF93ZWJyX2VkaXRvcl84ID0ge1xuICBjb25zdCB7IFdlYlJFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuICBjb25zdCBzY3JpcHRDb250ZW50ID0gZG9jdW1lbnQucXVlcnlTZWxlY3Rvcihgc2NyaXB0W3R5cGU9XFxcIndlYnItOC1jb250ZW50c1xcXCJdYCkudGV4dENvbnRlbnQ7XG4gIGNvbnN0IGJsb2NrID0gSlNPTi5wYXJzZShiNjREZWNvZGUoc2NyaXB0Q29udGVudCkpO1xuXG4gIGNvbnN0IG9wdGlvbnMgPSBPYmplY3QuYXNzaWduKHsgaWQ6IGB3ZWJyLTgtY29udGVudHNgIH0sIGJsb2NrLmF0dHIpO1xuICBjb25zdCBlZGl0b3IgPSBuZXcgV2ViUkV4ZXJjaXNlRWRpdG9yKHdlYlJPanMud2ViUlByb21pc2UsIGJsb2NrLmNvZGUsIG9wdGlvbnMpO1xuXG4gIHJldHVybiBlZGl0b3IuY29udGFpbmVyO1xufVxuX3dlYnJfdmFsdWVfOCA9IHdlYlJPanMucHJvY2Vzcyhfd2Vicl9lZGl0b3JfOCwge30pO1xuIn0seyJjZWxsTmFtZSI6IndlYnItd2lkZ2V0LTciLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJ7XG4gIC8vIFdhaXQgZm9yIG91dHB1dCB0byBiZSB3cml0dGVuIHRvIHRoZSBET00sIHRoZW4gdHJpZ2dlciB3aWRnZXQgcmVuZGVyaW5nXG4gIGF3YWl0IF93ZWJyX3ZhbHVlXzc7XG4gIGlmICh3aW5kb3cuSFRNTFdpZGdldHMpIHtcbiAgICB3aW5kb3cuSFRNTFdpZGdldHMuc3RhdGljUmVuZGVyKCk7XG4gIH1cbiAgaWYgKHdpbmRvdy5QYWdlZFRhYmxlRG9jKSB7XG4gICAgd2luZG93LlBhZ2VkVGFibGVEb2MuaW5pdEFsbCgpO1xuICB9XG59XG4ifSx7ImNlbGxOYW1lIjoid2Vici03IiwibWV0aG9kTmFtZSI6ImludGVycHJldCIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InZpZXdvZiBfd2Vicl9lZGl0b3JfNyA9IHtcbiAgY29uc3QgeyBXZWJSRXhlcmNpc2VFZGl0b3IsIGI2NERlY29kZSB9ID0gd2luZG93Ll9leGVyY2lzZV9vanNfcnVudGltZTtcbiAgY29uc3Qgc2NyaXB0Q29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJ3ZWJyLTctY29udGVudHNcXFwiXWApLnRleHRDb250ZW50O1xuICBjb25zdCBibG9jayA9IEpTT04ucGFyc2UoYjY0RGVjb2RlKHNjcmlwdENvbnRlbnQpKTtcblxuICBjb25zdCBvcHRpb25zID0gT2JqZWN0LmFzc2lnbih7IGlkOiBgd2Vici03LWNvbnRlbnRzYCB9LCBibG9jay5hdHRyKTtcbiAgY29uc3QgZWRpdG9yID0gbmV3IFdlYlJFeGVyY2lzZUVkaXRvcih3ZWJST2pzLndlYlJQcm9taXNlLCBibG9jay5jb2RlLCBvcHRpb25zKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl93ZWJyX3ZhbHVlXzcgPSB3ZWJST2pzLnByb2Nlc3MoX3dlYnJfZWRpdG9yXzcsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJ3ZWJyLXdpZGdldC02IiwibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0IiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoie1xuICAvLyBXYWl0IGZvciBvdXRwdXQgdG8gYmUgd3JpdHRlbiB0byB0aGUgRE9NLCB0aGVuIHRyaWdnZXIgd2lkZ2V0IHJlbmRlcmluZ1xuICBhd2FpdCBfd2Vicl92YWx1ZV82O1xuICBpZiAod2luZG93LkhUTUxXaWRnZXRzKSB7XG4gICAgd2luZG93LkhUTUxXaWRnZXRzLnN0YXRpY1JlbmRlcigpO1xuICB9XG4gIGlmICh3aW5kb3cuUGFnZWRUYWJsZURvYykge1xuICAgIHdpbmRvdy5QYWdlZFRhYmxlRG9jLmluaXRBbGwoKTtcbiAgfVxufVxuIn0seyJjZWxsTmFtZSI6IndlYnItNiIsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJfd2Vicl92YWx1ZV82ID0ge1xuICBjb25zdCB7IGhpZ2hsaWdodFIsIGI2NERlY29kZSB9ID0gd2luZG93Ll9leGVyY2lzZV9vanNfcnVudGltZTtcbiAgY29uc3Qgc2NyaXB0Q29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJ3ZWJyLTYtY29udGVudHNcXFwiXWApLnRleHRDb250ZW50O1xuICBjb25zdCBibG9jayA9IEpTT04ucGFyc2UoYjY0RGVjb2RlKHNjcmlwdENvbnRlbnQpKTtcblxuICAvLyBEZWZhdWx0IGV2YWx1YXRpb24gY29uZmlndXJhdGlvblxuICBjb25zdCBvcHRpb25zID0gT2JqZWN0LmFzc2lnbih7XG4gICAgaWQ6IFwid2Vici02LWNvbnRlbnRzXCIsXG4gICAgZWNobzogdHJ1ZSxcbiAgICBvdXRwdXQ6IHRydWVcbiAgfSwgYmxvY2suYXR0cik7XG5cbiAgLy8gRXZhbHVhdGUgdGhlIHByb3ZpZGVkIFIgY29kZVxuICBjb25zdCByZXN1bHQgPSB3ZWJST2pzLnByb2Nlc3Moe2NvZGU6IGJsb2NrLmNvZGUsIG9wdGlvbnN9LCB7fSk7XG5cbiAgLy8gRWFybHkgeWllbGQgd2hpbGUgd2Ugd2FpdCBmb3IgdGhlIGZpcnN0IGV2YWx1YXRpb24gYW5kIHJlbmRlclxuICBpZiAob3B0aW9ucy5vdXRwdXQgJiYgIShcIjZcIiBpbiB3ZWJST2pzLnJlbmRlcmVkT2pzKSkge1xuICAgIGNvbnN0IGNvbnRhaW5lciA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoXCJkaXZcIik7XG4gICAgY29uc3Qgc3Bpbm5lciA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoXCJkaXZcIik7XG5cbiAgICBpZiAob3B0aW9ucy5lY2hvKSB7XG4gICAgICAvLyBTaG93IG91dHB1dCBhcyBoaWdobGlnaHRlZCBzb3VyY2VcbiAgICAgIGNvbnN0IHByZUVsZW0gPSBkb2N1bWVudC5jcmVhdGVFbGVtZW50KFwicHJlXCIpO1xuICAgICAgY29udGFpbmVyLmNsYXNzTmFtZSA9IFwic291cmNlQ29kZVwiO1xuICAgICAgcHJlRWxlbS5jbGFzc05hbWUgPSBcInNvdXJjZUNvZGUgclwiO1xuICAgICAgcHJlRWxlbS5hcHBlbmRDaGlsZChoaWdobGlnaHRSKGJsb2NrLmNvZGUpKTtcbiAgICAgIHNwaW5uZXIuY2xhc3NOYW1lID0gXCJzcGlubmVyLWdyb3cgc3Bpbm5lci1ncm93LXNtIG0tMiBwb3NpdGlvbi1hYnNvbHV0ZSB0b3AtMCBlbmQtMFwiO1xuICAgICAgcHJlRWxlbS5hcHBlbmRDaGlsZChzcGlubmVyKTtcbiAgICAgIGNvbnRhaW5lci5hcHBlbmRDaGlsZChwcmVFbGVtKTtcbiAgICB9IGVsc2Uge1xuICAgICAgc3Bpbm5lci5jbGFzc05hbWUgPSBcInNwaW5uZXItYm9yZGVyIHNwaW5uZXItYm9yZGVyLXNtXCI7XG4gICAgICBjb250YWluZXIuYXBwZW5kQ2hpbGQoc3Bpbm5lcik7XG4gICAgfVxuXG4gICAgeWllbGQgY29udGFpbmVyO1xuICB9XG5cbiAgd2ViUk9qcy5yZW5kZXJlZE9qc1tcIjZcIl0gPSB0cnVlO1xuICB5aWVsZCBhd2FpdCByZXN1bHQ7XG59XG4ifSx7ImNlbGxOYW1lIjoid2Vici13aWRnZXQtNSIsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6IntcbiAgLy8gV2FpdCBmb3Igb3V0cHV0IHRvIGJlIHdyaXR0ZW4gdG8gdGhlIERPTSwgdGhlbiB0cmlnZ2VyIHdpZGdldCByZW5kZXJpbmdcbiAgYXdhaXQgX3dlYnJfdmFsdWVfNTtcbiAgaWYgKHdpbmRvdy5IVE1MV2lkZ2V0cykge1xuICAgIHdpbmRvdy5IVE1MV2lkZ2V0cy5zdGF0aWNSZW5kZXIoKTtcbiAgfVxuICBpZiAod2luZG93LlBhZ2VkVGFibGVEb2MpIHtcbiAgICB3aW5kb3cuUGFnZWRUYWJsZURvYy5pbml0QWxsKCk7XG4gIH1cbn1cbiJ9LHsiY2VsbE5hbWUiOiJ3ZWJyLTUiLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoidmlld29mIF93ZWJyX2VkaXRvcl81ID0ge1xuICBjb25zdCB7IFdlYlJFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuICBjb25zdCBzY3JpcHRDb250ZW50ID0gZG9jdW1lbnQucXVlcnlTZWxlY3Rvcihgc2NyaXB0W3R5cGU9XFxcIndlYnItNS1jb250ZW50c1xcXCJdYCkudGV4dENvbnRlbnQ7XG4gIGNvbnN0IGJsb2NrID0gSlNPTi5wYXJzZShiNjREZWNvZGUoc2NyaXB0Q29udGVudCkpO1xuXG4gIGNvbnN0IG9wdGlvbnMgPSBPYmplY3QuYXNzaWduKHsgaWQ6IGB3ZWJyLTUtY29udGVudHNgIH0sIGJsb2NrLmF0dHIpO1xuICBjb25zdCBlZGl0b3IgPSBuZXcgV2ViUkV4ZXJjaXNlRWRpdG9yKHdlYlJPanMud2ViUlByb21pc2UsIGJsb2NrLmNvZGUsIG9wdGlvbnMpO1xuXG4gIHJldHVybiBlZGl0b3IuY29udGFpbmVyO1xufVxuX3dlYnJfdmFsdWVfNSA9IHdlYlJPanMucHJvY2Vzcyhfd2Vicl9lZGl0b3JfNSwge30pO1xuIn0seyJjZWxsTmFtZSI6IndlYnItd2lkZ2V0LTQiLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJ7XG4gIC8vIFdhaXQgZm9yIG91dHB1dCB0byBiZSB3cml0dGVuIHRvIHRoZSBET00sIHRoZW4gdHJpZ2dlciB3aWRnZXQgcmVuZGVyaW5nXG4gIGF3YWl0IF93ZWJyX3ZhbHVlXzQ7XG4gIGlmICh3aW5kb3cuSFRNTFdpZGdldHMpIHtcbiAgICB3aW5kb3cuSFRNTFdpZGdldHMuc3RhdGljUmVuZGVyKCk7XG4gIH1cbiAgaWYgKHdpbmRvdy5QYWdlZFRhYmxlRG9jKSB7XG4gICAgd2luZG93LlBhZ2VkVGFibGVEb2MuaW5pdEFsbCgpO1xuICB9XG59XG4ifSx7ImNlbGxOYW1lIjoid2Vici00IiwibWV0aG9kTmFtZSI6ImludGVycHJldCIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InZpZXdvZiBfd2Vicl9lZGl0b3JfNCA9IHtcbiAgY29uc3QgeyBXZWJSRXhlcmNpc2VFZGl0b3IsIGI2NERlY29kZSB9ID0gd2luZG93Ll9leGVyY2lzZV9vanNfcnVudGltZTtcbiAgY29uc3Qgc2NyaXB0Q29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJ3ZWJyLTQtY29udGVudHNcXFwiXWApLnRleHRDb250ZW50O1xuICBjb25zdCBibG9jayA9IEpTT04ucGFyc2UoYjY0RGVjb2RlKHNjcmlwdENvbnRlbnQpKTtcblxuICBjb25zdCBvcHRpb25zID0gT2JqZWN0LmFzc2lnbih7IGlkOiBgd2Vici00LWNvbnRlbnRzYCB9LCBibG9jay5hdHRyKTtcbiAgY29uc3QgZWRpdG9yID0gbmV3IFdlYlJFeGVyY2lzZUVkaXRvcih3ZWJST2pzLndlYlJQcm9taXNlLCBibG9jay5jb2RlLCBvcHRpb25zKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl93ZWJyX3ZhbHVlXzQgPSB3ZWJST2pzLnByb2Nlc3MoX3dlYnJfZWRpdG9yXzQsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJ3ZWJyLXdpZGdldC0zIiwibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0IiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoie1xuICAvLyBXYWl0IGZvciBvdXRwdXQgdG8gYmUgd3JpdHRlbiB0byB0aGUgRE9NLCB0aGVuIHRyaWdnZXIgd2lkZ2V0IHJlbmRlcmluZ1xuICBhd2FpdCBfd2Vicl92YWx1ZV8zO1xuICBpZiAod2luZG93LkhUTUxXaWRnZXRzKSB7XG4gICAgd2luZG93LkhUTUxXaWRnZXRzLnN0YXRpY1JlbmRlcigpO1xuICB9XG4gIGlmICh3aW5kb3cuUGFnZWRUYWJsZURvYykge1xuICAgIHdpbmRvdy5QYWdlZFRhYmxlRG9jLmluaXRBbGwoKTtcbiAgfVxufVxuIn0seyJjZWxsTmFtZSI6IndlYnItMyIsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJ2aWV3b2YgX3dlYnJfZWRpdG9yXzMgPSB7XG4gIGNvbnN0IHsgV2ViUkV4ZXJjaXNlRWRpdG9yLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwid2Vici0zLWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHdlYnItMy1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBXZWJSRXhlcmNpc2VFZGl0b3Iod2ViUk9qcy53ZWJSUHJvbWlzZSwgYmxvY2suY29kZSwgb3B0aW9ucyk7XG5cbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG5fd2Vicl92YWx1ZV8zID0gd2ViUk9qcy5wcm9jZXNzKF93ZWJyX2VkaXRvcl8zLCB7fSk7XG4ifSx7ImNlbGxOYW1lIjoid2Vici13aWRnZXQtMiIsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6IntcbiAgLy8gV2FpdCBmb3Igb3V0cHV0IHRvIGJlIHdyaXR0ZW4gdG8gdGhlIERPTSwgdGhlbiB0cmlnZ2VyIHdpZGdldCByZW5kZXJpbmdcbiAgYXdhaXQgX3dlYnJfdmFsdWVfMjtcbiAgaWYgKHdpbmRvdy5IVE1MV2lkZ2V0cykge1xuICAgIHdpbmRvdy5IVE1MV2lkZ2V0cy5zdGF0aWNSZW5kZXIoKTtcbiAgfVxuICBpZiAod2luZG93LlBhZ2VkVGFibGVEb2MpIHtcbiAgICB3aW5kb3cuUGFnZWRUYWJsZURvYy5pbml0QWxsKCk7XG4gIH1cbn1cbiJ9LHsiY2VsbE5hbWUiOiJ3ZWJyLTIiLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoidmlld29mIF93ZWJyX2VkaXRvcl8yID0ge1xuICBjb25zdCB7IFdlYlJFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuICBjb25zdCBzY3JpcHRDb250ZW50ID0gZG9jdW1lbnQucXVlcnlTZWxlY3Rvcihgc2NyaXB0W3R5cGU9XFxcIndlYnItMi1jb250ZW50c1xcXCJdYCkudGV4dENvbnRlbnQ7XG4gIGNvbnN0IGJsb2NrID0gSlNPTi5wYXJzZShiNjREZWNvZGUoc2NyaXB0Q29udGVudCkpO1xuXG4gIGNvbnN0IG9wdGlvbnMgPSBPYmplY3QuYXNzaWduKHsgaWQ6IGB3ZWJyLTItY29udGVudHNgIH0sIGJsb2NrLmF0dHIpO1xuICBjb25zdCBlZGl0b3IgPSBuZXcgV2ViUkV4ZXJjaXNlRWRpdG9yKHdlYlJPanMud2ViUlByb21pc2UsIGJsb2NrLmNvZGUsIG9wdGlvbnMpO1xuXG4gIHJldHVybiBlZGl0b3IuY29udGFpbmVyO1xufVxuX3dlYnJfdmFsdWVfMiA9IHdlYlJPanMucHJvY2Vzcyhfd2Vicl9lZGl0b3JfMiwge30pO1xuIn0seyJjZWxsTmFtZSI6IndlYnItd2lkZ2V0LTEiLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJ7XG4gIC8vIFdhaXQgZm9yIG91dHB1dCB0byBiZSB3cml0dGVuIHRvIHRoZSBET00sIHRoZW4gdHJpZ2dlciB3aWRnZXQgcmVuZGVyaW5nXG4gIGF3YWl0IF93ZWJyX3ZhbHVlXzE7XG4gIGlmICh3aW5kb3cuSFRNTFdpZGdldHMpIHtcbiAgICB3aW5kb3cuSFRNTFdpZGdldHMuc3RhdGljUmVuZGVyKCk7XG4gIH1cbiAgaWYgKHdpbmRvdy5QYWdlZFRhYmxlRG9jKSB7XG4gICAgd2luZG93LlBhZ2VkVGFibGVEb2MuaW5pdEFsbCgpO1xuICB9XG59XG4ifSx7ImNlbGxOYW1lIjoid2Vici0xIiwibWV0aG9kTmFtZSI6ImludGVycHJldCIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InZpZXdvZiBfd2Vicl9lZGl0b3JfMSA9IHtcbiAgY29uc3QgeyBXZWJSRXhlcmNpc2VFZGl0b3IsIGI2NERlY29kZSB9ID0gd2luZG93Ll9leGVyY2lzZV9vanNfcnVudGltZTtcbiAgY29uc3Qgc2NyaXB0Q29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJ3ZWJyLTEtY29udGVudHNcXFwiXWApLnRleHRDb250ZW50O1xuICBjb25zdCBibG9jayA9IEpTT04ucGFyc2UoYjY0RGVjb2RlKHNjcmlwdENvbnRlbnQpKTtcblxuICBjb25zdCBvcHRpb25zID0gT2JqZWN0LmFzc2lnbih7IGlkOiBgd2Vici0xLWNvbnRlbnRzYCB9LCBibG9jay5hdHRyKTtcbiAgY29uc3QgZWRpdG9yID0gbmV3IFdlYlJFeGVyY2lzZUVkaXRvcih3ZWJST2pzLndlYlJQcm9taXNlLCBibG9jay5jb2RlLCBvcHRpb25zKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl93ZWJyX3ZhbHVlXzEgPSB3ZWJST2pzLnByb2Nlc3MoX3dlYnJfZWRpdG9yXzEsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJ3ZWJyLXByZWx1ZGUiLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJ3ZWJST2pzID0ge1xuICBjb25zdCB7IFdlYlIgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWUuV2ViUjtcbiAgY29uc3Qge1xuICAgIFdlYlJFdmFsdWF0b3IsXG4gICAgV2ViUkVudmlyb25tZW50TWFuYWdlcixcbiAgICBzZXR1cFIsXG4gICAgYjY0RGVjb2RlLFxuICAgIGNvbGxhcHNlUGF0aFxuICB9ID0gd2luZG93Ll9leGVyY2lzZV9vanNfcnVudGltZTtcblxuICBjb25zdCBzdGF0dXNDb250YWluZXIgPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZChcImV4ZXJjaXNlLWxvYWRpbmctc3RhdHVzXCIpO1xuICBjb25zdCBpbmRpY2F0b3JDb250YWluZXIgPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZChcImV4ZXJjaXNlLWxvYWRpbmctaW5kaWNhdG9yXCIpO1xuICBpbmRpY2F0b3JDb250YWluZXIuY2xhc3NMaXN0LnJlbW92ZShcImQtbm9uZVwiKTtcblxuICBsZXQgc3RhdHVzVGV4dCA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoXCJkaXZcIilcbiAgc3RhdHVzVGV4dC5jbGFzc0xpc3QgPSBcImV4ZXJjaXNlLWxvYWRpbmctZGV0YWlsc1wiO1xuICBzdGF0dXNUZXh0ID0gc3RhdHVzQ29udGFpbmVyLmFwcGVuZENoaWxkKHN0YXR1c1RleHQpO1xuICBzdGF0dXNUZXh0LnRleHRDb250ZW50ID0gYEluaXRpYWxpc2VgO1xuXG4gIC8vIEhvaXN0IGluZGljYXRvciBvdXQgZnJvbSBmaW5hbCBzbGlkZSB3aGVuIHJ1bm5pbmcgdW5kZXIgcmV2ZWFsXG4gIGNvbnN0IHJldmVhbFN0YXR1cyA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoXCIucmV2ZWFsIC5leGVyY2lzZS1sb2FkaW5nLWluZGljYXRvclwiKTtcbiAgaWYgKHJldmVhbFN0YXR1cykge1xuICAgIHJldmVhbFN0YXR1cy5yZW1vdmUoKTtcbiAgICBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKFwiLnJldmVhbCA+IC5zbGlkZXNcIikuYXBwZW5kQ2hpbGQocmV2ZWFsU3RhdHVzKTtcbiAgfVxuXG4gIC8vIHdlYlIgc3VwcGxlbWVudGFsIGRhdGEgYW5kIG9wdGlvbnNcbiAgY29uc3QgZGF0YUNvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwid2Vici1kYXRhXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgZGF0YSA9IEpTT04ucGFyc2UoYjY0RGVjb2RlKGRhdGFDb250ZW50KSk7XG5cbiAgLy8gR3JhYiBsaXN0IG9mIHJlc291cmNlcyB0byBiZSBkb3dubG9hZGVkXG4gIGNvbnN0IGZpbGVzQ29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJ2ZnMtZmlsZVxcXCJdYCkudGV4dENvbnRlbnQ7XG4gIGNvbnN0IGZpbGVzID0gSlNPTi5wYXJzZShiNjREZWNvZGUoZmlsZXNDb250ZW50KSk7XG5cbiAgLy8gSW5pdGlhbGlzZSB3ZWJSIGFuZCBzZXR1cCBmb3IgUiBjb2RlIGV2YWx1YXRpb25cbiAgbGV0IHdlYlJQcm9taXNlID0gKGFzeW5jICh3ZWJSKSA9PiB7XG4gICAgc3RhdHVzVGV4dC50ZXh0Q29udGVudCA9IGBEb3dubG9hZGluZyB3ZWJSYDtcbiAgICBhd2FpdCB3ZWJSLmluaXQoKTtcblxuICAgIC8vIEluc3RhbGwgcHJvdmlkZWQgbGlzdCBvZiBwYWNrYWdlc1xuICAgIC8vIEVuc3VyZSB3ZWJSIGRlZmF1bHQgcmVwbyBpcyBpbmNsdWRlZFxuICAgIGRhdGEucGFja2FnZXMucmVwb3MucHVzaChcImh0dHBzOi8vcmVwby5yLXdhc20ub3JnXCIpXG4gICAgYXdhaXQgZGF0YS5wYWNrYWdlcy5wa2dzLm1hcCgocGtnKSA9PiAoKSA9PiB7XG4gICAgICBzdGF0dXNUZXh0LnRleHRDb250ZW50ID0gYERvd25sb2FkaW5nIHBhY2thZ2U6ICR7cGtnfWA7XG4gICAgICByZXR1cm4gd2ViUi5ldmFsUlZvaWQoYFxuICAgICAgICB3ZWJyOjppbnN0YWxsKHBrZywgcmVwb3MgPSByZXBvcylcbiAgICAgICAgbGlicmFyeShwa2csIGNoYXJhY3Rlci5vbmx5ID0gVFJVRSlcbiAgICAgIGAsIHsgZW52OiB7XG4gICAgICAgIHBrZzogcGtnLFxuICAgICAgICByZXBvczogZGF0YS5wYWNrYWdlcy5yZXBvcyxcbiAgICAgIH19KTtcbiAgICB9KS5yZWR1Y2UoKGN1ciwgbmV4dCkgPT4gY3VyLnRoZW4obmV4dCksIFByb21pc2UucmVzb2x2ZSgpKTtcblxuICAgIC8vIERvd25sb2FkIGFuZCBpbnN0YWxsIHJlc291cmNlc1xuICAgIGF3YWl0IGZpbGVzLm1hcCgoZmlsZSkgPT4gYXN5bmMgKCkgPT4ge1xuICAgICAgY29uc3QgbmFtZSA9IGZpbGUuc3Vic3RyaW5nKGZpbGUubGFzdEluZGV4T2YoJy8nKSArIDEpO1xuICAgICAgc3RhdHVzVGV4dC50ZXh0Q29udGVudCA9IGBEb3dubG9hZGluZyByZXNvdXJjZTogJHtuYW1lfWA7XG4gICAgICBjb25zdCByZXNwb25zZSA9IGF3YWl0IGZldGNoKGZpbGUpO1xuICAgICAgaWYgKCFyZXNwb25zZS5vaykge1xuICAgICAgICB0aHJvdyBuZXcgRXJyb3IoYENhbid0IGRvd25sb2FkIFxcYCR7ZmlsZX1cXGAuIEVycm9yICR7cmVzcG9uc2Uuc3RhdHVzfTogXCIke3Jlc3BvbnNlLnN0YXR1c1RleHR9XCIuYCk7XG4gICAgICB9XG4gICAgICBjb25zdCBkYXRhID0gYXdhaXQgcmVzcG9uc2UuYXJyYXlCdWZmZXIoKTtcblxuICAgICAgLy8gU3RvcmUgVVJMcyBpbiB0aGUgY3dkIHdpdGhvdXQgYW55IHN1YmRpcmVjdG9yeSBzdHJ1Y3R1cmVcbiAgICAgIGlmIChmaWxlLmluY2x1ZGVzKFwiOi8vXCIpKSB7XG4gICAgICAgIGZpbGUgPSBuYW1lO1xuICAgICAgfVxuXG4gICAgICAvLyBDb2xsYXBzZSBoaWdoZXIgZGlyZWN0b3J5IHN0cnVjdHVyZVxuICAgICAgZmlsZSA9IGNvbGxhcHNlUGF0aChmaWxlKTtcblxuICAgICAgLy8gQ3JlYXRlIGRpcmVjdG9yeSB0cmVlLCBpZ25vcmluZyBcImRpcmVjdG9yeSBleGlzdHNcIiBWRlMgZXJyb3JzXG4gICAgICBjb25zdCBwYXJ0cyA9IGZpbGUuc3BsaXQoJy8nKS5zbGljZSgwLCAtMSk7XG4gICAgICBsZXQgcGF0aCA9ICcnO1xuICAgICAgd2hpbGUgKHBhcnRzLmxlbmd0aCA+IDApIHtcbiAgICAgICAgcGF0aCArPSBwYXJ0cy5zaGlmdCgpICsgJy8nO1xuICAgICAgICB0cnkge1xuICAgICAgICAgIGF3YWl0IHdlYlIuRlMubWtkaXIocGF0aCk7XG4gICAgICAgIH0gY2F0Y2ggKGUpIHtcbiAgICAgICAgICBpZiAoIWUubWVzc2FnZS5pbmNsdWRlcyhcIkZTIGVycm9yXCIpKSB7XG4gICAgICAgICAgICB0aHJvdyBlO1xuICAgICAgICAgIH1cbiAgICAgICAgfVxuICAgICAgfVxuXG4gICAgICAvLyBXcml0ZSB0aGlzIGZpbGUgdG8gdGhlIFZGU1xuICAgICAgcmV0dXJuIGF3YWl0IHdlYlIuRlMud3JpdGVGaWxlKGZpbGUsIG5ldyBVaW50OEFycmF5KGRhdGEpKTtcbiAgICB9KS5yZWR1Y2UoKGN1ciwgbmV4dCkgPT4gY3VyLnRoZW4obmV4dCksIFByb21pc2UucmVzb2x2ZSgpKTtcblxuICAgIHN0YXR1c1RleHQudGV4dENvbnRlbnQgPSBgSW5zdGFsbGluZyB3ZWJSIHNoaW1zYDtcbiAgICBhd2FpdCB3ZWJSLmV2YWxSVm9pZChgd2Vicjo6c2hpbV9pbnN0YWxsKClgKTtcblxuICAgIHN0YXR1c1RleHQudGV4dENvbnRlbnQgPSBgV2ViUiBlbnZpcm9ubWVudCBzZXR1cGA7XG4gICAgYXdhaXQgc2V0dXBSKHdlYlIsIGRhdGEpO1xuXG4gICAgc3RhdHVzVGV4dC5yZW1vdmUoKTtcbiAgICBpZiAoc3RhdHVzQ29udGFpbmVyLmNoaWxkcmVuLmxlbmd0aCA9PSAwKSB7XG4gICAgICBzdGF0dXNDb250YWluZXIucGFyZW50Tm9kZS5yZW1vdmUoKTtcbiAgICB9XG4gICAgcmV0dXJuIHdlYlI7XG4gIH0pKG5ldyBXZWJSKGRhdGEub3B0aW9ucykpO1xuXG4gIC8vIEtlZXAgdHJhY2sgb2YgaW5pdGlhbCBPSlMgYmxvY2sgcmVuZGVyXG4gIGNvbnN0IHJlbmRlcmVkT2pzID0ge307XG5cbiAgY29uc3QgcHJvY2VzcyA9IGFzeW5jIChjb250ZXh0LCBpbnB1dHMpID0+IHtcbiAgICBjb25zdCB3ZWJSID0gYXdhaXQgd2ViUlByb21pc2U7XG4gICAgY29uc3QgZXZhbHVhdG9yID0gbmV3IFdlYlJFdmFsdWF0b3Iod2ViUiwgY29udGV4dClcbiAgICBhd2FpdCBldmFsdWF0b3IucHJvY2VzcyhpbnB1dHMpO1xuICAgIHJldHVybiBldmFsdWF0b3IuY29udGFpbmVyO1xuICB9XG5cbiAgcmV0dXJuIHtcbiAgICBwcm9jZXNzLFxuICAgIHdlYlJQcm9taXNlLFxuICAgIHJlbmRlcmVkT2pzLFxuICB9O1xufVxuIn1dfQ==
+</script>
+<div id="exercise-loading-indicator" class="exercise-loading-indicator d-none d-flex align-items-center gap-2">
+<div id="exercise-loading-status" class="d-flex gap-2">
+
+</div>
+<div class="spinner-grow spinner-grow-sm">
+
+</div>
+</div>
+<script type="vfs-file">
+W10=
+</script>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script type="ojs-module-contents">
+eyJjb250ZW50cyI6W119
+</script>
+<script type="module">
+if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
+window._ojs.paths.runtimeToDoc = "../../r_snacks";
+window._ojs.paths.runtimeToRoot = "../..";
+window._ojs.paths.docToRoot = "..";
+window._ojs.selfContained = false;
+window._ojs.runtime.interpretFromScriptTags();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Copyright 2024 WorldFish</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/WorldFishCenter/ssf.training/">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

@@ -1,0 +1,824 @@
+---
+title: "3.5 Data Visualization in R: Understanding and Exploring Your Data with ggplot2"
+author: "SSF Training Team"
+date: 2024-11-06
+format: live-html
+engine: knitr
+categories: ["R", "Visualization", "ggplot2"]
+webr:
+  autorun: false
+  render-df: gt-interactive
+  packages:
+    - tidyverse
+    - ggplot2
+---
+
+{{< include ../_extensions/r-wasm/live/_knitr.qmd >}}
+
+
+## Why Visualize Data? 🎯
+
+Before diving into complex data preprocessing and analysis, understanding your data through visualization is crucial. Think of it like preparing for a fishing trip - just as you would survey the waters, check weather conditions, and observe fish behavior before casting your nets, visualizing your data helps you:
+
+- **Understand Patterns**: Just as ripples on water might indicate fish movement, patterns in your data can reveal important trends
+- **Identify Issues**: Like spotting damaged gear before fishing, visualization helps detect data problems early
+- **Generate Insights**: Similar to how experienced fishers read the water, good visualization helps you "read" your data
+- **Communicate Findings**: Visual representations make it easier to share insights with colleagues and stakeholders
+
+In Small-Scale Fisheries (SSF) research, visualization is particularly valuable because:
+
+1. **Complex Data Structure**
+   - Multiple species caught simultaneously
+   - Various gear types used
+   - Different fishing grounds
+   - Seasonal variations
+
+2. **Quality Control**
+   - Field data collection errors
+   - Missing or incorrect values
+   - Outliers and unusual patterns
+   - Inconsistent measurements
+
+3. **Communication Needs**
+   - Sharing findings with fishers
+   - Reporting to management
+   - Contributing to research
+   - Informing policy decisions
+
+:::{.callout-note}
+## Learning Objectives
+By the end of this tutorial, you will:
+- Understand the principles of effective data visualization
+- Master the fundamentals of ggplot2 syntax and structure
+- Create basic to advanced plots for exploring fisheries data
+- Learn to customize visualizations for different audiences
+- Use plots to identify data quality issues
+- Develop skills for creating publication-ready graphics
+:::
+
+## Understanding ggplot2: The Grammar of Graphics 📊
+
+### What is ggplot2?
+
+ggplot2 is not just another plotting package - it's a complete system for creating visualizations based on the "Grammar of Graphics." This approach breaks down any visualization into fundamental components, similar to how we break down language into grammar components.
+
+Think of it like constructing a sentence:
+- A sentence needs a subject, verb, and object
+- A ggplot2 visualization needs data, aesthetics, and geometries
+
+### The Basic Components
+
+Let's understand each component using a fishing analogy:
+
+1. **Data**: Your dataset
+   - Like your catch records or survey data
+   - Must be in a tidy format (each variable in a column)
+
+2. **Aesthetics (aes)**: How variables map to visual elements
+   - Like deciding how to sort fish (by size, species, etc.)
+   - Maps variables to visual properties (position, color, size)
+
+3. **Geometries (geom)**: The type of plot
+   - Like choosing how to display fish (in boxes, on a scale, etc.)
+   - Determines how data is visually represented (points, lines, bars)
+
+Let's see this in practice with some sample data:
+
+```{webr}
+#| autorun: false
+# Load required packages
+library(tidyverse)
+
+# Create sample fishing data
+daily_catch <- tibble(
+    date = seq(as.Date("2024-01-01"), as.Date("2024-01-10"), by = "day"),
+    catch_kg = c(125, 95, 140, 115, 160, 130, 145, 110, 135, 150),
+    species = rep(c("Tuna", "Mackerel"), each = 5),
+    weather = c("Sunny", "Cloudy", "Sunny", "Rainy", "Sunny",
+                "Cloudy", "Sunny", "Sunny", "Rainy", "Sunny")
+)
+
+# Look at our data
+print("Sample fishing data:")
+daily_catch
+```
+
+Now, let's build our first plot step by step:
+
+```{webr}
+#| autorun: false
+# Step 1: Start with the data
+step1 <- ggplot(daily_catch)
+print("Step 1: Empty plot canvas")
+step1
+
+# Step 2: Add aesthetics (mapping)
+step2 <- ggplot(daily_catch,
+                aes(x = date, y = catch_kg))
+print("Step 2: Plot with aesthetics (but no visualization yet)")
+step2
+
+# Step 3: Add geometry
+step3 <- ggplot(daily_catch,
+                aes(x = date, y = catch_kg)) +
+    geom_point()
+print("Step 3: Complete basic scatter plot")
+step3
+```
+
+Let's break down what happened:
+
+1. **Step 1**: Created a blank canvas
+   - Like preparing your workspace
+   - No visual elements yet
+
+2. **Step 2**: Added aesthetic mappings
+   - Defined what goes on x and y axes
+   - Set up the coordinate system
+   - Still no visible elements
+
+3. **Step 3**: Added geometric elements
+   - Points appear on the plot
+   - Each point represents one day's catch
+
+### Understanding Layers
+
+One of ggplot2's most powerful features is its layering system. You can add multiple layers to create complex visualizations:
+
+```{webr}
+#| autorun: false
+# Create a multi-layer plot
+ggplot(daily_catch, aes(x = date, y = catch_kg)) +
+    # Layer 1: Points for each observation
+    geom_point(aes(color = species), size = 3) +
+    # Layer 2: Connecting line
+    geom_line(alpha = 0.5) +
+    # Layer 3: Trend line
+    geom_smooth(method = "loess", se = FALSE, linetype = "dashed") +
+    # Layer 4: Labels and titles
+    labs(title = "Daily Catch Trends",
+         subtitle = "January 2024",
+         x = "Date",
+         y = "Catch (kg)",
+         color = "Species") +
+    # Layer 5: Theme customization
+    theme_minimal()
+```
+
+Each layer adds new information:
+1. Points show individual observations
+2. Line connects points to show sequence
+3. Trend line shows overall pattern
+4. Labels provide context
+5. Theme controls overall appearance
+
+### Essential Aesthetic Mappings
+
+Let's explore the main types of aesthetic mappings:
+
+```{webr}
+#| autorun: false
+# Create data with multiple variables
+fishing_data <- tibble(
+    date = rep(seq(as.Date("2024-01-01"), as.Date("2024-01-05"), by = "day"), 2),
+    catch_kg = c(125, 95, 140, 115, 160, 130, 145, 110, 135, 150),
+    species = rep(c("Tuna", "Mackerel"), each = 5),
+    value_per_kg = c(1000, 950, 1100, 900, 1050, 500, 480, 520, 490, 510)
+)
+
+# Demonstrate different aesthetic mappings
+# 1. Color
+plot1 <- ggplot(fishing_data, aes(x = date, y = catch_kg, color = species)) +
+    geom_point(size = 3) +
+    labs(title = "Color Mapping") +
+    theme_minimal()
+
+# 2. Size
+plot2 <- ggplot(fishing_data, aes(x = date, y = catch_kg, size = value_per_kg)) +
+    geom_point() +
+    labs(title = "Size Mapping") +
+    theme_minimal()
+
+# 3. Shape
+plot3 <- ggplot(fishing_data, aes(x = date, y = catch_kg, shape = species)) +
+    geom_point(size = 3) +
+    labs(title = "Shape Mapping") +
+    theme_minimal()
+
+# Display all plots
+print("Different aesthetic mappings:")
+plot1
+plot2
+plot3
+```
+
+Key aesthetic mappings include:
+
+1. **Position (x, y)**
+   - Most fundamental mapping
+   - Determines location of elements
+   - Usually maps to continuous variables
+
+2. **Color**
+   - Great for categorical variables
+   - Can show differences between groups
+   - Use carefully for color-blind accessibility
+
+3. **Size**
+   - Works well for continuous variables
+   - Can show importance or magnitude
+   - Don't use for too many different values
+
+4. **Shape**
+   - Best for categorical variables
+   - Limited to 6-7 distinct shapes
+   - Combines well with color
+
+### Practice Exercise: Creating Basic Plots
+
+Let's practice what we've learned with some exercises:
+
+```{webr}
+#| autorun: false
+#| echo: true
+# Exercise 1: Create a basic scatter plot
+# Use the fishing_data dataset to create a scatter plot showing:
+# - catch_kg on y-axis
+# - date on x-axis
+# - Points colored by species
+# - Add appropriate labels
+
+# Your code here:
+
+```
+
+<details>
+<summary>Click to see solution</summary>
+
+```{webr}
+#| autorun: false
+#| eval: false
+ggplot(fishing_data, aes(x = date, y = catch_kg, color = species)) +
+    geom_point(size = 3) +
+    labs(title = "Daily Catch by Species",
+         x = "Date",
+         y = "Catch (kg)",
+         color = "Species") +
+    theme_minimal()
+```
+</details>
+
+:::{.callout-tip}
+## Tips for Effective Basic Plots
+1. Always include clear axis labels
+2. Choose appropriate scales for your data
+3. Use colors meaningfully, not just for decoration
+4. Consider your audience when adding complexity
+5. Start simple and add layers as needed
+:::
+
+This concludes Part 1 of our tutorial on data visualization with ggplot2. In the next part, we'll explore different types of plots commonly used in fisheries data analysis, along with more advanced customization options.
+
+---
+title: "3.5 Data Visualization in R: Common Plot Types for Fisheries Data"
+author: "SSF Training Team"
+date: 2024-11-06
+format: live-html
+engine: knitr
+categories: ["R", "Visualization", "ggplot2"]
+webr:
+  autorun: false
+  render-df: gt-interactive
+  packages:
+    - tidyverse
+---
+
+## Essential Plot Types for Fisheries Data 📊
+
+Different aspects of fisheries data require different visualization approaches. Let's explore the most common and useful plot types you'll need in your work. We'll start by creating a realistic dataset that represents typical small-scale fisheries data:
+
+```{webr}
+#| autorun: false
+# Load required packages
+library(tidyverse)
+
+# Create a comprehensive fishing dataset
+set.seed(123)  # For reproducibility
+
+n_days <- as.numeric(difftime(as.Date("2024-03-31"), as.Date("2024-01-01"))) + 1
+total_rows <- n_days * 3  # 3 observations per day
+
+fishing_data <- tibble(
+  date = rep(seq(as.Date("2024-01-01"), as.Date("2024-03-31"), by = "day"), each = 3),
+  site = rep(c("Beach", "Reef", "Pier"), times = n_days),
+  species = rep(c("Tuna", "Mackerel", "Sardine"), times = n_days),
+  catch_kg = round(abs(rnorm(total_rows, mean = 100, sd = 30)) + 
+                     ifelse(rep(c("Tuna", "Mackerel", "Sardine"), times = n_days) == "Tuna", 50, 0), 1),
+  price_per_kg = round(abs(rnorm(total_rows, mean = 800, sd = 200)) +
+                         ifelse(rep(c("Tuna", "Mackerel", "Sardine"), times = n_days) == "Tuna", 300, 0), 0),
+  n_boats = sample(1:5, total_rows, replace = TRUE),
+  trip_hours = round(runif(total_rows, 4, 12), 1),
+  water_temp = round(rnorm(total_rows, mean = 25, sd = 2), 1),
+  moon_phase = rep(c("New", "First Quarter", "Full", "Last Quarter"), 
+                   length.out = total_rows)
+)
+
+
+# Add some seasonal patterns
+fishing_data <- fishing_data %>%
+    mutate(
+        # Add seasonal effect to catch
+        catch_kg = catch_kg * (1 + 0.3 * sin(as.numeric(date) / 30)),
+        # Calculate derived variables
+        cpue = catch_kg / trip_hours,
+        total_value = catch_kg * price_per_kg
+    )
+
+print("Sample of our fishing dataset:")
+head(fishing_data)
+```
+
+### 1. Time Series Plots: Tracking Temporal Patterns 📈
+
+Time series plots are essential for understanding patterns over time, such as:
+- Daily/monthly catch trends
+- Seasonal variations
+- Long-term changes in CPUE
+- Price fluctuations
+
+Let's create several types of time series visualizations:
+
+```{webr}
+#| autorun: false
+# Basic time series with multiple species
+daily_catches <- fishing_data %>%
+    group_by(date, species) %>%
+    summarise(total_catch = sum(catch_kg),
+              .groups = 'drop')
+
+# Create an enhanced time series plot
+ggplot(daily_catches, aes(x = date, y = total_catch, color = species)) +
+    # Add lines connecting points
+    geom_line(alpha = 0.7) +
+    # Add points for individual observations
+    geom_point(size = 2, alpha = 0.6) +
+    # Add smoothed trend line
+    geom_smooth(se = FALSE, linetype = "dashed") +
+    # Customize appearance
+    scale_color_brewer(palette = "Set1") +
+    labs(title = "Daily Catch Trends by Species",
+         subtitle = "January - March 2024",
+         x = "Date",
+         y = "Total Catch (kg)",
+         color = "Species") +
+    theme_minimal() +
+    theme(legend.position = "bottom")
+```
+
+For monthly patterns, we can aggregate the data:
+
+```{webr}
+#| autorun: false
+# Monthly aggregation
+monthly_catches <- fishing_data %>%
+    mutate(month = floor_date(date, "month")) %>%
+    group_by(month, species) %>%
+    summarise(
+        total_catch = sum(catch_kg),
+        avg_price = mean(price_per_kg),
+        .groups = 'drop'
+    )
+
+# Create monthly comparison plot
+ggplot(monthly_catches, aes(x = month, y = total_catch, fill = species)) +
+    geom_col(position = "dodge") +
+    scale_fill_brewer(palette = "Set2") +
+    labs(title = "Monthly Catch by Species",
+         x = "Month",
+         y = "Total Catch (kg)",
+         fill = "Species") +
+    theme_minimal() +
+    theme(legend.position = "bottom")
+```
+
+:::{.callout-tip}
+## Time Series Visualization Tips
+1. Use lines to show continuity in data
+2. Add points to show actual observations
+3. Consider smoothing for trend visualization
+4. Group by relevant time periods (day, week, month)
+5. Account for seasonal patterns
+:::
+
+### 2. Distribution Plots: Understanding Variation 📊
+
+Distribution plots help us understand how values are spread out, which is crucial for:
+- Catch size distributions
+- Price variations
+- Effort patterns
+- Environmental variables
+
+Let's explore different ways to visualize distributions:
+
+```{webr}
+#| autorun: false
+# Create a combination plot showing multiple distribution aspects
+# 1. Histogram with density curve
+p1 <- ggplot(fishing_data, aes(x = catch_kg)) +
+    geom_histogram(aes(y = ..density..), 
+                  bins = 30, 
+                  fill = "lightblue", 
+                  color = "white") +
+    geom_density(color = "darkblue", linewidth = 1) +
+    labs(title = "Catch Distribution",
+         x = "Catch (kg)",
+         y = "Density") +
+    theme_minimal()
+
+# 2. Box plots by species
+p2 <- ggplot(fishing_data, aes(x = species, y = catch_kg, fill = species)) +
+    geom_boxplot() +
+    labs(title = "Catch Distribution by Species",
+         x = "Species",
+         y = "Catch (kg)") +
+    theme_minimal() +
+    theme(legend.position = "none")
+
+# 3. Violin plots with points
+p3 <- ggplot(fishing_data, aes(x = species, y = catch_kg, fill = species)) +
+    geom_violin(alpha = 0.5) +
+    geom_jitter(width = 0.2, alpha = 0.2) +
+    labs(title = "Detailed Catch Distribution",
+         x = "Species",
+         y = "Catch (kg)") +
+    theme_minimal() +
+    theme(legend.position = "none")
+
+# Display all plots
+print("Different distribution visualizations:")
+p1
+p2
+p3
+```
+
+Each type of distribution plot serves a different purpose:
+- **Histograms**: Show frequency of values in bins
+- **Density plots**: Smooth representation of distribution
+- **Box plots**: Show median, quartiles, and outliers
+- **Violin plots**: Combine box plot with density distribution
+- **Point overlays**: Show actual data points
+
+### 3. Relationship Plots: Understanding Connections 🔄
+
+Understanding relationships between variables is crucial in fisheries research. Common relationships to explore include:
+- Catch vs. effort
+- Price vs. quantity
+- Environmental factors vs. catch
+- Temporal patterns vs. catch
+
+Let's create various relationship plots:
+
+```{webr}
+#| autorun: false
+# 1. Basic scatter plot with trend line
+p1 <- ggplot(fishing_data, aes(x = trip_hours, y = catch_kg, color = species)) +
+    geom_point(alpha = 0.5) +
+    geom_smooth(method = "lm", se = FALSE) +
+    labs(title = "Catch vs. Effort",
+         x = "Trip Duration (hours)",
+         y = "Catch (kg)") +
+    theme_minimal()
+
+# 2. Bubble plot adding third variable
+p2 <- ggplot(fishing_data, 
+            aes(x = water_temp, y = catch_kg, 
+                size = price_per_kg, color = species)) +
+    geom_point(alpha = 0.6) +
+    labs(title = "Catch vs. Temperature",
+         subtitle = "Point size indicates price",
+         x = "Water Temperature (°C)",
+         y = "Catch (kg)") +
+    theme_minimal()
+
+# 3. Faceted relationship plot
+p3 <- ggplot(fishing_data, aes(x = trip_hours, y = cpue, color = species)) +
+    geom_point(alpha = 0.5) +
+    geom_smooth(method = "loess", se = FALSE) +
+    facet_wrap(~site) +
+    labs(title = "CPUE vs. Trip Duration by Site",
+         x = "Trip Duration (hours)",
+         y = "Catch per Unit Effort (kg/hour)") +
+    theme_minimal()
+
+# Display the plots
+print("Relationship visualizations:")
+p1
+p2
+p3
+```
+
+### 4. Compositional Plots: Understanding Proportions 📊
+
+Compositional plots are valuable for showing:
+- Species composition of catches
+- Proportion of catch by site
+- Value distribution across species
+- Effort allocation
+
+Let's explore different ways to show composition:
+
+```{webr}
+#| autorun: false
+# Prepare data for compositional analysis
+composition_data <- fishing_data %>%
+    group_by(site, species) %>%
+    summarise(
+        total_catch = sum(catch_kg),
+        total_value = sum(total_value),
+        .groups = 'drop'
+    )
+
+# 1. Stacked bar plot
+p1 <- ggplot(composition_data, 
+            aes(x = site, y = total_catch, fill = species)) +
+    geom_col() +
+    labs(title = "Catch Composition by Site",
+         x = "Site",
+         y = "Total Catch (kg)") +
+    theme_minimal()
+
+# 2. 100% stacked bar plot
+p2 <- ggplot(composition_data, 
+            aes(x = site, y = total_catch, fill = species)) +
+    geom_col(position = "fill") +
+    labs(title = "Relative Catch Composition",
+         x = "Site",
+         y = "Proportion of Total Catch") +
+    theme_minimal()
+
+# 3. Pie charts (using coord_polar)
+p3 <- ggplot(composition_data, 
+            aes(x = "", y = total_value, fill = species)) +
+    geom_col() +
+    coord_polar("y", start = 0) +
+    facet_wrap(~site) +
+    labs(title = "Value Distribution by Site") +
+    theme_void() +
+    theme(legend.position = "bottom")
+
+# Display the plots
+print("Compositional visualizations:")
+p1
+p2
+p3
+```
+
+:::{.callout-warning}
+## Notes on Pie Charts
+While pie charts can be visually appealing:
+1. They're harder to compare than bar charts
+2. Use only for 2-6 categories
+3. Consider alternatives like stacked bars
+4. Best for showing part-to-whole relationships
+:::
+
+### Practice Exercise: Creating Common Plots 💪
+
+Let's practice creating these plot types with our fisheries data:
+
+```{webr}
+#| autorun: false
+#| echo: true
+# Exercise 1: Create a time series
+# Show daily CPUE trends by species
+# Include both points and smooth trend lines
+
+# Your code here:
+
+```
+
+<details>
+<summary>Click to see solution</summary>
+
+```{webr}
+#| autorun: false
+#| eval: false
+ggplot(fishing_data, aes(x = date, y = cpue, color = species)) +
+    geom_point(alpha = 0.3) +
+    geom_smooth(se = FALSE) +
+    labs(title = "Daily CPUE Trends",
+         x = "Date",
+         y = "Catch per Unit Effort (kg/hour)",
+         color = "Species") +
+    theme_minimal()
+```
+</details>
+
+```{webr}
+#| autorun: false
+#| echo: true
+# Exercise 2: Create a distribution comparison
+# Compare catch distributions across sites and species
+# Use violin plots with overlaid box plots
+
+# Your code here:
+
+```
+
+<details>
+<summary>Click to see solution</summary>
+
+```{webr}
+#| autorun: false
+#| eval: false
+ggplot(fishing_data, aes(x = site, y = catch_kg, fill = species)) +
+    geom_violin(alpha = 0.5) +
+    geom_boxplot(width = 0.2, alpha = 0.8) +
+    labs(title = "Catch Distribution by Site and Species",
+         x = "Landing Site",
+         y = "Catch (kg)",
+         fill = "Species") +
+    theme_minimal()
+```
+</details>
+
+### Key Points to Remember 🗝️
+
+When choosing plot types for fisheries data:
+
+1. **Time Series Plots**
+   - Best for showing trends over time
+   - Consider seasonality
+   - Use appropriate time aggregation
+   - Include confidence intervals when relevant
+
+2. **Distribution Plots**
+   - Use histograms for single variables
+   - Box plots for group comparisons
+   - Violin plots for detailed distributions
+   - Consider sample size when choosing
+
+3. **Relationship Plots**
+   - Scatter plots for two continuous variables
+   - Add trend lines to show patterns
+   - Use facets for additional grouping
+   - Consider adding uncertainty
+
+4. **Compositional Plots**
+   - Stacked bars for absolute values
+   - 100% stacks for proportions
+   - Use pie charts sparingly
+   - Consider the number of categories
+
+## Applying ggplot2 to Fisheries Analysis 📊
+
+Now that we understand how to build plots using layers and aesthetic mappings, let's apply these concepts to real fisheries analysis. While our previous examples helped us learn the basics, actual fisheries data involves multiple interrelated variables that tell important stories about fishing patterns, catch composition, and temporal trends.
+
+To explore these relationships effectively, let's first expand our dataset to better represent the complexity of small-scale fisheries data:
+
+```{webr}
+#| autorun: false
+# Create a more comprehensive fishing dataset
+n_days <- as.numeric(difftime(as.Date("2024-03-31"), as.Date("2024-01-01"))) + 1
+total_rows <- n_days * 3  # 3 observations per day
+
+fishing_data <- tibble(
+  date = rep(seq(as.Date("2024-01-01"), as.Date("2024-03-31"), by = "day"), each = 3),
+  site = rep(c("Beach", "Reef", "Pier"), times = n_days),
+  species = rep(c("Tuna", "Mackerel", "Sardine"), times = n_days),
+  catch_kg = round(abs(rnorm(total_rows, mean = 100, sd = 30)) + 
+                     ifelse(rep(c("Tuna", "Mackerel", "Sardine"), times = n_days) == "Tuna", 50, 0), 1),
+  price_per_kg = round(abs(rnorm(total_rows, mean = 800, sd = 200)) +
+                         ifelse(rep(c("Tuna", "Mackerel", "Sardine"), times = n_days) == "Tuna", 300, 0), 0),
+  n_boats = sample(1:5, total_rows, replace = TRUE),
+  trip_hours = round(runif(total_rows, 4, 12), 1),
+  water_temp = round(rnorm(total_rows, mean = 25, sd = 2), 1),
+  moon_phase = rep(c("New", "First Quarter", "Full", "Last Quarter"), 
+                   length.out = total_rows)
+) %>% 
+    mutate(
+        # Add seasonal effect to catch
+        catch_kg = catch_kg * (1 + 0.3 * sin(as.numeric(date) / 30)),
+        # Calculate derived variables
+        cpue = catch_kg / trip_hours,
+        total_value = catch_kg * price_per_kg
+    )
+```
+
+This dataset represents three months of daily fishing activities across different sites, including:
+- Temporal information (dates)
+- Spatial information (fishing sites)
+- Catch composition (species)
+- Effort metrics (number of boats, trip duration)
+- Economic data (prices)
+- Environmental conditions (water temperature, moon phase)
+
+Using our understanding of aesthetic mappings and layers, we can now explore different aspects of this data through various visualization approaches.
+
+### Understanding Temporal Patterns with Multiple Layers
+
+Remember how we used `geom_point()` and `geom_line()` in our basic examples? We can combine these with additional aesthetics and geometries to reveal rich temporal patterns in our fishing data:
+
+```{webr}
+#| autorun: false
+# First, let's aggregate daily catches by species
+daily_catches <- fishing_data %>%
+    group_by(date, species) %>%
+    summarise(
+        total_catch = sum(catch_kg),
+        avg_price = mean(price_per_kg),
+        .groups = 'drop'
+    )
+
+# Create an enhanced time series visualization
+ggplot(daily_catches, aes(x = date, y = total_catch, color = species)) +
+    # Base layer: Add lines to show continuity
+    geom_line(alpha = 0.7) +
+    # Add points to show actual observations
+    geom_point(size = 2, alpha = 0.6) +
+    # Add smoothed trend to show patterns
+    geom_smooth(se = FALSE, linetype = "dashed") +
+    # Enhance with proper labeling
+    labs(title = "Daily Catch Trends by Species",
+         subtitle = "Showing actual values, trends, and species differences",
+         x = "Date",
+         y = "Total Catch (kg)",
+         color = "Species") +
+    # Use a clean theme
+    theme_minimal() +
+    # Customize the legend position
+    theme(legend.position = "bottom")
+```
+
+This plot combines multiple layers we learned about earlier:
+1. `geom_line()`: Shows the continuous nature of time series data
+2. `geom_point()`: Marks actual daily observations
+3. `geom_smooth()`: Reveals underlying trends
+4. Color aesthetic: Distinguishes between species
+
+### Adding Complexity: Multiple Variables and Faceting
+
+Now let's build on our understanding of aesthetics to explore relationships between multiple variables. We'll use faceting to create small multiples, a powerful technique for comparing patterns across groups:
+
+```{webr}
+#| autorun: false
+# Create a multi-faceted analysis of CPUE
+ggplot(fishing_data, aes(x = water_temp, y = cpue, color = species)) +
+    # Base layer: scatter plot
+    geom_point(alpha = 0.5) +
+    # Add trend lines for each species
+    geom_smooth(method = "lm", se = FALSE) +
+    # Separate by site
+    facet_wrap(~site) +
+    # Enhanced labeling
+    labs(title = "CPUE vs Water Temperature",
+         subtitle = "Relationships across different sites",
+         x = "Water Temperature (°C)",
+         y = "Catch per Unit Effort (kg/hour)",
+         color = "Species") +
+    # Customize appearance
+    theme_minimal() +
+    theme(
+        legend.position = "bottom",
+        panel.spacing = unit(1, "lines"),
+        strip.background = element_rect(fill = "gray95")
+    )
+```
+
+This visualization demonstrates several advanced concepts:
+1. Multiple variable relationships (CPUE, temperature, species)
+2. Faceting to compare across sites
+3. Trend lines to show relationships
+4. Thoughtful use of transparency and spacing
+
+### Exploring Distributions with Combined Geometries
+
+Let's extend our knowledge of geometries to create more sophisticated distribution visualizations:
+
+```{webr}
+#| autorun: false
+# Create a detailed distribution analysis
+ggplot(fishing_data, aes(x = species, y = catch_kg, fill = species)) +
+    # Add violin plot for distribution shape
+    geom_violin(alpha = 0.3) +
+    # Overlay box plot for summary statistics
+    geom_boxplot(width = 0.2, alpha = 0.7) +
+    # Add individual points with jitter
+    geom_jitter(width = 0.1, alpha = 0.2, color = "black") +
+    # Separate by site
+    facet_wrap(~site) +
+    # Enhance appearance
+    labs(title = "Catch Distribution Analysis",
+         subtitle = "Combining multiple geometries for detailed insight",
+         x = "Species",
+         y = "Catch (kg)") +
+    theme_minimal() +
+    theme(legend.position = "none")
+```
+
+This plot combines multiple geometries to show different aspects of the data:
+1. `geom_violin()`: Shows the full distribution shape
+2. `geom_boxplot()`: Displays summary statistics
+3. `geom_jitter()`: Reveals individual observations
+4. Faceting: Allows comparison across sites
+

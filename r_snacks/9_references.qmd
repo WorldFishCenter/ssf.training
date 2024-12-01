@@ -1,0 +1,241 @@
+---
+title: "4.6 R Resources for Fisheries Analysis: Essential Tools and Packages"
+author: "SSF Training Team"
+date: 2024-11-06
+format: live-html
+engine: knitr
+categories: ["R", "Fisheries", "Resources"]
+webr:
+  autorun: false
+  render-df: gt-interactive
+  packages:
+    - tidyverse
+    - rfishbase
+    - mapproj
+---
+
+{{< include ../_extensions/r-wasm/live/_knitr.qmd >}}
+
+## Essential R Resources for Fisheries Analysis 🎯
+
+R has become a cornerstone tool in fisheries science, offering a wide range of specialized packages and resources. This tutorial will guide you through some of the most valuable R resources available for fisheries analysis, from data access to stock assessment.
+
+### Core Fisheries Resources in R
+
+Let's explore some essential resources that every fisheries researcher should know about:
+
+#### 1. FishBase Access with rfishbase (works only locally) 🐟
+
+The `rfishbase` package provides programmatic access to FishBase, one of the most comprehensive databases of fish species information:
+
+```{webr}
+#| autorun: false
+# Load required packages
+library(rfishbase)
+
+# Example: Get information about Nile Tilapia
+species_info <- species("Oreochromis niloticus")
+
+# View basic information
+print("Basic species information:")
+species_info %>%
+    select(Species, FBname, Fresh, Brack, Saltwater, DemersPelag) %>%
+    print()
+
+# Get size information
+size_info <- length_weight("Oreochromis niloticus")
+print("\nLength-weight relationships:")
+size_info %>%
+    select(a, b, Type) %>%
+    head()
+```
+
+Key features of rfishbase:
+- Access to species taxonomy
+- Life history parameters
+- Length-weight relationships
+- Distribution data
+- Ecological information
+
+#### 2. The fishR Package 📊
+
+The fishR package, documented at [fishR-Core-Team](https://fishr-core-team.github.io/fishR/), provides tools specifically designed for fisheries analysis. You can find [there](https://fishr-core-team.github.io/fishR/pages/packages.html) an incredible collection of teaching materials and packages for fisheries science.
+
+```{webr}
+#| autorun: false
+# Example of common fisheries calculations
+# Note: Using base R for illustration as fishR isn't available in webR
+
+# Length-weight relationship
+lengths <- c(12, 15, 18, 20, 22, 25)
+weights <- c(25, 45, 78, 105, 140, 190)
+
+# Log-transform for linear relationship
+lm_fit <- lm(log(weights) ~ log(lengths))
+
+# Plot relationship
+plot(log(lengths), log(weights),
+     xlab = "log(Length)",
+     ylab = "log(Weight)",
+     main = "Length-Weight Relationship")
+abline(lm_fit, col = "red")
+```
+
+fishR provides:
+- Age and growth analysis
+- Mortality estimation
+- Stock assessment tools
+- Data visualization functions
+
+#### 3. Using Mixed-Effects Models in Fisheries
+
+The book "Using R for Modelling and Quantitative Methods in Fisheries" ([URMQMF](https://haddonm.github.io/URMQMF/)) provides excellent guidance on:
+- Statistical modeling
+- Stock assessment
+- Time series analysis
+- Survey design
+
+Let's look at an example of modeling catch data:
+
+```{webr}
+#| autorun: false
+# Example of modeling catch data
+# Create sample data
+set.seed(123)
+catch_data <- data.frame(
+    year = rep(2020:2024, each = 4),
+    season = rep(c("Spring", "Summer", "Fall", "Winter"), times = 5),
+    catch = rnorm(20, mean = 100, sd = 20)
+)
+
+# Fit a simple linear model
+model <- lm(catch ~ year + season, data = catch_data)
+
+# View model summary
+summary(model)
+
+# Plot predictions
+ggplot(catch_data, aes(x = year, y = catch, color = season)) +
+    geom_point() +
+    geom_smooth(method = "lm", se = FALSE) +
+    labs(title = "Catch Trends by Season",
+         x = "Year",
+         y = "Catch") +
+    theme_minimal()
+```
+
+### Additional Useful Resources 📚
+
+1. **Stock Assessment Packages**
+   - `FSA` (Fisheries Stock Assessment)
+   - `TropFishR` for tropical fisheries
+   - `ss3sim` for Stock Synthesis simulations
+
+2. **Spatial Analysis**
+   - `sf` for spatial features
+   - `marmap` for marine maps
+   - `oceanmap` for oceanographic data
+
+Let's see an example of spatial visualization:
+
+```{webr}
+#| autorun: false
+# Create sample fishing locations
+fishing_spots <- data.frame(
+    lon = c(34.62, 34.59, 34.61),
+    lat = c(-13.72, -13.68, -13.70),
+    catch = c(120, 85, 95)
+)
+
+# Basic plot
+ggplot(fishing_spots, aes(x = lon, y = lat)) +
+    geom_point(aes(size = catch), color = "blue", alpha = 0.6) +
+    coord_map() +
+    labs(title = "Fishing Locations",
+         x = "Longitude",
+         y = "Latitude",
+         size = "Catch (kg)") +
+    theme_minimal()
+```
+
+### Online Learning Resources 🌐
+
+1. **Tutorials and Courses**
+   - [FishR Course](https://fishr-core-team.github.io/fishR/articles/)
+   - [NOAA's R Training](https://www.fisheries.noaa.gov/resource/educational-materials/r-training-materials)
+   - Stock assessment workshops materials
+
+2. **Reference Materials**
+   - [RFisheries Documentation](https://ropensci.org/packages/fisheries/)
+   - [FSA Package Vignettes](https://cran.r-project.org/web/packages/FSA/vignettes/)
+   - Community forums and discussion groups
+
+### Practice Exercise: Accessing Fisheries Data 💪
+
+Let's practice using some of these resources:
+
+```{webr}
+#| autorun: false
+#| echo: true
+# Exercise: Use rfishbase to:
+# 1. Get information about a species of your choice
+# 2. Extract its growth parameters
+# 3. Create a simple visualization of the data
+
+# Your code here:
+
+```
+
+<details>
+<summary>Click to see solution</summary>
+
+```{webr}
+#| autorun: false
+#| eval: false
+# Get species information
+species_data <- species("Chambo") %>%
+    select(Species, FBname, Fresh, Brack, Saltwater)
+
+# Get growth parameters
+growth_data <- popgrowth("Chambo")
+
+# Create visualization
+if(nrow(growth_data) > 0) {
+    ggplot(growth_data, aes(x = K, y = Linf)) +
+        geom_point() +
+        labs(title = "Growth Parameters for Chambo",
+             x = "Growth Coefficient (K)",
+             y = "Asymptotic Length (Linf)") +
+        theme_minimal()
+}
+```
+</details>
+
+:::{.callout-tip}
+## Tips for Using R in Fisheries Research
+1. Start with well-documented packages
+2. Use version control for your analyses
+3. Document your analysis workflows
+4. Share code and methods with colleagues
+5. Engage with the R fisheries community
+:::
+
+### Next Steps 🚀
+
+To deepen your R fisheries analysis skills:
+
+1. **Explore Package Documentation**
+   - Read package vignettes thoroughly
+   - Try worked examples
+   - Understand function arguments
+
+2. **Join Communities**
+   - GitHub fisheries repositories
+   - Regional working groups
+
+3. **Practice with Real Data**
+   - Start with simple analyses
+   - Gradually increase complexity
+   - Document your workflows
+
+Remember: The R fisheries community is active and supportive. Don't hesitate to ask questions and share your experiences! 🎣
