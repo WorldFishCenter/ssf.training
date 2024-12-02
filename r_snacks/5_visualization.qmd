@@ -1,6 +1,6 @@
 ---
 title: "3.5 Data Visualization in R: Understanding and Exploring Your Data with ggplot2"
-author: "SSF Training Team"
+author: "Lorenzo Longobardi"
 date: 2024-11-06
 format: live-html
 engine: knitr
@@ -822,3 +822,4 @@ This plot combines multiple geometries to show different aspects of the data:
 3. `geom_jitter()`: Reveals individual observations
 4. Faceting: Allows comparison across sites
 
+Next: [Preprocessing data 1](6_preprocessing1.html)

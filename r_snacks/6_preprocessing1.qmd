@@ -1,6 +1,6 @@
 ---
 title: "5. Data Preprocessing in R: Getting Your Fisheries Data Ready for Analysis"
-author: "SSF Training Team"
+author: "Lorenzo Longobardi"
 date: 2024-11-06
 format: live-html
 engine: knitr
@@ -813,3 +813,4 @@ Now that you've mastered basic preprocessing, you can:
 
 Remember: Good preprocessing is the foundation of reliable analysis. Take the time to do it right! 🎯
 
+Next: [Preprocessing data 2](7_preprocessing2.html)

@@ -15,7 +15,7 @@ code-tools: false
 ---
 
 Welcome to our interactive R programming course, specifically designed for small-scale fisheries data analysis. Learn through practical tutorials that run directly in your browser - no installation needed.
-Our tutorials use real fisheries examples, from basic catch data calculations to stock assessments. Start with R fundamentals and progress at your own pace, practicing each concept with interactive exercises. Each tutorial builds on previous ones, helping you develop practical skills for analyzing your fisheries data.
-Browse the tutorials below to begin your journey in R programming for fisheries analysis.
+Start with R fundamentals and progress at your own pace, practicing each concept with interactive exercises. Each tutorial builds on previous ones, helping you develop practical skills for analyzing your fisheries data.
+Browse the tutorials to begin your journey in R programming for fisheries analysis.
 
 Remember: The best way to learn is by doing. Don't just read the tutorials - try the code, modify it, and experiment with your own data!

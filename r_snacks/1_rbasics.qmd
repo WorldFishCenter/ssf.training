@@ -1,6 +1,6 @@
 ---
 title: "1. Getting Started with R: Installation and First Steps"
-author: "SSF Training Team"
+author: "Lorenzo Longobardi"
 date: 2024-11-06
 format: live-html
 engine: knitr
@@ -224,3 +224,6 @@ structure 4. Get ready for data import and analysis!
 
 Remember: Taking time to set up your environment properly will save you
 hours of frustration later!
+
+
+Next: [Basic Operations](2_rbasics.html)

@@ -1,6 +1,6 @@
 ---
 title: "2. Basic Operations in R: A Technical Guide"
-author: "SSF Training Team"
+author: "Lorenzo Longobardi"
 date: 2024-11-06
 format: live-html
 engine: knitr
@@ -924,4 +924,4 @@ Remember: R has a helpful community. Use resources like:
 - Stack Overflow with [r] tag
 - R-bloggers for tutorials
 
-Happy coding! 🎉
+Next: [Understanding Data Frames](3_dataframes.html)

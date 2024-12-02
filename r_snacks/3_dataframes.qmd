@@ -1,6 +1,6 @@
 ---
 title: "3. Understanding Data Frames in R"
-author: "SSF Training Team"
+author: "Lorenzo Longobardi"
 date: 2024-11-06
 format: live-html
 engine: knitr
@@ -615,3 +615,5 @@ Remember:
 - Keep track of your data types
 - Make backups before major modifications
 
+
+Next: [Working with packages](4_packages.html)

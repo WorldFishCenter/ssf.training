@@ -1,6 +1,6 @@
 ---
 title: "4.6 R Resources for Fisheries Analysis: Essential Tools and Packages"
-author: "SSF Training Team"
+author: "Lorenzo Longobardi"
 date: 2024-11-06
 format: live-html
 engine: knitr

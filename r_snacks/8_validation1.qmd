@@ -14,39 +14,40 @@ webr:
 
 {{< include ../_extensions/r-wasm/live/_knitr.qmd >}}
 
-## Statistical Approaches to Data Validation 🎯
+## Why Validate Fisheries Data? 🎯
 
-When validating fisheries data, simple thresholds aren't always enough. Biological and fisheries data often follow specific distributions and patterns. Understanding these patterns through statistical approaches can help us identify problematic data points more reliably.
+After cleaning and preprocessing our data, validation is a crucial next step. While preprocessing focuses on formatting and consistency, validation helps us identify potentially problematic data points that might affect our analysis. Think of validation like quality control in a fish processing plant - we want to make sure our "product" (data) meets certain standards before using it.
 
-Let's use the Malawi small-scale fisheries data to explore these statistical validation techniques:
+Let's use the Malawi small-scale fisheries data that we preprocessed in the previous tutorial:
 
 ```{webr}
 #| autorun: false
 # Load required packages
 library(tidyverse)
 
-# Read the data
-fishing_data <- 
-  read.csv("https://raw.githubusercontent.com/WorldFishCenter/ssf.training/refs/heads/update-pages/data/clean_malawi_ssf.csv") %>% 
-  na.omit()
+# Read our preprocessed data
+fishing_data <- read.csv("https://raw.githubusercontent.com/WorldFishCenter/ssf.training/refs/heads/update-pages/data/clean_malawi_ssf.csv") %>%
+    # Remove missing values and specific species
+    na.omit() %>%
+    filter(!catch_taxon %in% c("mcheni", "other"))
 
-# Quick glimpse
+# Look at our data
 glimpse(fishing_data)
 ```
 
-### Understanding Distributions for Validation 📊
+### Understanding Data Distributions 📊
 
-Before applying any validation rules, we need to understand how our data is distributed. Different types of fisheries data often follow characteristic patterns:
+Before we start validating, we need to understand what "normal" looks like in our data. Different types of fisheries data often follow characteristic patterns:
 
-1. **Catch weights**: Often right-skewed (many small catches, fewer large ones)
-2. **Prices**: May show multiple modes based on species
-3. **Effort metrics**: Usually normally distributed within gear types
+1. **Catch weights**: Usually right-skewed (many small catches, fewer large ones)
+2. **Prices**: Often species-specific
+3. **Number of boats and fishers**: Should follow typical crew patterns
 
-Let's visualize these distributions:
+Let's visualize these patterns:
 
 ```{webr}
 #| autorun: false
-# Create distribution plots for key variables
+# Look at catch distribution
 p1 <- ggplot(fishing_data, aes(x = catch_kg)) +
     geom_histogram(bins = 30, fill = "steelblue", alpha = 0.7) +
     geom_density(color = "red", linewidth = 1) +
@@ -56,11 +57,10 @@ p1 <- ggplot(fishing_data, aes(x = catch_kg)) +
          y = "Count") +
     theme_minimal()
 
-p2 <- ggplot(fishing_data, aes(x = price_kg)) +
-    geom_histogram(bins = 30, fill = "steelblue", alpha = 0.7) +
-    geom_density(color = "red", linewidth = 1) +
-    labs(title = "Distribution of Price per kg",
-         subtitle = "Multiple peaks may indicate species-specific pricing",
+# Look at price distribution by species
+p2 <- ggplot(fishing_data, aes(x = price_kg, fill = catch_taxon)) +
+    geom_histogram(bins = 30, alpha = 0.7, position = "dodge") +
+    labs(title = "Price Distribution by Species",
          x = "Price per kg",
          y = "Count") +
     theme_minimal()
@@ -70,346 +70,199 @@ print(p1)
 print(p2)
 ```
 
-These distributions help us:
-- Identify the expected shape of valid data
-- Spot unusual patterns or outliers
-- Set appropriate validation thresholds
+These distributions tell us:
+- Most catches are relatively small
+- Each species has its typical price range
+- There are some unusually high values that need checking
 
-### Using MAD for Robust Outlier Detection 📈
+### Using MAD for Validation 📈
 
-The Median Absolute Deviation (MAD) is particularly useful for fisheries data validation because it's less sensitive to extreme values than traditional methods like standard deviations. This makes it excellent for initial outlier detection.
+The Median Absolute Deviation (MAD) is particularly useful for fisheries data because it's less affected by extreme values than standard deviation. It helps us identify unusual values more reliably.
 
-Let's implement MAD-based validation:
+Here's how MAD works:
+1. Find the median of your data
+2. Calculate how far each value is from the median
+3. Take the median of these distances
+4. Multiply by 1.4826 (this makes it comparable to standard deviation for normal data)
+
+Let's use MAD to check our catch weights:
 
 ```{webr}
 #| autorun: false
-# Function to calculate MAD-based bounds
-calculate_mad_bounds <- function(x, threshold = 3) {
-    median_val <- median(x, na.rm = TRUE)
-    mad_val <- mad(x, na.rm = TRUE)
-    
-    lower_bound <- median_val - threshold * mad_val
-    upper_bound <- median_val + threshold * mad_val
-    
-    return(list(lower = lower_bound, upper = upper_bound))
-}
-
-# Apply MAD validation to catch weights by species
+# Calculate MAD-based bounds for each species
 catch_validation <- fishing_data %>%
     group_by(catch_taxon) %>%
     mutate(
-        bounds = list(calculate_mad_bounds(catch_kg)),
-        lower_bound = map_dbl(bounds, ~.x$lower),
-        upper_bound = map_dbl(bounds, ~.x$upper),
-        is_outlier = catch_kg < lower_bound | catch_kg > upper_bound
+        # Calculate median and MAD
+        catch_median = median(catch_kg),
+        catch_mad = mad(catch_kg),
+        
+        # Flag catches more than 3 MADs from median
+        is_unusual = abs(catch_kg - catch_median) > 3 * catch_mad
     ) %>%
     ungroup()
 
-# Visualize results for major species
-major_species <- catch_validation %>%
-    count(catch_taxon) %>%
-    filter(n > 10) %>%
-    pull(catch_taxon)
-
-ggplot(catch_validation %>% filter(catch_taxon %in% major_species),
-       aes(x = catch_kg, fill = is_outlier)) +
+# Visualize results
+ggplot(catch_validation, aes(x = catch_kg, fill = is_unusual)) +
     geom_histogram(bins = 30, alpha = 0.7) +
     facet_wrap(~catch_taxon, scales = "free") +
     scale_fill_manual(values = c("TRUE" = "red", "FALSE" = "steelblue")) +
-    labs(title = "MAD-based Outlier Detection by Species",
-         subtitle = "Red indicates potential outliers",
+    labs(title = "Catch Distribution with Unusual Values Highlighted",
+         subtitle = "Red indicates catches more than 3 MADs from median",
          x = "Catch (kg)",
          y = "Count") +
     theme_minimal()
 ```
 
-Why MAD is particularly useful:
-1. **Robustness**: Less affected by extreme values than mean/SD
-2. **Species-specific**: Can handle different scales across species
-3. **Non-parametric**: Doesn't assume normal distribution
-4. **Adaptive**: Thresholds adjust to data characteristics
+Why use MAD instead of standard deviation?
+1. More robust to outliers
+2. Works better with skewed data (like catch weights)
+3. Gives fewer false positives
+4. Better reflects the "typical" spread of the data
 
-### Species-Specific Validation Approaches 🐟
+## Validating Relationships Between Variables 🔍
 
-Different species often have different catch patterns, prices, and seasonal variations. Let's develop species-specific validation approaches:
+While checking individual variables is important, fisheries data contains natural relationships that we can use for validation. For example:
 
-```{webr}
-#| autorun: false
-# Calculate species-specific statistics
-species_stats <- fishing_data %>%
-    group_by(catch_taxon) %>%
-    summarise(
-        mean_catch = mean(catch_kg, na.rm = TRUE),
-        median_catch = median(catch_kg, na.rm = TRUE),
-        mad_catch = mad(catch_kg, na.rm = TRUE),
-        mean_price = mean(price_kg, na.rm = TRUE),
-        mad_price = mad(price_kg, na.rm = TRUE),
-        n_samples = n()
-    ) %>%
-    filter(n_samples >= 10)  # Focus on well-sampled species
-
-# Create species-specific validation rules
-species_validation <- fishing_data %>%
-    inner_join(species_stats, by = "catch_taxon") %>%
-    mutate(
-        # Price validation
-        price_zscore = abs(price_kg - mean_price) / mad_price,
-        price_valid = price_zscore <= 3,
-        
-        # Catch validation using species-specific MAD
-        catch_zscore = abs(catch_kg - median_catch) / mad_catch,
-        catch_valid = catch_zscore <= 3
-    )
-
-# Visualize validation results
-ggplot(species_validation, 
-       aes(x = catch_kg, y = price_kg, color = catch_valid & price_valid)) +
-    geom_point(alpha = 0.6) +
-    facet_wrap(~catch_taxon, scales = "free") +
-    scale_color_manual(values = c("TRUE" = "blue", "FALSE" = "red")) +
-    labs(title = "Species-Specific Validation Results",
-         subtitle = "Red points fail either catch or price validation",
-         x = "Catch (kg)",
-         y = "Price per kg",
-         color = "Valid Data") +
-    theme_minimal()
-```
-
-This species-specific approach helps us:
-1. Account for natural size differences between species
-2. Identify species-specific price anomalies
-3. Consider seasonal patterns by species
-4. Validate catch composition ratios
-
-:::{.callout-tip}
-## Tips for Statistical Validation
-1. Always check data distribution before choosing validation method
-2. Use robust statistics (MAD, median) for skewed data
-3. Consider species-specific patterns and relationships
-4. Combine multiple validation approaches
-5. Document statistical assumptions and thresholds
-:::
-
-
-## Cross-Variable Validation and Advanced Visualization 🔍
-
-While validating individual variables is important, many data quality issues only become apparent when examining relationships between variables. Field data often contains internal logic that we can use for validation.
-
-Several variable pairs in fisheries data should follow logical patterns:
-
-1. **Catch vs Effort**: Should show positive correlation
-2. **Price vs Quantity**: May show market effects
-3. **Number of boats vs Number of fishers**: Should follow crew size patterns
+1. More boats should generally mean more catch
+2. Prices might vary with catch size
+3. Number of fishers should make sense for the number of boats
 
 Let's examine these relationships:
 
 ```{webr}
 #| autorun: false
-# Create relationship plots
-catch_effort <- ggplot(fishing_data, 
-                      aes(x = n_boats, y = catch_kg)) +
-    geom_point(alpha = 0.5) +
-    geom_smooth(method = "lm", se = FALSE, color = "red") +
+# Look at catch vs number of boats
+ggplot(fishing_data, 
+       aes(x = n_boats, y = catch_kg, color = catch_taxon)) +
+    geom_point(alpha = 0.6) +
+    geom_smooth(method = "lm", se = FALSE) +
     labs(title = "Catch vs Number of Boats",
-         subtitle = "Expect positive correlation",
          x = "Number of Boats",
-         y = "Catch (kg)") +
+         y = "Catch (kg)",
+         color = "Species") +
     theme_minimal()
-
-# Calculate catch per boat
-catch_price <- fishing_data %>%
-    mutate(catch_per_boat = catch_kg / n_boats) %>%
-    ggplot(aes(x = catch_per_boat, y = price_kg)) +
-    geom_point(alpha = 0.5) +
-    geom_smooth(method = "loess", se = FALSE, color = "red") +
-    labs(title = "Price vs Catch per Boat",
-         subtitle = "Look for market effects",
-         x = "Catch per Boat (kg)",
-         y = "Price per kg") +
-    theme_minimal()
-
-# Display plots
-print(catch_effort)
-print(catch_price)
 ```
 
-### Implementing Cross-Variable Validation 🎯
-
-Let's develop validation rules based on these relationships:
+This plot shows us the basic relationship, but for validation, we should look at catch per boat - this helps us spot unusually high or low efficiency:
 
 ```{webr}
 #| autorun: false
-# Create validation function for related variables
-cross_validate <- function(data) {
-    data %>%
-        mutate(
-            # Catch per boat validation
-            catch_per_boat = catch_kg / n_boats,
-            cpb_mad = mad(catch_per_boat, na.rm = TRUE),
-            cpb_median = median(catch_per_boat, na.rm = TRUE),
-            catch_boat_valid = abs(catch_per_boat - cpb_median) <= 3 * cpb_mad,
-            
-            # Price vs catch validation
-            price_catch_ratio = price_kg * catch_kg,
-            pcr_mad = mad(price_catch_ratio, na.rm = TRUE),
-            pcr_median = median(price_catch_ratio, na.rm = TRUE),
-            price_catch_valid = abs(price_catch_ratio - pcr_median) <= 3 * pcr_mad,
-            
-            # Fisher per boat validation
-            fishers_per_boat = n_fishers / n_boats,
-            fpb_valid = between(fishers_per_boat, 2, 15)  # Typical crew size range
-        )
-}
-
-# Apply cross-validation
-validated_data <- fishing_data %>%
+# Calculate and validate catch per boat
+catch_efficiency <- fishing_data %>%
     group_by(catch_taxon) %>%
-    group_modify(~cross_validate(.x)) %>%
-    ungroup() %>% 
-  na.omit()
+    mutate(
+        # Calculate catch per boat
+        catch_per_boat = catch_kg / n_boats,
+        
+        # Calculate typical ranges using MAD
+        typical_cpb = median(catch_per_boat),
+        cpb_spread = mad(catch_per_boat),
+        
+        # Flag unusual values (more than 3 MADs from median)
+        efficiency_valid = abs(catch_per_boat - typical_cpb) <= 3 * cpb_spread
+    ) %>%
+    ungroup()
 
-# Visualize validation results
-ggplot(validated_data, 
-       aes(x = catch_per_boat, y = price_kg, 
-           color = catch_boat_valid & price_catch_valid)) +
+# Visualize catch efficiency
+ggplot(catch_efficiency, 
+       aes(x = catch_per_boat, y = price_kg, color = efficiency_valid)) +
     geom_point(alpha = 0.6) +
     facet_wrap(~catch_taxon, scales = "free") +
     scale_color_manual(values = c("TRUE" = "blue", "FALSE" = "red")) +
-    labs(title = "Cross-Variable Validation Results",
-         subtitle = "Red points fail relationship validation",
+    labs(title = "Catch Efficiency vs Price",
+         subtitle = "Red points show unusual catch per boat values",
          x = "Catch per Boat (kg)",
-         y = "Price per kg",
-         color = "Valid Data") +
+         y = "Price per kg") +
     theme_minimal()
 ```
 
-### Using Advanced Visualization for Validation 📈
+### Price and Catch Relationships 💰
 
-Let's explore more sophisticated visualization techniques that can help identify data quality issues:
-
-#### 1. Multi-dimensional Validation Plots
+One of the most important validations in fisheries data is checking if prices make sense for the catches. Let's examine this relationship:
 
 ```{webr}
 #| autorun: false
-# Create a plot that shows multiple validation dimensions
-validated_data %>%
-    mutate(
-        size_category = cut(catch_kg, 
-                           breaks = c(0, 50, 100, 500, Inf),
-                           labels = c("Small", "Medium", "Large", "Very Large"))
-    ) %>%
-    ggplot(aes(x = n_boats, y = n_fishers)) +
-    geom_point(aes(size = catch_kg, color = price_catch_valid), alpha = 0.6) +
-    facet_wrap(~size_category) +
-    scale_color_manual(values = c("TRUE" = "blue", "FALSE" = "red")) +
-    labs(title = "Multi-dimensional Validation View",
-         subtitle = "Examining relationships between effort, catch, and price validity",
-         x = "Number of Boats",
-         y = "Number of Fishers",
-         size = "Catch (kg)",
-         color = "Valid Price-Catch Relationship") +
-    theme_minimal()
-```
-
-#### 2. Temporal Pattern Validation
-
-```{webr}
-#| autorun: false
-# Convert date and examine temporal patterns
-temporal_validation <- validated_data %>%
-    mutate(
-        landing_date = as.Date(landing_date),
-        month = format(landing_date, "%m"),
-        valid = catch_boat_valid & price_catch_valid & fpb_valid
-    )
-
-# Create temporal validation plot
-ggplot(temporal_validation, 
-       aes(x = landing_date, y = catch_kg, color = valid)) +
+# First look at price vs catch by species
+ggplot(fishing_data, 
+       aes(x = catch_kg, y = price_kg, color = catch_taxon)) +
     geom_point(alpha = 0.6) +
-    geom_smooth(aes(group = 1), method = "loess", color = "black", se = FALSE) +
-    facet_wrap(~catch_taxon, scales = "free_y") +
-    scale_color_manual(values = c("TRUE" = "blue", "FALSE" = "red")) +
-    labs(title = "Temporal Validation Patterns",
-         subtitle = "Looking for seasonal patterns and anomalies",
-         x = "Date",
-         y = "Catch (kg)",
-         color = "Valid Data") +
-    theme_minimal() +
-    theme(axis.text.x = element_text(angle = 45, hjust = 1))
+    labs(title = "Price vs Catch Size by Species",
+         x = "Catch (kg)",
+         y = "Price per kg",
+         color = "Species") +
+    theme_minimal()
 ```
 
-#### 3. Validation Summary Visualizations
+We can use MAD to identify unusual price-catch combinations:
 
 ```{webr}
 #| autorun: false
-# Create validation summary statistics
-validation_summary <- validated_data %>%
+# Validate prices for each species
+price_validation <- fishing_data %>%
+    group_by(catch_taxon) %>%
+    mutate(
+        # Calculate typical price range using MAD
+        typical_price = median(price_kg),
+        price_spread = mad(price_kg),
+        
+        # Flag unusual prices (more than 3 MADs from median)
+        price_valid = abs(price_kg - typical_price) <= 3 * price_spread
+    ) %>%
+    ungroup()
+
+# Visualize price validation
+ggplot(price_validation, 
+       aes(x = catch_kg, y = price_kg, color = price_valid)) +
+    geom_point(alpha = 0.6) +
+    facet_wrap(~catch_taxon, scales = "free") +
+    scale_color_manual(values = c("TRUE" = "blue", "FALSE" = "red")) +
+    labs(title = "Price Validation by Species",
+         subtitle = "Red points show unusual prices",
+         x = "Catch (kg)",
+         y = "Price per kg") +
+    theme_minimal()
+
+# Show summary statistics
+price_summary <- price_validation %>%
     group_by(catch_taxon) %>%
     summarise(
-        n_total = n(),
-        n_invalid_catch = sum(!catch_boat_valid, na.rm = TRUE),
-        n_invalid_price = sum(!price_catch_valid, na.rm = TRUE),
-        n_invalid_crew = sum(!fpb_valid, na.rm = TRUE),
-        percent_valid = mean(catch_boat_valid & 
-                           price_catch_valid & 
-                           fpb_valid, na.rm = TRUE) * 100
-    ) %>%
-    filter(n_total >= 10)  # Focus on well-sampled species
+        median_price = round(median(price_kg)),
+        typical_range = paste(round(median(price_kg) - 3*mad(price_kg)),
+                            "to",
+                            round(median(price_kg) + 3*mad(price_kg))),
+        pct_valid = mean(price_valid) * 100
+    )
 
-# Create summary plot
-ggplot(validation_summary, 
-       aes(x = reorder(catch_taxon, percent_valid), y = percent_valid)) +
-    geom_col(fill = "steelblue", alpha = 0.7) +
-    geom_text(aes(label = sprintf("%.1f%%", percent_valid)), 
-              hjust = -0.1, size = 3) +
-    coord_flip() +
-    labs(title = "Validation Success Rate by Species",
-         subtitle = "Percentage of records passing all validation checks",
-         x = "Species",
-         y = "Percent Valid (%)") +
-    theme_minimal()
+print("Price validation summary:")
+print(price_summary)
 ```
 
-### Interpreting Cross-Variable Validation Results 🔍
-
-When examining cross-variable validation results, consider:
-
-1. **Logical Consistency**
-   - Do relationships make biological sense?
-   - Are there clear patterns in invalid data?
-   - Do some species show more issues than others?
-
-2. **Temporal Patterns**
-   - Are validation failures clustered in time?
-   - Do they correspond to known events?
-   - Are there seasonal patterns in data quality?
-
-3. **Spatial Patterns**
-   - Do some landing sites show more issues?
-   - Are there geographic patterns in data quality?
-   - Could environmental factors be influencing results?
+This validation shows us:
+- Each species has its typical price range
+- Most prices fall within 3 MADs of the median
+- Some species show more price variation than others
 
 :::{.callout-tip}
-## Cross-Validation Tips
-1. Always consider biological and operational constraints
-2. Look for patterns in validation failures
-3. Consider multiple validation criteria simultaneously
-4. Document assumptions about variable relationships
-5. Review results with field experts
+## Price Validation Tips
+1. Always validate prices by species
+2. Consider market factors that might affect prices
+3. Look for patterns in unusual prices
+4. Document any seasonal price variations
+5. Check with local knowledge about price ranges
 :::
 
-### Practice Exercise: Cross-Variable Validation 💪
+### Practice Exercise: Price Validation 💪
 
-Let's practice implementing cross-variable validation:
+Let's practice implementing price validation:
 
 ```{webr}
 #| autorun: false
 #| echo: true
 # Exercise: Create a validation check that:
-# 1. Identifies suspicious price-catch relationships by species
-# 2. Validates crew sizes against boat types
-# 3. Checks for temporal consistency in catch rates
+# 1. Calculates total value (catch_kg * price_kg)
+# 2. Identifies unusual total values using MAD
+# 3. Visualizes the results
 
 # Your code here:
 
@@ -421,346 +274,158 @@ Let's practice implementing cross-variable validation:
 ```{webr}
 #| autorun: false
 #| eval: false
-# Create comprehensive validation
-validation_exercise <- fishing_data %>%
+# Value validation
+value_validation <- fishing_data %>%
     group_by(catch_taxon) %>%
     mutate(
-        # Price-catch relationship
-        price_per_catch = price_kg * catch_kg,
-        price_mad = mad(price_per_catch, na.rm = TRUE),
-        price_median = median(price_per_catch, na.rm = TRUE),
-        price_valid = abs(price_per_catch - price_median) <= 3 * price_mad,
+        # Calculate total value
+        total_value = catch_kg * price_kg,
         
-        # Crew size validation
-        crew_ratio = n_fishers / n_boats,
-        crew_valid = between(crew_ratio, 2, 15),
-        
-        # Temporal consistency
-        landing_date = as.Date(landing_date),
-        daily_catch = ave(catch_kg, landing_date, FUN = sum, na.rm = TRUE),
-        catch_mad = mad(daily_catch, na.rm = TRUE),
-        catch_median = median(daily_catch, na.rm = TRUE),
-        temporal_valid = abs(daily_catch - catch_median) <= 3 * catch_mad
+        # Check if value is reasonable
+        typical_value = median(total_value),
+        value_spread = mad(total_value),
+        value_valid = abs(total_value - typical_value) <= 3 * value_spread
     ) %>%
     ungroup()
 
-# Create summary visualization
-ggplot(validation_exercise, 
-       aes(x = landing_date, y = daily_catch, 
-           color = price_valid & crew_valid & temporal_valid)) +
+# Visualize results
+ggplot(value_validation, 
+       aes(x = catch_kg, y = total_value, color = value_valid)) +
     geom_point(alpha = 0.6) +
-    facet_wrap(~catch_taxon, scales = "free_y") +
+    facet_wrap(~catch_taxon, scales = "free") +
     scale_color_manual(values = c("TRUE" = "blue", "FALSE" = "red")) +
-    labs(title = "Comprehensive Validation Results",
-         x = "Date",
-         y = "Daily Catch (kg)",
-         color = "Valid Data") +
+    labs(title = "Total Value Validation",
+         x = "Catch (kg)",
+         y = "Total Value",
+         color = "Valid Value") +
     theme_minimal()
 ```
 </details>
 
-## Advanced Statistical Validation Methods 📊
+### Location-Specific Validation 🗺️
 
-While MAD and cross-variable validation are powerful, some data quality issues require more sophisticated statistical approaches. Let's explore several advanced methods particularly useful for fisheries data.
+An important aspect of fisheries data validation is recognizing that relationships between variables can vary by location. Different landing sites might have different patterns due to:
+- Local market conditions
+- Fishing ground accessibility
+- Community practices
+- Landing site facilities
 
-### Multivariate Outlier Detection 🎯
-
-Instead of checking variables individually, we can look for unusual combinations of variables:
+Let's examine how price-catch relationships vary by landing site:
 
 ```{webr}
 #| autorun: false
-# Calculate Mahalanobis distances for multivariate outlier detection
-multivariate_check <- fishing_data %>%
-    # Select numeric variables
-    select(catch_kg, price_kg, n_boats, n_fishers) %>%
-    # Remove NA values
-    na.omit() %>%
-    # Calculate Mahalanobis distances
+# Validate prices separately for each landing site and species
+site_validation <- fishing_data %>%
+    group_by(landing_site, catch_taxon) %>%
     mutate(
-        maha_dist = mahalanobis(
-            x = select(., everything()),
-            center = colMeans(select(., everything())),
-            cov = cov(select(., everything()))
-        ),
-        # Chi-square cutoff for outlier detection
-        is_outlier = maha_dist > qchisq(p = 0.975, df = ncol(.))
-    )
+        # Calculate typical price range for each site-species combination
+        typical_price = median(price_kg),
+        price_spread = mad(price_kg),
+        price_valid = abs(price_kg - typical_price) <= 3 * price_spread
+    ) %>%
+    ungroup()
 
-# Visualize multivariate outliers
-ggplot(multivariate_check, 
-       aes(x = catch_kg, y = price_kg, color = is_outlier)) +
+# Visualize price patterns by site
+ggplot(site_validation, 
+       aes(x = catch_kg, y = price_kg, color = price_valid)) +
     geom_point(alpha = 0.6) +
-    facet_wrap(~cut(n_boats, breaks = c(0, 5, 10, Inf), 
-                    labels = c("Small", "Medium", "Large")),
-               scales = "free") +
-    scale_color_manual(values = c("TRUE" = "red", "FALSE" = "blue")) +
-    labs(title = "Multivariate Outlier Detection",
-         subtitle = "Using Mahalanobis distance",
+    facet_grid(landing_site ~ catch_taxon, scales = "free") +
+    scale_color_manual(values = c("TRUE" = "blue", "FALSE" = "red")) +
+    labs(title = "Price Validation by Landing Site and Species",
+         subtitle = "Note how patterns vary between locations",
          x = "Catch (kg)",
          y = "Price per kg",
-         color = "Outlier") +
-    theme_minimal()
-```
+         color = "Valid Price") +
+    theme_minimal() +
+    theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
-### Time Series Decomposition for Validation 📈
-
-Fisheries data often shows seasonal patterns. We can use this to identify anomalies:
-
-```{webr}
-#| autorun: false
-# Create time series validation
-ts_validation <- fishing_data %>%
-    mutate(landing_date = as.Date(landing_date)) %>%
-    group_by(landing_date, catch_taxon) %>%
+# Show summary by site
+site_summary <- site_validation %>%
+    group_by(landing_site, catch_taxon) %>%
     summarise(
-        daily_catch = sum(catch_kg, na.rm = TRUE),
+        median_price = round(median(price_kg)),
+        n_records = n(),
+        pct_valid = mean(price_valid) * 100,
         .groups = 'drop'
-    ) %>%
-    group_by(catch_taxon) %>%
-    arrange(landing_date) %>%
-    # Calculate rolling statistics
-    mutate(
-        # 7-day moving average
-        ma7 = zoo::rollmean(daily_catch, k = 7, fill = NA),
-        # Rolling median absolute deviation
-        mad7 = zoo::rollapply(daily_catch, width = 7, 
-                             FUN = function(x) mad(x, na.rm = TRUE),
-                             fill = NA),
-        # Identify temporal outliers
-        is_outlier = abs(daily_catch - ma7) > 3 * mad7
     )
 
-# Visualize temporal patterns
-ggplot(ts_validation %>% filter(!is.na(ma7)), 
-       aes(x = landing_date)) +
-    geom_line(aes(y = ma7), color = "blue", alpha = 0.5) +
-    geom_point(aes(y = daily_catch, color = is_outlier)) +
-    facet_wrap(~catch_taxon, scales = "free_y") +
-    scale_color_manual(values = c("TRUE" = "red", "FALSE" = "blue")) +
-    labs(title = "Temporal Pattern Validation",
-         subtitle = "Blue line: 7-day moving average; Red points: Outliers",
-         x = "Date",
-         y = "Daily Catch (kg)",
-         color = "Outlier") +
-    theme_minimal()
+print("\nValidation summary by landing site:")
+print(site_summary)
 ```
 
-### Compositional Data Analysis 🐟
-
-For species composition data, we can use methods specific to proportional data:
-
-```{webr}
-#| autorun: false
-# Analyze catch composition patterns
-composition_validation <- fishing_data %>%
-    group_by(landing_date) %>%
-    mutate(
-        # Calculate daily proportions
-        total_catch = sum(catch_kg, na.rm = TRUE),
-        proportion = catch_kg / total_catch,
-        # Calculate typical proportions by species
-        typical_prop = mean(proportion, na.rm = TRUE),
-        prop_mad = mad(proportion, na.rm = TRUE),
-        # Flag unusual compositions
-        unusual_comp = abs(proportion - typical_prop) > 3 * prop_mad
-    ) %>%
-    ungroup()
-
-# Visualize composition patterns
-ggplot(composition_validation, 
-       aes(x = landing_date, y = proportion, fill = catch_taxon)) +
-    geom_area(position = "fill", alpha = 0.7) +
-    labs(title = "Species Composition Over Time",
-         x = "Date",
-         y = "Proportion of Total Catch",
-         fill = "Species") +
-    theme_minimal()
-
-# Show unusual compositions
-ggplot(composition_validation %>% filter(unusual_comp), 
-       aes(x = landing_date, y = proportion, color = catch_taxon)) +
-    geom_point(size = 3) +
-    labs(title = "Unusual Species Compositions",
-         subtitle = "Points show compositions flagged as unusual",
-         x = "Date",
-         y = "Proportion of Total Catch",
-         color = "Species") +
-    theme_minimal()
-```
-
-### Distribution Mixture Models 📊
-
-Sometimes, data might follow multiple patterns. Let's identify these using mixture models:
-
-```{webr}
-#| autorun: false
-# Simple mixture model for catch sizes
-catch_mixtures <- fishing_data %>%
-    group_by(catch_taxon) %>%
-    mutate(
-        # Use log catch for better distribution
-        log_catch = log(catch_kg),
-        # Identify potential groups using k-means
-        size_cluster = kmeans(matrix(log_catch), centers = 2)$cluster,
-        # Flag catches that don't fit well in either group
-        cluster_center = ave(log_catch, size_cluster, FUN = mean),
-        cluster_sd = ave(log_catch, size_cluster, FUN = sd),
-        unusual_size = abs(log_catch - cluster_center) > 2 * cluster_sd
-    ) %>%
-    ungroup()
-
-# Visualize catch size distributions
-ggplot(catch_mixtures, 
-       aes(x = catch_kg, fill = factor(size_cluster))) +
-    geom_density(alpha = 0.5) +
-    facet_wrap(~catch_taxon, scales = "free") +
-    labs(title = "Catch Size Distribution Patterns",
-         subtitle = "Different colors show potential distinct catch patterns",
-         x = "Catch (kg)",
-         y = "Density",
-         fill = "Size Group") +
-    theme_minimal()
-```
-
-### Interpreting Advanced Validation Results 🔍
-
-When using these advanced methods, consider:
-
-1. **Statistical Assumptions**
-   - Are the methods appropriate for your data?
-   - Have you checked the underlying assumptions?
-   - How sensitive are results to parameter choices?
-
-2. **Biological Context**
-   - Do the identified patterns make ecological sense?
-   - Are there known factors explaining unusual patterns?
-   - How do results align with field knowledge?
-
-3. **Practical Implementation**
-   - How will you handle flagged data?
-   - What threshold levels are appropriate?
-   - How to document and communicate results?
+This location-specific analysis shows us:
+- Price ranges can vary significantly between sites
+- Some sites might have different validation thresholds
+- Data quality might vary by location
+- Local patterns need local knowledge for validation
 
 :::{.callout-tip}
-## Advanced Validation Tips
-1. Combine multiple validation approaches
-2. Always consider the biological context
-3. Document statistical assumptions
-4. Set appropriate confidence levels
-5. Review results with domain experts
+## Site-Specific Validation Tips
+1. Always consider local context
+2. Compare patterns between sites
+3. Look for site-specific anomalies
+4. Consult with local experts
+5. Document site-specific thresholds
+:::
+
+Remember: Good data validation considers both the general patterns in your data and how these patterns might vary across different locations and contexts. 🎯
+
+## Validation Tips
+1. Start with simple checks and add complexity gradually
+2. Use domain knowledge to set reasonable bounds
+3. Consider relationships between variables
+4. Document your validation decisions
+5. Review results with field experts
 :::
 
 ## Key Takeaways and Next Steps 🎯
 
-We've explored a comprehensive suite of validation techniques for fisheries data, progressing from basic checks to advanced statistical methods. Let's summarize the key approaches and their applications:
+Throughout this tutorial, we've explored several approaches to validating fisheries data:
 
-### Summary of Validation Approaches
+1. **Distribution-Based Validation**
+   - Understanding what "normal" looks like in your data
+   - Using MAD for robust outlier detection
+   - Considering species-specific patterns
 
-1. **Statistical Fundamentals**
-   - MAD-based outlier detection
-   - Distribution analysis
-   - Species-specific thresholds
-   - Cross-variable validation
+2. **Price-Catch Relationships**
+   - Validating price patterns by species
+   - Identifying unusual transactions
+   - Understanding market dynamics
 
-2. **Advanced Methods**
-   - Multivariate outlier detection
-   - Time series validation
-   - Compositional data analysis
-   - Distribution mixture models
+3. **Location-Specific Patterns**
+   - Recognizing site-specific variations
+   - Adapting validation to local contexts
+   - Comparing patterns across sites
 
-### Building an Effective Validation Strategy
+### Building Your Validation Strategy
 
-When developing your validation workflow, consider this hierarchical approach:
-
-```{webr}
-#| autorun: false
-# Example of a complete validation workflow
-validation_workflow <- function(data) {
-    data %>%
-        # Step 1: Basic data quality checks
-        mutate(
-            basic_valid = !is.na(catch_kg) & !is.na(price_kg) & 
-                         catch_kg > 0 & price_kg > 0
-        ) %>%
-        # Step 2: MAD-based validation
-        group_by(catch_taxon) %>%
-        mutate(
-            catch_mad_valid = abs(catch_kg - median(catch_kg)) <= 3 * mad(catch_kg),
-            price_mad_valid = abs(price_kg - median(price_kg)) <= 3 * mad(price_kg)
-        ) %>%
-        # Step 3: Cross-variable validation
-        mutate(
-            relationship_valid = catch_kg/n_boats <= 500 &
-                               n_fishers/n_boats <= 15
-        ) %>%
-        # Combine all validation results
-        mutate(
-            fully_valid = basic_valid & catch_mad_valid & 
-                         price_mad_valid & relationship_valid
-        ) %>%
-        ungroup()
-}
-
-# Apply workflow to our data
-final_validation <- validation_workflow(fishing_data)
-
-# Create summary visualization
-ggplot(final_validation, 
-       aes(x = catch_taxon, fill = fully_valid)) +
-    geom_bar(position = "fill") +
-    coord_flip() +
-    labs(title = "Overall Validation Results by Species",
-         subtitle = "Proportion of records passing all validation checks",
-         x = "Species",
-         y = "Proportion",
-         fill = "Valid") +
-    scale_fill_manual(values = c("TRUE" = "forestgreen", "FALSE" = "firebrick")) +
-    theme_minimal()
-```
-
-### Best Practices for Implementation
+When validating your own fisheries data:
 
 1. **Start Simple**
-   - Begin with basic checks and thresholds
-   - Add complexity gradually
-   - Document validation rules clearly
+   - Begin with basic distribution checks
+   - Use MAD for initial outlier detection
+   - Document clear validation rules
 
-2. **Combine Methods**
-   - Use multiple validation approaches
-   - Consider both statistical and biological criteria
-   - Cross-validate findings
+2. **Consider Context**
+   - Account for species differences
+   - Include location-specific patterns
+   - Consult local knowledge
 
-3. **Review and Refine**
-   - Regularly assess validation results
-   - Adjust thresholds based on feedback
-   - Document changes and reasoning
-
-### Looking Forward
-
-As you implement these validation methods:
-
-1. **Automate Where Possible**
-   - Create reusable validation functions
-   - Build automated reporting workflows
-   - Maintain consistent validation rules
-
-2. **Stay Flexible**
-   - Be ready to adjust thresholds
-   - Account for seasonal changes
-   - Incorporate new validation methods
-
-3. **Engage Stakeholders**
-   - Share validation results with data collectors
-   - Get feedback from field experts
-   - Maintain clear documentation
+3. **Document Decisions**
+   - Record validation thresholds
+   - Note exceptions and special cases
+   - Keep track of flagged data
 
 :::{.callout-tip}
-## Final Tips
-1. Validate early and often in your data pipeline
-2. Keep validation rules transparent and documented
-3. Balance statistical rigor with practical usefulness
-4. Build validation into your regular workflow
-5. Share and review validation results regularly
+## Final Validation Tips
+1. Validate early in your analysis workflow
+2. Combine multiple validation approaches
+3. Update validation rules as you learn more about your data
+4. Share validation results with data collectors
+5. Use validation to improve data collection
 :::
 
-Remember: Data validation is not just about finding errors - it's about building confidence in your data and improving data collection processes over time. 🎯
+Remember: Data validation is an iterative process. As you learn more about your data, you can refine your validation approaches and thresholds. The goal is not just to find errors, but to build confidence in your data quality for reliable fisheries analysis. 🎯
+
+
+Next: [R Resources for Fisheries Analysis](9_references.html)

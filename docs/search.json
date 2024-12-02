@@ -114,7 +114,7 @@
     "href": "r_snacks/2_rbasics.html#additional-resources-and-next-steps",
     "title": "2. Basic Operations in R: A Technical Guide",
     "section": "10. Additional Resources and Next Steps 📚",
-    "text": "10. Additional Resources and Next Steps 📚\nAfter mastering these basics, you can:\n\nLearn Data Frames: The next step for handling real datasets\nExplore Visualization: Create plots with ggplot2\nStudy Statistics: R’s statistical functions\nWrite Functions: Create your own reusable code\n\n\n\n\n\n\n\nPractice Tips\n\n\n\n\nType code yourself, don’t copy-paste\nExperiment with different values\nTry to predict results before running\nUse help documentation regularly\nKeep notes on new functions\n\n\n\nRemember: R has a helpful community. Use resources like: - R documentation (?function_name) - RStudio Community forums - Stack Overflow with [r] tag - R-bloggers for tutorials\nHappy coding! 🎉",
+    "text": "10. Additional Resources and Next Steps 📚\nAfter mastering these basics, you can:\n\nLearn Data Frames: The next step for handling real datasets\nExplore Visualization: Create plots with ggplot2\nStudy Statistics: R’s statistical functions\nWrite Functions: Create your own reusable code\n\n\n\n\n\n\n\nPractice Tips\n\n\n\n\nType code yourself, don’t copy-paste\nExperiment with different values\nTry to predict results before running\nUse help documentation regularly\nKeep notes on new functions\n\n\n\nRemember: R has a helpful community. Use resources like: - R documentation (?function_name) - RStudio Community forums - Stack Overflow with [r] tag - R-bloggers for tutorials\nNext: Understanding Data Frames",
     "crumbs": [
       "Getting Started",
       "2. Basic Operations"
@@ -235,7 +235,7 @@
     "href": "r_snacks/6_preprocessing1.html#next-steps",
     "title": "5. Data Preprocessing in R: Getting Your Fisheries Data Ready for Analysis",
     "section": "Next Steps 🚀",
-    "text": "Next Steps 🚀\nNow that you’ve mastered basic preprocessing, you can: - Create preprocessing workflows for your own data - Explore more advanced cleaning techniques - Learn about quality control methods - Automate your preprocessing steps - Share your knowledge with colleagues\nRemember: Good preprocessing is the foundation of reliable analysis. Take the time to do it right! 🎯",
+    "text": "Next Steps 🚀\nNow that you’ve mastered basic preprocessing, you can: - Create preprocessing workflows for your own data - Explore more advanced cleaning techniques - Learn about quality control methods - Automate your preprocessing steps - Share your knowledge with colleagues\nRemember: Good preprocessing is the foundation of reliable analysis. Take the time to do it right! 🎯\nNext: Preprocessing data 2",
     "crumbs": [
       "Data processing",
       "1. From messy to tidy data"
@@ -301,109 +301,65 @@
     "href": "r_snacks/4_packages.html#moving-forward-with-packages-and-pipes",
     "title": "4. Understanding R Packages: Making Your Life Easier",
     "section": "Moving Forward with Packages and Pipes 🚀",
-    "text": "Moving Forward with Packages and Pipes 🚀\n\nKey Takeaways\n\nWhy Packages Matter\n\nSave significant time in data analysis\nMake complex operations simpler\nProvide specialized tools for specific needs\nLead to more readable and maintainable code\n\nThe Power of Pipes\n\nTransform complex nested operations into readable steps\nMake your analysis flow logically\nEasier to modify and debug code\nMore intuitive for collaboration\n\nBest Practices\n\n\n\n\n\n\n\n\n\n\n\nCommon Mistakes to Avoid ⚠️\n\nPackage Overload\n\nDon’t load packages you don’t need\nStick to well-maintained, popular packages\nLearn one package at a time\n\nPipe Complexity\n\nKeep pipe sequences reasonably short\nAdd comments for clarity\nCheck intermediate results when debugging\n\nData Consistency\n\nAlways check your data structure\nVerify results after each transformation\nKeep track of your grouping variables\n\n\n\n\nNext Steps 📚\nAs you continue your R journey:\n\nStart Simple\n\nBegin with basic dplyr functions: filter(), select(), mutate()\nAdd more complex operations as you get comfortable\nPractice with your own data\n\nExpand Your Toolkit\n\nExplore visualization with ggplot2\nLearn data reshaping with tidyr\nTry date manipulation with lubridate\n\nBuild Your Skills\n\nWork through tutorials\nJoin R user groups\nShare code with colleagues\n\n\n\n\nResources for Learning 📖\n\nOfficial Documentation\n\ntidyverse.org\nR package vignettes\nRStudio cheatsheets\n\nOnline Learning\n\nR for Data Science (r4ds.had.co.nz)\nStack Overflow\nRStudio Community\n\n\nRemember: The goal isn’t to memorize every function, but to: - Understand the basic principles - Know where to find help - Practice regularly with real data - Build your confidence step by step\nHappy coding! 🎉",
+    "text": "Moving Forward with Packages and Pipes 🚀\n\nKey Takeaways\n\nWhy Packages Matter\n\nSave significant time in data analysis\nMake complex operations simpler\nProvide specialized tools for specific needs\nLead to more readable and maintainable code\n\nThe Power of Pipes\n\nTransform complex nested operations into readable steps\nMake your analysis flow logically\nEasier to modify and debug code\nMore intuitive for collaboration\n\nBest Practices\n\n\n\n\n\n\n\n\n\n\n\nCommon Mistakes to Avoid ⚠️\n\nPackage Overload\n\nDon’t load packages you don’t need\nStick to well-maintained, popular packages\nLearn one package at a time\n\nPipe Complexity\n\nKeep pipe sequences reasonably short\nAdd comments for clarity\nCheck intermediate results when debugging\n\nData Consistency\n\nAlways check your data structure\nVerify results after each transformation\nKeep track of your grouping variables\n\n\n\n\nNext Steps 📚\nAs you continue your R journey:\n\nStart Simple\n\nBegin with basic dplyr functions: filter(), select(), mutate()\nAdd more complex operations as you get comfortable\nPractice with your own data\n\nExpand Your Toolkit\n\nExplore visualization with ggplot2\nLearn data reshaping with tidyr\nTry date manipulation with lubridate\n\nBuild Your Skills\n\nWork through tutorials\nJoin R user groups\nShare code with colleagues\n\n\n\n\nResources for Learning 📖\n\nOfficial Documentation\n\ntidyverse.org\nR package vignettes\nRStudio cheatsheets\n\nOnline Learning\n\nR for Data Science (r4ds.had.co.nz)\nStack Overflow\nRStudio Community\n\n\nRemember: The goal isn’t to memorize every function, but to: - Understand the basic principles - Know where to find help - Practice regularly with real data - Build your confidence step by step\nNext: Visualizations",
     "crumbs": [
       "Getting Started",
       "4. Packages in R"
     ]
   },
   {
-    "objectID": "r_snacks/7_preprocessing2.html",
-    "href": "r_snacks/7_preprocessing2.html",
-    "title": "5.2 Data Preprocessing Case Study: Cleaning SSF Landing Site Data",
+    "objectID": "r_snacks/8_validation1.html",
+    "href": "r_snacks/8_validation1.html",
+    "title": "4.5 Statistical Approaches to Data Validation in Fisheries Research",
     "section": "",
-    "text": "Now that we’ve learned essential preprocessing techniques, let’s apply them to real Small-Scale Fisheries data. We’ll work with landing site data from Malawi that contains various challenges commonly encountered in field research. By working through this practical case study, you’ll strengthen your data cleaning skills using actual field-collected data.\nThink of this as your first real fish to clean - while our previous tutorial showed you the techniques, now you’ll get hands-on experience with real-world data complexities. Just as each fish presents unique cleaning challenges, field data often has unexpected issues that require careful attention.\n\n\n\n\n\n\nLearning Objectives\n\n\n\nBy working through this case study, you will: - Apply preprocessing techniques to real SSF field data - Handle common data quality issues from field collection - Create an end-to-end preprocessing workflow - Practice standardizing categorical variables - Deal with real-world missing data patterns - Clean actual numeric data with outliers",
+    "text": "After cleaning and preprocessing our data, validation is a crucial next step. While preprocessing focuses on formatting and consistency, validation helps us identify potentially problematic data points that might affect our analysis. Think of validation like quality control in a fish processing plant - we want to make sure our “product” (data) meets certain standards before using it.\nLet’s use the Malawi small-scale fisheries data that we preprocessed in the previous tutorial:\n\n\n\n\n\n\n\n\n\n\nBefore we start validating, we need to understand what “normal” looks like in our data. Different types of fisheries data often follow characteristic patterns:\n\nCatch weights: Usually right-skewed (many small catches, fewer large ones)\nPrices: Often species-specific\nNumber of boats and fishers: Should follow typical crew patterns\n\nLet’s visualize these patterns:\n\n\n\n\n\n\n\n\nThese distributions tell us: - Most catches are relatively small - Each species has its typical price range - There are some unusually high values that need checking\n\n\n\nThe Median Absolute Deviation (MAD) is particularly useful for fisheries data because it’s less affected by extreme values than standard deviation. It helps us identify unusual values more reliably.\nHere’s how MAD works: 1. Find the median of your data 2. Calculate how far each value is from the median 3. Take the median of these distances 4. Multiply by 1.4826 (this makes it comparable to standard deviation for normal data)\nLet’s use MAD to check our catch weights:\n\n\n\n\n\n\n\n\nWhy use MAD instead of standard deviation? 1. More robust to outliers 2. Works better with skewed data (like catch weights) 3. Gives fewer false positives 4. Better reflects the “typical” spread of the data",
     "crumbs": [
-      "Data processing",
-      "2. A real case study"
+      "Data validation",
+      "1. Validation in fisheries data"
     ]
   },
   {
-    "objectID": "r_snacks/7_preprocessing2.html#introduction",
-    "href": "r_snacks/7_preprocessing2.html#introduction",
-    "title": "5.2 Data Preprocessing Case Study: Cleaning SSF Landing Site Data",
+    "objectID": "r_snacks/8_validation1.html#why-validate-fisheries-data",
+    "href": "r_snacks/8_validation1.html#why-validate-fisheries-data",
+    "title": "4.5 Statistical Approaches to Data Validation in Fisheries Research",
     "section": "",
-    "text": "Now that we’ve learned essential preprocessing techniques, let’s apply them to real Small-Scale Fisheries data. We’ll work with landing site data from Malawi that contains various challenges commonly encountered in field research. By working through this practical case study, you’ll strengthen your data cleaning skills using actual field-collected data.\nThink of this as your first real fish to clean - while our previous tutorial showed you the techniques, now you’ll get hands-on experience with real-world data complexities. Just as each fish presents unique cleaning challenges, field data often has unexpected issues that require careful attention.\n\n\n\n\n\n\nLearning Objectives\n\n\n\nBy working through this case study, you will: - Apply preprocessing techniques to real SSF field data - Handle common data quality issues from field collection - Create an end-to-end preprocessing workflow - Practice standardizing categorical variables - Deal with real-world missing data patterns - Clean actual numeric data with outliers",
+    "text": "After cleaning and preprocessing our data, validation is a crucial next step. While preprocessing focuses on formatting and consistency, validation helps us identify potentially problematic data points that might affect our analysis. Think of validation like quality control in a fish processing plant - we want to make sure our “product” (data) meets certain standards before using it.\nLet’s use the Malawi small-scale fisheries data that we preprocessed in the previous tutorial:\n\n\n\n\n\n\n\n\n\n\nBefore we start validating, we need to understand what “normal” looks like in our data. Different types of fisheries data often follow characteristic patterns:\n\nCatch weights: Usually right-skewed (many small catches, fewer large ones)\nPrices: Often species-specific\nNumber of boats and fishers: Should follow typical crew patterns\n\nLet’s visualize these patterns:\n\n\n\n\n\n\n\n\nThese distributions tell us: - Most catches are relatively small - Each species has its typical price range - There are some unusually high values that need checking\n\n\n\nThe Median Absolute Deviation (MAD) is particularly useful for fisheries data because it’s less affected by extreme values than standard deviation. It helps us identify unusual values more reliably.\nHere’s how MAD works: 1. Find the median of your data 2. Calculate how far each value is from the median 3. Take the median of these distances 4. Multiply by 1.4826 (this makes it comparable to standard deviation for normal data)\nLet’s use MAD to check our catch weights:\n\n\n\n\n\n\n\n\nWhy use MAD instead of standard deviation? 1. More robust to outliers 2. Works better with skewed data (like catch weights) 3. Gives fewer false positives 4. Better reflects the “typical” spread of the data",
     "crumbs": [
-      "Data processing",
-      "2. A real case study"
+      "Data validation",
+      "1. Validation in fisheries data"
     ]
   },
   {
-    "objectID": "r_snacks/7_preprocessing2.html#understanding-our-dataset",
-    "href": "r_snacks/7_preprocessing2.html#understanding-our-dataset",
-    "title": "5.2 Data Preprocessing Case Study: Cleaning SSF Landing Site Data",
-    "section": "Understanding Our Dataset 📋",
-    "text": "Understanding Our Dataset 📋\nLet’s load and examine our landing site data from Malawi:\n\n\n\n\n\n\n\n\nOur dataset comes from landing site surveys in Salima, Malawi, and includes variables that are crucial for understanding fishing activities:\n\nData Structure Overview\n\nSurvey Information:\n\nsubmission_id: Unique identifier for each survey\nsurvey_id: Detailed survey identifier with trip information\nlanding_date: Date when catch was landed\nlanding_site: Name of the landing site\nlat, lon: Geographic coordinates of the landing\n\nFishing Effort Variables:\n\nn_fishers: Number of fishers involved\nn_boats: Number of boats used\ntrip_length: Duration of fishing trip\ngear: Type of fishing gear used\n\nCatch Information:\n\ncatch_usage: Purpose of the catch (trade, food, etc.)\ncatch_taxon: Species or taxonomic group caught\ncatch_kg: Weight of catch in kilograms\ncatch_price: Total price of catch\nprice_kg: Price per kilogram\n\n\n\n\nInitial Data Assessment\nLet’s examine the quality issues we need to address:\n\n\n\n\n\n\n\n\nOur initial assessment reveals several data quality challenges that we’ll need to address:\n\nMissing Data Issues:\n\nComplete survey rows with all values missing\nScattered missing values in effort variables\nEmpty strings and NA values mixed together\n\nCategorical Inconsistencies:\n\nMixed capitalization in catch_usage (“trade” vs “TRADE”)\nVariations in species names\nInconsistent landing site spellings\n\nNumeric Data Problems:\n\nText mixed with numbers in some numeric fields\nPotential outliers in catch and price data\nEffort variables with unrealistic values",
+    "objectID": "r_snacks/8_validation1.html#validating-relationships-between-variables",
+    "href": "r_snacks/8_validation1.html#validating-relationships-between-variables",
+    "title": "4.5 Statistical Approaches to Data Validation in Fisheries Research",
+    "section": "Validating Relationships Between Variables 🔍",
+    "text": "Validating Relationships Between Variables 🔍\nWhile checking individual variables is important, fisheries data contains natural relationships that we can use for validation. For example:\n\nMore boats should generally mean more catch\nPrices might vary with catch size\nNumber of fishers should make sense for the number of boats\n\nLet’s examine these relationships:\n\n\n\n\n\n\n\n\nThis plot shows us the basic relationship, but for validation, we should look at catch per boat - this helps us spot unusually high or low efficiency:\n\n\n\n\n\n\n\n\n\nPrice and Catch Relationships 💰\nOne of the most important validations in fisheries data is checking if prices make sense for the catches. Let’s examine this relationship:\n\n\n\n\n\n\n\n\nWe can use MAD to identify unusual price-catch combinations:\n\n\n\n\n\n\n\n\nThis validation shows us: - Each species has its typical price range - Most prices fall within 3 MADs of the median - Some species show more price variation than others\n\n\n\n\n\n\nPrice Validation Tips\n\n\n\n\nAlways validate prices by species\nConsider market factors that might affect prices\nLook for patterns in unusual prices\nDocument any seasonal price variations\nCheck with local knowledge about price ranges\n\n\n\n\n\nPractice Exercise: Price Validation 💪\nLet’s practice implementing price validation:\n\n\n\n\n\n\n\n\n\n\nClick to see solution\n\n\n\n\n\n\n\n\n\n\n\n\nLocation-Specific Validation 🗺️\nAn important aspect of fisheries data validation is recognizing that relationships between variables can vary by location. Different landing sites might have different patterns due to: - Local market conditions - Fishing ground accessibility - Community practices - Landing site facilities\nLet’s examine how price-catch relationships vary by landing site:\n\n\n\n\n\n\n\n\nThis location-specific analysis shows us: - Price ranges can vary significantly between sites - Some sites might have different validation thresholds - Data quality might vary by location - Local patterns need local knowledge for validation\n\n\n\n\n\n\nSite-Specific Validation Tips\n\n\n\n\nAlways consider local context\nCompare patterns between sites\nLook for site-specific anomalies\nConsult with local experts\nDocument site-specific thresholds\n\n\n\nRemember: Good data validation considers both the general patterns in your data and how these patterns might vary across different locations and contexts. 🎯",
     "crumbs": [
-      "Data processing",
-      "2. A real case study"
+      "Data validation",
+      "1. Validation in fisheries data"
     ]
   },
   {
-    "objectID": "r_snacks/7_preprocessing2.html#starting-with-clean-names",
-    "href": "r_snacks/7_preprocessing2.html#starting-with-clean-names",
-    "title": "5.2 Data Preprocessing Case Study: Cleaning SSF Landing Site Data",
-    "section": "Starting with Clean Names 🏷️",
-    "text": "Starting with Clean Names 🏷️\nThe first step in our preprocessing workflow is to standardize variable names using the techniques we learned in the previous tutorial. This ensures consistent naming patterns throughout our analysis:\n\n\n\n\n\n\n\n\nThe clean_names() function has: - Converted all names to lowercase - Replaced dots and spaces with underscores - Removed special characters - Created consistent naming patterns",
+    "objectID": "r_snacks/8_validation1.html#validation-tips",
+    "href": "r_snacks/8_validation1.html#validation-tips",
+    "title": "4.5 Statistical Approaches to Data Validation in Fisheries Research",
+    "section": "Validation Tips",
+    "text": "Validation Tips\n\nStart with simple checks and add complexity gradually\nUse domain knowledge to set reasonable bounds\nConsider relationships between variables\nDocument your validation decisions\nReview results with field experts :::",
     "crumbs": [
-      "Data processing",
-      "2. A real case study"
+      "Data validation",
+      "1. Validation in fisheries data"
     ]
   },
   {
-    "objectID": "r_snacks/7_preprocessing2.html#string-standardization",
-    "href": "r_snacks/7_preprocessing2.html#string-standardization",
-    "title": "5.2 Data Preprocessing Case Study: Cleaning SSF Landing Site Data",
-    "section": "String Standardization 🔤",
-    "text": "String Standardization 🔤\nOur categorical variables need standardization. Let’s clean up species names and catch usage categories:\n\n\n\n\n\n\n\n\nOur standardization has: - Created consistent categories for catch usage - Standardized species names to lowercase - Removed unnecessary whitespace - Made categories ready for analysis",
+    "objectID": "r_snacks/8_validation1.html#key-takeaways-and-next-steps",
+    "href": "r_snacks/8_validation1.html#key-takeaways-and-next-steps",
+    "title": "4.5 Statistical Approaches to Data Validation in Fisheries Research",
+    "section": "Key Takeaways and Next Steps 🎯",
+    "text": "Key Takeaways and Next Steps 🎯\nThroughout this tutorial, we’ve explored several approaches to validating fisheries data:\n\nDistribution-Based Validation\n\nUnderstanding what “normal” looks like in your data\nUsing MAD for robust outlier detection\nConsidering species-specific patterns\n\nPrice-Catch Relationships\n\nValidating price patterns by species\nIdentifying unusual transactions\nUnderstanding market dynamics\n\nLocation-Specific Patterns\n\nRecognizing site-specific variations\nAdapting validation to local contexts\nComparing patterns across sites\n\n\n\nBuilding Your Validation Strategy\nWhen validating your own fisheries data:\n\nStart Simple\n\nBegin with basic distribution checks\nUse MAD for initial outlier detection\nDocument clear validation rules\n\nConsider Context\n\nAccount for species differences\nInclude location-specific patterns\nConsult local knowledge\n\nDocument Decisions\n\nRecord validation thresholds\nNote exceptions and special cases\nKeep track of flagged data\n\n\n\n\n\n\n\n\nFinal Validation Tips\n\n\n\n\nValidate early in your analysis workflow\nCombine multiple validation approaches\nUpdate validation rules as you learn more about your data\nShare validation results with data collectors\nUse validation to improve data collection\n\n\n\nRemember: Data validation is an iterative process. As you learn more about your data, you can refine your validation approaches and thresholds. The goal is not just to find errors, but to build confidence in your data quality for reliable fisheries analysis. 🎯\nNext: R Resources for Fisheries Analysis",
     "crumbs": [
-      "Data processing",
-      "2. A real case study"
-    ]
-  },
-  {
-    "objectID": "r_snacks/7_preprocessing2.html#handling-missing-values",
-    "href": "r_snacks/7_preprocessing2.html#handling-missing-values",
-    "title": "5.2 Data Preprocessing Case Study: Cleaning SSF Landing Site Data",
-    "section": "Handling Missing Values 🔍",
-    "text": "Handling Missing Values 🔍\nOur dataset has various types of missing values that need careful handling:\n\n\n\n\n\n\n\n\nLet’s handle these missing values systematically:\n\n\n\n\n\n\n\n\nOur missing value strategy: 1. Converted empty strings to NA for consistency 2. Removed completely empty survey records 3. Converted zeros to NA where they likely represent missing data 4. Left legitimate zeros in catch and price data",
-    "crumbs": [
-      "Data processing",
-      "2. A real case study"
-    ]
-  },
-  {
-    "objectID": "r_snacks/7_preprocessing2.html#cleaning-numeric-data",
-    "href": "r_snacks/7_preprocessing2.html#cleaning-numeric-data",
-    "title": "5.2 Data Preprocessing Case Study: Cleaning SSF Landing Site Data",
-    "section": "Cleaning Numeric Data 🔢",
-    "text": "Cleaning Numeric Data 🔢\nAfter handling categorical variables and missing values, we need to ensure our numeric data is clean and properly formatted. Our dataset includes several important numeric measurements: - Catch weights (catch_kg) - Prices (price_kg and catch_price) - Effort metrics (n_fishers, n_boats, trip_length)\nLet’s examine these variables:\n\n\n\n\n\n\n\n\nFrom our examination, we can see several issues: 1. Some values contain non-numeric characters 2. There are potential outliers in catch and price data 3. Some effort variables have unrealistic values\nLet’s clean these issues systematically:",
-    "crumbs": [
-      "Data processing",
-      "2. A real case study"
-    ]
-  },
-  {
-    "objectID": "r_snacks/7_preprocessing2.html#working-with-dates-and-times",
-    "href": "r_snacks/7_preprocessing2.html#working-with-dates-and-times",
-    "title": "5.2 Data Preprocessing Case Study: Cleaning SSF Landing Site Data",
-    "section": "Working with Dates and Times ⏰",
-    "text": "Working with Dates and Times ⏰\nOur dataset includes landing dates that need to be properly formatted for analysis. The landing_date column contains date information we need to parse:\n\n\n\n\n\n\n\n\nNow we can also analyze temporal patterns in our data:\n\n\n\n\n\n\n\n\n\nCreating Date-Based Groups\nFor analysis purposes, we can add additional time-based categorizations:\n\n\n\n\n\n\n\n\nThese date transformations allow us to: - Track temporal patterns in fishing activity - Analyze seasonal variations - Compare weekday vs weekend patterns - Group data by meaningful time periods",
-    "crumbs": [
-      "Data processing",
-      "2. A real case study"
-    ]
-  },
-  {
-    "objectID": "r_snacks/7_preprocessing2.html#conclusion",
-    "href": "r_snacks/7_preprocessing2.html#conclusion",
-    "title": "5.2 Data Preprocessing Case Study: Cleaning SSF Landing Site Data",
-    "section": "Conclusion 🎯",
-    "text": "Conclusion 🎯\nLet’s examine our fully preprocessed dataset:\n\n\n\n\n\n\n\n\nOur preprocessing workflow has: - Standardized all variable names and categories - Cleaned and validated numeric data - Handled missing values appropriately - Created consistent date formats - Removed unrealistic values\nThe cleaned dataset is now ready for analysis! 🎯",
-    "crumbs": [
-      "Data processing",
-      "2. A real case study"
+      "Data validation",
+      "1. Validation in fisheries data"
     ]
   },
   {
@@ -499,7 +455,7 @@
     "href": "r_snacks/1_rbasics.html#next-steps",
     "title": "1. Getting Started with R: Installation and First Steps",
     "section": "Next Steps 🚀",
-    "text": "Next Steps 🚀\nAfter completing this setup: 1. Explore RStudio’s interface 2. Try creating and saving some R scripts 3. Practice navigating your project structure 4. Get ready for data import and analysis!\n\n\n\n\n\n\nAdditional Resources\n\n\n\n\nRStudio IDE Cheat Sheet\nProject Management with RStudio\nR Installation FAQs\n\n\n\nRemember: Taking time to set up your environment properly will save you hours of frustration later!",
+    "text": "Next Steps 🚀\nAfter completing this setup: 1. Explore RStudio’s interface 2. Try creating and saving some R scripts 3. Practice navigating your project structure 4. Get ready for data import and analysis!\n\n\n\n\n\n\nAdditional Resources\n\n\n\n\nRStudio IDE Cheat Sheet\nProject Management with RStudio\nR Installation FAQs\n\n\n\nRemember: Taking time to set up your environment properly will save you hours of frustration later!\nNext: Basic Operations",
     "crumbs": [
       "Getting Started",
       "1. R Installation"
@@ -510,7 +466,7 @@
     "href": "index.html",
     "title": "R for Small-Scale Fishery Data",
     "section": "",
-    "text": "Welcome to our interactive R programming course, specifically designed for small-scale fisheries data analysis. Learn through practical tutorials that run directly in your browser - no installation needed. Our tutorials use real fisheries examples, from basic catch data calculations to stock assessments. Start with R fundamentals and progress at your own pace, practicing each concept with interactive exercises. Each tutorial builds on previous ones, helping you develop practical skills for analyzing your fisheries data. Browse the tutorials below to begin your journey in R programming for fisheries analysis.\nRemember: The best way to learn is by doing. Don’t just read the tutorials - try the code, modify it, and experiment with your own data!\n\n\n\n\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n1. Getting Started with R: Installation and First Steps\n\n\n\n\n\n\nR\n\n\nSetup\n\n\nBasics\n\n\n\n\n\n\n\n\n\nNov 6, 2024\n\n\nSSF Training Team\n\n\n\n\n\n\n\n\n\n\n\n\n2. Basic Operations in R: A Technical Guide\n\n\n\n\n\n\nR\n\n\nBasics\n\n\nOperations\n\n\n\n\n\n\n\n\n\nNov 6, 2024\n\n\nSSF Training Team\n\n\n\n\n\n\n\n\n\n\n\n\n3. Understanding Data Frames in R\n\n\n\n\n\n\nR\n\n\nData Frames\n\n\nBasics\n\n\n\n\n\n\n\n\n\nNov 6, 2024\n\n\nSSF Training Team\n\n\n\n\n\n\n\n\n\n\n\n\n4. Understanding R Packages: Making Your Life Easier\n\n\n\n\n\n\nR\n\n\nPackages\n\n\nBasics\n\n\n\n\n\n\n\n\n\nNov 6, 2024\n\n\nSSF Training Team\n\n\n\n\n\n\n\n\n\n\n\n\n3.5 Data Visualization in R: Common Plot Types for Fisheries Data\n\n\n\n\n\n\nR\n\n\nVisualization\n\n\nggplot2\n\n\n\n\n\n\n\n\n\nNov 6, 2024\n\n\nSSF Training Team\n\n\n\n\n\n\n\n\n\n\n\n\n5. Data Preprocessing in R: Getting Your Fisheries Data Ready for Analysis\n\n\n\n\n\n\nR\n\n\nData Cleaning\n\n\nPreprocessing\n\n\n\n\n\n\n\n\n\nNov 6, 2024\n\n\nSSF Training Team\n\n\n\n\n\n\n\n\n\n\n\n\n5.2 Data Preprocessing Case Study: Cleaning SSF Landing Site Data\n\n\n\n\n\n\nR\n\n\nData Cleaning\n\n\nPreprocessing\n\n\n\n\n\n\n\n\n\nNov 6, 2024\n\n\nSSF Training Team\n\n\n\n\n\n\n\n\n\n\n\n\n4.5 Statistical Approaches to Data Validation in Fisheries Research\n\n\n\n\n\n\nR\n\n\nData Validation\n\n\nStatistics\n\n\n\n\n\n\n\n\n\nNov 6, 2024\n\n\nSSF Training Team\n\n\n\n\n\n\n\n\n\n\n\n\n4.6 R Resources for Fisheries Analysis: Essential Tools and Packages\n\n\n\n\n\n\nR\n\n\nFisheries\n\n\nResources\n\n\n\n\n\n\n\n\n\nNov 6, 2024\n\n\nSSF Training Team\n\n\n\n\n\n\nNo matching items"
+    "text": "Welcome to our interactive R programming course, specifically designed for small-scale fisheries data analysis. Learn through practical tutorials that run directly in your browser - no installation needed. Start with R fundamentals and progress at your own pace, practicing each concept with interactive exercises. Each tutorial builds on previous ones, helping you develop practical skills for analyzing your fisheries data. Browse the tutorials to begin your journey in R programming for fisheries analysis.\nRemember: The best way to learn is by doing. Don’t just read the tutorials - try the code, modify it, and experiment with your own data!\n\n\n\n\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n1. Getting Started with R: Installation and First Steps\n\n\n\n\n\n\nR\n\n\nSetup\n\n\nBasics\n\n\n\n\n\n\n\n\n\nNov 6, 2024\n\n\nLorenzo Longobardi\n\n\n\n\n\n\n\n\n\n\n\n\n2. Basic Operations in R: A Technical Guide\n\n\n\n\n\n\nR\n\n\nBasics\n\n\nOperations\n\n\n\n\n\n\n\n\n\nNov 6, 2024\n\n\nLorenzo Longobardi\n\n\n\n\n\n\n\n\n\n\n\n\n3. Understanding Data Frames in R\n\n\n\n\n\n\nR\n\n\nData Frames\n\n\nBasics\n\n\n\n\n\n\n\n\n\nNov 6, 2024\n\n\nLorenzo Longobardi\n\n\n\n\n\n\n\n\n\n\n\n\n4. Understanding R Packages: Making Your Life Easier\n\n\n\n\n\n\nR\n\n\nPackages\n\n\nBasics\n\n\n\n\n\n\n\n\n\nNov 6, 2024\n\n\nLorenzo Longobardi\n\n\n\n\n\n\n\n\n\n\n\n\n3.5 Data Visualization in R: Common Plot Types for Fisheries Data\n\n\n\n\n\n\nR\n\n\nVisualization\n\n\nggplot2\n\n\n\n\n\n\n\n\n\nNov 6, 2024\n\n\nLorenzo Longobardi\n\n\n\n\n\n\n\n\n\n\n\n\n5. Data Preprocessing in R: Getting Your Fisheries Data Ready for Analysis\n\n\n\n\n\n\nR\n\n\nData Cleaning\n\n\nPreprocessing\n\n\n\n\n\n\n\n\n\nNov 6, 2024\n\n\nLorenzo Longobardi\n\n\n\n\n\n\n\n\n\n\n\n\n5.2 Data Preprocessing Case Study: Cleaning SSF Landing Site Data\n\n\n\n\n\n\nR\n\n\nData Cleaning\n\n\nPreprocessing\n\n\n\n\n\n\n\n\n\nNov 6, 2024\n\n\nLorenzo Longobardi\n\n\n\n\n\n\n\n\n\n\n\n\n4.5 Statistical Approaches to Data Validation in Fisheries Research\n\n\n\n\n\n\nR\n\n\nData Validation\n\n\nStatistics\n\n\n\n\n\n\n\n\n\nNov 6, 2024\n\n\nSSF Training Team\n\n\n\n\n\n\n\n\n\n\n\n\n4.6 R Resources for Fisheries Analysis: Essential Tools and Packages\n\n\n\n\n\n\nR\n\n\nFisheries\n\n\nResources\n\n\n\n\n\n\n\n\n\nNov 6, 2024\n\n\nLorenzo Longobardi\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "r_snacks/9_references.html",
@@ -535,58 +491,102 @@
     ]
   },
   {
-    "objectID": "r_snacks/8_validation1.html",
-    "href": "r_snacks/8_validation1.html",
-    "title": "4.5 Statistical Approaches to Data Validation in Fisheries Research",
+    "objectID": "r_snacks/7_preprocessing2.html",
+    "href": "r_snacks/7_preprocessing2.html",
+    "title": "5.2 Data Preprocessing Case Study: Cleaning SSF Landing Site Data",
     "section": "",
-    "text": "When validating fisheries data, simple thresholds aren’t always enough. Biological and fisheries data often follow specific distributions and patterns. Understanding these patterns through statistical approaches can help us identify problematic data points more reliably.\nLet’s use the Malawi small-scale fisheries data to explore these statistical validation techniques:\n\n\n\n\n\n\n\n\n\n\nBefore applying any validation rules, we need to understand how our data is distributed. Different types of fisheries data often follow characteristic patterns:\n\nCatch weights: Often right-skewed (many small catches, fewer large ones)\nPrices: May show multiple modes based on species\nEffort metrics: Usually normally distributed within gear types\n\nLet’s visualize these distributions:\n\n\n\n\n\n\n\n\nThese distributions help us: - Identify the expected shape of valid data - Spot unusual patterns or outliers - Set appropriate validation thresholds\n\n\n\nThe Median Absolute Deviation (MAD) is particularly useful for fisheries data validation because it’s less sensitive to extreme values than traditional methods like standard deviations. This makes it excellent for initial outlier detection.\nLet’s implement MAD-based validation:\n\n\n\n\n\n\n\n\nWhy MAD is particularly useful: 1. Robustness: Less affected by extreme values than mean/SD 2. Species-specific: Can handle different scales across species 3. Non-parametric: Doesn’t assume normal distribution 4. Adaptive: Thresholds adjust to data characteristics\n\n\n\nDifferent species often have different catch patterns, prices, and seasonal variations. Let’s develop species-specific validation approaches:\n\n\n\n\n\n\n\n\nThis species-specific approach helps us: 1. Account for natural size differences between species 2. Identify species-specific price anomalies 3. Consider seasonal patterns by species 4. Validate catch composition ratios\n\n\n\n\n\n\nTips for Statistical Validation\n\n\n\n\nAlways check data distribution before choosing validation method\nUse robust statistics (MAD, median) for skewed data\nConsider species-specific patterns and relationships\nCombine multiple validation approaches\nDocument statistical assumptions and thresholds",
+    "text": "Now that we’ve learned essential preprocessing techniques, let’s apply them to real Small-Scale Fisheries data. We’ll work with landing site data from Malawi that contains various challenges commonly encountered in field research. By working through this practical case study, you’ll strengthen your data cleaning skills using actual field-collected data.\nThink of this as your first real fish to clean - while our previous tutorial showed you the techniques, now you’ll get hands-on experience with real-world data complexities. Just as each fish presents unique cleaning challenges, field data often has unexpected issues that require careful attention.\n\n\n\n\n\n\nLearning Objectives\n\n\n\nBy working through this case study, you will: - Apply preprocessing techniques to real SSF field data - Handle common data quality issues from field collection - Create an end-to-end preprocessing workflow - Practice standardizing categorical variables - Deal with real-world missing data patterns - Clean actual numeric data with outliers",
     "crumbs": [
-      "Data validation",
-      "1. Validation in fisheries data"
+      "Data processing",
+      "2. A real case study"
     ]
   },
   {
-    "objectID": "r_snacks/8_validation1.html#statistical-approaches-to-data-validation",
-    "href": "r_snacks/8_validation1.html#statistical-approaches-to-data-validation",
-    "title": "4.5 Statistical Approaches to Data Validation in Fisheries Research",
+    "objectID": "r_snacks/7_preprocessing2.html#introduction",
+    "href": "r_snacks/7_preprocessing2.html#introduction",
+    "title": "5.2 Data Preprocessing Case Study: Cleaning SSF Landing Site Data",
     "section": "",
-    "text": "When validating fisheries data, simple thresholds aren’t always enough. Biological and fisheries data often follow specific distributions and patterns. Understanding these patterns through statistical approaches can help us identify problematic data points more reliably.\nLet’s use the Malawi small-scale fisheries data to explore these statistical validation techniques:\n\n\n\n\n\n\n\n\n\n\nBefore applying any validation rules, we need to understand how our data is distributed. Different types of fisheries data often follow characteristic patterns:\n\nCatch weights: Often right-skewed (many small catches, fewer large ones)\nPrices: May show multiple modes based on species\nEffort metrics: Usually normally distributed within gear types\n\nLet’s visualize these distributions:\n\n\n\n\n\n\n\n\nThese distributions help us: - Identify the expected shape of valid data - Spot unusual patterns or outliers - Set appropriate validation thresholds\n\n\n\nThe Median Absolute Deviation (MAD) is particularly useful for fisheries data validation because it’s less sensitive to extreme values than traditional methods like standard deviations. This makes it excellent for initial outlier detection.\nLet’s implement MAD-based validation:\n\n\n\n\n\n\n\n\nWhy MAD is particularly useful: 1. Robustness: Less affected by extreme values than mean/SD 2. Species-specific: Can handle different scales across species 3. Non-parametric: Doesn’t assume normal distribution 4. Adaptive: Thresholds adjust to data characteristics\n\n\n\nDifferent species often have different catch patterns, prices, and seasonal variations. Let’s develop species-specific validation approaches:\n\n\n\n\n\n\n\n\nThis species-specific approach helps us: 1. Account for natural size differences between species 2. Identify species-specific price anomalies 3. Consider seasonal patterns by species 4. Validate catch composition ratios\n\n\n\n\n\n\nTips for Statistical Validation\n\n\n\n\nAlways check data distribution before choosing validation method\nUse robust statistics (MAD, median) for skewed data\nConsider species-specific patterns and relationships\nCombine multiple validation approaches\nDocument statistical assumptions and thresholds",
+    "text": "Now that we’ve learned essential preprocessing techniques, let’s apply them to real Small-Scale Fisheries data. We’ll work with landing site data from Malawi that contains various challenges commonly encountered in field research. By working through this practical case study, you’ll strengthen your data cleaning skills using actual field-collected data.\nThink of this as your first real fish to clean - while our previous tutorial showed you the techniques, now you’ll get hands-on experience with real-world data complexities. Just as each fish presents unique cleaning challenges, field data often has unexpected issues that require careful attention.\n\n\n\n\n\n\nLearning Objectives\n\n\n\nBy working through this case study, you will: - Apply preprocessing techniques to real SSF field data - Handle common data quality issues from field collection - Create an end-to-end preprocessing workflow - Practice standardizing categorical variables - Deal with real-world missing data patterns - Clean actual numeric data with outliers",
     "crumbs": [
-      "Data validation",
-      "1. Validation in fisheries data"
+      "Data processing",
+      "2. A real case study"
     ]
   },
   {
-    "objectID": "r_snacks/8_validation1.html#cross-variable-validation-and-advanced-visualization",
-    "href": "r_snacks/8_validation1.html#cross-variable-validation-and-advanced-visualization",
-    "title": "4.5 Statistical Approaches to Data Validation in Fisheries Research",
-    "section": "Cross-Variable Validation and Advanced Visualization 🔍",
-    "text": "Cross-Variable Validation and Advanced Visualization 🔍\nWhile validating individual variables is important, many data quality issues only become apparent when examining relationships between variables. Field data often contains internal logic that we can use for validation.\nSeveral variable pairs in fisheries data should follow logical patterns:\n\nCatch vs Effort: Should show positive correlation\nPrice vs Quantity: May show market effects\nNumber of boats vs Number of fishers: Should follow crew size patterns\n\nLet’s examine these relationships:\n\n\n\n\n\n\n\n\n\nImplementing Cross-Variable Validation 🎯\nLet’s develop validation rules based on these relationships:\n\n\n\n\n\n\n\n\n\n\nUsing Advanced Visualization for Validation 📈\nLet’s explore more sophisticated visualization techniques that can help identify data quality issues:\n\n1. Multi-dimensional Validation Plots\n\n\n\n\n\n\n\n\n\n\n2. Temporal Pattern Validation\n\n\n\n\n\n\n\n\n\n\n3. Validation Summary Visualizations\n\n\n\n\n\n\n\n\n\n\n\nInterpreting Cross-Variable Validation Results 🔍\nWhen examining cross-variable validation results, consider:\n\nLogical Consistency\n\nDo relationships make biological sense?\nAre there clear patterns in invalid data?\nDo some species show more issues than others?\n\nTemporal Patterns\n\nAre validation failures clustered in time?\nDo they correspond to known events?\nAre there seasonal patterns in data quality?\n\nSpatial Patterns\n\nDo some landing sites show more issues?\nAre there geographic patterns in data quality?\nCould environmental factors be influencing results?\n\n\n\n\n\n\n\n\nCross-Validation Tips\n\n\n\n\nAlways consider biological and operational constraints\nLook for patterns in validation failures\nConsider multiple validation criteria simultaneously\nDocument assumptions about variable relationships\nReview results with field experts\n\n\n\n\n\nPractice Exercise: Cross-Variable Validation 💪\nLet’s practice implementing cross-variable validation:\n\n\n\n\n\n\n\n\n\n\nClick to see solution",
+    "objectID": "r_snacks/7_preprocessing2.html#understanding-our-dataset",
+    "href": "r_snacks/7_preprocessing2.html#understanding-our-dataset",
+    "title": "5.2 Data Preprocessing Case Study: Cleaning SSF Landing Site Data",
+    "section": "Understanding Our Dataset 📋",
+    "text": "Understanding Our Dataset 📋\nLet’s load and examine our landing site data from Malawi:\n\n\n\n\n\n\n\n\nOur dataset comes from landing site surveys in Salima, Malawi, and includes variables that are crucial for understanding fishing activities:\n\nData Structure Overview\n\nSurvey Information:\n\nsubmission_id: Unique identifier for each survey\nsurvey_id: Detailed survey identifier with trip information\nlanding_date: Date when catch was landed\nlanding_site: Name of the landing site\nlat, lon: Geographic coordinates of the landing\n\nFishing Effort Variables:\n\nn_fishers: Number of fishers involved\nn_boats: Number of boats used\ntrip_length: Duration of fishing trip\ngear: Type of fishing gear used\n\nCatch Information:\n\ncatch_usage: Purpose of the catch (trade, food, etc.)\ncatch_taxon: Species or taxonomic group caught\ncatch_kg: Weight of catch in kilograms\ncatch_price: Total price of catch\nprice_kg: Price per kilogram\n\n\n\n\nInitial Data Assessment\nLet’s examine the quality issues we need to address:\n\n\n\n\n\n\n\n\nOur initial assessment reveals several data quality challenges that we’ll need to address:\n\nMissing Data Issues:\n\nComplete survey rows with all values missing\nScattered missing values in effort variables\nEmpty strings and NA values mixed together\n\nCategorical Inconsistencies:\n\nMixed capitalization in catch_usage (“trade” vs “TRADE”)\nVariations in species names\nInconsistent landing site spellings\n\nNumeric Data Problems:\n\nText mixed with numbers in some numeric fields\nPotential outliers in catch and price data\nEffort variables with unrealistic values",
     "crumbs": [
-      "Data validation",
-      "1. Validation in fisheries data"
+      "Data processing",
+      "2. A real case study"
     ]
   },
   {
-    "objectID": "r_snacks/8_validation1.html#advanced-statistical-validation-methods",
-    "href": "r_snacks/8_validation1.html#advanced-statistical-validation-methods",
-    "title": "4.5 Statistical Approaches to Data Validation in Fisheries Research",
-    "section": "Advanced Statistical Validation Methods 📊",
-    "text": "Advanced Statistical Validation Methods 📊\nWhile MAD and cross-variable validation are powerful, some data quality issues require more sophisticated statistical approaches. Let’s explore several advanced methods particularly useful for fisheries data.\n\nMultivariate Outlier Detection 🎯\nInstead of checking variables individually, we can look for unusual combinations of variables:\n\n\n\n\n\n\n\n\n\n\nTime Series Decomposition for Validation 📈\nFisheries data often shows seasonal patterns. We can use this to identify anomalies:\n\n\n\n\n\n\n\n\n\n\nCompositional Data Analysis 🐟\nFor species composition data, we can use methods specific to proportional data:\n\n\n\n\n\n\n\n\n\n\nDistribution Mixture Models 📊\nSometimes, data might follow multiple patterns. Let’s identify these using mixture models:\n\n\n\n\n\n\n\n\n\n\nInterpreting Advanced Validation Results 🔍\nWhen using these advanced methods, consider:\n\nStatistical Assumptions\n\nAre the methods appropriate for your data?\nHave you checked the underlying assumptions?\nHow sensitive are results to parameter choices?\n\nBiological Context\n\nDo the identified patterns make ecological sense?\nAre there known factors explaining unusual patterns?\nHow do results align with field knowledge?\n\nPractical Implementation\n\nHow will you handle flagged data?\nWhat threshold levels are appropriate?\nHow to document and communicate results?\n\n\n\n\n\n\n\n\nAdvanced Validation Tips\n\n\n\n\nCombine multiple validation approaches\nAlways consider the biological context\nDocument statistical assumptions\nSet appropriate confidence levels\nReview results with domain experts",
+    "objectID": "r_snacks/7_preprocessing2.html#starting-with-clean-names",
+    "href": "r_snacks/7_preprocessing2.html#starting-with-clean-names",
+    "title": "5.2 Data Preprocessing Case Study: Cleaning SSF Landing Site Data",
+    "section": "Starting with Clean Names 🏷️",
+    "text": "Starting with Clean Names 🏷️\nThe first step in our preprocessing workflow is to standardize variable names using the techniques we learned in the previous tutorial. This ensures consistent naming patterns throughout our analysis:\n\n\n\n\n\n\n\n\nThe clean_names() function has: - Converted all names to lowercase - Replaced dots and spaces with underscores - Removed special characters - Created consistent naming patterns",
     "crumbs": [
-      "Data validation",
-      "1. Validation in fisheries data"
+      "Data processing",
+      "2. A real case study"
     ]
   },
   {
-    "objectID": "r_snacks/8_validation1.html#key-takeaways-and-next-steps",
-    "href": "r_snacks/8_validation1.html#key-takeaways-and-next-steps",
-    "title": "4.5 Statistical Approaches to Data Validation in Fisheries Research",
-    "section": "Key Takeaways and Next Steps 🎯",
-    "text": "Key Takeaways and Next Steps 🎯\nWe’ve explored a comprehensive suite of validation techniques for fisheries data, progressing from basic checks to advanced statistical methods. Let’s summarize the key approaches and their applications:\n\nSummary of Validation Approaches\n\nStatistical Fundamentals\n\nMAD-based outlier detection\nDistribution analysis\nSpecies-specific thresholds\nCross-variable validation\n\nAdvanced Methods\n\nMultivariate outlier detection\nTime series validation\nCompositional data analysis\nDistribution mixture models\n\n\n\n\nBuilding an Effective Validation Strategy\nWhen developing your validation workflow, consider this hierarchical approach:\n\n\n\n\n\n\n\n\n\n\nBest Practices for Implementation\n\nStart Simple\n\nBegin with basic checks and thresholds\nAdd complexity gradually\nDocument validation rules clearly\n\nCombine Methods\n\nUse multiple validation approaches\nConsider both statistical and biological criteria\nCross-validate findings\n\nReview and Refine\n\nRegularly assess validation results\nAdjust thresholds based on feedback\nDocument changes and reasoning\n\n\n\n\nLooking Forward\nAs you implement these validation methods:\n\nAutomate Where Possible\n\nCreate reusable validation functions\nBuild automated reporting workflows\nMaintain consistent validation rules\n\nStay Flexible\n\nBe ready to adjust thresholds\nAccount for seasonal changes\nIncorporate new validation methods\n\nEngage Stakeholders\n\nShare validation results with data collectors\nGet feedback from field experts\nMaintain clear documentation\n\n\n\n\n\n\n\n\nFinal Tips\n\n\n\n\nValidate early and often in your data pipeline\nKeep validation rules transparent and documented\nBalance statistical rigor with practical usefulness\nBuild validation into your regular workflow\nShare and review validation results regularly\n\n\n\nRemember: Data validation is not just about finding errors - it’s about building confidence in your data and improving data collection processes over time. 🎯",
+    "objectID": "r_snacks/7_preprocessing2.html#string-standardization",
+    "href": "r_snacks/7_preprocessing2.html#string-standardization",
+    "title": "5.2 Data Preprocessing Case Study: Cleaning SSF Landing Site Data",
+    "section": "String Standardization 🔤",
+    "text": "String Standardization 🔤\nOur categorical variables need standardization. Let’s clean up species names and catch usage categories:\n\n\n\n\n\n\n\n\nOur standardization has: - Created consistent categories for catch usage - Standardized species names to lowercase - Removed unnecessary whitespace - Made categories ready for analysis",
     "crumbs": [
-      "Data validation",
-      "1. Validation in fisheries data"
+      "Data processing",
+      "2. A real case study"
+    ]
+  },
+  {
+    "objectID": "r_snacks/7_preprocessing2.html#handling-missing-values",
+    "href": "r_snacks/7_preprocessing2.html#handling-missing-values",
+    "title": "5.2 Data Preprocessing Case Study: Cleaning SSF Landing Site Data",
+    "section": "Handling Missing Values 🔍",
+    "text": "Handling Missing Values 🔍\nOur dataset has various types of missing values that need careful handling:\n\n\n\n\n\n\n\n\nLet’s handle these missing values systematically:\n\n\n\n\n\n\n\n\nOur missing value strategy: 1. Converted empty strings to NA for consistency 2. Removed completely empty survey records 3. Converted zeros to NA where they likely represent missing data 4. Left legitimate zeros in catch and price data",
+    "crumbs": [
+      "Data processing",
+      "2. A real case study"
+    ]
+  },
+  {
+    "objectID": "r_snacks/7_preprocessing2.html#cleaning-numeric-data",
+    "href": "r_snacks/7_preprocessing2.html#cleaning-numeric-data",
+    "title": "5.2 Data Preprocessing Case Study: Cleaning SSF Landing Site Data",
+    "section": "Cleaning Numeric Data 🔢",
+    "text": "Cleaning Numeric Data 🔢\nAfter handling categorical variables and missing values, we need to ensure our numeric data is clean and properly formatted. Our dataset includes several important numeric measurements: - Catch weights (catch_kg) - Prices (price_kg and catch_price) - Effort metrics (n_fishers, n_boats, trip_length)\nLet’s examine these variables:\n\n\n\n\n\n\n\n\nFrom our examination, we can see several issues: 1. Some values contain non-numeric characters 2. There are potential outliers in catch and price data 3. Some effort variables have unrealistic values\nLet’s clean these issues systematically:",
+    "crumbs": [
+      "Data processing",
+      "2. A real case study"
+    ]
+  },
+  {
+    "objectID": "r_snacks/7_preprocessing2.html#working-with-dates-and-times",
+    "href": "r_snacks/7_preprocessing2.html#working-with-dates-and-times",
+    "title": "5.2 Data Preprocessing Case Study: Cleaning SSF Landing Site Data",
+    "section": "Working with Dates and Times ⏰",
+    "text": "Working with Dates and Times ⏰\nOur dataset includes landing dates that need to be properly formatted for analysis. The landing_date column contains date information we need to parse:\n\n\n\n\n\n\n\n\nNow we can also analyze temporal patterns in our data:\n\n\n\n\n\n\n\n\n\nCreating Date-Based Groups\nFor analysis purposes, we can add additional time-based categorizations:\n\n\n\n\n\n\n\n\nThese date transformations allow us to: - Track temporal patterns in fishing activity - Analyze seasonal variations - Compare weekday vs weekend patterns - Group data by meaningful time periods",
+    "crumbs": [
+      "Data processing",
+      "2. A real case study"
+    ]
+  },
+  {
+    "objectID": "r_snacks/7_preprocessing2.html#conclusion",
+    "href": "r_snacks/7_preprocessing2.html#conclusion",
+    "title": "5.2 Data Preprocessing Case Study: Cleaning SSF Landing Site Data",
+    "section": "Conclusion 🎯",
+    "text": "Conclusion 🎯\nLet’s examine our fully preprocessed dataset:\n\n\n\n\n\n\n\n\nOur preprocessing workflow has: - Standardized all variable names and categories - Cleaned and validated numeric data - Handled missing values appropriately - Created consistent date formats - Removed unrealistic values\nThe cleaned dataset is now ready for analysis! 🎯\nNext: Data validation",
+    "crumbs": [
+      "Data processing",
+      "2. A real case study"
     ]
   },
   {
@@ -638,7 +638,7 @@
     "href": "r_snacks/5_visualization.html#applying-ggplot2-to-fisheries-analysis",
     "title": "3.5 Data Visualization in R: Common Plot Types for Fisheries Data",
     "section": "Applying ggplot2 to Fisheries Analysis 📊",
-    "text": "Applying ggplot2 to Fisheries Analysis 📊\nNow that we understand how to build plots using layers and aesthetic mappings, let’s apply these concepts to real fisheries analysis. While our previous examples helped us learn the basics, actual fisheries data involves multiple interrelated variables that tell important stories about fishing patterns, catch composition, and temporal trends.\nTo explore these relationships effectively, let’s first expand our dataset to better represent the complexity of small-scale fisheries data:\n\n\n\n\n\n\n\n\nThis dataset represents three months of daily fishing activities across different sites, including: - Temporal information (dates) - Spatial information (fishing sites) - Catch composition (species) - Effort metrics (number of boats, trip duration) - Economic data (prices) - Environmental conditions (water temperature, moon phase)\nUsing our understanding of aesthetic mappings and layers, we can now explore different aspects of this data through various visualization approaches.\n\nUnderstanding Temporal Patterns with Multiple Layers\nRemember how we used geom_point() and geom_line() in our basic examples? We can combine these with additional aesthetics and geometries to reveal rich temporal patterns in our fishing data:\n\n\n\n\n\n\n\n\nThis plot combines multiple layers we learned about earlier: 1. geom_line(): Shows the continuous nature of time series data 2. geom_point(): Marks actual daily observations 3. geom_smooth(): Reveals underlying trends 4. Color aesthetic: Distinguishes between species\n\n\nAdding Complexity: Multiple Variables and Faceting\nNow let’s build on our understanding of aesthetics to explore relationships between multiple variables. We’ll use faceting to create small multiples, a powerful technique for comparing patterns across groups:\n\n\n\n\n\n\n\n\nThis visualization demonstrates several advanced concepts: 1. Multiple variable relationships (CPUE, temperature, species) 2. Faceting to compare across sites 3. Trend lines to show relationships 4. Thoughtful use of transparency and spacing\n\n\nExploring Distributions with Combined Geometries\nLet’s extend our knowledge of geometries to create more sophisticated distribution visualizations:\n\n\n\n\n\n\n\n\nThis plot combines multiple geometries to show different aspects of the data: 1. geom_violin(): Shows the full distribution shape 2. geom_boxplot(): Displays summary statistics 3. geom_jitter(): Reveals individual observations 4. Faceting: Allows comparison across sites",
+    "text": "Applying ggplot2 to Fisheries Analysis 📊\nNow that we understand how to build plots using layers and aesthetic mappings, let’s apply these concepts to real fisheries analysis. While our previous examples helped us learn the basics, actual fisheries data involves multiple interrelated variables that tell important stories about fishing patterns, catch composition, and temporal trends.\nTo explore these relationships effectively, let’s first expand our dataset to better represent the complexity of small-scale fisheries data:\n\n\n\n\n\n\n\n\nThis dataset represents three months of daily fishing activities across different sites, including: - Temporal information (dates) - Spatial information (fishing sites) - Catch composition (species) - Effort metrics (number of boats, trip duration) - Economic data (prices) - Environmental conditions (water temperature, moon phase)\nUsing our understanding of aesthetic mappings and layers, we can now explore different aspects of this data through various visualization approaches.\n\nUnderstanding Temporal Patterns with Multiple Layers\nRemember how we used geom_point() and geom_line() in our basic examples? We can combine these with additional aesthetics and geometries to reveal rich temporal patterns in our fishing data:\n\n\n\n\n\n\n\n\nThis plot combines multiple layers we learned about earlier: 1. geom_line(): Shows the continuous nature of time series data 2. geom_point(): Marks actual daily observations 3. geom_smooth(): Reveals underlying trends 4. Color aesthetic: Distinguishes between species\n\n\nAdding Complexity: Multiple Variables and Faceting\nNow let’s build on our understanding of aesthetics to explore relationships between multiple variables. We’ll use faceting to create small multiples, a powerful technique for comparing patterns across groups:\n\n\n\n\n\n\n\n\nThis visualization demonstrates several advanced concepts: 1. Multiple variable relationships (CPUE, temperature, species) 2. Faceting to compare across sites 3. Trend lines to show relationships 4. Thoughtful use of transparency and spacing\n\n\nExploring Distributions with Combined Geometries\nLet’s extend our knowledge of geometries to create more sophisticated distribution visualizations:\n\n\n\n\n\n\n\n\nThis plot combines multiple geometries to show different aspects of the data: 1. geom_violin(): Shows the full distribution shape 2. geom_boxplot(): Displays summary statistics 3. geom_jitter(): Reveals individual observations 4. Faceting: Allows comparison across sites\nNext: Preprocessing data 1",
     "crumbs": [
       "Getting Started",
       "5. Data visualization"
@@ -748,7 +748,7 @@
     "href": "r_snacks/3_dataframes.html#quick-reference-guide",
     "title": "3. Understanding Data Frames in R",
     "section": "Quick Reference Guide 📝",
-    "text": "Quick Reference Guide 📝\nKeep this handy for common data frame operations:\n# Basic Operations\ndf$column              # Access a column\ndf[row, column]        # Access specific elements\ndf[df$x &gt; 5, ]        # Filter rows\nnames(df)             # Get column names\nnrow(df), ncol(df)    # Get dimensions\n\n# Useful Functions\nhead(df)              # View first rows\nsummary(df)           # Statistical summary\nstr(df)               # Structure overview\naggregate(y ~ x, df)  # Group by calculations\nRemember: - Always check your data structure with str() or summary() - Handle missing values explicitly with na.rm = TRUE - Keep track of your data types - Make backups before major modifications",
+    "text": "Quick Reference Guide 📝\nKeep this handy for common data frame operations:\n# Basic Operations\ndf$column              # Access a column\ndf[row, column]        # Access specific elements\ndf[df$x &gt; 5, ]        # Filter rows\nnames(df)             # Get column names\nnrow(df), ncol(df)    # Get dimensions\n\n# Useful Functions\nhead(df)              # View first rows\nsummary(df)           # Statistical summary\nstr(df)               # Structure overview\naggregate(y ~ x, df)  # Group by calculations\nRemember: - Always check your data structure with str() or summary() - Handle missing values explicitly with na.rm = TRUE - Keep track of your data types - Make backups before major modifications\nNext: Working with packages",
     "crumbs": [
       "Getting Started",
       "3. Data Frames"

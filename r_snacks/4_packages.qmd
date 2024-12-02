@@ -1,6 +1,6 @@
 ---
 title: "4. Understanding R Packages: Making Your Life Easier"
-author: "SSF Training Team"
+author: "Lorenzo Longobardi"
 date: 2024-11-06
 format: live-html
 engine: knitr
@@ -711,4 +711,4 @@ Remember: The goal isn't to memorize every function, but to:
 - Practice regularly with real data
 - Build your confidence step by step
 
-Happy coding! 🎉
+Next: [Visualizations](5_visualization.html)

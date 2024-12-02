@@ -327,33 +327,21 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#statistical-approaches-to-data-validation" id="toc-statistical-approaches-to-data-validation" class="nav-link active" data-scroll-target="#statistical-approaches-to-data-validation">Statistical Approaches to Data Validation 🎯</a>
+  <li><a href="#why-validate-fisheries-data" id="toc-why-validate-fisheries-data" class="nav-link active" data-scroll-target="#why-validate-fisheries-data">Why Validate Fisheries Data? 🎯</a>
   <ul class="collapse">
-  <li><a href="#understanding-distributions-for-validation" id="toc-understanding-distributions-for-validation" class="nav-link" data-scroll-target="#understanding-distributions-for-validation">Understanding Distributions for Validation 📊</a></li>
-  <li><a href="#using-mad-for-robust-outlier-detection" id="toc-using-mad-for-robust-outlier-detection" class="nav-link" data-scroll-target="#using-mad-for-robust-outlier-detection">Using MAD for Robust Outlier Detection 📈</a></li>
-  <li><a href="#species-specific-validation-approaches" id="toc-species-specific-validation-approaches" class="nav-link" data-scroll-target="#species-specific-validation-approaches">Species-Specific Validation Approaches 🐟</a></li>
+  <li><a href="#understanding-data-distributions" id="toc-understanding-data-distributions" class="nav-link" data-scroll-target="#understanding-data-distributions">Understanding Data Distributions 📊</a></li>
+  <li><a href="#using-mad-for-validation" id="toc-using-mad-for-validation" class="nav-link" data-scroll-target="#using-mad-for-validation">Using MAD for Validation 📈</a></li>
   </ul></li>
-  <li><a href="#cross-variable-validation-and-advanced-visualization" id="toc-cross-variable-validation-and-advanced-visualization" class="nav-link" data-scroll-target="#cross-variable-validation-and-advanced-visualization">Cross-Variable Validation and Advanced Visualization 🔍</a>
+  <li><a href="#validating-relationships-between-variables" id="toc-validating-relationships-between-variables" class="nav-link" data-scroll-target="#validating-relationships-between-variables">Validating Relationships Between Variables 🔍</a>
   <ul class="collapse">
-  <li><a href="#implementing-cross-variable-validation" id="toc-implementing-cross-variable-validation" class="nav-link" data-scroll-target="#implementing-cross-variable-validation">Implementing Cross-Variable Validation 🎯</a></li>
-  <li><a href="#using-advanced-visualization-for-validation" id="toc-using-advanced-visualization-for-validation" class="nav-link" data-scroll-target="#using-advanced-visualization-for-validation">Using Advanced Visualization for Validation 📈</a></li>
-  <li><a href="#interpreting-cross-variable-validation-results" id="toc-interpreting-cross-variable-validation-results" class="nav-link" data-scroll-target="#interpreting-cross-variable-validation-results">Interpreting Cross-Variable Validation Results 🔍</a></li>
-  <li><a href="#practice-exercise-cross-variable-validation" id="toc-practice-exercise-cross-variable-validation" class="nav-link" data-scroll-target="#practice-exercise-cross-variable-validation">Practice Exercise: Cross-Variable Validation 💪</a></li>
+  <li><a href="#price-and-catch-relationships" id="toc-price-and-catch-relationships" class="nav-link" data-scroll-target="#price-and-catch-relationships">Price and Catch Relationships 💰</a></li>
+  <li><a href="#practice-exercise-price-validation" id="toc-practice-exercise-price-validation" class="nav-link" data-scroll-target="#practice-exercise-price-validation">Practice Exercise: Price Validation 💪</a></li>
+  <li><a href="#location-specific-validation" id="toc-location-specific-validation" class="nav-link" data-scroll-target="#location-specific-validation">Location-Specific Validation 🗺️</a></li>
   </ul></li>
-  <li><a href="#advanced-statistical-validation-methods" id="toc-advanced-statistical-validation-methods" class="nav-link" data-scroll-target="#advanced-statistical-validation-methods">Advanced Statistical Validation Methods 📊</a>
-  <ul class="collapse">
-  <li><a href="#multivariate-outlier-detection" id="toc-multivariate-outlier-detection" class="nav-link" data-scroll-target="#multivariate-outlier-detection">Multivariate Outlier Detection 🎯</a></li>
-  <li><a href="#time-series-decomposition-for-validation" id="toc-time-series-decomposition-for-validation" class="nav-link" data-scroll-target="#time-series-decomposition-for-validation">Time Series Decomposition for Validation 📈</a></li>
-  <li><a href="#compositional-data-analysis" id="toc-compositional-data-analysis" class="nav-link" data-scroll-target="#compositional-data-analysis">Compositional Data Analysis 🐟</a></li>
-  <li><a href="#distribution-mixture-models" id="toc-distribution-mixture-models" class="nav-link" data-scroll-target="#distribution-mixture-models">Distribution Mixture Models 📊</a></li>
-  <li><a href="#interpreting-advanced-validation-results" id="toc-interpreting-advanced-validation-results" class="nav-link" data-scroll-target="#interpreting-advanced-validation-results">Interpreting Advanced Validation Results 🔍</a></li>
-  </ul></li>
+  <li><a href="#validation-tips" id="toc-validation-tips" class="nav-link" data-scroll-target="#validation-tips">Validation Tips</a></li>
   <li><a href="#key-takeaways-and-next-steps" id="toc-key-takeaways-and-next-steps" class="nav-link" data-scroll-target="#key-takeaways-and-next-steps">Key Takeaways and Next Steps 🎯</a>
   <ul class="collapse">
-  <li><a href="#summary-of-validation-approaches" id="toc-summary-of-validation-approaches" class="nav-link" data-scroll-target="#summary-of-validation-approaches">Summary of Validation Approaches</a></li>
-  <li><a href="#building-an-effective-validation-strategy" id="toc-building-an-effective-validation-strategy" class="nav-link" data-scroll-target="#building-an-effective-validation-strategy">Building an Effective Validation Strategy</a></li>
-  <li><a href="#best-practices-for-implementation" id="toc-best-practices-for-implementation" class="nav-link" data-scroll-target="#best-practices-for-implementation">Best Practices for Implementation</a></li>
-  <li><a href="#looking-forward" id="toc-looking-forward" class="nav-link" data-scroll-target="#looking-forward">Looking Forward</a></li>
+  <li><a href="#building-your-validation-strategy" id="toc-building-your-validation-strategy" class="nav-link" data-scroll-target="#building-your-validation-strategy">Building Your Validation Strategy</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -365,222 +353,144 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="statistical-approaches-to-data-validation" class="level2">
-<h2 class="anchored" data-anchor-id="statistical-approaches-to-data-validation">Statistical Approaches to Data Validation 🎯</h2>
-<p>When validating fisheries data, simple thresholds aren’t always enough. Biological and fisheries data often follow specific distributions and patterns. Understanding these patterns through statistical approaches can help us identify problematic data points more reliably.</p>
-<p>Let’s use the Malawi small-scale fisheries data to explore these statistical validation techniques:</p>
+<section id="why-validate-fisheries-data" class="level2">
+<h2 class="anchored" data-anchor-id="why-validate-fisheries-data">Why Validate Fisheries Data? 🎯</h2>
+<p>After cleaning and preprocessing our data, validation is a crucial next step. While preprocessing focuses on formatting and consistency, validation helps us identify potentially problematic data points that might affect our analysis. Think of validation like quality control in a fish processing plant - we want to make sure our “product” (data) meets certain standards before using it.</p>
+<p>Let’s use the Malawi small-scale fisheries data that we preprocessed in the previous tutorial:</p>
 <div class="cell" data-autorun="false">
 <div>
 <div id="webr-1">
 
 </div>
 <script type="webr-1-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImF1dG9ydW4iOmZhbHNlfSwiY29kZSI6IiMgTG9hZCByZXF1aXJlZCBwYWNrYWdlc1xubGlicmFyeSh0aWR5dmVyc2UpXG5cbiMgUmVhZCB0aGUgZGF0YVxuZmlzaGluZ19kYXRhIDwtIFxuICByZWFkLmNzdihcImh0dHBzOi8vcmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbS9Xb3JsZEZpc2hDZW50ZXIvc3NmLnRyYWluaW5nL3JlZnMvaGVhZHMvdXBkYXRlLXBhZ2VzL2RhdGEvY2xlYW5fbWFsYXdpX3NzZi5jc3ZcIikgJT4lIFxuICBuYS5vbWl0KClcblxuIyBRdWljayBnbGltcHNlXG5nbGltcHNlKGZpc2hpbmdfZGF0YSkifQ==
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImF1dG9ydW4iOmZhbHNlLCJldmFsIjp0cnVlfSwiY29kZSI6IiMgTG9hZCByZXF1aXJlZCBwYWNrYWdlc1xubGlicmFyeSh0aWR5dmVyc2UpXG5cbiMgUmVhZCBvdXIgcHJlcHJvY2Vzc2VkIGRhdGFcbmZpc2hpbmdfZGF0YSA8LSByZWFkLmNzdihcImh0dHBzOi8vcmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbS9Xb3JsZEZpc2hDZW50ZXIvc3NmLnRyYWluaW5nL3JlZnMvaGVhZHMvdXBkYXRlLXBhZ2VzL2RhdGEvY2xlYW5fbWFsYXdpX3NzZi5jc3ZcIikgJT4lXG4gICAgIyBSZW1vdmUgbWlzc2luZyB2YWx1ZXMgYW5kIHNwZWNpZmljIHNwZWNpZXNcbiAgICBuYS5vbWl0KCkgJT4lXG4gICAgZmlsdGVyKCFjYXRjaF90YXhvbiAlaW4lIGMoXCJtY2hlbmlcIiwgXCJvdGhlclwiKSlcblxuIyBMb29rIGF0IG91ciBkYXRhXG5nbGltcHNlKGZpc2hpbmdfZGF0YSkifQ==
 </script>
 </div>
 </div>
-<section id="understanding-distributions-for-validation" class="level3">
-<h3 class="anchored" data-anchor-id="understanding-distributions-for-validation">Understanding Distributions for Validation 📊</h3>
-<p>Before applying any validation rules, we need to understand how our data is distributed. Different types of fisheries data often follow characteristic patterns:</p>
+<section id="understanding-data-distributions" class="level3">
+<h3 class="anchored" data-anchor-id="understanding-data-distributions">Understanding Data Distributions 📊</h3>
+<p>Before we start validating, we need to understand what “normal” looks like in our data. Different types of fisheries data often follow characteristic patterns:</p>
 <ol type="1">
-<li><strong>Catch weights</strong>: Often right-skewed (many small catches, fewer large ones)</li>
-<li><strong>Prices</strong>: May show multiple modes based on species</li>
-<li><strong>Effort metrics</strong>: Usually normally distributed within gear types</li>
+<li><strong>Catch weights</strong>: Usually right-skewed (many small catches, fewer large ones)</li>
+<li><strong>Prices</strong>: Often species-specific</li>
+<li><strong>Number of boats and fishers</strong>: Should follow typical crew patterns</li>
 </ol>
-<p>Let’s visualize these distributions:</p>
+<p>Let’s visualize these patterns:</p>
 <div class="cell" data-autorun="false">
 <div>
 <div id="webr-2">
 
 </div>
 <script type="webr-2-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImF1dG9ydW4iOmZhbHNlfSwiY29kZSI6IiMgQ3JlYXRlIGRpc3RyaWJ1dGlvbiBwbG90cyBmb3Iga2V5IHZhcmlhYmxlc1xucDEgPC0gZ2dwbG90KGZpc2hpbmdfZGF0YSwgYWVzKHggPSBjYXRjaF9rZykpICtcbiAgICBnZW9tX2hpc3RvZ3JhbShiaW5zID0gMzAsIGZpbGwgPSBcInN0ZWVsYmx1ZVwiLCBhbHBoYSA9IDAuNykgK1xuICAgIGdlb21fZGVuc2l0eShjb2xvciA9IFwicmVkXCIsIGxpbmV3aWR0aCA9IDEpICtcbiAgICBsYWJzKHRpdGxlID0gXCJEaXN0cmlidXRpb24gb2YgQ2F0Y2ggV2VpZ2h0c1wiLFxuICAgICAgICAgc3VidGl0bGUgPSBcIk5vdGUgdGhlIHJpZ2h0IHNrZXcgLSB0eXBpY2FsIGZvciBjYXRjaCBkYXRhXCIsXG4gICAgICAgICB4ID0gXCJDYXRjaCAoa2cpXCIsXG4gICAgICAgICB5ID0gXCJDb3VudFwiKSArXG4gICAgdGhlbWVfbWluaW1hbCgpXG5cbnAyIDwtIGdncGxvdChmaXNoaW5nX2RhdGEsIGFlcyh4ID0gcHJpY2Vfa2cpKSArXG4gICAgZ2VvbV9oaXN0b2dyYW0oYmlucyA9IDMwLCBmaWxsID0gXCJzdGVlbGJsdWVcIiwgYWxwaGEgPSAwLjcpICtcbiAgICBnZW9tX2RlbnNpdHkoY29sb3IgPSBcInJlZFwiLCBsaW5ld2lkdGggPSAxKSArXG4gICAgbGFicyh0aXRsZSA9IFwiRGlzdHJpYnV0aW9uIG9mIFByaWNlIHBlciBrZ1wiLFxuICAgICAgICAgc3VidGl0bGUgPSBcIk11bHRpcGxlIHBlYWtzIG1heSBpbmRpY2F0ZSBzcGVjaWVzLXNwZWNpZmljIHByaWNpbmdcIixcbiAgICAgICAgIHggPSBcIlByaWNlIHBlciBrZ1wiLFxuICAgICAgICAgeSA9IFwiQ291bnRcIikgK1xuICAgIHRoZW1lX21pbmltYWwoKVxuXG4jIERpc3BsYXkgcGxvdHNcbnByaW50KHAxKVxucHJpbnQocDIpIn0=
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImF1dG9ydW4iOmZhbHNlLCJldmFsIjp0cnVlfSwiY29kZSI6IiMgTG9vayBhdCBjYXRjaCBkaXN0cmlidXRpb25cbnAxIDwtIGdncGxvdChmaXNoaW5nX2RhdGEsIGFlcyh4ID0gY2F0Y2hfa2cpKSArXG4gICAgZ2VvbV9oaXN0b2dyYW0oYmlucyA9IDMwLCBmaWxsID0gXCJzdGVlbGJsdWVcIiwgYWxwaGEgPSAwLjcpICtcbiAgICBnZW9tX2RlbnNpdHkoY29sb3IgPSBcInJlZFwiLCBsaW5ld2lkdGggPSAxKSArXG4gICAgbGFicyh0aXRsZSA9IFwiRGlzdHJpYnV0aW9uIG9mIENhdGNoIFdlaWdodHNcIixcbiAgICAgICAgIHN1YnRpdGxlID0gXCJOb3RlIHRoZSByaWdodCBza2V3IC0gdHlwaWNhbCBmb3IgY2F0Y2ggZGF0YVwiLFxuICAgICAgICAgeCA9IFwiQ2F0Y2ggKGtnKVwiLFxuICAgICAgICAgeSA9IFwiQ291bnRcIikgK1xuICAgIHRoZW1lX21pbmltYWwoKVxuXG4jIExvb2sgYXQgcHJpY2UgZGlzdHJpYnV0aW9uIGJ5IHNwZWNpZXNcbnAyIDwtIGdncGxvdChmaXNoaW5nX2RhdGEsIGFlcyh4ID0gcHJpY2Vfa2csIGZpbGwgPSBjYXRjaF90YXhvbikpICtcbiAgICBnZW9tX2hpc3RvZ3JhbShiaW5zID0gMzAsIGFscGhhID0gMC43LCBwb3NpdGlvbiA9IFwiZG9kZ2VcIikgK1xuICAgIGxhYnModGl0bGUgPSBcIlByaWNlIERpc3RyaWJ1dGlvbiBieSBTcGVjaWVzXCIsXG4gICAgICAgICB4ID0gXCJQcmljZSBwZXIga2dcIixcbiAgICAgICAgIHkgPSBcIkNvdW50XCIpICtcbiAgICB0aGVtZV9taW5pbWFsKClcblxuIyBEaXNwbGF5IHBsb3RzXG5wcmludChwMSlcbnByaW50KHAyKSJ9
 </script>
 </div>
 </div>
-<p>These distributions help us: - Identify the expected shape of valid data - Spot unusual patterns or outliers - Set appropriate validation thresholds</p>
+<p>These distributions tell us: - Most catches are relatively small - Each species has its typical price range - There are some unusually high values that need checking</p>
 </section>
-<section id="using-mad-for-robust-outlier-detection" class="level3">
-<h3 class="anchored" data-anchor-id="using-mad-for-robust-outlier-detection">Using MAD for Robust Outlier Detection 📈</h3>
-<p>The Median Absolute Deviation (MAD) is particularly useful for fisheries data validation because it’s less sensitive to extreme values than traditional methods like standard deviations. This makes it excellent for initial outlier detection.</p>
-<p>Let’s implement MAD-based validation:</p>
+<section id="using-mad-for-validation" class="level3">
+<h3 class="anchored" data-anchor-id="using-mad-for-validation">Using MAD for Validation 📈</h3>
+<p>The Median Absolute Deviation (MAD) is particularly useful for fisheries data because it’s less affected by extreme values than standard deviation. It helps us identify unusual values more reliably.</p>
+<p>Here’s how MAD works: 1. Find the median of your data 2. Calculate how far each value is from the median 3. Take the median of these distances 4. Multiply by 1.4826 (this makes it comparable to standard deviation for normal data)</p>
+<p>Let’s use MAD to check our catch weights:</p>
 <div class="cell" data-autorun="false">
 <div>
 <div id="webr-3">
 
 </div>
 <script type="webr-3-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImF1dG9ydW4iOmZhbHNlfSwiY29kZSI6IiMgRnVuY3Rpb24gdG8gY2FsY3VsYXRlIE1BRC1iYXNlZCBib3VuZHNcbmNhbGN1bGF0ZV9tYWRfYm91bmRzIDwtIGZ1bmN0aW9uKHgsIHRocmVzaG9sZCA9IDMpIHtcbiAgICBtZWRpYW5fdmFsIDwtIG1lZGlhbih4LCBuYS5ybSA9IFRSVUUpXG4gICAgbWFkX3ZhbCA8LSBtYWQoeCwgbmEucm0gPSBUUlVFKVxuICAgIFxuICAgIGxvd2VyX2JvdW5kIDwtIG1lZGlhbl92YWwgLSB0aHJlc2hvbGQgKiBtYWRfdmFsXG4gICAgdXBwZXJfYm91bmQgPC0gbWVkaWFuX3ZhbCArIHRocmVzaG9sZCAqIG1hZF92YWxcbiAgICBcbiAgICByZXR1cm4obGlzdChsb3dlciA9IGxvd2VyX2JvdW5kLCB1cHBlciA9IHVwcGVyX2JvdW5kKSlcbn1cblxuIyBBcHBseSBNQUQgdmFsaWRhdGlvbiB0byBjYXRjaCB3ZWlnaHRzIGJ5IHNwZWNpZXNcbmNhdGNoX3ZhbGlkYXRpb24gPC0gZmlzaGluZ19kYXRhICU+JVxuICAgIGdyb3VwX2J5KGNhdGNoX3RheG9uKSAlPiVcbiAgICBtdXRhdGUoXG4gICAgICAgIGJvdW5kcyA9IGxpc3QoY2FsY3VsYXRlX21hZF9ib3VuZHMoY2F0Y2hfa2cpKSxcbiAgICAgICAgbG93ZXJfYm91bmQgPSBtYXBfZGJsKGJvdW5kcywgfi54JGxvd2VyKSxcbiAgICAgICAgdXBwZXJfYm91bmQgPSBtYXBfZGJsKGJvdW5kcywgfi54JHVwcGVyKSxcbiAgICAgICAgaXNfb3V0bGllciA9IGNhdGNoX2tnIDwgbG93ZXJfYm91bmQgfCBjYXRjaF9rZyA+IHVwcGVyX2JvdW5kXG4gICAgKSAlPiVcbiAgICB1bmdyb3VwKClcblxuIyBWaXN1YWxpemUgcmVzdWx0cyBmb3IgbWFqb3Igc3BlY2llc1xubWFqb3Jfc3BlY2llcyA8LSBjYXRjaF92YWxpZGF0aW9uICU+JVxuICAgIGNvdW50KGNhdGNoX3RheG9uKSAlPiVcbiAgICBmaWx0ZXIobiA+IDEwKSAlPiVcbiAgICBwdWxsKGNhdGNoX3RheG9uKVxuXG5nZ3Bsb3QoY2F0Y2hfdmFsaWRhdGlvbiAlPiUgZmlsdGVyKGNhdGNoX3RheG9uICVpbiUgbWFqb3Jfc3BlY2llcyksXG4gICAgICAgYWVzKHggPSBjYXRjaF9rZywgZmlsbCA9IGlzX291dGxpZXIpKSArXG4gICAgZ2VvbV9oaXN0b2dyYW0oYmlucyA9IDMwLCBhbHBoYSA9IDAuNykgK1xuICAgIGZhY2V0X3dyYXAofmNhdGNoX3RheG9uLCBzY2FsZXMgPSBcImZyZWVcIikgK1xuICAgIHNjYWxlX2ZpbGxfbWFudWFsKHZhbHVlcyA9IGMoXCJUUlVFXCIgPSBcInJlZFwiLCBcIkZBTFNFXCIgPSBcInN0ZWVsYmx1ZVwiKSkgK1xuICAgIGxhYnModGl0bGUgPSBcIk1BRC1iYXNlZCBPdXRsaWVyIERldGVjdGlvbiBieSBTcGVjaWVzXCIsXG4gICAgICAgICBzdWJ0aXRsZSA9IFwiUmVkIGluZGljYXRlcyBwb3RlbnRpYWwgb3V0bGllcnNcIixcbiAgICAgICAgIHggPSBcIkNhdGNoIChrZylcIixcbiAgICAgICAgIHkgPSBcIkNvdW50XCIpICtcbiAgICB0aGVtZV9taW5pbWFsKCkifQ==
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImF1dG9ydW4iOmZhbHNlLCJldmFsIjp0cnVlfSwiY29kZSI6IiMgQ2FsY3VsYXRlIE1BRC1iYXNlZCBib3VuZHMgZm9yIGVhY2ggc3BlY2llc1xuY2F0Y2hfdmFsaWRhdGlvbiA8LSBmaXNoaW5nX2RhdGEgJT4lXG4gICAgZ3JvdXBfYnkoY2F0Y2hfdGF4b24pICU+JVxuICAgIG11dGF0ZShcbiAgICAgICAgIyBDYWxjdWxhdGUgbWVkaWFuIGFuZCBNQURcbiAgICAgICAgY2F0Y2hfbWVkaWFuID0gbWVkaWFuKGNhdGNoX2tnKSxcbiAgICAgICAgY2F0Y2hfbWFkID0gbWFkKGNhdGNoX2tnKSxcbiAgICAgICAgXG4gICAgICAgICMgRmxhZyBjYXRjaGVzIG1vcmUgdGhhbiAzIE1BRHMgZnJvbSBtZWRpYW5cbiAgICAgICAgaXNfdW51c3VhbCA9IGFicyhjYXRjaF9rZyAtIGNhdGNoX21lZGlhbikgPiAzICogY2F0Y2hfbWFkXG4gICAgKSAlPiVcbiAgICB1bmdyb3VwKClcblxuIyBWaXN1YWxpemUgcmVzdWx0c1xuZ2dwbG90KGNhdGNoX3ZhbGlkYXRpb24sIGFlcyh4ID0gY2F0Y2hfa2csIGZpbGwgPSBpc191bnVzdWFsKSkgK1xuICAgIGdlb21faGlzdG9ncmFtKGJpbnMgPSAzMCwgYWxwaGEgPSAwLjcpICtcbiAgICBmYWNldF93cmFwKH5jYXRjaF90YXhvbiwgc2NhbGVzID0gXCJmcmVlXCIpICtcbiAgICBzY2FsZV9maWxsX21hbnVhbCh2YWx1ZXMgPSBjKFwiVFJVRVwiID0gXCJyZWRcIiwgXCJGQUxTRVwiID0gXCJzdGVlbGJsdWVcIikpICtcbiAgICBsYWJzKHRpdGxlID0gXCJDYXRjaCBEaXN0cmlidXRpb24gd2l0aCBVbnVzdWFsIFZhbHVlcyBIaWdobGlnaHRlZFwiLFxuICAgICAgICAgc3VidGl0bGUgPSBcIlJlZCBpbmRpY2F0ZXMgY2F0Y2hlcyBtb3JlIHRoYW4gMyBNQURzIGZyb20gbWVkaWFuXCIsXG4gICAgICAgICB4ID0gXCJDYXRjaCAoa2cpXCIsXG4gICAgICAgICB5ID0gXCJDb3VudFwiKSArXG4gICAgdGhlbWVfbWluaW1hbCgpIn0=
 </script>
 </div>
 </div>
-<p>Why MAD is particularly useful: 1. <strong>Robustness</strong>: Less affected by extreme values than mean/SD 2. <strong>Species-specific</strong>: Can handle different scales across species 3. <strong>Non-parametric</strong>: Doesn’t assume normal distribution 4. <strong>Adaptive</strong>: Thresholds adjust to data characteristics</p>
+<p>Why use MAD instead of standard deviation? 1. More robust to outliers 2. Works better with skewed data (like catch weights) 3. Gives fewer false positives 4. Better reflects the “typical” spread of the data</p>
 </section>
-<section id="species-specific-validation-approaches" class="level3">
-<h3 class="anchored" data-anchor-id="species-specific-validation-approaches">Species-Specific Validation Approaches 🐟</h3>
-<p>Different species often have different catch patterns, prices, and seasonal variations. Let’s develop species-specific validation approaches:</p>
+</section>
+<section id="validating-relationships-between-variables" class="level2">
+<h2 class="anchored" data-anchor-id="validating-relationships-between-variables">Validating Relationships Between Variables 🔍</h2>
+<p>While checking individual variables is important, fisheries data contains natural relationships that we can use for validation. For example:</p>
+<ol type="1">
+<li>More boats should generally mean more catch</li>
+<li>Prices might vary with catch size</li>
+<li>Number of fishers should make sense for the number of boats</li>
+</ol>
+<p>Let’s examine these relationships:</p>
 <div class="cell" data-autorun="false">
 <div>
 <div id="webr-4">
 
 </div>
 <script type="webr-4-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImF1dG9ydW4iOmZhbHNlfSwiY29kZSI6IiMgQ2FsY3VsYXRlIHNwZWNpZXMtc3BlY2lmaWMgc3RhdGlzdGljc1xuc3BlY2llc19zdGF0cyA8LSBmaXNoaW5nX2RhdGEgJT4lXG4gICAgZ3JvdXBfYnkoY2F0Y2hfdGF4b24pICU+JVxuICAgIHN1bW1hcmlzZShcbiAgICAgICAgbWVhbl9jYXRjaCA9IG1lYW4oY2F0Y2hfa2csIG5hLnJtID0gVFJVRSksXG4gICAgICAgIG1lZGlhbl9jYXRjaCA9IG1lZGlhbihjYXRjaF9rZywgbmEucm0gPSBUUlVFKSxcbiAgICAgICAgbWFkX2NhdGNoID0gbWFkKGNhdGNoX2tnLCBuYS5ybSA9IFRSVUUpLFxuICAgICAgICBtZWFuX3ByaWNlID0gbWVhbihwcmljZV9rZywgbmEucm0gPSBUUlVFKSxcbiAgICAgICAgbWFkX3ByaWNlID0gbWFkKHByaWNlX2tnLCBuYS5ybSA9IFRSVUUpLFxuICAgICAgICBuX3NhbXBsZXMgPSBuKClcbiAgICApICU+JVxuICAgIGZpbHRlcihuX3NhbXBsZXMgPj0gMTApICAjIEZvY3VzIG9uIHdlbGwtc2FtcGxlZCBzcGVjaWVzXG5cbiMgQ3JlYXRlIHNwZWNpZXMtc3BlY2lmaWMgdmFsaWRhdGlvbiBydWxlc1xuc3BlY2llc192YWxpZGF0aW9uIDwtIGZpc2hpbmdfZGF0YSAlPiVcbiAgICBpbm5lcl9qb2luKHNwZWNpZXNfc3RhdHMsIGJ5ID0gXCJjYXRjaF90YXhvblwiKSAlPiVcbiAgICBtdXRhdGUoXG4gICAgICAgICMgUHJpY2UgdmFsaWRhdGlvblxuICAgICAgICBwcmljZV96c2NvcmUgPSBhYnMocHJpY2Vfa2cgLSBtZWFuX3ByaWNlKSAvIG1hZF9wcmljZSxcbiAgICAgICAgcHJpY2VfdmFsaWQgPSBwcmljZV96c2NvcmUgPD0gMyxcbiAgICAgICAgXG4gICAgICAgICMgQ2F0Y2ggdmFsaWRhdGlvbiB1c2luZyBzcGVjaWVzLXNwZWNpZmljIE1BRFxuICAgICAgICBjYXRjaF96c2NvcmUgPSBhYnMoY2F0Y2hfa2cgLSBtZWRpYW5fY2F0Y2gpIC8gbWFkX2NhdGNoLFxuICAgICAgICBjYXRjaF92YWxpZCA9IGNhdGNoX3pzY29yZSA8PSAzXG4gICAgKVxuXG4jIFZpc3VhbGl6ZSB2YWxpZGF0aW9uIHJlc3VsdHNcbmdncGxvdChzcGVjaWVzX3ZhbGlkYXRpb24sIFxuICAgICAgIGFlcyh4ID0gY2F0Y2hfa2csIHkgPSBwcmljZV9rZywgY29sb3IgPSBjYXRjaF92YWxpZCAmIHByaWNlX3ZhbGlkKSkgK1xuICAgIGdlb21fcG9pbnQoYWxwaGEgPSAwLjYpICtcbiAgICBmYWNldF93cmFwKH5jYXRjaF90YXhvbiwgc2NhbGVzID0gXCJmcmVlXCIpICtcbiAgICBzY2FsZV9jb2xvcl9tYW51YWwodmFsdWVzID0gYyhcIlRSVUVcIiA9IFwiYmx1ZVwiLCBcIkZBTFNFXCIgPSBcInJlZFwiKSkgK1xuICAgIGxhYnModGl0bGUgPSBcIlNwZWNpZXMtU3BlY2lmaWMgVmFsaWRhdGlvbiBSZXN1bHRzXCIsXG4gICAgICAgICBzdWJ0aXRsZSA9IFwiUmVkIHBvaW50cyBmYWlsIGVpdGhlciBjYXRjaCBvciBwcmljZSB2YWxpZGF0aW9uXCIsXG4gICAgICAgICB4ID0gXCJDYXRjaCAoa2cpXCIsXG4gICAgICAgICB5ID0gXCJQcmljZSBwZXIga2dcIixcbiAgICAgICAgIGNvbG9yID0gXCJWYWxpZCBEYXRhXCIpICtcbiAgICB0aGVtZV9taW5pbWFsKCkifQ==
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImF1dG9ydW4iOmZhbHNlLCJldmFsIjp0cnVlfSwiY29kZSI6IiMgTG9vayBhdCBjYXRjaCB2cyBudW1iZXIgb2YgYm9hdHNcbmdncGxvdChmaXNoaW5nX2RhdGEsIFxuICAgICAgIGFlcyh4ID0gbl9ib2F0cywgeSA9IGNhdGNoX2tnLCBjb2xvciA9IGNhdGNoX3RheG9uKSkgK1xuICAgIGdlb21fcG9pbnQoYWxwaGEgPSAwLjYpICtcbiAgICBnZW9tX3Ntb290aChtZXRob2QgPSBcImxtXCIsIHNlID0gRkFMU0UpICtcbiAgICBsYWJzKHRpdGxlID0gXCJDYXRjaCB2cyBOdW1iZXIgb2YgQm9hdHNcIixcbiAgICAgICAgIHggPSBcIk51bWJlciBvZiBCb2F0c1wiLFxuICAgICAgICAgeSA9IFwiQ2F0Y2ggKGtnKVwiLFxuICAgICAgICAgY29sb3IgPSBcIlNwZWNpZXNcIikgK1xuICAgIHRoZW1lX21pbmltYWwoKSJ9
 </script>
 </div>
 </div>
-<p>This species-specific approach helps us: 1. Account for natural size differences between species 2. Identify species-specific price anomalies 3. Consider seasonal patterns by species 4. Validate catch composition ratios</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tips for Statistical Validation
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<ol type="1">
-<li>Always check data distribution before choosing validation method</li>
-<li>Use robust statistics (MAD, median) for skewed data</li>
-<li>Consider species-specific patterns and relationships</li>
-<li>Combine multiple validation approaches</li>
-<li>Document statistical assumptions and thresholds</li>
-</ol>
-</div>
-</div>
-</section>
-</section>
-<section id="cross-variable-validation-and-advanced-visualization" class="level2">
-<h2 class="anchored" data-anchor-id="cross-variable-validation-and-advanced-visualization">Cross-Variable Validation and Advanced Visualization 🔍</h2>
-<p>While validating individual variables is important, many data quality issues only become apparent when examining relationships between variables. Field data often contains internal logic that we can use for validation.</p>
-<p>Several variable pairs in fisheries data should follow logical patterns:</p>
-<ol type="1">
-<li><strong>Catch vs Effort</strong>: Should show positive correlation</li>
-<li><strong>Price vs Quantity</strong>: May show market effects</li>
-<li><strong>Number of boats vs Number of fishers</strong>: Should follow crew size patterns</li>
-</ol>
-<p>Let’s examine these relationships:</p>
+<p>This plot shows us the basic relationship, but for validation, we should look at catch per boat - this helps us spot unusually high or low efficiency:</p>
 <div class="cell" data-autorun="false">
 <div>
 <div id="webr-5">
 
 </div>
 <script type="webr-5-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImF1dG9ydW4iOmZhbHNlfSwiY29kZSI6IiMgQ3JlYXRlIHJlbGF0aW9uc2hpcCBwbG90c1xuY2F0Y2hfZWZmb3J0IDwtIGdncGxvdChmaXNoaW5nX2RhdGEsIFxuICAgICAgICAgICAgICAgICAgICAgIGFlcyh4ID0gbl9ib2F0cywgeSA9IGNhdGNoX2tnKSkgK1xuICAgIGdlb21fcG9pbnQoYWxwaGEgPSAwLjUpICtcbiAgICBnZW9tX3Ntb290aChtZXRob2QgPSBcImxtXCIsIHNlID0gRkFMU0UsIGNvbG9yID0gXCJyZWRcIikgK1xuICAgIGxhYnModGl0bGUgPSBcIkNhdGNoIHZzIE51bWJlciBvZiBCb2F0c1wiLFxuICAgICAgICAgc3VidGl0bGUgPSBcIkV4cGVjdCBwb3NpdGl2ZSBjb3JyZWxhdGlvblwiLFxuICAgICAgICAgeCA9IFwiTnVtYmVyIG9mIEJvYXRzXCIsXG4gICAgICAgICB5ID0gXCJDYXRjaCAoa2cpXCIpICtcbiAgICB0aGVtZV9taW5pbWFsKClcblxuIyBDYWxjdWxhdGUgY2F0Y2ggcGVyIGJvYXRcbmNhdGNoX3ByaWNlIDwtIGZpc2hpbmdfZGF0YSAlPiVcbiAgICBtdXRhdGUoY2F0Y2hfcGVyX2JvYXQgPSBjYXRjaF9rZyAvIG5fYm9hdHMpICU+JVxuICAgIGdncGxvdChhZXMoeCA9IGNhdGNoX3Blcl9ib2F0LCB5ID0gcHJpY2Vfa2cpKSArXG4gICAgZ2VvbV9wb2ludChhbHBoYSA9IDAuNSkgK1xuICAgIGdlb21fc21vb3RoKG1ldGhvZCA9IFwibG9lc3NcIiwgc2UgPSBGQUxTRSwgY29sb3IgPSBcInJlZFwiKSArXG4gICAgbGFicyh0aXRsZSA9IFwiUHJpY2UgdnMgQ2F0Y2ggcGVyIEJvYXRcIixcbiAgICAgICAgIHN1YnRpdGxlID0gXCJMb29rIGZvciBtYXJrZXQgZWZmZWN0c1wiLFxuICAgICAgICAgeCA9IFwiQ2F0Y2ggcGVyIEJvYXQgKGtnKVwiLFxuICAgICAgICAgeSA9IFwiUHJpY2UgcGVyIGtnXCIpICtcbiAgICB0aGVtZV9taW5pbWFsKClcblxuIyBEaXNwbGF5IHBsb3RzXG5wcmludChjYXRjaF9lZmZvcnQpXG5wcmludChjYXRjaF9wcmljZSkifQ==
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImF1dG9ydW4iOmZhbHNlLCJldmFsIjp0cnVlfSwiY29kZSI6IiMgQ2FsY3VsYXRlIGFuZCB2YWxpZGF0ZSBjYXRjaCBwZXIgYm9hdFxuY2F0Y2hfZWZmaWNpZW5jeSA8LSBmaXNoaW5nX2RhdGEgJT4lXG4gICAgZ3JvdXBfYnkoY2F0Y2hfdGF4b24pICU+JVxuICAgIG11dGF0ZShcbiAgICAgICAgIyBDYWxjdWxhdGUgY2F0Y2ggcGVyIGJvYXRcbiAgICAgICAgY2F0Y2hfcGVyX2JvYXQgPSBjYXRjaF9rZyAvIG5fYm9hdHMsXG4gICAgICAgIFxuICAgICAgICAjIENhbGN1bGF0ZSB0eXBpY2FsIHJhbmdlcyB1c2luZyBNQURcbiAgICAgICAgdHlwaWNhbF9jcGIgPSBtZWRpYW4oY2F0Y2hfcGVyX2JvYXQpLFxuICAgICAgICBjcGJfc3ByZWFkID0gbWFkKGNhdGNoX3Blcl9ib2F0KSxcbiAgICAgICAgXG4gICAgICAgICMgRmxhZyB1bnVzdWFsIHZhbHVlcyAobW9yZSB0aGFuIDMgTUFEcyBmcm9tIG1lZGlhbilcbiAgICAgICAgZWZmaWNpZW5jeV92YWxpZCA9IGFicyhjYXRjaF9wZXJfYm9hdCAtIHR5cGljYWxfY3BiKSA8PSAzICogY3BiX3NwcmVhZFxuICAgICkgJT4lXG4gICAgdW5ncm91cCgpXG5cbiMgVmlzdWFsaXplIGNhdGNoIGVmZmljaWVuY3lcbmdncGxvdChjYXRjaF9lZmZpY2llbmN5LCBcbiAgICAgICBhZXMoeCA9IGNhdGNoX3Blcl9ib2F0LCB5ID0gcHJpY2Vfa2csIGNvbG9yID0gZWZmaWNpZW5jeV92YWxpZCkpICtcbiAgICBnZW9tX3BvaW50KGFscGhhID0gMC42KSArXG4gICAgZmFjZXRfd3JhcCh+Y2F0Y2hfdGF4b24sIHNjYWxlcyA9IFwiZnJlZVwiKSArXG4gICAgc2NhbGVfY29sb3JfbWFudWFsKHZhbHVlcyA9IGMoXCJUUlVFXCIgPSBcImJsdWVcIiwgXCJGQUxTRVwiID0gXCJyZWRcIikpICtcbiAgICBsYWJzKHRpdGxlID0gXCJDYXRjaCBFZmZpY2llbmN5IHZzIFByaWNlXCIsXG4gICAgICAgICBzdWJ0aXRsZSA9IFwiUmVkIHBvaW50cyBzaG93IHVudXN1YWwgY2F0Y2ggcGVyIGJvYXQgdmFsdWVzXCIsXG4gICAgICAgICB4ID0gXCJDYXRjaCBwZXIgQm9hdCAoa2cpXCIsXG4gICAgICAgICB5ID0gXCJQcmljZSBwZXIga2dcIikgK1xuICAgIHRoZW1lX21pbmltYWwoKSJ9
 </script>
 </div>
 </div>
-<section id="implementing-cross-variable-validation" class="level3">
-<h3 class="anchored" data-anchor-id="implementing-cross-variable-validation">Implementing Cross-Variable Validation 🎯</h3>
-<p>Let’s develop validation rules based on these relationships:</p>
+<section id="price-and-catch-relationships" class="level3">
+<h3 class="anchored" data-anchor-id="price-and-catch-relationships">Price and Catch Relationships 💰</h3>
+<p>One of the most important validations in fisheries data is checking if prices make sense for the catches. Let’s examine this relationship:</p>
 <div class="cell" data-autorun="false">
 <div>
 <div id="webr-6">
 
 </div>
 <script type="webr-6-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImF1dG9ydW4iOmZhbHNlfSwiY29kZSI6IiMgQ3JlYXRlIHZhbGlkYXRpb24gZnVuY3Rpb24gZm9yIHJlbGF0ZWQgdmFyaWFibGVzXG5jcm9zc192YWxpZGF0ZSA8LSBmdW5jdGlvbihkYXRhKSB7XG4gICAgZGF0YSAlPiVcbiAgICAgICAgbXV0YXRlKFxuICAgICAgICAgICAgIyBDYXRjaCBwZXIgYm9hdCB2YWxpZGF0aW9uXG4gICAgICAgICAgICBjYXRjaF9wZXJfYm9hdCA9IGNhdGNoX2tnIC8gbl9ib2F0cyxcbiAgICAgICAgICAgIGNwYl9tYWQgPSBtYWQoY2F0Y2hfcGVyX2JvYXQsIG5hLnJtID0gVFJVRSksXG4gICAgICAgICAgICBjcGJfbWVkaWFuID0gbWVkaWFuKGNhdGNoX3Blcl9ib2F0LCBuYS5ybSA9IFRSVUUpLFxuICAgICAgICAgICAgY2F0Y2hfYm9hdF92YWxpZCA9IGFicyhjYXRjaF9wZXJfYm9hdCAtIGNwYl9tZWRpYW4pIDw9IDMgKiBjcGJfbWFkLFxuICAgICAgICAgICAgXG4gICAgICAgICAgICAjIFByaWNlIHZzIGNhdGNoIHZhbGlkYXRpb25cbiAgICAgICAgICAgIHByaWNlX2NhdGNoX3JhdGlvID0gcHJpY2Vfa2cgKiBjYXRjaF9rZyxcbiAgICAgICAgICAgIHBjcl9tYWQgPSBtYWQocHJpY2VfY2F0Y2hfcmF0aW8sIG5hLnJtID0gVFJVRSksXG4gICAgICAgICAgICBwY3JfbWVkaWFuID0gbWVkaWFuKHByaWNlX2NhdGNoX3JhdGlvLCBuYS5ybSA9IFRSVUUpLFxuICAgICAgICAgICAgcHJpY2VfY2F0Y2hfdmFsaWQgPSBhYnMocHJpY2VfY2F0Y2hfcmF0aW8gLSBwY3JfbWVkaWFuKSA8PSAzICogcGNyX21hZCxcbiAgICAgICAgICAgIFxuICAgICAgICAgICAgIyBGaXNoZXIgcGVyIGJvYXQgdmFsaWRhdGlvblxuICAgICAgICAgICAgZmlzaGVyc19wZXJfYm9hdCA9IG5fZmlzaGVycyAvIG5fYm9hdHMsXG4gICAgICAgICAgICBmcGJfdmFsaWQgPSBiZXR3ZWVuKGZpc2hlcnNfcGVyX2JvYXQsIDIsIDE1KSAgIyBUeXBpY2FsIGNyZXcgc2l6ZSByYW5nZVxuICAgICAgICApXG59XG5cbiMgQXBwbHkgY3Jvc3MtdmFsaWRhdGlvblxudmFsaWRhdGVkX2RhdGEgPC0gZmlzaGluZ19kYXRhICU+JVxuICAgIGdyb3VwX2J5KGNhdGNoX3RheG9uKSAlPiVcbiAgICBncm91cF9tb2RpZnkofmNyb3NzX3ZhbGlkYXRlKC54KSkgJT4lXG4gICAgdW5ncm91cCgpICU+JSBcbiAgbmEub21pdCgpXG5cbiMgVmlzdWFsaXplIHZhbGlkYXRpb24gcmVzdWx0c1xuZ2dwbG90KHZhbGlkYXRlZF9kYXRhLCBcbiAgICAgICBhZXMoeCA9IGNhdGNoX3Blcl9ib2F0LCB5ID0gcHJpY2Vfa2csIFxuICAgICAgICAgICBjb2xvciA9IGNhdGNoX2JvYXRfdmFsaWQgJiBwcmljZV9jYXRjaF92YWxpZCkpICtcbiAgICBnZW9tX3BvaW50KGFscGhhID0gMC42KSArXG4gICAgZmFjZXRfd3JhcCh+Y2F0Y2hfdGF4b24sIHNjYWxlcyA9IFwiZnJlZVwiKSArXG4gICAgc2NhbGVfY29sb3JfbWFudWFsKHZhbHVlcyA9IGMoXCJUUlVFXCIgPSBcImJsdWVcIiwgXCJGQUxTRVwiID0gXCJyZWRcIikpICtcbiAgICBsYWJzKHRpdGxlID0gXCJDcm9zcy1WYXJpYWJsZSBWYWxpZGF0aW9uIFJlc3VsdHNcIixcbiAgICAgICAgIHN1YnRpdGxlID0gXCJSZWQgcG9pbnRzIGZhaWwgcmVsYXRpb25zaGlwIHZhbGlkYXRpb25cIixcbiAgICAgICAgIHggPSBcIkNhdGNoIHBlciBCb2F0IChrZylcIixcbiAgICAgICAgIHkgPSBcIlByaWNlIHBlciBrZ1wiLFxuICAgICAgICAgY29sb3IgPSBcIlZhbGlkIERhdGFcIikgK1xuICAgIHRoZW1lX21pbmltYWwoKSJ9
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImF1dG9ydW4iOmZhbHNlLCJldmFsIjp0cnVlfSwiY29kZSI6IiMgRmlyc3QgbG9vayBhdCBwcmljZSB2cyBjYXRjaCBieSBzcGVjaWVzXG5nZ3Bsb3QoZmlzaGluZ19kYXRhLCBcbiAgICAgICBhZXMoeCA9IGNhdGNoX2tnLCB5ID0gcHJpY2Vfa2csIGNvbG9yID0gY2F0Y2hfdGF4b24pKSArXG4gICAgZ2VvbV9wb2ludChhbHBoYSA9IDAuNikgK1xuICAgIGxhYnModGl0bGUgPSBcIlByaWNlIHZzIENhdGNoIFNpemUgYnkgU3BlY2llc1wiLFxuICAgICAgICAgeCA9IFwiQ2F0Y2ggKGtnKVwiLFxuICAgICAgICAgeSA9IFwiUHJpY2UgcGVyIGtnXCIsXG4gICAgICAgICBjb2xvciA9IFwiU3BlY2llc1wiKSArXG4gICAgdGhlbWVfbWluaW1hbCgpIn0=
 </script>
 </div>
 </div>
-</section>
-<section id="using-advanced-visualization-for-validation" class="level3">
-<h3 class="anchored" data-anchor-id="using-advanced-visualization-for-validation">Using Advanced Visualization for Validation 📈</h3>
-<p>Let’s explore more sophisticated visualization techniques that can help identify data quality issues:</p>
-<section id="multi-dimensional-validation-plots" class="level4">
-<h4 class="anchored" data-anchor-id="multi-dimensional-validation-plots">1. Multi-dimensional Validation Plots</h4>
+<p>We can use MAD to identify unusual price-catch combinations:</p>
 <div class="cell" data-autorun="false">
 <div>
 <div id="webr-7">
 
 </div>
 <script type="webr-7-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImF1dG9ydW4iOmZhbHNlfSwiY29kZSI6IiMgQ3JlYXRlIGEgcGxvdCB0aGF0IHNob3dzIG11bHRpcGxlIHZhbGlkYXRpb24gZGltZW5zaW9uc1xudmFsaWRhdGVkX2RhdGEgJT4lXG4gICAgbXV0YXRlKFxuICAgICAgICBzaXplX2NhdGVnb3J5ID0gY3V0KGNhdGNoX2tnLCBcbiAgICAgICAgICAgICAgICAgICAgICAgICAgIGJyZWFrcyA9IGMoMCwgNTAsIDEwMCwgNTAwLCBJbmYpLFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgbGFiZWxzID0gYyhcIlNtYWxsXCIsIFwiTWVkaXVtXCIsIFwiTGFyZ2VcIiwgXCJWZXJ5IExhcmdlXCIpKVxuICAgICkgJT4lXG4gICAgZ2dwbG90KGFlcyh4ID0gbl9ib2F0cywgeSA9IG5fZmlzaGVycykpICtcbiAgICBnZW9tX3BvaW50KGFlcyhzaXplID0gY2F0Y2hfa2csIGNvbG9yID0gcHJpY2VfY2F0Y2hfdmFsaWQpLCBhbHBoYSA9IDAuNikgK1xuICAgIGZhY2V0X3dyYXAofnNpemVfY2F0ZWdvcnkpICtcbiAgICBzY2FsZV9jb2xvcl9tYW51YWwodmFsdWVzID0gYyhcIlRSVUVcIiA9IFwiYmx1ZVwiLCBcIkZBTFNFXCIgPSBcInJlZFwiKSkgK1xuICAgIGxhYnModGl0bGUgPSBcIk11bHRpLWRpbWVuc2lvbmFsIFZhbGlkYXRpb24gVmlld1wiLFxuICAgICAgICAgc3VidGl0bGUgPSBcIkV4YW1pbmluZyByZWxhdGlvbnNoaXBzIGJldHdlZW4gZWZmb3J0LCBjYXRjaCwgYW5kIHByaWNlIHZhbGlkaXR5XCIsXG4gICAgICAgICB4ID0gXCJOdW1iZXIgb2YgQm9hdHNcIixcbiAgICAgICAgIHkgPSBcIk51bWJlciBvZiBGaXNoZXJzXCIsXG4gICAgICAgICBzaXplID0gXCJDYXRjaCAoa2cpXCIsXG4gICAgICAgICBjb2xvciA9IFwiVmFsaWQgUHJpY2UtQ2F0Y2ggUmVsYXRpb25zaGlwXCIpICtcbiAgICB0aGVtZV9taW5pbWFsKCkifQ==
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImF1dG9ydW4iOmZhbHNlLCJldmFsIjp0cnVlfSwiY29kZSI6IiMgVmFsaWRhdGUgcHJpY2VzIGZvciBlYWNoIHNwZWNpZXNcbnByaWNlX3ZhbGlkYXRpb24gPC0gZmlzaGluZ19kYXRhICU+JVxuICAgIGdyb3VwX2J5KGNhdGNoX3RheG9uKSAlPiVcbiAgICBtdXRhdGUoXG4gICAgICAgICMgQ2FsY3VsYXRlIHR5cGljYWwgcHJpY2UgcmFuZ2UgdXNpbmcgTUFEXG4gICAgICAgIHR5cGljYWxfcHJpY2UgPSBtZWRpYW4ocHJpY2Vfa2cpLFxuICAgICAgICBwcmljZV9zcHJlYWQgPSBtYWQocHJpY2Vfa2cpLFxuICAgICAgICBcbiAgICAgICAgIyBGbGFnIHVudXN1YWwgcHJpY2VzIChtb3JlIHRoYW4gMyBNQURzIGZyb20gbWVkaWFuKVxuICAgICAgICBwcmljZV92YWxpZCA9IGFicyhwcmljZV9rZyAtIHR5cGljYWxfcHJpY2UpIDw9IDMgKiBwcmljZV9zcHJlYWRcbiAgICApICU+JVxuICAgIHVuZ3JvdXAoKVxuXG4jIFZpc3VhbGl6ZSBwcmljZSB2YWxpZGF0aW9uXG5nZ3Bsb3QocHJpY2VfdmFsaWRhdGlvbiwgXG4gICAgICAgYWVzKHggPSBjYXRjaF9rZywgeSA9IHByaWNlX2tnLCBjb2xvciA9IHByaWNlX3ZhbGlkKSkgK1xuICAgIGdlb21fcG9pbnQoYWxwaGEgPSAwLjYpICtcbiAgICBmYWNldF93cmFwKH5jYXRjaF90YXhvbiwgc2NhbGVzID0gXCJmcmVlXCIpICtcbiAgICBzY2FsZV9jb2xvcl9tYW51YWwodmFsdWVzID0gYyhcIlRSVUVcIiA9IFwiYmx1ZVwiLCBcIkZBTFNFXCIgPSBcInJlZFwiKSkgK1xuICAgIGxhYnModGl0bGUgPSBcIlByaWNlIFZhbGlkYXRpb24gYnkgU3BlY2llc1wiLFxuICAgICAgICAgc3VidGl0bGUgPSBcIlJlZCBwb2ludHMgc2hvdyB1bnVzdWFsIHByaWNlc1wiLFxuICAgICAgICAgeCA9IFwiQ2F0Y2ggKGtnKVwiLFxuICAgICAgICAgeSA9IFwiUHJpY2UgcGVyIGtnXCIpICtcbiAgICB0aGVtZV9taW5pbWFsKClcblxuIyBTaG93IHN1bW1hcnkgc3RhdGlzdGljc1xucHJpY2Vfc3VtbWFyeSA8LSBwcmljZV92YWxpZGF0aW9uICU+JVxuICAgIGdyb3VwX2J5KGNhdGNoX3RheG9uKSAlPiVcbiAgICBzdW1tYXJpc2UoXG4gICAgICAgIG1lZGlhbl9wcmljZSA9IHJvdW5kKG1lZGlhbihwcmljZV9rZykpLFxuICAgICAgICB0eXBpY2FsX3JhbmdlID0gcGFzdGUocm91bmQobWVkaWFuKHByaWNlX2tnKSAtIDMqbWFkKHByaWNlX2tnKSksXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgXCJ0b1wiLFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgIHJvdW5kKG1lZGlhbihwcmljZV9rZykgKyAzKm1hZChwcmljZV9rZykpKSxcbiAgICAgICAgcGN0X3ZhbGlkID0gbWVhbihwcmljZV92YWxpZCkgKiAxMDBcbiAgICApXG5cbnByaW50KFwiUHJpY2UgdmFsaWRhdGlvbiBzdW1tYXJ5OlwiKVxucHJpbnQocHJpY2Vfc3VtbWFyeSkifQ==
 </script>
 </div>
 </div>
-</section>
-<section id="temporal-pattern-validation" class="level4">
-<h4 class="anchored" data-anchor-id="temporal-pattern-validation">2. Temporal Pattern Validation</h4>
-<div class="cell" data-autorun="false">
-<div>
-<div id="webr-8">
-
-</div>
-<script type="webr-8-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImF1dG9ydW4iOmZhbHNlfSwiY29kZSI6IiMgQ29udmVydCBkYXRlIGFuZCBleGFtaW5lIHRlbXBvcmFsIHBhdHRlcm5zXG50ZW1wb3JhbF92YWxpZGF0aW9uIDwtIHZhbGlkYXRlZF9kYXRhICU+JVxuICAgIG11dGF0ZShcbiAgICAgICAgbGFuZGluZ19kYXRlID0gYXMuRGF0ZShsYW5kaW5nX2RhdGUpLFxuICAgICAgICBtb250aCA9IGZvcm1hdChsYW5kaW5nX2RhdGUsIFwiJW1cIiksXG4gICAgICAgIHZhbGlkID0gY2F0Y2hfYm9hdF92YWxpZCAmIHByaWNlX2NhdGNoX3ZhbGlkICYgZnBiX3ZhbGlkXG4gICAgKVxuXG4jIENyZWF0ZSB0ZW1wb3JhbCB2YWxpZGF0aW9uIHBsb3RcbmdncGxvdCh0ZW1wb3JhbF92YWxpZGF0aW9uLCBcbiAgICAgICBhZXMoeCA9IGxhbmRpbmdfZGF0ZSwgeSA9IGNhdGNoX2tnLCBjb2xvciA9IHZhbGlkKSkgK1xuICAgIGdlb21fcG9pbnQoYWxwaGEgPSAwLjYpICtcbiAgICBnZW9tX3Ntb290aChhZXMoZ3JvdXAgPSAxKSwgbWV0aG9kID0gXCJsb2Vzc1wiLCBjb2xvciA9IFwiYmxhY2tcIiwgc2UgPSBGQUxTRSkgK1xuICAgIGZhY2V0X3dyYXAofmNhdGNoX3RheG9uLCBzY2FsZXMgPSBcImZyZWVfeVwiKSArXG4gICAgc2NhbGVfY29sb3JfbWFudWFsKHZhbHVlcyA9IGMoXCJUUlVFXCIgPSBcImJsdWVcIiwgXCJGQUxTRVwiID0gXCJyZWRcIikpICtcbiAgICBsYWJzKHRpdGxlID0gXCJUZW1wb3JhbCBWYWxpZGF0aW9uIFBhdHRlcm5zXCIsXG4gICAgICAgICBzdWJ0aXRsZSA9IFwiTG9va2luZyBmb3Igc2Vhc29uYWwgcGF0dGVybnMgYW5kIGFub21hbGllc1wiLFxuICAgICAgICAgeCA9IFwiRGF0ZVwiLFxuICAgICAgICAgeSA9IFwiQ2F0Y2ggKGtnKVwiLFxuICAgICAgICAgY29sb3IgPSBcIlZhbGlkIERhdGFcIikgK1xuICAgIHRoZW1lX21pbmltYWwoKSArXG4gICAgdGhlbWUoYXhpcy50ZXh0LnggPSBlbGVtZW50X3RleHQoYW5nbGUgPSA0NSwgaGp1c3QgPSAxKSkifQ==
-</script>
-</div>
-</div>
-</section>
-<section id="validation-summary-visualizations" class="level4">
-<h4 class="anchored" data-anchor-id="validation-summary-visualizations">3. Validation Summary Visualizations</h4>
-<div class="cell" data-autorun="false">
-<div>
-<div id="webr-9">
-
-</div>
-<script type="webr-9-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImF1dG9ydW4iOmZhbHNlfSwiY29kZSI6IiMgQ3JlYXRlIHZhbGlkYXRpb24gc3VtbWFyeSBzdGF0aXN0aWNzXG52YWxpZGF0aW9uX3N1bW1hcnkgPC0gdmFsaWRhdGVkX2RhdGEgJT4lXG4gICAgZ3JvdXBfYnkoY2F0Y2hfdGF4b24pICU+JVxuICAgIHN1bW1hcmlzZShcbiAgICAgICAgbl90b3RhbCA9IG4oKSxcbiAgICAgICAgbl9pbnZhbGlkX2NhdGNoID0gc3VtKCFjYXRjaF9ib2F0X3ZhbGlkLCBuYS5ybSA9IFRSVUUpLFxuICAgICAgICBuX2ludmFsaWRfcHJpY2UgPSBzdW0oIXByaWNlX2NhdGNoX3ZhbGlkLCBuYS5ybSA9IFRSVUUpLFxuICAgICAgICBuX2ludmFsaWRfY3JldyA9IHN1bSghZnBiX3ZhbGlkLCBuYS5ybSA9IFRSVUUpLFxuICAgICAgICBwZXJjZW50X3ZhbGlkID0gbWVhbihjYXRjaF9ib2F0X3ZhbGlkICYgXG4gICAgICAgICAgICAgICAgICAgICAgICAgICBwcmljZV9jYXRjaF92YWxpZCAmIFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgZnBiX3ZhbGlkLCBuYS5ybSA9IFRSVUUpICogMTAwXG4gICAgKSAlPiVcbiAgICBmaWx0ZXIobl90b3RhbCA+PSAxMCkgICMgRm9jdXMgb24gd2VsbC1zYW1wbGVkIHNwZWNpZXNcblxuIyBDcmVhdGUgc3VtbWFyeSBwbG90XG5nZ3Bsb3QodmFsaWRhdGlvbl9zdW1tYXJ5LCBcbiAgICAgICBhZXMoeCA9IHJlb3JkZXIoY2F0Y2hfdGF4b24sIHBlcmNlbnRfdmFsaWQpLCB5ID0gcGVyY2VudF92YWxpZCkpICtcbiAgICBnZW9tX2NvbChmaWxsID0gXCJzdGVlbGJsdWVcIiwgYWxwaGEgPSAwLjcpICtcbiAgICBnZW9tX3RleHQoYWVzKGxhYmVsID0gc3ByaW50ZihcIiUuMWYlJVwiLCBwZXJjZW50X3ZhbGlkKSksIFxuICAgICAgICAgICAgICBoanVzdCA9IC0wLjEsIHNpemUgPSAzKSArXG4gICAgY29vcmRfZmxpcCgpICtcbiAgICBsYWJzKHRpdGxlID0gXCJWYWxpZGF0aW9uIFN1Y2Nlc3MgUmF0ZSBieSBTcGVjaWVzXCIsXG4gICAgICAgICBzdWJ0aXRsZSA9IFwiUGVyY2VudGFnZSBvZiByZWNvcmRzIHBhc3NpbmcgYWxsIHZhbGlkYXRpb24gY2hlY2tzXCIsXG4gICAgICAgICB4ID0gXCJTcGVjaWVzXCIsXG4gICAgICAgICB5ID0gXCJQZXJjZW50IFZhbGlkICglKVwiKSArXG4gICAgdGhlbWVfbWluaW1hbCgpIn0=
-</script>
-</div>
-</div>
-</section>
-</section>
-<section id="interpreting-cross-variable-validation-results" class="level3">
-<h3 class="anchored" data-anchor-id="interpreting-cross-variable-validation-results">Interpreting Cross-Variable Validation Results 🔍</h3>
-<p>When examining cross-variable validation results, consider:</p>
-<ol type="1">
-<li><strong>Logical Consistency</strong>
-<ul>
-<li>Do relationships make biological sense?</li>
-<li>Are there clear patterns in invalid data?</li>
-<li>Do some species show more issues than others?</li>
-</ul></li>
-<li><strong>Temporal Patterns</strong>
-<ul>
-<li>Are validation failures clustered in time?</li>
-<li>Do they correspond to known events?</li>
-<li>Are there seasonal patterns in data quality?</li>
-</ul></li>
-<li><strong>Spatial Patterns</strong>
-<ul>
-<li>Do some landing sites show more issues?</li>
-<li>Are there geographic patterns in data quality?</li>
-<li>Could environmental factors be influencing results?</li>
-</ul></li>
-</ol>
+<p>This validation shows us: - Each species has its typical price range - Most prices fall within 3 MADs of the median - Some species show more price variation than others</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Cross-Validation Tips
+Price Validation Tips
 </div>
 </div>
 <div class="callout-body-container callout-body">
 <ol type="1">
-<li>Always consider biological and operational constraints</li>
-<li>Look for patterns in validation failures</li>
-<li>Consider multiple validation criteria simultaneously</li>
-<li>Document assumptions about variable relationships</li>
-<li>Review results with field experts</li>
+<li>Always validate prices by species</li>
+<li>Consider market factors that might affect prices</li>
+<li>Look for patterns in unusual prices</li>
+<li>Document any seasonal price variations</li>
+<li>Check with local knowledge about price ranges</li>
 </ol>
 </div>
 </div>
 </section>
-<section id="practice-exercise-cross-variable-validation" class="level3">
-<h3 class="anchored" data-anchor-id="practice-exercise-cross-variable-validation">Practice Exercise: Cross-Variable Validation 💪</h3>
-<p>Let’s practice implementing cross-variable validation:</p>
+<section id="practice-exercise-price-validation" class="level3">
+<h3 class="anchored" data-anchor-id="practice-exercise-price-validation">Practice Exercise: Price Validation 💪</h3>
+<p>Let’s practice implementing price validation:</p>
 <div class="cell" data-autorun="false">
 <div>
-<div id="webr-10">
+<div id="webr-8">
 
 </div>
-<script type="webr-10-contents">
-eyJhdHRyIjp7ImVjaG8iOnRydWUsImVkaXQiOnRydWUsImV2YWwiOnRydWUsImF1dG9ydW4iOmZhbHNlfSwiY29kZSI6IiMgRXhlcmNpc2U6IENyZWF0ZSBhIHZhbGlkYXRpb24gY2hlY2sgdGhhdDpcbiMgMS4gSWRlbnRpZmllcyBzdXNwaWNpb3VzIHByaWNlLWNhdGNoIHJlbGF0aW9uc2hpcHMgYnkgc3BlY2llc1xuIyAyLiBWYWxpZGF0ZXMgY3JldyBzaXplcyBhZ2FpbnN0IGJvYXQgdHlwZXNcbiMgMy4gQ2hlY2tzIGZvciB0ZW1wb3JhbCBjb25zaXN0ZW5jeSBpbiBjYXRjaCByYXRlc1xuXG4jIFlvdXIgY29kZSBoZXJlOiJ9
+<script type="webr-8-contents">
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImVjaG8iOnRydWUsImF1dG9ydW4iOmZhbHNlLCJldmFsIjp0cnVlfSwiY29kZSI6IiMgRXhlcmNpc2U6IENyZWF0ZSBhIHZhbGlkYXRpb24gY2hlY2sgdGhhdDpcbiMgMS4gQ2FsY3VsYXRlcyB0b3RhbCB2YWx1ZSAoY2F0Y2hfa2cgKiBwcmljZV9rZylcbiMgMi4gSWRlbnRpZmllcyB1bnVzdWFsIHRvdGFsIHZhbHVlcyB1c2luZyBNQURcbiMgMy4gVmlzdWFsaXplcyB0aGUgcmVzdWx0c1xuXG4jIFlvdXIgY29kZSBoZXJlOiJ9
 </script>
 </div>
 </div>
@@ -590,200 +500,107 @@ Click to see solution
 </summary>
 <div class="cell" data-autorun="false">
 <div>
-<div id="webr-11">
+<div id="webr-9">
 
 </div>
-<script type="webr-11-contents">
-eyJhdHRyIjp7ImVkaXQiOmZhbHNlLCJldmFsIjpmYWxzZSwiYXV0b3J1biI6ZmFsc2V9LCJjb2RlIjoiIyBDcmVhdGUgY29tcHJlaGVuc2l2ZSB2YWxpZGF0aW9uXG52YWxpZGF0aW9uX2V4ZXJjaXNlIDwtIGZpc2hpbmdfZGF0YSAlPiVcbiAgICBncm91cF9ieShjYXRjaF90YXhvbikgJT4lXG4gICAgbXV0YXRlKFxuICAgICAgICAjIFByaWNlLWNhdGNoIHJlbGF0aW9uc2hpcFxuICAgICAgICBwcmljZV9wZXJfY2F0Y2ggPSBwcmljZV9rZyAqIGNhdGNoX2tnLFxuICAgICAgICBwcmljZV9tYWQgPSBtYWQocHJpY2VfcGVyX2NhdGNoLCBuYS5ybSA9IFRSVUUpLFxuICAgICAgICBwcmljZV9tZWRpYW4gPSBtZWRpYW4ocHJpY2VfcGVyX2NhdGNoLCBuYS5ybSA9IFRSVUUpLFxuICAgICAgICBwcmljZV92YWxpZCA9IGFicyhwcmljZV9wZXJfY2F0Y2ggLSBwcmljZV9tZWRpYW4pIDw9IDMgKiBwcmljZV9tYWQsXG4gICAgICAgIFxuICAgICAgICAjIENyZXcgc2l6ZSB2YWxpZGF0aW9uXG4gICAgICAgIGNyZXdfcmF0aW8gPSBuX2Zpc2hlcnMgLyBuX2JvYXRzLFxuICAgICAgICBjcmV3X3ZhbGlkID0gYmV0d2VlbihjcmV3X3JhdGlvLCAyLCAxNSksXG4gICAgICAgIFxuICAgICAgICAjIFRlbXBvcmFsIGNvbnNpc3RlbmN5XG4gICAgICAgIGxhbmRpbmdfZGF0ZSA9IGFzLkRhdGUobGFuZGluZ19kYXRlKSxcbiAgICAgICAgZGFpbHlfY2F0Y2ggPSBhdmUoY2F0Y2hfa2csIGxhbmRpbmdfZGF0ZSwgRlVOID0gc3VtLCBuYS5ybSA9IFRSVUUpLFxuICAgICAgICBjYXRjaF9tYWQgPSBtYWQoZGFpbHlfY2F0Y2gsIG5hLnJtID0gVFJVRSksXG4gICAgICAgIGNhdGNoX21lZGlhbiA9IG1lZGlhbihkYWlseV9jYXRjaCwgbmEucm0gPSBUUlVFKSxcbiAgICAgICAgdGVtcG9yYWxfdmFsaWQgPSBhYnMoZGFpbHlfY2F0Y2ggLSBjYXRjaF9tZWRpYW4pIDw9IDMgKiBjYXRjaF9tYWRcbiAgICApICU+JVxuICAgIHVuZ3JvdXAoKVxuXG4jIENyZWF0ZSBzdW1tYXJ5IHZpc3VhbGl6YXRpb25cbmdncGxvdCh2YWxpZGF0aW9uX2V4ZXJjaXNlLCBcbiAgICAgICBhZXMoeCA9IGxhbmRpbmdfZGF0ZSwgeSA9IGRhaWx5X2NhdGNoLCBcbiAgICAgICAgICAgY29sb3IgPSBwcmljZV92YWxpZCAmIGNyZXdfdmFsaWQgJiB0ZW1wb3JhbF92YWxpZCkpICtcbiAgICBnZW9tX3BvaW50KGFscGhhID0gMC42KSArXG4gICAgZmFjZXRfd3JhcCh+Y2F0Y2hfdGF4b24sIHNjYWxlcyA9IFwiZnJlZV95XCIpICtcbiAgICBzY2FsZV9jb2xvcl9tYW51YWwodmFsdWVzID0gYyhcIlRSVUVcIiA9IFwiYmx1ZVwiLCBcIkZBTFNFXCIgPSBcInJlZFwiKSkgK1xuICAgIGxhYnModGl0bGUgPSBcIkNvbXByZWhlbnNpdmUgVmFsaWRhdGlvbiBSZXN1bHRzXCIsXG4gICAgICAgICB4ID0gXCJEYXRlXCIsXG4gICAgICAgICB5ID0gXCJEYWlseSBDYXRjaCAoa2cpXCIsXG4gICAgICAgICBjb2xvciA9IFwiVmFsaWQgRGF0YVwiKSArXG4gICAgdGhlbWVfbWluaW1hbCgpIn0=
+<script type="webr-9-contents">
+eyJhdHRyIjp7ImVkaXQiOmZhbHNlLCJhdXRvcnVuIjpmYWxzZSwiZXZhbCI6ZmFsc2V9LCJjb2RlIjoiIyBWYWx1ZSB2YWxpZGF0aW9uXG52YWx1ZV92YWxpZGF0aW9uIDwtIGZpc2hpbmdfZGF0YSAlPiVcbiAgICBncm91cF9ieShjYXRjaF90YXhvbikgJT4lXG4gICAgbXV0YXRlKFxuICAgICAgICAjIENhbGN1bGF0ZSB0b3RhbCB2YWx1ZVxuICAgICAgICB0b3RhbF92YWx1ZSA9IGNhdGNoX2tnICogcHJpY2Vfa2csXG4gICAgICAgIFxuICAgICAgICAjIENoZWNrIGlmIHZhbHVlIGlzIHJlYXNvbmFibGVcbiAgICAgICAgdHlwaWNhbF92YWx1ZSA9IG1lZGlhbih0b3RhbF92YWx1ZSksXG4gICAgICAgIHZhbHVlX3NwcmVhZCA9IG1hZCh0b3RhbF92YWx1ZSksXG4gICAgICAgIHZhbHVlX3ZhbGlkID0gYWJzKHRvdGFsX3ZhbHVlIC0gdHlwaWNhbF92YWx1ZSkgPD0gMyAqIHZhbHVlX3NwcmVhZFxuICAgICkgJT4lXG4gICAgdW5ncm91cCgpXG5cbiMgVmlzdWFsaXplIHJlc3VsdHNcbmdncGxvdCh2YWx1ZV92YWxpZGF0aW9uLCBcbiAgICAgICBhZXMoeCA9IGNhdGNoX2tnLCB5ID0gdG90YWxfdmFsdWUsIGNvbG9yID0gdmFsdWVfdmFsaWQpKSArXG4gICAgZ2VvbV9wb2ludChhbHBoYSA9IDAuNikgK1xuICAgIGZhY2V0X3dyYXAofmNhdGNoX3RheG9uLCBzY2FsZXMgPSBcImZyZWVcIikgK1xuICAgIHNjYWxlX2NvbG9yX21hbnVhbCh2YWx1ZXMgPSBjKFwiVFJVRVwiID0gXCJibHVlXCIsIFwiRkFMU0VcIiA9IFwicmVkXCIpKSArXG4gICAgbGFicyh0aXRsZSA9IFwiVG90YWwgVmFsdWUgVmFsaWRhdGlvblwiLFxuICAgICAgICAgeCA9IFwiQ2F0Y2ggKGtnKVwiLFxuICAgICAgICAgeSA9IFwiVG90YWwgVmFsdWVcIixcbiAgICAgICAgIGNvbG9yID0gXCJWYWxpZCBWYWx1ZVwiKSArXG4gICAgdGhlbWVfbWluaW1hbCgpIn0=
 </script>
 </div>
 </div>
 </details>
 </section>
-</section>
-<section id="advanced-statistical-validation-methods" class="level2">
-<h2 class="anchored" data-anchor-id="advanced-statistical-validation-methods">Advanced Statistical Validation Methods 📊</h2>
-<p>While MAD and cross-variable validation are powerful, some data quality issues require more sophisticated statistical approaches. Let’s explore several advanced methods particularly useful for fisheries data.</p>
-<section id="multivariate-outlier-detection" class="level3">
-<h3 class="anchored" data-anchor-id="multivariate-outlier-detection">Multivariate Outlier Detection 🎯</h3>
-<p>Instead of checking variables individually, we can look for unusual combinations of variables:</p>
+<section id="location-specific-validation" class="level3">
+<h3 class="anchored" data-anchor-id="location-specific-validation">Location-Specific Validation 🗺️</h3>
+<p>An important aspect of fisheries data validation is recognizing that relationships between variables can vary by location. Different landing sites might have different patterns due to: - Local market conditions - Fishing ground accessibility - Community practices - Landing site facilities</p>
+<p>Let’s examine how price-catch relationships vary by landing site:</p>
 <div class="cell" data-autorun="false">
 <div>
-<div id="webr-12">
+<div id="webr-10">
 
 </div>
-<script type="webr-12-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImF1dG9ydW4iOmZhbHNlfSwiY29kZSI6IiMgQ2FsY3VsYXRlIE1haGFsYW5vYmlzIGRpc3RhbmNlcyBmb3IgbXVsdGl2YXJpYXRlIG91dGxpZXIgZGV0ZWN0aW9uXG5tdWx0aXZhcmlhdGVfY2hlY2sgPC0gZmlzaGluZ19kYXRhICU+JVxuICAgICMgU2VsZWN0IG51bWVyaWMgdmFyaWFibGVzXG4gICAgc2VsZWN0KGNhdGNoX2tnLCBwcmljZV9rZywgbl9ib2F0cywgbl9maXNoZXJzKSAlPiVcbiAgICAjIFJlbW92ZSBOQSB2YWx1ZXNcbiAgICBuYS5vbWl0KCkgJT4lXG4gICAgIyBDYWxjdWxhdGUgTWFoYWxhbm9iaXMgZGlzdGFuY2VzXG4gICAgbXV0YXRlKFxuICAgICAgICBtYWhhX2Rpc3QgPSBtYWhhbGFub2JpcyhcbiAgICAgICAgICAgIHggPSBzZWxlY3QoLiwgZXZlcnl0aGluZygpKSxcbiAgICAgICAgICAgIGNlbnRlciA9IGNvbE1lYW5zKHNlbGVjdCguLCBldmVyeXRoaW5nKCkpKSxcbiAgICAgICAgICAgIGNvdiA9IGNvdihzZWxlY3QoLiwgZXZlcnl0aGluZygpKSlcbiAgICAgICAgKSxcbiAgICAgICAgIyBDaGktc3F1YXJlIGN1dG9mZiBmb3Igb3V0bGllciBkZXRlY3Rpb25cbiAgICAgICAgaXNfb3V0bGllciA9IG1haGFfZGlzdCA+IHFjaGlzcShwID0gMC45NzUsIGRmID0gbmNvbCguKSlcbiAgICApXG5cbiMgVmlzdWFsaXplIG11bHRpdmFyaWF0ZSBvdXRsaWVyc1xuZ2dwbG90KG11bHRpdmFyaWF0ZV9jaGVjaywgXG4gICAgICAgYWVzKHggPSBjYXRjaF9rZywgeSA9IHByaWNlX2tnLCBjb2xvciA9IGlzX291dGxpZXIpKSArXG4gICAgZ2VvbV9wb2ludChhbHBoYSA9IDAuNikgK1xuICAgIGZhY2V0X3dyYXAofmN1dChuX2JvYXRzLCBicmVha3MgPSBjKDAsIDUsIDEwLCBJbmYpLCBcbiAgICAgICAgICAgICAgICAgICAgbGFiZWxzID0gYyhcIlNtYWxsXCIsIFwiTWVkaXVtXCIsIFwiTGFyZ2VcIikpLFxuICAgICAgICAgICAgICAgc2NhbGVzID0gXCJmcmVlXCIpICtcbiAgICBzY2FsZV9jb2xvcl9tYW51YWwodmFsdWVzID0gYyhcIlRSVUVcIiA9IFwicmVkXCIsIFwiRkFMU0VcIiA9IFwiYmx1ZVwiKSkgK1xuICAgIGxhYnModGl0bGUgPSBcIk11bHRpdmFyaWF0ZSBPdXRsaWVyIERldGVjdGlvblwiLFxuICAgICAgICAgc3VidGl0bGUgPSBcIlVzaW5nIE1haGFsYW5vYmlzIGRpc3RhbmNlXCIsXG4gICAgICAgICB4ID0gXCJDYXRjaCAoa2cpXCIsXG4gICAgICAgICB5ID0gXCJQcmljZSBwZXIga2dcIixcbiAgICAgICAgIGNvbG9yID0gXCJPdXRsaWVyXCIpICtcbiAgICB0aGVtZV9taW5pbWFsKCkifQ==
+<script type="webr-10-contents">
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImF1dG9ydW4iOmZhbHNlLCJldmFsIjp0cnVlfSwiY29kZSI6IiMgVmFsaWRhdGUgcHJpY2VzIHNlcGFyYXRlbHkgZm9yIGVhY2ggbGFuZGluZyBzaXRlIGFuZCBzcGVjaWVzXG5zaXRlX3ZhbGlkYXRpb24gPC0gZmlzaGluZ19kYXRhICU+JVxuICAgIGdyb3VwX2J5KGxhbmRpbmdfc2l0ZSwgY2F0Y2hfdGF4b24pICU+JVxuICAgIG11dGF0ZShcbiAgICAgICAgIyBDYWxjdWxhdGUgdHlwaWNhbCBwcmljZSByYW5nZSBmb3IgZWFjaCBzaXRlLXNwZWNpZXMgY29tYmluYXRpb25cbiAgICAgICAgdHlwaWNhbF9wcmljZSA9IG1lZGlhbihwcmljZV9rZyksXG4gICAgICAgIHByaWNlX3NwcmVhZCA9IG1hZChwcmljZV9rZyksXG4gICAgICAgIHByaWNlX3ZhbGlkID0gYWJzKHByaWNlX2tnIC0gdHlwaWNhbF9wcmljZSkgPD0gMyAqIHByaWNlX3NwcmVhZFxuICAgICkgJT4lXG4gICAgdW5ncm91cCgpXG5cbiMgVmlzdWFsaXplIHByaWNlIHBhdHRlcm5zIGJ5IHNpdGVcbmdncGxvdChzaXRlX3ZhbGlkYXRpb24sIFxuICAgICAgIGFlcyh4ID0gY2F0Y2hfa2csIHkgPSBwcmljZV9rZywgY29sb3IgPSBwcmljZV92YWxpZCkpICtcbiAgICBnZW9tX3BvaW50KGFscGhhID0gMC42KSArXG4gICAgZmFjZXRfZ3JpZChsYW5kaW5nX3NpdGUgfiBjYXRjaF90YXhvbiwgc2NhbGVzID0gXCJmcmVlXCIpICtcbiAgICBzY2FsZV9jb2xvcl9tYW51YWwodmFsdWVzID0gYyhcIlRSVUVcIiA9IFwiYmx1ZVwiLCBcIkZBTFNFXCIgPSBcInJlZFwiKSkgK1xuICAgIGxhYnModGl0bGUgPSBcIlByaWNlIFZhbGlkYXRpb24gYnkgTGFuZGluZyBTaXRlIGFuZCBTcGVjaWVzXCIsXG4gICAgICAgICBzdWJ0aXRsZSA9IFwiTm90ZSBob3cgcGF0dGVybnMgdmFyeSBiZXR3ZWVuIGxvY2F0aW9uc1wiLFxuICAgICAgICAgeCA9IFwiQ2F0Y2ggKGtnKVwiLFxuICAgICAgICAgeSA9IFwiUHJpY2UgcGVyIGtnXCIsXG4gICAgICAgICBjb2xvciA9IFwiVmFsaWQgUHJpY2VcIikgK1xuICAgIHRoZW1lX21pbmltYWwoKSArXG4gICAgdGhlbWUoYXhpcy50ZXh0LnggPSBlbGVtZW50X3RleHQoYW5nbGUgPSA0NSwgaGp1c3QgPSAxKSlcblxuIyBTaG93IHN1bW1hcnkgYnkgc2l0ZVxuc2l0ZV9zdW1tYXJ5IDwtIHNpdGVfdmFsaWRhdGlvbiAlPiVcbiAgICBncm91cF9ieShsYW5kaW5nX3NpdGUsIGNhdGNoX3RheG9uKSAlPiVcbiAgICBzdW1tYXJpc2UoXG4gICAgICAgIG1lZGlhbl9wcmljZSA9IHJvdW5kKG1lZGlhbihwcmljZV9rZykpLFxuICAgICAgICBuX3JlY29yZHMgPSBuKCksXG4gICAgICAgIHBjdF92YWxpZCA9IG1lYW4ocHJpY2VfdmFsaWQpICogMTAwLFxuICAgICAgICAuZ3JvdXBzID0gJ2Ryb3AnXG4gICAgKVxuXG5wcmludChcIlxcblZhbGlkYXRpb24gc3VtbWFyeSBieSBsYW5kaW5nIHNpdGU6XCIpXG5wcmludChzaXRlX3N1bW1hcnkpIn0=
 </script>
 </div>
 </div>
-</section>
-<section id="time-series-decomposition-for-validation" class="level3">
-<h3 class="anchored" data-anchor-id="time-series-decomposition-for-validation">Time Series Decomposition for Validation 📈</h3>
-<p>Fisheries data often shows seasonal patterns. We can use this to identify anomalies:</p>
-<div class="cell" data-autorun="false">
-<div>
-<div id="webr-13">
-
-</div>
-<script type="webr-13-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImF1dG9ydW4iOmZhbHNlfSwiY29kZSI6IiMgQ3JlYXRlIHRpbWUgc2VyaWVzIHZhbGlkYXRpb25cbnRzX3ZhbGlkYXRpb24gPC0gZmlzaGluZ19kYXRhICU+JVxuICAgIG11dGF0ZShsYW5kaW5nX2RhdGUgPSBhcy5EYXRlKGxhbmRpbmdfZGF0ZSkpICU+JVxuICAgIGdyb3VwX2J5KGxhbmRpbmdfZGF0ZSwgY2F0Y2hfdGF4b24pICU+JVxuICAgIHN1bW1hcmlzZShcbiAgICAgICAgZGFpbHlfY2F0Y2ggPSBzdW0oY2F0Y2hfa2csIG5hLnJtID0gVFJVRSksXG4gICAgICAgIC5ncm91cHMgPSAnZHJvcCdcbiAgICApICU+JVxuICAgIGdyb3VwX2J5KGNhdGNoX3RheG9uKSAlPiVcbiAgICBhcnJhbmdlKGxhbmRpbmdfZGF0ZSkgJT4lXG4gICAgIyBDYWxjdWxhdGUgcm9sbGluZyBzdGF0aXN0aWNzXG4gICAgbXV0YXRlKFxuICAgICAgICAjIDctZGF5IG1vdmluZyBhdmVyYWdlXG4gICAgICAgIG1hNyA9IHpvbzo6cm9sbG1lYW4oZGFpbHlfY2F0Y2gsIGsgPSA3LCBmaWxsID0gTkEpLFxuICAgICAgICAjIFJvbGxpbmcgbWVkaWFuIGFic29sdXRlIGRldmlhdGlvblxuICAgICAgICBtYWQ3ID0gem9vOjpyb2xsYXBwbHkoZGFpbHlfY2F0Y2gsIHdpZHRoID0gNywgXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgIEZVTiA9IGZ1bmN0aW9uKHgpIG1hZCh4LCBuYS5ybSA9IFRSVUUpLFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICBmaWxsID0gTkEpLFxuICAgICAgICAjIElkZW50aWZ5IHRlbXBvcmFsIG91dGxpZXJzXG4gICAgICAgIGlzX291dGxpZXIgPSBhYnMoZGFpbHlfY2F0Y2ggLSBtYTcpID4gMyAqIG1hZDdcbiAgICApXG5cbiMgVmlzdWFsaXplIHRlbXBvcmFsIHBhdHRlcm5zXG5nZ3Bsb3QodHNfdmFsaWRhdGlvbiAlPiUgZmlsdGVyKCFpcy5uYShtYTcpKSwgXG4gICAgICAgYWVzKHggPSBsYW5kaW5nX2RhdGUpKSArXG4gICAgZ2VvbV9saW5lKGFlcyh5ID0gbWE3KSwgY29sb3IgPSBcImJsdWVcIiwgYWxwaGEgPSAwLjUpICtcbiAgICBnZW9tX3BvaW50KGFlcyh5ID0gZGFpbHlfY2F0Y2gsIGNvbG9yID0gaXNfb3V0bGllcikpICtcbiAgICBmYWNldF93cmFwKH5jYXRjaF90YXhvbiwgc2NhbGVzID0gXCJmcmVlX3lcIikgK1xuICAgIHNjYWxlX2NvbG9yX21hbnVhbCh2YWx1ZXMgPSBjKFwiVFJVRVwiID0gXCJyZWRcIiwgXCJGQUxTRVwiID0gXCJibHVlXCIpKSArXG4gICAgbGFicyh0aXRsZSA9IFwiVGVtcG9yYWwgUGF0dGVybiBWYWxpZGF0aW9uXCIsXG4gICAgICAgICBzdWJ0aXRsZSA9IFwiQmx1ZSBsaW5lOiA3LWRheSBtb3ZpbmcgYXZlcmFnZTsgUmVkIHBvaW50czogT3V0bGllcnNcIixcbiAgICAgICAgIHggPSBcIkRhdGVcIixcbiAgICAgICAgIHkgPSBcIkRhaWx5IENhdGNoIChrZylcIixcbiAgICAgICAgIGNvbG9yID0gXCJPdXRsaWVyXCIpICtcbiAgICB0aGVtZV9taW5pbWFsKCkifQ==
-</script>
-</div>
-</div>
-</section>
-<section id="compositional-data-analysis" class="level3">
-<h3 class="anchored" data-anchor-id="compositional-data-analysis">Compositional Data Analysis 🐟</h3>
-<p>For species composition data, we can use methods specific to proportional data:</p>
-<div class="cell" data-autorun="false">
-<div>
-<div id="webr-14">
-
-</div>
-<script type="webr-14-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImF1dG9ydW4iOmZhbHNlfSwiY29kZSI6IiMgQW5hbHl6ZSBjYXRjaCBjb21wb3NpdGlvbiBwYXR0ZXJuc1xuY29tcG9zaXRpb25fdmFsaWRhdGlvbiA8LSBmaXNoaW5nX2RhdGEgJT4lXG4gICAgZ3JvdXBfYnkobGFuZGluZ19kYXRlKSAlPiVcbiAgICBtdXRhdGUoXG4gICAgICAgICMgQ2FsY3VsYXRlIGRhaWx5IHByb3BvcnRpb25zXG4gICAgICAgIHRvdGFsX2NhdGNoID0gc3VtKGNhdGNoX2tnLCBuYS5ybSA9IFRSVUUpLFxuICAgICAgICBwcm9wb3J0aW9uID0gY2F0Y2hfa2cgLyB0b3RhbF9jYXRjaCxcbiAgICAgICAgIyBDYWxjdWxhdGUgdHlwaWNhbCBwcm9wb3J0aW9ucyBieSBzcGVjaWVzXG4gICAgICAgIHR5cGljYWxfcHJvcCA9IG1lYW4ocHJvcG9ydGlvbiwgbmEucm0gPSBUUlVFKSxcbiAgICAgICAgcHJvcF9tYWQgPSBtYWQocHJvcG9ydGlvbiwgbmEucm0gPSBUUlVFKSxcbiAgICAgICAgIyBGbGFnIHVudXN1YWwgY29tcG9zaXRpb25zXG4gICAgICAgIHVudXN1YWxfY29tcCA9IGFicyhwcm9wb3J0aW9uIC0gdHlwaWNhbF9wcm9wKSA+IDMgKiBwcm9wX21hZFxuICAgICkgJT4lXG4gICAgdW5ncm91cCgpXG5cbiMgVmlzdWFsaXplIGNvbXBvc2l0aW9uIHBhdHRlcm5zXG5nZ3Bsb3QoY29tcG9zaXRpb25fdmFsaWRhdGlvbiwgXG4gICAgICAgYWVzKHggPSBsYW5kaW5nX2RhdGUsIHkgPSBwcm9wb3J0aW9uLCBmaWxsID0gY2F0Y2hfdGF4b24pKSArXG4gICAgZ2VvbV9hcmVhKHBvc2l0aW9uID0gXCJmaWxsXCIsIGFscGhhID0gMC43KSArXG4gICAgbGFicyh0aXRsZSA9IFwiU3BlY2llcyBDb21wb3NpdGlvbiBPdmVyIFRpbWVcIixcbiAgICAgICAgIHggPSBcIkRhdGVcIixcbiAgICAgICAgIHkgPSBcIlByb3BvcnRpb24gb2YgVG90YWwgQ2F0Y2hcIixcbiAgICAgICAgIGZpbGwgPSBcIlNwZWNpZXNcIikgK1xuICAgIHRoZW1lX21pbmltYWwoKVxuXG4jIFNob3cgdW51c3VhbCBjb21wb3NpdGlvbnNcbmdncGxvdChjb21wb3NpdGlvbl92YWxpZGF0aW9uICU+JSBmaWx0ZXIodW51c3VhbF9jb21wKSwgXG4gICAgICAgYWVzKHggPSBsYW5kaW5nX2RhdGUsIHkgPSBwcm9wb3J0aW9uLCBjb2xvciA9IGNhdGNoX3RheG9uKSkgK1xuICAgIGdlb21fcG9pbnQoc2l6ZSA9IDMpICtcbiAgICBsYWJzKHRpdGxlID0gXCJVbnVzdWFsIFNwZWNpZXMgQ29tcG9zaXRpb25zXCIsXG4gICAgICAgICBzdWJ0aXRsZSA9IFwiUG9pbnRzIHNob3cgY29tcG9zaXRpb25zIGZsYWdnZWQgYXMgdW51c3VhbFwiLFxuICAgICAgICAgeCA9IFwiRGF0ZVwiLFxuICAgICAgICAgeSA9IFwiUHJvcG9ydGlvbiBvZiBUb3RhbCBDYXRjaFwiLFxuICAgICAgICAgY29sb3IgPSBcIlNwZWNpZXNcIikgK1xuICAgIHRoZW1lX21pbmltYWwoKSJ9
-</script>
-</div>
-</div>
-</section>
-<section id="distribution-mixture-models" class="level3">
-<h3 class="anchored" data-anchor-id="distribution-mixture-models">Distribution Mixture Models 📊</h3>
-<p>Sometimes, data might follow multiple patterns. Let’s identify these using mixture models:</p>
-<div class="cell" data-autorun="false">
-<div>
-<div id="webr-15">
-
-</div>
-<script type="webr-15-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImF1dG9ydW4iOmZhbHNlfSwiY29kZSI6IiMgU2ltcGxlIG1peHR1cmUgbW9kZWwgZm9yIGNhdGNoIHNpemVzXG5jYXRjaF9taXh0dXJlcyA8LSBmaXNoaW5nX2RhdGEgJT4lXG4gICAgZ3JvdXBfYnkoY2F0Y2hfdGF4b24pICU+JVxuICAgIG11dGF0ZShcbiAgICAgICAgIyBVc2UgbG9nIGNhdGNoIGZvciBiZXR0ZXIgZGlzdHJpYnV0aW9uXG4gICAgICAgIGxvZ19jYXRjaCA9IGxvZyhjYXRjaF9rZyksXG4gICAgICAgICMgSWRlbnRpZnkgcG90ZW50aWFsIGdyb3VwcyB1c2luZyBrLW1lYW5zXG4gICAgICAgIHNpemVfY2x1c3RlciA9IGttZWFucyhtYXRyaXgobG9nX2NhdGNoKSwgY2VudGVycyA9IDIpJGNsdXN0ZXIsXG4gICAgICAgICMgRmxhZyBjYXRjaGVzIHRoYXQgZG9uJ3QgZml0IHdlbGwgaW4gZWl0aGVyIGdyb3VwXG4gICAgICAgIGNsdXN0ZXJfY2VudGVyID0gYXZlKGxvZ19jYXRjaCwgc2l6ZV9jbHVzdGVyLCBGVU4gPSBtZWFuKSxcbiAgICAgICAgY2x1c3Rlcl9zZCA9IGF2ZShsb2dfY2F0Y2gsIHNpemVfY2x1c3RlciwgRlVOID0gc2QpLFxuICAgICAgICB1bnVzdWFsX3NpemUgPSBhYnMobG9nX2NhdGNoIC0gY2x1c3Rlcl9jZW50ZXIpID4gMiAqIGNsdXN0ZXJfc2RcbiAgICApICU+JVxuICAgIHVuZ3JvdXAoKVxuXG4jIFZpc3VhbGl6ZSBjYXRjaCBzaXplIGRpc3RyaWJ1dGlvbnNcbmdncGxvdChjYXRjaF9taXh0dXJlcywgXG4gICAgICAgYWVzKHggPSBjYXRjaF9rZywgZmlsbCA9IGZhY3RvcihzaXplX2NsdXN0ZXIpKSkgK1xuICAgIGdlb21fZGVuc2l0eShhbHBoYSA9IDAuNSkgK1xuICAgIGZhY2V0X3dyYXAofmNhdGNoX3RheG9uLCBzY2FsZXMgPSBcImZyZWVcIikgK1xuICAgIGxhYnModGl0bGUgPSBcIkNhdGNoIFNpemUgRGlzdHJpYnV0aW9uIFBhdHRlcm5zXCIsXG4gICAgICAgICBzdWJ0aXRsZSA9IFwiRGlmZmVyZW50IGNvbG9ycyBzaG93IHBvdGVudGlhbCBkaXN0aW5jdCBjYXRjaCBwYXR0ZXJuc1wiLFxuICAgICAgICAgeCA9IFwiQ2F0Y2ggKGtnKVwiLFxuICAgICAgICAgeSA9IFwiRGVuc2l0eVwiLFxuICAgICAgICAgZmlsbCA9IFwiU2l6ZSBHcm91cFwiKSArXG4gICAgdGhlbWVfbWluaW1hbCgpIn0=
-</script>
-</div>
-</div>
-</section>
-<section id="interpreting-advanced-validation-results" class="level3">
-<h3 class="anchored" data-anchor-id="interpreting-advanced-validation-results">Interpreting Advanced Validation Results 🔍</h3>
-<p>When using these advanced methods, consider:</p>
-<ol type="1">
-<li><strong>Statistical Assumptions</strong>
-<ul>
-<li>Are the methods appropriate for your data?</li>
-<li>Have you checked the underlying assumptions?</li>
-<li>How sensitive are results to parameter choices?</li>
-</ul></li>
-<li><strong>Biological Context</strong>
-<ul>
-<li>Do the identified patterns make ecological sense?</li>
-<li>Are there known factors explaining unusual patterns?</li>
-<li>How do results align with field knowledge?</li>
-</ul></li>
-<li><strong>Practical Implementation</strong>
-<ul>
-<li>How will you handle flagged data?</li>
-<li>What threshold levels are appropriate?</li>
-<li>How to document and communicate results?</li>
-</ul></li>
-</ol>
+<p>This location-specific analysis shows us: - Price ranges can vary significantly between sites - Some sites might have different validation thresholds - Data quality might vary by location - Local patterns need local knowledge for validation</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Advanced Validation Tips
+Site-Specific Validation Tips
 </div>
 </div>
 <div class="callout-body-container callout-body">
 <ol type="1">
-<li>Combine multiple validation approaches</li>
-<li>Always consider the biological context</li>
-<li>Document statistical assumptions</li>
-<li>Set appropriate confidence levels</li>
-<li>Review results with domain experts</li>
+<li>Always consider local context</li>
+<li>Compare patterns between sites</li>
+<li>Look for site-specific anomalies</li>
+<li>Consult with local experts</li>
+<li>Document site-specific thresholds</li>
 </ol>
 </div>
 </div>
+<p>Remember: Good data validation considers both the general patterns in your data and how these patterns might vary across different locations and contexts. 🎯</p>
 </section>
+</section>
+<section id="validation-tips" class="level2">
+<h2 class="anchored" data-anchor-id="validation-tips">Validation Tips</h2>
+<ol type="1">
+<li>Start with simple checks and add complexity gradually</li>
+<li>Use domain knowledge to set reasonable bounds</li>
+<li>Consider relationships between variables</li>
+<li>Document your validation decisions</li>
+<li>Review results with field experts :::</li>
+</ol>
 </section>
 <section id="key-takeaways-and-next-steps" class="level2">
 <h2 class="anchored" data-anchor-id="key-takeaways-and-next-steps">Key Takeaways and Next Steps 🎯</h2>
-<p>We’ve explored a comprehensive suite of validation techniques for fisheries data, progressing from basic checks to advanced statistical methods. Let’s summarize the key approaches and their applications:</p>
-<section id="summary-of-validation-approaches" class="level3">
-<h3 class="anchored" data-anchor-id="summary-of-validation-approaches">Summary of Validation Approaches</h3>
+<p>Throughout this tutorial, we’ve explored several approaches to validating fisheries data:</p>
 <ol type="1">
-<li><strong>Statistical Fundamentals</strong>
+<li><strong>Distribution-Based Validation</strong>
 <ul>
-<li>MAD-based outlier detection</li>
-<li>Distribution analysis</li>
-<li>Species-specific thresholds</li>
-<li>Cross-variable validation</li>
+<li>Understanding what “normal” looks like in your data</li>
+<li>Using MAD for robust outlier detection</li>
+<li>Considering species-specific patterns</li>
 </ul></li>
-<li><strong>Advanced Methods</strong>
+<li><strong>Price-Catch Relationships</strong>
 <ul>
-<li>Multivariate outlier detection</li>
-<li>Time series validation</li>
-<li>Compositional data analysis</li>
-<li>Distribution mixture models</li>
+<li>Validating price patterns by species</li>
+<li>Identifying unusual transactions</li>
+<li>Understanding market dynamics</li>
+</ul></li>
+<li><strong>Location-Specific Patterns</strong>
+<ul>
+<li>Recognizing site-specific variations</li>
+<li>Adapting validation to local contexts</li>
+<li>Comparing patterns across sites</li>
 </ul></li>
 </ol>
-</section>
-<section id="building-an-effective-validation-strategy" class="level3">
-<h3 class="anchored" data-anchor-id="building-an-effective-validation-strategy">Building an Effective Validation Strategy</h3>
-<p>When developing your validation workflow, consider this hierarchical approach:</p>
-<div class="cell" data-autorun="false">
-<div>
-<div id="webr-16">
-
-</div>
-<script type="webr-16-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImF1dG9ydW4iOmZhbHNlfSwiY29kZSI6IiMgRXhhbXBsZSBvZiBhIGNvbXBsZXRlIHZhbGlkYXRpb24gd29ya2Zsb3dcbnZhbGlkYXRpb25fd29ya2Zsb3cgPC0gZnVuY3Rpb24oZGF0YSkge1xuICAgIGRhdGEgJT4lXG4gICAgICAgICMgU3RlcCAxOiBCYXNpYyBkYXRhIHF1YWxpdHkgY2hlY2tzXG4gICAgICAgIG11dGF0ZShcbiAgICAgICAgICAgIGJhc2ljX3ZhbGlkID0gIWlzLm5hKGNhdGNoX2tnKSAmICFpcy5uYShwcmljZV9rZykgJiBcbiAgICAgICAgICAgICAgICAgICAgICAgICBjYXRjaF9rZyA+IDAgJiBwcmljZV9rZyA+IDBcbiAgICAgICAgKSAlPiVcbiAgICAgICAgIyBTdGVwIDI6IE1BRC1iYXNlZCB2YWxpZGF0aW9uXG4gICAgICAgIGdyb3VwX2J5KGNhdGNoX3RheG9uKSAlPiVcbiAgICAgICAgbXV0YXRlKFxuICAgICAgICAgICAgY2F0Y2hfbWFkX3ZhbGlkID0gYWJzKGNhdGNoX2tnIC0gbWVkaWFuKGNhdGNoX2tnKSkgPD0gMyAqIG1hZChjYXRjaF9rZyksXG4gICAgICAgICAgICBwcmljZV9tYWRfdmFsaWQgPSBhYnMocHJpY2Vfa2cgLSBtZWRpYW4ocHJpY2Vfa2cpKSA8PSAzICogbWFkKHByaWNlX2tnKVxuICAgICAgICApICU+JVxuICAgICAgICAjIFN0ZXAgMzogQ3Jvc3MtdmFyaWFibGUgdmFsaWRhdGlvblxuICAgICAgICBtdXRhdGUoXG4gICAgICAgICAgICByZWxhdGlvbnNoaXBfdmFsaWQgPSBjYXRjaF9rZy9uX2JvYXRzIDw9IDUwMCAmXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgbl9maXNoZXJzL25fYm9hdHMgPD0gMTVcbiAgICAgICAgKSAlPiVcbiAgICAgICAgIyBDb21iaW5lIGFsbCB2YWxpZGF0aW9uIHJlc3VsdHNcbiAgICAgICAgbXV0YXRlKFxuICAgICAgICAgICAgZnVsbHlfdmFsaWQgPSBiYXNpY192YWxpZCAmIGNhdGNoX21hZF92YWxpZCAmIFxuICAgICAgICAgICAgICAgICAgICAgICAgIHByaWNlX21hZF92YWxpZCAmIHJlbGF0aW9uc2hpcF92YWxpZFxuICAgICAgICApICU+JVxuICAgICAgICB1bmdyb3VwKClcbn1cblxuIyBBcHBseSB3b3JrZmxvdyB0byBvdXIgZGF0YVxuZmluYWxfdmFsaWRhdGlvbiA8LSB2YWxpZGF0aW9uX3dvcmtmbG93KGZpc2hpbmdfZGF0YSlcblxuIyBDcmVhdGUgc3VtbWFyeSB2aXN1YWxpemF0aW9uXG5nZ3Bsb3QoZmluYWxfdmFsaWRhdGlvbiwgXG4gICAgICAgYWVzKHggPSBjYXRjaF90YXhvbiwgZmlsbCA9IGZ1bGx5X3ZhbGlkKSkgK1xuICAgIGdlb21fYmFyKHBvc2l0aW9uID0gXCJmaWxsXCIpICtcbiAgICBjb29yZF9mbGlwKCkgK1xuICAgIGxhYnModGl0bGUgPSBcIk92ZXJhbGwgVmFsaWRhdGlvbiBSZXN1bHRzIGJ5IFNwZWNpZXNcIixcbiAgICAgICAgIHN1YnRpdGxlID0gXCJQcm9wb3J0aW9uIG9mIHJlY29yZHMgcGFzc2luZyBhbGwgdmFsaWRhdGlvbiBjaGVja3NcIixcbiAgICAgICAgIHggPSBcIlNwZWNpZXNcIixcbiAgICAgICAgIHkgPSBcIlByb3BvcnRpb25cIixcbiAgICAgICAgIGZpbGwgPSBcIlZhbGlkXCIpICtcbiAgICBzY2FsZV9maWxsX21hbnVhbCh2YWx1ZXMgPSBjKFwiVFJVRVwiID0gXCJmb3Jlc3RncmVlblwiLCBcIkZBTFNFXCIgPSBcImZpcmVicmlja1wiKSkgK1xuICAgIHRoZW1lX21pbmltYWwoKSJ9
-</script>
-</div>
-</div>
-</section>
-<section id="best-practices-for-implementation" class="level3">
-<h3 class="anchored" data-anchor-id="best-practices-for-implementation">Best Practices for Implementation</h3>
+<section id="building-your-validation-strategy" class="level3">
+<h3 class="anchored" data-anchor-id="building-your-validation-strategy">Building Your Validation Strategy</h3>
+<p>When validating your own fisheries data:</p>
 <ol type="1">
 <li><strong>Start Simple</strong>
 <ul>
-<li>Begin with basic checks and thresholds</li>
-<li>Add complexity gradually</li>
-<li>Document validation rules clearly</li>
+<li>Begin with basic distribution checks</li>
+<li>Use MAD for initial outlier detection</li>
+<li>Document clear validation rules</li>
 </ul></li>
-<li><strong>Combine Methods</strong>
+<li><strong>Consider Context</strong>
 <ul>
-<li>Use multiple validation approaches</li>
-<li>Consider both statistical and biological criteria</li>
-<li>Cross-validate findings</li>
+<li>Account for species differences</li>
+<li>Include location-specific patterns</li>
+<li>Consult local knowledge</li>
 </ul></li>
-<li><strong>Review and Refine</strong>
+<li><strong>Document Decisions</strong>
 <ul>
-<li>Regularly assess validation results</li>
-<li>Adjust thresholds based on feedback</li>
-<li>Document changes and reasoning</li>
-</ul></li>
-</ol>
-</section>
-<section id="looking-forward" class="level3">
-<h3 class="anchored" data-anchor-id="looking-forward">Looking Forward</h3>
-<p>As you implement these validation methods:</p>
-<ol type="1">
-<li><strong>Automate Where Possible</strong>
-<ul>
-<li>Create reusable validation functions</li>
-<li>Build automated reporting workflows</li>
-<li>Maintain consistent validation rules</li>
-</ul></li>
-<li><strong>Stay Flexible</strong>
-<ul>
-<li>Be ready to adjust thresholds</li>
-<li>Account for seasonal changes</li>
-<li>Incorporate new validation methods</li>
-</ul></li>
-<li><strong>Engage Stakeholders</strong>
-<ul>
-<li>Share validation results with data collectors</li>
-<li>Get feedback from field experts</li>
-<li>Maintain clear documentation</li>
+<li>Record validation thresholds</li>
+<li>Note exceptions and special cases</li>
+<li>Keep track of flagged data</li>
 </ul></li>
 </ol>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -792,27 +609,28 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImF1dG9ydW4iOmZhbHNlfSwiY29kZSI6IiMg
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Final Tips
+Final Validation Tips
 </div>
 </div>
 <div class="callout-body-container callout-body">
 <ol type="1">
-<li>Validate early and often in your data pipeline</li>
-<li>Keep validation rules transparent and documented</li>
-<li>Balance statistical rigor with practical usefulness</li>
-<li>Build validation into your regular workflow</li>
-<li>Share and review validation results regularly</li>
+<li>Validate early in your analysis workflow</li>
+<li>Combine multiple validation approaches</li>
+<li>Update validation rules as you learn more about your data</li>
+<li>Share validation results with data collectors</li>
+<li>Use validation to improve data collection</li>
 </ol>
 </div>
 </div>
-<p>Remember: Data validation is not just about finding errors - it’s about building confidence in your data and improving data collection processes over time. 🎯</p>
+<p>Remember: Data validation is an iterative process. As you learn more about your data, you can refine your validation approaches and thresholds. The goal is not just to find errors, but to build confidence in your data quality for reliable fisheries analysis. 🎯</p>
+<p>Next: <a href="9_references.html">R Resources for Fisheries Analysis</a></p>
 
 
 <script type="webr-data">
-eyJwYWNrYWdlcyI6eyJwa2dzIjpbImV2YWx1YXRlIiwia25pdHIiLCJodG1sdG9vbHMiLCJ0aWR5dmVyc2UiLCJndCJdLCJyZXBvcyI6W119LCJvcHRpb25zIjp7ImJhc2VVcmwiOiJodHRwczovL3dlYnIuci13YXNtLm9yZy92MC40LjEvIn0sInJlbmRlcl9kZiI6Imd0LWludGVyYWN0aXZlIn0=
+eyJwYWNrYWdlcyI6eyJyZXBvcyI6W10sInBrZ3MiOlsiZXZhbHVhdGUiLCJrbml0ciIsImh0bWx0b29scyIsInRpZHl2ZXJzZSIsImd0Il19LCJvcHRpb25zIjp7ImJhc2VVcmwiOiJodHRwczovL3dlYnIuci13YXNtLm9yZy92MC40LjEvIn0sInJlbmRlcl9kZiI6Imd0LWludGVyYWN0aXZlIn0=
 </script>
 <script type="ojs-module-contents">
-eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0IiwiY2VsbE5hbWUiOiJ3ZWJyLXdpZGdldC0xNiIsInNvdXJjZSI6IntcbiAgLy8gV2FpdCBmb3Igb3V0cHV0IHRvIGJlIHdyaXR0ZW4gdG8gdGhlIERPTSwgdGhlbiB0cmlnZ2VyIHdpZGdldCByZW5kZXJpbmdcbiAgYXdhaXQgX3dlYnJfdmFsdWVfMTY7XG4gIGlmICh3aW5kb3cuSFRNTFdpZGdldHMpIHtcbiAgICB3aW5kb3cuSFRNTFdpZGdldHMuc3RhdGljUmVuZGVyKCk7XG4gIH1cbiAgaWYgKHdpbmRvdy5QYWdlZFRhYmxlRG9jKSB7XG4gICAgd2luZG93LlBhZ2VkVGFibGVEb2MuaW5pdEFsbCgpO1xuICB9XG59XG4iLCJpbmxpbmUiOmZhbHNlfSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6IndlYnItMTYiLCJzb3VyY2UiOiJ2aWV3b2YgX3dlYnJfZWRpdG9yXzE2ID0ge1xuICBjb25zdCB7IFdlYlJFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuICBjb25zdCBzY3JpcHRDb250ZW50ID0gZG9jdW1lbnQucXVlcnlTZWxlY3Rvcihgc2NyaXB0W3R5cGU9XFxcIndlYnItMTYtY29udGVudHNcXFwiXWApLnRleHRDb250ZW50O1xuICBjb25zdCBibG9jayA9IEpTT04ucGFyc2UoYjY0RGVjb2RlKHNjcmlwdENvbnRlbnQpKTtcblxuICBjb25zdCBvcHRpb25zID0gT2JqZWN0LmFzc2lnbih7IGlkOiBgd2Vici0xNi1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBXZWJSRXhlcmNpc2VFZGl0b3Iod2ViUk9qcy53ZWJSUHJvbWlzZSwgYmxvY2suY29kZSwgb3B0aW9ucyk7XG5cbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG5fd2Vicl92YWx1ZV8xNiA9IHdlYlJPanMucHJvY2Vzcyhfd2Vicl9lZGl0b3JfMTYsIHt9KTtcbiIsImlubGluZSI6ZmFsc2V9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0IiwiY2VsbE5hbWUiOiJ3ZWJyLXdpZGdldC0xNSIsInNvdXJjZSI6IntcbiAgLy8gV2FpdCBmb3Igb3V0cHV0IHRvIGJlIHdyaXR0ZW4gdG8gdGhlIERPTSwgdGhlbiB0cmlnZ2VyIHdpZGdldCByZW5kZXJpbmdcbiAgYXdhaXQgX3dlYnJfdmFsdWVfMTU7XG4gIGlmICh3aW5kb3cuSFRNTFdpZGdldHMpIHtcbiAgICB3aW5kb3cuSFRNTFdpZGdldHMuc3RhdGljUmVuZGVyKCk7XG4gIH1cbiAgaWYgKHdpbmRvdy5QYWdlZFRhYmxlRG9jKSB7XG4gICAgd2luZG93LlBhZ2VkVGFibGVEb2MuaW5pdEFsbCgpO1xuICB9XG59XG4iLCJpbmxpbmUiOmZhbHNlfSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6IndlYnItMTUiLCJzb3VyY2UiOiJ2aWV3b2YgX3dlYnJfZWRpdG9yXzE1ID0ge1xuICBjb25zdCB7IFdlYlJFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuICBjb25zdCBzY3JpcHRDb250ZW50ID0gZG9jdW1lbnQucXVlcnlTZWxlY3Rvcihgc2NyaXB0W3R5cGU9XFxcIndlYnItMTUtY29udGVudHNcXFwiXWApLnRleHRDb250ZW50O1xuICBjb25zdCBibG9jayA9IEpTT04ucGFyc2UoYjY0RGVjb2RlKHNjcmlwdENvbnRlbnQpKTtcblxuICBjb25zdCBvcHRpb25zID0gT2JqZWN0LmFzc2lnbih7IGlkOiBgd2Vici0xNS1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBXZWJSRXhlcmNpc2VFZGl0b3Iod2ViUk9qcy53ZWJSUHJvbWlzZSwgYmxvY2suY29kZSwgb3B0aW9ucyk7XG5cbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG5fd2Vicl92YWx1ZV8xNSA9IHdlYlJPanMucHJvY2Vzcyhfd2Vicl9lZGl0b3JfMTUsIHt9KTtcbiIsImlubGluZSI6ZmFsc2V9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0IiwiY2VsbE5hbWUiOiJ3ZWJyLXdpZGdldC0xNCIsInNvdXJjZSI6IntcbiAgLy8gV2FpdCBmb3Igb3V0cHV0IHRvIGJlIHdyaXR0ZW4gdG8gdGhlIERPTSwgdGhlbiB0cmlnZ2VyIHdpZGdldCByZW5kZXJpbmdcbiAgYXdhaXQgX3dlYnJfdmFsdWVfMTQ7XG4gIGlmICh3aW5kb3cuSFRNTFdpZGdldHMpIHtcbiAgICB3aW5kb3cuSFRNTFdpZGdldHMuc3RhdGljUmVuZGVyKCk7XG4gIH1cbiAgaWYgKHdpbmRvdy5QYWdlZFRhYmxlRG9jKSB7XG4gICAgd2luZG93LlBhZ2VkVGFibGVEb2MuaW5pdEFsbCgpO1xuICB9XG59XG4iLCJpbmxpbmUiOmZhbHNlfSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6IndlYnItMTQiLCJzb3VyY2UiOiJ2aWV3b2YgX3dlYnJfZWRpdG9yXzE0ID0ge1xuICBjb25zdCB7IFdlYlJFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuICBjb25zdCBzY3JpcHRDb250ZW50ID0gZG9jdW1lbnQucXVlcnlTZWxlY3Rvcihgc2NyaXB0W3R5cGU9XFxcIndlYnItMTQtY29udGVudHNcXFwiXWApLnRleHRDb250ZW50O1xuICBjb25zdCBibG9jayA9IEpTT04ucGFyc2UoYjY0RGVjb2RlKHNjcmlwdENvbnRlbnQpKTtcblxuICBjb25zdCBvcHRpb25zID0gT2JqZWN0LmFzc2lnbih7IGlkOiBgd2Vici0xNC1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBXZWJSRXhlcmNpc2VFZGl0b3Iod2ViUk9qcy53ZWJSUHJvbWlzZSwgYmxvY2suY29kZSwgb3B0aW9ucyk7XG5cbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG5fd2Vicl92YWx1ZV8xNCA9IHdlYlJPanMucHJvY2Vzcyhfd2Vicl9lZGl0b3JfMTQsIHt9KTtcbiIsImlubGluZSI6ZmFsc2V9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0IiwiY2VsbE5hbWUiOiJ3ZWJyLXdpZGdldC0xMyIsInNvdXJjZSI6IntcbiAgLy8gV2FpdCBmb3Igb3V0cHV0IHRvIGJlIHdyaXR0ZW4gdG8gdGhlIERPTSwgdGhlbiB0cmlnZ2VyIHdpZGdldCByZW5kZXJpbmdcbiAgYXdhaXQgX3dlYnJfdmFsdWVfMTM7XG4gIGlmICh3aW5kb3cuSFRNTFdpZGdldHMpIHtcbiAgICB3aW5kb3cuSFRNTFdpZGdldHMuc3RhdGljUmVuZGVyKCk7XG4gIH1cbiAgaWYgKHdpbmRvdy5QYWdlZFRhYmxlRG9jKSB7XG4gICAgd2luZG93LlBhZ2VkVGFibGVEb2MuaW5pdEFsbCgpO1xuICB9XG59XG4iLCJpbmxpbmUiOmZhbHNlfSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6IndlYnItMTMiLCJzb3VyY2UiOiJ2aWV3b2YgX3dlYnJfZWRpdG9yXzEzID0ge1xuICBjb25zdCB7IFdlYlJFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuICBjb25zdCBzY3JpcHRDb250ZW50ID0gZG9jdW1lbnQucXVlcnlTZWxlY3Rvcihgc2NyaXB0W3R5cGU9XFxcIndlYnItMTMtY29udGVudHNcXFwiXWApLnRleHRDb250ZW50O1xuICBjb25zdCBibG9jayA9IEpTT04ucGFyc2UoYjY0RGVjb2RlKHNjcmlwdENvbnRlbnQpKTtcblxuICBjb25zdCBvcHRpb25zID0gT2JqZWN0LmFzc2lnbih7IGlkOiBgd2Vici0xMy1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBXZWJSRXhlcmNpc2VFZGl0b3Iod2ViUk9qcy53ZWJSUHJvbWlzZSwgYmxvY2suY29kZSwgb3B0aW9ucyk7XG5cbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG5fd2Vicl92YWx1ZV8xMyA9IHdlYlJPanMucHJvY2Vzcyhfd2Vicl9lZGl0b3JfMTMsIHt9KTtcbiIsImlubGluZSI6ZmFsc2V9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0IiwiY2VsbE5hbWUiOiJ3ZWJyLXdpZGdldC0xMiIsInNvdXJjZSI6IntcbiAgLy8gV2FpdCBmb3Igb3V0cHV0IHRvIGJlIHdyaXR0ZW4gdG8gdGhlIERPTSwgdGhlbiB0cmlnZ2VyIHdpZGdldCByZW5kZXJpbmdcbiAgYXdhaXQgX3dlYnJfdmFsdWVfMTI7XG4gIGlmICh3aW5kb3cuSFRNTFdpZGdldHMpIHtcbiAgICB3aW5kb3cuSFRNTFdpZGdldHMuc3RhdGljUmVuZGVyKCk7XG4gIH1cbiAgaWYgKHdpbmRvdy5QYWdlZFRhYmxlRG9jKSB7XG4gICAgd2luZG93LlBhZ2VkVGFibGVEb2MuaW5pdEFsbCgpO1xuICB9XG59XG4iLCJpbmxpbmUiOmZhbHNlfSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6IndlYnItMTIiLCJzb3VyY2UiOiJ2aWV3b2YgX3dlYnJfZWRpdG9yXzEyID0ge1xuICBjb25zdCB7IFdlYlJFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuICBjb25zdCBzY3JpcHRDb250ZW50ID0gZG9jdW1lbnQucXVlcnlTZWxlY3Rvcihgc2NyaXB0W3R5cGU9XFxcIndlYnItMTItY29udGVudHNcXFwiXWApLnRleHRDb250ZW50O1xuICBjb25zdCBibG9jayA9IEpTT04ucGFyc2UoYjY0RGVjb2RlKHNjcmlwdENvbnRlbnQpKTtcblxuICBjb25zdCBvcHRpb25zID0gT2JqZWN0LmFzc2lnbih7IGlkOiBgd2Vici0xMi1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBXZWJSRXhlcmNpc2VFZGl0b3Iod2ViUk9qcy53ZWJSUHJvbWlzZSwgYmxvY2suY29kZSwgb3B0aW9ucyk7XG5cbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG5fd2Vicl92YWx1ZV8xMiA9IHdlYlJPanMucHJvY2Vzcyhfd2Vicl9lZGl0b3JfMTIsIHt9KTtcbiIsImlubGluZSI6ZmFsc2V9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0IiwiY2VsbE5hbWUiOiJ3ZWJyLXdpZGdldC0xMSIsInNvdXJjZSI6IntcbiAgLy8gV2FpdCBmb3Igb3V0cHV0IHRvIGJlIHdyaXR0ZW4gdG8gdGhlIERPTSwgdGhlbiB0cmlnZ2VyIHdpZGdldCByZW5kZXJpbmdcbiAgYXdhaXQgX3dlYnJfdmFsdWVfMTE7XG4gIGlmICh3aW5kb3cuSFRNTFdpZGdldHMpIHtcbiAgICB3aW5kb3cuSFRNTFdpZGdldHMuc3RhdGljUmVuZGVyKCk7XG4gIH1cbiAgaWYgKHdpbmRvdy5QYWdlZFRhYmxlRG9jKSB7XG4gICAgd2luZG93LlBhZ2VkVGFibGVEb2MuaW5pdEFsbCgpO1xuICB9XG59XG4iLCJpbmxpbmUiOmZhbHNlfSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6IndlYnItMTEiLCJzb3VyY2UiOiJfd2Vicl92YWx1ZV8xMSA9IHtcbiAgY29uc3QgeyBoaWdobGlnaHRSLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwid2Vici0xMS1jb250ZW50c1xcXCJdYCkudGV4dENvbnRlbnQ7XG4gIGNvbnN0IGJsb2NrID0gSlNPTi5wYXJzZShiNjREZWNvZGUoc2NyaXB0Q29udGVudCkpO1xuXG4gIC8vIERlZmF1bHQgZXZhbHVhdGlvbiBjb25maWd1cmF0aW9uXG4gIGNvbnN0IG9wdGlvbnMgPSBPYmplY3QuYXNzaWduKHtcbiAgICBpZDogXCJ3ZWJyLTExLWNvbnRlbnRzXCIsXG4gICAgZWNobzogdHJ1ZSxcbiAgICBvdXRwdXQ6IHRydWVcbiAgfSwgYmxvY2suYXR0cik7XG5cbiAgLy8gRXZhbHVhdGUgdGhlIHByb3ZpZGVkIFIgY29kZVxuICBjb25zdCByZXN1bHQgPSB3ZWJST2pzLnByb2Nlc3Moe2NvZGU6IGJsb2NrLmNvZGUsIG9wdGlvbnN9LCB7fSk7XG5cbiAgLy8gRWFybHkgeWllbGQgd2hpbGUgd2Ugd2FpdCBmb3IgdGhlIGZpcnN0IGV2YWx1YXRpb24gYW5kIHJlbmRlclxuICBpZiAob3B0aW9ucy5vdXRwdXQgJiYgIShcIjExXCIgaW4gd2ViUk9qcy5yZW5kZXJlZE9qcykpIHtcbiAgICBjb25zdCBjb250YWluZXIgPSBkb2N1bWVudC5jcmVhdGVFbGVtZW50KFwiZGl2XCIpO1xuICAgIGNvbnN0IHNwaW5uZXIgPSBkb2N1bWVudC5jcmVhdGVFbGVtZW50KFwiZGl2XCIpO1xuXG4gICAgaWYgKG9wdGlvbnMuZWNobykge1xuICAgICAgLy8gU2hvdyBvdXRwdXQgYXMgaGlnaGxpZ2h0ZWQgc291cmNlXG4gICAgICBjb25zdCBwcmVFbGVtID0gZG9jdW1lbnQuY3JlYXRlRWxlbWVudChcInByZVwiKTtcbiAgICAgIGNvbnRhaW5lci5jbGFzc05hbWUgPSBcInNvdXJjZUNvZGVcIjtcbiAgICAgIHByZUVsZW0uY2xhc3NOYW1lID0gXCJzb3VyY2VDb2RlIHJcIjtcbiAgICAgIHByZUVsZW0uYXBwZW5kQ2hpbGQoaGlnaGxpZ2h0UihibG9jay5jb2RlKSk7XG4gICAgICBzcGlubmVyLmNsYXNzTmFtZSA9IFwic3Bpbm5lci1ncm93IHNwaW5uZXItZ3Jvdy1zbSBtLTIgcG9zaXRpb24tYWJzb2x1dGUgdG9wLTAgZW5kLTBcIjtcbiAgICAgIHByZUVsZW0uYXBwZW5kQ2hpbGQoc3Bpbm5lcik7XG4gICAgICBjb250YWluZXIuYXBwZW5kQ2hpbGQocHJlRWxlbSk7XG4gICAgfSBlbHNlIHtcbiAgICAgIHNwaW5uZXIuY2xhc3NOYW1lID0gXCJzcGlubmVyLWJvcmRlciBzcGlubmVyLWJvcmRlci1zbVwiO1xuICAgICAgY29udGFpbmVyLmFwcGVuZENoaWxkKHNwaW5uZXIpO1xuICAgIH1cblxuICAgIHlpZWxkIGNvbnRhaW5lcjtcbiAgfVxuXG4gIHdlYlJPanMucmVuZGVyZWRPanNbXCIxMVwiXSA9IHRydWU7XG4gIHlpZWxkIGF3YWl0IHJlc3VsdDtcbn1cbiIsImlubGluZSI6ZmFsc2V9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0IiwiY2VsbE5hbWUiOiJ3ZWJyLXdpZGdldC0xMCIsInNvdXJjZSI6IntcbiAgLy8gV2FpdCBmb3Igb3V0cHV0IHRvIGJlIHdyaXR0ZW4gdG8gdGhlIERPTSwgdGhlbiB0cmlnZ2VyIHdpZGdldCByZW5kZXJpbmdcbiAgYXdhaXQgX3dlYnJfdmFsdWVfMTA7XG4gIGlmICh3aW5kb3cuSFRNTFdpZGdldHMpIHtcbiAgICB3aW5kb3cuSFRNTFdpZGdldHMuc3RhdGljUmVuZGVyKCk7XG4gIH1cbiAgaWYgKHdpbmRvdy5QYWdlZFRhYmxlRG9jKSB7XG4gICAgd2luZG93LlBhZ2VkVGFibGVEb2MuaW5pdEFsbCgpO1xuICB9XG59XG4iLCJpbmxpbmUiOmZhbHNlfSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6IndlYnItMTAiLCJzb3VyY2UiOiJ2aWV3b2YgX3dlYnJfZWRpdG9yXzEwID0ge1xuICBjb25zdCB7IFdlYlJFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuICBjb25zdCBzY3JpcHRDb250ZW50ID0gZG9jdW1lbnQucXVlcnlTZWxlY3Rvcihgc2NyaXB0W3R5cGU9XFxcIndlYnItMTAtY29udGVudHNcXFwiXWApLnRleHRDb250ZW50O1xuICBjb25zdCBibG9jayA9IEpTT04ucGFyc2UoYjY0RGVjb2RlKHNjcmlwdENvbnRlbnQpKTtcblxuICBjb25zdCBvcHRpb25zID0gT2JqZWN0LmFzc2lnbih7IGlkOiBgd2Vici0xMC1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBXZWJSRXhlcmNpc2VFZGl0b3Iod2ViUk9qcy53ZWJSUHJvbWlzZSwgYmxvY2suY29kZSwgb3B0aW9ucyk7XG5cbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG5fd2Vicl92YWx1ZV8xMCA9IHdlYlJPanMucHJvY2Vzcyhfd2Vicl9lZGl0b3JfMTAsIHt9KTtcbiIsImlubGluZSI6ZmFsc2V9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0IiwiY2VsbE5hbWUiOiJ3ZWJyLXdpZGdldC05Iiwic291cmNlIjoie1xuICAvLyBXYWl0IGZvciBvdXRwdXQgdG8gYmUgd3JpdHRlbiB0byB0aGUgRE9NLCB0aGVuIHRyaWdnZXIgd2lkZ2V0IHJlbmRlcmluZ1xuICBhd2FpdCBfd2Vicl92YWx1ZV85O1xuICBpZiAod2luZG93LkhUTUxXaWRnZXRzKSB7XG4gICAgd2luZG93LkhUTUxXaWRnZXRzLnN0YXRpY1JlbmRlcigpO1xuICB9XG4gIGlmICh3aW5kb3cuUGFnZWRUYWJsZURvYykge1xuICAgIHdpbmRvdy5QYWdlZFRhYmxlRG9jLmluaXRBbGwoKTtcbiAgfVxufVxuIiwiaW5saW5lIjpmYWxzZX0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJ3ZWJyLTkiLCJzb3VyY2UiOiJ2aWV3b2YgX3dlYnJfZWRpdG9yXzkgPSB7XG4gIGNvbnN0IHsgV2ViUkV4ZXJjaXNlRWRpdG9yLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwid2Vici05LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHdlYnItOS1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBXZWJSRXhlcmNpc2VFZGl0b3Iod2ViUk9qcy53ZWJSUHJvbWlzZSwgYmxvY2suY29kZSwgb3B0aW9ucyk7XG5cbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG5fd2Vicl92YWx1ZV85ID0gd2ViUk9qcy5wcm9jZXNzKF93ZWJyX2VkaXRvcl85LCB7fSk7XG4iLCJpbmxpbmUiOmZhbHNlfSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsImNlbGxOYW1lIjoid2Vici13aWRnZXQtOCIsInNvdXJjZSI6IntcbiAgLy8gV2FpdCBmb3Igb3V0cHV0IHRvIGJlIHdyaXR0ZW4gdG8gdGhlIERPTSwgdGhlbiB0cmlnZ2VyIHdpZGdldCByZW5kZXJpbmdcbiAgYXdhaXQgX3dlYnJfdmFsdWVfODtcbiAgaWYgKHdpbmRvdy5IVE1MV2lkZ2V0cykge1xuICAgIHdpbmRvdy5IVE1MV2lkZ2V0cy5zdGF0aWNSZW5kZXIoKTtcbiAgfVxuICBpZiAod2luZG93LlBhZ2VkVGFibGVEb2MpIHtcbiAgICB3aW5kb3cuUGFnZWRUYWJsZURvYy5pbml0QWxsKCk7XG4gIH1cbn1cbiIsImlubGluZSI6ZmFsc2V9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoid2Vici04Iiwic291cmNlIjoidmlld29mIF93ZWJyX2VkaXRvcl84ID0ge1xuICBjb25zdCB7IFdlYlJFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuICBjb25zdCBzY3JpcHRDb250ZW50ID0gZG9jdW1lbnQucXVlcnlTZWxlY3Rvcihgc2NyaXB0W3R5cGU9XFxcIndlYnItOC1jb250ZW50c1xcXCJdYCkudGV4dENvbnRlbnQ7XG4gIGNvbnN0IGJsb2NrID0gSlNPTi5wYXJzZShiNjREZWNvZGUoc2NyaXB0Q29udGVudCkpO1xuXG4gIGNvbnN0IG9wdGlvbnMgPSBPYmplY3QuYXNzaWduKHsgaWQ6IGB3ZWJyLTgtY29udGVudHNgIH0sIGJsb2NrLmF0dHIpO1xuICBjb25zdCBlZGl0b3IgPSBuZXcgV2ViUkV4ZXJjaXNlRWRpdG9yKHdlYlJPanMud2ViUlByb21pc2UsIGJsb2NrLmNvZGUsIG9wdGlvbnMpO1xuXG4gIHJldHVybiBlZGl0b3IuY29udGFpbmVyO1xufVxuX3dlYnJfdmFsdWVfOCA9IHdlYlJPanMucHJvY2Vzcyhfd2Vicl9lZGl0b3JfOCwge30pO1xuIiwiaW5saW5lIjpmYWxzZX0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJjZWxsTmFtZSI6IndlYnItd2lkZ2V0LTciLCJzb3VyY2UiOiJ7XG4gIC8vIFdhaXQgZm9yIG91dHB1dCB0byBiZSB3cml0dGVuIHRvIHRoZSBET00sIHRoZW4gdHJpZ2dlciB3aWRnZXQgcmVuZGVyaW5nXG4gIGF3YWl0IF93ZWJyX3ZhbHVlXzc7XG4gIGlmICh3aW5kb3cuSFRNTFdpZGdldHMpIHtcbiAgICB3aW5kb3cuSFRNTFdpZGdldHMuc3RhdGljUmVuZGVyKCk7XG4gIH1cbiAgaWYgKHdpbmRvdy5QYWdlZFRhYmxlRG9jKSB7XG4gICAgd2luZG93LlBhZ2VkVGFibGVEb2MuaW5pdEFsbCgpO1xuICB9XG59XG4iLCJpbmxpbmUiOmZhbHNlfSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6IndlYnItNyIsInNvdXJjZSI6InZpZXdvZiBfd2Vicl9lZGl0b3JfNyA9IHtcbiAgY29uc3QgeyBXZWJSRXhlcmNpc2VFZGl0b3IsIGI2NERlY29kZSB9ID0gd2luZG93Ll9leGVyY2lzZV9vanNfcnVudGltZTtcbiAgY29uc3Qgc2NyaXB0Q29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJ3ZWJyLTctY29udGVudHNcXFwiXWApLnRleHRDb250ZW50O1xuICBjb25zdCBibG9jayA9IEpTT04ucGFyc2UoYjY0RGVjb2RlKHNjcmlwdENvbnRlbnQpKTtcblxuICBjb25zdCBvcHRpb25zID0gT2JqZWN0LmFzc2lnbih7IGlkOiBgd2Vici03LWNvbnRlbnRzYCB9LCBibG9jay5hdHRyKTtcbiAgY29uc3QgZWRpdG9yID0gbmV3IFdlYlJFeGVyY2lzZUVkaXRvcih3ZWJST2pzLndlYlJQcm9taXNlLCBibG9jay5jb2RlLCBvcHRpb25zKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl93ZWJyX3ZhbHVlXzcgPSB3ZWJST2pzLnByb2Nlc3MoX3dlYnJfZWRpdG9yXzcsIHt9KTtcbiIsImlubGluZSI6ZmFsc2V9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0IiwiY2VsbE5hbWUiOiJ3ZWJyLXdpZGdldC02Iiwic291cmNlIjoie1xuICAvLyBXYWl0IGZvciBvdXRwdXQgdG8gYmUgd3JpdHRlbiB0byB0aGUgRE9NLCB0aGVuIHRyaWdnZXIgd2lkZ2V0IHJlbmRlcmluZ1xuICBhd2FpdCBfd2Vicl92YWx1ZV82O1xuICBpZiAod2luZG93LkhUTUxXaWRnZXRzKSB7XG4gICAgd2luZG93LkhUTUxXaWRnZXRzLnN0YXRpY1JlbmRlcigpO1xuICB9XG4gIGlmICh3aW5kb3cuUGFnZWRUYWJsZURvYykge1xuICAgIHdpbmRvdy5QYWdlZFRhYmxlRG9jLmluaXRBbGwoKTtcbiAgfVxufVxuIiwiaW5saW5lIjpmYWxzZX0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJ3ZWJyLTYiLCJzb3VyY2UiOiJ2aWV3b2YgX3dlYnJfZWRpdG9yXzYgPSB7XG4gIGNvbnN0IHsgV2ViUkV4ZXJjaXNlRWRpdG9yLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwid2Vici02LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHdlYnItNi1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBXZWJSRXhlcmNpc2VFZGl0b3Iod2ViUk9qcy53ZWJSUHJvbWlzZSwgYmxvY2suY29kZSwgb3B0aW9ucyk7XG5cbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG5fd2Vicl92YWx1ZV82ID0gd2ViUk9qcy5wcm9jZXNzKF93ZWJyX2VkaXRvcl82LCB7fSk7XG4iLCJpbmxpbmUiOmZhbHNlfSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsImNlbGxOYW1lIjoid2Vici13aWRnZXQtNSIsInNvdXJjZSI6IntcbiAgLy8gV2FpdCBmb3Igb3V0cHV0IHRvIGJlIHdyaXR0ZW4gdG8gdGhlIERPTSwgdGhlbiB0cmlnZ2VyIHdpZGdldCByZW5kZXJpbmdcbiAgYXdhaXQgX3dlYnJfdmFsdWVfNTtcbiAgaWYgKHdpbmRvdy5IVE1MV2lkZ2V0cykge1xuICAgIHdpbmRvdy5IVE1MV2lkZ2V0cy5zdGF0aWNSZW5kZXIoKTtcbiAgfVxuICBpZiAod2luZG93LlBhZ2VkVGFibGVEb2MpIHtcbiAgICB3aW5kb3cuUGFnZWRUYWJsZURvYy5pbml0QWxsKCk7XG4gIH1cbn1cbiIsImlubGluZSI6ZmFsc2V9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoid2Vici01Iiwic291cmNlIjoidmlld29mIF93ZWJyX2VkaXRvcl81ID0ge1xuICBjb25zdCB7IFdlYlJFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuICBjb25zdCBzY3JpcHRDb250ZW50ID0gZG9jdW1lbnQucXVlcnlTZWxlY3Rvcihgc2NyaXB0W3R5cGU9XFxcIndlYnItNS1jb250ZW50c1xcXCJdYCkudGV4dENvbnRlbnQ7XG4gIGNvbnN0IGJsb2NrID0gSlNPTi5wYXJzZShiNjREZWNvZGUoc2NyaXB0Q29udGVudCkpO1xuXG4gIGNvbnN0IG9wdGlvbnMgPSBPYmplY3QuYXNzaWduKHsgaWQ6IGB3ZWJyLTUtY29udGVudHNgIH0sIGJsb2NrLmF0dHIpO1xuICBjb25zdCBlZGl0b3IgPSBuZXcgV2ViUkV4ZXJjaXNlRWRpdG9yKHdlYlJPanMud2ViUlByb21pc2UsIGJsb2NrLmNvZGUsIG9wdGlvbnMpO1xuXG4gIHJldHVybiBlZGl0b3IuY29udGFpbmVyO1xufVxuX3dlYnJfdmFsdWVfNSA9IHdlYlJPanMucHJvY2Vzcyhfd2Vicl9lZGl0b3JfNSwge30pO1xuIiwiaW5saW5lIjpmYWxzZX0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJjZWxsTmFtZSI6IndlYnItd2lkZ2V0LTQiLCJzb3VyY2UiOiJ7XG4gIC8vIFdhaXQgZm9yIG91dHB1dCB0byBiZSB3cml0dGVuIHRvIHRoZSBET00sIHRoZW4gdHJpZ2dlciB3aWRnZXQgcmVuZGVyaW5nXG4gIGF3YWl0IF93ZWJyX3ZhbHVlXzQ7XG4gIGlmICh3aW5kb3cuSFRNTFdpZGdldHMpIHtcbiAgICB3aW5kb3cuSFRNTFdpZGdldHMuc3RhdGljUmVuZGVyKCk7XG4gIH1cbiAgaWYgKHdpbmRvdy5QYWdlZFRhYmxlRG9jKSB7XG4gICAgd2luZG93LlBhZ2VkVGFibGVEb2MuaW5pdEFsbCgpO1xuICB9XG59XG4iLCJpbmxpbmUiOmZhbHNlfSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6IndlYnItNCIsInNvdXJjZSI6InZpZXdvZiBfd2Vicl9lZGl0b3JfNCA9IHtcbiAgY29uc3QgeyBXZWJSRXhlcmNpc2VFZGl0b3IsIGI2NERlY29kZSB9ID0gd2luZG93Ll9leGVyY2lzZV9vanNfcnVudGltZTtcbiAgY29uc3Qgc2NyaXB0Q29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJ3ZWJyLTQtY29udGVudHNcXFwiXWApLnRleHRDb250ZW50O1xuICBjb25zdCBibG9jayA9IEpTT04ucGFyc2UoYjY0RGVjb2RlKHNjcmlwdENvbnRlbnQpKTtcblxuICBjb25zdCBvcHRpb25zID0gT2JqZWN0LmFzc2lnbih7IGlkOiBgd2Vici00LWNvbnRlbnRzYCB9LCBibG9jay5hdHRyKTtcbiAgY29uc3QgZWRpdG9yID0gbmV3IFdlYlJFeGVyY2lzZUVkaXRvcih3ZWJST2pzLndlYlJQcm9taXNlLCBibG9jay5jb2RlLCBvcHRpb25zKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl93ZWJyX3ZhbHVlXzQgPSB3ZWJST2pzLnByb2Nlc3MoX3dlYnJfZWRpdG9yXzQsIHt9KTtcbiIsImlubGluZSI6ZmFsc2V9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0IiwiY2VsbE5hbWUiOiJ3ZWJyLXdpZGdldC0zIiwic291cmNlIjoie1xuICAvLyBXYWl0IGZvciBvdXRwdXQgdG8gYmUgd3JpdHRlbiB0byB0aGUgRE9NLCB0aGVuIHRyaWdnZXIgd2lkZ2V0IHJlbmRlcmluZ1xuICBhd2FpdCBfd2Vicl92YWx1ZV8zO1xuICBpZiAod2luZG93LkhUTUxXaWRnZXRzKSB7XG4gICAgd2luZG93LkhUTUxXaWRnZXRzLnN0YXRpY1JlbmRlcigpO1xuICB9XG4gIGlmICh3aW5kb3cuUGFnZWRUYWJsZURvYykge1xuICAgIHdpbmRvdy5QYWdlZFRhYmxlRG9jLmluaXRBbGwoKTtcbiAgfVxufVxuIiwiaW5saW5lIjpmYWxzZX0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJ3ZWJyLTMiLCJzb3VyY2UiOiJ2aWV3b2YgX3dlYnJfZWRpdG9yXzMgPSB7XG4gIGNvbnN0IHsgV2ViUkV4ZXJjaXNlRWRpdG9yLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwid2Vici0zLWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHdlYnItMy1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBXZWJSRXhlcmNpc2VFZGl0b3Iod2ViUk9qcy53ZWJSUHJvbWlzZSwgYmxvY2suY29kZSwgb3B0aW9ucyk7XG5cbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG5fd2Vicl92YWx1ZV8zID0gd2ViUk9qcy5wcm9jZXNzKF93ZWJyX2VkaXRvcl8zLCB7fSk7XG4iLCJpbmxpbmUiOmZhbHNlfSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsImNlbGxOYW1lIjoid2Vici13aWRnZXQtMiIsInNvdXJjZSI6IntcbiAgLy8gV2FpdCBmb3Igb3V0cHV0IHRvIGJlIHdyaXR0ZW4gdG8gdGhlIERPTSwgdGhlbiB0cmlnZ2VyIHdpZGdldCByZW5kZXJpbmdcbiAgYXdhaXQgX3dlYnJfdmFsdWVfMjtcbiAgaWYgKHdpbmRvdy5IVE1MV2lkZ2V0cykge1xuICAgIHdpbmRvdy5IVE1MV2lkZ2V0cy5zdGF0aWNSZW5kZXIoKTtcbiAgfVxuICBpZiAod2luZG93LlBhZ2VkVGFibGVEb2MpIHtcbiAgICB3aW5kb3cuUGFnZWRUYWJsZURvYy5pbml0QWxsKCk7XG4gIH1cbn1cbiIsImlubGluZSI6ZmFsc2V9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoid2Vici0yIiwic291cmNlIjoidmlld29mIF93ZWJyX2VkaXRvcl8yID0ge1xuICBjb25zdCB7IFdlYlJFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuICBjb25zdCBzY3JpcHRDb250ZW50ID0gZG9jdW1lbnQucXVlcnlTZWxlY3Rvcihgc2NyaXB0W3R5cGU9XFxcIndlYnItMi1jb250ZW50c1xcXCJdYCkudGV4dENvbnRlbnQ7XG4gIGNvbnN0IGJsb2NrID0gSlNPTi5wYXJzZShiNjREZWNvZGUoc2NyaXB0Q29udGVudCkpO1xuXG4gIGNvbnN0IG9wdGlvbnMgPSBPYmplY3QuYXNzaWduKHsgaWQ6IGB3ZWJyLTItY29udGVudHNgIH0sIGJsb2NrLmF0dHIpO1xuICBjb25zdCBlZGl0b3IgPSBuZXcgV2ViUkV4ZXJjaXNlRWRpdG9yKHdlYlJPanMud2ViUlByb21pc2UsIGJsb2NrLmNvZGUsIG9wdGlvbnMpO1xuXG4gIHJldHVybiBlZGl0b3IuY29udGFpbmVyO1xufVxuX3dlYnJfdmFsdWVfMiA9IHdlYlJPanMucHJvY2Vzcyhfd2Vicl9lZGl0b3JfMiwge30pO1xuIiwiaW5saW5lIjpmYWxzZX0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJjZWxsTmFtZSI6IndlYnItd2lkZ2V0LTEiLCJzb3VyY2UiOiJ7XG4gIC8vIFdhaXQgZm9yIG91dHB1dCB0byBiZSB3cml0dGVuIHRvIHRoZSBET00sIHRoZW4gdHJpZ2dlciB3aWRnZXQgcmVuZGVyaW5nXG4gIGF3YWl0IF93ZWJyX3ZhbHVlXzE7XG4gIGlmICh3aW5kb3cuSFRNTFdpZGdldHMpIHtcbiAgICB3aW5kb3cuSFRNTFdpZGdldHMuc3RhdGljUmVuZGVyKCk7XG4gIH1cbiAgaWYgKHdpbmRvdy5QYWdlZFRhYmxlRG9jKSB7XG4gICAgd2luZG93LlBhZ2VkVGFibGVEb2MuaW5pdEFsbCgpO1xuICB9XG59XG4iLCJpbmxpbmUiOmZhbHNlfSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6IndlYnItMSIsInNvdXJjZSI6InZpZXdvZiBfd2Vicl9lZGl0b3JfMSA9IHtcbiAgY29uc3QgeyBXZWJSRXhlcmNpc2VFZGl0b3IsIGI2NERlY29kZSB9ID0gd2luZG93Ll9leGVyY2lzZV9vanNfcnVudGltZTtcbiAgY29uc3Qgc2NyaXB0Q29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJ3ZWJyLTEtY29udGVudHNcXFwiXWApLnRleHRDb250ZW50O1xuICBjb25zdCBibG9jayA9IEpTT04ucGFyc2UoYjY0RGVjb2RlKHNjcmlwdENvbnRlbnQpKTtcblxuICBjb25zdCBvcHRpb25zID0gT2JqZWN0LmFzc2lnbih7IGlkOiBgd2Vici0xLWNvbnRlbnRzYCB9LCBibG9jay5hdHRyKTtcbiAgY29uc3QgZWRpdG9yID0gbmV3IFdlYlJFeGVyY2lzZUVkaXRvcih3ZWJST2pzLndlYlJQcm9taXNlLCBibG9jay5jb2RlLCBvcHRpb25zKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl93ZWJyX3ZhbHVlXzEgPSB3ZWJST2pzLnByb2Nlc3MoX3dlYnJfZWRpdG9yXzEsIHt9KTtcbiIsImlubGluZSI6ZmFsc2V9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0IiwiY2VsbE5hbWUiOiJ3ZWJyLXByZWx1ZGUiLCJzb3VyY2UiOiJ3ZWJST2pzID0ge1xuICBjb25zdCB7IFdlYlIgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWUuV2ViUjtcbiAgY29uc3Qge1xuICAgIFdlYlJFdmFsdWF0b3IsXG4gICAgV2ViUkVudmlyb25tZW50TWFuYWdlcixcbiAgICBzZXR1cFIsXG4gICAgYjY0RGVjb2RlLFxuICAgIGNvbGxhcHNlUGF0aFxuICB9ID0gd2luZG93Ll9leGVyY2lzZV9vanNfcnVudGltZTtcblxuICBjb25zdCBzdGF0dXNDb250YWluZXIgPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZChcImV4ZXJjaXNlLWxvYWRpbmctc3RhdHVzXCIpO1xuICBjb25zdCBpbmRpY2F0b3JDb250YWluZXIgPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZChcImV4ZXJjaXNlLWxvYWRpbmctaW5kaWNhdG9yXCIpO1xuICBpbmRpY2F0b3JDb250YWluZXIuY2xhc3NMaXN0LnJlbW92ZShcImQtbm9uZVwiKTtcblxuICBsZXQgc3RhdHVzVGV4dCA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoXCJkaXZcIilcbiAgc3RhdHVzVGV4dC5jbGFzc0xpc3QgPSBcImV4ZXJjaXNlLWxvYWRpbmctZGV0YWlsc1wiO1xuICBzdGF0dXNUZXh0ID0gc3RhdHVzQ29udGFpbmVyLmFwcGVuZENoaWxkKHN0YXR1c1RleHQpO1xuICBzdGF0dXNUZXh0LnRleHRDb250ZW50ID0gYEluaXRpYWxpc2VgO1xuXG4gIC8vIEhvaXN0IGluZGljYXRvciBvdXQgZnJvbSBmaW5hbCBzbGlkZSB3aGVuIHJ1bm5pbmcgdW5kZXIgcmV2ZWFsXG4gIGNvbnN0IHJldmVhbFN0YXR1cyA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoXCIucmV2ZWFsIC5leGVyY2lzZS1sb2FkaW5nLWluZGljYXRvclwiKTtcbiAgaWYgKHJldmVhbFN0YXR1cykge1xuICAgIHJldmVhbFN0YXR1cy5yZW1vdmUoKTtcbiAgICBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKFwiLnJldmVhbCA+IC5zbGlkZXNcIikuYXBwZW5kQ2hpbGQocmV2ZWFsU3RhdHVzKTtcbiAgfVxuXG4gIC8vIHdlYlIgc3VwcGxlbWVudGFsIGRhdGEgYW5kIG9wdGlvbnNcbiAgY29uc3QgZGF0YUNvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwid2Vici1kYXRhXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgZGF0YSA9IEpTT04ucGFyc2UoYjY0RGVjb2RlKGRhdGFDb250ZW50KSk7XG5cbiAgLy8gR3JhYiBsaXN0IG9mIHJlc291cmNlcyB0byBiZSBkb3dubG9hZGVkXG4gIGNvbnN0IGZpbGVzQ29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJ2ZnMtZmlsZVxcXCJdYCkudGV4dENvbnRlbnQ7XG4gIGNvbnN0IGZpbGVzID0gSlNPTi5wYXJzZShiNjREZWNvZGUoZmlsZXNDb250ZW50KSk7XG5cbiAgLy8gSW5pdGlhbGlzZSB3ZWJSIGFuZCBzZXR1cCBmb3IgUiBjb2RlIGV2YWx1YXRpb25cbiAgbGV0IHdlYlJQcm9taXNlID0gKGFzeW5jICh3ZWJSKSA9PiB7XG4gICAgc3RhdHVzVGV4dC50ZXh0Q29udGVudCA9IGBEb3dubG9hZGluZyB3ZWJSYDtcbiAgICBhd2FpdCB3ZWJSLmluaXQoKTtcblxuICAgIC8vIEluc3RhbGwgcHJvdmlkZWQgbGlzdCBvZiBwYWNrYWdlc1xuICAgIC8vIEVuc3VyZSB3ZWJSIGRlZmF1bHQgcmVwbyBpcyBpbmNsdWRlZFxuICAgIGRhdGEucGFja2FnZXMucmVwb3MucHVzaChcImh0dHBzOi8vcmVwby5yLXdhc20ub3JnXCIpXG4gICAgYXdhaXQgZGF0YS5wYWNrYWdlcy5wa2dzLm1hcCgocGtnKSA9PiAoKSA9PiB7XG4gICAgICBzdGF0dXNUZXh0LnRleHRDb250ZW50ID0gYERvd25sb2FkaW5nIHBhY2thZ2U6ICR7cGtnfWA7XG4gICAgICByZXR1cm4gd2ViUi5ldmFsUlZvaWQoYFxuICAgICAgICB3ZWJyOjppbnN0YWxsKHBrZywgcmVwb3MgPSByZXBvcylcbiAgICAgICAgbGlicmFyeShwa2csIGNoYXJhY3Rlci5vbmx5ID0gVFJVRSlcbiAgICAgIGAsIHsgZW52OiB7XG4gICAgICAgIHBrZzogcGtnLFxuICAgICAgICByZXBvczogZGF0YS5wYWNrYWdlcy5yZXBvcyxcbiAgICAgIH19KTtcbiAgICB9KS5yZWR1Y2UoKGN1ciwgbmV4dCkgPT4gY3VyLnRoZW4obmV4dCksIFByb21pc2UucmVzb2x2ZSgpKTtcblxuICAgIC8vIERvd25sb2FkIGFuZCBpbnN0YWxsIHJlc291cmNlc1xuICAgIGF3YWl0IGZpbGVzLm1hcCgoZmlsZSkgPT4gYXN5bmMgKCkgPT4ge1xuICAgICAgY29uc3QgbmFtZSA9IGZpbGUuc3Vic3RyaW5nKGZpbGUubGFzdEluZGV4T2YoJy8nKSArIDEpO1xuICAgICAgc3RhdHVzVGV4dC50ZXh0Q29udGVudCA9IGBEb3dubG9hZGluZyByZXNvdXJjZTogJHtuYW1lfWA7XG4gICAgICBjb25zdCByZXNwb25zZSA9IGF3YWl0IGZldGNoKGZpbGUpO1xuICAgICAgaWYgKCFyZXNwb25zZS5vaykge1xuICAgICAgICB0aHJvdyBuZXcgRXJyb3IoYENhbid0IGRvd25sb2FkIFxcYCR7ZmlsZX1cXGAuIEVycm9yICR7cmVzcG9uc2Uuc3RhdHVzfTogXCIke3Jlc3BvbnNlLnN0YXR1c1RleHR9XCIuYCk7XG4gICAgICB9XG4gICAgICBjb25zdCBkYXRhID0gYXdhaXQgcmVzcG9uc2UuYXJyYXlCdWZmZXIoKTtcblxuICAgICAgLy8gU3RvcmUgVVJMcyBpbiB0aGUgY3dkIHdpdGhvdXQgYW55IHN1YmRpcmVjdG9yeSBzdHJ1Y3R1cmVcbiAgICAgIGlmIChmaWxlLmluY2x1ZGVzKFwiOi8vXCIpKSB7XG4gICAgICAgIGZpbGUgPSBuYW1lO1xuICAgICAgfVxuXG4gICAgICAvLyBDb2xsYXBzZSBoaWdoZXIgZGlyZWN0b3J5IHN0cnVjdHVyZVxuICAgICAgZmlsZSA9IGNvbGxhcHNlUGF0aChmaWxlKTtcblxuICAgICAgLy8gQ3JlYXRlIGRpcmVjdG9yeSB0cmVlLCBpZ25vcmluZyBcImRpcmVjdG9yeSBleGlzdHNcIiBWRlMgZXJyb3JzXG4gICAgICBjb25zdCBwYXJ0cyA9IGZpbGUuc3BsaXQoJy8nKS5zbGljZSgwLCAtMSk7XG4gICAgICBsZXQgcGF0aCA9ICcnO1xuICAgICAgd2hpbGUgKHBhcnRzLmxlbmd0aCA+IDApIHtcbiAgICAgICAgcGF0aCArPSBwYXJ0cy5zaGlmdCgpICsgJy8nO1xuICAgICAgICB0cnkge1xuICAgICAgICAgIGF3YWl0IHdlYlIuRlMubWtkaXIocGF0aCk7XG4gICAgICAgIH0gY2F0Y2ggKGUpIHtcbiAgICAgICAgICBpZiAoIWUubWVzc2FnZS5pbmNsdWRlcyhcIkZTIGVycm9yXCIpKSB7XG4gICAgICAgICAgICB0aHJvdyBlO1xuICAgICAgICAgIH1cbiAgICAgICAgfVxuICAgICAgfVxuXG4gICAgICAvLyBXcml0ZSB0aGlzIGZpbGUgdG8gdGhlIFZGU1xuICAgICAgcmV0dXJuIGF3YWl0IHdlYlIuRlMud3JpdGVGaWxlKGZpbGUsIG5ldyBVaW50OEFycmF5KGRhdGEpKTtcbiAgICB9KS5yZWR1Y2UoKGN1ciwgbmV4dCkgPT4gY3VyLnRoZW4obmV4dCksIFByb21pc2UucmVzb2x2ZSgpKTtcblxuICAgIHN0YXR1c1RleHQudGV4dENvbnRlbnQgPSBgSW5zdGFsbGluZyB3ZWJSIHNoaW1zYDtcbiAgICBhd2FpdCB3ZWJSLmV2YWxSVm9pZChgd2Vicjo6c2hpbV9pbnN0YWxsKClgKTtcblxuICAgIHN0YXR1c1RleHQudGV4dENvbnRlbnQgPSBgV2ViUiBlbnZpcm9ubWVudCBzZXR1cGA7XG4gICAgYXdhaXQgc2V0dXBSKHdlYlIsIGRhdGEpO1xuXG4gICAgc3RhdHVzVGV4dC5yZW1vdmUoKTtcbiAgICBpZiAoc3RhdHVzQ29udGFpbmVyLmNoaWxkcmVuLmxlbmd0aCA9PSAwKSB7XG4gICAgICBzdGF0dXNDb250YWluZXIucGFyZW50Tm9kZS5yZW1vdmUoKTtcbiAgICB9XG4gICAgcmV0dXJuIHdlYlI7XG4gIH0pKG5ldyBXZWJSKGRhdGEub3B0aW9ucykpO1xuXG4gIC8vIEtlZXAgdHJhY2sgb2YgaW5pdGlhbCBPSlMgYmxvY2sgcmVuZGVyXG4gIGNvbnN0IHJlbmRlcmVkT2pzID0ge307XG5cbiAgY29uc3QgcHJvY2VzcyA9IGFzeW5jIChjb250ZXh0LCBpbnB1dHMpID0+IHtcbiAgICBjb25zdCB3ZWJSID0gYXdhaXQgd2ViUlByb21pc2U7XG4gICAgY29uc3QgZXZhbHVhdG9yID0gbmV3IFdlYlJFdmFsdWF0b3Iod2ViUiwgY29udGV4dClcbiAgICBhd2FpdCBldmFsdWF0b3IucHJvY2VzcyhpbnB1dHMpO1xuICAgIHJldHVybiBldmFsdWF0b3IuY29udGFpbmVyO1xuICB9XG5cbiAgcmV0dXJuIHtcbiAgICBwcm9jZXNzLFxuICAgIHdlYlJQcm9taXNlLFxuICAgIHJlbmRlcmVkT2pzLFxuICB9O1xufVxuIiwiaW5saW5lIjpmYWxzZX1dfQ==
+eyJjb250ZW50cyI6W3siaW5saW5lIjpmYWxzZSwiY2VsbE5hbWUiOiJ3ZWJyLXdpZGdldC0xMCIsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6IntcbiAgLy8gV2FpdCBmb3Igb3V0cHV0IHRvIGJlIHdyaXR0ZW4gdG8gdGhlIERPTSwgdGhlbiB0cmlnZ2VyIHdpZGdldCByZW5kZXJpbmdcbiAgYXdhaXQgX3dlYnJfdmFsdWVfMTA7XG4gIGlmICh3aW5kb3cuSFRNTFdpZGdldHMpIHtcbiAgICB3aW5kb3cuSFRNTFdpZGdldHMuc3RhdGljUmVuZGVyKCk7XG4gIH1cbiAgaWYgKHdpbmRvdy5QYWdlZFRhYmxlRG9jKSB7XG4gICAgd2luZG93LlBhZ2VkVGFibGVEb2MuaW5pdEFsbCgpO1xuICB9XG59XG4ifSx7ImlubGluZSI6ZmFsc2UsImNlbGxOYW1lIjoid2Vici0xMCIsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJzb3VyY2UiOiJ2aWV3b2YgX3dlYnJfZWRpdG9yXzEwID0ge1xuICBjb25zdCB7IFdlYlJFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuICBjb25zdCBzY3JpcHRDb250ZW50ID0gZG9jdW1lbnQucXVlcnlTZWxlY3Rvcihgc2NyaXB0W3R5cGU9XFxcIndlYnItMTAtY29udGVudHNcXFwiXWApLnRleHRDb250ZW50O1xuICBjb25zdCBibG9jayA9IEpTT04ucGFyc2UoYjY0RGVjb2RlKHNjcmlwdENvbnRlbnQpKTtcblxuICBjb25zdCBvcHRpb25zID0gT2JqZWN0LmFzc2lnbih7IGlkOiBgd2Vici0xMC1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBXZWJSRXhlcmNpc2VFZGl0b3Iod2ViUk9qcy53ZWJSUHJvbWlzZSwgYmxvY2suY29kZSwgb3B0aW9ucyk7XG5cbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG5fd2Vicl92YWx1ZV8xMCA9IHdlYlJPanMucHJvY2Vzcyhfd2Vicl9lZGl0b3JfMTAsIHt9KTtcbiJ9LHsiaW5saW5lIjpmYWxzZSwiY2VsbE5hbWUiOiJ3ZWJyLXdpZGdldC05IiwibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoie1xuICAvLyBXYWl0IGZvciBvdXRwdXQgdG8gYmUgd3JpdHRlbiB0byB0aGUgRE9NLCB0aGVuIHRyaWdnZXIgd2lkZ2V0IHJlbmRlcmluZ1xuICBhd2FpdCBfd2Vicl92YWx1ZV85O1xuICBpZiAod2luZG93LkhUTUxXaWRnZXRzKSB7XG4gICAgd2luZG93LkhUTUxXaWRnZXRzLnN0YXRpY1JlbmRlcigpO1xuICB9XG4gIGlmICh3aW5kb3cuUGFnZWRUYWJsZURvYykge1xuICAgIHdpbmRvdy5QYWdlZFRhYmxlRG9jLmluaXRBbGwoKTtcbiAgfVxufVxuIn0seyJpbmxpbmUiOmZhbHNlLCJjZWxsTmFtZSI6IndlYnItOSIsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJzb3VyY2UiOiJfd2Vicl92YWx1ZV85ID0ge1xuICBjb25zdCB7IGhpZ2hsaWdodFIsIGI2NERlY29kZSB9ID0gd2luZG93Ll9leGVyY2lzZV9vanNfcnVudGltZTtcbiAgY29uc3Qgc2NyaXB0Q29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJ3ZWJyLTktY29udGVudHNcXFwiXWApLnRleHRDb250ZW50O1xuICBjb25zdCBibG9jayA9IEpTT04ucGFyc2UoYjY0RGVjb2RlKHNjcmlwdENvbnRlbnQpKTtcblxuICAvLyBEZWZhdWx0IGV2YWx1YXRpb24gY29uZmlndXJhdGlvblxuICBjb25zdCBvcHRpb25zID0gT2JqZWN0LmFzc2lnbih7XG4gICAgaWQ6IFwid2Vici05LWNvbnRlbnRzXCIsXG4gICAgZWNobzogdHJ1ZSxcbiAgICBvdXRwdXQ6IHRydWVcbiAgfSwgYmxvY2suYXR0cik7XG5cbiAgLy8gRXZhbHVhdGUgdGhlIHByb3ZpZGVkIFIgY29kZVxuICBjb25zdCByZXN1bHQgPSB3ZWJST2pzLnByb2Nlc3Moe2NvZGU6IGJsb2NrLmNvZGUsIG9wdGlvbnN9LCB7fSk7XG5cbiAgLy8gRWFybHkgeWllbGQgd2hpbGUgd2Ugd2FpdCBmb3IgdGhlIGZpcnN0IGV2YWx1YXRpb24gYW5kIHJlbmRlclxuICBpZiAob3B0aW9ucy5vdXRwdXQgJiYgIShcIjlcIiBpbiB3ZWJST2pzLnJlbmRlcmVkT2pzKSkge1xuICAgIGNvbnN0IGNvbnRhaW5lciA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoXCJkaXZcIik7XG4gICAgY29uc3Qgc3Bpbm5lciA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoXCJkaXZcIik7XG5cbiAgICBpZiAob3B0aW9ucy5lY2hvKSB7XG4gICAgICAvLyBTaG93IG91dHB1dCBhcyBoaWdobGlnaHRlZCBzb3VyY2VcbiAgICAgIGNvbnN0IHByZUVsZW0gPSBkb2N1bWVudC5jcmVhdGVFbGVtZW50KFwicHJlXCIpO1xuICAgICAgY29udGFpbmVyLmNsYXNzTmFtZSA9IFwic291cmNlQ29kZVwiO1xuICAgICAgcHJlRWxlbS5jbGFzc05hbWUgPSBcInNvdXJjZUNvZGUgclwiO1xuICAgICAgcHJlRWxlbS5hcHBlbmRDaGlsZChoaWdobGlnaHRSKGJsb2NrLmNvZGUpKTtcbiAgICAgIHNwaW5uZXIuY2xhc3NOYW1lID0gXCJzcGlubmVyLWdyb3cgc3Bpbm5lci1ncm93LXNtIG0tMiBwb3NpdGlvbi1hYnNvbHV0ZSB0b3AtMCBlbmQtMFwiO1xuICAgICAgcHJlRWxlbS5hcHBlbmRDaGlsZChzcGlubmVyKTtcbiAgICAgIGNvbnRhaW5lci5hcHBlbmRDaGlsZChwcmVFbGVtKTtcbiAgICB9IGVsc2Uge1xuICAgICAgc3Bpbm5lci5jbGFzc05hbWUgPSBcInNwaW5uZXItYm9yZGVyIHNwaW5uZXItYm9yZGVyLXNtXCI7XG4gICAgICBjb250YWluZXIuYXBwZW5kQ2hpbGQoc3Bpbm5lcik7XG4gICAgfVxuXG4gICAgeWllbGQgY29udGFpbmVyO1xuICB9XG5cbiAgd2ViUk9qcy5yZW5kZXJlZE9qc1tcIjlcIl0gPSB0cnVlO1xuICB5aWVsZCBhd2FpdCByZXN1bHQ7XG59XG4ifSx7ImlubGluZSI6ZmFsc2UsImNlbGxOYW1lIjoid2Vici13aWRnZXQtOCIsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6IntcbiAgLy8gV2FpdCBmb3Igb3V0cHV0IHRvIGJlIHdyaXR0ZW4gdG8gdGhlIERPTSwgdGhlbiB0cmlnZ2VyIHdpZGdldCByZW5kZXJpbmdcbiAgYXdhaXQgX3dlYnJfdmFsdWVfODtcbiAgaWYgKHdpbmRvdy5IVE1MV2lkZ2V0cykge1xuICAgIHdpbmRvdy5IVE1MV2lkZ2V0cy5zdGF0aWNSZW5kZXIoKTtcbiAgfVxuICBpZiAod2luZG93LlBhZ2VkVGFibGVEb2MpIHtcbiAgICB3aW5kb3cuUGFnZWRUYWJsZURvYy5pbml0QWxsKCk7XG4gIH1cbn1cbiJ9LHsiaW5saW5lIjpmYWxzZSwiY2VsbE5hbWUiOiJ3ZWJyLTgiLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF93ZWJyX2VkaXRvcl84ID0ge1xuICBjb25zdCB7IFdlYlJFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuICBjb25zdCBzY3JpcHRDb250ZW50ID0gZG9jdW1lbnQucXVlcnlTZWxlY3Rvcihgc2NyaXB0W3R5cGU9XFxcIndlYnItOC1jb250ZW50c1xcXCJdYCkudGV4dENvbnRlbnQ7XG4gIGNvbnN0IGJsb2NrID0gSlNPTi5wYXJzZShiNjREZWNvZGUoc2NyaXB0Q29udGVudCkpO1xuXG4gIGNvbnN0IG9wdGlvbnMgPSBPYmplY3QuYXNzaWduKHsgaWQ6IGB3ZWJyLTgtY29udGVudHNgIH0sIGJsb2NrLmF0dHIpO1xuICBjb25zdCBlZGl0b3IgPSBuZXcgV2ViUkV4ZXJjaXNlRWRpdG9yKHdlYlJPanMud2ViUlByb21pc2UsIGJsb2NrLmNvZGUsIG9wdGlvbnMpO1xuXG4gIHJldHVybiBlZGl0b3IuY29udGFpbmVyO1xufVxuX3dlYnJfdmFsdWVfOCA9IHdlYlJPanMucHJvY2Vzcyhfd2Vicl9lZGl0b3JfOCwge30pO1xuIn0seyJpbmxpbmUiOmZhbHNlLCJjZWxsTmFtZSI6IndlYnItd2lkZ2V0LTciLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJ7XG4gIC8vIFdhaXQgZm9yIG91dHB1dCB0byBiZSB3cml0dGVuIHRvIHRoZSBET00sIHRoZW4gdHJpZ2dlciB3aWRnZXQgcmVuZGVyaW5nXG4gIGF3YWl0IF93ZWJyX3ZhbHVlXzc7XG4gIGlmICh3aW5kb3cuSFRNTFdpZGdldHMpIHtcbiAgICB3aW5kb3cuSFRNTFdpZGdldHMuc3RhdGljUmVuZGVyKCk7XG4gIH1cbiAgaWYgKHdpbmRvdy5QYWdlZFRhYmxlRG9jKSB7XG4gICAgd2luZG93LlBhZ2VkVGFibGVEb2MuaW5pdEFsbCgpO1xuICB9XG59XG4ifSx7ImlubGluZSI6ZmFsc2UsImNlbGxOYW1lIjoid2Vici03IiwibWV0aG9kTmFtZSI6ImludGVycHJldCIsInNvdXJjZSI6InZpZXdvZiBfd2Vicl9lZGl0b3JfNyA9IHtcbiAgY29uc3QgeyBXZWJSRXhlcmNpc2VFZGl0b3IsIGI2NERlY29kZSB9ID0gd2luZG93Ll9leGVyY2lzZV9vanNfcnVudGltZTtcbiAgY29uc3Qgc2NyaXB0Q29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJ3ZWJyLTctY29udGVudHNcXFwiXWApLnRleHRDb250ZW50O1xuICBjb25zdCBibG9jayA9IEpTT04ucGFyc2UoYjY0RGVjb2RlKHNjcmlwdENvbnRlbnQpKTtcblxuICBjb25zdCBvcHRpb25zID0gT2JqZWN0LmFzc2lnbih7IGlkOiBgd2Vici03LWNvbnRlbnRzYCB9LCBibG9jay5hdHRyKTtcbiAgY29uc3QgZWRpdG9yID0gbmV3IFdlYlJFeGVyY2lzZUVkaXRvcih3ZWJST2pzLndlYlJQcm9taXNlLCBibG9jay5jb2RlLCBvcHRpb25zKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl93ZWJyX3ZhbHVlXzcgPSB3ZWJST2pzLnByb2Nlc3MoX3dlYnJfZWRpdG9yXzcsIHt9KTtcbiJ9LHsiaW5saW5lIjpmYWxzZSwiY2VsbE5hbWUiOiJ3ZWJyLXdpZGdldC02IiwibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoie1xuICAvLyBXYWl0IGZvciBvdXRwdXQgdG8gYmUgd3JpdHRlbiB0byB0aGUgRE9NLCB0aGVuIHRyaWdnZXIgd2lkZ2V0IHJlbmRlcmluZ1xuICBhd2FpdCBfd2Vicl92YWx1ZV82O1xuICBpZiAod2luZG93LkhUTUxXaWRnZXRzKSB7XG4gICAgd2luZG93LkhUTUxXaWRnZXRzLnN0YXRpY1JlbmRlcigpO1xuICB9XG4gIGlmICh3aW5kb3cuUGFnZWRUYWJsZURvYykge1xuICAgIHdpbmRvdy5QYWdlZFRhYmxlRG9jLmluaXRBbGwoKTtcbiAgfVxufVxuIn0seyJpbmxpbmUiOmZhbHNlLCJjZWxsTmFtZSI6IndlYnItNiIsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJzb3VyY2UiOiJ2aWV3b2YgX3dlYnJfZWRpdG9yXzYgPSB7XG4gIGNvbnN0IHsgV2ViUkV4ZXJjaXNlRWRpdG9yLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwid2Vici02LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHdlYnItNi1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBXZWJSRXhlcmNpc2VFZGl0b3Iod2ViUk9qcy53ZWJSUHJvbWlzZSwgYmxvY2suY29kZSwgb3B0aW9ucyk7XG5cbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG5fd2Vicl92YWx1ZV82ID0gd2ViUk9qcy5wcm9jZXNzKF93ZWJyX2VkaXRvcl82LCB7fSk7XG4ifSx7ImlubGluZSI6ZmFsc2UsImNlbGxOYW1lIjoid2Vici13aWRnZXQtNSIsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6IntcbiAgLy8gV2FpdCBmb3Igb3V0cHV0IHRvIGJlIHdyaXR0ZW4gdG8gdGhlIERPTSwgdGhlbiB0cmlnZ2VyIHdpZGdldCByZW5kZXJpbmdcbiAgYXdhaXQgX3dlYnJfdmFsdWVfNTtcbiAgaWYgKHdpbmRvdy5IVE1MV2lkZ2V0cykge1xuICAgIHdpbmRvdy5IVE1MV2lkZ2V0cy5zdGF0aWNSZW5kZXIoKTtcbiAgfVxuICBpZiAod2luZG93LlBhZ2VkVGFibGVEb2MpIHtcbiAgICB3aW5kb3cuUGFnZWRUYWJsZURvYy5pbml0QWxsKCk7XG4gIH1cbn1cbiJ9LHsiaW5saW5lIjpmYWxzZSwiY2VsbE5hbWUiOiJ3ZWJyLTUiLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF93ZWJyX2VkaXRvcl81ID0ge1xuICBjb25zdCB7IFdlYlJFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuICBjb25zdCBzY3JpcHRDb250ZW50ID0gZG9jdW1lbnQucXVlcnlTZWxlY3Rvcihgc2NyaXB0W3R5cGU9XFxcIndlYnItNS1jb250ZW50c1xcXCJdYCkudGV4dENvbnRlbnQ7XG4gIGNvbnN0IGJsb2NrID0gSlNPTi5wYXJzZShiNjREZWNvZGUoc2NyaXB0Q29udGVudCkpO1xuXG4gIGNvbnN0IG9wdGlvbnMgPSBPYmplY3QuYXNzaWduKHsgaWQ6IGB3ZWJyLTUtY29udGVudHNgIH0sIGJsb2NrLmF0dHIpO1xuICBjb25zdCBlZGl0b3IgPSBuZXcgV2ViUkV4ZXJjaXNlRWRpdG9yKHdlYlJPanMud2ViUlByb21pc2UsIGJsb2NrLmNvZGUsIG9wdGlvbnMpO1xuXG4gIHJldHVybiBlZGl0b3IuY29udGFpbmVyO1xufVxuX3dlYnJfdmFsdWVfNSA9IHdlYlJPanMucHJvY2Vzcyhfd2Vicl9lZGl0b3JfNSwge30pO1xuIn0seyJpbmxpbmUiOmZhbHNlLCJjZWxsTmFtZSI6IndlYnItd2lkZ2V0LTQiLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJ7XG4gIC8vIFdhaXQgZm9yIG91dHB1dCB0byBiZSB3cml0dGVuIHRvIHRoZSBET00sIHRoZW4gdHJpZ2dlciB3aWRnZXQgcmVuZGVyaW5nXG4gIGF3YWl0IF93ZWJyX3ZhbHVlXzQ7XG4gIGlmICh3aW5kb3cuSFRNTFdpZGdldHMpIHtcbiAgICB3aW5kb3cuSFRNTFdpZGdldHMuc3RhdGljUmVuZGVyKCk7XG4gIH1cbiAgaWYgKHdpbmRvdy5QYWdlZFRhYmxlRG9jKSB7XG4gICAgd2luZG93LlBhZ2VkVGFibGVEb2MuaW5pdEFsbCgpO1xuICB9XG59XG4ifSx7ImlubGluZSI6ZmFsc2UsImNlbGxOYW1lIjoid2Vici00IiwibWV0aG9kTmFtZSI6ImludGVycHJldCIsInNvdXJjZSI6InZpZXdvZiBfd2Vicl9lZGl0b3JfNCA9IHtcbiAgY29uc3QgeyBXZWJSRXhlcmNpc2VFZGl0b3IsIGI2NERlY29kZSB9ID0gd2luZG93Ll9leGVyY2lzZV9vanNfcnVudGltZTtcbiAgY29uc3Qgc2NyaXB0Q29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJ3ZWJyLTQtY29udGVudHNcXFwiXWApLnRleHRDb250ZW50O1xuICBjb25zdCBibG9jayA9IEpTT04ucGFyc2UoYjY0RGVjb2RlKHNjcmlwdENvbnRlbnQpKTtcblxuICBjb25zdCBvcHRpb25zID0gT2JqZWN0LmFzc2lnbih7IGlkOiBgd2Vici00LWNvbnRlbnRzYCB9LCBibG9jay5hdHRyKTtcbiAgY29uc3QgZWRpdG9yID0gbmV3IFdlYlJFeGVyY2lzZUVkaXRvcih3ZWJST2pzLndlYlJQcm9taXNlLCBibG9jay5jb2RlLCBvcHRpb25zKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl93ZWJyX3ZhbHVlXzQgPSB3ZWJST2pzLnByb2Nlc3MoX3dlYnJfZWRpdG9yXzQsIHt9KTtcbiJ9LHsiaW5saW5lIjpmYWxzZSwiY2VsbE5hbWUiOiJ3ZWJyLXdpZGdldC0zIiwibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoie1xuICAvLyBXYWl0IGZvciBvdXRwdXQgdG8gYmUgd3JpdHRlbiB0byB0aGUgRE9NLCB0aGVuIHRyaWdnZXIgd2lkZ2V0IHJlbmRlcmluZ1xuICBhd2FpdCBfd2Vicl92YWx1ZV8zO1xuICBpZiAod2luZG93LkhUTUxXaWRnZXRzKSB7XG4gICAgd2luZG93LkhUTUxXaWRnZXRzLnN0YXRpY1JlbmRlcigpO1xuICB9XG4gIGlmICh3aW5kb3cuUGFnZWRUYWJsZURvYykge1xuICAgIHdpbmRvdy5QYWdlZFRhYmxlRG9jLmluaXRBbGwoKTtcbiAgfVxufVxuIn0seyJpbmxpbmUiOmZhbHNlLCJjZWxsTmFtZSI6IndlYnItMyIsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJzb3VyY2UiOiJ2aWV3b2YgX3dlYnJfZWRpdG9yXzMgPSB7XG4gIGNvbnN0IHsgV2ViUkV4ZXJjaXNlRWRpdG9yLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwid2Vici0zLWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHdlYnItMy1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBXZWJSRXhlcmNpc2VFZGl0b3Iod2ViUk9qcy53ZWJSUHJvbWlzZSwgYmxvY2suY29kZSwgb3B0aW9ucyk7XG5cbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG5fd2Vicl92YWx1ZV8zID0gd2ViUk9qcy5wcm9jZXNzKF93ZWJyX2VkaXRvcl8zLCB7fSk7XG4ifSx7ImlubGluZSI6ZmFsc2UsImNlbGxOYW1lIjoid2Vici13aWRnZXQtMiIsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6IntcbiAgLy8gV2FpdCBmb3Igb3V0cHV0IHRvIGJlIHdyaXR0ZW4gdG8gdGhlIERPTSwgdGhlbiB0cmlnZ2VyIHdpZGdldCByZW5kZXJpbmdcbiAgYXdhaXQgX3dlYnJfdmFsdWVfMjtcbiAgaWYgKHdpbmRvdy5IVE1MV2lkZ2V0cykge1xuICAgIHdpbmRvdy5IVE1MV2lkZ2V0cy5zdGF0aWNSZW5kZXIoKTtcbiAgfVxuICBpZiAod2luZG93LlBhZ2VkVGFibGVEb2MpIHtcbiAgICB3aW5kb3cuUGFnZWRUYWJsZURvYy5pbml0QWxsKCk7XG4gIH1cbn1cbiJ9LHsiaW5saW5lIjpmYWxzZSwiY2VsbE5hbWUiOiJ3ZWJyLTIiLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF93ZWJyX2VkaXRvcl8yID0ge1xuICBjb25zdCB7IFdlYlJFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuICBjb25zdCBzY3JpcHRDb250ZW50ID0gZG9jdW1lbnQucXVlcnlTZWxlY3Rvcihgc2NyaXB0W3R5cGU9XFxcIndlYnItMi1jb250ZW50c1xcXCJdYCkudGV4dENvbnRlbnQ7XG4gIGNvbnN0IGJsb2NrID0gSlNPTi5wYXJzZShiNjREZWNvZGUoc2NyaXB0Q29udGVudCkpO1xuXG4gIGNvbnN0IG9wdGlvbnMgPSBPYmplY3QuYXNzaWduKHsgaWQ6IGB3ZWJyLTItY29udGVudHNgIH0sIGJsb2NrLmF0dHIpO1xuICBjb25zdCBlZGl0b3IgPSBuZXcgV2ViUkV4ZXJjaXNlRWRpdG9yKHdlYlJPanMud2ViUlByb21pc2UsIGJsb2NrLmNvZGUsIG9wdGlvbnMpO1xuXG4gIHJldHVybiBlZGl0b3IuY29udGFpbmVyO1xufVxuX3dlYnJfdmFsdWVfMiA9IHdlYlJPanMucHJvY2Vzcyhfd2Vicl9lZGl0b3JfMiwge30pO1xuIn0seyJpbmxpbmUiOmZhbHNlLCJjZWxsTmFtZSI6IndlYnItd2lkZ2V0LTEiLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJ7XG4gIC8vIFdhaXQgZm9yIG91dHB1dCB0byBiZSB3cml0dGVuIHRvIHRoZSBET00sIHRoZW4gdHJpZ2dlciB3aWRnZXQgcmVuZGVyaW5nXG4gIGF3YWl0IF93ZWJyX3ZhbHVlXzE7XG4gIGlmICh3aW5kb3cuSFRNTFdpZGdldHMpIHtcbiAgICB3aW5kb3cuSFRNTFdpZGdldHMuc3RhdGljUmVuZGVyKCk7XG4gIH1cbiAgaWYgKHdpbmRvdy5QYWdlZFRhYmxlRG9jKSB7XG4gICAgd2luZG93LlBhZ2VkVGFibGVEb2MuaW5pdEFsbCgpO1xuICB9XG59XG4ifSx7ImlubGluZSI6ZmFsc2UsImNlbGxOYW1lIjoid2Vici0xIiwibWV0aG9kTmFtZSI6ImludGVycHJldCIsInNvdXJjZSI6InZpZXdvZiBfd2Vicl9lZGl0b3JfMSA9IHtcbiAgY29uc3QgeyBXZWJSRXhlcmNpc2VFZGl0b3IsIGI2NERlY29kZSB9ID0gd2luZG93Ll9leGVyY2lzZV9vanNfcnVudGltZTtcbiAgY29uc3Qgc2NyaXB0Q29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJ3ZWJyLTEtY29udGVudHNcXFwiXWApLnRleHRDb250ZW50O1xuICBjb25zdCBibG9jayA9IEpTT04ucGFyc2UoYjY0RGVjb2RlKHNjcmlwdENvbnRlbnQpKTtcblxuICBjb25zdCBvcHRpb25zID0gT2JqZWN0LmFzc2lnbih7IGlkOiBgd2Vici0xLWNvbnRlbnRzYCB9LCBibG9jay5hdHRyKTtcbiAgY29uc3QgZWRpdG9yID0gbmV3IFdlYlJFeGVyY2lzZUVkaXRvcih3ZWJST2pzLndlYlJQcm9taXNlLCBibG9jay5jb2RlLCBvcHRpb25zKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl93ZWJyX3ZhbHVlXzEgPSB3ZWJST2pzLnByb2Nlc3MoX3dlYnJfZWRpdG9yXzEsIHt9KTtcbiJ9LHsiaW5saW5lIjpmYWxzZSwiY2VsbE5hbWUiOiJ3ZWJyLXByZWx1ZGUiLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJ3ZWJST2pzID0ge1xuICBjb25zdCB7IFdlYlIgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWUuV2ViUjtcbiAgY29uc3Qge1xuICAgIFdlYlJFdmFsdWF0b3IsXG4gICAgV2ViUkVudmlyb25tZW50TWFuYWdlcixcbiAgICBzZXR1cFIsXG4gICAgYjY0RGVjb2RlLFxuICAgIGNvbGxhcHNlUGF0aFxuICB9ID0gd2luZG93Ll9leGVyY2lzZV9vanNfcnVudGltZTtcblxuICBjb25zdCBzdGF0dXNDb250YWluZXIgPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZChcImV4ZXJjaXNlLWxvYWRpbmctc3RhdHVzXCIpO1xuICBjb25zdCBpbmRpY2F0b3JDb250YWluZXIgPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZChcImV4ZXJjaXNlLWxvYWRpbmctaW5kaWNhdG9yXCIpO1xuICBpbmRpY2F0b3JDb250YWluZXIuY2xhc3NMaXN0LnJlbW92ZShcImQtbm9uZVwiKTtcblxuICBsZXQgc3RhdHVzVGV4dCA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoXCJkaXZcIilcbiAgc3RhdHVzVGV4dC5jbGFzc0xpc3QgPSBcImV4ZXJjaXNlLWxvYWRpbmctZGV0YWlsc1wiO1xuICBzdGF0dXNUZXh0ID0gc3RhdHVzQ29udGFpbmVyLmFwcGVuZENoaWxkKHN0YXR1c1RleHQpO1xuICBzdGF0dXNUZXh0LnRleHRDb250ZW50ID0gYEluaXRpYWxpc2VgO1xuXG4gIC8vIEhvaXN0IGluZGljYXRvciBvdXQgZnJvbSBmaW5hbCBzbGlkZSB3aGVuIHJ1bm5pbmcgdW5kZXIgcmV2ZWFsXG4gIGNvbnN0IHJldmVhbFN0YXR1cyA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoXCIucmV2ZWFsIC5leGVyY2lzZS1sb2FkaW5nLWluZGljYXRvclwiKTtcbiAgaWYgKHJldmVhbFN0YXR1cykge1xuICAgIHJldmVhbFN0YXR1cy5yZW1vdmUoKTtcbiAgICBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKFwiLnJldmVhbCA+IC5zbGlkZXNcIikuYXBwZW5kQ2hpbGQocmV2ZWFsU3RhdHVzKTtcbiAgfVxuXG4gIC8vIHdlYlIgc3VwcGxlbWVudGFsIGRhdGEgYW5kIG9wdGlvbnNcbiAgY29uc3QgZGF0YUNvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwid2Vici1kYXRhXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgZGF0YSA9IEpTT04ucGFyc2UoYjY0RGVjb2RlKGRhdGFDb250ZW50KSk7XG5cbiAgLy8gR3JhYiBsaXN0IG9mIHJlc291cmNlcyB0byBiZSBkb3dubG9hZGVkXG4gIGNvbnN0IGZpbGVzQ29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJ2ZnMtZmlsZVxcXCJdYCkudGV4dENvbnRlbnQ7XG4gIGNvbnN0IGZpbGVzID0gSlNPTi5wYXJzZShiNjREZWNvZGUoZmlsZXNDb250ZW50KSk7XG5cbiAgLy8gSW5pdGlhbGlzZSB3ZWJSIGFuZCBzZXR1cCBmb3IgUiBjb2RlIGV2YWx1YXRpb25cbiAgbGV0IHdlYlJQcm9taXNlID0gKGFzeW5jICh3ZWJSKSA9PiB7XG4gICAgc3RhdHVzVGV4dC50ZXh0Q29udGVudCA9IGBEb3dubG9hZGluZyB3ZWJSYDtcbiAgICBhd2FpdCB3ZWJSLmluaXQoKTtcblxuICAgIC8vIEluc3RhbGwgcHJvdmlkZWQgbGlzdCBvZiBwYWNrYWdlc1xuICAgIC8vIEVuc3VyZSB3ZWJSIGRlZmF1bHQgcmVwbyBpcyBpbmNsdWRlZFxuICAgIGRhdGEucGFja2FnZXMucmVwb3MucHVzaChcImh0dHBzOi8vcmVwby5yLXdhc20ub3JnXCIpXG4gICAgYXdhaXQgZGF0YS5wYWNrYWdlcy5wa2dzLm1hcCgocGtnKSA9PiAoKSA9PiB7XG4gICAgICBzdGF0dXNUZXh0LnRleHRDb250ZW50ID0gYERvd25sb2FkaW5nIHBhY2thZ2U6ICR7cGtnfWA7XG4gICAgICByZXR1cm4gd2ViUi5ldmFsUlZvaWQoYFxuICAgICAgICB3ZWJyOjppbnN0YWxsKHBrZywgcmVwb3MgPSByZXBvcylcbiAgICAgICAgbGlicmFyeShwa2csIGNoYXJhY3Rlci5vbmx5ID0gVFJVRSlcbiAgICAgIGAsIHsgZW52OiB7XG4gICAgICAgIHBrZzogcGtnLFxuICAgICAgICByZXBvczogZGF0YS5wYWNrYWdlcy5yZXBvcyxcbiAgICAgIH19KTtcbiAgICB9KS5yZWR1Y2UoKGN1ciwgbmV4dCkgPT4gY3VyLnRoZW4obmV4dCksIFByb21pc2UucmVzb2x2ZSgpKTtcblxuICAgIC8vIERvd25sb2FkIGFuZCBpbnN0YWxsIHJlc291cmNlc1xuICAgIGF3YWl0IGZpbGVzLm1hcCgoZmlsZSkgPT4gYXN5bmMgKCkgPT4ge1xuICAgICAgY29uc3QgbmFtZSA9IGZpbGUuc3Vic3RyaW5nKGZpbGUubGFzdEluZGV4T2YoJy8nKSArIDEpO1xuICAgICAgc3RhdHVzVGV4dC50ZXh0Q29udGVudCA9IGBEb3dubG9hZGluZyByZXNvdXJjZTogJHtuYW1lfWA7XG4gICAgICBjb25zdCByZXNwb25zZSA9IGF3YWl0IGZldGNoKGZpbGUpO1xuICAgICAgaWYgKCFyZXNwb25zZS5vaykge1xuICAgICAgICB0aHJvdyBuZXcgRXJyb3IoYENhbid0IGRvd25sb2FkIFxcYCR7ZmlsZX1cXGAuIEVycm9yICR7cmVzcG9uc2Uuc3RhdHVzfTogXCIke3Jlc3BvbnNlLnN0YXR1c1RleHR9XCIuYCk7XG4gICAgICB9XG4gICAgICBjb25zdCBkYXRhID0gYXdhaXQgcmVzcG9uc2UuYXJyYXlCdWZmZXIoKTtcblxuICAgICAgLy8gU3RvcmUgVVJMcyBpbiB0aGUgY3dkIHdpdGhvdXQgYW55IHN1YmRpcmVjdG9yeSBzdHJ1Y3R1cmVcbiAgICAgIGlmIChmaWxlLmluY2x1ZGVzKFwiOi8vXCIpKSB7XG4gICAgICAgIGZpbGUgPSBuYW1lO1xuICAgICAgfVxuXG4gICAgICAvLyBDb2xsYXBzZSBoaWdoZXIgZGlyZWN0b3J5IHN0cnVjdHVyZVxuICAgICAgZmlsZSA9IGNvbGxhcHNlUGF0aChmaWxlKTtcblxuICAgICAgLy8gQ3JlYXRlIGRpcmVjdG9yeSB0cmVlLCBpZ25vcmluZyBcImRpcmVjdG9yeSBleGlzdHNcIiBWRlMgZXJyb3JzXG4gICAgICBjb25zdCBwYXJ0cyA9IGZpbGUuc3BsaXQoJy8nKS5zbGljZSgwLCAtMSk7XG4gICAgICBsZXQgcGF0aCA9ICcnO1xuICAgICAgd2hpbGUgKHBhcnRzLmxlbmd0aCA+IDApIHtcbiAgICAgICAgcGF0aCArPSBwYXJ0cy5zaGlmdCgpICsgJy8nO1xuICAgICAgICB0cnkge1xuICAgICAgICAgIGF3YWl0IHdlYlIuRlMubWtkaXIocGF0aCk7XG4gICAgICAgIH0gY2F0Y2ggKGUpIHtcbiAgICAgICAgICBpZiAoIWUubWVzc2FnZS5pbmNsdWRlcyhcIkZTIGVycm9yXCIpKSB7XG4gICAgICAgICAgICB0aHJvdyBlO1xuICAgICAgICAgIH1cbiAgICAgICAgfVxuICAgICAgfVxuXG4gICAgICAvLyBXcml0ZSB0aGlzIGZpbGUgdG8gdGhlIFZGU1xuICAgICAgcmV0dXJuIGF3YWl0IHdlYlIuRlMud3JpdGVGaWxlKGZpbGUsIG5ldyBVaW50OEFycmF5KGRhdGEpKTtcbiAgICB9KS5yZWR1Y2UoKGN1ciwgbmV4dCkgPT4gY3VyLnRoZW4obmV4dCksIFByb21pc2UucmVzb2x2ZSgpKTtcblxuICAgIHN0YXR1c1RleHQudGV4dENvbnRlbnQgPSBgSW5zdGFsbGluZyB3ZWJSIHNoaW1zYDtcbiAgICBhd2FpdCB3ZWJSLmV2YWxSVm9pZChgd2Vicjo6c2hpbV9pbnN0YWxsKClgKTtcblxuICAgIHN0YXR1c1RleHQudGV4dENvbnRlbnQgPSBgV2ViUiBlbnZpcm9ubWVudCBzZXR1cGA7XG4gICAgYXdhaXQgc2V0dXBSKHdlYlIsIGRhdGEpO1xuXG4gICAgc3RhdHVzVGV4dC5yZW1vdmUoKTtcbiAgICBpZiAoc3RhdHVzQ29udGFpbmVyLmNoaWxkcmVuLmxlbmd0aCA9PSAwKSB7XG4gICAgICBzdGF0dXNDb250YWluZXIucGFyZW50Tm9kZS5yZW1vdmUoKTtcbiAgICB9XG4gICAgcmV0dXJuIHdlYlI7XG4gIH0pKG5ldyBXZWJSKGRhdGEub3B0aW9ucykpO1xuXG4gIC8vIEtlZXAgdHJhY2sgb2YgaW5pdGlhbCBPSlMgYmxvY2sgcmVuZGVyXG4gIGNvbnN0IHJlbmRlcmVkT2pzID0ge307XG5cbiAgY29uc3QgcHJvY2VzcyA9IGFzeW5jIChjb250ZXh0LCBpbnB1dHMpID0+IHtcbiAgICBjb25zdCB3ZWJSID0gYXdhaXQgd2ViUlByb21pc2U7XG4gICAgY29uc3QgZXZhbHVhdG9yID0gbmV3IFdlYlJFdmFsdWF0b3Iod2ViUiwgY29udGV4dClcbiAgICBhd2FpdCBldmFsdWF0b3IucHJvY2VzcyhpbnB1dHMpO1xuICAgIHJldHVybiBldmFsdWF0b3IuY29udGFpbmVyO1xuICB9XG5cbiAgcmV0dXJuIHtcbiAgICBwcm9jZXNzLFxuICAgIHdlYlJQcm9taXNlLFxuICAgIHJlbmRlcmVkT2pzLFxuICB9O1xufVxuIn1dfQ==
 </script>
 <div id="exercise-loading-indicator" class="exercise-loading-indicator d-none d-flex align-items-center gap-2">
 <div id="exercise-loading-status" class="d-flex gap-2">
